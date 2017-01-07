@@ -1,0 +1,76 @@
+.tree {
+    margin-bottom: 20px;
+    min-height: 20px;
+    width: 400px;
+    margin-left: 0px;
+    padding: 0;
+}
+.tree li {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 5px 0;
+    position: relative;
+}
+.tree li::before, .tree li::after {
+    content: "";
+    left: -20px;
+    position: absolute;
+    right: auto;
+}
+.tree li::before {
+    border-left: 1px solid #999;
+    bottom: 50px;
+    height: 100%;
+    margin-left: -22px;
+    top: 0;
+    width: 1px;
+}
+.tree li::after {
+    border-top: 1px solid #999;
+    height: 20px;
+    margin-left: -22px;
+    top: 25px;
+    width: 12px;
+}
+.tree li span {
+    border: 1px solid #999;
+    border-radius: 5px;
+    display: inline-block;
+    margin-left: -26px;
+    padding: 3px 8px;
+    text-decoration: none;
+}
+.tree li ul li span {
+    margin-left: -36px;
+}
+.tree li.parent_li > span {
+    cursor: pointer;
+}
+.tree > ul > li::before, .tree > ul > li::after {
+    border: 0 none;
+}
+.tree li:last-child::before {
+    height: 30px;
+}
+
+#tree-chield {
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+}
+.expandable > span, .collapsable > span{cursor: pointer;}
+
+.expandable > span i::before {
+    content: "" !important;
+}
+.collapsable > span i::before {
+    content: "" !important;
+}
+.right_icons{border: none !important; position: relative !important; left: 0 !important; margin-left: 0 !important; cursor: pointer; color: blue}
+.chosen-container .chosen-results {
+    margin: 0 4px 40px 0 !important;
+}
+#open > ul{display: block !important;}
+
+.tree li span {
+    padding: 3px 3px !important;
+}

@@ -1,0 +1,22 @@
+$data["test_data"] = "This is a data";
+        require 'gmail_app/class.phpmailer.php';
+        $mail = new PHPMailer;
+        $mail->IsSMTP();
+        $mail->Host = "smtp.googlemail.com";
+        $mail->Port = "587";
+        $mail->SMTPAuth = true;
+        $mail->Username = "tv.iptvworld@gmail.com";
+        $mail->Password = "tv.iptvworld2013";
+        $mail->SMTPSecure = 'tls';
+
+        $mail->From = "From Email";
+        $mail->FromName = $get_settings_info->site_name;
+        $mail->AddAddress($user_info->email, $user_info->first_name . ' ' . $user_info->last_name);
+        $mail->AddReplyTo($get_settings_info->system_email, $get_settings_info->site_name);
+
+        $mail->WordWrap = 1000;
+        $mail->IsHTML(TRUE);
+        
+        $mail->Subject = "Activation Code";
+        $mail->Body = $this->load->view('template/system_email_template_activation_code', $data, TRUE);
+        $mail->Send();
