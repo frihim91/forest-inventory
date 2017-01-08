@@ -57,7 +57,7 @@
                 </div>  
             </div>
         </div> 
-        <div class="row">
+  <!--       <div class="row">
             <div class="form-group"> 
                 <div class="col-md-8">
                     <label class="col-md-4 control-label">Sub Project</label>
@@ -72,7 +72,7 @@
                     <p class="muted">Please Select Sub Project.</p>
                 </div>  
             </div>
-        </div> 
+        </div>  -->
         <div class="row">
             <div class="form-group"> 
                 <div class="col-md-8">

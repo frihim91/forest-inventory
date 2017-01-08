@@ -9,6 +9,10 @@
                                 <a class="navbar-brand" href="#"><b>Food and Agriculture Organization (FAO)</b></a>
                                 
                             </div>
+                             <?php
+    $session_info = $this->session->userdata("user_logged_in");
+    //echo '<pre>';print_r($session_info);exit;
+    ?>
                             <!-- /.navbar-header -->
 
                             <ul class="nav navbar-top-links navbar-right">
@@ -21,7 +25,7 @@
                                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                                     </a>
                                     <ul class="dropdown-menu dropdown-user">
-                                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                                        <li><a href="#"><i class="fa fa-user fa-fw"></i><?php echo $session_info["FULL_NAME"]; ?></a>
                                         </li>
                                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                                         </li>

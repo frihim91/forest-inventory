@@ -190,7 +190,7 @@ class SecurityAccess extends CI_Controller {
         // $data["groups"] = $this->utilities->dropdownFromTableWithCondition("sa_user_group", "","USERGRP_ID","USERGRP_NAME",array("ORG_ID" => $this->user_session["SES_ORG_ID"], "ACTIVE_STATUS" => 1));
         $data['hid'] = $this->input->post('hid');
         $data['groups'] = $this->utilities->dropdownFromTableWithCondition('sa_user_group', '', 'USERGRP_ID', 'USERGRP_NAME', array('ACTIVE_STATUS' => 1));
-        $data['subproject'] = $this->utilities->dropdownFromTableWithCondition('pr_subproject', '', 'SUB_PROJECT_NO', 'SUB_PROJECT_TITLE', array('ACTIVE' => 1));
+        //$data['subproject'] = $this->utilities->dropdownFromTableWithCondition('pr_subproject', '', 'SUB_PROJECT_NO', 'SUB_PROJECT_TITLE', array('ACTIVE' => 1));
 
         echo $this->load->view('setup/org/create_user', $data, true);
     }
@@ -370,7 +370,7 @@ class SecurityAccess extends CI_Controller {
         $attr = array(
             "ORG_ID" => $h_id,
             "USERNAME" => $this->input->post("txtLoginName"),
-            "USERPW" => $this->input->post("txtPassword"),
+            "USERPW" =>md5($this->input->post("txtPassword")),
             "SUB_PROJ_ID" => $this->input->post("subproject"),
             "USERGRP_ID" => $this->input->post("cmbGroupName"),
             "USERLVL_ID" => $this->input->post("cmbLevel"),
