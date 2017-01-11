@@ -1,4 +1,8 @@
 <?php
+/**
+ * I belong to a file
+ */
+
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -11,6 +15,9 @@ class Auth extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->model("auth_model");
     }
+/**
+ * I belong to a file
+ */
 
     function index() {
         if ($this->session->userdata('user_logged_in')) {
@@ -28,9 +35,14 @@ class Auth extends CI_Controller {
         }
     }
 
-    function check_database($password) {
+
+/**
+ * I belong to a file
+ */
+
+  public function check_database($password) {
         $username = $this->input->post('txtUserName');
-        $result = $this->auth_model->login($username, $password);
+        $result = $this->auth_model->login($username, md5($password);
         if ($result) {
             $sess_array = array(
                 'USER_ID' => $result->USER_ID,
@@ -54,10 +66,21 @@ class Auth extends CI_Controller {
         }
     }
 
-    function logout() {
+ /**
+ * I belong to a file
+ */
+
+
+    public function logout() {
         $this->session->unset_userdata('user_logged_in');
         redirect('dashboard/auth/index', 'refresh');
     }
+
+
+ /**
+ * I belong to a file
+ */
+
 
     public function forgot_password() {
         $this->load->view('forgot_password');
@@ -126,6 +149,11 @@ class Auth extends CI_Controller {
         $this->load->view('forgot_password');
     }
 
+/**
+ * I belong to a file
+ */
+
+
     public function email_send_messages() {
         $this->load->view('send_emai_messages');
     }
@@ -149,6 +177,12 @@ class Auth extends CI_Controller {
         }
     }
 
+
+/**
+ * I belong to a file
+ */
+
+
     public function generate_new_password() {
         $random_id = $this->input->post('randomCode');
         $requestInfo = $this->utilities->findByAttribute('sa_forget_pass_request', array('REQUESTED_CODE' => $random_id));
@@ -165,9 +199,21 @@ class Auth extends CI_Controller {
         }
     }
 
+
+ /**
+ * I belong to a file
+ */
+
+
     public function reset_passwordMessages() {
         $this->load->view('reset_passwordMessages');
     }
+
+
+/**
+ * I belong to a file
+ */
+
 
     public function find_username() {
         $txtEmail = $this->input->post('txtEmail');

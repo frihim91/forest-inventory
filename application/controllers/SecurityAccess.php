@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * I belong to a file
+ */
+
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -15,7 +19,11 @@ class SecurityAccess extends CI_Controller {
         $this->load->library("form_validation");
     }
 
-    function moduleSetup() {
+/**
+ * I belong to a file
+ */
+
+   public function moduleSetup() {
 
         $data["breadcrumbs"] = array(
             "Module" => "securityAccess/moduleSetup",
@@ -28,7 +36,12 @@ class SecurityAccess extends CI_Controller {
         $this->template->display($data);
     }
 
-    function createModule() {
+
+/**
+ * I belong to a file
+ */
+
+    public function createModule() {
         $module = array(
             'MODULE_NAME' => $this->input->post('txtModuleName'),
             'SHORT_NAME' => $this->input->post('txtModuleShortName'),
@@ -43,12 +56,22 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
-    function edit_module($module_id) {
+
+/**
+ * I belong to a file
+ */
+
+   public function edit_module($module_id) {
         $data['module_details'] = $this->utilities->findByAttribute('ati_modules', array('MODULE_ID' => $module_id));
         $this->load->view('setup/modules/edit_module', $data);
     }
 
-    function update_module() {
+
+/**
+ * I belong to a file
+ */
+
+   public function update_module() {
         $MODULE_ID = $this->input->post('MODULE_ID');
         $module = array(
             'MODULE_NAME' => $this->input->post('txtModuleName'),
@@ -64,7 +87,12 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
-    function moduleLinks() {
+
+/**
+ * I belong to a file
+ */
+
+   public function moduleLinks() {
         $data["breadcrumbs"] = array(
             "Module Links" => "securityAccess/moduleLinks",
         );
@@ -124,7 +152,12 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
-    function editModuleLink($LINK_ID) {
+
+/**
+ * I belong to a file
+ */
+
+   public function editModuleLink($LINK_ID) {
         $previousInfo = $this->utilities->findByAttribute('ati_module_links', array('LINK_ID' => $LINK_ID));
         $this->form_validation->set_rules('txtmoduleId', 'Module', 'required');
         $this->form_validation->set_rules('txtLinkName', 'Module Link Name', 'required');
@@ -174,6 +207,11 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
+
+/**
+ * I belong to a file
+ */
+
     public function orgModuleSetup() {
         $data["breadcrumbs"] = array(
             "Organizations" => "orgModuleSetup",
@@ -186,6 +224,11 @@ class SecurityAccess extends CI_Controller {
         $this->template->display($data);
     }
 
+
+/**
+ * I belong to a file
+ */
+
     public function createUser() {
         // $data["groups"] = $this->utilities->dropdownFromTableWithCondition("sa_user_group", "","USERGRP_ID","USERGRP_NAME",array("ORG_ID" => $this->user_session["SES_ORG_ID"], "ACTIVE_STATUS" => 1));
         $data['hid'] = $this->input->post('hid');
@@ -195,11 +238,19 @@ class SecurityAccess extends CI_Controller {
         echo $this->load->view('setup/org/create_user', $data, true);
     }
 
+/**
+ * I belong to a file
+ */
+
     public function moduleModalLink() {
         $data["hid"] = $this->input->post('hid');
         $data["active_modules"] = $this->utilities->findAllByAttribute("sa_org_modules", array("ORG_ID" => $data["hid"]));
         echo $this->load->view("setup/org/module_list", $data, true);
     }
+
+/**
+ * I belong to a file
+ */
 
     public function moduleModal() {
         $data["hid"] = $this->input->post('hid');
@@ -209,6 +260,10 @@ class SecurityAccess extends CI_Controller {
         echo $this->load->view("setup/org/add_module_to_cp", $data, true);
     }
 
+/**
+ * I belong to a file
+ */
+
     public function getModules() {
         $modules = $this->utilities->findAllByAttribute("ati_modules", array("ACTIVE_STATUS" => 1));
         //$data["active_modules"] = $this->global_model->findAllByAttribute("ATI_HC_MODULES", array("HEALTHCARE_ID" => $data["hid"]));
@@ -216,6 +271,10 @@ class SecurityAccess extends CI_Controller {
             echo '<li class="ui-widget-content" id="' . $module->MODULE_ID . '" title="' . $module->MODULE_NAME . '">' . $module->MODULE_NAME . '</li>';
         }
     }
+
+/**
+ * I belong to a file
+ */
 
     public function addModules() {
         /* echo '<pre>';
@@ -251,6 +310,11 @@ class SecurityAccess extends CI_Controller {
         echo $rtnSelectedModules;
     }
 
+
+/**
+ * I belong to a file
+ */
+
     public function removeHcModule() {
         $module_id = $this->input->post('m_id');
         $attr = array(
@@ -258,6 +322,11 @@ class SecurityAccess extends CI_Controller {
         );
         return $this->utilities->deleteRowByAttribute("sa_org_modules", $attr);
     }
+
+
+/**
+ * I belong to a file
+ */
 
     public function updateModule() {
         $module_id = $this->input->post('m_id');
@@ -271,7 +340,11 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
-    function assignModulePage() {
+/**
+ * I belong to a file
+ */
+
+    public function assignModulePage() {
         $values = explode(",", $this->input->post("values"));
         //print_r($values); exit;
         $module_id = $values[0];
@@ -308,6 +381,9 @@ class SecurityAccess extends CI_Controller {
             echo "inserted";
         }
     }
+/**
+ * I belong to a file
+ */
 
     public function allGroup() {
         $data['pageTitle'] = 'View All Groups';
@@ -319,6 +395,10 @@ class SecurityAccess extends CI_Controller {
         $data['content_view_page'] = 'security_access/all_groups';
         $this->template->display($data);
     }
+
+/**
+ * I belong to a file
+ */
 
     public function update_user_group_lavel() {
 
@@ -339,12 +419,20 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
+/**
+ * I belong to a file
+ */
+
     public function groupModal() {
         $data["hid"] = $this->user_session["SES_ORG_ID"];
         $data["modules"] = $this->utilities->findAllByAttribute("ati_modules", array("ACTIVE_STATUS" => 1));
         // $data["active_modules"] = $this->utilities->findAllByAttribute("sa_org_modules", array("ORG_ID" => $data["hid"]));
         echo $this->load->view("security_access/create_group", $data, true);
     }
+
+/**
+ * I belong to a file
+ */
 
     public function addNewGroup() {
         $h_id = $this->input->post("txtOrgId");
@@ -364,6 +452,10 @@ class SecurityAccess extends CI_Controller {
             redirect('securityAccess/allGroup', 'refresh');
         }
     }
+
+/**
+ * I belong to a file
+ */
 
     public function addUserBySubproject() {
         $h_id = $this->input->post("txtOrgId");
@@ -391,6 +483,10 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
+/**
+ * I belong to a file
+ */
+
     public function assignModuleToLevelModal($user_group_id) {
         $data["user_group_id"] = $user_group_id;
         $data['pageTitle'] = 'Create Level';
@@ -399,11 +495,19 @@ class SecurityAccess extends CI_Controller {
         echo $this->load->view("security_access/assign_module_to_level", $data, true);
     }
 
+/**
+ * I belong to a file
+ */
+
     public function createLevelModal() {
         $data["user_group_id"] = $this->input->post("group_id");
         $data['pageTitle'] = 'Create Level';
         echo $this->load->view("security_access/create_level", $data, true);
     }
+
+/**
+ * I belong to a file
+ */
 
     public function viewAccessChartModal($user_id) {
         $data["user_id"] = $user_id;
@@ -412,6 +516,10 @@ class SecurityAccess extends CI_Controller {
         echo $this->load->view("security_access/view_access_chart", $data, true);
     }
 
+/**
+ * I belong to a file
+ */
+
     public function transferGroupUserModal($user_id) {
         $data["user_id"] = $user_id;
         $data['pageTitle'] = 'Transfer User To Another Group';
@@ -419,6 +527,10 @@ class SecurityAccess extends CI_Controller {
         $data["groups"] = $this->utilities->dropdownFromTableWithCondition("sa_user_group", "Select A Group", "USERGRP_ID", "USERGRP_NAME", array("ORG_ID" => $this->user_session["SES_ORG_ID"], "ACTIVE_STATUS" => 1));
         echo $this->load->view("security_access/transfer_group_user", $data, true);
     }
+
+/**
+ * I belong to a file
+ */
 
     public function createLevel() {
         $insertdata = array(
@@ -438,6 +550,10 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
+/**
+ * I belong to a file
+ */
+
     public function transferGroup() {
         $updatedata = array(
             'USERGRP_ID' => $this->input->post('cmbGroup'),
@@ -445,6 +561,11 @@ class SecurityAccess extends CI_Controller {
         );
         $this->utilities->updateData("sa_users", $updatedata, array("USER_ID" => $this->input->post('txtUserId')));
     }
+
+
+/**
+ * I belong to a file
+ */
 
     public function assignModuleToGroup() {
         $data['pageTitle'] = 'Assign Link To Group';
@@ -460,6 +581,10 @@ class SecurityAccess extends CI_Controller {
         $data['content_view_page'] = 'security_access/assign_module_to_group';
         $this->template->display($data);
     }
+
+/**
+ * I belong to a file
+ */
 
     public function assignModuleToGroupAction() {
 
@@ -502,7 +627,11 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
-    function ajax_permission_change() {
+/**
+ * I belong to a file
+ */
+
+   public function ajax_permission_change() {
         $positionArray = explode(',', $_POST['position_value']);
         $user_group_id = $positionArray[0];
         $page_id = $positionArray[1];
@@ -512,7 +641,11 @@ class SecurityAccess extends CI_Controller {
         $this->utilities->ajax_permission_change($user_group_id, $page_id, $module_id, $link_id, $status);
     }
 
-    function ajax_permission_change_level() {
+/**
+ * I belong to a file
+ */
+
+    public function ajax_permission_change_level() {
         $positionArray = explode(',', $_POST['position_value']);
         $user_level_id = $positionArray[0];
         $page_id = $positionArray[1];
@@ -522,7 +655,12 @@ class SecurityAccess extends CI_Controller {
         $this->utilities->ajax_permission_change_level($user_level_id, $page_id, $module_id, $gr_id, $status);
     }
 
-    function getLevelsByGroup() {
+
+/**
+ * I belong to a file
+ */
+
+    public function getLevelsByGroup() {
         $group = $this->input->post("group");
         $levels = $this->utilities->dropdownFromTableWithCondition('sa_ug_level', 'Select Level -', 'UG_LEVEL_ID', 'UGLEVE_NAME', array('USERGRP_ID' => $group));
         if (!empty($levels)) {
@@ -532,7 +670,11 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
-    function getUsersByGroup() {
+/**
+ * I belong to a file
+ */
+
+   public function getUsersByGroup() {
         $group = $this->input->post("group");
 
         $users = $this->utilities->findAllByAttribute("sa_users", array("ORG_ID" => $this->user_session["SES_ORG_ID"], "USERGRP_ID" => $group, "STATUS" => 1));
@@ -552,7 +694,12 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
-    function getUsersByLevel() {
+
+/**
+ * I belong to a file
+ */
+
+   public function getUsersByLevel() {
         $group = $this->input->post("group");
         $level = $this->input->post("level");
 
@@ -573,7 +720,11 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
-    function getUsersByDepartment() {
+/**
+ * I belong to a file
+ */
+
+   public function getUsersByDepartment() {
         $department = $this->input->post("department");
 
         $users = $this->utilities->findAllByAttribute("sa_users", array("ORG_ID" => $this->user_session["SES_ORG_ID"], "DEPT_ID" => $department, "STATUS" => 1));
@@ -592,15 +743,22 @@ class SecurityAccess extends CI_Controller {
             echo "</tr>";
         }
     }
+/**
+ * I belong to a file
+ */
 
-    function getModuleAcceesByGroup() {
+    public function getModuleAcceesByGroup() {
 
         $data["group"] = $this->input->post("group");
         $data["org_modules"] = $this->utilities->findAllByAttribute("sa_org_modules", array("ORG_ID" => $this->user_session["SES_ORG_ID"], "ACTIVE_STATUS" => 1));
         echo $this->load->view("security_access/assign_module_by_group_id", $data, true);
     }
 
-    function getModuleAcceesByGroupLevel() {
+/**
+ * I belong to a file
+ */
+
+    public function getModuleAcceesByGroupLevel() {
 
         $data["group"] = $this->input->post("group");
         $data["level"] = $this->input->post("level");
@@ -608,7 +766,11 @@ class SecurityAccess extends CI_Controller {
         echo $this->load->view("security_access/assign_module_by_group_level", $data, true);
     }
 
-    function getModuleAcceesByUser() {
+/**
+ * I belong to a file
+ */
+
+    public function getModuleAcceesByUser() {
 
         $user_id = $this->input->post("user");
         $data["org_modules"] = $this->utilities->findAllByAttribute("sa_org_modules", array("ORG_ID" => $this->user_session["SES_ORG_ID"], "ACTIVE_STATUS" => 1));
@@ -616,13 +778,21 @@ class SecurityAccess extends CI_Controller {
         echo $this->load->view("security_access/assign_module_by_user", $data, true);
     }
 
-    function getModuleAcceesByUsers() {
+/**
+ * I belong to a file
+ */
+
+    public function getModuleAcceesByUsers() {
 
         $data["org_modules"] = $this->utilities->findAllByAttribute("sa_org_modules", array("ORG_ID" => $this->user_session["SES_ORG_ID"], "ACTIVE_STATUS" => 1));
         echo $this->load->view("security_access/assign_module_by_users", $data, true);
     }
 
-    function assignModuleAccessToUsers() {
+/**
+ * I belong to a file
+ */
+
+    public function assignModuleAccessToUsers() {
         $users = $this->input->post("chkUser");
         for ($i = 0; $i < sizeof($users); $i++) {
             $group = $this->input->post('group_id');
@@ -713,6 +883,10 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
+/**
+ * I belong to a file
+ */
+
     public function assignModuleAcceesByUser() {
 
         $group = $this->input->post('group_id');
@@ -755,6 +929,10 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
+/**
+ * I belong to a file
+ */
+
     public function module_report_category() {
 
         $data['report_mod'] = $this->utilities->dropdownFromTableWithCondition("ati_modules", " Select ", "MODULE_ID", "MODULE_NAME", array("ACTIVE_STATUS =" => 1));
@@ -762,10 +940,20 @@ class SecurityAccess extends CI_Controller {
         $this->template->display($data);
     }
 
+
+/**
+ * I belong to a file
+ */
+
     public function add_parameters_by_report_module() {
         $data['re_mod'] = $this->input->post('report_id');
         $this->load->view('setup/modules/module_re_add_parameters', $data);
     }
+
+
+/**
+ * I belong to a file
+ */
 
     public function add_new_report_module_cat() {
         if ($_POST) {
@@ -783,17 +971,30 @@ class SecurityAccess extends CI_Controller {
         }
     }
 
+/**
+ * I belong to a file
+ */
+
     public function get_parameters_by_report_module() {
         $re_mod = $this->input->post('report_id');
         $data['parameters'] = $this->utilities->findAllByAttribute('pr_module_reportcategory', array('MODULE_ID' => $re_mod));
         $this->load->view('setup/modules/view_parameters_by_report_module', $data);
     }
 
+
+/**
+ * I belong to a file
+ */
+
     public function edit_report_module_cat() {
         $cat_id = $data['cat_id'] = $this->input->post('cat_id');
         $data['cat_info'] = $this->utilities->findByAttribute('pr_module_reportcategory', array('CATEGORY_ID' => $cat_id));
         $this->load->view('setup/modules/edit_module_parameters', $data);
     }
+
+/**
+ * I belong to a file
+ */
 
     public function update_report_module_cat() {
         if ($_POST) {

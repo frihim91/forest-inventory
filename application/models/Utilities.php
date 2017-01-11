@@ -6,15 +6,15 @@ class Utilities extends CI_Model {
         parent::__construct();
     }
 
-    function get_max_value($tableName, $fieldName) {
+    public function get_max_value($tableName, $fieldName) {
         return $this->db->select_max($fieldName)->get($tableName)->row()->{$fieldName};
     }
 
-    function get_max_value_by_attribute($tableName, $fieldName, $attribute) {
+    public function get_max_value_by_attribute($tableName, $fieldName, $attribute) {
         return $this->db->select_max($fieldName)->where($attribute)->get($tableName)->row()->{$fieldName};
     }
 
-    function get_field_value_by_attribute($tableName, $fieldName, $attribute) {
+    public function get_field_value_by_attribute($tableName, $fieldName, $attribute) {
         $result = $this->db->get_where($tableName, $attribute)->row();
         if (!empty($result)):
             return $result->{$fieldName};
@@ -23,7 +23,7 @@ class Utilities extends CI_Model {
         endif;
     }
 
-    function dropdownFromTable($tableName, $selectText, $key, $labels) {
+    public function dropdownFromTable($tableName, $selectText, $key, $labels) {
         $query = $this->db->get($tableName);
         $lookupInfo = array();
 
@@ -42,7 +42,7 @@ class Utilities extends CI_Model {
         return $lookupInfo;
     }
 
-    function dropdownFromTableWithCondition($tableName, $selectText, $key, $value, $condition = '', $orderByField = '', $orderBy = 'ASC') {
+    public function dropdownFromTableWithCondition($tableName, $selectText, $key, $value, $condition = '', $orderByField = '', $orderBy = 'ASC') {
         if (!empty($condition)) {
             $this->db->where($condition);
         }
@@ -72,7 +72,7 @@ class Utilities extends CI_Model {
         return $lookupInfo;
     }
 
-    function dropdownArrayBySql($sql) {
+    public function dropdownArrayBySql($sql) {
         $result = $this->db->query($sql)->result();
         $returnArray = array('' => 'Select');
         if (!empty($result)) {
@@ -99,7 +99,7 @@ class Utilities extends CI_Model {
         return $this->db->get_where($tableName, $attribute)->num_rows();
     }
 
-    function insertData($post, $tableName) {
+    public function insertData($post, $tableName) {
         $this->db->trans_start();
         $this->db->insert($tableName, $post);
         $this->db->trans_complete();
@@ -110,12 +110,12 @@ class Utilities extends CI_Model {
         }
     }
 
-    function insertDataWithReturn($tableName, $data) {
+    public function insertDataWithReturn($tableName, $data) {
         $this->db->insert($tableName, $data);
         return $this->db->insert_id();
     }
 
-    function updateData($tableName, $data, $condition) {
+    public function updateData($tableName, $data, $condition) {
         $this->db->trans_start();
         $this->db->update($tableName, $data, $condition);
         $this->db->trans_complete();
@@ -126,7 +126,7 @@ class Utilities extends CI_Model {
         }
     }
 
-    function deleteRowByAttribute($tableName, $attribute) {
+    public function deleteRowByAttribute($tableName, $attribute) {
         $this->db->trans_start();
         $this->db->delete($tableName, $attribute);
         $this->db->trans_complete();
@@ -137,15 +137,15 @@ class Utilities extends CI_Model {
         }
     }
 
-    function findByAttribute($tableName, $attribute) {
+    public function findByAttribute($tableName, $attribute) {
         return $this->db->get_where($tableName, $attribute)->row();
     }
 
-    function rowCountByAttribute($tableName, $attribute) {
+    public function rowCountByAttribute($tableName, $attribute) {
         return $this->db->get_where($tableName, $attribute)->num_rows();
     }
 
-    function change_status_by_attribute($table_name, $attribute, $statusColumn = 'ACTIVE') {
+    public function change_status_by_attribute($table_name, $attribute, $statusColumn = 'ACTIVE') {
         $rowInfo = $this->findByAttribute($table_name, $attribute);
         if (empty($rowInfo)) {
             $returnValue = 'Invalid';
@@ -161,7 +161,7 @@ class Utilities extends CI_Model {
         return $returnValue;
     }
 
-    function change_new_table_status_by_attribute($table_name, $attribute) {
+    public function change_new_table_status_by_attribute($table_name, $attribute) {
         $rowInfo = $this->findByAttribute($table_name, $attribute);
         if (empty($rowInfo)) {
             $returnValue = 'Invalid';
@@ -177,7 +177,7 @@ class Utilities extends CI_Model {
         return $returnValue;
     }
 
-    function lookupTypesByLookupNo($lookupNo, $selectedText = '--- Select ---') {
+    public function lookupTypesByLookupNo($lookupNo, $selectedText = '--- Select ---') {
         $query = $this->db->get_where('CM_LOOKUP_DTL', array('LOOKUP_NO' => $lookupNo, 'ACTIVE_STAT' => 'Y'));
         $docType = array();
         if ($query->num_rows() > 0) {
@@ -191,7 +191,7 @@ class Utilities extends CI_Model {
         return $docType;
     }
 
-    function attributeArrayByGroupId($group_id, $selectedText = '--- Select ---') {
+    public function attributeArrayByGroupId($group_id, $selectedText = '--- Select ---') {
         $query = $this->db->get_where('A00_ATRB', array('GRP_ID' => $group_id, 'STA_FG' => 1));
         $returnArray = array();
         if ($query->num_rows() > 0) {
@@ -205,11 +205,11 @@ class Utilities extends CI_Model {
         return $returnArray;
     }
 
-    function findAllFromView($viewName) {
+    public function findAllFromView($viewName) {
         return $this->db->get($viewName)->result();
     }
 
-    function findAllByAttributeWithLike($tableName, $attribute, $like) {
+    public function findAllByAttributeWithLike($tableName, $attribute, $like) {
         if (!empty($like)) {
             $this->db->like($like);
         }
@@ -219,7 +219,7 @@ class Utilities extends CI_Model {
         return $this->db->get($tableName)->result();
     }
 
-    function findAllByAttribute($tableName, $attribute) {
+    public function findAllByAttribute($tableName, $attribute) {
         return $this->db->get_where($tableName, $attribute)->result();
     }
 
@@ -230,7 +230,7 @@ class Utilities extends CI_Model {
         return $this->db->get($tableName)->num_rows();
     }
 
-    function findByLimit($tableName, $limit = 20, $row = 0, $order_by_field_name = '', $order_by = 'ASC', $attribute = array()) {
+    public function findByLimit($tableName, $limit = 20, $row = 0, $order_by_field_name = '', $order_by = 'ASC', $attribute = array()) {
         if (!empty($attribute)) {
             $this->db->where($attribute);
         }
@@ -245,15 +245,15 @@ class Utilities extends CI_Model {
         }
     }
 
-    function findAllByAttributeWithOrderBy($tableName, $attribute, $order_by_field_name, $order_by = 'ASC') {
+    public function findAllByAttributeWithOrderBy($tableName, $attribute, $order_by_field_name, $order_by = 'ASC') {
         return $this->db->order_by("$order_by_field_name", "$order_by")->get_where($tableName, $attribute)->result();
     }
 
-    function getIdByName($tableName, $name, $returnFieldName) {
+    public function getIdByName($tableName, $name, $returnFieldName) {
         return $this->db->query("SELECT $returnFieldName  FROM $tableName WHERE (FIRST_NAME||' '||LAST_NAME)='$name'")->row()->{$returnFieldName};
     }
 
-    function findByAttributeWithJoin($mainTableName, $joinTableName, $joinByFieldName, $joinWithFieldName, $joinFieldName, $attribute, $joinType = 'left') {
+    public function findByAttributeWithJoin($mainTableName, $joinTableName, $joinByFieldName, $joinWithFieldName, $joinFieldName, $attribute, $joinType = 'left') {
         $this->db->select("$mainTableName.*, $joinTableName.$joinFieldName");
         $this->db->from($mainTableName);
         $this->db->join($joinTableName, "$mainTableName.$joinByFieldName = $joinTableName.$joinWithFieldName", $joinType);
@@ -261,7 +261,7 @@ class Utilities extends CI_Model {
         return $this->db->get()->row();
     }
 
-    function findAllByAttributeWithJoin($mainTableName, $joinTableName, $joinByFieldName, $joinWithFieldName, $joinFieldName, $attribute = '', $joinType = 'left') {
+    public function findAllByAttributeWithJoin($mainTableName, $joinTableName, $joinByFieldName, $joinWithFieldName, $joinFieldName, $attribute = '', $joinType = 'left') {
         $this->db->select("$mainTableName.*, $joinTableName.$joinFieldName");
         $this->db->from($mainTableName);
         $this->db->join($joinTableName, "$mainTableName.$joinByFieldName = $joinTableName.$joinWithFieldName", $joinType);
@@ -271,7 +271,7 @@ class Utilities extends CI_Model {
         return $this->db->get()->result();
     }
 
-    function findByAttributeWithJoinMF($mainTableName, $joinTableName, $joinByFieldName, $joinWithFieldName, $returnValue, $attribute = '', $joinType = 'left') {
+    public function findByAttributeWithJoinMF($mainTableName, $joinTableName, $joinByFieldName, $joinWithFieldName, $returnValue, $attribute = '', $joinType = 'left') {
         $this->db->select($returnValue);
         $this->db->from($mainTableName);
         $this->db->join($joinTableName, "$mainTableName.$joinByFieldName = $joinTableName.$joinWithFieldName", $joinType);
@@ -281,7 +281,7 @@ class Utilities extends CI_Model {
         return $this->db->get()->row();
     }
 
-    function findAllByAttributeWithJoinMF($mainTableName, $joinTableName, $joinByFieldName, $joinWithFieldName, $returnValue, $attribute = '', $joinType = 'left') {
+    public function findAllByAttributeWithJoinMF($mainTableName, $joinTableName, $joinByFieldName, $joinWithFieldName, $returnValue, $attribute = '', $joinType = 'left') {
         $this->db->select($returnValue);
         $this->db->from($mainTableName);
         $this->db->join($joinTableName, "$mainTableName.$joinByFieldName = $joinTableName.$joinWithFieldName", $joinType);
@@ -291,7 +291,7 @@ class Utilities extends CI_Model {
         return $this->db->get()->result();
     }
 
-    function is_it_checked_or_not($role_id, $form_id) {
+    public function is_it_checked_or_not($role_id, $form_id) {
         $role_permission_info = $this->db->get_where('SM_ROLE_FORMS', array('ROLE_ID' => $role_id, 'FORM_ID' => $form_id))->row();
         if (empty($role_permission_info)) {
             return FALSE;
@@ -304,7 +304,7 @@ class Utilities extends CI_Model {
         }
     }
 
-    function change_access_forms_by_ajax($role_id, $form_id, $status) {
+    public function change_access_forms_by_ajax($role_id, $form_id, $status) {
         $role_form_info = $this->db->get_where('SM_ROLE_FORMS', array('ROLE_ID' => $role_id, 'FORM_ID' => $form_id))->row();
         $session_info = $this->session->userdata('logged_in');
         if (empty($role_form_info)) {
@@ -322,11 +322,11 @@ class Utilities extends CI_Model {
         }
     }
 
-    function SPEL_OUT_AMOUNT($amount) {
+    public function SPEL_OUT_AMOUNT($amount) {
         return $this->db->query("SELECT SPEL_OUT ($amount) AS IN_WORD  FROM dual")->row()->IN_WORD;
     }
 
-    function remove_case_doc_by_id($id) {
+    public function remove_case_doc_by_id($id) {
         if (is_numeric($id) && $id > 0) {
             $row = $this->findByAttribute('CM_CASE_DOC', array('CASE_DOC_ID' => $id));
             $file_name = $row->FILE_NAME;
@@ -344,7 +344,7 @@ class Utilities extends CI_Model {
         }
     }
 
-    function getPreviousArrayByAttribute($tableName, $returnFieldName, $attribute) {
+    public function getPreviousArrayByAttribute($tableName, $returnFieldName, $attribute) {
         $preRecords = $this->db->select($returnFieldName)->get_where($tableName, $attribute)->result();
         $singleArray = array();
         if (!empty($preRecords)) {
@@ -355,7 +355,7 @@ class Utilities extends CI_Model {
         return $singleArray;
     }
 
-    function getRowArrayByAttribute($tableName, $attribute) {
+    public function getRowArrayByAttribute($tableName, $attribute) {
         $preRecords = $this->db->select('*')->get_where($tableName, $attribute)->result();
         $singleArray = array();
         if (!empty($preRecords)) {
@@ -374,21 +374,21 @@ class Utilities extends CI_Model {
         return date('F d, Y h:i:s a', strtotime($date . ' ' . $time));
     }
 
-    function bn2enNumber($number) {
+    public function bn2enNumber($number) {
         $search_array = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০");
         $replace_array = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
         $en_number = str_replace($search_array, $replace_array, $number);
         return $en_number;
     }
 
-    function en2bnNumber($number) {
+   public function en2bnNumber($number) {
         $search_array = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
         $replace_array = array("১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০");
         $en_number = str_replace($search_array, $replace_array, $number);
         return $en_number;
     }
 
-    function formatDate($format, $dateStr) {
+    public function formatDate($format, $dateStr) {
         if (trim($dateStr) == '' || substr($dateStr, 0, 10) == '0000-00-00') {
             return '';
         }
@@ -414,12 +414,12 @@ class Utilities extends CI_Model {
                                             FROM ati_module_links l")->result();
     }
 
-    function getMonths() {
+    public function getMonths() {
         $calInfo = cal_info(0);
         return $calInfo['months'];
     }
 
-    function summaty_of_major_items($id, $type = 'RE') {
+    public function summaty_of_major_items($id, $type = 'RE') {
         return $this->db->query("SELECT EX.SUB_PROJECT_NO,
                                                         EXP_TYPE,
                                                         (SELECT ECONOMIC_CODE
@@ -449,7 +449,7 @@ class Utilities extends CI_Model {
                                                  ORDER BY ECONOMIC_CODE")->result();
     }
 
-    function summaty_of_major_item_re($id) {
+    public function summaty_of_major_item_re($id) {
         return $this->db->query("SELECT ex.sub_project_no,exp_type,
                                     (SELECT  economic_code
                                     FROM fn_expenditure_item
@@ -471,7 +471,7 @@ class Utilities extends CI_Model {
                                     ORDER BY economic_code")->result();
     }
 
-    function summaty_of_major_item_ce($id) {
+    public function summaty_of_major_item_ce($id) {
         return $this->db->query("SELECT ex.sub_project_no,exp_type,
                                     (SELECT  economic_code
                                     FROM fn_expenditure_item
@@ -493,7 +493,7 @@ class Utilities extends CI_Model {
                                     ORDER BY economic_code")->result();
     }
 
-    function summaty_of_major_item_oe($id) {
+    public function summaty_of_major_item_oe($id) {
         return $this->db->query("SELECT ex.sub_project_no,exp_type,
                                     (SELECT  economic_code
                                     FROM fn_expenditure_item
@@ -515,7 +515,7 @@ class Utilities extends CI_Model {
                                     ORDER BY economic_code")->result();
     }
 
-    function findPreviousReportInfo($tableName, $sub_project_no, $custom_key) {
+    public function findPreviousReportInfo($tableName, $sub_project_no, $custom_key) {
         $max_period_no = $this->utilities->get_max_value_by_attribute($tableName, 'REP_PERIOD_NO', array('SUB_PROJECT_NO' => $sub_project_no));
         $results = $this->db->get_where($tableName, array('SUB_PROJECT_NO' => $sub_project_no, 'REP_PERIOD_NO' => $max_period_no))->result();
         $returnArray = array();
@@ -527,7 +527,7 @@ class Utilities extends CI_Model {
         return $returnArray;
     }
 
-    function findPreviousMonitoringInfo($sub_project_no, $custom_filed_name) {
+    public function findPreviousMonitoringInfo($sub_project_no, $custom_filed_name) {
         $max_period_no = $this->utilities->get_max_value_by_attribute('me_sub_project_monitoring', 'REP_PERIOD_NO', array('SUB_PROJECT_NO' => $sub_project_no));
         $result = $this->db->select($custom_filed_name)->get_where('me_sub_project_monitoring', array('SUB_PROJECT_NO' => $sub_project_no, 'REP_PERIOD_NO' => $max_period_no))->row();
         $returnValue = '';
@@ -546,7 +546,7 @@ class Utilities extends CI_Model {
         return $returnValue;
     }
 
-    function spell_out_number($number) {
+    public function spell_out_number($number) {
         if (($number < 0) || ($number > 999999999999)) {
             throw new Exception("Number is out of range");
         }
@@ -605,7 +605,7 @@ class Utilities extends CI_Model {
         return $res;
     }
 
-    function drpchange($val, $drp = 'u', $rtn = 'l') {
+    public function drpchange($val, $drp = 'u', $rtn = 'l') {
         switch ($drp) {
             case 'u':
                 $unit = ($val * 1);
@@ -670,7 +670,7 @@ class Utilities extends CI_Model {
         return $returnArray[$rtn];
     }
 
-    function filterAccountBalance($amount) {
+    public function filterAccountBalance($amount) {
         $amt_prefix = '';
         $amt_postfix = '';
         if ($amount < 0) {
@@ -681,7 +681,7 @@ class Utilities extends CI_Model {
         return $amt_prefix . number_format($amount, 2) . $amt_postfix;
     }
     
-     function signFormat($amount,$precision=2) {
+     public function signFormat($amount,$precision=2) {
         $amt_prefix = '';
         $amt_postfix = '';
         if ($amount < 0) {

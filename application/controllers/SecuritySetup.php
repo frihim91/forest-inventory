@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * I belong to a file
+ */
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -17,12 +21,22 @@ class SecuritySetup extends CI_Controller {
         $this->load->library('form_validation');
     }
 
+
+/**
+ * I belong to a file
+ */
+
     public function checkPrevilege() {
         $controller = $this->uri->segment(1, 'dashboard');
         $action = $this->uri->segment(2, 'index');
         $link = "$controller/$action";
         return $this->security_model->get_all_checked_module_links_by_user($link, $this->user_session['USERGRP_ID'], $this->user_session['USERLVL_ID'], $this->user_session['USER_ID']);
     }
+
+
+/**
+ * I belong to a file
+ */
 
     function index() {
         $session_info = $this->session->userdata('logged_in');
@@ -33,14 +47,27 @@ class SecuritySetup extends CI_Controller {
         $this->template->display($data);
     }
 
-    function moduleSetup() {
+
+
+/**
+ * I belong to a file
+ */
+
+
+   public function moduleSetup() {
         $data['pageTitle'] = 'Modules';
         $data['all_modules'] = $this->utilities->findAllFromView("ati_modules");
         $data['content_view_page'] = 'setup/modules/all_module';
         $this->template->display($data);
     }
 
-    function createModule() {
+
+/**
+ * I belong to a file
+ */
+
+
+    public function createModule() {
         $module = array(
             'MODULE_NAME' => $this->input->post('mod_name'),
             'MODULE_NAME_BN' => $this->input->post('mod_name_bn'),
@@ -51,12 +78,23 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
+/**
+ * I belong to a file
+ */
+
+
     public function get_last_id($row, $table) {
         $this->db->select_max($row);
         return $this->db->get($table)->row();
     }
 
-    function createModuleLink() {
+
+/**
+ * I belong to a file
+ */
+
+
+    public function createModuleLink() {
         $this->form_validation->set_rules('txtmoduleId', 'Module', 'required');
         $this->form_validation->set_rules('txtLinkName', 'Module Link Name', 'required');
         $this->form_validation->set_rules('txtModLink', 'Module URL', 'required');
@@ -87,13 +125,23 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
-    function editModuleLink() {
+/**
+ * I belong to a file
+ */
+
+
+    public function editModuleLink() {
         $link_id = $this->input->post('link');
         $data["link_details"] = $this->global_model->findAllByAttribute("ati_module_links", array("LINK_ID" => $link_id));
         echo $this->load->view("admin_profile/setup/modules/update_module_link", $data, true);
     }
 
-    function careProviderType() {
+
+/**
+ * I belong to a file
+ */
+
+    public function careProviderType() {
         $lookupId = array(
             'LOOKUP_ID' => '1'
         );
@@ -102,7 +150,12 @@ class SecuritySetup extends CI_Controller {
         $this->template->display($data);
     }
 
-    function changeModuleStatus() {
+
+/**
+ * I belong to a file
+ */
+
+    public function changeModuleStatus() {
         $linkid = $this->input->post('linkid');
         $status = $this->input->post('status');
         if ($status == '1') {
@@ -117,7 +170,12 @@ class SecuritySetup extends CI_Controller {
         $this->global_model->updateRow('ati_modules', $att, 'MODULE_ID = ' . $linkid);
     }
 
-    function changeCpTypeStatus() {
+
+/**
+ * I belong to a file
+ */
+
+    public function changeCpTypeStatus() {
         $cpid = $this->input->post('cpTypid');
         $status = $this->input->post('status');
 
@@ -133,7 +191,12 @@ class SecuritySetup extends CI_Controller {
         $this->global_model->updateRow('SA_LOOKUP_DATA', $att, 'LOOKUP_DATA_ID = ' . $cpid);
     }
 
-    function changeTemplateStatus() {
+
+/**
+ * I belong to a file
+ */
+
+    public function changeTemplateStatus() {
         $hid = $this->input->post('hid');
         $status = $this->input->post('st');
 
@@ -149,13 +212,24 @@ class SecuritySetup extends CI_Controller {
         $this->global_model->updateRow('ATI_HEALTHCARE', $att, 'HEALTHCARE_ID = ' . $hid);
     }
 
-    function CareProviderTemplateList() {
+
+
+/**
+ * I belong to a file
+ */
+
+    public function CareProviderTemplateList() {
         $data['all_template_lists'] = $this->global_model->findAllByAttributeWithJoinByOrder("ATI_HEALTHCARE", "SA_LOOKUP_DATA", "ORG_TYPE_ID", "LOOKUP_DATA_ID", "LOOKUP_DATA_ID", "LOOKUP_DATA_NAME", "", "left", "HEALTHCARE_ID");
         $data['content_view_page'] = 'admin_profile/setup/care-provider/list_all_care_provider_template';
         $this->template->display($data);
     }
 
-    function addCareProviderTemplate() {
+
+/**
+ * I belong to a file
+ */
+
+    public function addCareProviderTemplate() {
         $data['pageTitle'] = 'Add Care Provider Template';
         $data['notification'] = "Add Care Provider Template";
         $attr = array("LOOKUP_ID" => 1);
@@ -182,6 +256,10 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
+/**
+ * I belong to a file
+ */
+
     public function moduleModal() {
         $data["hid"] = $this->input->post('hid');
         $data["modules"] = $this->utilities->findAllByAttribute("ATI_MODULES", array("ACTIVE_STATUS" => 1));
@@ -189,11 +267,22 @@ class SecuritySetup extends CI_Controller {
         echo $this->load->view("setup/org/add_module_to_cp", $data, true);
     }
 
+
+/**
+ * I belong to a file
+ */
+
     public function moduleModalLink() {
         $data["hid"] = $this->input->post('hid');
         $data["active_modules"] = $this->utilities->findAllByAttribute("sa_org_modules", array("ORG_ID" => $data["hid"]));
         echo $this->load->view("setup/org/module_list", $data, true);
     }
+
+
+/**
+ * I belong to a file
+ */
+
 
     public function getModules() {
         $modules = $this->utilities->findAllByAttribute("ATI_MODULES", array("ACTIVE_STATUS" => 1));
@@ -202,6 +291,12 @@ class SecuritySetup extends CI_Controller {
             echo '<li class="ui-widget-content" id="' . $module->MODULE_ID . '" title="' . $module->MODULE_NAME . '">' . $module->MODULE_NAME . '</li>';
         }
     }
+
+
+/**
+ * I belong to a file
+ */
+
 
     public function addModules() {
         $hid = $this->input->post('hid');
@@ -228,6 +323,12 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
+
+/**
+ * I belong to a file
+ */
+
+
     public function updateModule() {
         $module_id = $this->input->post('m_id');
         $module_name = $this->input->post('m_name');
@@ -240,6 +341,12 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
+
+/**
+ * I belong to a file
+ */
+
+
     public function removeHcModule() {
         $module_id = $this->input->post('m_id');
         $attr = array(
@@ -247,6 +354,13 @@ class SecuritySetup extends CI_Controller {
         );
         return $this->utilities->deleteRowByAttribute("sa_org_modules", $attr);
     }
+
+
+
+/**
+ * I belong to a file
+ */
+
 
     public function assignModuleToHcTemplate() {
         $hid = $this->input->post('txtHcTemplateId');
@@ -279,7 +393,13 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
-    function assignPageTemplate() {
+
+/**
+ * I belong to a file
+ */
+
+
+    public function assignPageTemplate() {
         $data['pageTitle'] = 'assignPageTemplate';
         $data['notification'] = "assignPageTemplate";
         $data["modules"] = $this->global_model->findAllByAttribute("ATI_MODULES", array("ACTIVE_STATUS" => 1));
@@ -287,7 +407,13 @@ class SecuritySetup extends CI_Controller {
         $this->template->display($data);
     }
 
-    function addLinkToTemplateModule() {
+
+/**
+ * I belong to a file
+ */
+
+
+    public function addLinkToTemplateModule() {
         $module_id = $this->input->post("module");
         $link_id = $this->input->post("link");
         $check_id = $this->global_model->findByAttribute("ATI_HC_MLINKS", array("HC_MODULE_ID" => $module_id, "LINK_ID" => $link_id));
@@ -314,13 +440,25 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
-    public function careProviderRequests() {
+
+/**
+ * I belong to a file
+ */
+
+
+    public public function careProviderRequests() {
         $data['pageTitle'] = 'assignPageTemplate';
         $data['notification'] = "assignPageTemplate";
         $data["modules"] = $this->global_model->findAllByAttribute("ATI_MODULES", array("ACTIVE_STATUS" => 1));
         $data['content_view_page'] = 'admin_profile/care_providers/requests';
         $this->template->display($data);
     }
+
+
+/**
+ * I belong to a file
+ */
+
 
     public function createInsructionHeader() {
         $attr = array("LOOKUP_ID" => 1);
@@ -329,6 +467,12 @@ class SecuritySetup extends CI_Controller {
         $this->template->display($data);
     }
 
+
+/**
+ * I belong to a file
+ */
+
+
     public function orgModuleSetup() {
         $data['pageTitle'] = 'Organization List';
         $data["careProviders"] = $this->utilities->findAllByAttribute("sa_organizations", array("STATUS" => 1));
@@ -336,7 +480,13 @@ class SecuritySetup extends CI_Controller {
         $this->template->display($data);
     }
 
-    function changeOrgStatus() {
+
+/**
+ * I belong to a file
+ */
+
+
+    public function changeOrgStatus() {
         $hid = $this->input->post('hid');
         $status = $this->input->post('st');
 
@@ -352,12 +502,22 @@ class SecuritySetup extends CI_Controller {
         $this->global_model->updateRow('sa_organizations', $att, 'ORG_ID = ' . $hid);
     }
 
+/**
+ * I belong to a file
+ */
+
+
     public function groupModal() {
         $data["hid"] = $this->input->post('hid');
         $data["modules"] = $this->utilities->findAllByAttribute("ati_modules", array("ACTIVE_STATUS" => 1));
         $data["active_modules"] = $this->utilities->findAllByAttribute("sa_org_modules", array("ORG_ID" => $data["hid"]));
         echo $this->load->view("setup/org/create_group", $data, true);
     }
+
+/**
+ * I belong to a file
+ */
+
 
     public function addNewGroup() {
         $session_info = $this->session->userdata('logged_in');
@@ -375,11 +535,22 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
+
+ /**
+ * I belong to a file
+ */
+
+
     public function userAssignToGroupModal() {
         $data["hid"] = $this->input->post('hid');
         $data["groups"] = $this->global_model->dropdownFromTableWithCondition("sa_user_group", "Select A Group", "USERGRP_ID", "USERGRP_NAME", array("ORG_ID" => $data["hid"]));
         echo $this->load->view("admin_profile/care_providers/create_user", $data, true);
     }
+
+/**
+ * I belong to a file
+ */
+
 
     function assignModulePage() {
         $session_info = $this->session->userdata('logged_in');
@@ -420,6 +591,12 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
+
+/**
+ * I belong to a file
+ */
+
+
     public function manageUser() { // - by jahid
         $data["previlages"] = $this->checkPrevilege();
         $data['pageTitle'] = 'User List';
@@ -428,6 +605,12 @@ class SecuritySetup extends CI_Controller {
         $this->template->display($data);
     }
 
+
+/**
+ * I belong to a file
+ */
+
+
     public function createUserModal() {
         $data["departments"] = $this->utilities->dropdownFromTableWithCondition("hr_dept", "Select A Departments", "DEPT_NO", "DEPT_NAME", array("ORG_ID" => $this->user_session["SES_ORG_ID"], "ACTIVE_FLAG" => "Y"));
         $data["designations"] = $this->utilities->dropdownFromTableWithCondition("hr_designation", "Select A Designations", "DESIG_ID", "DESIG_NAME", array("ACTIVE_FLAG" => 1));
@@ -435,6 +618,11 @@ class SecuritySetup extends CI_Controller {
         $data["labels"] = $this->utilities->dropdownFromTableWithCondition("sa_ug_level", "Select A label", "UG_LEVEL_ID", "UGLEVE_NAME", array("ORG_ID" => $this->user_session["SES_ORG_ID"]));
         echo $this->load->view("setup/user/create", $data, true);
     }
+
+/**
+ * I belong to a file
+ */
+
 
     public function createNewUser() {
         $attr = array(
@@ -458,6 +646,12 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
+
+/**
+ * I belong to a file
+ */
+
+
     public function getLabelByGroup() {
         $group_id = $this->input->post("group_id");
         $labels = $this->utilities->findAllByAttribute("sa_ug_level", array("USERGRP_ID" => $group_id));
@@ -470,7 +664,13 @@ class SecuritySetup extends CI_Controller {
         }
     }
 
-    function siteInfo() {
+
+/**
+ * I belong to a file
+ */
+
+
+    public function siteInfo() {
         $data['pageTitle'] = 'Site Information Setup';
         $data["site_info"] = $this->utilities->findAllFromView("site_info");
         $this->form_validation->set_rules('txtInfoTitle', 'Title', 'required');
@@ -494,11 +694,22 @@ class SecuritySetup extends CI_Controller {
         $this->template->display($data);
     }
 
+/**
+ * I belong to a file
+ */
+
+
     public function updateSiteInfoModal() {
         $info_id = $this->input->post('info_id');
         $data["site_info"] = $this->utilities->findByAttribute("site_info", array("S_INFO_ID" => $info_id));
         echo $this->load->view("setup/site/edit", $data, true);
     }
+
+
+/**
+ * I belong to a file
+ */
+
 
     public function updateSiteInfo() {
         $siteArray = array(
@@ -512,6 +723,11 @@ class SecuritySetup extends CI_Controller {
             echo "<span style='color:red'>Update Failled</span>";
         }
     }
+
+/**
+ * I belong to a file
+ */
+
 
     public function viewInfoModal() {
         echo $id = $_POST['id'];

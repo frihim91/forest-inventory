@@ -6,7 +6,7 @@ class Subproject extends CI_Model {
         parent::__construct();
     }
 
-    function get_fund() {
+    public function get_fund() {
         $data = $this->db->query("SELECT m.FORECAST_NO, m.SUB_PROJECT_NO, sp.INSTITUTE_NAME,sp.CP_NO,
                                                         sp.SUB_PROJECT_TITLE, m.REQUEST_NO, m.REQ_DT,
                                                         (SELECT QUARTER_NAME FROM fn_quarter_setup WHERE QUARTER_NO = m.REQ_QUARTER)QUARTER_NAME,
@@ -24,7 +24,7 @@ class Subproject extends CI_Model {
         return $data->result();
     }
 
-    function get_report_quater($quarter_id) {
+    public function get_report_quater($quarter_id) {
         $condition = '';
         if ($quarter_id != '') {
             $condition = "AND m.REQ_QUARTER = $quarter_id";
@@ -51,7 +51,7 @@ class Subproject extends CI_Model {
         return $data->result();
     }
 
-    function get_req_fundno($SUB_REQ_NO) {
+    public function get_req_fundno($SUB_REQ_NO) {
         $data = $this->db->query('SELECT SUB_REQ_NO,CP_NO,QTR_NO,(SELECT QUARTER_NAME FROM fn_quarter_setup WHERE QUARTER_NO=F.QTR_NO) QUARTER_NAME,
                                  SUB_PROJECT_NO,(SELECT INSTITUTE_NAME FROM pr_institute WHERE INSTITUTE_NO=(SELECT INSTITUTE_NO 
                                                                                                              FROM PR_SUBPROJECT 
@@ -63,7 +63,7 @@ class Subproject extends CI_Model {
         return $data->row();
     }
 
-    function list_of_institute() {
+    public function list_of_institute() {
         $data = $this->db->query('SELECT MONITORING_NO,CP_NO,SUB_PROJECT_NO,
                                     (SELECT INSTITUTE_NAME FROM pr_institute WHERE INSTITUTE_NO=(SELECT INSTITUTE_NO 
                                                                                                 FROM PR_SUBPROJECT 
@@ -76,49 +76,49 @@ class Subproject extends CI_Model {
         return $data->result();
     }
 
-    function no_of_internal_staff($id) {
+    public function no_of_internal_staff($id) {
         $data = $this->db->query("SELECT count(p.STAFF_TYPE) as STAFF_TYPE
                                     FROM pr_sub_project_staff AS p
                                     WHERE p.SUB_PROJECT_NO = $id AND p.STAFF_TYPE = 'I'");
         return $data->row();
     }
 
-    function no_of_student($id) {
+    public function no_of_student($id) {
         $data = $this->db->query("SELECT count(p.STAFF_TYPE) as STAFF_TYPE
                                     FROM pr_sub_project_staff AS p
                                     WHERE p.SUB_PROJECT_NO =$id AND p.STAFF_TYPE = 'S'");
         return $data->row();
     }
 
-    function no_of_consultants($id) {
+    public function no_of_consultants($id) {
         $data = $this->db->query("SELECT count(p.STAFF_TYPE) as STAFF_TYPE
                                     FROM pr_sub_project_staff AS p
                                     WHERE p.SUB_PROJECT_NO = $id AND p.STAFF_TYPE = 'C'");
         return $data->row();
     }
 
-    function no_staff_full_time($id) {
+    public function no_staff_full_time($id) {
         $data = $this->db->query("SELECT count(p.CONTRACT_TYPE) as CONTRACT_TYPE
                                     FROM pr_sub_project_staff AS p
                                     WHERE p.SUB_PROJECT_NO = $id AND p.CONTRACT_TYPE =1");
         return $data->row();
     }
 
-    function no_staff_part_time($id) {
+    public function no_staff_part_time($id) {
         $data = $this->db->query("SELECT count(p.CONTRACT_TYPE) as CONTRACT_TYPE
                                     FROM pr_sub_project_staff AS p
                                     WHERE p.SUB_PROJECT_NO = $id AND p.CONTRACT_TYPE =2");
         return $data->row();
     }
 
-    function no_staff_provisinal_time($id) {
+    public function no_staff_provisinal_time($id) {
         $data = $this->db->query("SELECT count(p.CONTRACT_TYPE) as CONTRACT_TYPE
                                     FROM pr_sub_project_staff AS p
                                     WHERE p.SUB_PROJECT_NO = $id AND p.CONTRACT_TYPE =3");
         return $data->row();
     }
 
-    function subproject_stuff_info($id) {
+    public function subproject_stuff_info($id) {
         $data = $this->db->query("SELECT p.*,d.LOOKUP_DATA_NAME as designation
                                     FROM pr_sub_project_staff AS p
                                     left join lv_staff_designation as d on p.DESIGNATION_NO=d.LOOKUP_DATA_ID

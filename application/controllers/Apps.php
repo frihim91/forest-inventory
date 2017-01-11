@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * I belong to a file
+ */
+
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Apps extends CI_Controller {
@@ -10,12 +15,21 @@ class Apps extends CI_Controller {
             redirect('auth/index', 'refresh');
         }
     }
+/**
+ * I belong to a file
+ */
+
 
     public function index() {
             $data['content_view_page'] = 'template/blank.php';
             $this->template->display($data);
 
     }
+
+/**
+ * I belong to a file
+ */
+
 
     public function dismiss_dashboard_alert() {
         $sessionInfo = $this->session->userdata('user_logged_in');

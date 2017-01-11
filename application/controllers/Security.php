@@ -1,5 +1,10 @@
 <?php
 
+
+/**
+ * I belong to a file
+ */
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Security extends CI_Controller {
@@ -12,7 +17,11 @@ class Security extends CI_Controller {
         }
     }
 
-    function modules() {
+/**
+ * I belong to a file
+ */
+
+    public function modules() {
         //$this->session->set_flashdata('Success', 'Successed');
         $data["breadcrumbs"] = array(
             "Security" => "security/modules",
@@ -35,7 +44,11 @@ class Security extends CI_Controller {
         $this->template->display($data);
     }
 
-    function createModuleLink() {
+/**
+ * I belong to a file
+ */
+
+    public function createModuleLink() {
         $data["breadcrumbs"] = array(
             "Security" => "security/createModuleLink",
             "All Module Links" => '#'

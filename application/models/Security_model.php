@@ -175,7 +175,7 @@ Class Security_model extends CI_Model {
     }
 
     // -----------------------------Added By Jahid--------------------------------
-    function ajax_permission_change($gr_id, $page, $mid, $link, $status) {
+    public function ajax_permission_change($gr_id, $page, $mid, $link, $status) {
         $session_info = $this->session->userdata('user_logged_in');
         $role_permission_info = $this->db->get_where('sa_ugw_mlink', array('USERGRP_ID' => $gr_id, 'SA_MLINKS_ID' => $page))->row();
         if (empty($role_permission_info)) {
@@ -193,7 +193,7 @@ Class Security_model extends CI_Model {
         }
     }
 
-    function ajax_permission_change_level($gr_level_id, $page, $mid, $gr_id, $status) {
+    public function ajax_permission_change_level($gr_level_id, $page, $mid, $gr_id, $status) {
         $session_info = $this->session->userdata('user_logged_in');
         $role_permission_info = $this->db->get_where('sa_uglw_mlink', array('UG_LEVEL_ID' => $gr_level_id, 'SA_MLINKS_ID' => $page))->row();
         if (empty($role_permission_info)) {
@@ -211,7 +211,7 @@ Class Security_model extends CI_Model {
         }
     }
 
-    function getLevelModules($gr_id) {
+    public function getLevelModules($gr_id) {
         $this->db->distinct();
         $this->db->select("sa_org_modules.SA_MODULE_ID,sa_org_modules.SA_MODULE_NAME");
         $this->db->from("sa_ugw_mlink");
@@ -221,7 +221,7 @@ Class Security_model extends CI_Model {
         return $this->db->get()->result();
     }
 
-    function getModuleAccessByUser($u_id) {
+    public function getModuleAccessByUser($u_id) {
         return $this->db->query("
             SELECT a.SA_UGLWM_LINK,
                 COALESCE (a.`CREATE`, b.`CREATE`) AS `CREATE`,
