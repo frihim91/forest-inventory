@@ -65,7 +65,7 @@
                                         
 
                                         <li>
-                                            <a href="<?php echo site_url(); ?>"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                                            <a href="<?php echo site_url("dashboard/auth/index"); ?>"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                                         </li>
                                         <li>
                                          <?php
