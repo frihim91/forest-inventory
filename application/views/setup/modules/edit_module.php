@@ -1,4 +1,4 @@
-<?php echo form_open('securityAccess/update_module'); ?>
+<?php echo form_open('dashboard/securityAccess/update_module'); ?>
 <div class="modal-header">
     <h4 class="modal-title">Edit Module Name</h4>
 </div>

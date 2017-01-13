@@ -1,4 +1,4 @@
-<?php echo form_open("securityAccess/createLevel"); ?>
+<?php echo form_open("dashboard/securityAccess/createLevel"); ?>
 <div class="modal-header">
     <h4 class="modal-title">Create group Level</h4>
 </div>

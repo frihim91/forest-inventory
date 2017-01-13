@@ -57,7 +57,7 @@
     <div class="modal fade" id="modalDefault" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <?php echo form_open('securityAccess/createModule'); ?>
+                <?php echo form_open('dashboard/securityAccess/createModule'); ?>
                 <div class="modal-header">
                     <h4 class="modal-title">Create Module</h4>
                 </div>

@@ -88,7 +88,7 @@
         var h_id = $(this).attr('data-hid');
         $.ajax({
             type: "POST",
-            url: "<?php echo site_url('securityAccess/groupModal'); ?>",
+            url: "<?php echo site_url('dashboard/securityAccess/groupModal'); ?>",
             data: {hid: h_id},
             beforeSend: function () {
                 $("#modal_window .modal-title").html("Create Group");
@@ -103,7 +103,7 @@
         var h_id = $(this).attr('data-hid');
         $.ajax({
             type: "POST",
-            url: "<?php echo site_url('securityAccess/createUser'); ?>",
+            url: "<?php echo site_url('dashboard/securityAccess/createUser'); ?>",
             data: {hid: h_id},
             beforeSend: function () {
                 $("#modal_window .modal-title").html("Create User");
@@ -139,7 +139,7 @@
         var h_id = $(this).attr('data-hid');
         $.ajax({
             type: "POST",
-            url: "<?php echo site_url('securityAccess/moduleModal'); ?>",
+            url: "<?php echo site_url('dashboard/securityAccess/moduleModal'); ?>",
             data: {hid: h_id},
             beforeSend: function () {
             },
@@ -162,7 +162,7 @@
         var h_id = $(this).attr('data-hid');
         $.ajax({
             type: "POST",
-            url: "<?php echo site_url('securityAccess/moduleModalLink'); ?>",
+            url: "<?php echo site_url('dashboard/securityAccess/moduleModalLink'); ?>",
             data: {hid: h_id},
             beforeSend: function () {
                 $("#modal_window .modal-title").html("Assign Pages");
@@ -181,7 +181,7 @@
                 //alert(module_ids)
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo site_url('securityAccess/addModules'); ?>",
+                    url: "<?php echo site_url('dashboard/securityAccess/addModules'); ?>",
                     data: module_ids,
                     beforeSend: function () {
                         $("#selectable").html("loading...");
@@ -192,7 +192,7 @@
                         $("#selectable-target").html(data);
                         $.ajax({
                             type: "POST",
-                            url: "<?php echo site_url('securityAccess/getModules'); ?>",
+                            url: "<?php echo site_url('dashboard/securityAccess/getModules'); ?>",
                             success: function (data) {
                                 $("#selectable").html(data);
                             }
@@ -225,7 +225,7 @@
             var module_name = $(this).val();
             $.ajax({
                 type: "POST",
-                url: "<?php echo site_url('securityAccess/updateModule'); ?>",
+                url: "<?php echo site_url('dashboard/securityAccess/updateModule'); ?>",
                 data: {m_id: hc_module_id, m_name: module_name},
                 beforeSend: function () {
 
@@ -245,7 +245,7 @@
             var mList = $(this).parent();
             $.ajax({
                 type: "POST",
-                url: "<?php echo site_url('securityAccess/removeHcModule'); ?>",
+                url: "<?php echo site_url('dashboard/securityAccess/removeHcModule'); ?>",
                 data: {m_id: hc_module_id},
                 beforeSend: function () {
 
@@ -356,7 +356,7 @@
         var checked = ($($(this)).is(':checked')) ? 1 : 2;
         $.ajax({
             type: "POST",
-            url: "<?php echo site_url('securityAccess/assignModulePage'); ?>",
+            url: "<?php echo site_url('dashboard/securityAccess/assignModulePage'); ?>",
             data: {values: value, is_checked: checked},
             success: function (result) {
                 //alert(result);

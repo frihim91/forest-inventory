@@ -137,7 +137,7 @@
             var group_id = $(this).attr('data-id');
             $.ajax({
                 type: "POST",
-                url: "<?php echo site_url('securityAccess/createLevelModal'); ?>",
+                url: "<?php echo site_url('dashboard/securityAccess/createLevelModal'); ?>",
                 data:{group_id:group_id},
                 success: function(data) {                    
                     $(".modal-content").html(data); 
@@ -148,7 +148,7 @@
         //            var h_id = $(this).attr('data-hid');
         //            $.ajax({
         //                type: "POST",
-        //                url: "<?php echo site_url('securityAccess/groupModal'); ?>",
+        //                url: "<?php echo site_url('dashboard/securityAccess/groupModal'); ?>",
         //                data:{hid:h_id},
         //                beforeSend: function() {
         //                    $("#modal_window .modal-title").html("Create Group"); 
@@ -164,7 +164,7 @@
            
             $.ajax({
                 type: "POST",
-                url: "<?php echo site_url('securityAccess/groupModal'); ?>", 
+                url: "<?php echo site_url('dashboard/securityAccess/groupModal'); ?>", 
                 success: function(data) {                    
                     $(".modal-content").html(data); 
                 }
@@ -190,7 +190,7 @@
             //alert(levelid);
             $.ajax({
                 type: "POST",
-                url: "<?php echo site_url('securityAccess/update_user_group_lavel'); ?>", 
+                url: "<?php echo site_url('dashboard/securityAccess/update_user_group_lavel'); ?>", 
                 data:{levelid:levelid, leveldata:leveldata},
                 success: function(data) { 
                     if(data == 'updated'){

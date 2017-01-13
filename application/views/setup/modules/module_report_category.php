@@ -49,7 +49,7 @@
             } else {
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo site_url('securityAccess/add_parameters_by_report_module'); ?>',
+                    url: '<?php echo site_url('dashboard/securityAccess/add_parameters_by_report_module'); ?>',
                     data: {report_id: report_id},
                     success: function (data) {
                         $('#reportParameterArea').html(data);
@@ -59,7 +59,7 @@
                 
                  $.ajax({
                     type: 'POST',
-                    url: '<?php echo site_url('securityAccess/get_parameters_by_report_module'); ?>',
+                    url: '<?php echo site_url('dashboard/securityAccess/get_parameters_by_report_module'); ?>',
                     data: {report_id: report_id},
                     success: function (data) {
                         $('#reportCatList').html(data);
@@ -72,7 +72,7 @@
             var cat_id = $(this).attr('cat_no');
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo site_url('securityAccess/edit_report_module_cat'); ?>',
+                    url: '<?php echo site_url('dashboard/securityAccess/edit_report_module_cat'); ?>',
                     data: {cat_id: cat_id},
                     success: function (data) {
                         $('#reportParameterArea').html(data);

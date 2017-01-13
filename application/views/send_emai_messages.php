@@ -10,7 +10,7 @@
 
             <h3 style='margin-left:37%';>Email send successfully.</h3><span style='margin-left:37%'>To get back into your account, follow the instructions we've sent to your email address.</span><br/><br/>
             <span style='margin-left:37%';> Didn't receive the email? Check your spam folder for an email from HEQEP.</span><br/><br>
-            <a  href="<?php echo site_url('auth/index'); ?>"><button style='margin-left:37%;background: #72f28c; height:6%;'>Back to login.</button></a>
+            <a  href="<?php echo site_url('dashboard/auth/index'); ?>"><button style='margin-left:37%;background: #72f28c; height:6%;'>Back to login.</button></a>
         </div>
     </div>
 </html>

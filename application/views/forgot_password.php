@@ -20,12 +20,12 @@
                                 </div>
                             </div>
                         <?php endif; ?>
-                        <div style=" color:#3333ff; font-size: 16px;"><a href="<?php echo site_url(); ?>"><img style="height: 65px; margin-left: 0%;" src="<?php echo base_url('resources/images/HEQEPLogoPng.png'); ?>" alt="HEQEP" /></a><hr></div>
+                        <div style=" color:#3333ff; font-size: 16px;"><a href="<?php echo site_url(); ?>"><img style="height: 65px; margin-left: 0%;" src="<?php echo base_url('resources/images/logo.jpg'); ?>" alt="HEQEP" /></a><hr></div>
                         <div><b> <span class="important">*&nbsp;&nbsp;</span>If you forget your user name or password   select  &nbsp;&nbsp;&nbsp;&nbsp;any option below and inter valid  user name or &nbsp;&nbsp;&nbsp;&nbsp;password then send.<br/>
                                 <span class="important">*&nbsp;&nbsp;</span>After successfully send check your email.</b></div><br>
                         <label><input id="forgotPassword" type="radio" name="toggler" value="1" /><b>&nbsp;&nbsp;I don't know my password</b></label>
                         <div id="blk-1" class="toHide" style="display:none">
-                            <?php echo form_open('auth/sendmail_forgot_password'); ?>
+                            <?php echo form_open('dashboard/auth/sendmail_forgot_password'); ?>
                             Please inter your user name
                             <input type="text" name="txtUserName" id="txtUserName" class="form-control " required="required" placeholder="Enter Your Username"/>
                             <button style=" width: 20%; margin-left: 33%;" class="btn btn-xs  btn-success" type="submit">Send</button>
@@ -33,13 +33,13 @@
                         </div> 
                         <label><input id="fondUsernaem" type="radio" name="toggler" value="2" /><b>&nbsp;&nbsp;I don't know my username</b></label>
                         <div id="blk-2" class="toHide" style="display:none">
-                            <?php echo form_open('auth/find_username'); ?>
+                            <?php echo form_open('dashboard/auth/find_username'); ?>
                             Please inter your email address
                             <input type="text" name="txtEmail" id="txtEmail" class="form-control " required="required" placeholder="Enter Your Email"/> 
                             <button style="width: 20%; margin-left: 33%" class="btn btn-xs  btn-success" type="submit">Send</button>
                             <?php echo form_close(); ?>
                         </div><br/><br/>
-                        <a href="<?php echo site_url('auth/index'); ?>" style="width: 20%; margin-left: 33%" class="btn btn-xs  btn-success close_close" type="submit">Close</a>
+                        <a href="<?php echo site_url('dashboard/auth/index'); ?>" style="width: 20%; margin-left: 33%" class="btn btn-xs  btn-success close_close" type="submit">Close</a>
                     </div>
 
                 </div>

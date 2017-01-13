@@ -165,7 +165,7 @@
             var group_id = $(this).val();
             $.ajax({
                 type: "POST",
-                url:"<?php echo site_url('securityAccess/getLevelsByGroup'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/getLevelsByGroup'); ?>",
                 data: {group:group_id},
                 beforeSend: function() {
                     $("#modules,#userList").addClass("loadingIMid");
@@ -177,7 +177,7 @@
             });
             $.ajax({
                 type: "POST",
-                url:"<?php echo site_url('securityAccess/getUsersByGroup'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/getUsersByGroup'); ?>",
                 data: {group:group_id},
                 success: function(result1) {
                     $('#userList').html(result1);
@@ -187,7 +187,7 @@
             });
             $.ajax({
                 type: "POST",
-                url:"<?php echo site_url('securityAccess/getModuleAcceesByGroup'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/getModuleAcceesByGroup'); ?>",
                 data: {group:group_id},
                 beforeSend: function() {
                     $("#modules").addClass("loadingIMid");
@@ -204,7 +204,7 @@
             var level_id = $(this).val();
             $.ajax({
                 type: "POST",
-                url:"<?php echo site_url('securityAccess/getUsersByLevel'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/getUsersByLevel'); ?>",
                 data: {group:group_id,level:level_id},
                 beforeSend: function() {
                     $("#userList").addClass("loadingIMid");
@@ -217,7 +217,7 @@
             });
             $.ajax({
                 type: "POST",
-                url:"<?php echo site_url('securityAccess/getModuleAcceesByGroupLevel'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/getModuleAcceesByGroupLevel'); ?>",
                 data: {group:group_id,level:level_id},
                 beforeSend: function() {
                     $("#modules").addClass("loadingIMid");
@@ -233,7 +233,7 @@
             var dept_id = $(this).val();
             $.ajax({
                 type: "POST",
-                url:"<?php echo site_url('securityAccess/getUsersByDepartment'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/getUsersByDepartment'); ?>",
                 data: {department:dept_id},
                 beforeSend: function() {
                     $("#userList").addClass("loadingIMid");
@@ -272,7 +272,7 @@
             }else{
                 $.ajax({
                     type: "POST",
-                    url:"<?php echo site_url('securityAccess/assignModuleToGroupAction'); ?>",
+                    url:"<?php echo site_url('dashboard/securityAccess/assignModuleToGroupAction'); ?>",
                     data: {group_id:group,level_id:level,department_id:department,values:value,is_checked:checked},
                     success: function(result) {
                     
@@ -285,7 +285,7 @@
             var user_id = $(this).attr("id");
             $.ajax({
                 type: "POST",
-                url:"<?php echo site_url('securityAccess/getModuleAcceesByUser'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/getModuleAcceesByUser'); ?>",
                 data: {user:user_id},
                 beforeSend: function() {
                     $("#modules").addClass("loadingIMid");
@@ -306,7 +306,7 @@
             var checked = ($($(this)).is(':checked'))? 1 : 0;
             $.ajax({
                 type: "POST",
-                url:"<?php echo site_url('securityAccess/assignModuleAcceesByUser'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/assignModuleAcceesByUser'); ?>",
                 data: {values:value,is_checked:checked,group_id:group,sa_uglwm_link_id:sa_uglwm_link,user:user_id,level:level_id},
                 success: function(result) {
                     //window.location.replace("<?php echo site_url("securityAccess/assignModuleToGroup"); ?>");
@@ -322,7 +322,7 @@
                 $(".chkUser").removeAttr("checked");
             }
             $.ajax({
-                url:"<?php echo site_url('securityAccess/getModuleAcceesByUsers'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/getModuleAcceesByUsers'); ?>",
                 success: function(result2) {
                     $('#modules').html(result2);
                     $("#modules > li ul").first().addClass("in");
@@ -336,7 +336,7 @@
             var checked = ($($(this)).is(':checked'))? 1 : 0;
             $.ajax({
                 type: "POST",
-                url:"<?php echo site_url('securityAccess/assignModuleAccessToUsers'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/assignModuleAccessToUsers'); ?>",
                 data: users + "&values=value&is_checked=checked",
                 success: function(result2) {
                     $('#modules').html(result2);

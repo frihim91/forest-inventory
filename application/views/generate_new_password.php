@@ -20,7 +20,7 @@
                 <div class="widget widget-heading-simple widget-body-gray ">
                     <div class="widget-body">
                         <!-- Form -->
-                        <form method="post" action="<?php echo site_url('auth/generate_new_password'); ?>" onSubmit="return  confirmPassword(this)"/>
+                        <form method="post" action="<?php echo site_url('dashboard/auth/generate_new_password'); ?>" onSubmit="return  confirmPassword(this)"/>
                         <?php //echo form_open('auth/generate_new_password_datainsert'); ?>
                         <?php if (validation_errors()): ?>
                             <div class="row">

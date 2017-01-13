@@ -8,7 +8,7 @@ class Setup extends CI_Controller {
         parent::__construct();
         $this->user_session = $this->session->userdata('user_logged_in');
         if (!$this->session->userdata('user_logged_in')) {
-            redirect('auth/index', 'refresh');
+            redirect('dashboard/auth/index', 'refresh');
         }
         $this->load->model('Setup_model');
     }

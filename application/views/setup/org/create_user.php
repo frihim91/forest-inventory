@@ -9,7 +9,7 @@
         <h4 class="heading">Edit Module Link</h4>
     </div> 
     <div class="widget-body">    
-        <?php echo form_open('securityAccess/addUserBySubproject'); ?>
+        <?php echo form_open('dashboard/securityAccess/addUserBySubproject'); ?>
         <div class="msg">
             <?php
             if (validation_errors() != false) {
@@ -164,7 +164,7 @@
             var group_id = $(this).val();
             $.ajax({
                 type: "POST",
-                url:"<?php echo site_url('securityAccess/getLevelsByGroup'); ?>",
+                url:"<?php echo site_url('dashboard/securityAccess/getLevelsByGroup'); ?>",
                 data: {group:group_id},
                 beforeSend: function() {
                     $("#modules,#userList").addClass("loadingIMid");

@@ -1,4 +1,4 @@
- <?php echo form_open("securityAccess/addNewGroup"); ?>
+ <?php echo form_open("dashboard/securityAccess/addNewGroup"); ?>
 <div class="modal-header">
     <h4 class="modal-title">Create group</h4>
 </div>

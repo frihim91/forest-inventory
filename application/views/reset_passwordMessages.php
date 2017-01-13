@@ -9,7 +9,7 @@
         <div class="widget-body">
 
             <h4 style='margin-left:37%';>Success - you've reset your password.</h4><span style='margin-left:37%'>Now, review your account recovery information.</span><br/><br/>
-            <a  href="<?php echo site_url('auth/index'); ?>"><button style='margin-left:37%;background: #72f28c; height:6%;'>Review my recovery info.</button></a>
+            <a  href="<?php echo site_url('dashboard/auth/index'); ?>"><button style='margin-left:37%;background: #72f28c; height:6%;'>Review my recovery info.</button></a>
         </div>
     </div>
 </html>

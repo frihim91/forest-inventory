@@ -6,7 +6,7 @@ class Windows extends CI_Controller {
         parent::__construct();
         $this->user_session = $this->session->userdata('user_logged_in');
         if (!$this->user_session) {
-            redirect('auth/index');
+            redirect('dashboard/auth/index');
         }
     }
 

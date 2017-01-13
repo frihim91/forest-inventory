@@ -1,5 +1,5 @@
 <div class="innerLR"> 
-    <?php echo form_open('securityAccess/update_report_module_cat', array('class' => 'orm-horizontal margin-none', 'id' => 'entryForm')); ?>
+    <?php echo form_open('dashboard/securityAccess/update_report_module_cat', array('class' => 'orm-horizontal margin-none', 'id' => 'entryForm')); ?>
     <input type="hidden" name="CATEGORY_ID" value="<?php echo $cat_id; ?>" />
     <div class="widget">  
         <div class="widget-head">

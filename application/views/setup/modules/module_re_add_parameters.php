@@ -1,5 +1,5 @@
 <div class="innerLR"> 
-    <?php echo form_open('securityAccess/add_new_report_module_cat', array('class' => 'orm-horizontal margin-none', 'id' => 'entryForm')); ?>
+    <?php echo form_open('dashboard/securityAccess/add_new_report_module_cat', array('class' => 'orm-horizontal margin-none', 'id' => 'entryForm')); ?>
     <input type="hidden" name="MODULE_ID" value="<?php echo $re_mod; ?>" />
     <div class="widget">  
         <div class="widget-head">

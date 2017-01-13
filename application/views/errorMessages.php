@@ -7,7 +7,7 @@
     <div class="widget widget-heading-simple widget-body-gray">
 
         <div class="widget-body">
-            <h3 style='margin-left:37%'>The URL you tried to use is either incorrect or no longer valid.</h3><span style='margin-left:37%'>If you want to try again, please <a style="text-decoration: none; color: #1086de;" href="<?php echo site_url('auth/forgot_password'); ?>">start the recovery process from the beginning.</a></span></b><br/><br/>
+            <h3 style='margin-left:37%'>The URL you tried to use is either incorrect or no longer valid.</h3><span style='margin-left:37%'>If you want to try again, please <a style="text-decoration: none; color: #1086de;" href="<?php echo site_url('dashboard/auth/forgot_password'); ?>">start the recovery process from the beginning.</a></span></b><br/><br/>
         </div>
     </div>
 </html>

@@ -9,7 +9,7 @@
     .subProjectArea{display: none;}
 </style>
 <div class="widget widget-body-white">
-    <div class=" widget-body">
+    <div class="widget-body">
         <!--        <form method="post" action="#" onSubmit="return  confirmPassword(this)"/>-->
         <?php echo form_open_multipart('', array('id' => 'frmUserInfo')); ?>
         <?php if (validation_errors()): ?>

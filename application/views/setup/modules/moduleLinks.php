@@ -5,7 +5,7 @@
 </style> 
 <div class="widget">  
     <div class="widget-head"> 
-        <a class="btn btn-sm btn-danger pull-right col-md-2" href="<?php echo site_url("securityAccess/createModuleLink"); ?>">Add New Link</a>
+        <a class="btn btn-sm btn-danger pull-right col-md-2" href="<?php echo site_url("dashboard/securityAccess/createModuleLink"); ?>">Add New Link</a>
         <small style="margin-left: 10px;">All Module Links</small> 
     </div> 
     <div class="widget-body">    
@@ -42,7 +42,7 @@
                                 <td><?php echo $row->SL_NO; ?></td>
                                 <td><?php echo ($row->ACTIVE_STATUS == 1) ? '<span style="color:green">Active</span>' : '<span style="color:red">Inactive</span>'; ?></td>
                                 <td>
-                                    <a  title="Edit  Module Link"  href="<?php echo site_url("securityAccess/editModuleLink/" . $row->LINK_ID); ?>" class="label label-info" style="cursor: pointer">Edit</a> 
+                                    <a  title="Edit  Module Link"  href="<?php echo site_url("dashboard/securityAccess/editModuleLink/" . $row->LINK_ID); ?>" class="label label-info" style="cursor: pointer">Edit</a> 
                                 </td>
                             </tr>
                             <?php

@@ -12,7 +12,7 @@ class Apps extends CI_Controller {
     function __construct() {
         parent::__construct();
         if (!$this->session->userdata('user_logged_in')) {
-            redirect('auth/index', 'refresh');
+            redirect('dashboard/auth/index', 'refresh');
         }
     }
 /**
