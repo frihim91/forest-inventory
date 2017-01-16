@@ -1,26 +1,28 @@
     <?php
 
 
-     /**
-         
-         * @package CodeIgniter
-         * @author  Md.Rokibuzzaman
-         
-      */
+   /**
+     
+     * @package Admin Panel
+     * @author     Rokibuzzaman <rokibuzzaman@atilimited.net>
+     * @copyright  2017 ATI Limited Development Group
+     
+    */
 
     defined('BASEPATH') OR exit('No direct script access allowed');
 
      /**
-         * Security Class
-         *
-         * Parses URIs and determines routing
-         *
-         * @package     CodeIgniter
-         * @subpackage  Controller
-         * @category    Controller
-         * @author      Md.Rokibuzzaman
-         *
-         */
+     * Security Class
+     *
+     * Parses URIs and determines routing
+     *
+     * @package     Admin Panel
+     * @subpackage  Admin Panel
+     * @category    Admin Panel
+     * @author      Rokibuzzaman <rokibuzzaman@atilimited.net>
+     *
+     */
+
 
     class Security extends CI_Controller {
 

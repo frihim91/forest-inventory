@@ -1,0 +1,40 @@
+.ct-u-backgroundLightGreen{
+	overflow:hidden;
+}
+p{
+	text-align:justify;
+}
+.notice_board{
+	background-color:#fff;
+	border:5px solid #46792C;
+	//padding-left:10px;
+	border-radius:5px;
+	
+}
+.alcn{
+	text-align:center;
+	color:#fff;
+	background-color:#86B746;
+	padding:30px 0px 20px 0px;
+	border-bottom:5px solid #46792C;
+}
+.marg_left{
+	margin-left:10px;
+}
+.right_bg{
+	background-color:#CECECE;
+	padding:5px
+}
+.bottom_gap{
+	margin-bottom:30px;
+}
+.mandatory{
+	color:red;
+	//font-size:20px;
+}
+.file-class{
+	min-height:35px;
+}
+
+
+

@@ -1,11 +1,27 @@
     <?php
 
-    /**
-     * I belong to a file
-     */
-
+     /**
+     
+     * @package Admin Panel
+     * @author     Rokibuzzaman <rokibuzzaman@atilimited.net>
+     * @copyright  2017 ATI Limited Development Group
+     
+    */
     if (!defined('BASEPATH'))
         exit('No direct script access allowed');
+
+     /**
+     * SecuritySetup Class
+     *
+     * Parses URIs and determines routing
+     *
+     * @package     Admin Panel
+     * @subpackage  Admin Panel
+     * @category    Admin Panel
+     * @author      Rokibuzzaman <rokibuzzaman@atilimited.net>
+     *
+     */
+
 
     class SecuritySetup extends CI_Controller {
 

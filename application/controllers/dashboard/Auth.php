@@ -1,8 +1,9 @@
     <?php
     /**
      
-     * @package CodeIgniter
-     * @author  Md.Rokibuzzaman
+     * @package Admin Panel
+     * @author     Rokibuzzaman <rokibuzzaman@atilimited.net>
+     * @copyright  2017 ATI Limited Development Group
      
      */
     if (!defined('BASEPATH'))
@@ -13,10 +14,10 @@
      *
      * Parses URIs and determines routing
      *
-     * @package     CodeIgniter
-     * @subpackage  Controller
-     * @category    Controller
-     * @author      Md.Rokibuzzaman
+     * @package     Admin Panel
+     * @subpackage  Admin Panel
+     * @category    Admin Panel
+     * @author      Rokibuzzaman <rokibuzzaman@atilimited.net>
      *
      */
 
@@ -41,6 +42,8 @@
             $this->load->model("auth_model");
         }
     /**
+     * @methodName index()
+     * @param  none
      * Show the Login page.
      * index function here.
      */

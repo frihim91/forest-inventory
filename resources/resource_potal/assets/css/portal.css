@@ -1,0 +1,176 @@
+.text-msg {
+    padding-bottom: 11px;
+}
+.login-form {
+    height: 30px !important;
+}
+.hr {
+    border-style: solid none none;
+    border-color: #443266;
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
+}
+.ibox-content {
+    background-color: #F3F3F4;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+    color: inherit;
+    padding: 15px 20px 20px !important;
+    border-radius: 10px;
+}
+.text-justify {
+    text-align: justify;
+}
+@media screen and ( max-width: 360px ) {
+    .program-title{
+        margin-left: 8px;
+    }
+    .select-program{
+        margin-left: 10px !important;
+    } 
+    .unit{
+        margin-left: 5px !important;
+        top: -9px !important;
+    }
+}  
+#permanent_address{
+    padding-left: 10px !important;
+}
+.emailCheck{
+    margin-left: 100%;
+    position: relative;
+    top: -26px;
+}
+.select-program{
+    padding-top: 7px !important;
+}
+.form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline{
+    padding-top: 0px !important;
+}
+.form-size {
+    height: 30px !important;
+}
+.shortcode-typo p {
+    margin-bottom: 2px !important;
+}
+.widget-main{
+    margin-top: 0px !important;
+}
+@media screen and ( max-width: 991px ) {
+    .wizard-big.wizard > .content {
+        min-height: 560px !important;
+        padding-left: 10px !important;
+    }
+}
+@media screen and ( max-width: 360px ) {
+    .wizard-big.wizard > .content {
+        min-height: 865px !important;
+        padding-left: 10px !important;
+    }
+}
+@media (max-width: 767px) {
+    .table-responsive {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #DDD;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+span.select2.select2-container.select2-container--classic {
+    width: 100% !important;
+}
+.required {
+    color: red;
+}
+.wizard > .steps > ul > li {
+    width: 20% !important;
+}
+.regiColumns {
+    margin: 0 auto;
+    max-width: 650px;
+    padding: 50px 20px 20px;
+
+}
+.fileUpload {
+    margin-left: 15%;
+    overflow: hidden;
+    position: relative;
+}
+.fileUpload input.upload {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.form-control {
+    height: 30px !important;
+}
+.f-m-photo{
+    margin-left: 0px !important;
+}
+.F_Occupation{
+    width: 100% !important;
+}
+.numbersOnly
+{
+    border-color: red;
+}
+.yesNo{
+    margin-left: 18px;
+    position: relative;
+    top: -17px;
+}
+.commonClass{
+    padding-left: 15px;
+}
+.help-padding{
+    padding-right: 0px !important;
+}
+.help-icon{
+    top: 4px;
+}
+.help-icon-2{
+    float: right;
+    top: -23px;
+}
+.text-navy:hover {
+    color: #F8AC59;
+}
+tr td{
+    padding-top: 2px;
+}
+.appendClass{
+    padding-right: 6px;
+}
+.appendRightClass{
+    padding-right: 13px;
+}
+
+.advertisements{
+    padding-left: 15px;
+}
+.advertisements h4{
+    margin-top: 34px;
+    border-bottom: 1px solid #D5DBE0;
+    padding-bottom: 14px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+}
+.advertisements ul{
+    margin: 0;
+    padding: 0;
+}
+.advertisements ul li{
+    list-style: none;
+    margin-bottom: 10px;
+}
