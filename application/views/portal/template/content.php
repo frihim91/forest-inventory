@@ -179,7 +179,7 @@
                             <div class="gallery-small-thumbs clearfix">
                                 
                                     <div class="thumb-small-gallery">
-                                        <a class="fancybox" rel="gallery1" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/1.jpg" title="গ্যালারি শিরোনাম">
+                                        <a class="fancybox" rel="gallery1" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/1.jpg" title="Forest">
                                             <img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/1-small.jpg" alt=""/>
 
                                         </a>
@@ -188,14 +188,14 @@
 
 
                                     <div class="thumb-small-gallery">
-                                        <a class="fancybox" rel="gallery1" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/2.jpg" title="গ্যালারি শিরোনাম">
+                                        <a class="fancybox" rel="gallery1" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/2.jpg" title="Forest">
                                             <img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/2-small.jpg" alt=""/>
                                         </a>
 
                                     </div>
 
                                     <div class="thumb-small-gallery">
-                                        <a class="fancybox" rel="gallery1" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/3.jpg" title="গ্যালারি শিরোনাম">
+                                        <a class="fancybox" rel="gallery1" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/3.jpg" title="Forest">
                                             <img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/3-small.jpg" alt=""/>
                                         </a>
                                     </div>
