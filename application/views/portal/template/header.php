@@ -56,6 +56,25 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }*/
+
+
+/*.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+}
+*/
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
 </style>
 <div class="navbar navbar-default yamm">
     <div class="navbar-header">
@@ -66,16 +85,40 @@
         <ul class="nav navbar-nav">
             <li class="dropdown"><a href="<?php echo site_url('portal/index'); ?>">Home</a></li>
 
- <!--          <li class="dropdown">
-    <a href="#" class="dropbtn">Dropdown</a>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-  </li> -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About us <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li ><a href="#" >Introduction/Conceptual overview</a></li>
+                     <li role="presentation" class="divider"></li>
+                    <li><a href="#">Mission statement</a></li>
+                     <li role="presentation" class="divider"></li>
+                    <li ><a href="#">Organogram</a></li>
+                     <li role="presentation" class="divider"></li>
+                    <li ><a href="#">Staff Directory</a></li>
+                   
+                </ul>
+            </li>
+
+
+             <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Key Activities <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li ><a href="#">Forest inventory</a></li>
+                     <li role="presentation" class="divider"></li>
+                    <li><a href="#">Socio-economic survey</a></li>
+                     <li role="presentation" class="divider"></li>
+                    <li ><a href="#">LCCS</a></li>
+                     <li role="presentation" class="divider"></li>
+                    <li><a href="#">MRV</a></li>
+                     <li role="presentation" class="divider"></li>
+                    <li><a href="#">Capacity building</a></li>
+                     <li role="presentation" class="divider"></li>
+                    <li><a href="#">GHG Inventory</a></li>
+                   
+                </ul>
+            </li>
           <li class="dropdown">
-                <a href="<?php echo site_url('portal/contact'); ?>">Introduction</a>
+                <a href="<?php echo site_url('portal/contact'); ?>">Documents/Media</a>
             </li> 
             <li class="online_reg">
                 <a href="#">News & Events</a>
@@ -104,7 +147,7 @@
                 <a href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/tender-notice-n.pdf">Contact Us</a>
             </li>
         </ul>
-    <!--     <ul class="nav navbar-nav navbar-right">
+<!--         <ul class="nav navbar-nav navbar-right">
             <li><a href="<?php echo site_url('portal/get_register'); ?>" class="btn btn-default btn-sm">Registration</a></li>
             <li>
                 <div class="dropdown login_menu_btn">

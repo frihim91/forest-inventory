@@ -46,7 +46,7 @@
 .navbar-nav>li>a.btn, .navbar-nav>li a.dropdown-toggle{
 	background-color: #609513;
 	border-radius: 0px;
-	padding: 3px 5px !important;
+	/*padding: 0px 5px !important;*/
 	color: #FFFFFF;
 }
 .btn-default.focus, .btn-default:focus{

@@ -48,17 +48,17 @@
                       <header class="site-header header_top_style">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-2 col-sm-3 col-xs-6 logo mobile_header_left">
+                            <div class="col-xs-6 col-sm-4">
                                 <a href="index.php/portal/index.html" title="Home" rel="home">
                                     
                                      <img width="70" src="resources/resource_potal/assets/portal/images/forest.jpg" alt="logo"/>
                                 </a>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12 text-center header_title_text">
+                            <div class="col-xs-6 col-sm-4">
                                 
-                                <h2><img width="70" src="resources/resource_potal/assets/portal/images/logo.jpg" alt="logo"/></h2>
+                               <img width="70" src="resources/resource_potal/assets/portal/images/logo.jpg" alt="logo"/>
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12 logo mobile_header_right">
+                            <div class="col-xs-6 col-sm-4">
 
                              <p align="right"><img src="resources/resource_potal/assets/portal/images/flag_eng.gif" alt="flag"/>&nbsp;&nbsp;<img src="resources/resource_potal/assets/portal/images/bangla.gif" alt="flag"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php/portal/login.html" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;">Login</a></p>
                             

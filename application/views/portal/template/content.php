@@ -89,7 +89,7 @@
                                                 <span><a href="#">30/12/2016 - 15:47</a></span>
                                             </p>
                         </ul>
-                        <a href="#" class="btn btn-more pull-right">More</a><br>
+                        <a href="#" class="btn btn-more pull-right">More</a><br><br>
                     </div>
                 </div>
 
@@ -114,7 +114,7 @@
                             </li>
 
                         </ul>
-                        <a href="#" class="btn btn-more pull-right">More</a><br>
+                        <a href="#" class="btn btn-more pull-right">More</a><br><br>
                     </div>
                 </div>
 
@@ -160,7 +160,7 @@
                            
 
                         </ul>
-                        <a href="#" class="btn btn-more pull-right">More</a><br>
+                        <a href="#" class="btn btn-more pull-right">More</a><br><br>
                     </div>
                 </div>
 
