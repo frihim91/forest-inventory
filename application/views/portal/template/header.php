@@ -72,9 +72,9 @@
     padding: 12px 16px;
 }
 */
-.dropdown:hover .dropdown-menu {
+/*.dropdown:hover .dropdown-menu {
     display: block;
-}
+}*/
 </style>
 <div class="navbar navbar-default yamm">
     <div class="navbar-header">
@@ -83,7 +83,8 @@
     </div>
     <div id="navbar-collapse-grid" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-            <li class="dropdown"><a href="<?php echo site_url('portal/index'); ?>">Home</a></li>
+            <li class="dropdown"><a href="#">Home</a></li>
+           <!--  <li class="dropdown"><a href="<?php echo site_url('portal/index'); ?>">Home</a></li> -->
 
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About us <span class="caret"></span></a>
@@ -104,22 +105,25 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Key Activities <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li ><a href="#">Forest inventory</a></li>
-                     <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="divider"></li>
                     <li><a href="#">Socio-economic survey</a></li>
-                     <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="divider"></li>
                     <li ><a href="#">LCCS</a></li>
-                     <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="divider"></li>
                     <li><a href="#">MRV</a></li>
-                     <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="divider"></li>
                     <li><a href="#">Capacity building</a></li>
-                     <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="divider"></li>
                     <li><a href="#">GHG Inventory</a></li>
                    
                 </ul>
             </li>
           <li class="dropdown">
-                <a href="<?php echo site_url('portal/contact'); ?>">Documents/Media</a>
+                <a href="#">Documents/Media</a>
             </li> 
+            <!--    <li class="dropdown">
+                <a href="<?php echo site_url('portal/contact'); ?>">Documents/Media</a>
+            </li> --> 
             <li class="online_reg">
                 <a href="#">News & Events</a>
             </li>
@@ -128,23 +132,27 @@
             </li>
              
              <li class="dropdown">
+                <a href="#">Themes</a>
+            </li>
+
+            <!--  <li class="dropdown">
                 <a href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/tender-notice-n.pdf">Themes</a>
-            </li>
+            </li> -->
 
             <li class="dropdown">
-                <a href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/tender-notice-n.pdf">Projects</a>
+                <a href="#">Projects</a>
             </li>
 
              <li class="dropdown">
-                <a href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/tender-notice-n.pdf">Vacancy</a>
+                <a href="#">Vacancy</a>
             </li>
 
             <li class="dropdown">
-                <a href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/tender-notice-n.pdf">Gallery</a>
+                <a href="#">Gallery</a>
             </li>
 
              <li class="dropdown">
-                <a href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/tender-notice-n.pdf">Contact Us</a>
+                <a href="#">Contact Us</a>
             </li>
         </ul>
 <!--         <ul class="nav navbar-nav navbar-right">

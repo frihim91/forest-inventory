@@ -54,9 +54,9 @@
                                      <img width="70" src="resources/resource_potal/assets/portal/images/forest.jpg" alt="logo"/>
                                 </a>
                             </div>
-                            <div class="col-xs-6 col-sm-4">
+                            <div class="col-xs-6 col-sm-4" style="text-align:center;">
                                 
-                               <img width="70" src="resources/resource_potal/assets/portal/images/logo.jpg" alt="logo"/>
+                               <img width="70" src="resources/resource_potal/assets/portal/images/logo.png" alt="logo"/>
                             </div>
                             <div class="col-xs-6 col-sm-4">
 
