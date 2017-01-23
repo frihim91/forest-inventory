@@ -38,7 +38,7 @@
                                 <td><?php echo $all_mod->SL_NO; ?></td>
                                 <td><?php echo ($all_mod->ACTIVE_STATUS == 1) ? '<span style="color:green">Active</span>' : '<span style="color:red">Inactive</span>'; ?></td>
                                 <td>
-                                    <span  title="Edit  Module Name"  data-remote="<?php echo site_url("securityAccess/edit_module/" . $all_mod->MODULE_ID); ?>" class="label label-info editModal" style="cursor: pointer">Edit</span> 
+                                    <span  title="Edit  Module Name"  data-remote="<?php echo site_url("dashboard/securityAccess/edit_module/" . $all_mod->MODULE_ID); ?>" class="label label-info editModal" style="cursor: pointer">Edit</span> 
                                 </td>
                             </tr>
                             <?php

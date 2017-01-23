@@ -14,6 +14,8 @@ instead of the minified CSS loaded by default.
 
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/less/pages/serveStyles.css" />
 
+<link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor.css" />
+
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/shared/components/modules/admin/metisMenu/metisMenu.min.css" />
 
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/shared/components/modules/admin/morrisjs/morris.css" />
@@ -29,6 +31,8 @@ instead of the minified CSS loaded by default.
   <script src="<?php echo base_url(); ?>resources/js/html5shiv.js"></script>
   <script src="<?php echo base_url(); ?>resources/js/respond.min.js"></script>
 <![endif]-->
+<script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.js"></script>
+<script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.min.js"></script>
 
 <script src="<?php echo base_url(); ?>resources/shared/components/library/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/library/jquery/jquery-migrate.min.js"></script>
@@ -39,8 +43,8 @@ instead of the minified CSS loaded by default.
 
 <script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/charts/flot/assets/lib/excanvas.js"></script>
 
-<script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/morrisjs/morris.min.js"></script>
-<script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/morrisjs/morris-data.js"></script>
+<!-- <script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/morrisjs/morris.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/morrisjs/morris-data.js"></script> -->
 
 <script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/raphael/raphael.min.js"></script>
 
@@ -65,6 +69,11 @@ instead of the minified CSS loaded by default.
     var themerPrimaryColor = primaryColor;
 </script>
 
+
+<!-- <script>
+    $('.redactor').redactor();
+</script>
+ -->
 <script src="<?php echo base_url(); ?>resources/shared/components/library/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/plugins/slimscroll/jquery.slimscroll.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/plugins/breakpoints/breakpoints.js"></script>
@@ -72,6 +81,7 @@ instead of the minified CSS loaded by default.
 
 <script>
     $(document).ready(function () {
+        $('.redactor').redactor();
         $('.dropdown-option').select2();
 
         var warning = true;
