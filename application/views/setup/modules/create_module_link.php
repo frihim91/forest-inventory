@@ -33,7 +33,7 @@
                             $options["$module->MODULE_ID"] = $module->MODULE_NAME;
                         }
                         $mId = set_value('txtmoduleId');
-                        echo form_dropdown('txtmoduleId', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Country..." required="required"');
+                        echo form_dropdown('txtmoduleId', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Parent..." required="required"');
                         ?>   
                     </div>
                 </div>

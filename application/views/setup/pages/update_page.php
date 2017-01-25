@@ -61,7 +61,7 @@
                                   
                                     <div class="col-md-12"> 
                                      <label for="firstname">Title </label>
-                                        <?php echo form_input(array('class' => 'form-control', 'placeholder' => '', 'id' => 'TITLE_NAME', 'name' => 'TITLE_NAME', 'value' => set_value('TITLE_NAME'), 'required' => 'required')); ?>      
+                                        <?php echo form_input(array('class' => 'form-control', 'placeholder' => '', 'id' => 'TITLE_NAME', 'name' => 'TITLE_NAME', 'value' => $previousInfo->TITLE_NAME, 'required' => 'required')); ?>      
                                     </div>
                                 </div>
                                 <div class="col-md-4 help">
@@ -77,7 +77,7 @@
                                        
                                         <div class="col-md-12"> 
                                          <label for="firstname" >Subtitle</label>
-                                            <?php echo form_input(array('class' => 'form-control', 'placeholder' => '', 'id' => 'SUB_TITLE', 'name' => 'SUB_TITLE', 'value' => set_value('SUB_TITLE'), )); ?>      
+                                            <?php echo form_input(array('class' => 'form-control', 'placeholder' => '', 'id' => 'SUB_TITLE', 'name' => 'SUB_TITLE', 'value' => $previousInfo->SUB_TITLE, )); ?>      
                                         </div>
                                     </div>
                                     <div class="col-md-4 help">
@@ -94,7 +94,7 @@
                         
                         <div class="col-md-12"> 
                         <label>URI</label>
-                            <?php echo form_input(array('class' => 'form-control', 'id' => 'PG_URI', 'name' => 'PG_URI', 'value' => set_value('PG_URI'), 'required' => 'required')); ?>      
+                            <?php echo form_input(array('class' => 'form-control', 'id' => 'PG_URI', 'name' => 'PG_URI', 'value' => $previousInfo->PG_URI, 'required' => 'required')); ?>      
                         </div>
                     </div>
                     <div class="col-md-4 help">
@@ -158,7 +158,7 @@
                            
                             <div class="col-md-2">
                              <label for="ORDER_NO">Serial No</label>
-                                   <select name="ORDER_NO" id="ORDER_NO" class="form-control">
+                                   <select name="ORDER_NO" id="ORDER_NO" class="form-control" 'value' => $previousInfo->PG_URI,>
                                           <option value="1">1 </option>
                                           <option value="2">2</option>
                                           <option value="3">3</option>

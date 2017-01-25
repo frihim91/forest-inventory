@@ -5,6 +5,7 @@
 }
 .redactor_box, .redactor_box textarea {
 	background-color: #fff;
+	height: 500px;
 }
 
 body .redactor_air {

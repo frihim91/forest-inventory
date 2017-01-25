@@ -3,13 +3,7 @@
     .help-head{color:#A82400;} 
     .form-group:hover .help{ background: #e3e3e3;}
 </style> 
-<link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor.css" />
-<script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.js"></script>
-<script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.min.js"></script>
 
-<script>
-    $('.redactor').redactor();
-</script>
 <div class="widget">  
     <div class="widget-head"> 
        <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create New Page</a> -->
@@ -46,7 +40,11 @@
                                 <td><?php echo $all_page->ORDER_NO; ?></td>
                                 <td><?php echo ($all_page->ACTIVE_STAT == "Y") ? '<span style="color:green">Active</span>' : '<span style="color:red">Inactive</span>'; ?></td>
                                 <td>
-                                    <span  title="Edit Page Name"  data-remote="<?php echo site_url("dashboard/Website/edit_module/" . $all_page->TITLE_ID); ?>" class="label label-info editModal" style="cursor: pointer">Edit</span> 
+
+                                <a  title="Edit Page Name"  href="<?php echo site_url("dashboard/website/updatePageLink/" . $all_page->TITLE_ID); ?>" class="label label-info" style="cursor: pointer">Edit</a> 
+                                
+
+                                    <span  title="Edit Page Name"   href="<?php echo site_url('dashboard/website/deletePage/'.$all_page->TITLE_ID);?>" class="label label-info deleteUrl" style="cursor: pointer">Delete</span>  
                                 </td>
                             </tr>
                             <?php
@@ -63,6 +61,27 @@
         </div>
     </div>
     </div>
+
+    <script type="text/javascript">
+  $(document).on("click", "span.deleteUrl", function (e) {
+       var result = confirm("Are you sure want to delete it?");
+       if(result == true){
+        var url = $(this).attr('href');
+         var removeRow = $(this).parent().parent();
+
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                       // dataType: 'JSON',
+                        success: function (data) {
+window.location.href = "<?php echo site_url('dashboard/website/pageSetup');?>";
+                           
+                        }
+                    });
+       }
+e.preventDefault();
+});
+</script>
 
 
 <script src="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/lib/js/jquery.dataTables.min.js"></script>

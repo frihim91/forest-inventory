@@ -36,6 +36,7 @@
             }
             $this->load->library("form_validation");
             $this->load->model('utilities');
+            $this->load->model('Menu_model');
             $this->load->library('upload');
         }
 
@@ -54,7 +55,7 @@
              $sql = "SELECT t.*, b.*, i.*
                     FROM pg_title t
                     INNER JOIN pg_body b ON t.TITLE_ID = b.TITLE_ID
-                    INNER JOIN pg_images i ON b.BODY_ID = i.BODY_ID";
+                    INNER JOIN pg_images i ON b.BODY_ID = i.BODY_ID GROUP BY t.TITLE_ID;";
             $data['all_pages'] = $this->db->query($sql)->result();
             $data['content_view_page'] = 'setup/pages/all_page';
           
@@ -69,94 +70,210 @@
      */
 
 
-        function createPageLink() {
-            $this->form_validation->set_rules('TITLE_NAME', 'Title', 'required');
-            $this->form_validation->set_rules('PG_URI', 'URI', 'required');
-            //$this->form_validation->set_rules('txtModLink', 'Module URL', 'required');
-
-            if ($this->form_validation->run() == FALSE) {
-                $data["breadcrumbs"] = array(
-                    "Page" => "dashboard/website/pageSetup",
-                    "Create Page " => "#",
-                );
-                $data['pageTitle'] = "Add Page";
-                $data['content_view_page'] = 'setup/pages/create_page';
-                $this->template->display($data);
-            } else {
-                /* echo '<pre>';
-                  print_r($_POST);
-                  exit; */
-                if ($this->utilities->hasInformationByThisId('ati_module_links', array('MODULE_ID' => $this->input->post('txtmoduleId'), 'URL_URI' => str_replace("'", "''", $this->input->post("txtModLink")))) == FALSE) {
-
-                     $images = "";
-                //
-                $files = $_FILES;
-                $cpt = count($_FILES['userfile']['name']);
-                for ($i = 0; $i < $cpt; $i++) {
-                    $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
-                    $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
-                    $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
-                    $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
-                    $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
-                    $this->upload->initialize($this->set_upload_options());
-                    $this->upload->do_upload();
-                    $fileName = $_FILES['userfile']['name'];
-                    $images[] = $fileName;
-                }
-                $count = count($images);
-                  //var_dump($count);exit;
-                    $pagelink = array(
-                        //'MODULE_ID' => $this->input->post('txtmoduleId'),
-                        'TITLE_NAME' => str_replace("'", "''", $this->input->post("TITLE_NAME")),
-                        'SUB_TITLE' => str_replace("'", "''", $this->input->post("SUB_TITLE")),
-                        'PG_URI' => str_replace("'", "''", $this->input->post("PG_URI")),
-                       
-                        'ORDER_NO' => $this->input->post('ORDER_NO'),
-                        'ACTIVE_STAT' => (isset($_POST['ACTIVE_STAT'])) ? 1 : 0,
-                        'CRE_BY' => $this->user_session["USER_ID"]
+            function createPageLink() {
+                $this->form_validation->set_rules('TITLE_NAME', 'Title', 'required');
+                $this->form_validation->set_rules('PG_URI', 'URI', 'required');
+               
+                if ($this->form_validation->run() == FALSE) {
+                    $data["breadcrumbs"] = array(
+                        "Page" => "dashboard/website/pageSetup",
+                        "Create Page " => "#",
                     );
-                    $pageTitleIdmax =$this->db->insert( 'pg_title',$pagelink);
-                    //$pageTitleIdmax=$this->db->insert_id();
-                   // var_dump($pageTitleIdmax);
-                    //exit();
-                    //$pageTitleIdmax=$pageTitleId+1;
+                    $data['pageTitle'] = "Add Page";
+                    $data['content_view_page'] = 'setup/pages/create_page';
+                    $this->template->display($data);
+                } else {
+                    /* echo '<pre>';
+                      print_r($_POST);
+                      exit; */
+                    if ($this->utilities->hasInformationByThisId('ati_module_links', array('MODULE_ID' => $this->input->post('txtmoduleId'), 'URL_URI' => str_replace("'", "''", $this->input->post("txtModLink")))) == FALSE) {
 
-                    if($pageTitleIdmax != ''){
-                        $pg_body = array(
-                            'TITLE_ID' => $this->db->insert_id(),
-                            'BODY_DESC' => $this->input->post('BODY_DESC')
-                            
-                            ); 
-                        if($pg_body != ""){
-                            $pageBodyId =$this->db->insert('pg_body', $pg_body);
-                             $last_insert_id = $this->db->insert_id();
-                             //$pageBodymax=$pageBodyId+1;
-                            for ($i=0; $i < $count; $i++) { 
-                                $pg_images = array(
-                                'BODY_ID' => $last_insert_id,
-                                 //'IMG_URL' => str_replace("'", "''", $this->input->post("IMG_URL"))
-                                 "IMG_URL" => $images[$i]
-                                );
-                                 $pageImg = $this->utilities->insertData($pg_images, 'pg_images');
-                            
-                              
-                            
-                            }
-
-                            if ($pageImg == TRUE) {
-                                $this->session->set_flashdata('Success', 'New Page Added Successfully.');
-                            }
-                        }else{
-                            $this->session->set_flashdata('Error', 'Sorry ! You Already Added this Link Name .');
-                        }                       
-                    }else{
-                        $this->session->set_flashdata('Error', 'Sorry ! You Already Added this Link Name .');
+                         $images = "";
+                    //
+                    $files = $_FILES;
+                    $cpt = count($_FILES['userfile']['name']);
+                    for ($i = 0; $i < $cpt; $i++) {
+                        $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
+                        $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
+                        $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+                        $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
+                        $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
+                        $this->upload->initialize($this->set_upload_options());
+                        $this->upload->do_upload();
+                        $fileName = $_FILES['userfile']['name'];
+                        $images[] = $fileName;
                     }
 
-                } 
-                redirect('dashboard/Website/pageSetup', 'refresh');
+                   
+                    $count = count($images);
+                   
+                    $parentId=$this->input->post('txtparentId');
+                    if($parentId>0)
+                    {
+                        $pId=$parentId;
+                    }
+                    else 
+                    {
+                        $pid=0;
+                    }
+                        $pagelink = array(
+                            'PARENT_ID' =>$pid,
+                            
+                            'TITLE_NAME' => str_replace("'", "''", $this->input->post("TITLE_NAME")),
+                            'SUB_TITLE' => str_replace("'", "''", $this->input->post("SUB_TITLE")),
+                            'PG_URI' => str_replace("'", "''", $this->input->post("PG_URI")),
+                           
+                            'ORDER_NO' => $this->input->post('ORDER_NO'),
+                            'ACTIVE_STAT' => (isset($_POST['ACTIVE_STAT'])) ? 1 : 0,
+                            'CRE_BY' => $this->user_session["USER_ID"]
+                        );
+                        $pageTitleIdmax =$this->db->insert( 'pg_title',$pagelink);
+                  
+                        if($pageTitleIdmax != ''){
+                            $pg_body = array(
+                                'TITLE_ID' => $this->db->insert_id(),
+                                'BODY_DESC' => $this->input->post('BODY_DESC')
+                                
+                                ); 
+                            if($pg_body != ""){
+                                $pageBodyId =$this->db->insert('pg_body', $pg_body);
+                                 $last_insert_id = $this->db->insert_id();
+                                 
+                                for ($i=0; $i < $count; $i++) { 
+                                    $pg_images = array(
+                                    'BODY_ID' => $last_insert_id,
+                                    
+                                     "IMG_URL" => $images[$i]
+                                    );
+                                     $pageImg = $this->utilities->insertData($pg_images, 'pg_images');
+                                
+                                  
+                                
+                                }
+
+                                if ($pageImg == TRUE) {
+                                    $this->session->set_flashdata('Success', 'New Page Added Successfully.');
+                                }
+                            }else{
+                                $this->session->set_flashdata('Error', 'Sorry ! You Already Added this Link Name .');
+                            }                       
+                        }
+                    } 
+                    redirect('dashboard/Website/pageSetup', 'refresh');
+                }
             }
-        }
+
+
+
+
+            function updatePageLink($TITLE_ID) {
+                $previousInfo = $this->utilities->findByAttribute('pg_title', array('TITLE_ID' => $TITLE_ID));
+                $this->form_validation->set_rules('TITLE_NAME', 'Title', 'required');
+                $this->form_validation->set_rules('PG_URI', 'URI', 'required');
+               
+                if ($this->form_validation->run() == FALSE) {
+                    $data["breadcrumbs"] = array(
+                        "Page" => "dashboard/website/pageSetup",
+                        "Create Page " => "#",
+                    );
+                    $data['pageTitle'] = "Add Page";
+                    $data['previousInfo'] = $previousInfo;
+                    $data['content_view_page'] = 'setup/pages/update_page';
+                    $this->template->display($data);
+                } else {
+                    /* echo '<pre>';
+                      print_r($_POST);
+                      exit; */
+                    if ($this->utilities->hasInformationByThisId('ati_module_links', array('MODULE_ID' => $this->input->post('txtmoduleId'), 'URL_URI' => str_replace("'", "''", $this->input->post("txtModLink")))) == FALSE) {
+
+                         $images = "";
+                    //
+                    $files = $_FILES;
+                    $cpt = count($_FILES['userfile']['name']);
+                    for ($i = 0; $i < $cpt; $i++) {
+                        $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
+                        $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
+                        $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+                        $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
+                        $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
+                        $this->upload->initialize($this->set_upload_options());
+                        $this->upload->do_upload();
+                        $fileName = $_FILES['userfile']['name'];
+                        $images[] = $fileName;
+                    }
+
+                   
+                    $count = count($images);
+                   
+                    $parentId=$this->input->post('txtparentId');
+                    if($parentId>0)
+                    {
+                        $pId=$parentId;
+                    }
+                    else 
+                    {
+                        $pid=0;
+                    }
+                        $pagelink = array(
+                            'PARENT_ID' =>$pid,
+                            
+                            'TITLE_NAME' => str_replace("'", "''", $this->input->post("TITLE_NAME")),
+                            'SUB_TITLE' => str_replace("'", "''", $this->input->post("SUB_TITLE")),
+                            'PG_URI' => str_replace("'", "''", $this->input->post("PG_URI")),
+                           
+                            'ORDER_NO' => $this->input->post('ORDER_NO'),
+                            'ACTIVE_STAT' => (isset($_POST['ACTIVE_STAT'])) ? 1 : 0,
+                            'CRE_BY' => $this->user_session["USER_ID"]
+                        );
+                        $pageTitleIdmax =$this->db->update( 'pg_title',$pagelink);
+                  
+                        if($pageTitleIdmax != ''){
+                            $pg_body = array(
+                                'TITLE_ID' => $this->db->insert_id(),
+                                'BODY_DESC' => $this->input->post('BODY_DESC')
+                                
+                                ); 
+                            if($pg_body != ""){
+                                $pageBodyId =$this->db->update('pg_body', $pg_body);
+                                 $last_insert_id = $this->db->insert_id();
+                                 
+                                for ($i=0; $i < $count; $i++) { 
+                                    $pg_images = array(
+                                    'BODY_ID' => $last_insert_id,
+                                    
+                                     "IMG_URL" => $images[$i]
+                                    );
+                                     $pageImg = $this->utilities->updateData($pg_images, 'pg_images');
+                                
+                                  
+                                
+                                }
+
+                                if ($pageImg == TRUE) {
+                                    $this->session->set_flashdata('Success', 'New Page updated Successfully.');
+                                }
+                            }else{
+                                $this->session->set_flashdata('Error', 'Sorry ! You Already updated this Link Name .');
+                            }                       
+                        }
+                    } 
+                    redirect('dashboard/Website/pageSetup', 'refresh');
+                }
+            }
+
+
+
+
+    public function deletePage($id)
+    {
+       
+        $attr = array(
+            "TITLE_ID" => $id
+        );
+        return $this->utilities->deleteRowByAttribute("pg_title", $attr);
+       
+    }
+
 
 
 
