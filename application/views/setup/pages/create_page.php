@@ -157,31 +157,19 @@
                         <div class="col-md-8">
                            
                             <div class="col-md-2">
-                             <label for="ORDER_NO">Serial No</label>
-                                   <select name="ORDER_NO" id="ORDER_NO" class="form-control">
-                                          <option value="1">1 </option>
-                                          <option value="2">2</option>
-                                          <option value="3">3</option>
-                                          <option value="4">4</option>
-                                          <option value="5">5</option>
-                                          <option value="6">6</option>
-                                          <option value="7">7</option>
-                                          <option value="8">8</option>
-                                          <option value="9">9</option>
-                                          <option value="10">10</option>
-                                          <option value="11">11</option>
-                                          <option value="12">12</option>
-                                          <option value="13">13</option>
-                                          <option value="14">14</option>
-                                          <option value="15">15</option>
-                                          <option value="16">16</option>
-                                          <option value="17">17</option>
-                                          <option value="18">18</option>
-                                          <option value="19">19</option>
-                                          <option value="20">20</option>
-                                  </select>
-                                <!-- <?php echo form_input(array('class' => 'form-control numericOnly', 'id' => 'ORDER_NO', 'name' => 'ORDER_NO', 'value' => set_value('ORDER_NO'), 'maxlength' => 2)); ?>     -->  
-                            </div>
+               <label for="ORDER_NO">Serial No</label>
+               <select class="tag-select form-control" name="ORDER_NO" id="ORDER_NO">
+               <option value="">Select</option>
+               <?php
+                      
+                   $numbers= array('' => 'Select');
+                   foreach(range(1,20) as $number) {
+                           array_push($numbers, $number);?>
+                           <option value="<?php echo $number?>"><?php echo $number?></option>
+                       <?php }
+                ?>
+                </select>
+          </div>
                         </div>
                         <div class="col-md-4 help">
                             <strong><span  class="help-head">Help: </span>Serial No</strong>
