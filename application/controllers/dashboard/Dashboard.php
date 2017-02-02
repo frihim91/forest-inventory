@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller {
         if (!$this->session->userdata('user_logged_in')) {
             redirect('dashboard/auth/index', 'refresh');
         }
+        $this->load->model('Menu_model');
         $this->user_session = $this->session->userdata('user_logged_in');
     }
 

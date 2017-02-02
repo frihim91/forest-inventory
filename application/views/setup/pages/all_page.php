@@ -4,18 +4,20 @@
     .form-group:hover .help{ background: #e3e3e3;}
 </style> 
 
+
+
 <div class="widget">  
     <div class="widget-head"> 
        <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create New Page</a> -->
          <a class="btn btn-sm btn-danger pull-right col-md-2" href="<?php echo site_url("dashboard/website/createPageLink"); ?>">Create New Page</a>
-        <small style="margin-left: 10px;">All the system Modules Create, Edit, Inactivate and Delete from here</small> 
+        <small style="margin-left: 10px;">All Pages Create, Edit, Inactivate and Delete from here</small> 
     </div> 
     <div class="widget-body">    
         <div class="table-responsive">
             <?php
             if (!empty($all_pages)) {
                 ?>
-               <table id="data-table-basic" class="table table-striped">
+                   <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -84,7 +86,4 @@ e.preventDefault();
 </script>
 
 
-<script src="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/lib/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url(); ?>resources/assets/components/modules/admin/tables/datatables/assets/lib/extras/ColVis/media/js/ColVis.min.js"></script>
-<script src="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/custom/js/DT_bootstrap.js"></script>
-<script src="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/custom/js/datatables.init.js"></script>
+

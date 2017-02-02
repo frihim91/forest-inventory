@@ -1,326 +1,310 @@
-    <style>
-        .help{border-left:1px solid #EAEAEA;padding: 0px 0px 0px 5px; transition: background ease-in-out .7s;}
-        .help-head{color:#A82400;} 
-        .form-group:hover .help{ background: #e3e3e3;}
-    </style> 
+      <style>
+          .help{border-left:1px solid #EAEAEA;padding: 0px 0px 0px 5px; transition: background ease-in-out .7s;}
+          .help-head{color:#A82400;} 
+          .form-group:hover .help{ background: #e3e3e3;}
+      </style> 
 
-    <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor.css" />
-    <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.js"></script>
-    <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.min.js"></script>
-    <script>
-        $('.redactor').redactor();
-    </script>
+      <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor.css" />
+      <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.js"></script>
+      <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.min.js"></script>
+      <script>
+          $('.redactor').redactor();
+      </script>
 
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $("#add_another").click(function(){
-
-        });
-    });
-
-      function goDelete(IMG_ID){
-        var agree = confirm("Are you sure you want to delete this?");
-        if(agree){
-          $(".img-thumbnail"+IMG_ID).fadeOut('slow');
-          $.post('<?php echo base_url().'index.php/dashboard/website/delete_images/'?>', {IMG_ID:IMG_ID}, function(){
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $("#add_another").click(function(){
 
           });
-      }else{
-          return false;
-      }
-  }
-</script>
-<div class="widget">  
-    <div class="widget-head">   
-        <h4 class="heading">Create Page</h4>
-    </div> 
-    <div class="widget-body">    
-        <?php
-        $attribute = array('class' => 'form-horizontal', 'id' => '', 'role' => 'form');
-        echo form_open_multipart('dashboard/Website/updatePageLink/'.$TITLE_ID, $attribute);
-        ?>
+      });
 
-        <div class="msg">
-            <?php
-            if (validation_errors() != false) {
-                ?>
-                <div class="alert alert-danger">
-                    <button data-dismiss="alert" class="close" type="button">×</button>
-                    <?php echo validation_errors(); ?>
-                </div>
-                <?php
-            }
-            ?>
-        </div>
+        function goDelete(IMG_ID){
+          var agree = confirm("Are you sure you want to delete this?");
+          if(agree){
+            $(".img-thumbnail"+IMG_ID).fadeOut('slow');
+            $.post('<?php echo base_url().'index.php/dashboard/website/delete_images/'?>', {IMG_ID:IMG_ID}, function(){
 
-        <div class="row">  
-            <div class="form-group">
-                <div class="col-md-8">
+            });
+        }else{
+            return false;
+        }
+    }
+  </script>
+  <div class="widget">  
+      <div class="widget-head">   
+          <h4 class="heading">Create Page</h4>
+      </div> 
+      <div class="widget-body">    
+          <?php
+          $attribute = array('class' => 'form-horizontal', 'id' => '', 'role' => 'form');
+          echo form_open_multipart('dashboard/Website/updatePageLink/'.$TITLE_ID, $attribute);
+          ?>
 
-                    <div class="col-md-12"> 
-                       <label for="firstname">Parent Title </label>
-                       <?php
-                       $parents = $this->Menu_model->get_all_title();
-                       $options = array('' => 'Select Parent Title');
-                       foreach ($parents as $parent) {
-                       $options["$parent->TITLE_ID"] = $parent->TITLE_NAME;
-                    }
-                    echo form_dropdown('txtparentId', $options, $edit_menu->PARENT_ID, 'id="id" class="tag-select form-control" data-placeholder="Choose a Parent..." ');
-                    ?>        
-                </div>
-            </div>
-            <div class="col-md-4 help">
-                <strong><span  class="help-head">Help: </span>Parent Title Name</strong>
-                <hr>
-                <p class="muted">Please enter  Parent Title Name in english here.</p>
-            </div> 
-        </div> 
-    </div>
-
-
-    <div class="row">  
-        <div class="form-group">
-            <div class="col-md-8">
-
-                <div class="col-md-12"> 
-                   <label for="firstname">Title </label>
-                   <?php echo form_input(array('class' => 'form-control', 'placeholder' => '', 'id' => 'TITLE_NAME', 'name' => 'TITLE_NAME', 'value' => $edit_menu->TITLE_NAME, 'required' => 'required')); ?>      
-               </div>
-           </div>
-           <div class="col-md-4 help">
-            <strong><span  class="help-head">Help: </span>Page Title Name</strong>
-            <hr>
-            <p class="muted">Please enter  Page Title Name in english here.</p>
-        </div> 
-    </div> 
-</div>
-<div class="row">  
-    <div class="form-group">
-        <div class="col-md-8">
-
-            <div class="col-md-12"> 
-               <label for="firstname" >Subtitle</label>
-               <?php echo form_input(array('class' => 'form-control', 'placeholder' => '', 'id' => 'SUB_TITLE', 'name' => 'SUB_TITLE', 'value' => $edit_menu->SUB_TITLE, )); ?>      
-           </div>
-       </div>
-       <div class="col-md-4 help">
-        <strong><span  class="help-head">Help: </span>Subtitle Name</strong>
-        <hr>
-        <p class="muted">Please enter  Subtitle in english here.</p>
-    </div> 
-</div> 
-</div>
-
-<div class="row">
-    <div class="form-group"> 
-        <div class="col-md-8">
-
-            <div class="col-md-12"> 
-                <label>URI</label>
-                <?php echo form_input(array('class' => 'form-control', 'id' => 'PG_URI', 'name' => 'PG_URI', 'value' => $edit_menu->PG_URI, 'required' => 'required')); ?>      
-            </div>
-        </div>
-        <div class="col-md-4 help">
-            <strong><span  class="help-head">Help: </span>URI</strong>
-            <hr>
-            <p class="muted">Please enter URI of Link here.</p>
-        </div>  
-    </div>
-</div>
-<div class="row">  
-    <div class="form-group">
-        <div class="col-md-8">
-
-            <div class="col-md-12">
-               <label for="firstname">Description</label> 
-               <?php echo form_textarea(array('name' => 'BODY_DESC', "class" => "redactor form-control", 'placeholder' => 'Body Description', 'rows' => '50','value' => $edit_menu->BODY_DESC)); ?>  
-           </div>
-       </div>
-       <div class="col-md-4 help">
-        <strong><span  class="help-head">Help: </span>Body Description</strong>
-        <hr>
-        <p class="muted">Please enter Body Description here.</p>
-    </div> 
-</div> 
-</div>
-
-
-<div class="row">  
-    <div class="form-group">
-        <div class="col-md-8">
-
-            <div class="col-md-12">
-                <div class="col-md-10">  
-                   <label for="images" >Image</label>
-                   <input type="file" name="userfile[]" size="20"  /> 
-                   <?php 
-                   foreach($images as $image) {
-                       ?>
-                       <span id="images_<?php echo $image->IMG_ID?>">
-                       <img src="<?php echo base_url();?>resources/images/page_pic/<?php echo $image->IMG_URL; ?>" class="img-thumbnail" id="img-thumbnail_id" style="width:130px;height:auto;margin-left:1px;"/>
-                       
-                       <a href="javascript:;" imgid="<?php echo $image->IMG_ID?>" class="remove_doc_record fa fa-times removeImage"></a>
-                       </span>
-                   <?php }?> 
-               </div><br>
-
-               <div class="col-md-2">
-                <span class="btn btn-success btn-sm" id="addFileId"><i class="fa fa-plus">Add More</i></span>
-            </div>
-            <br/><br/>
-            <span id="moreFile" class="imgFile">
-            </span>  
-
-        </div>
-
-    </div>
-    <div class="col-md-4 help">
-        <strong><span  class="help-head">Help: </span>Image</strong>
-        <hr>
-        <p class="muted">Please Upload Image here.here.</p>
-    </div> 
-</div> 
-</div>
-
-<div class="row">  
-    <div class="form-group">
-        <div class="col-md-8">
-
-           <div class="col-md-2">
-               <label for="ORDER_NO">Serial No</label>
-               <select class="tag-select form-control" name="ORDER_NO" id="ORDER_NO">
-               <option value="">Select</option>
-               <?php
-                      
-                   $numbers= array('' => 'Select');
-                   foreach(range(1, 20) as $number) {
-                           array_push($numbers, $number);?>
-                           <option value="<?php echo $number?>" <?php echo $number == $edit_menu->ORDER_NO ? 'selected' : ''?>><?php echo $number?></option>
-                       <?php }
-                ?>
-                </select>
+          <div class="msg">
+              <?php
+              if (validation_errors() != false) {
+                  ?>
+                  <div class="alert alert-danger">
+                      <button data-dismiss="alert" class="close" type="button">×</button>
+                      <?php echo validation_errors(); ?>
+                  </div>
+                  <?php
+              }
+              ?>
           </div>
+
+          <div class="row">  
+              <div class="form-group">
+                  <div class="col-md-8">
+
+                      <div class="col-md-12"> 
+                         <label for="firstname">Parent Title </label>
+                         <?php
+                         $parents = $this->Menu_model->get_all_title();
+                         $options = array('' => 'Select Parent Title');
+                         foreach ($parents as $parent) {
+                         $options["$parent->TITLE_ID"] = $parent->TITLE_NAME;
+                      }
+                      echo form_dropdown('txtparentId', $options, $edit_menu->PARENT_ID, 'id="id" class="tag-select form-control" data-placeholder="Choose a Parent..." ');
+                      ?>        
+                  </div>
+              </div>
+              <div class="col-md-4 help">
+                  <strong><span  class="help-head">Help: </span>Parent Title Name</strong>
+                  <hr>
+                  <p class="muted">Please enter  Parent Title Name in english here.</p>
+              </div> 
+          </div> 
+      </div>
+
+
+      <div class="row">  
+          <div class="form-group">
+              <div class="col-md-8">
+
+                  <div class="col-md-12"> 
+                     <label for="firstname">Title </label>
+                     <?php echo form_input(array('class' => 'form-control', 'placeholder' => '', 'id' => 'TITLE_NAME', 'name' => 'TITLE_NAME', 'value' => $edit_menu->TITLE_NAME, 'required' => 'required')); ?>      
+                 </div>
+             </div>
+             <div class="col-md-4 help">
+              <strong><span  class="help-head">Help: </span>Page Title Name</strong>
+              <hr>
+              <p class="muted">Please enter  Page Title Name in english here.</p>
+          </div> 
+      </div> 
+  </div>
+  <div class="row">  
+      <div class="form-group">
+          <div class="col-md-8">
+
+              <div class="col-md-12"> 
+                 <label for="firstname" >Subtitle</label>
+                 <?php echo form_input(array('class' => 'form-control', 'placeholder' => '', 'id' => 'SUB_TITLE', 'name' => 'SUB_TITLE', 'value' => $edit_menu->SUB_TITLE, )); ?>      
+             </div>
+         </div>
+         <div class="col-md-4 help">
+          <strong><span  class="help-head">Help: </span>Subtitle Name</strong>
+          <hr>
+          <p class="muted">Please enter  Subtitle in english here.</p>
+      </div> 
+  </div> 
+  </div>
+
+  <div class="row">  
+      <div class="form-group">
+          <div class="col-md-8">
+
+              <div class="col-md-12">
+                 <label for="firstname">Description</label> 
+                 <?php echo form_textarea(array('name' => 'BODY_DESC', "class" => "redactor form-control", 'placeholder' => 'Body Description', 'rows' => '50','value' => $edit_menu->BODY_DESC)); ?>  
+             </div>
+         </div>
+         <div class="col-md-4 help">
+          <strong><span  class="help-head">Help: </span>Body Description</strong>
+          <hr>
+          <p class="muted">Please enter Body Description here.</p>
+      </div> 
+  </div> 
+  </div>
+
+
+  <div class="row">  
+      <div class="form-group">
+          <div class="col-md-8">
+
+              <div class="col-md-12">
+                  <div class="col-md-10">  
+                     <label for="images" >Image</label>
+                     <input type="file" name="userfile[]" size="20"  /> 
+                     <?php 
+                     foreach($images as $image) {
+                         ?>
+                         <span id="images_<?php echo $image->IMG_ID?>">
+                         <img src="<?php echo base_url();?>resources/images/page_pic/<?php echo $image->IMG_URL; ?>" class="img-thumbnail" id="img-thumbnail_id" style="width:130px;height:auto;margin-left:1px;"/>
+                         
+                         <a href="javascript:;" imgid="<?php echo $image->IMG_ID?>" class="remove_doc_record fa fa-times removeImage"></a>
+                         </span>
+                     <?php }?> 
+                 </div><br>
+
+                 <div class="col-md-2">
+                  <span class="btn btn-success btn-sm" id="addFileId"><i class="fa fa-plus">Add More</i></span>
+              </div>
+              <br/><br/>
+              <span id="moreFile" class="imgFile">
+              </span>  
+
+          </div>
+
       </div>
       <div class="col-md-4 help">
-        <strong><span  class="help-head">Help: </span>Serial No</strong>
-        <hr>
-        <p class="muted">Please enter  Serial No here.</p>
-    </div> 
-</div> 
-</div>
-<div class="row">
-    <div class="form-group"> 
-        <div class="col-md-8">
+          <strong><span  class="help-head">Help: </span>Image</strong>
+          <hr>
+          <p class="muted">Please Upload Image here.here.</p>
+      </div> 
+  </div> 
+  </div>
 
-            <div class="col-md-12"> 
-                <label>Is Active ?</label><br>
-                <?php echo form_checkbox('ACTIVE_STAT', 1, TRUE); ?>
+  <div class="row">  
+      <div class="form-group">
+          <div class="col-md-8">
+
+             <div class="col-md-2">
+                 <label for="ORDER_NO">Serial No</label>
+                 <select class="tag-select form-control" name="ORDER_NO" id="ORDER_NO">
+                 <option value="">Select</option>
+                 <?php
+                        
+                     $numbers= array('' => 'Select');
+                     foreach(range(1, 20) as $number) {
+                             array_push($numbers, $number);?>
+                             <option value="<?php echo $number?>" <?php echo $number == $edit_menu->ORDER_NO ? 'selected' : ''?>><?php echo $number?></option>
+                         <?php }
+                  ?>
+                  </select>
             </div>
         </div>
         <div class="col-md-4 help">
-            <strong><span  class="help-head">Help: </span>Is Active ?</strong>
-            <hr>
-            <p class="muted">If active checked checkbox, else uncheck .</p>
-        </div>  
-    </div>
-</div>
-<div class="separator"></div>  
-<center>
-    <div class="form-actions">
-        <button class="btn btn-success" type="submit"><i class="fa fa-check-circle"></i> Save</button>
-    </div>
-</center>
-<?php echo form_close(); ?>
-</div>
-</div>
-<script src="<?php echo base_url(); ?>resources/shared/components/common/forms/elements/fuelux-checkbox/fuelux-checkbox.init.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('body').on('keyup', '.numericOnly', function () {
-            var val = $(this).val();
-            $(this).val(val.replace(/[^\d]/g, ''));
-        });
-    });
-</script>
+          <strong><span  class="help-head">Help: </span>Serial No</strong>
+          <hr>
+          <p class="muted">Please enter  Serial No here.</p>
+      </div> 
+  </div> 
+  </div>
+  <div class="row">
+      <div class="form-group"> 
+          <div class="col-md-8">
+
+              <div class="col-md-12"> 
+                  <label>Is Active ?</label><br>
+                  <?php echo form_checkbox('ACTIVE_STAT', 1, TRUE); ?>
+              </div>
+          </div>
+          <div class="col-md-4 help">
+              <strong><span  class="help-head">Help: </span>Is Active ?</strong>
+              <hr>
+              <p class="muted">If active checked checkbox, else uncheck .</p>
+          </div>  
+      </div>
+  </div>
+  <div class="separator"></div>  
+  <center>
+      <div class="form-actions">
+          <button class="btn btn-success" type="submit"><i class="fa fa-check-circle"></i> Save</button>
+      </div>
+  </center>
+  <?php echo form_close(); ?>
+  </div>
+  </div>
+  <script src="<?php echo base_url(); ?>resources/shared/components/common/forms/elements/fuelux-checkbox/fuelux-checkbox.init.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('body').on('keyup', '.numericOnly', function () {
+              var val = $(this).val();
+              $(this).val(val.replace(/[^\d]/g, ''));
+          });
+      });
+  </script>
 
 
-<script>
-    $(document).ready(function() {
-        $(document).on("click", ".editVisitor", function() {
-            var visitor_id = $(this).attr("id");
-            $.ajax({
-                type: "POST",
-                data: {visitor_id: visitor_id},
-                url: "<?php echo site_url('setup/org/editVisitor'); ?>",
-                success: function(data) {
-                    $('#editVisitor').html(data);
-                }
-            });
-        });
+  <script>
+      $(document).ready(function() {
+          $(document).on("click", ".editVisitor", function() {
+              var visitor_id = $(this).attr("id");
+              $.ajax({
+                  type: "POST",
+                  data: {visitor_id: visitor_id},
+                  url: "<?php echo site_url('setup/org/editVisitor'); ?>",
+                  success: function(data) {
+                      $('#editVisitor').html(data);
+                  }
+              });
+          });
 
 
+        
+          var i = 1;
+          $(document).on("click", "#addFileId", function() {
+                  // var n = $( "div" ).length;
+
+                  $('#moreFile').append('<span class="appeend_data"><div class="col-md-8" id="file_' + i + '"><input type="file" name="userfile[]" size="20" /></div><div class="col-md-4"><a href="#" class="btn btn-danger btn-xs removeclass">X</a></div></span>');
+                  //$('span#moreFile').removeAttr('id', 'moreFile');
+                  //i = 1;
+              });
+          $(document).on('click', '.removeclass', function() {
+              $(this).closest('span').remove();
+              $('.imgFile').attr('id', 'moreFile');
+              return false;
+          });
+
+      });
+  </script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+  $('#load').hide();
+  });
+
+  $(function() {
+  $(".remove_doc_record fa fa-times").click(function() {
+  $('#load').fadeIn();
+  var commentContainer = $(this).parent();
+  var IMG_ID = $(this).attr("IMG_ID");
+  var string = 'IMG_ID='+ IMG_ID ;
       
-        var i = 1;
-        $(document).on("click", "#addFileId", function() {
-                // var n = $( "div" ).length;
+  $.ajax({
+     type: "POST",
+     url: "index.php/dashboard/website/delete_images",
+     data: string,
+     cache: false,
+     success: function(){
+      commentContainer.slideUp('slow', function() {$(this).remove();});
+      $('#load').fadeOut();
+    }
+     
+   });
 
-                $('#moreFile').append('<span class="appeend_data"><div class="col-md-8" id="file_' + i + '"><input type="file" name="userfile[]" size="20" /></div><div class="col-md-4"><a href="#" class="btn btn-danger btn-xs removeclass">X</a></div></span>');
-                //$('span#moreFile').removeAttr('id', 'moreFile');
-                //i = 1;
-            });
-        $(document).on('click', '.removeclass', function() {
-            $(this).closest('span').remove();
-            $('.imgFile').attr('id', 'moreFile');
-            return false;
-        });
-
-    });
-</script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-$('#load').hide();
-});
-
-$(function() {
-$(".remove_doc_record fa fa-times").click(function() {
-$('#load').fadeIn();
-var commentContainer = $(this).parent();
-var IMG_ID = $(this).attr("IMG_ID");
-var string = 'IMG_ID='+ IMG_ID ;
-    
-$.ajax({
-   type: "POST",
-   url: "index.php/dashboard/website/delete_images",
-   data: string,
-   cache: false,
-   success: function(){
-    commentContainer.slideUp('slow', function() {$(this).remove();});
-    $('#load').fadeOut();
-  }
-   
- });
-
-return false;
-    });
-});
+  return false;
+      });
+  });
 
 
-</script>
+  </script>
 
-<script>
-    $(document).on('click', '.removeImage', function() {
-        if (confirm('Are you sure you want to delete this?')) {
-        var IMG_ID = $(this).attr('imgid');
-        $.ajax({
-              type: "POST",
-              url: "<?php echo site_url('dashboard/website/delete_images'); ?>",
-              data: {IMG_ID:IMG_ID},
-              dataType: "html",
-              success: function(data){
-                  $('#images_'+IMG_ID).remove();
-              }
-        });
-    }});
-</script>
+  <script>
+      $(document).on('click', '.removeImage', function() {
+          if (confirm('Are you sure you want to delete this?')) {
+          var IMG_ID = $(this).attr('imgid');
+          $.ajax({
+                type: "POST",
+                url: "<?php echo site_url('dashboard/website/delete_images'); ?>",
+                data: {IMG_ID:IMG_ID},
+                dataType: "html",
+                success: function(data){
+                    $('#images_'+IMG_ID).remove();
+                }
+          });
+      }});
+  </script>
 

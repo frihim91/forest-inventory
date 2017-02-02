@@ -15,6 +15,9 @@ instead of the minified CSS loaded by default.
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/less/pages/serveStyles.css" />
 
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor.css" />
+<link href="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/custom/css/dataTables.bootstrap.css" rel="stylesheet"/>
+<link href="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/custom/css/dataTables.bootstrap.css" rel="stylesheet"/>
+<link href="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/custom/css/dataTables.responsive.css" rel="stylesheet"/>
 
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/shared/components/modules/admin/metisMenu/metisMenu.min.css" />
 
@@ -42,6 +45,9 @@ instead of the minified CSS loaded by default.
 <script src="<?php echo base_url(); ?>resources/js/sb-admin-2.js"></script>
 
 <script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/charts/flot/assets/lib/excanvas.js"></script>
+<script src="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/custom/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/custom/js/dataTables.bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/custom/js/dataTables.responsive.js"></script>
 
 <!-- <script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/morrisjs/morris.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/morrisjs/morris-data.js"></script> -->
@@ -68,6 +74,14 @@ instead of the minified CSS loaded by default.
 
     var themerPrimaryColor = primaryColor;
 </script>
+<script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
+
 
 
 <!-- <script>

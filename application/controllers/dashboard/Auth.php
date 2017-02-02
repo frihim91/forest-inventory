@@ -40,6 +40,7 @@
             $this->load->helper(array('form'));
             $this->load->library('form_validation');
             $this->load->model("auth_model");
+            $this->load->model('Menu_model');
         }
     /**
      * @methodName index()
