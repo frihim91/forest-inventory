@@ -36,5 +36,15 @@ class Portal extends CI_Controller
         $this->template->display_portal();
     }
 
+    public function details($TITLE_ID, $PG_URI)
+   {
+
+    	$data['page_description'] = $this->db->query("SELECT BODY_ID, BODY_DESC FROM pg_body WHERE TITLE_ID = $TITLE_ID")->row();
+    	$body_id = $data['page_description']->BODY_ID;
+    	$data['body_images'] =$this->db->query("SELECT IMG_URL FROM pg_images WHERE BODY_ID = $body_id")->row();
+    	$data['content_view_page'] = 'portal/pageContent';
+    	$this->template->display_portal($data);
+    }
+
 
 }

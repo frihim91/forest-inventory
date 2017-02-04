@@ -50,7 +50,7 @@
                         <ul class="dropdown-menu">
                             <?php foreach($link as $links){
                                 ?>
-                                <li ><a href="" ><?php echo $links->TITLE_NAME; ?></a></li>
+                                <li ><a href="<?php echo site_url('Portal/details/'.$links->TITLE_ID.'/'.$links->PG_URI); ?>"><?php echo $links->TITLE_NAME; ?></a></li>
                                  <li role="presentation" class="divider"></li>
                                 <?php 
                             } ?>
