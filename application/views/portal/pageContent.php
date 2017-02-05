@@ -26,13 +26,17 @@
 		color: #FFFFFF;
 		font-weight: bold;
 	}
+	.breadcump_row a{
+		color: white;
+	}
+	.slides{ height: 20% !important; }
 </style>
 <div class="col-sm-12 breadcump img-responsive">
 	<div class="row">
 		<div class="breadcump-wrapper">
 			<div class="wrapper">
-				<div style="font-size:25px;" class="breadcump_row">Forest Inventory</div>
-				<div class="breadcump_row">Home > Forest Inventory</div>
+				<div style="font-size:25px;" class="breadcump_row"><?php echo $title_name->TITLE_NAME?></div>
+				<div class="breadcump_row"><a href="<?php echo base_url() ?>">Home</a> > <?php echo $title_name->TITLE_NAME?></div>
 			</div>
 		</div>
 	</div>
@@ -48,28 +52,20 @@
 			<div class="main-slideshow">
 				<div class="flexslider">
 					<ul class="slides">
+					<?php foreach($body_images as $body_image) {
+						$image = "resources/images/".$body_image->IMG_URL;
+						?>
 						<li>
-							<img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/banner/banner-1.jpg"/>
-
-
-						</li>
-						<li>
-							<img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/banner/banner-2.jpg"/>
-
-
-						</li>
-						<li>
-							<img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/banner/banner-3.jpg"/>
-
-
-						</li>
+							<img src="<?php echo base_url($image); ?>">
+							</li>
+							<?php } ?>
 					</ul>
 					<!-- /.slides -->
 				</div>
 				<!-- /.flexslider -->
 			</div>
 		</div>
-		<div class="col-sm-6"><h4>Description</h4>
+		<div class="col-sm-6"><h4>DESCRIPTION</h4>
 			<?php echo $page_description->BODY_DESC;?></div>
 		</div>
 
