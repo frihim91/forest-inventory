@@ -29,7 +29,7 @@
 	.breadcump_row a{
 		color: white;
 	}
-	.slides{ height: 20% !important; }
+
 </style>
 <div class="col-sm-12 breadcump img-responsive">
 	<div class="row">
@@ -48,7 +48,7 @@
 		<?php } ?> -->
 	</div>
 	<div class="col-sm-12 bdy_des">
-		<div class="col-sm-6">
+		<div class="col-sm-5">
 			<div class="main-slideshow">
 				<div class="flexslider">
 					<ul class="slides">
@@ -65,7 +65,7 @@
 				<!-- /.flexslider -->
 			</div>
 		</div>
-		<div class="col-sm-6"><h4>DESCRIPTION</h4>
+		<div class="col-sm-7"><h4>DESCRIPTION</h4>
 			<?php echo $page_description->BODY_DESC;?></div>
 		</div>
 

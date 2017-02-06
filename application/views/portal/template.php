@@ -51,16 +51,16 @@
                             <div class="col-xs-6 col-sm-4">
                                 <a href="index.php/portal/index.html" title="Home" rel="home">
                                     
-                                     <img width="70" src="resources/resource_potal/assets/portal/images/forest.jpg" alt="logo"/>
+                                     <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/forest.jpg')?>" alt="logo"/>
                                 </a>
                             </div>
                             <div class="col-xs-6 col-sm-4" style="text-align:center;">
                                 
-                               <img width="70" src="resources/resource_potal/assets/portal/images/logo.png" alt="logo"/>
+                               <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png')?>" alt="logo"/>
                             </div>
                             <div class="col-xs-6 col-sm-4">
 
-                             <p align="right"><img src="resources/resource_potal/assets/portal/images/flag_eng.gif" alt="flag"/>&nbsp;&nbsp;<img src="resources/resource_potal/assets/portal/images/bangla.gif" alt="flag"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php/portal/login.html" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;">Login</a></p>
+                             <p align="right"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/flag_eng.gif')?>" alt="flag"/>&nbsp;&nbsp;<img src="<?php echo base_url('resources/resource_potal/assets/portal/images/bangla.gif')?>" alt="flag"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php/portal/login.html" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;">Login</a></p>
                             
                                <p><input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" /></p>
 

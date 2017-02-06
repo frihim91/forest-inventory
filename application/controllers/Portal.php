@@ -47,5 +47,16 @@ class Portal extends CI_Controller
     	$this->template->display_portal($data);
     }
 
+public function viewSliderData()
+	 {
+	 		$data['content_view_page'] = 'portal/viewSliderData';
+            $this->template->display($data);
+     }
+
+   public function addImageinSlider()
+   {
+   			$data['content_view_page'] = 'portal/addImageinSlider';
+            $this->template->display($data);
+   }  
 
 }
