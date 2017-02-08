@@ -29,10 +29,10 @@
 </script>
         <div class="widget">  
             <div class="widget-head">   
-                <h4 class="heading">Create Page</h4>
+                <h4 class="heading">Create Post</h4>
             </div> 
             <div class="widget-body">    
-                <?php echo form_open_multipart('dashboard/Website/createPageLink', "class='form-horizontal margin-none'"); ?>
+                <?php echo form_open_multipart('dashboard/Website/createPostLink', "class='form-horizontal margin-none'"); ?>
                 <div class="msg">
                     <?php
                     if (validation_errors() != false) {
@@ -51,22 +51,22 @@
                                     <div class="col-md-8">
                                       
                                         <div class="col-md-12"> 
-                                         <label for="firstname">Parent Title </label>
+                                         <label for="firstname">Category</label>
                                                         <?php
-                                            $parents = $this->Menu_model->get_all_title();
-                                            $options = array('' => 'Select Parent Title');
-                                            foreach ($parents as $parent) {
-                                                $options["$parent->TITLE_ID"] = $parent->TITLE_NAME;
+                                         $categorys = $this->Menu_model->get_all_category();
+                                         $options = array('' => 'Select Category');
+                                             foreach ($categorys as $category) {
+                                                $options["$category->CAT_ID"] = $category->CAT_NAME;
                                             }
-                                            $mId = set_value('txtparentId');
-                                            echo form_dropdown('txtparentId', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Parent..." ');
+                                            $mId = set_value('txtcategoryId');
+                                            echo form_dropdown('txtcategoryId', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Category..." ');
                                             ?>     
                                         </div>
                                     </div>
                                     <div class="col-md-4 help">
-                                        <strong><span  class="help-head">Help: </span>Parent Title Name</strong>
+                                        <strong><span  class="help-head">Help: </span>Category Name</strong>
                                         <hr>
-                                        <p class="muted">Please enter  Parent Title Name in english here.</p>
+                                        <p class="muted">Please enter Category Name in english here.</p>
                                     </div> 
                                 </div> 
                             </div>
@@ -82,9 +82,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 help">
-                                        <strong><span  class="help-head">Help: </span>Page Title Name</strong>
+                                        <strong><span  class="help-head">Help: </span>Post Title Name</strong>
                                         <hr>
-                                        <p class="muted">Please enter  Page Title Name in english here.</p>
+                                        <p class="muted">Please enter  Post Title Name in english here.</p>
                                     </div> 
                                 </div> 
                             </div>
@@ -100,13 +100,13 @@
                                         <div class="col-md-4 help">
                                             <strong><span  class="help-head">Help: </span>Subtitle Name</strong>
                                             <hr>
-                                            <p class="muted">Please enter  Subtitle in english here.</p>
+                                            <p class="muted">Please enter Subtitle in english here.</p>
                                         </div> 
                                     </div> 
                                 </div>
                
               
-             <div class="row">  
+                               <div class="row">  
                                 <div class="form-group">
                                     <div class="col-md-8">
                                        

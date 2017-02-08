@@ -9,21 +9,21 @@
 <div class="widget">  
     <div class="widget-head"> 
        <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create New Page</a> -->
-         <a class="btn btn-sm btn-danger pull-right col-md-2" href="<?php echo site_url("dashboard/website/createPageLink"); ?>">Create New Page</a>
-        <small style="margin-left: 10px;">All Pages Create, Edit, Inactivate and Delete from here</small> 
+         <a class="btn btn-sm btn-danger pull-right col-md-2" href="<?php echo site_url("dashboard/website/createPostLink"); ?>">Create New Post</a>
+        <small style="margin-left: 10px;">All Posts Create, Edit, Inactivate and Delete from here</small> 
     </div> 
     <div class="widget-body">    
         <div class="table-responsive">
             <?php
-            if (!empty($all_pages)) {
+            if (!empty($all_posts)) {
                 ?>
                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Page Title Name</th>
+                            <th>Post Title Name</th>
                             <th>Subtitle Name</th>
-                            <th>Page Url</th>
+                            <th>Post Url</th>
                             <th>Serial</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -32,21 +32,21 @@
                     <tbody>
                         <?php
                         $i = 1;
-                        foreach ($all_pages as $all_page) {
+                        foreach ($all_posts as $all_post) {
                             ?>
                             <tr> 
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $all_page->TITLE_NAME; ?></td>
-                                <td><?php echo $all_page->SUB_TITLE;?></td>
-                                <td><?php echo $all_page->PG_URI; ?></td>
-                                <td><?php echo $all_page->ORDER_NO; ?></td>
-                                <td><?php echo ($all_page->ACTIVE_STAT == "Y") ? '<span style="color:green">Active</span>' : '<span style="color:red">Inactive</span>'; ?></td>
+                                <td><?php echo $all_post->TITLE_NAME; ?></td>
+                                <td><?php echo $all_post->SUB_TITLE;?></td>
+                                <td><?php echo $all_post->PG_URI; ?></td>
+                                <td><?php echo $all_post->ORDER_NO; ?></td>
+                                <td><?php echo ($all_post->ACTIVE_STAT == "Y") ? '<span style="color:green">Active</span>' : '<span style="color:red">Inactive</span>'; ?></td>
                                 <td>
 
-                                <a  title="Edit Page Name"  href="<?php echo site_url("dashboard/website/updatePageLink/" . $all_page->TITLE_ID); ?>" class="label label-info" style="cursor: pointer">Edit</a> 
+                                <a  title="Edit Post Name"  href="<?php echo site_url("dashboard/website/updatePostLink/" . $all_post->TITLE_ID); ?>" class="label label-info" style="cursor: pointer">Edit</a> 
                                 
 
-                                    <span  title="Edit Page Name"   href="<?php echo site_url('dashboard/website/deletePage/'.$all_page->TITLE_ID);?>" class="label label-info deleteUrl" style="cursor: pointer">Delete</span>  
+                                    <span  title="Delete Post Name"   href="<?php echo site_url('dashboard/website/deletePost/'.$all_post->TITLE_ID);?>" class="label label-info deleteUrl" style="cursor: pointer">Delete</span>  
                                 </td>
                             </tr>
                             <?php
@@ -76,13 +76,13 @@
                         type: 'POST',
                        // dataType: 'JSON',
                         success: function (data) {
-                        window.location.href = "<?php echo site_url('dashboard/website/pageSetup');?>";
+                       window.location.href = "<?php echo site_url('dashboard/website/postSetup');?>";
                            
                         }
                     });
-       }
-e.preventDefault();
-});
+                  }
+                   e.preventDefault();
+              });
 </script>
 
 

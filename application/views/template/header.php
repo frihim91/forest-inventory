@@ -37,6 +37,7 @@ instead of the minified CSS loaded by default.
 <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.js"></script>
 <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.min.js"></script>
 
+
 <script src="<?php echo base_url(); ?>resources/shared/components/library/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/library/jquery/jquery-migrate.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/library/modernizr/modernizr.js"></script>
@@ -83,11 +84,6 @@ instead of the minified CSS loaded by default.
     </script>
 
 
-
-<!-- <script>
-    $('.redactor').redactor();
-</script>
- -->
 <script src="<?php echo base_url(); ?>resources/shared/components/library/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/plugins/slimscroll/jquery.slimscroll.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/plugins/breakpoints/breakpoints.js"></script>
@@ -95,7 +91,7 @@ instead of the minified CSS loaded by default.
 
 <script>
     $(document).ready(function () {
-        $('.redactor').redactor();
+      
         $('.dropdown-option').select2();
 
         var warning = true;

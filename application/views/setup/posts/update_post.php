@@ -4,7 +4,7 @@
           .form-group:hover .help{ background: #e3e3e3;}
       </style> 
 
-           <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor.css" />
+          <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor.css" />
         <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.js"></script>
         <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.min.js"></script>
        <script>
@@ -39,7 +39,7 @@
           var agree = confirm("Are you sure you want to delete this?");
           if(agree){
             $(".img-thumbnail"+IMG_ID).fadeOut('slow');
-            $.post('<?php echo base_url().'index.php/dashboard/website/delete_images/'?>', {IMG_ID:IMG_ID}, function(){
+            $.post('<?php echo base_url().'index.php/dashboard/website/delete_images_post/'?>', {IMG_ID:IMG_ID}, function(){
 
             });
         }else{
@@ -54,7 +54,7 @@
       <div class="widget-body">    
           <?php
           $attribute = array('class' => 'form-horizontal', 'id' => '', 'role' => 'form');
-          echo form_open_multipart('dashboard/Website/updatePageLink/'.$TITLE_ID, $attribute);
+          echo form_open_multipart('dashboard/Website/updatePostLink/'.$TITLE_ID, $attribute);
           ?>
 
           <div class="msg">
@@ -75,21 +75,21 @@
                   <div class="col-md-8">
 
                       <div class="col-md-12"> 
-                         <label for="firstname">Parent Title </label>
+                         <label for="firstname">Category</label>
                          <?php
-                         $parents = $this->Menu_model->get_all_title();
-                         $options = array('' => 'Select Parent Title');
-                         foreach ($parents as $parent) {
-                         $options["$parent->TITLE_ID"] = $parent->TITLE_NAME;
+                         $categorys = $this->Menu_model->get_all_category();
+                         $options = array('' => 'Select Category');
+                         foreach ($categorys as $category) {
+                         $options["$category->CAT_ID"] = $category->CAT_NAME;
                       }
-                      echo form_dropdown('txtparentId', $options, $edit_menu->PARENT_ID, 'id="id" class="tag-select form-control" data-placeholder="Choose a Parent..." ');
+                      echo form_dropdown('txtcategoryId', $options, $edit_menu->CAT_ID, 'id="id" class="tag-select form-control" data-placeholder="Choose a Category..." ');
                       ?>        
                   </div>
               </div>
               <div class="col-md-4 help">
-                  <strong><span  class="help-head">Help: </span>Parent Title Name</strong>
+                  <strong><span  class="help-head">Help: </span>Category Name</strong>
                   <hr>
-                  <p class="muted">Please enter  Parent Title Name in english here.</p>
+                  <p class="muted">Please enter Category Name in english here.</p>
               </div> 
           </div> 
       </div>
@@ -105,9 +105,9 @@
                  </div>
              </div>
              <div class="col-md-4 help">
-              <strong><span  class="help-head">Help: </span>Page Title Name</strong>
+              <strong><span  class="help-head">Help: </span>Post Title Name</strong>
               <hr>
-              <p class="muted">Please enter  Page Title Name in english here.</p>
+              <p class="muted">Please enter  Post Title Name in english here.</p>
           </div> 
       </div> 
   </div>
@@ -315,7 +315,7 @@
           var IMG_ID = $(this).attr('imgid');
           $.ajax({
                 type: "POST",
-                url: "<?php echo site_url('dashboard/website/delete_images'); ?>",
+                url: "<?php echo site_url('dashboard/website/delete_images_post'); ?>",
                 data: {IMG_ID:IMG_ID},
                 dataType: "html",
                 success: function(data){
