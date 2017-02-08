@@ -104,4 +104,11 @@ class Portal extends CI_Controller
 		   }
 }  
 
+public function deleteImage($id)
+{
+	//$this->db->query("DELETE FROM home_page_slider WHERE ID = $id");
+	$this->utilities->deleteRowByAttribute('home_page_slider', array('ID' => $id));
+	redirect('portal/viewSliderData');
+}
+
 }
