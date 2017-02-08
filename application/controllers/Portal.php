@@ -12,6 +12,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Portal extends CI_Controller
 {
 
+    function __construct() {
+        parent::__construct();
+        $this->load->model('utilities');
+        $this->load->model('setup_model');
+        $this->load->model('Menu_model');
+        $this->load->helper(array('html', 
+
+'form'));
+        $this->load->library('form_validation');
+        $this->load->library('upload');
+    }
+
+
 
     /*
      * @methodName index()
