@@ -144,21 +144,21 @@
                 }
             });
         });
-        //        $(document).on("click",".create_group",function(){ 
-        //            var h_id = $(this).attr('data-hid');
-        //            $.ajax({
-        //                type: "POST",
-        //                url: "<?php echo site_url('dashboard/securityAccess/groupModal'); ?>",
-        //                data:{hid:h_id},
-        //                beforeSend: function() {
-        //                    $("#modal_window .modal-title").html("Create Group"); 
-        //                    $("#modal_window .modal-content").html("loading..."); 
-        //                },
-        //                success: function(data) {                    
-        //                    $("#modal_window .modal-body").html(data); 
-        //                }
-        //            });
-        //        });
+               // $(document).on("click",".create_group",function(){ 
+               //     var h_id = $(this).attr('data-hid');
+               //     $.ajax({
+               //         type: "POST",
+               //         url: "<?php echo site_url('dashboard/securityAccess/groupModal'); ?>",
+               //         data:{hid:h_id},
+               //         beforeSend: function() {
+               //             $("#modal_window .modal-title").html("Create Group"); 
+               //             $("#modal_window .modal-content").html("loading..."); 
+               //         },
+               //         success: function(data) {                    
+               //             $("#modal_window .modal-body").html(data); 
+               //         }
+               //     });
+               // });
         $(document).on("click",".securityModal",function(){  
             $("#securityModal").modal('show');
            

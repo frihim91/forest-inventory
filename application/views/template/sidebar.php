@@ -42,6 +42,7 @@
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
+         
                 <li class="sidebar-search">
                     <div class="input-group custom-search-form">
                         <input type="text" class="form-control" placeholder="Search...">
@@ -61,18 +62,22 @@
                  <li>
                     <a href="<?php echo site_url("dashboard/auth/index"); ?>"><i class="fa fa-dashboard fa-fw"></i> Home</a>
                 </li>
-                <li>
                    <?php
-                   $dtls = $this->security_model->getOrgModules();
-        //echo '<pre>';print_r($dtls);exit;
-                   foreach ($dtls as $dtl) {
-                    $links = array();
-                    if ($session_info["USERGRP_ID"] != "") {
-                        $links = $this->security_model->get_all_module_links($dtl->SA_MODULE_ID);
-                    }
-                    if (!empty($links)) {
-                        $lang_ses = $this->session->userdata("site_lang");
-                        ?>
+                    $dtls = $this->security_model->getOrgModules();
+                    foreach ($dtls as $dtl) {
+                        $links = array();
+                        $modid = $dtl->SA_MODULE_ID;
+                        $session_info = $this->session->userdata('user_logged_in');
+                        if ($session_info["USERGRP_ID"] != "") {
+                            $links = $this->security_model->get_all_module_links($modid);
+                        } else {
+                            //$links_user = $this->careProvider_model->get_all_module_links_from_user($modid);
+                        }
+                        if (!empty($links)) {
+                            $lang_ses = $this->session->userdata("site_lang");
+                            ?>
+                <li>
+              
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> <?php echo $dtl->SA_MODULE_NAME; ?><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <?php foreach ($links as $link) : ?>
@@ -85,14 +90,14 @@
                 ?>
                 <!-- /.nav-second-level -->
             </li>
-
+<!-- 
              <li>
                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Settings<span class="fa arrow"></span></a>
                <ul class="nav nav-second-level">
                <li><a href="<?php echo site_url('Portal/viewSliderData'); ?>"> Sliders</a> </li>
 
             </ul>
-        </li> 
+        </li>  -->
  </ul>
 </div>
 <!-- /.sidebar-collapse -->

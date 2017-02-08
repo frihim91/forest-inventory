@@ -17,6 +17,15 @@
         }
 
 
+         public function get_all_category() {
+            $this->db->select('post_category.*');
+            $this->db->from('post_category');
+            $this->db->order_by('post_category.CAT_ID', 'ASC');
+            return $this->db->get()->result();
+        }
+
+
+
          public function get_all_menu() {
             $data=$this->db->query("SELECT TITLE_NAME,TITLE_ID,PG_URI FROM pg_title pt WHERE ACTIVE_STAT='Y' AND PARENT_ID=0 ORDER BY ORDER_NO ASC")->result();
             return $data;
