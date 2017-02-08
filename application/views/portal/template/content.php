@@ -6,6 +6,10 @@
             padding-top: 10px;
             padding-bottom: 0px;
         }
+		.slider_img{
+			width:760px !important;
+			height:335px !important;
+		}
     </style>
     <div class="row contents_row">
        
@@ -15,30 +19,18 @@
                     <div class="main-slideshow">
                         <div class="flexslider">
                             <ul class="slides">
+							<?php foreach($sliders as $slider){?>
                                 <li>
-                                    <img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/banner/banner-1.jpg"/>
+								
+                                    <img class="slider_img" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>"/>
 
                                     <div class="slider-caption">
-                                        <h2><a href="#">Climate’s coral killers move in swiftly</a></h2>
-                                        <p>Worst-ever bleaching event affects 93 percent of the Great Barrier Reef as rising temper</p>
+                                        <h2><a href="#"><?php echo $slider->IMAGE_TITLE?></a></h2>
+                                        <p><?php echo $slider->IMAGE_DESC?></p>
                                     </div>
                                 </li>
-                                <li>
-                                    <img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/banner/banner-2.jpg"/>
-
-                                    <div class="slider-caption">
-                                        <h2><a href="#">Climate’s coral killers move in swiftly</a></h2>
-                                        <p>Worst-ever bleaching event affects 93 percent of the Great Barrier Reef as rising temper</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/banner/banner-3.jpg"/>
-
-                                    <div class="slider-caption">
-                                        <h2><a href="#">Climate’s coral killers move in swiftly</a></h2>
-                                        <p>Worst-ever bleaching event affects 93 percent of the Great Barrier Reef as rising temper</p>
-                                    </div>
-                                </li>
+							<?php } ?> 
+                              
                             </ul>
                             <!-- /.slides -->
                         </div>

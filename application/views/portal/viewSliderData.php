@@ -2,6 +2,7 @@
     .help{border-left:1px solid #EAEAEA;padding: 0px 0px 0px 5px; transition: background ease-in-out .7s;}
     .help-head{color:#A82400;} 
     .form-group:hover .help{ background: #e3e3e3;}
+    .slider_img{ height: 80px; width: 80px; }
 </style> 
 <div class="widget">  
     <div class="widget-head"> 
@@ -18,31 +19,30 @@
                             <th>Slider Image Title</th>
                             <th>Slider Image Description</th>
                             <th>Slider Image</th>
-                            <th>Status</th>
+                          
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <!-- <tbody>
+                   <tbody>
                         <?php
                         $i = 1;
-                        foreach ($all_modules as $all_mod) {
+                        foreach ($sliders as $slider) {
                             ?>
                             <tr> 
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $all_mod->MODULE_NAME; ?></td>
-                                <td><?php echo $all_mod->SHORT_NAME; ?></td>
-                                <td><?php echo $all_mod->MODULE_NAME_BN; ?></td>
-                                <td><?php echo $all_mod->SL_NO; ?></td>
-                                <td><?php echo ($all_mod->ACTIVE_STATUS == 1) ? '<span style="color:green">Active</span>' : '<span style="color:red">Inactive</span>'; ?></td>
+                                <td><?php echo $slider->IMAGE_TITLE?></a></td>
+                                <td><?php echo $slider->IMAGE_DESC?></td>
+                                <td><img class="slider_img" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>"/></td>
+                             
                                 <td>
-                                    <span  title="Edit  Module Name"  data-remote="<?php echo site_url("dashboard/securityAccess/edit_module/" . $all_mod->MODULE_ID); ?>" class="label label-info editModal" style="cursor: pointer">Edit</span> 
+                                   <button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
                                 </td>
                             </tr>
                             <?php
                             $i++;
                         }
                         ?>
-                    </tbody> -->
+                    </tbody>
                 </table>
               
         </div>
