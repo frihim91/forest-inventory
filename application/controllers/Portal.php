@@ -11,35 +11,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Portal extends CI_Controller
 {
-<<<<<<< HEAD
-      function __construct() {
-            parent::__construct();
 
-            // $this->user_session = $this->session->userdata('user_logged_in');
-            // if (!$this->user_session) {
-            //     redirect('portal');
-            // }
-            $this->load->model('setup_model');
-            $this->load->model('Menu_model');
-            $this->load->helper(array('html', 'form'));
-            $this->load->library('form_validation');
-        }
-=======
-	function __construct() {
-		parent::__construct();
+    function __construct() {
+        parent::__construct();
+        $this->load->model('utilities');
+        $this->load->model('setup_model');
+        $this->load->model('Menu_model');
+        $this->load->helper(array('html', 
 
-		$this->user_session = $this->session->userdata('user_logged_in');
-		if (!$this->user_session) {
-			redirect('dashboard/auth/index');
-		}
-		$this->load->model('utilities');
-		$this->load->model('setup_model');
-		$this->load->model('Menu_model');
-		$this->load->helper(array('html', 'form'));
-		$this->load->library('form_validation');
-		$this->load->library('upload');
-	}
->>>>>>> e6e32f72e343a8ffc2232b816046d4f89f0edecd
+'form'));
+        $this->load->library('form_validation');
+        $this->load->library('upload');
+    }
+
+
 
     /*
      * @methodName index()
@@ -50,40 +35,40 @@ class Portal extends CI_Controller
 
     public function index()
     {
-    	$data['sliders'] = $this->db->query("SELECT * FROM home_page_slider")->result();
-    	$this->template->display_portal($data);
+        $data['sliders'] = $this->db->query("SELECT * FROM home_page_slider")->result();
+        $this->template->display_portal($data);
     }
 
     public function details($TITLE_ID, $PG_URI)
     {
-    	$data['title_name'] = $this->db->query("SELECT TITLE_NAME FROM pg_title WHERE TITLE_ID = $TITLE_ID")->row();
-    	$data['page_description'] = $this->db->query("SELECT BODY_ID, BODY_DESC FROM pg_body WHERE TITLE_ID = $TITLE_ID")->row();
-    	$body_id = $data['page_description']->BODY_ID;
-    	//echo $body_id;exit;
-    	$data['body_images'] =$this->db->query("SELECT IMG_URL FROM pg_images WHERE BODY_ID = $body_id")->result();
-    	$data['content_view_page'] = 'portal/pageContent';
-    	$this->template->display_portal($data);
+        $data['title_name'] = $this->db->query("SELECT TITLE_NAME FROM pg_title WHERE TITLE_ID = $TITLE_ID")->row();
+        $data['page_description'] = $this->db->query("SELECT BODY_ID, BODY_DESC FROM pg_body WHERE TITLE_ID = $TITLE_ID")->row();
+        $body_id = $data['page_description']->BODY_ID;
+        //echo $body_id;exit;
+        $data['body_images'] =$this->db->query("SELECT IMG_URL FROM pg_images WHERE BODY_ID = $body_id")->result();
+        $data['content_view_page'] = 'portal/pageContent';
+        $this->template->display_portal($data);
     }
 
     public function viewSliderData()
     {
-    	$data['sliders'] = $this->db->query("SELECT * FROM home_page_slider")->result();
-    	$data['content_view_page'] = 'portal/viewSliderData';
-    	$this->template->display($data);
+        $data['sliders'] = $this->db->query("SELECT * FROM home_page_slider")->result();
+        $data['content_view_page'] = 'portal/viewSliderData';
+        $this->template->display($data);
     }
 
     public function addImageinSlider()
     {
-    	if(isset($_POST['title']))
-    	{
+        if(isset($_POST['title']))
+        {
 
-    		//$titles = count($this->input->post('title'));
-    		$title = $this->input->post('title');
-    		$descript = $this->input->post('descript');
+            //$titles = count($this->input->post('title'));
+            $title = $this->input->post('title');
+            $descript = $this->input->post('descript');
 
-		 
-		     	//echo "test";
-		     	//exit;
+         
+                //echo "test";
+                //exit;
 
                 $config['upload_path'] = 'resources/images/home_page_slider/';
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
@@ -99,24 +84,31 @@ class Portal extends CI_Controller
                 }else{
                     $picture = '';
                 }
-            	
-				$data = array(
-		       		'IMAGE_TITLE' => $title,
-		       		'IMAGE_DESC' => $descript,
-		       		'IMAGE_PATH' => $picture
-				);
+                
+                $data = array(
+                    'IMAGE_TITLE' => $title,
+                    'IMAGE_DESC' => $descript,
+                    'IMAGE_PATH' => $picture
+                );
 
-		       	//$data['IMAGE_PATH'] = 'asdasdsad';
+                //$data['IMAGE_PATH'] = 'asdasdsad';
 
-		       	$this->utilities->insertData($data,'home_page_slider');
-		       	redirect('portal/addImageinSlider');
-		       }
-   		
-		   else
-		   {
-		   	$data['content_view_page'] = 'portal/addImageinSlider';
-		   	$this->template->display($data);
-		   }
+                $this->utilities->insertData($data,'home_page_slider');
+                redirect('portal/addImageinSlider');
+               }
+        
+           else
+           {
+            $data['content_view_page'] = 'portal/addImageinSlider';
+            $this->template->display($data);
+           }
 }  
+
+public function deleteImage($id)
+{
+    //$this->db->query("DELETE FROM home_page_slider WHERE ID = $id");
+    $this->utilities->deleteRowByAttribute('home_page_slider', array('ID' => $id));
+    redirect('portal/viewSliderData');
+}
 
 }
