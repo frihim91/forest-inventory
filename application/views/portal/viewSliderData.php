@@ -19,7 +19,6 @@
                             <th>Slider Image Title</th>
                             <th>Slider Image Description</th>
                             <th>Slider Image</th>
-                          
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -35,7 +34,7 @@
                                 <td><img class="slider_img" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>"/></td>
                              
                                 <td>
-                                   <button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+                                   <a href="<?php echo site_url('portal/deleteImage/'.$slider->ID)?>"><button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></a>
                                 </td>
                             </tr>
                             <?php
