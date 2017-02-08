@@ -11,35 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Portal extends CI_Controller
 {
-<<<<<<< HEAD
-      function __construct() {
-            parent::__construct();
 
-            // $this->user_session = $this->session->userdata('user_logged_in');
-            // if (!$this->user_session) {
-            //     redirect('portal');
-            // }
-            $this->load->model('setup_model');
-            $this->load->model('Menu_model');
-            $this->load->helper(array('html', 'form'));
-            $this->load->library('form_validation');
-        }
-=======
-	function __construct() {
-		parent::__construct();
-
-		$this->user_session = $this->session->userdata('user_logged_in');
-		if (!$this->user_session) {
-			redirect('dashboard/auth/index');
-		}
-		$this->load->model('utilities');
-		$this->load->model('setup_model');
-		$this->load->model('Menu_model');
-		$this->load->helper(array('html', 'form'));
-		$this->load->library('form_validation');
-		$this->load->library('upload');
-	}
->>>>>>> e6e32f72e343a8ffc2232b816046d4f89f0edecd
 
     /*
      * @methodName index()
