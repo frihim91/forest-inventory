@@ -38,6 +38,10 @@
         $this->load->model('utilities');
         $this->load->model('Menu_model');
         $this->load->library('upload');
+        $this->load->helper(array('html', 
+
+        'form'));
+        $this->load->model('setup_model');
     }
 
     /**
@@ -318,8 +322,10 @@
                         return $config;
                     }
 
+   
 
      /**
+     
       * Show all post in datatable
       
       
@@ -331,9 +337,9 @@
                 "Page" => "dashboard/Website/postSetup",
                 );
             $data['pageTitle'] = "All Post List ";
-            $sql = "SELECT t.*,c.*, b.*, i.*
+            $sql = "SELECT t.*,c.CAT_ID,c.CAT_NAME, b.*, i.*
             FROM post_title t
-            left JOIN post_category c ON c.CAT_ID = t.CAT_ID
+            left JOIN post_category c ON t.CAT_ID = c.CAT_ID
             left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
             left JOIN post_images i ON b.BODY_ID = i.BODY_ID GROUP BY t.TITLE_ID;";
             $data['all_posts'] = $this->db->query($sql)->result();
@@ -399,6 +405,7 @@
                             
                             'ORDER_NO' => $this->input->post('ORDER_NO'),
                             'ACTIVE_STAT' => (isset($_POST['ACTIVE_STAT'])) ? 1 : 0,
+                            'CRE_DT' =>date('Y-m-d H:i:s',time()),
                             'CRE_BY' => $this->user_session["USER_ID"]
                             );
                         $postTitleIdmax =$this->db->insert('post_title',$postlink);
@@ -507,6 +514,7 @@
                                     'PG_URI' =>$uri,
                                     'ORDER_NO' => $this->input->post('ORDER_NO'),
                                     'ACTIVE_STAT' => (isset($_POST['ACTIVE_STAT'])) ? 1 : 0,
+                                    'UPD_DT' =>date('Y-m-d H:i:s',time()),
                                     'CRE_BY' => $this->user_session["USER_ID"]
                                     );
 

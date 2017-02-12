@@ -35,6 +35,32 @@ class Portal extends CI_Controller
 
     public function index()
     {
+        $data['post_description'] = $this->db->query("SELECT BODY_ID, BODY_DESC FROM post_body WHERE TITLE_ID = 1")->row();
+        $data['post_cat'] = $this->db->query("SELECT t.*, c.*,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+            FROM post_title t
+            left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+            left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+            left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+            where t.CAT_ID=1")->row();
+
+        $data['post_cat_two'] = $this->db->query("SELECT t.TITLE_ID,t.CAT_ID,t.CRE_DT, c.CAT_ID,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+            FROM post_title t
+            left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+            left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+            left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+            where t.CAT_ID=2")->result();
+        $data['post_cat_three'] = $this->db->query("SELECT t.TITLE_ID,t.CAT_ID,t.CRE_DT, c.CAT_ID,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+            FROM post_title t
+            left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+            left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+            left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+            where t.CAT_ID=3")->result();
+         $data['post_cat_four'] = $this->db->query("SELECT t.*, c.*,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+            FROM post_title t
+            left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+            left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+            left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+            where t.CAT_ID=4")->result();
         $data['sliders'] = $this->db->query("SELECT * FROM home_page_slider")->result();
         $this->template->display_portal($data);
     }
@@ -49,6 +75,28 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/pageContent';
         $this->template->display_portal($data);
     }
+
+
+      /**
+     
+      * Show all homepage post
+      
+      
+     */
+
+    public function post_details($TITLE_ID, $PG_URI)
+    {
+        $data['title_name'] = $this->db->query("SELECT TITLE_NAME FROM post_title WHERE TITLE_ID = $TITLE_ID")->row();
+        $data['post_description'] = $this->db->query("SELECT BODY_ID, BODY_DESC FROM post_body WHERE TITLE_ID = $TITLE_ID")->row();
+        
+       // exit;
+        $body_id = $data['post_description']->BODY_ID;
+        //echo $body_id;exit;
+        $data['body_images'] =$this->db->query("SELECT IMG_URL FROM post_images WHERE BODY_ID = $body_id")->result();
+        $data['content_view_page'] = 'portal/template/content';
+        $this->template->display_portal($data);
+    }
+
 
     public function viewSliderData()
     {
@@ -104,13 +152,13 @@ class Portal extends CI_Controller
            }
 }  
 
-public function deleteImage($id)
-{
+            public function deleteImage($id)
+            {
 
 
-    //$this->db->query("DELETE FROM home_page_slider WHERE ID = $id");
-    $this->utilities->deleteRowByAttribute('home_page_slider', array('ID' => $id));
-    redirect('portal/viewSliderData');
-}
+                //$this->db->query("DELETE FROM home_page_slider WHERE ID = $id");
+                $this->utilities->deleteRowByAttribute('home_page_slider', array('ID' => $id));
+                redirect('portal/viewSliderData');
+            }
 
 }

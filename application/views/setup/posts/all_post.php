@@ -4,8 +4,6 @@
     .form-group:hover .help{ background: #e3e3e3;}
 </style> 
 
-
-
 <div class="widget">  
     <div class="widget-head"> 
        <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create New Page</a> -->
@@ -21,6 +19,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Category</th>
                             <th>Post Title Name</th>
                             <th>Subtitle Name</th>
                             <th>Post Url</th>
@@ -36,10 +35,11 @@
                             ?>
                             <tr> 
                                 <td><?php echo $i; ?></td>
+                                <td><?php echo $all_post->CAT_NAME; ?></td>
                                 <td><?php echo $all_post->TITLE_NAME; ?></td>
                                 <td><?php echo $all_post->SUB_TITLE;?></td>
                                 <td><?php echo $all_post->PG_URI; ?></td>
-                                <td><?php echo $all_post->ORDER_NO; ?></td>
+                                <td><?php echo $all_post->ORDER_NO;?></td>
                                 <td><?php echo ($all_post->ACTIVE_STAT == "Y") ? '<span style="color:green">Active</span>' : '<span style="color:red">Inactive</span>'; ?></td>
                                 <td>
 
@@ -64,7 +64,7 @@
     </div>
     </div>
 
-    <script type="text/javascript">
+ <script type="text/javascript">
   $(document).on("click", "span.deleteUrl", function (e) {
        var result = confirm("Are you sure want to delete it?");
        if(result == true){
@@ -76,14 +76,13 @@
                         type: 'POST',
                        // dataType: 'JSON',
                         success: function (data) {
-                       window.location.href = "<?php echo site_url('dashboard/website/postSetup');?>";
+                        window.location.href = "<?php echo site_url('dashboard/website/postSetup');?>";
                            
                         }
                     });
-                  }
-                   e.preventDefault();
-              });
+       }
+e.preventDefault();
+});
 </script>
-
 
 

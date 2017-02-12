@@ -44,11 +44,13 @@
         <div class="col-md-4 col-sm-4 col-xs-12 tender_item xs_contents">
           
                 
-                    <div class="widget-main-up">
+                    <div class="widget-main-up" style="padding:10px 10px 8px 10px;text-align: justify;">
                         
-                            <h4 style="padding: 0px 0px 0px 10px;text-align: justify;"> WELCOME TO FAO</h4>
+                            <h4> <?php echo $post_cat->CAT_NAME;?></h4>
                         
-                      <p style="padding: 10px 10px 8px 10px;text-align: justify;">The UNFCCC conference in Bali recognized Viet Nam as one of the most-affected countries in the world as a result of climate change. Prior to this, reports by the World Bank brought to the attention of the authorities the potential devastation that could be caused by sea-level rise. Since the 2007 Climate Change Conference in Bali that recognized forest's contribution to climate change mitigation and formally agreed to incorporate the REDD initiative into the post-2012 negotiations, the Government of Viet Nam has been moving rapidly to formulate and implement the REDD Program Framework for the country. <a href="#" class="btn btn-more pull-right">View Details</a></p> 
+                     
+                      <?php echo $post_description->BODY_DESC;?><a href="#" class="btn btn-more pull-right">View Details</a> 
+                       
                        <!--  <a href="#" class="btn btn-more pull-right">View Details</a> -->
                     </div>
 
@@ -67,19 +69,16 @@
                             <h4 class="widget-title"><i class="fa fa-globe" aria-hidden="true"></i> News</h4>
                         </div>
                         <ul class="widget-inner-list">
+                         <?php foreach ($post_cat_two as $post_cat_twos){?>
                             <li>
-                                <a href="#">Consultation workshop On the draft decision of the Prime Minister approving the National REDD+ Action Programme from 2016 to 2020 and a vision to 2030</a>
+                                <a href="#"><?php echo $post_cat_twos->BODY_DESC; ?></a>
                             </li>
                              <p class="blog-list-meta small-text">
-                                                <span><a href="#">30/12/2016 - 15:47</a></span>
+                                                <span><a href="#"><?php echo date('d-m-Y - H:i:s', strtotime($post_cat_twos->CRE_DT)); ?></a></span>
                                             </p>
+                                             <?php } ?>
                            
-                            <li>
-                                <a href="#">Consultation workshop On the draft decision of the Prime Minister approving the National REDD+ Action Programme from 2016 to 2020 and a vision to 2030</a>
-                            </li>
-                              <p class="blog-list-meta small-text">
-                                                <span><a href="#">30/12/2016 - 15:47</a></span>
-                                            </p>
+                        
                         </ul>
                         <a href="#" class="btn btn-more pull-right">More</a><br><br>
                     </div>
@@ -92,18 +91,15 @@
                             <h4 class="widget-title"><i class="fa fa-globe" aria-hidden="true"></i> Events</h4>
                         </div>
                         <ul class="widget-inner-list">
+                        <?php foreach ($post_cat_three as $post_cat_threes){?>
                         <p class="blog-list-meta small-text">
-                                                <span><a href="#">Wednesday, November 02, 2016</a></span>
+                                                <span><a href="#"><?php echo date('l,F j,Y', strtotime($post_cat_threes->CRE_DT)); ?></a></span>
                                             </p>
                             <li>
-                                <a href="#">Consultation workshop On the draft decision of the Prime Minister approving the National REDD+ Action Programme from 2016 to 2020 and a vision to 2030 </a>
+                                <a href="#"> <?php echo $post_cat_threes->BODY_DESC; ?></a>
                             </li>
-                              <p class="blog-list-meta small-text">
-                                                <span><a href="#">Wednesday, November 02, 2016</a></span>
-                                            </p>
-                            <li>
-                                <a href="#">Consultation workshop On the draft decision of the Prime Minister approving the National REDD+ Action Programme from 2016 to 2020 and a vision to 2030</a>
-                            </li>
+                              <?php } ?>
+                         
 
                         </ul>
                         <a href="#" class="btn btn-more pull-right">More</a><br><br>
@@ -117,41 +113,14 @@
                             <h4 class="widget-title"><i class="fa fa-globe" aria-hidden="true"></i> Quicklinks</h4>
                         </div>
                         <ul class="widget-inner-list">
+                         <?php foreach ($post_cat_four as $post_cat_fours){?>
                     
                             <li>
-                                <a href="#">Viet Nam Administration of Forestry</a>
+                                <a href="#"><?php echo $post_cat_fours->BODY_DESC; ?></a>
                             </li>
-                            <li>
-                           
-                                <a href="#">Ministry of Agriculture and Rural Development</a>
-                            </li>
+                             <?php } ?>
                             
-                            <li>
-                           
-                                <a href="#">UN-REDD Global</a>
-                            </li>
-
-
-                            <li>
-                                <a href="#">Viet Nam Administration of Forestry</a>
-                            </li>
-                            <li>
-                           
-                                <a href="#">Ministry of Agriculture and Rural Development</a>
-                            </li>
-                            
-                            <li>
-                           
-                                <a href="#">UN-REDD Global</a>
-                            </li>
-                            <li>
-                                <a href="#">Viet Nam Administration of Forestry</a>
-                            </li>
-                          
-                            
-                           
-
-                        </ul>
+                           </ul>
                         <a href="#" class="btn btn-more pull-right">More</a><br><br>
                     </div>
                 </div>
