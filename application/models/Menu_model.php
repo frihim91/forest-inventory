@@ -37,6 +37,11 @@
         }
 
 
+        function insert_csv($data, $table) {
+           $this->db->insert($table, $data);
+         }
+
+
         
 
     }

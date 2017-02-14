@@ -38,6 +38,7 @@
         $this->load->model('utilities');
         $this->load->model('Menu_model');
         $this->load->library('upload');
+        $this->load->library('csvimport');
         $this->load->helper(array('html', 
 
         'form'));
@@ -587,6 +588,313 @@
                         $config['max_width'] = "3000";
                         return $config;
                     }
+
+
+
+
+                          function uploadForestDate1() {
+                $this->form_validation->set_rules('TITLE_NAME', 'Title', 'required');
+                if ($this->form_validation->run() == FALSE) {
+                    $data["breadcrumbs"] = array(
+                        "Upload Image Page" => "dashboard/website/uploadForestDate",
+                        "Upload Image " => "#",
+                        );
+                    $data['pageTitle'] = "Upload Forest Data";
+                    $data['content_view_page'] = 'setup/forestData/upload_data';
+                    $this->template->display($data);
+                } else {
+                        
+                          if ($this->utilities->hasInformationByThisId('ati_module_links', array('MODULE_ID' => $this->input->post('txtmoduleId'), 'URL_URI' => str_replace("'", "''", $this->input->post("txtModLink")))) == FALSE) {
+
+                           $images = "";
+                           $files = $_FILES;
+                           $cpt = count($_FILES['userfile']['name']);
+                           for ($i = 0; $i < $cpt; $i++) {
+                            $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
+                            $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
+                            $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+                            $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
+                            $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
+                            $this->upload->initialize($this->set_upload_options());
+                            $this->upload->do_upload();
+                            $fileName = $_FILES['userfile']['name'];
+                            $images[] = $fileName;
+                        }
+
+                        $count = count($images);
+                        $parentId=$this->input->post('txtparentId');
+                        if($parentId>0)
+                        {
+                            $pid=$parentId;
+                        }
+                        else 
+                        {
+                            $pid=0;
+                        }
+                        $title=$this->input->post("TITLE_NAME");
+                        $lower=strtolower($title);
+                        $uri=str_replace(" ", "-", $lower);
+                        $pagelink = array(
+                            'PARENT_ID' =>$pid,
+                            'TITLE_NAME' => str_replace("'", "''", $this->input->post("TITLE_NAME")),
+                            'SUB_TITLE' => str_replace("'", "''", $this->input->post("SUB_TITLE")),
+                            'PG_URI' =>$uri,
+                            
+                            'ORDER_NO' => $this->input->post('ORDER_NO'),
+                            'ACTIVE_STAT' => (isset($_POST['ACTIVE_STAT'])) ? 1 : 0,
+                            'CRE_BY' => $this->user_session["USER_ID"]
+                            );
+                        $pageTitleIdmax =$this->db->insert( 'pg_title',$pagelink);
+                        
+                        if($pageTitleIdmax != ''){
+                            $pg_body = array(
+                                'TITLE_ID' => $this->db->insert_id(),
+                                'BODY_DESC' => $this->input->post('BODY_DESC')
+                                
+                                ); 
+                            if($pg_body != ""){
+                                $pageBodyId =$this->db->insert('pg_body', $pg_body);
+                                $last_insert_id = $this->db->insert_id();
+                                
+                                for ($i=0; $i < $count; $i++) { 
+                                    $pg_images = array(
+                                        'BODY_ID' => $last_insert_id,
+                                        
+                                        "IMG_URL" => $images[$i]
+                                        );
+                                    $pageImg = $this->utilities->insertData($pg_images, 'pg_images');
+                   
+                                }
+
+                                if ($pageImg == TRUE) {
+                                    $this->session->set_flashdata('Success', 'Page Added Successfully.');
+                                }
+                            }else{
+                                $this->session->set_flashdata('Error', 'Sorry ! You Already Added this Page .');
+                            }                       
+                        }
+                    } 
+                    redirect('dashboard/Website/pageSetup', 'refresh');
+                }
+            }
+
+
+
+
+                function uploadForestData2() {
+
+                    $data["breadcrumbs"] = array(
+                        "Upload Image Page" => "dashboard/website/uploadForestDate",
+                        "Upload Image " => "#",
+                        );
+                    $data['pageTitle'] = "Upload Forest Data";
+                    
+        //$data['addressbook'] = $this->csv_model->get_addressbook();
+        $data['error'] = '';    //initialize image upload error array to empty
+ 
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'csv';
+        $config['max_size'] = '1000';
+ 
+        $this->load->library('upload', $config);
+ 
+ 
+        // If upload failed, display error
+        if (!$this->upload->do_upload()) {
+            $data['error'] = $this->upload->display_errors();
+ 
+            $data['content_view_page'] = 'setup/forestData/upload_data';
+                    $this->template->display($data);
+        } else {
+            $file_data = $this->upload->data();
+            $file_path =  '.resources/uploads/'.$file_data['file_name'];
+ 
+            if ($this->csvimport->get_array($file_path)) {
+                $csv_array = $this->csvimport->get_array($file_path);
+                foreach ($csv_array as $row) {
+                    $insert_data = array(
+                        'plot_plot_id'=>$row['plot_plot_id'],
+                        'lf_lf_id'=>$row['lf_lf_id'],
+                        '_lf_photos_position'=>$row['_lf_photos_position'],
+                        'lf_photo'=>$row['lf_photo'],
+                        'pic_pos'=>$row['pic_pos'],
+                        'pic_pos_label'=>$row['pic_pos_label'],
+                    );
+                    $this->Menu_model->insert_csv($insert_data);
+                }
+                $this->session->set_flashdata('success', 'Csv Data Imported Succesfully');
+                redirect(base_url().'csv');
+                //echo "<pre>"; print_r($insert_data);
+            } else 
+               $data['content_view_page'] = 'setup/forestData/upload_data';
+                    $this->template->display($data);
+            }
+ 
+        } 
+
+
+      function uploadForestData() {
+        if($_POST){
+          $sourcePath = $_FILES['userfile']['tmp_name']; 
+          $tableName =$this->input->post("table_name");
+          $tableCoulmn =  $this->db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$tableName'")->result();
+          $temporary = explode(".", $_FILES["userfile"]["name"]);
+          $file_extension = end($temporary);
+          $targetPath = "resources/uploads/".$_FILES['userfile']['name']; 
+          $fileRename = $this->fileRename();
+          $succes=move_uploaded_file($sourcePath, "resources/uploads/".$fileRename.".".$file_extension);
+              if (!$succes) {
+
+                if(!$_FILES['userfile']['tmp_name']):
+                $this->session->set_flashdata('Error', 'Csv Data not Imported Succesfully');
+                     redirect('dashboard/Website/uploadForestData', 'refresh');
+     
+                 $data['content_view_page'] = 'setup/forestData/upload_data';
+                $this->template->display($data);
+                endif;
+            }else{
+                
+                $filePath = "resources/uploads/".$fileRename.".".$file_extension;
+              if ($this->csvimport->get_array($filePath)) {
+                    $csv_array = $this->csvimport->get_array($filePath);
+
+                    foreach ($csv_array as $key =>$row) {
+                        $insert_data = array();
+                        for ($i=0; $i < sizeof($tableCoulmn); $i++) { 
+                            $col    = $tableCoulmn[$i]->COLUMN_NAME;
+                            $data   = $row[$col];
+                            $insert_data[$col] =  $data ; 
+                        } 
+                        
+                      $this->Menu_model->insert_csv($insert_data, $tableName);
+                     
+                     
+                    }
+                     $this->session->set_flashdata('Success', 'Csv Data Imported Succesfully');
+                    redirect('dashboard/Website/uploadForestData', 'refresh');
+                 }else 
+                    if(!$_FILES['userfile']['tmp_name']):
+                    $data['error'] = "Error occured";
+                    $data['content_view_page'] = 'setup/forestData/upload_data';
+                    $this->template->display($data);
+                    endif;    
+                }
+            }else{
+               $data['content_view_page'] = 'setup/forestData/upload_data';
+                $this->template->display($data);
+            }
+     
+
+        /*
+      $tableName =$this->input->post("table_name");
+      $tableCoulmn =  $this->db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$tableName'")->result();
+      $sourcePath = $_FILES['userfile']['tmp_name']; 
+      $temporary = explode(".", $_FILES["userfile"]["name"]);
+      $file_extension = end($temporary);
+      $targetPath = "resources/uploads/".$_FILES['userfile']['name']; 
+      $fileRename = $this->fileRename();
+      $succes=move_uploaded_file($sourcePath, "resources/uploads/".$fileRename.".".$file_extension);
+          if (!$succes) {
+             $data['error'] = $this->upload->display_errors();
+ 
+             $data['content_view_page'] = 'setup/forestData/upload_data';
+            $this->template->display($data);
+        } else {
+            
+            $filePath = "resources/uploads/".$fileRename.".".$file_extension;
+
+            //echo $filePath; exit;
+            if ($this->csvimport->get_array($filePath)) {
+                $csv_array = $this->csvimport->get_array($filePath);
+
+                /*echo '<pre>';
+                print_r($csv_array); exit;
+                foreach ($csv_array as $key =>$row) {
+                    $insert_data = array();
+                    for ($i=0; $i < sizeof($tableCoulmn); $i++) { 
+                        $col    = $tableCoulmn[$i]->COLUMN_NAME;
+                        $data   = $row[$col];
+                        $insert_data[$col] =  $data ; 
+                    } 
+                    
+                $this->Menu_model->insert_csv($insert_data, $tableName);
+                }
+                $this->session->set_flashdata('success', 'Csv Data Imported Succesfully');
+                 redirect('dashboard/Website/uploadForestData', 'refresh');
+                //echo "<pre>"; print_r($insert_data);
+            } else 
+                $data['error'] = "Error occured";
+                $data['content_view_page'] = 'setup/forestData/upload_data';
+                    $this->template->display($data);
+            }
+            */
+ 
+        } 
+
+
+
+        function uploadForestData1()
+           {
+
+          if($_POST){
+          $sourcePath = $_FILES['userfile']['tmp_name']; 
+          $tableName =$this->input->post("table_name");
+          $tableCoulmn =  $this->db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$tableName'")->result();
+          $temporary = explode(".", $_FILES["userfile"]["name"]);
+          $file_extension = end($temporary);
+          $targetPath = "resources/uploads/".$_FILES['userfile']['name']; 
+          $fileRename = $this->fileRename();
+          $succes=move_uploaded_file($sourcePath, "resources/uploads/".$fileRename.".".$file_extension);
+              if (!$succes) {
+
+                if(!$_FILES['userfile']['tmp_name']):
+                $this->session->set_flashdata('Error', 'Csv Data not Imported Succesfully');
+                     redirect('dashboard/Website/uploadForestData', 'refresh');
+     
+                 $data['content_view_page'] = 'setup/forestData/upload_data';
+                $this->template->display($data);
+                endif;
+            }else{
+                
+                $filePath = "resources/uploads/".$fileRename.".".$file_extension;
+              if ($this->csvimport->get_array($filePath)) {
+                    $csv_array = $this->csvimport->get_array($filePath);
+
+                    foreach ($csv_array as $key =>$row) {
+                        $insert_data = array();
+                        for ($i=0; $i < sizeof($tableCoulmn); $i++) { 
+                            $col    = $tableCoulmn[$i]->COLUMN_NAME;
+                            $data   = $row[$col];
+                            $insert_data[$col] =  $data ; 
+                        } 
+                        
+                      $this->Menu_model->insert_csv($insert_data, $tableName);
+                      $this->session->set_flashdata('Success', 'Csv Data Imported Succesfully');
+                     redirect('dashboard/Website/uploadForestData', 'refresh');
+                    }
+                 }else 
+                    if(!$_FILES['userfile']['tmp_name']):
+                    $data['error'] = "Error occured";
+                    $data['content_view_page'] = 'setup/forestData/upload_data';
+                    $this->template->display($data);
+                    endif;    
+                }
+            }else{
+               $data['content_view_page'] = 'setup/forestData/upload_data';
+                $this->template->display($data);
+            }
+     
+            } 
+
+
+        function fileRename(){
+            $date = new DateTime();
+            $name = $date->format('YmdHis');
+            Return $name;
+        }
+ 
+
+
 
 
 

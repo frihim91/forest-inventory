@@ -1,0 +1,605 @@
+plot_id,plot_record_plot_date,plot_record_plot_date_year,plot_record_plot_date_month,plot_record_plot_date_day,plot_record_arriving_from,plot_record_arriving_from_qualifier,plot_record_arriving_from_label,plot_record_time_dep,plot_record_time_dep_hour,plot_record_time_dep_minute,plot_record_plot_do_from,plot_record_plot_do_from_qualifier,plot_record_plot_do_from_label,plot_record_time_start,plot_record_time_start_hour,plot_record_time_start_minute,location_zone,location_coordinate,location_coordinate_srs,location_coordinate_x,location_coordinate_y,location_plot_location,location_forest_admin_forest_div,location_forest_admin_forest_div_qualifier,location_forest_admin_forest_div_label,location_forest_admin_forest_rang,location_forest_admin_forest_rang_label,location_forest_admin_forest_beat,location_forest_admin_forest_beat_qualifier,location_forest_admin_forest_beat_label,location_forest_admin_forest_other,plot_details_plot_teamnbr,plot_details_plot_teamnbr_qualifier,plot_details_plot_teamnbr_label,plot_details_plot_leader,plot_details_plot_dleader,plot_details_plot_status,plot_details_plot_status_label,plot_details_plot_nonsample_reason,plot_details_plot_nonsample_reason_qualifier,plot_details_plot_nonsample_reason_label,plot_details_plot_access_sketch,rp_attributes_start_time_collection,rp_attributes_start_time_collection_hour,rp_attributes_start_time_collection_minute,rp_attributes_rp_subplot,rp_attributes_rp_subplot_label,rp_attributes_rp_type,rp_attributes_rp_type_qualifier,rp_attributes_rp_type_label,rp_attributes_rp_spp_code,rp_attributes_rp_spp_scientific_name,rp_attributes_rp_spp_vernacular_name,rp_attributes_rp_spp_language_code,rp_attributes_rp_spp_language_variety,rp_attributes_rp_dia,rp_attributes_rp_bearing,rp_attributes_rp_bearing_unit_name,rp_attributes_rp_dist,rp_attributes_rp_dist_unit_name,rp_attributes_rp_gps,rp_attributes_rp_gps_srs,rp_attributes_rp_gps_x,rp_attributes_rp_gps_y,rp_attributes_rp_pic,rp_attributes_rp_notes,plot_end_lf_sketch,plot_end_plot_to,plot_end_plot_to_qualifier,plot_end_plot_to_label,plot_end_plot_do_to,plot_end_plot_do_to_qualifier,plot_end_plot_do_to_label,plot_end_plot_notes,plot_end_end_time,plot_end_end_time_hour,plot_end_end_time_minute
+946,22/11/2016,2016,11,22,1,,FD Office,08:30,8,30,6,Karerhat Range Office,Karerhat Range Office,12:25,12,25,,SRID=EPSG:4326;POINT(91.625296 22.961678),EPSG:4326,92.325296,22.261678,"Chittagong
+Chittagong
+Fatikchhari
+Bagan Bazar",999,Chittagong North Forest Division,Other,,,999,koyla,Other,,1,,Inventory Team 1,Md. Shahin Kabir,Md. Sarawar Jahan,1,Accessible - Sampled completely,,,,2_5e3f645f-c9cc-4027-a861-4e9b94705d7b.jpg,11:29,11,29,1,Centre,1,,Tree,MIM/Alb/luc,Albizia lucidior,,,,54.1,195,,59.2,,SRID=EPSG:4326;POINT(92.625150 22.961100),EPSG:4326,92.62515,22.9611,2_28550115-fdc5-4c27-9f30-7e3be94df41c.jpg,,289_339.jpg,2,945,Another plot / Other,,,,,16:20,16,20
+310,22/11/2016,2016,11,22,1,,FD Office,08:00,8,0,70,Rajarkul Range Office,Rajarkul Range Office,10:20,10,20,,SRID=EPSG:4326;POINT(92.125297 21.361678),EPSG:4326,92.825297,20.661678,"Chittagong
+Cox'S Bazar
+Ramu
+Khuniapalong",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,216,Rajarkul Range,568,Upparreju,Upparreju,,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful Islam, Forester",1,Accessible - Sampled completely,,,,3_3d3cd190-07fc-4b42-b894-25ed79f3f04b.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,176,,55,,SRID=EPSG:4326;POINT(21.362190 92.125280),EPSG:4326,21.36219,92.12528,3_206fffda-4aa4-4b6e-aced-87ee783e5383.jpg,Unused tubewel.,3_2a02213c-e0e5-4dd8-a3c1-6dff7eb244ac.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,,16:34,16,34
+234,22/11/2016,2016,11,22,1,,FD Office,08:28,8,28,18,Dohajari Range Office,Dohajari Range Office,08:35,8,35,,SRID=EPSG:4326;POINT(92.108630 22.161678),EPSG:4326,92.80863,21.461678,"Chittagong
+Chittagong
+Chandanaish
+Dohazari",999,chittagong south forest division,Other,197,Dohazari Range,512,Lalutia,Lalutia,,2,,Inventory Team 2,Md. Anisur Rahman,Uhlamong Chowdhury,1,Accessible - Sampled completely,3,,Restricted area,4_059e5d4d-6e4f-4d8f-bb39-a9831bf9058e.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,56,,14,,SRID=EPSG:4326;POINT(92.108540 22.161580),EPSG:4326,92.10854,22.16158,4_d338aed6-826c-411a-9dc8-1ea620c0e55b.jpg,Tin shade house,4_9a644aa4-6225-42b2-af8f-d3a21e9f7706.jpg,1,,FD Office,999,lalutia,Other,Plot was located within kazi poultry farm. Lf 1 is composed of 2 tin shade poultry hose.,05:20,5,20
+945,23/11/2016,2016,11,23,1,,FD Office,08:00,8,0,6,Karerhat Range Office,Karerhat Range Office,09:30,9,30,,SRID=EPSG:4326;POINT(91.641963 22.936678),EPSG:4326,92.341963,22.236678,"Chittagong
+Chittagong
+Fatikchhari
+Bagan Bazar",999,chittagong north forest division,Other,176,Karerhat Range,999,koyla,Other,,1,,Inventory Team 1,Md. Shahin Kabir,Md. Sarawar Jahan,1,Accessible - Sampled completely,,,,5_00429c2f-6659-413f-83ea-ee69188e9fa8.jpg,11:29,11,29,1,Centre,1,,Tree,MYR/Syz/pra,Syzygium praecox,,,,29,198,,9.5,,SRID=EPSG:4326;POINT(91.641920 22.936600),EPSG:4326,91.64192,22.9366,5_d1e85c2a-6c08-4c92-ba6f-1f1972ff439c.jpg,,5_3a41d84a-bf5a-46c2-a03d-0f99a7fda872.jpg,1,,FD Office,6,Karerhat Range Office,Karerhat Range Office,,13:34,13,34
+309,23/11/2016,2016,11,23,1,,FD Office,08:45,8,45,70,Rajarkul Range Office,Rajarkul Range Office,10:00,10,0,,SRID=EPSG:4326;POINT(92.091963 21.386678),EPSG:4326,92.791963,20.686678,"Chittagong
+Cox'S Bazar
+Ramu
+Kauarkhop",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,216,Rajarkul Range,566,Rajarkul,Rajarkul,,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful islam, Fr.",1,Accessible - Sampled completely,,,,6_9fb1ce85-d86c-4f88-a350-da9e47614105.jpg,11:29,11,29,1,Centre,1,,Tree,MIM/Aca/aur,Acacia auriculiformis,,,,8.5,198,,144,,SRID=EPSG:4326;POINT(21.387900 92.092380),EPSG:4326,21.3879,92.09238,6_889ead13-032c-44c6-b063-02e3a5925898.jpg,Healthy tree boundray of plantation of 2013-14 at rajarkul beat in rajarkul range.,6_660d6767-1486-4ab0-958a-e61f4bf54831.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,Near the border line of ramu cantonment.,16:13,16,13
+273,23/11/2016,2016,11,23,1,,FD Office,09:06,9,6,999,lalutia beat office,Other,09:45,9,45,,SRID=EPSG:4326;POINT(92.091963 22.136678),EPSG:4326,92.791963,21.436678,"Chittagong
+Chittagong
+Satkania
+Dharmapur",999,chittagong south forest division,Other,197,Dohazari Range,512,Lalutia,Lalutia,,2,,Inventory Team 2,Md. Anisur Rahman,Uhlamong Chowdhury,1,Accessible - Sampled completely,,,,7_ebde6317-ef1d-4c89-818e-9bb934780cbb.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,230,,262,,SRID=EPSG:4326;POINT(92.093870 22.138140),EPSG:4326,92.09387,22.13814,7_c7a83a20-75ed-412f-a4c6-b7fa61bf5952.jpg,Pillar of a building,7_76599451-310b-4f78-9435-14abb385f81c.jpg,1,,FD Office,999,dhopachari beat office,Other,Entire paddy field,14:53,14,53
+1711,23/11/2016,2016,11,23,2,hotel mohona,Another plot / Other,07:33,7,33,,,,09:33,9,33,,SRID=EPSG:4326;POINT(91.141963 22.336678),EPSG:4326,91.841963,21.636678,"Chittagong
+Noakhali
+Hatiya
+Char Ishwar",40,Noakhali Coastal Forest,Noakhali Coastal Forest,313,Nalchira Range,999,oskhali,Other,Bangla bazar,13,,Inventory Team 13,Abul kalam azad,Mizanur rahman,1,Accessible - Sampled completely,,,,8_b0562721-18fa-4c85-a100-394d4afd598a.jpg,11:29,11,29,1,Centre,4,,House/structure,ARE/Coc/nuc,Cocos nucifera,,,,32.2,112,,104,,SRID=EPSG:4326;POINT(91.141030 22.337010),EPSG:4326,91.14103,22.33701,8_1b345b1d-1cf9-4bb8-bdc6-b1df07a1ff7a.jpg,"Khan shaber bari,hamidullah village,purba gamsakhali ,ward no 5,charishar,hatiy",8_677d210f-3ec3-4210-947f-342cbe576c88.jpg,2,1710,Another plot / Other,,,,,12:06,12,6
+1710,23/11/2016,2016,11,23,2,1711,Another plot / Other,12:11,12,11,,,,01:12,1,12,,SRID=EPSG:4326;POINT(91.158630 22.311678),EPSG:4326,91.85863,21.611678,"Chittagong
+Noakhali
+Hatiya
+Char Ishwar",40,Noakhali Coastal Forest,Noakhali Coastal Forest,313,Nalchira Range,999,nalchira,Other,,13,,Inventory Team 13,Abul kalam azad,Mizanur rahman,1,Accessible - Sampled completely,,,,9_18ffbf0e-ac2a-446d-8ab1-79df98ea9c26.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,146,,130,,SRID=EPSG:4326;POINT(91.157910 22.312630),EPSG:4326,91.15791,22.31263,9_8f2c79f1-7960-4d58-a33e-63713f700b71.jpg,"Adinathkumarer bari,charlatia,ward no 7,oskhali,hatiya",9_a760f19a-e8bb-4558-ba97-032f60a88564.jpg,2,hotel mohona,Another plot / Other,,,,,05:26,5,26
+1706,24/11/2016,2016,11,24,2,hotel mohona,Another plot / Other,07:21,7,21,,,,09:21,9,21,,SRID=EPSG:4326;POINT(91.125296 22.236678),EPSG:4326,91.825296,21.536678,"Chittagong
+Noakhali
+Hatiya
+Burir Char",40,Noakhali Coastal Forest,Noakhali Coastal Forest,314,Sagoria Range,,,,,13,,Inventory Team 13,Abul kalam azad,Mizanur rahman,1,Accessible - Sampled completely,,,,10_9a30cd45-cdac-4f11-a6e7-203e60dccc40.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,226,,16.45,,SRID=EPSG:4326;POINT(91.125260 22.236560),EPSG:4326,91.12526,22.23656,10_6ab0dc5c-4ea2-4066-8cc3-0eba8faf0e03.jpg,"Abul hossen,gullakhali,surjomukhi,burirchar,wardno 9,hatiya",10_3b79184a-4730-4b90-8d89-24ae269623e2.jpg,2,hotel mohona,Another plot / Other,,,,,04:40,4,40
+947,24/11/2016,2016,11,24,1,,FD Office,08:00,8,0,6,Karerhat Range Office,Karerhat Range Office,09:15,9,15,,SRID=EPSG:4326;POINT(91.691963 22.961678),EPSG:4326,92.391963,22.261678,"Chittagong
+Chittagong
+Fatikchhari
+Bagan Bazar",999,Chittagong North Forest Division,Other,176,Karerhat Range,999,Andharmanik,Other,,1,,Inventory Team 1,Md. Shahin Kabir,Md. Sawarar Jahan,1,Accessible - Sampled completely,,,,11_b3516c0a-4d93-495c-985a-e2f4468ab584.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,175,,9.9,,SRID=EPSG:4326;POINT(91.691970 22.961590),EPSG:4326,91.69197,22.96159,11_d5762469-8eb1-48c0-b10b-ad5c29d41484.jpg,"RP is the north-western part of a house that belongs to Md.Shahabuddin, Village: Motinnagar, Fatikchhari, Chittagong. It is from 9.9 m distance from the subplot 1.",11_bd2720c7-5c1b-471a-b1ce-da1fce0bad9d.jpg,1,,FD Office,6,Karerhat Range Office,Karerhat Range Office,,15:15,15,15
+950,25/11/2016,2016,11,25,1,,FD Office,08:30,8,30,6,Karerhat Range Office,Karerhat Range Office,08:50,8,50,,SRID=EPSG:4326;POINT(91.558630 22.936678),EPSG:4326,92.25863,22.236678,"Chittagong
+Chittagong
+Mirsharai
+Karerhat",999,Chittagong North Forest Division,Other,176,Karerhat Range,465,Karerhat,Karerhat,,1,,Inventory Team 1,Md. Shahin Kabir,Md. Sarawar Jahan,1,Accessible - Sampled completely,,,,12_bd9893ae-1063-4450-b219-7d576d6476b6.jpg,11:29,11,29,1,Centre,96,Tubewell,Other,,,,,,,183,,8.3,,SRID=EPSG:4326;POINT(91.558680 22.936760),EPSG:4326,91.55868,22.93676,12_5d69d386-9c82-4278-9900-b7c6aee51e0c.jpg,Rp is at Haji Abdur Rouf Mia's house. Southern part of a house.,12_612a94d5-50a0-4318-bf7a-0aeaac18ab95.jpg,1,,FD Office,6,Karerhat Range Office,Karerhat Range Office,,12:50,12,50
+233,24/11/2016,2016,11,24,1,,FD Office,09:56,9,56,999,Dhopachari beat Office,Other,12:15,12,15,,SRID=EPSG:4326;POINT(92.108630 22.286678),EPSG:4326,92.80863,21.586678,"Chittagong
+Chittagong
+Chandanaish
+Dhopachhari",999,chittagong south forest division,Other,197,Dohazari Range,999,Dhopachari beat office,Other,,2,,Inventory Team 2,Md. Anisur Rahman,Uhlamong Chowdhury,1,Accessible - Sampled completely,,,,13_1f929b0c-cd87-49db-bb2d-84041fb6c492.jpg,11:29,11,29,1,Centre,1,,Tree,RUB/Mor/ang,Morinda angustifolia,,,,103.2,345,,40.65,,SRID=EPSG:4326;POINT(92.108760 22.286320),EPSG:4326,92.10876,22.28632,13_0e4ce14b-80b6-4ddd-b44f-29e5cb9a6cc4.jpg,Big Erected Tree,13_23397198-0064-4d3a-9da6-6247a40f90ad.jpg,1,,FD Office,999,boitoroni beat office,Other,,05:10,5,10
+272,25/11/2016,2016,11,25,1,,FD Office,08:00,8,0,18,Dohajari Range Office,Dohajari Range Office,10:36,10,36,,SRID=EPSG:4326;POINT(91.975297 22.136678),EPSG:4326,92.675297,21.436678,"Chittagong
+Chittagong
+Satkania
+Charati",999,Chittagong South Forest Division,Other,197,Dohazari Range,512,Lalutia,Lalutia,,2,,Inventory Team 2,Md. Anisur Rahman,Uhlamong Chowdhury,1,Accessible - Sampled completely,,,,14_e28aaf8e-5242-4007-bec4-9c8424f06ea4.jpg,11:29,11,29,1,Centre,1,,Tree,SAP/Lit/chi,Litchi chinensis,,,,30.7,92,,18.24,,SRID=EPSG:4326;POINT(91.975430 22.136720),EPSG:4326,91.97543,22.13672,14_ab4fda59-96f7-4ce0-9005-cb8b926de7a9.jpg,The tree standing on the slope of a hill,14_19115496-5c44-4a2e-a5e6-68ddb7d3a401.jpg,2,,Another plot / Other,,,,,16:15,16,15
+130,24/11/2016,2016,11,24,1,,FD Office,06:55,6,55,70,Rajarkul Range Office,Rajarkul Range Office,10:01,10,1,,SRID=EPSG:4326;POINT(92.175297 21.311678),EPSG:4326,92.875297,20.611678,"Chittagong
+Bandarban
+Naikhongchhari
+Ghumdum",29,Lama Forest,Lama Forest,229,Naikkhingchari Range,999,Reju,Other,"Reju beat, naikkhonchori Range",3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful Islam, Fr.",1,Accessible - Sampled completely,,,,15_e1bc21d9-e80c-42a4-a3e7-e8bf63dcabb6.jpg,11:29,11,29,1,Centre,1,,Tree,MOR/Fic/beg,Ficus benghalensis,,,,61.6,215,,12.2,,SRID=EPSG:4326;POINT(21.311570 92.175290),EPSG:4326,21.31157,92.17529,15_11b78547-3157-467d-bac9-334629dab40b.jpg,,15_c9ddfa99-e0e9-49ab-a424-0077907eb6a5.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,"258 meter north east from the monjoypara, naikkhhonchori, bandarban bgb camp office.",16:55,16,55
+307,25/11/2016,2016,11,25,1,,FD Office,08:02,8,2,70,Rajarkul Range Office,Rajarkul Range Office,10:14,10,14,,SRID=EPSG:4326;POINT(92.158630 21.436678),EPSG:4326,92.85863,20.736678,"Chittagong
+Cox'S Bazar
+Ramu
+Kachhapia",26,Cox'sbazar North Forest,Cox'sbazar North  Forest,206,Bakkhali Range,774,Bakkhali,Bakkhali,,3,,Inventory Team 3,"Mohammad Sohal Rana, ACF","Saiful Islam, Fr",1,Accessible - Sampled completely,,,,16_d7de11f0-755c-4038-8f7e-006c59a15c50.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,96,,229,,SRID=EPSG:4326;POINT(21.436880 92.156460),EPSG:4326,21.43688,92.15646,16_a5d98a10-a790-46d7-87f5-b89b9af125c2.jpg,Old broken bridge.,16_71234fba-1e7d-440f-ac1a-0ec4d810c439.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,,16:56,16,56
+1509,24/11/2016,2016,11,24,2,,Another plot / Other,12:30,12,30,,,,01:30,1,30,,SRID=EPSG:4326;POINT(90.741963 22.711678),EPSG:4326,91.441963,22.011678,"Barisal
+Bhola
+Daulatkhan
+Madanpur",38,Bhola Coastal Forest,Bhola Coastal Forest,,,999,tulatali camp,Other,,11,,Inventory Team 11,Md Farid Meah,Md  Abu. Sufian,1,Accessible - Sampled completely,,,,17_09c1189b-598e-4087-9483-d435f1eafe07.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,188,,189,,SRID=EPSG:4326;POINT(90.742280 22.713340),EPSG:4326,90.74228,22.71334,,PKSouth west corner of Fish. Storage  center,17_7c63d341-67ec-49fa-9e62-bb603084fa3f.jpg,1,,FD Office,999,Sashiganj  Beat. Office,Other,,05:11,5,11
+1510,24/11/2016,2016,11,24,1,,FD Office,05:50,5,50,150,Bhola Coastal Division,Bhola Coastal Division,08:28,8,28,,SRID=EPSG:4326;POINT(90.708630 22.711678),EPSG:4326,91.40863,22.011678,"Barisal
+Bhola
+Daulatkhan
+Madanpur",38,Bhola Coastal Forest,Bhola Coastal Forest,294,Bhola HQ Range,999,Tulataoli camp,Other,,11,,Inventory Team 11,Md. Farid meah,Md. Abu sufian,1,Accessible - Sampled completely,,,,18_3abbdcf4-fb3e-43d1-a9be-1de9d0bf93fa.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,253,,185,,SRID=EPSG:4326;POINT(90.710380 22.712170),EPSG:4326,90.71038,22.71217,18_db5a2e4b-a01b-4b93-8734-bc02cfbb5836.jpg,South West corner of Kalu. Majhir  Bari,18_f813e6af-fcf5-4a57-84ba-d9507afa57b6.jpg,2,,Another plot / Other,,,,,12:20,12,20
+1525,25/11/2016,2016,11,25,1,,FD Office,08:15,8,15,89,Daulat Khan Range Office,Daulat Khan Range Office,09:55,9,55,,SRID=EPSG:4326;POINT(90.891963 22.461678),EPSG:4326,91.591963,21.761678,"Barisal
+Bhola
+Tazumuddin
+Sonapur",38,Bhola Coastal Forest,Bhola Coastal Forest,295,Daulatkhan Range,999,soshigong beat office,Other,,11,,Inventory Team 11,Md. Farid Meah,Md. Abu sufian,1,Accessible - Sampled completely,,,,19_1f333c3c-323f-4849-a661-dce058a2d4c4.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,24.2,19,,16.42,,SRID=EPSG:4326;POINT(90.891890 22.461540),EPSG:4326,90.89189,22.46154,19_27ec763a-5e61-419d-8d58-671d068c86f8.jpg,Forking tree,19_e536d420-64d7-41aa-ab85-c051264eb18f.jpg,1,,FD Office,,,,,04:30,4,30
+1712,26/11/2016,2016,11,26,2,hotel mohona,Another plot / Other,06:30,6,30,,,,11:16,11,16,,SRID=EPSG:4326;POINT(91.041963 22.361678),EPSG:4326,91.741963,21.661678,"Chittagong
+Noakhali
+Hatiya
+Char King",40,Noakhali Coastal Forest,Noakhali Coastal Forest,313,Nalchira Range,999,dalchar,Other,Charjonak,13,,Inventory Team 13,Abul kalam azad,Mizanur rahman,1,Accessible - Sampled completely,,,,20_fe30ce68-9385-47e0-97e0-e761d5e52295.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,26,300,,2.9,,SRID=EPSG:4326;POINT(91.041890 22.361730),EPSG:4326,91.04189,22.36173,20_7171959c-1d00-411c-b15c-dceeb0658a7e.jpg,,20_68cc8c6a-ab1b-45e1-955d-eb13bad2a8c7.jpg,2,hotel mohona,Another plot / Other,,,,,17:32,17,32
+1715,27/11/2016,2016,11,27,2,hotel mohona,Another plot / Other,07:05,7,5,,,,10:05,10,5,,SRID=EPSG:4326;POINT(91.075296 22.161678),EPSG:4326,91.775296,21.461678,"Chittagong
+Noakhali
+Hatiya
+Jahajmara",40,Noakhali Coastal Forest,Noakhali Coastal Forest,310,Jahajmara Range,999,jahajmara sadar beat,Other,,13,,Inventory Team 13,Abul kalam azad,Mizanur rahman,1,Accessible - Sampled completely,,,,21_243bf382-f241-404b-b54b-7dd6620f8205.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,83,,26.87,,SRID=EPSG:4326;POINT(91.075070 22.161620),EPSG:4326,91.07507,22.16162,21_3bb5447e-feaa-4dc0-ace5-ec6437073397.jpg,"Hoknader bari,vill_birbiri,jahajmara union,ward no -4, thana-oskhali,southwest corner",21_0cb5bfef-7340-4f58-b419-26ccfb391d4c.jpg,2,hotel mohona,Another plot / Other,,,,,14:31,14,31
+1707,25/11/2016,2016,11,25,2,1705,Another plot / Other,11:16,11,16,,,,01:16,1,16,,SRID=EPSG:4326;POINT(91.158630 22.161678),EPSG:4326,91.85863,21.461678,"Chittagong
+Noakhali
+Hatiya
+Burir Char",40,Noakhali Coastal Forest,Noakhali Coastal Forest,314,Sagoria Range,762,Char Alim,Char Alim,Rehania beat,13,,Inventory Team 13,Abul kalam azad,Mizanur rahman,1,Accessible - Sampled completely,,,,22_17aa41bd-c57b-4f6a-8afc-ce110b704e9d.jpg,11:29,11,29,1,Centre,96,canal (saihodkhali khal),Other,,,,,,,231,,218,,SRID=EPSG:4326;POINT(91.156990 22.160450),EPSG:4326,91.15699,22.16045,22_79ed1099-cf29-436b-9269-8e0fe52247b3.jpg,Saihodkhali khal,22_bbbed9b1-d985-4788-b7e9-77e1154d9ead.jpg,2,hotel mohona,Another plot / Other,,,,,04:59,4,59
+1705,25/11/2016,2016,11,25,2,hotel mohana,Another plot / Other,06:38,6,38,,,,08:38,8,38,,SRID=EPSG:4326;POINT(91.175296 22.261678),EPSG:4326,91.875296,21.561678,"Chittagong
+Noakhali
+Hatiya
+Burir Char",40,Noakhali Coastal Forest,Noakhali Coastal Forest,313,Nalchira Range,999,nalchira,Other,Sagoria range,13,,Inventory Team 13,Abul kalam azad,Mizanur Rahman,1,Accessible - Sampled completely,,,,23_5bb5a911-02a5-4e09-ba00-62aaaa5dc227.jpg,11:29,11,29,1,Centre,1,,Tree,MIM/Sam/sam,Samanea saman,,,,36.5,85,,61,,SRID=EPSG:4326;POINT(91.174720 22.261610),EPSG:4326,91.17472,22.26161,23_706a7cd6-353e-477f-b3c3-8e5e7efe1cbf.jpg,"Aslam dopaderer barir tree,sunnerchar,ward no 3,burirchar",23_b070c679-f075-498a-8e8a-0759baf8c985.jpg,2,1707,Another plot / Other,,,,,12:40,12,40
+949,26/11/2016,2016,11,26,1,,FD Office,07:30,7,30,6,Karerhat Range Office,Karerhat Range Office,08:15,8,15,,SRID=EPSG:4326;POINT(91.491963 22.886678),EPSG:4326,92.191963,22.186678,"Chittagong
+Chittagong
+Mirsharai
+Dhum",999,Chittagong North Forest Division,Other,182,Mirershari Range,480,Jorarganj,Jorarganj,,1,,Inventory Team 1,Md. Shahin Kabir,Md. Sarawar Jahan,1,Accessible - Sampled completely,,,,24_593246df-db29-46ab-bc30-33e57b12f8dc.jpg,11:29,11,29,1,Centre,96,border pillar of a crop field,Other,,,,,,,198,,57,,SRID=EPSG:4326;POINT(91.412100 22.887150),EPSG:4326,91.4121,22.88715,24_1b12062a-4047-463e-b244-86938192f6dc.jpg,"RP is at the north-western edge of Bahar Mia's paddy field, a small border piller.",24_bc67acca-48d9-4e33-be93-df24328fab86.jpg,2,257,Another plot / Other,,,,,10:50,10,50
+240,27/11/2016,2016,11,27,1,,FD Office,08:25,8,25,6,Karerhat Range Office,Karerhat Range Office,10:17,10,17,,SRID=EPSG:4326;POINT(91.641963 22.836678),EPSG:4326,92.341963,22.136678,"Chittagong
+Chittagong
+Fatikchhari
+Dantmara",999,Chittagong North Forest Division,Other,181,Hasnabad Range,477,Hasnabad,Hasnabad,,1,,Inventory Team 1,Md. Shahin kabir,Md. Sarawar Jahan,1,Accessible - Sampled completely,,,,25_1f8fad71-4e41-46fc-af80-2840801aab78.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,320,,14,,SRID=EPSG:4326;POINT(91.642020 22.836580),EPSG:4326,91.64202,22.83658,25_c112a287-77f0-4b15-8222-777e3c202030.jpg,"RP is at North-Western corner of a house belongs to Md. Shafikul Islam, Vill: Ghorkata, Dantmara, Fatikchhori, Chittagong.",25_dfae1974-5fea-4940-bcc3-fcecab77665f.jpg,1,,FD Office,6,Karerhat Range Office,Karerhat Range Office,,15:17,15,17
+257,26/11/2016,2016,11,26,2,949,Another plot / Other,11:10,11,10,,,,12:05,12,5,,SRID=EPSG:4326;POINT(91.541963 22.786678),EPSG:4326,92.241963,22.086678,"Chittagong
+Chittagong
+Mirsharai
+Mithanala",999,Chittagong North Forest Division,Other,182,Mirershari Range,479,Gobania,Gobania,,1,,Inventory Team 1,Md. Shahin Kabir,Md. Sarawar Jahan,2,Partially accessible,4,,Water,26_88120dd7-9e19-4389-b728-af5dd3949bae.jpg,11:29,11,29,1,Centre,96,RP is the wall' corner of graveyard by subway.,Other,,,,,,,347,,35.6,,SRID=EPSG:4326;POINT(91.542050 22.786370),EPSG:4326,91.54205,22.78637,26_afdfd813-3c93-46f3-b3a1-e7c14d8f9f2c.jpg,"RP is the southe-eastern part of a big pond of Mojurullaj Bhuiya, Mithanala, Mirsorai, Chittagong.",26_6444f57e-f39d-4cd5-afb6-fb4aefb37dc7.jpg,1,,FD Office,6,Karerhat Range Office,Karerhat Range Office,,05:02,5,2
+135,26/11/2016,2016,11,26,1,,FD Office,08:03,8,3,70,Rajarkul Range Office,Rajarkul Range Office,12:04,12,4,,SRID=EPSG:4326;POINT(92.158630 21.411678),EPSG:4326,92.85863,20.711678,"Chittagong
+Bandarban
+Naikhongchhari
+Naikhongchhari",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,216,Rajarkul Range,566,Rajarkul,Rajarkul,,3,,Inventory Team 3,"Mohammad sohal rana, Acf","Saiful islam, Fr",1,Accessible - Sampled completely,,,,27_74fec1ec-383f-4b0f-87d2-fb1b35a1b53b.jpg,11:29,11,29,1,Centre,96,jaillachori chora,Other,,,,,,,168,,171,,SRID=EPSG:4326;POINT(21.413190 92.158330),EPSG:4326,21.41319,92.15833,27_5f033772-fa24-4fc0-80a1-1abb0fac7527.jpg,Jaillachori chora,27_9a99fbfa-1c54-41c9-9c97-f13d94e413b5.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,,17:58,17,58
+314,27/11/2016,2016,11,27,1,,FD Office,06:30,6,30,70,Rajarkul Range Office,Rajarkul Range Office,12:43,12,43,,SRID=EPSG:4326;POINT(92.191963 21.036678),EPSG:4326,92.891963,20.336678,"Chittagong
+Cox'S Bazar
+Teknaf
+Whykong",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,212,Shilkhali Range,999,shilkhali,Other,,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful Islam, Fr",2,Partially accessible,2,,Hazardous,28_08506e3f-a25b-45e0-8ad3-bfec84c10f3a.jpg,11:29,11,29,1,Centre,96,Dhakchora Chora,Other,,,,,,,323,,14,,SRID=EPSG:4326;POINT(21.036600 92.192040),EPSG:4326,21.0366,92.19204,28_623d1510-4330-488a-91e2-7e0ba2ed2d3a.jpg,Dhakchori chorar matha,28_362cc694-2a7d-4475-baf0-bfdafada536b.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,,17:06,17,6
+255,28/11/2016,2016,11,28,1,,FD Office,08:16,8,16,6,Karerhat Range Office,Karerhat Range Office,12:37,12,37,,SRID=EPSG:4326;POINT(91.625296 22.761678),EPSG:4326,92.325296,22.061678,"Chittagong
+Chittagong
+Mirsharai
+Karerhat",999,Chittagong North,Other,,,999,Bortakiya,Other,,1,,Inventory Team 1,Md. Shahin Kabir,Md. Sarawar Jahan,1,Accessible - Sampled completely,96,"High dense forest and linear water bodies. high hill, dense bushes.",Other,29_120ed8f4-e3f0-401e-9769-6d0f70a2c817.jpg,11:29,11,29,1,Centre,1,,Tree,MOR/Fic/car,Ficus carica,,,,17.5,12,,25.3,,SRID=EPSG:4326;POINT(91.625200 22.761480),EPSG:4326,91.6252,22.76148,29_a0100850-ebad-4645-91de-00c8489ff0f3.jpg,,29_73439cab-8d88-4a5e-9218-ac0390f95aaa.jpg,1,,FD Office,6,Karerhat Range Office,Karerhat Range Office,,16:50,16,50
+1526,26/11/2016,2016,11,26,2,From 1523,Another plot / Other,12:45,12,45,,,,14:42,14,42,,SRID=EPSG:4326;POINT(90.825296 22.461678),EPSG:4326,91.525296,21.761678,"Barisal
+Bhola
+Tazumuddin
+Sonapur",38,Bhola Coastal Forest,Bhola Coastal Forest,295,Daulatkhan Range,999,Shashiganj  Beat,Other,,11,,Inventory Team 11,Md Farid Meah,Md  Abu  Sufian,3,Innacessible (LCCS parameters only),4,,Water,30_2f0cf857-5812-4aeb-bcfa-b33cf7f6948c.jpg,11:29,11,29,,,,,,,,,,,,,,,,SRID=null;POINT(null null),,,,,,30_88e19d25-8387-458e-83a8-9d9c66f98736.jpg,1,,FD Office,,,,The plot is in the river Meghna due to  land. erossion.,16:20,16,20
+1527,27/11/2016,2016,11,27,1,,FD Office,07:17,7,17,999,soshiganj  beat office,Other,11:59,11,59,,SRID=EPSG:4326;POINT(90.891963 22.511678),EPSG:4326,91.591963,21.811678,"Barisal
+Bhola
+Tazumuddin
+Sonapur",38,Bhola Coastal Forest,Bhola Coastal Forest,295,Daulatkhan Range,688,Char Zahiruddin,Char Zahiruddin,,11,,Inventory Team 11,Md. Farid maeh,Md. Abu sufian,1,Accessible - Sampled completely,,,,31_9e52b7ac-f0e8-4dc9-badd-1ad181cd8c0b.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,7,,299,,SRID=EPSG:4326;POINT(90.891570 22.509010),EPSG:4326,90.89157,22.50901,31_ed3fce39-90a1-470a-bc53-8310350e6b25.jpg,Md.Mahiuddin er bari,31_ba243731-9154-4c9b-9842-208d0a5f81e0.jpg,2,,Another plot / Other,,,,,14:19,14,19
+1522,28/11/2016,2016,11,28,2,Previous plot no - 1714,Another plot / Other,13:47,13,47,,,,14:34,14,34,,SRID=EPSG:4326;POINT(90.958630 22.386678),EPSG:4326,91.65863,21.686678,"Barisal
+Bhola
+Manpura
+Manpura",38,Bhola Coastal Forest,Bhola Coastal Forest,296,Manpura Range,690,Ramnewaz,Ramnewaz,,11,,Inventory Team 11,Md Farid Meah,Md Abu Sufian,1,Accessible - Sampled completely,,,,32_c63b0e1e-b211-47b5-8bf1-df5c1f9ad784.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,164,,180,,SRID=EPSG:4326;POINT(90.958150 22.388240),EPSG:4326,90.95815,22.38824,32_13f6d575-0585-4792-97e7-1a515ae7fc1e.jpg,South east corner of Latif Miar bari,32_7c2d7946-148d-4578-8e80-7772897443c1.jpg,1,,FD Office,92,Manpura Range Office,Manpura Range Office,,05:22,5,22
+1714,28/11/2016,2016,11,28,1,,FD Office,06:20,6,20,999,char Zahiruddin Beat,Other,10:04,10,4,,SRID=EPSG:4326;POINT(90.975296 22.486678),EPSG:4326,91.675296,21.786678,"Chittagong
+Noakhali
+Hatiya
+Harni",40,Noakhali Coastal Forest,Noakhali Coastal Forest,,,757,Bhuiyar char,Bhuiyar char,,11,,Inventory Team 11,Md. Farid meah,Md. Abu sufian,1,Accessible - Sampled completely,4,,Water,33_5cb419dc-9d54-418c-ac09-a4bf4df14ef1.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,327,,596,,SRID=EPSG:4326;POINT(90.978450 22.482150),EPSG:4326,90.97845,22.48215,33_87efe53b-8df8-4312-9a1d-12f01261000b.jpg,Only  house. in. the. charland,,2,,Another plot / Other,999,Char Zahiruddin. Beat,Other,The Plot. Is. in neely. accreated char,13:47,13,47
+1523,26/11/2016,2016,11,26,1,,FD Office,07:30,7,30,999,Shashigang Beat  Office,Other,09:39,9,39,,SRID=EPSG:4326;POINT(90.858630 22.336678),EPSG:4326,91.55863,21.636678,"Barisal
+Bhola
+Tazumuddin
+Chanchra",38,Bhola Coastal Forest,Bhola Coastal Forest,295,Daulatkhan Range,999,Shashiganj. Beat. Office,Other,,11,,Inventory Team 11,Md. Farid. Meah,Md. Abu. Sufian,1,Accessible - Sampled completely,,,,34_d46c7dd4-09c3-4ef6-8c90-09f3350e4087.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,139,,152,,SRID=EPSG:4326;POINT(90.857680 22.337720),EPSG:4326,90.85768,22.33772,34_095c597a-0df8-4427-bcec-1f05ef078edd.jpg,Shade in.agriculture  charland,34_ef82f84f-7532-4dd9-9f12-1cdb83e085c0.jpg,2,,Another plot / Other,,,,,12:45,12,45
+226,27/11/2016,2016,11,27,1,,FD Office,10:10,10,10,19,Chunati Range Office (CTG South),Chunati Range Office (CTG South),12:55,12,55,,SRID=EPSG:4326;POINT(92.025297 21.936678),EPSG:4326,92.725297,21.236678,"Chittagong
+Chittagong
+Banshkhali
+Puichhari",999,chittagong south forest division,Other,6,Chunati Range,999,Chunati wild life beat office,Other,,2,,Inventory Team 2,Md. Anisur Rahman,Uhlamong Chowdhury,1,Accessible - Sampled completely,,,,35_e1a22921-2dcb-488c-84ca-7e1a15b811db.jpg,11:29,11,29,1,Centre,1,,Tree,MOR/Fic/rac,Ficus racemosa,,,,9.8,159,,11.15,,SRID=EPSG:4326;POINT(92.025270 21.936750),EPSG:4326,92.02527,21.93675,35_67e77275-809d-4cf2-8ab8-5970d2abd415.jpg,The tree standing beside a ditch,35_2da6b8bc-692c-4bc1-b4e7-593b3fcfe76d.jpg,1,,FD Office,18,Dohajari Range Office,Dohajari Range Office,Hill plot,05:10,5,10
+232,26/11/2016,2016,11,26,1,,FD Office,08:12,8,12,18,Dohajari Range Office,Dohajari Range Office,09:16,9,16,,SRID=EPSG:4326;POINT(91.991963 22.161678),EPSG:4326,92.691963,21.461678,"Chittagong
+Chittagong
+Chandanaish
+Bailtali",999,Chittagong South Forest Division,Other,197,Dohazari Range,512,Lalutia,Lalutia,,2,,Inventory Team 2,Md. Anisur Rahman,Uhlamong Chowdhury,1,Accessible - Sampled completely,,,,36_d461e40e-0f00-4af6-be8e-bfdc6524328b.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,19,,41.7,,SRID=EPSG:4326;POINT(91.991970 22.162050),EPSG:4326,91.99197,22.16205,36_b3b0acc4-f8e7-4ea9-82aa-285e297f40e4.jpg,Southern pillar of the gate( Grave Yard Mosque),36_68448a5f-ed97-41ea-91bb-b053632e2c69.jpg,1,,FD Office,17,Padua Range Office,Padua Range Office,,05:08,5,8
+236,28/11/2016,2016,11,28,1,,FD Office,08:56,8,56,18,Dohajari Range Office,Dohajari Range Office,09:57,9,57,,SRID=EPSG:4326;POINT(92.025297 22.211678),EPSG:4326,92.725297,21.511678,"Chittagong
+Chittagong
+Chandanaish
+Ward No-09",999,chittagong south forest division,Other,197,Dohazari Range,512,Lalutia,Lalutia,,2,,Inventory Team 2,Md. Anisur Rahman,Uhlamong Chowdhury,1,Accessible - Sampled completely,,,,37_d0d5591e-325c-462b-8d81-2a499fd27b70.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,133,,40,,SRID=EPSG:4326;POINT(92.024970 22.211910),EPSG:4326,92.02497,22.21191,37_fdbc0df3-5ab2-483f-94b7-095e956567f8.jpg,"Pillar(South East) of a Building. Abdul Hamid(Katar residential), Madina store bari, kanchan para, 9 no. Ward, Chandanaish Upazilla.",37_1470675d-5710-494e-8664-d94b7d9560be.jpg,1,,FD Office,18,Dohajari Range Office,Dohajari Range Office,It was a homestead garden,02:41,2,41
+303,29/11/2016,2016,11,29,2,From Plot no. 318,Another plot / Other,15:11,15,11,,,,15:56,15,56,,SRID=EPSG:4326;POINT(92.058630 21.386678),EPSG:4326,92.75863,20.686678,"Chittagong
+Cox'S Bazar
+Ramu
+Dakshin Mithachhari",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,214,Panerchara Range,561,Panechara,Panechara,,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful islam, Fr.",1,Accessible - Sampled completely,,,,38_a8cbcd53-b5ea-4cff-89a2-f891bc958bb1.jpg,11:29,11,29,1,Centre,1,,Tree,ANA/Man/ind,Mangifera indica,,,,23.7,45,,23,,SRID=EPSG:4326;POINT(21.386550 92.058460),EPSG:4326,21.38655,92.05846,38_83fef39d-72b9-45d1-b898-d7455ec4c4c5.jpg,,38_12bcb239-396c-4b53-9596-c367e413c157.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,,17:25,17,25
+318,29/11/2016,2016,11,29,2,plot no. 317,Another plot / Other,11:30,11,30,,,,12:20,12,20,,SRID=EPSG:4326;POINT(92.141963 21.286678),EPSG:4326,92.841963,20.586678,"Chittagong
+Cox'S Bazar
+Ukhia
+Ratna Palong",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,217,Ukhia Range,999,balukhali,Other,Balukiya beat under ukhiya range,3,,Inventory Team 3,"Mohammad sahal rana, ACF","Saiful islam, Fr",1,Accessible - Sampled completely,,,,39_1a57d7c5-cc58-4185-a9a9-4b685cdd93b3.jpg,11:29,11,29,1,Centre,3,,Electricity Pole,,,,,,,264,,94,,SRID=EPSG:4326;POINT(21.286770 92.142880),EPSG:4326,21.28677,92.14288,39_353152f7-da02-445f-a9eb-aba72baea8f1.jpg,Beside balukia bazar,39_07251fc6-f671-4611-9909-32800c352915.jpg,2,plot no. 303,Another plot / Other,,,,,14:40,14,40
+317,29/11/2016,2016,11,29,1,,FD Office,06:04,6,4,70,Rajarkul Range Office,Rajarkul Range Office,07:08,7,8,,SRID=EPSG:4326;POINT(92.075297 21.261678),EPSG:4326,92.775297,20.561678,"Chittagong
+Cox'S Bazar
+Ukhia
+Palong Khali",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,218,Inani Range,579,Jaliapalong,Jaliapalong,,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful islam, Fr",1,Accessible - Sampled completely,,,,40_97d9779b-00ee-4f8f-8af5-ec73387cddc9.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,60,,145,,SRID=EPSG:4326;POINT(21.261020 92.074080),EPSG:4326,21.26102,92.07408,40_9a27584a-0999-4c7d-bdec-255990871c8a.jpg,South east corner,40_abecf492-4c25-4b83-a04c-d14a34e8790b.jpg,2,318,Another plot / Other,,,,,11:24,11,24
+238,29/11/2016,2016,11,29,1,,FD Office,09:03,9,3,6,Karerhat Range Office,Karerhat Range Office,10:41,10,41,,SRID=EPSG:4326;POINT(91.758630 22.786678),EPSG:4326,92.45863,22.086678,"Chittagong
+Chittagong
+Fatikchhari
+Bhujpur",999,Chittagong North Forest Division,Other,177,Narayanhat Range,469,Narayanhat,Narayanhat,,1,,Inventory Team 1,Md. Shahin Kabir,Md. Sarawar Jahan,1,Accessible - Sampled completely,,,,41_c7436d06-8b2b-49a4-8118-4541e3fb96e2.jpg,11:29,11,29,1,Centre,1,,Tree,MIM/Alb/chi,Albizia chinensis,,,,35,173,,10.65,,SRID=EPSG:4326;POINT(91.758560 22.786720),EPSG:4326,91.75856,22.78672,41_7418139b-f717-4667-8d7f-8a5993e2372b.jpg,,41_8535318c-53ac-4d9d-b039-a7a2bf2ffe7f.jpg,1,,FD Office,6,Karerhat Range Office,Karerhat Range Office,,15:51,15,51
+315,30/11/2016,2016,11,30,1,,FD Office,06:50,6,50,70,Rajarkul Range Office,Rajarkul Range Office,09:13,9,13,,SRID=EPSG:4326;POINT(92.175297 21.086678),EPSG:4326,92.875297,20.386678,"Chittagong
+Cox'S Bazar
+Teknaf
+Whykong",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,219,Whykheong Range,582,Raikhong,Raikhong,,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful islam, Fr.",1,Accessible - Sampled completely,,,,42_68215885-cd4f-43f5-9f9f-75e7587c917d.jpg,11:29,11,29,1,Centre,1,,Tree,TIL/Gre/ner,Grewia nervosa,,,,75,228,,139,,SRID=EPSG:4326;POINT(21.087510 92.176290),EPSG:4326,21.08751,92.17629,42_0cb331ef-6671-44fc-a885-757ba7125902.jpg,,42_83ea188c-3e5c-4f4b-81b8-21e0104537d2.jpg,2,316,Another plot / Other,,,,,12:59,12,59
+316,30/11/2016,2016,11,30,2,315,Another plot / Other,14:23,14,23,,,,14:38,14,38,,SRID=EPSG:4326;POINT(92.191963 21.086678),EPSG:4326,92.891963,20.386678,"Chittagong
+Cox'S Bazar
+Teknaf
+Whykong",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,219,Whykheong Range,582,Raikhong,Raikhong,,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful islam, Fr",1,Accessible - Sampled completely,,,,43_7187f555-0091-4d3f-bfab-889a84507f76.jpg,11:29,11,29,1,Centre,1,,Tree,MOR/Fic/beg,Ficus benghalensis,,,,97.8,240,,35,,SRID=EPSG:4326;POINT(21.086830 92.192250),EPSG:4326,21.08683,92.19225,43_3530482c-314d-47b1-a8d8-136a9861e4eb.jpg,,43_e110c8ed-448e-4e1b-bcb2-1495ce725570.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,,17:10,17,10
+306,13/12/2016,2016,12,13,1,,FD Office,07:36,7,36,70,Rajarkul Range Office,Rajarkul Range Office,09:36,9,36,,SRID=EPSG:4326;POINT(92.108630 21.486678),EPSG:4326,92.80863,20.786678,"Chittagong
+Cox'S Bazar
+Ramu
+Joarianala",26,Cox'sbazar North Forest,Cox'sbazar North  Forest,205,Joarinala Range,543,Joarianala,Joarianala,,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful islam, Fr.",1,Accessible - Sampled completely,,,,44_45d28399-c869-42b2-8e3e-b97b8307c8dd.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,355,,418,,SRID=EPSG:4326;POINT(21.482920 92.108970),EPSG:4326,21.48292,92.10897,44_f753e751-f16a-4dc8-8051-a08feafc5924.jpg,switch gate,44_68b2f29b-9295-4d66-aeab-0b492b6bcd53.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,,16:25,16,25
+1520,29/11/2016,2016,11,29,1,,FD Office,07:20,7,20,92,Manpura Range Office,Manpura Range Office,08:02,8,2,,SRID=EPSG:4326;POINT(90.975296 22.286678),EPSG:4326,91.675296,21.586678,"Barisal
+Bhola
+Manpura
+Hajirhat",38,Bhola Coastal Forest,Bhola Coastal Forest,296,Manpura Range,689,Hajirhat,Hajirhat,,11,,Inventory Team 11,Md Farid Meah,Md Abu Sufian,1,Accessible - Sampled completely,,,,45_3e759435-7a0c-4086-8aab-d0779946f73a.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,327,,31,,SRID=EPSG:4326;POINT(90.975490 22.286470),EPSG:4326,90.97549,22.28647,45_58721a0d-ef96-4ef1-8cb5-b554c0415ef5.jpg,North West corner of Md  Samsul hoques House,45_b9ba939e-4d45-4db7-8caa-20cc34c8c41f.jpg,2,1521,Another plot / Other,,,,,04:45,4,45
+1521,29/11/2016,2016,11,29,2,1520,Another plot / Other,11:45,11,45,,,,13:02,13,2,,SRID=EPSG:4326;POINT(91.025296 22.286678),EPSG:4326,91.725296,21.586678,"Barisal
+Bhola
+Manpura
+Hajirhat",38,Bhola Coastal Forest,Bhola Coastal Forest,296,Manpura Range,689,Hajirhat,Hajirhat,,11,,Inventory Team 11,Md Farid Meah,Md Abu Sufian,1,Accessible - Sampled completely,,,,46_bef7e3a7-781a-42c3-a025-76d0b7b90d7c.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,36.8,236,,9.6,,SRID=EPSG:4326;POINT(91.025360 22.286770),EPSG:4326,91.02536,22.28677,46_f44e43bc-d0d6-4fa1-b0df-a24ca96ec824.jpg,Forking above DBH,46_3142e6e3-9fb4-4907-b10e-81acf4b29d2a.jpg,1,,FD Office,92,Manpura Range Office,Manpura Range Office,,04:46,4,46
+1519,30/11/2016,2016,11,30,1,,FD Office,07:02,7,2,92,Manpura Range Office,Manpura Range Office,10:05,10,5,,SRID=EPSG:4326;POINT(90.891963 22.111678),EPSG:4326,91.591963,21.411678,"Barisal
+Bhola
+Manpura
+Dakshin Sakuchia",38,Bhola Coastal Forest,Bhola Coastal Forest,296,Manpura Range,999,pachakuralia beat,Other,,11,,Inventory Team 11,Md. Farid meah,Md. Abu sufian,1,Accessible - Sampled completely,,,,47_d6627fae-067e-488c-a79b-4a99a69edc13.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,15.6,175,,15.04,,SRID=EPSG:4326;POINT(90.891960 22.111800),EPSG:4326,90.89196,22.1118,47_73102def-0299-490d-a27f-201e3b70abd3.jpg,North weast corner of centre point. Forking above ground level,47_8da752fb-b940-444c-9a19-df5d0c92549e.jpg,1,,FD Office,999,pachakuralia beat office,Other,,13:59,13,59
+304,14/12/2016,2016,12,14,1,,FD Office,07:23,7,23,70,Rajarkul Range Office,Rajarkul Range Office,09:59,9,59,,SRID=EPSG:4326;POINT(92.175297 21.461678),EPSG:4326,92.875297,20.761678,"Chittagong
+Cox'S Bazar
+Ramu
+Garjania",26,Cox'sbazar North Forest,Cox'sbazar North  Forest,206,Bakkhali Range,546,Gilatoli,Gilatoli,,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful Islam, Fr.",1,Accessible - Sampled completely,,,,48_379995b6-8225-471b-8cb2-c566882a59e8.jpg,11:29,11,29,1,Centre,1,,Tree,MIM/Alb/ric,Albizia richardiana,,,,26.1,157,,110,,SRID=EPSG:4326;POINT(21.462580 92.174870),EPSG:4326,21.46258,92.17487,48_dafb1728-34e2-4ac0-a3ae-663456875331.jpg,,48_6180e3c8-765d-496a-aa07-e28ba24d4bae.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,,15:47,15,47
+1505,13/12/2016,2016,12,13,1,,FD Office,07:01,7,1,87,Char Fashion Range Office,Char Fashion Range Office,11:02,11,2,,SRID=EPSG:4326;POINT(90.825296 21.986678),EPSG:4326,91.525296,21.286678,"Barisal
+Bhola
+Char Fasson
+Jahanpur",38,Bhola Coastal Forest,Bhola Coastal Forest,,,691,Kalkini,Kalkini,,11,,Inventory Team 11,Md  Farid  Meah,Md  Abu. Sufian,1,Accessible - Sampled completely,,,,49_985903ad-a473-49c0-ac4d-bfa3a8cda7de.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,32,352,,3.44,,SRID=EPSG:4326;POINT(90.825290 21.986630),EPSG:4326,90.82529,21.98663,49_ad1d48ef-aeea-4f9a-879e-ac5f7d9bc0d0.jpg,,49_452bcc08-3344-401f-acb7-737f700dab6c.jpg,1,,FD Office,90,Dhal CharRange Office,Dhal CharRange Office,,16:51,16,51
+1502,15/12/2016,2016,12,15,1,,FD Office,07:14,7,14,90,Dhal CharRange Office,Dhal CharRange Office,10:27,10,27,,SRID=EPSG:4326;POINT(90.808630 21.911678),EPSG:4326,91.50863,21.211678,"Barisal
+Bhola
+Char Fasson
+Dhal Char",38,Bhola Coastal Forest,Bhola Coastal Forest,,,758,Dhal char,Dhal char,,11,,Inventory Team 11,Md Farid Meah,Md Abu Sufian,1,Accessible - Sampled completely,,,,50_33590a69-a6e7-4a5d-96e1-48f2bff0fa45.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,20.4,194,,1.7,,SRID=EPSG:4326;POINT(90.808620 21.911720),EPSG:4326,90.80862,21.91172,50_8d0703d2-3bd2-48f5-9e23-76883e26bfce.jpg,,50_b292d571-5bdf-4d9e-b4c8-8380e5e54364.jpg,1,,FD Office,90,Dhal CharRange Office,Dhal CharRange Office,,16:33,16,33
+1494,16/12/2016,2016,12,16,1,,FD Office,06:40,6,40,90,Dhal CharRange Office,Dhal CharRange Office,08:54,8,54,,SRID=EPSG:4326;POINT(90.675296 21.936678),EPSG:4326,91.375296,21.236678,"Barisal
+Bhola
+Char Fasson
+Char Kukri Mukri",38,Bhola Coastal Forest,Bhola Coastal Forest,,,999,Char Patila,Other,,11,,Inventory Team 11,Md Farid Meah,Md Abu sufian,1,Accessible - Sampled completely,,,,51_f9c86560-89ca-43b0-a5de-14f2739806e6.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,60.1,141,,6.7,,SRID=EPSG:4326;POINT(90.675320 21.936730),EPSG:4326,90.67532,21.93673,51_a01ab448-f279-41f8-8805-db0d59da7f52.jpg,,51_86ddc7e6-6f07-4e8c-84a4-d6642d337055.jpg,1,,FD Office,91,Char Kukri Mukri Range Office,Char Kukri Mukri Range Office,,15:22,15,22
+1501,14/12/2016,2016,12,14,1,,FD Office,07:17,7,17,90,Dhal CharRange Office,Dhal CharRange Office,10:36,10,36,,SRID=EPSG:4326;POINT(90.791963 21.886678),EPSG:4326,91.491963,21.186678,"Barisal
+Bhola
+Char Fasson
+Dhal Char",38,Bhola Coastal Forest,Bhola Coastal Forest,,,758,Dhal char,Dhal char,,11,,Inventory Team 11,Md Farid Meah,Md Abu Sufian,1,Accessible - Sampled completely,,,,52_f22922a5-105f-4c3a-b881-98915e541516.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,27.9,343,,3.1,,SRID=EPSG:4326;POINT(90.791960 21.886640),EPSG:4326,90.79196,21.88664,52_133a8d8e-4f5c-4482-a3d6-80ab01ad394f.jpg,,52_6ee1785a-31db-404e-8650-e24b42d84295.jpg,1,,FD Office,90,Dhal CharRange Office,Dhal CharRange Office,,16:15,16,15
+1499,17/12/2016,2016,12,17,1,,FD Office,07:04,7,4,91,Char Kukri Mukri Range Office,Char Kukri Mukri Range Office,09:54,9,54,,SRID=EPSG:4326;POINT(90.691963 21.986678),EPSG:4326,91.391963,21.286678,"Barisal
+Bhola
+Char Fasson
+Char Manika",38,Bhola Coastal Forest,Bhola Coastal Forest,,,694,Kukrimukri,Kukrimukri,,11,,Inventory Team 11,Md Farid Meah,Md Abu Sufian,1,Accessible - Sampled completely,,,,53_d884a2ae-06c8-4a4c-b246-fdbfbdadbab9.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,21.8,169,,4.5,,SRID=EPSG:4326;POINT(90.691960 21.986730),EPSG:4326,90.69196,21.98673,53_4c285d7e-091e-4b42-bccc-87dfd8adb62e.jpg,,53_63b73583-4d4e-413b-917e-2a37250c3d4f.jpg,1,,FD Office,91,Char Kukri Mukri Range Office,Char Kukri Mukri Range Office,,15:27,15,27
+308,15/12/2016,2016,12,15,1,,FD Office,07:04,7,4,70,Rajarkul Range Office,Rajarkul Range Office,09:57,9,57,,SRID=EPSG:4326;POINT(92.191963 21.436678),EPSG:4326,92.891963,20.736678,"Chittagong
+Cox'S Bazar
+Ramu
+Kachhapia",26,Cox'sbazar North Forest,Cox'sbazar North  Forest,206,Bakkhali Range,999,Kochhopia,Other,Gilatoli beat,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful islam, Fr",1,Accessible - Sampled completely,,,,54_d737b4ac-e122-4c06-8bfa-cd707cea3990.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,246,,172,,SRID=EPSG:4326;POINT(21.437290 92.193470),EPSG:4326,21.43729,92.19347,54_c0aa9dd5-5aad-4064-92cc-9028fa835d76.jpg,Kochhopia islamia balika madrasha.,54_a24f9635-3dab-46d6-b435-f25d36a84a49.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,,12:51,12,51
+1550,16/12/2016,2016,12,16,1,,FD Office,07:35,7,35,70,Rajarkul Range Office,Rajarkul Range Office,10:25,10,25,,SRID=EPSG:4326;POINT(92.308630 20.836678),EPSG:4326,93.00863,20.136678,"Chittagong
+Cox'S Bazar
+Teknaf
+Sabrang",41,Chittagong Coastal Forest,Chittagong Coastal Forest,327,Teknaf Range,794,Shahparidwip,Shahparidwip,,3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful islam, Fr.",2,Partially accessible,4,,Water,55_178a96f1-0212-4351-8238-436c9bd8c788.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,3,,117,,SRID=EPSG:4326;POINT(20.835630 92.308590),EPSG:4326,20.83563,92.30859,55_8c33a690-9652-48d5-8b28-0fbb4f8afd6e.jpg,South east corner of boundary wall.,55_c9366177-fc8b-459d-9ef4-13cdf24ad8ea.jpg,2,,Another plot / Other,,,,,16:38,16,38
+1551,17/12/2016,2016,12,17,2,,Another plot / Other,07:11,7,11,,,,10:25,10,25,,SRID=EPSG:4326;POINT(92.358630 20.736678),EPSG:4326,93.05863,20.036678,"Chittagong
+Cox'S Bazar
+Teknaf
+Sabrang",41,Chittagong Coastal Forest,Chittagong Coastal Forest,327,Teknaf Range,794,Shahparidwip,Shahparidwip,,3,,Inventory Team 3,"Moahammad sohal rana, ACF","Saiful islam, Fr.",3,Innacessible (LCCS parameters only),4,,Water,56_9250b500-49ca-4ee2-9dd6-874af0f4dc6f.jpg,11:29,11,29,,,,,,,,,,,,,,,,SRID=null;POINT(null null),,,,,,56_d22e19fb-c410-47bb-b308-5210a1d188c1.jpg,2,Plot No 311,Another plot / Other,,,,Inter tidal area,12:10,12,10
+1552,17/12/2016,2016,12,17,2,Plot No 311,Another plot / Other,14:54,14,54,,,,15:39,15,39,,SRID=EPSG:4326;POINT(92.341963 20.786678),EPSG:4326,93.041963,20.086678,"Chittagong
+Cox'S Bazar
+Teknaf
+Sabrang",41,Chittagong Coastal Forest,Chittagong Coastal Forest,327,Teknaf Range,794,Shahparidwip,Shahparidwip,,3,,Inventory Team 3,"Moahammad sohal rana, ACF","Saiful islam, Fr.",3,Innacessible (LCCS parameters only),4,,Water,57_b704ce46-19b8-4b66-9f6f-e018f8d8e4d1.jpg,11:29,11,29,,,,,,,,,,,,,,,,SRID=null;POINT(null null),,,,,,57_9cc8bf52-5494-42bb-a1ef-2ea863ab0c83.jpg,2,,Another plot / Other,,,,,16:34,16,34
+311,17/12/2016,2016,12,17,2,Plot no 1551,Another plot / Other,12:15,12,15,,,,12:47,12,47,,SRID=EPSG:4326;POINT(92.341963 20.736678),EPSG:4326,93.041963,20.036678,"Chittagong
+Cox'S Bazar
+Teknaf
+Sabrang",41,Chittagong Coastal Forest,Chittagong Coastal Forest,327,Teknaf Range,794,Shahparidwip,Shahparidwip,,3,,Inventory Team 3,"Mohammad Sohal Rana, ACF","Saiful islam, Fr.",3,Innacessible (LCCS parameters only),4,,Water,58_5bfd964c-f1d9-4883-883a-4f42e8b45ea4.jpg,11:29,11,29,,,,,,,,,,,,,,,,SRID=null;POINT(null null),,,,,,58_69ce3445-d22f-4cfb-b391-5e47cbc4cb64.jpg,2,Plot no 1552,Another plot / Other,,,,,14:49,14,49
+312,18/12/2016,2016,12,18,2,,Another plot / Other,07:51,7,51,,,,09:40,9,40,,SRID=EPSG:4326;POINT(92.241963 20.911678),EPSG:4326,92.941963,20.211678,"Chittagong
+Cox'S Bazar
+Teknaf
+Teknaf",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,212,Shilkhali Range,999,Rajarchora,Other,"Nearest Samlapor beat, shilkhali range.",3,,Inventory Team 3,"Mohammad sohal rana, ACF","Saiful islam, Fr.",1,Accessible - Sampled completely,,,,59_0f1792fd-4590-4002-9498-9d0f9a62e72f.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,52,,310,,SRID=EPSG:4326;POINT(20.909960 92.239670),EPSG:4326,20.90996,92.23967,59_85df4cd4-e00a-460b-923d-cdf98a733400.jpg,"Md. Aminullah, S/o Md. Jalil, vill. Noahakhali para. Boro dail union,  p.s. teknaf. Coxsbazar.",59_c6ed5fe2-290e-419a-a0b3-dc8b1867d778.jpg,2,,Another plot / Other,,,,,16:22,16,22
+313,19/12/2016,2016,12,19,2,,Another plot / Other,08:26,8,26,,,,10:38,10,38,,SRID=EPSG:4326;POINT(92.241963 20.961678),EPSG:4326,92.941963,20.261678,"Chittagong
+Cox'S Bazar
+Teknaf
+Teknaf",27,Cox'sbazar South Forest,Cox'sbazar South  Forest,211,Teknaf Range,999,Mochoni,Other,11 km south east from teknaf range,3,,Inventory Team 3,"Mohammad sohal rana, ACF (Due to another training , he is absence)","Saiful Islam, Fr.",1,Accessible - Sampled completely,,,,60_01eec41e-e111-4b4a-9ea1-a8799154b6ac.jpg,11:29,11,29,1,Centre,3,,Electricity Pole,,,,,,,267,,350,,SRID=EPSG:4326;POINT(20.961820 92.245320),EPSG:4326,20.96182,92.24532,60_25f26967-3ae0-4020-8ee4-a53f4596e981.jpg,,60_2aaeffca-04de-4064-86b4-0eeb54dc8c97.jpg,1,,FD Office,70,Rajarkul Range Office,Rajarkul Range Office,,15:54,15,54
+1495,17/12/2016,2016,12,17,1,,FD Office,06:58,6,58,91,Char Kukri Mukri Range Office,Char Kukri Mukri Range Office,09:48,9,48,,SRID=EPSG:4326;POINT(90.625296 21.911678),EPSG:4326,91.325296,21.211678,"Barisal
+Bhola
+Char Fasson
+Char Kukri Mukri",38,Bhola Coastal Forest,Bhola Coastal Forest,,,999,Kukrimukri,Other,,11,,Inventory Team 11,Md Farid Meah,Md Abu Sufian,1,Accessible - Sampled completely,,,,61_900ef988-41cd-45d1-a3ca-9b0923348ff2.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,26.7,103,,8,,SRID=EPSG:4326;POINT(90.625200 21.911660),EPSG:4326,90.6252,21.91166,61_57e044ef-3d58-4b7b-99c5-18ee598ef945.jpg,,61_05dd39d6-d382-42a2-84e1-cb35bd86e74f.jpg,2,,Another plot / Other,,,,,17:21,17,21
+1498,18/12/2016,2016,12,18,1,,FD Office,07:03,7,3,91,Char Kukri Mukri Range Office,Char Kukri Mukri Range Office,10:42,10,42,,SRID=EPSG:4326;POINT(90.608630 21.986678),EPSG:4326,91.30863,21.286678,"Barisal
+Bhola
+Char Fasson
+Char Manika",38,Bhola Coastal Forest,Bhola Coastal Forest,,,694,Kukrimukri,Kukrimukri,,11,,Inventory Team 11,Md Farid Meah,Md Abu Sufian,1,Accessible - Sampled completely,,,,62_f8f7c705-3394-424a-8381-44d0f0d81d09.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,53.8,220,,9.21,,SRID=EPSG:4326;POINT(90.608760 21.986760),EPSG:4326,90.60876,21.98676,62_334193e0-9e19-4e9e-b73c-dec61f6ae530.jpg,,62_67e6b7af-3e39-4993-85bf-8ec97a7491c8.jpg,1,,FD Office,91,Char Kukri Mukri Range Office,Char Kukri Mukri Range Office,,17:10,17,10
+1716,13/12/2016,2016,12,13,2,hotel mohona,Another plot / Other,07:01,7,1,56,Jahajmara Range Office,Jahajmara Range Office,08:57,8,57,,SRID=EPSG:4326;POINT(91.091963 22.111678),EPSG:4326,91.791963,21.411678,"Chittagong
+Noakhali
+Hatiya
+Jahajmara",40,Noakhali Coastal Forest,Noakhali Coastal Forest,310,Jahajmara Range,751,Char Kalam,Char Kalam,,13,,Inventory Team 13,Abul kalam Azad,Mizanur Rahman,1,Accessible - Sampled completely,,,,63_4549e131-205b-4f64-b5c9-ccee169bd4ad.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,38.1,260,,15.8,,SRID=EPSG:4326;POINT(91.092090 22.111660),EPSG:4326,91.09209,22.11166,63_3cba01a0-7fa8-40b6-b916-c5cbdc368f67.jpg,Northeast side of centre,63_b48fef00-b79c-4fcb-9edb-e776e3e057d7.jpg,1,,FD Office,56,Jahajmara Range Office,Jahajmara Range Office,,15:53,15,53
+1709,19/12/2016,2016,12,19,1,,FD Office,07:20,7,20,999,Bashkhali beat Office,Other,09:03,9,3,,SRID=EPSG:4326;POINT(91.125296 22.511678),EPSG:4326,91.825296,21.811678,"Chittagong
+Noakhali
+Hatiya
+Chandnandi",40,Noakhali Coastal Forest,Noakhali Coastal Forest,309,Charbata Range,999,bashkhali beat office,Other,Habibia range office,13,,Inventory Team 13,Abul kalam Azad,Mizanur Rahman,1,Accessible - Sampled completely,,,,64_ca0fd248-15c9-4550-a023-83c4ed0e4fc8.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,327,,27.3,,SRID=EPSG:4326;POINT(91.125490 22.511460),EPSG:4326,91.12549,22.51146,64_80b441ef-1da6-4ef0-b4d4-0a0ebd9cf034.jpg,northwesr corner of house .Kohinurer bari.ward no_6.Chanandi union.hatiya noakhali,64_473f2712-5637-4cb6-811a-1431e1e81dea.jpg,1,,FD Office,999,Bashkhali beat Office,Other,,16:36,16,36
+1724,18/12/2016,2016,12,18,1,1708,FD Office,08:07,8,7,999,Bashkhali beat Office,Other,11:30,11,30,,SRID=EPSG:4326;POINT(91.191963 22.561678),EPSG:4326,91.891963,21.861678,"Chittagong
+Noakhali
+Subarnachar
+Char Clerk",40,Noakhali Coastal Forest,Noakhali Coastal Forest,309,Charbata Range,999,bashkhali beat,Other,Habibia range office,13,,Inventory Team 13,Abul Kalam Azad,Mizanur Rahman,2,Partially accessible,4,,Water,65_57f9ba5a-b681-496f-836e-e2b46db6e944.jpg,11:29,11,29,2,North,4,,House/structure,,,,,,,320,,31.7,,SRID=EPSG:4326;POINT(91.192150 22.561810),EPSG:4326,91.19215,22.56181,65_53dd3c8d-b55d-42bf-8a46-43b43fb33dcd.jpg,Northwest corner of house.zituder bari.vill_nachirpur.p.o_ hatiya bazar.,65_1f4590f8-6562-45bb-a6c6-128f96e5cc07.jpg,1,,FD Office,999,Bashkhali beat Office,Other,,15:34,15,34
+1704,22/12/2016,2016,12,22,1,,FD Office,07:47,7,47,999,Bashkhali beat Office,Other,10:38,10,38,,SRID=EPSG:4326;POINT(91.208630 22.661678),EPSG:4326,91.90863,21.961678,"Chittagong
+Noakhali
+Companiganj
+Char Elahi",40,Noakhali Coastal Forest,Noakhali Coastal Forest,311,Char Alauddin Range,754,Char Alauddin HQ,Char Alauddin HQ,,13,,Inventory Team 13,Abul kalam Azad,Mizanur Rahman,1,Accessible - Sampled completely,,,,66_b4cf01c5-e2da-4abc-bab3-e72b29d31658.jpg,11:29,11,29,1,Centre,1,,Tree,ARE/Coc/nuc,Cocos nucifera,,,,31.2,284,,57,,SRID=EPSG:4326;POINT(91.209150 22.661540),EPSG:4326,91.20915,22.66154,66_656598a7-6bb6-4223-ac9a-bbcfe504f0bc.jpg,,66_c85931a9-3109-470c-ae83-3d12fb1801ca.jpg,1,,FD Office,999,Bashkhali beat Office,Other,,16:04,16,4
+1721,21/12/2016,2016,12,21,1,,FD Office,08:30,8,30,999,Bashkhali beat Office,Other,10:31,10,31,,SRID=EPSG:4326;POINT(91.158630 22.686678),EPSG:4326,91.85863,21.986678,"Chittagong
+Noakhali
+Noakhali Sadar (Sudharam)
+Noakhali",40,Noakhali Coastal Forest,Noakhali Coastal Forest,311,Char Alauddin Range,754,Char Alauddin HQ,Char Alauddin HQ,,13,,Inventory Team 13,Abul kalam Azad,Mizanur Rahman,1,Accessible - Sampled completely,,,,67_9f1a95f4-2716-4d09-916d-ccb5e0940f5d.jpg,11:29,11,29,1,Centre,1,,Tree,ARE/Pho/syl,Phoenix sylvestris,,,,29.8,225,,117,,SRID=EPSG:4326;POINT(91.159420 22.687430),EPSG:4326,91.15942,22.68743,67_0e442cbb-b53a-4847-a2a6-99e4fb589857.jpg,,67_cd2654cf-0ad5-44bd-a3d4-0feaf125b459.jpg,1,,FD Office,999,Barobakia beat Office,Other,,16:29,16,29
+1725,23/12/2016,2016,12,23,1,,FD Office,07:06,7,6,999,Bashkhali beat Office,Other,09:06,9,6,,SRID=EPSG:4326;POINT(91.225296 22.611678),EPSG:4326,91.925296,21.911678,"Chittagong
+Noakhali
+Subarnachar
+Char Clerk",40,Noakhali Coastal Forest,Noakhali Coastal Forest,311,Char Alauddin Range,754,Char Alauddin HQ,Char Alauddin HQ,,13,,Inventory Team 13,Abul Kalam Azad,Mizanur Rahman,1,Accessible - Sampled completely,,,,68_21aee604-b30c-44a1-b2fc-db08d6bc61d2.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,253,,36.6,,SRID=EPSG:4326;POINT(91.225560 22.611750),EPSG:4326,91.22556,22.61175,68_2b4b3f4a-a336-4b41-a017-47d3e8ef13e6.jpg,west side of the house (bariala Md.Ismail ).ward 7.mohamodpur.char clerk union.subarnachar .noahkhali,68_5d2a613e-c967-404c-94da-3931d4f55c12.jpg,1,,FD Office,999,Bashkhali beat Office,Other,,14:55,14,55
+1717,11/12/2016,2016,12,11,1,,FD Office,07:19,7,19,56,Jahajmara Range Office,Jahajmara Range Office,08:19,8,19,,SRID=EPSG:4326;POINT(91.108630 22.136678),EPSG:4326,91.80863,21.436678,"Chittagong
+Noakhali
+Hatiya
+Jahajmara",40,Noakhali Coastal Forest,Noakhali Coastal Forest,310,Jahajmara Range,751,Char Kalam,Char Kalam,,13,,Inventory Team 13,Abul kalam Azad,Mizanur Rahman,1,Accessible - Sampled completely,,,,69_7f1551ea-a2f9-4f0c-ac11-350b28396271.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,34.5,40,,13.42,,SRID=EPSG:4326;POINT(91.108570 22.136600),EPSG:4326,91.10857,22.1366,69_6e1015e0-23fc-4570-a16d-259620da1ccf.jpg,,69_0ebbf9fc-8750-4f89-bb75-42905b88b76b.jpg,1,,FD Office,56,Jahajmara Range Office,Jahajmara Range Office,,17:00,17,0
+1718,15/12/2016,2016,12,15,1,,FD Office,07:05,7,5,999,char Osman,Other,09:04,9,4,,SRID=EPSG:4326;POINT(91.008630 22.086678),EPSG:4326,91.70863,21.386678,"Chittagong
+Noakhali
+Hatiya
+Nijum Dip",40,Noakhali Coastal Forest,Noakhali Coastal Forest,310,Jahajmara Range,750,Char Osman,Char Osman,,13,,Inventory Team 13,Abul kalam azad,Mizanur rahman,1,Accessible - Sampled completely,,,,70_dd9e2cb5-ee14-4df8-94d5-535a2dfe4dc7.jpg,11:29,11,29,3,East,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,31.5,239,,50.9,,SRID=EPSG:4326;POINT(91.009030 22.086910),EPSG:4326,91.00903,22.08691,70_d5641627-83ff-4690-b2b9-b4a764fe108a.jpg,,70_ee87711b-37e8-4da0-897b-e4483b529f9a.jpg,1,,FD Office,999,char osman beat,Other,,16:26,16,26
+1723,20/12/2016,2016,12,20,1,,FD Office,07:16,7,16,999,Bashkhali beat Office,Other,09:14,9,14,,SRID=EPSG:4326;POINT(91.158630 22.636678),EPSG:4326,91.85863,21.936678,"Chittagong
+Noakhali
+Subarnachar
+Char Amanullah",40,Noakhali Coastal Forest,Noakhali Coastal Forest,309,Charbata Range,999,bashkhali beat office,Other,Habibia range office,13,,Inventory Team 13,Abul kalam Azad,Mizanur rahman,1,Accessible - Sampled completely,,,,71_ca97cdfc-f253-418c-8f90-b25f94f0880a.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,230,,37.29,,SRID=EPSG:4326;POINT(91.158850 22.636820),EPSG:4326,91.15885,22.63682,71_094c4afd-e194-4a2c-ad1d-9275afceff2e.jpg,Southwest corner of the hose.yusuf companyir bari.ward no 7. Char Amanullah .subarnachar.noahkhali.Azizia marketer east side,71_5151d3e9-27c4-47f6-a2e3-0f12f8452f20.jpg,1,,FD Office,999,Bashkhali beat Office,Other,,12:28,12,28
+1713,12/12/2016,2016,12,12,2,hotel mohona,Another plot / Other,07:49,7,49,56,Jahajmara Range Office,Jahajmara Range Office,10:49,10,49,,SRID=EPSG:4326;POINT(91.025296 22.436678),EPSG:4326,91.725296,21.736678,"Chittagong
+Noakhali
+Hatiya
+Harni",40,Noakhali Coastal Forest,Noakhali Coastal Forest,313,Nalchira Range,999,Gashierchar,Other,Dhalchar beat,13,,Inventory Team 13,Abul kalam azad,Mizanur Rahman,4,Non sampled,96,Pirate in the forest,Other,72_691430bb-c60e-4838-81bc-8cbfb9494110.jpg,11:29,11,29,,,,,,,,,,,,,,,,SRID=null;POINT(null null),,,,,,,2,hotel mohona,Another plot / Other,,,,Inaccessible,12:28,12,28
+1708,17/12/2016,2016,12,17,1,,FD Office,07:37,7,37,999,bashkhali beat office,Other,08:33,8,33,,SRID=EPSG:4326;POINT(91.158630 22.561678),EPSG:4326,91.85863,21.861678,"Chittagong
+Noakhali
+Hatiya
+Chandnandi",40,Noakhali Coastal Forest,Noakhali Coastal Forest,309,Charbata Range,999,bashkhali beat office,Other,Habibia range office,13,,Inventory Team 13,Abul kalam Azad,Mizanur Rahman,2,Partially accessible,4,,Water,73_d539fa5f-c340-4895-bd0e-307ddce7e265.jpg,11:29,11,29,1,Centre,4,,House/structure,,,,,,,222,,28.55,,SRID=EPSG:4326;POINT(91.159150 22.561870),EPSG:4326,91.15915,22.56187,73_109cb7bc-3e87-4e39-a65e-80e2979d888f.jpg,Northeast corner of centre  in subplot 3,73_14d13515-c6db-4190-8926-232b3e86e8e7.jpg,2,1724,Another plot / Other,,,,,16:23,16,23
+1720,16/12/2016,2016,12,16,1,,FD Office,07:11,7,11,999,char Osman,Other,11:39,11,39,,SRID=EPSG:4326;POINT(91.075296 22.061678),EPSG:4326,91.775296,21.361678,"Chittagong
+Noakhali
+Hatiya
+Nijum Dip",40,Noakhali Coastal Forest,Noakhali Coastal Forest,310,Jahajmara Range,750,Char Osman,Char Osman,,13,,Inventory Team 13,Abul kalam azad,Mizanur Rahman,1,Accessible - Sampled completely,,,,74_60fa93ca-10bb-4767-98b4-835d6b2fb753.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,30.5,153,,34.1,,SRID=EPSG:4326;POINT(91.075140 22.061960),EPSG:4326,91.07514,22.06196,74_ab9e699b-daa8-491c-86d4-1126b2d8ddd3.jpg,,74_8febb75a-8e0e-419b-b969-b0832889953a.jpg,1,,FD Office,56,Jahajmara Range Office,Jahajmara Range Office,,16:36,16,36
+1719,14/12/2016,2016,12,14,1,,FD Office,10:35,10,35,999,char osman,Other,11:36,11,36,,SRID=EPSG:4326;POINT(91.008630 22.036678),EPSG:4326,91.70863,21.336678,"Chittagong
+Noakhali
+Hatiya
+Nijum Dip",40,Noakhali Coastal Forest,Noakhali Coastal Forest,310,Jahajmara Range,750,Char Osman,Char Osman,,13,,Inventory Team 13,Abul kalam Azad,Mizanur Rahman,1,Accessible - Sampled completely,,,,75_507280bf-2a41-44a5-bbc6-f8213554bb4f.jpg,11:29,11,29,1,Centre,96,road,Other,SON/Son/ape,Sonneratia apetala,,,,,137,,59.4,,SRID=EPSG:4326;POINT(91.008270 22.037040),EPSG:4326,91.00827,22.03704,75_2116aba6-7f8d-45ad-9f6c-58cdbf76f909.jpg,shoto pul road nijumdip(main road),75_9ef944c6-da67-4e0d-8374-028d8b54b06c.jpg,1,,FD Office,999,char osman,Other,,16:52,16,52
+1524,21/12/2016,2016,12,21,1,,FD Office,06:30,6,30,89,Daulat Khan Range Office,Daulat Khan Range Office,12:21,12,21,,SRID=EPSG:4326;POINT(90.825296 22.386678),EPSG:4326,91.525296,21.686678,"Barisal
+Bhola
+Tazumuddin
+Chandpur",38,Bhola Coastal Forest,Bhola Coastal Forest,295,Daulatkhan Range,999,Tajumuddin Upajilla Nursery,Other,,11,,Inventory Team 11,Md. Farid meah,Md. Abu sufian,1,Accessible - Sampled completely,,,,76_ccebbd89-f15c-4bd9-aadb-f1e47b7d6adf.jpg,11:29,11,29,1,Centre,1,,Tree,MIM/Alb/pro,Albizia procera,,,,30.1,336,,42,,SRID=EPSG:4326;POINT(90.825500 22.386390),EPSG:4326,90.8255,22.38639,76_558538ee-90b3-497c-823c-558a861cdd81.jpg,,76_e971124d-015a-4d42-a765-8e2ba41dc81a.jpg,1,,FD Office,150,Bhola Coastal Division,Bhola Coastal Division,,15:50,15,50
+1500,20/12/2016,2016,12,20,1,,FD Office,07:20,7,20,91,Char Kukri Mukri Range Office,Char Kukri Mukri Range Office,10:40,10,40,,SRID=EPSG:4326;POINT(90.591963 22.011678),EPSG:4326,91.291963,21.311678,"Barisal
+Bhola
+Char Fasson
+Char Manika",38,Bhola Coastal Forest,Bhola Coastal Forest,297,Char Fasson Range,999,Char Manika,Other,,11,,Inventory Team 11,Md. Farid meah,Md. Abu sufian,1,Accessible - Sampled completely,,,,77_9ca61e28-07a1-4a32-b4c8-78c0cca24d77.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,38.2,237,,8,,SRID=EPSG:4326;POINT(90.591970 22.011700),EPSG:4326,90.59197,22.0117,77_29c7aaed-f755-4cd2-9fd0-3d0bfbbcd64d.jpg,,77_0ea2ab4a-5d31-4c9d-8d8b-39d24d83e420.jpg,1,,FD Office,91,Char Kukri Mukri Range Office,Char Kukri Mukri Range Office,,15:30,15,30
+253,29/11/2016,2016,11,29,1,,FD Office,07:41,7,41,18,Dohajari Range Office,Dohajari Range Office,10:20,10,20,,SRID=EPSG:4326;POINT(92.141963 22.061678),EPSG:4326,92.841963,21.361678,"Chittagong
+Chittagong
+Lohagara
+Padua",999,Chittagong South Forest Division,Other,196,Padua Range,510,Hangar,Hangar,,2,,Inventory Team 2,Md. Anisur Rahman,Uhlamong Chowdhury,1,Accessible - Sampled completely,,,,78_8f69d161-7968-41af-a35c-3724e7c6403f.jpg,11:29,11,29,1,Centre,1,,Tree,MIM/Aca/aur,Acacia auriculiformis,,,,8.8,171,,17.6,,SRID=EPSG:4326;POINT(92.141950 22.061810),EPSG:4326,92.14195,22.06181,78_dece862f-6f3d-4817-a9a6-78e72c994855.jpg,,78_00acb77b-d21a-46b7-a0a0-c3f74b39fdd0.jpg,1,,FD Office,18,Dohajari Range Office,Dohajari Range Office,"SP-1, SP-3 & SP-5 centres were in plain muddy grassland & SP-2, SP-4 centres were on slope of hill",15:50,15,50
+44,06/01/2017,2017,1,6,1,,FD Office,07:30,7,30,128,Chandpai RO,Chandpai RO,11:00,11,0,,SRID=EPSG:4326;POINT(89.658630 22.386678),EPSG:4326,90.35863,21.686678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,boddo mari tohal camp,Other,,9,,Inventory Team 9,Md.mahedi zzaman.Acf,Shahinoor rahman.Fr.,1,Accessible - Sampled completely,,,,79_d5db8b7b-5d68-4ab7-b203-ea017ab6dbdb.jpg,11:29,11,29,1,Centre,1,,Tree,VER/Avi/off,Avicennia officinalis,,,,39.5,280,,13.6,,SRID=EPSG:4326;POINT(89.658750 22.386660),EPSG:4326,89.65875,22.38666,79_cdc10fb3-8e86-46f1-99fc-6f0dc7b5c5df.jpg,,79_7b16f3b4-0dcb-4c1e-a50b-44b6e8882c47.jpg,1,,FD Office,128,Chandpai RO,Chandpai RO,,16:40,16,40
+42,07/01/2017,2017,1,7,1,,FD Office,07:15,7,15,128,Chandpai RO,Chandpai RO,08:00,8,0,,SRID=EPSG:4326;POINT(89.675296 22.361678),EPSG:4326,90.375296,21.661678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,chandpai station,Other,,9,,Inventory Team 9,Md.Mahedi zzaman. Acf,Shahinoor Rahman. Fr.,1,Accessible - Sampled completely,,,,80_3fbc0254-e23e-4f86-b952-3d3ff43b15e5.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,30,157,,13.89,,SRID=EPSG:4326;POINT(89.675250 22.361810),EPSG:4326,89.67525,22.36181,,,80_3665dfcf-de96-4c12-bfb8-fad5dd489eef.jpg,1,,FD Office,128,Chandpai RO,Chandpai RO,,14:30,14,30
+41,05/01/2017,2017,1,5,1,,FD Office,06:00,6,0,128,Chandpai RO,Chandpai RO,11:00,11,0,,SRID=EPSG:4326;POINT(89.641963 22.361678),EPSG:4326,90.341963,21.661678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,nando bala camp,Other,,9,,Inventory Team 9,Md.mahedi zzaman Acf.,Shahinoor rahman. Fr.,2,Partially accessible,96,,Other,81_951a8762-77c9-46d9-a98f-ce390aa82e4c.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,5.2,95,,3.5,,SRID=EPSG:4326;POINT(89.641950 22.361690),EPSG:4326,89.64195,22.36169,81_8f9ea98f-f2ad-476b-a7a8-a6049d9767ec.jpg,,,1,,FD Office,128,Chandpai RO,Chandpai RO,,16:25,16,25
+486,26/12/2016,2016,12,26,1,,FD Office,09:00,9,0,999,karamjal,Other,12:17,12,17,,SRID=EPSG:4326;POINT(89.608630 22.336678),EPSG:4326,90.30863,21.636678,"Khulna
+Khulna
+Dacope
+Khulna Range",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,karamjal station,Other,Moraposhur,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,82_940036b6-5794-49e4-a03c-03e842f7240d.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,23.7,150,,2,,SRID=EPSG:4326;POINT(89.608630 22.336620),EPSG:4326,89.60863,22.33662,82_b3d7e07c-e023-42a8-857f-f5c820edc40c.jpg,Closer to the centre plot and witness object 2,82_9713959f-358f-46a3-9db1-9291e60f6a64.jpg,2,Mother Vessel,Another plot / Other,999,Moraposhur camp,Other,,17:15,17,15
+516,05/01/2017,2017,1,5,2,Mother Vessel,Another plot / Other,06:30,6,30,,,,07:40,7,40,,SRID=EPSG:4326;POINT(89.341963 21.986678),EPSG:4326,90.041963,21.286678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,,,999,Kubadog,Other,Noliani Range (Khulna),4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,83_bd374af1-30c3-471f-8255-08f6c69e15dd.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,16.5,186,,7.95,,SRID=EPSG:4326;POINT(89.341930 21.986720),EPSG:4326,89.34193,21.98672,83_d6069e9f-5185-44c6-ad07-57150b9dca9c.jpg,,83_a259c3aa-e956-4465-bd9a-068ce732f07a.jpg,2,Plot-833,Another plot / Other,,,,,11:50,11,50
+507,03/01/2017,2017,1,3,2,Mother Vessel,Another plot / Other,06:25,6,25,,,,08:22,8,22,,SRID=EPSG:4326;POINT(89.375296 21.811678),EPSG:4326,90.075296,21.111678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,,,999,Naliani,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,84_71551263-7040-4c79-ba3f-fdd01a98b5ea.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,19.2,244,,5.14,,SRID=EPSG:4326;POINT(89.375330 21.811700),EPSG:4326,89.37533,21.8117,84_dc8586a3-7be1-4657-81fb-7c02ca5ff742.jpg,Top broken,84_fd49da05-a7fd-4c4e-9805-2f76d0bfc86c.jpg,2,Plot-504,Another plot / Other,,,,,11:00,11,0
+815,09/01/2017,2017,1,9,2,Mother Vessel (Pushpokathi Tohol Fari),Another plot / Other,05:30,5,30,999,pushpakathi,Other,07:55,7,55,,SRID=EPSG:4326;POINT(89.308630 21.861678),EPSG:4326,90.00863,21.161678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,pushpakhat,Other,Pushpakathi,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul karim,1,Accessible - Sampled completely,,,,85_c4b601e2-81b6-4e46-9524-60f9805c44c5.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,32.3,336,,11.4,,SRID=EPSG:4326;POINT(89.308720 21.861640),EPSG:4326,89.30872,21.86164,85_711a9ebb-4559-4a0a-a5f6-5425ef5ab7bc.jpg,,85_f432f738-6e06-4752-9891-8e7722853387.jpg,2,Plot-804,Another plot / Other,,,,,09:25,9,25
+482,27/12/2016,2016,12,27,2,Mother Vessel (Charbhadra Camp),Another plot / Other,09:30,9,30,999,Charbhodra,Other,11:50,11,50,,SRID=EPSG:4326;POINT(89.575296 22.261678),EPSG:4326,90.275296,21.561678,"Khulna
+Khulna
+Dacope
+Khulna Range",42,Sundarban East Forest,Sundarban East Forest,340,Khulna Range,999,Kalabogi,Other,,4,,Inventory Team 4,Md.Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,86_2bd7e4e9-6c8d-4bc4-9ca3-ec73f5bdc08f.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,20.11,152,,6,,SRID=EPSG:4326;POINT(89.575230 22.261740),EPSG:4326,89.57523,22.26174,86_280a8cfb-ba38-48c9-a878-c62917d2cda9.jpg,Adjacent to the RP Nipa fruticance,86_cd9481e4-f942-483c-93e9-e2cfa2d622f0.jpg,2,Mother Vessel,Another plot / Other,999,Charbhodra,Other,,17:15,17,15
+818,12/01/2017,2017,1,12,2,Mother Vessel,Another plot / Other,06:28,6,28,,,,10:28,10,28,,SRID=EPSG:4326;POINT(89.141963 21.886678),EPSG:4326,89.841963,21.186678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Notabeki,Other,Notabeki camp,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul karim,1,Accessible - Sampled completely,,,,87_1088daa7-63e0-4301-86f2-448ea6880beb.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,25.2,163,,8.91,,SRID=EPSG:4326;POINT(89.141930 21.886780),EPSG:4326,89.14193,21.88678,87_5380f3ae-7aba-49e0-9b0a-ccb0cabd685e.jpg,,87_5fef609c-9863-4278-9b4d-6a33e76c995d.jpg,2,Plot-831,Another plot / Other,,,,,12:10,12,10
+13,28/12/2016,2016,12,28,2,Mother Vessel (Kokilamoni),Another plot / Other,11:30,11,30,999,Kokilamoni,Other,13:15,13,15,,SRID=EPSG:4326;POINT(89.641963 21.911678),EPSG:4326,90.341963,21.211678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,Chandpai,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,88_bb4a0a82-21e6-440d-b620-28a840ceb20a.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,16.8,228,,9.8,,SRID=EPSG:4326;POINT(89.642050 21.911730),EPSG:4326,89.64205,21.91173,88_f4cb82ba-f652-4345-9f25-6c77765a20e8.jpg,,88_57638209-9b45-4066-adc8-c7122256de53.jpg,2,Mother Vessel,Another plot / Other,999,Kokilmoni,Other,,17:30,17,30
+816,11/01/2017,2017,1,11,2,Plot-821,Another plot / Other,10:00,10,0,,,,11:39,11,39,,SRID=EPSG:4326;POINT(89.058630 21.886678),EPSG:4326,89.75863,21.186678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,,,,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,2,Partially accessible,4,,Water,89_8a7b219c-9b96-4881-bdbf-8b65f847a05f.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,14.4,132,,10,,SRID=EPSG:4326;POINT(89.058560 21.886740),EPSG:4326,89.05856,21.88674,89_82f64f73-aabf-47e0-ba10-05e95f0f2f31.jpg,Picture takenfrom the entry point to the center of the sub-plot 1 due to obstacle,89_a45c88f6-bd60-4333-9f3e-b3e9f7c5d704.jpg,2,Plot-811,Another plot / Other,,,,,13:30,13,30
+510,31/12/2016,2016,12,31,2,Plot-511,Another plot / Other,14:00,14,0,,,,15:00,15,0,,SRID=EPSG:4326;POINT(89.441963 21.861678),EPSG:4326,90.141963,21.161678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,,,999,Nilkomol,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,90_42926971-bc40-4883-a779-651d232b9049.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,18.5,262,,5.6,,SRID=EPSG:4326;POINT(89.442040 21.861720),EPSG:4326,89.44204,21.86172,90_d7b2018d-ea35-4d0f-83b4-3063e29124a4.jpg,Two tree joined at the base,90_bbf6a499-8e1c-4945-92b1-ae0dc2c8ba93.jpg,2,Mother Vessel,Another plot / Other,,,,,16:45,16,45
+810,10/01/2017,2017,1,10,2,Mother Vessel,Another plot / Other,06:30,6,30,,,,08:35,8,35,,SRID=EPSG:4326;POINT(89.258630 21.811678),EPSG:4326,89.95863,21.111678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Pushpokathi,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,91_56d0f6d4-46dc-40dc-afb9-c06d6c57ec52.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,16.6,112,,8.38,,SRID=EPSG:4326;POINT(89.258560 21.811700),EPSG:4326,89.25856,21.8117,91_4e8973e2-b3e1-4975-a305-52f2766db3a4.jpg,,91_3408ab3e-5cae-4829-b617-b456116b7b1f.jpg,2,Plot-806,Another plot / Other,,,,,10:25,10,25
+826,06/01/2017,2017,1,6,2,Mother Vessel,Another plot / Other,07:30,7,30,,,,09:50,9,50,,SRID=EPSG:4326;POINT(89.275296 21.936678),EPSG:4326,89.975296,21.236678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Pushpokathi,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,92_635da85e-86cc-4953-aada-94c5945f5f84.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,16.2,56,,1.84,,SRID=EPSG:4326;POINT(89.275280 21.936670),EPSG:4326,89.27528,21.93667,92_97f97889-4e0c-4a11-8eb4-23b5cca42803.jpg,,92_8422834d-0cf0-48cf-b4bc-0016f8c54047.jpg,2,Plot-819,Another plot / Other,,,,,12:10,12,10
+804,09/01/2017,2017,1,9,2,Plot-815,Another plot / Other,09:25,9,25,,,,12:43,12,43,,SRID=EPSG:4326;POINT(89.225296 21.736678),EPSG:4326,89.925296,21.036678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Mander bari,Other,Mander bari,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul karim,1,Accessible - Sampled completely,,,,93_ce750d34-a4db-46e6-955f-6254033706ab.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,46.1,132,,14.3,,SRID=EPSG:4326;POINT(89.225210 21.736760),EPSG:4326,89.22521,21.73676,93_a2c12bbd-18ac-4ae0-9efa-541927924f2c.jpg,Large Passur Tree,93_c0f02946-fb44-4978-b5b7-35a055fc6a53.jpg,2,Plot-803,Another plot / Other,,,,,14:48,14,48
+832,13/01/2017,2017,1,13,2,Plot-828,Another plot / Other,12:05,12,5,,,,13:27,13,27,,SRID=EPSG:4326;POINT(89.175296 22.011678),EPSG:4326,89.875296,21.311678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Notabaki,Other,Notabaki,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,94_1d37e423-eaa9-4f3e-bb56-40e9dcda7c59.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,18.1,309,,4.81,,SRID=EPSG:4326;POINT(89.175350 22.011640),EPSG:4326,89.17535,22.01164,94_1d65e4ec-439a-4c75-87e5-ebe6fdd2b4fb.jpg,RP picture taken from 'S' plot center as it was unable to take from plot center,94_c890f857-4712-4603-ac64-1d0ea8d4739b.jpg,2,Mother Vessel,Another plot / Other,,,,,15:40,15,40
+509,01/01/2017,2017,1,1,2,Mother Vessel (Nilkomol),Another plot / Other,07:30,7,30,,,,10:30,10,30,,SRID=EPSG:4326;POINT(89.425296 21.836678),EPSG:4326,90.125296,21.136678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,,,999,Nilkomol,Other,Noliani (Khulna Range),4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,2,Partially accessible,4,,Water,95_59b1ad07-bc30-45d0-a40c-cfe9fba77870.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,19.7,320,,13.92,,SRID=EPSG:4326;POINT(89.425350 21.836590),EPSG:4326,89.42535,21.83659,95_851783d4-fe4f-4e8a-9f58-2e645d766096.jpg,,95_137cadec-f55c-468f-8a2e-a3e29a3ffd37.jpg,2,Mother Vessel,Another plot / Other,,,,,13:05,13,5
+504,03/01/2017,2017,1,3,2,Plot-507,Another plot / Other,11:00,11,0,,,,12:30,12,30,,SRID=EPSG:4326;POINT(89.358630 21.786678),EPSG:4326,90.05863,21.086678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,,,999,Naliani,Other,Naliani Range (Khulna),4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,96_85a709b3-17b6-4da9-9402-b3d7618f3fb3.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,37.6,45,,9.62,,SRID=EPSG:4326;POINT(89.358570 21.786630),EPSG:4326,89.35857,21.78663,96_8dbc87f9-3ec8-4878-9e5c-4a8435f53c5d.jpg,,96_96825a79-0e1c-4898-9ab9-77a594e1ba82.jpg,2,Mother Vessel,Another plot / Other,,,,,15:00,15,0
+512,04/01/2017,2017,1,4,2,Mother Vessel,Another plot / Other,06:15,6,15,,,,09:04,9,4,,SRID=EPSG:4326;POINT(89.408630 21.911678),EPSG:4326,90.10863,21.211678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,,,999,Kaga Dobaki,Other,Noliani,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,97_c9560e64-4315-4d1e-bfbc-e8a89400ac97.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,13.8,5,,4.34,,SRID=EPSG:4326;POINT(89.408600 21.911620),EPSG:4326,89.4086,21.91162,97_1bf02845-31ba-4eea-9f29-05e52fa8f890.jpg,,97_041c1c79-a010-4156-b272-684bd2602adf.jpg,2,Plot-513,Another plot / Other,,,,,11:00,11,0
+819,06/01/2017,2017,1,6,2,Plot-826,Another plot / Other,12:10,12,10,,,,14:25,14,25,,SRID=EPSG:4326;POINT(89.241963 21.886678),EPSG:4326,89.941963,21.186678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Pushpokathi,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,2,Partially accessible,4,,Water,98_301a819d-0e3c-4867-8ad2-0233842dbace.jpg,11:29,11,29,1,Centre,1,,Tree,UNK,Other unknowntree,,,,14.5,217,,1.37,,SRID=EPSG:4326;POINT(89.241950 21.886690),EPSG:4326,89.24195,21.88669,98_70fb6b46-68a1-421b-afde-5b6659cb8161.jpg,Adjacent to the plot center,98_346de5ce-03a2-4365-b124-ec217a23e133.jpg,2,Mother Vessel,Another plot / Other,,,,,16:30,16,30
+806,10/01/2017,2017,1,10,2,Plot-810,Another plot / Other,10:25,10,25,,,,14:27,14,27,,SRID=EPSG:4326;POINT(89.075296 21.786678),EPSG:4326,89.775296,21.086678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Pushpokathi,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,99_c2b40b91-df0e-4a0f-8ca5-d67e7171071c.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,21.1,265,,9.02,,SRID=EPSG:4326;POINT(89.075360 21.786680),EPSG:4326,89.07536,21.78668,99_03d30f62-a65a-44ce-b987-81ffd574eb80.jpg,,99_96062c5f-ff51-4670-976e-475f4dbda456.jpg,2,Mother Vessel (Khejurdana Khal),Another plot / Other,,,,,16:36,16,36
+824,07/01/2017,2017,1,7,1,,FD Office,06:00,6,0,999,Pushpokathi Camp,Other,09:15,9,15,,SRID=EPSG:4326;POINT(89.175296 21.936678),EPSG:4326,89.875296,21.236678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Dingimari,Other,Dingiari camp,4,,Inventory Team 4,M. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,100_52276e23-3afe-4475-8a36-7a6f93c436a0.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,15.4,172,,5.11,,SRID=EPSG:4326;POINT(89.175310 21.936720),EPSG:4326,89.17531,21.93672,100_71a3f4d7-6e64-4617-8ada-e7ff34f901de.jpg,,100_f7fc58b6-f802-4fae-a51b-1435b9b21b09.jpg,2,Plot-822,Another plot / Other,,,,,12:10,12,10
+502,02/01/2017,2017,1,2,2,Mother Vessel,Another plot / Other,08:45,8,45,,,,10:59,10,59,,SRID=EPSG:4326;POINT(89.408630 21.736678),EPSG:4326,90.10863,21.036678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,340,Khulna Range,999,Nilkomol,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,101_ec2c7ddd-c410-4646-b760-16b8ce8bda97.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,16.6,15,,6.04,,SRID=EPSG:4326;POINT(89.408610 21.736640),EPSG:4326,89.40861,21.73664,101_d2ead7fc-f84a-4a21-813a-eb5e5e67175e.jpg,,101_9bef9ff5-3b65-498f-8109-b961a3e79343.jpg,2,Mother Vessel,Another plot / Other,,,,,13:30,13,30
+511,31/12/2016,2016,12,31,2,Mother Vessel (Nilkomol),Another plot / Other,06:45,6,45,999,Nilkomol,Other,10:00,10,0,,SRID=EPSG:4326;POINT(89.441963 21.886678),EPSG:4326,90.141963,21.186678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,,,999,Nilkomol,Other,Noliani Range (Khulna),4,,Inventory Team 4,Md. Sajjadzzaman,Md. Rezaul karim,1,Accessible - Sampled completely,,,,102_554cc314-2d6c-42c3-b18a-9b69523aa87e.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,11.4,142,,3.8,,SRID=EPSG:4326;POINT(89.441920 21.886710),EPSG:4326,89.44192,21.88671,102_6f579b3d-c84a-498f-b7d5-a30dbc4ce229.jpg,Sundri with furn,102_e02540a9-759d-4bb3-8741-0aedbca94830.jpg,2,Plot-510,Another plot / Other,,,,,13:00,13,0
+513,04/01/2017,2017,1,4,2,Plot-512,Another plot / Other,11:15,11,15,,,,12:00,12,0,,SRID=EPSG:4326;POINT(89.408630 21.936678),EPSG:4326,90.10863,21.236678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,,,999,Kaga Dubaki,Other,Noliani,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,103_3c35418c-5a19-4ade-a88c-30c0599585be.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,16.7,41,,8,,SRID=EPSG:4326;POINT(89.408550 21.936650),EPSG:4326,89.40855,21.93665,103_b32790ba-c4ee-4538-becb-d6c2adc802f7.jpg,,103_652dcbee-ed01-4578-b6d2-6a16b23cd578.jpg,2,Mother Vessel,Another plot / Other,,,,,16:00,16,0
+8,30/12/2016,2016,12,30,2,Mother Vessel (Ambaria Khal),Another plot / Other,08:00,8,0,,,,08:30,8,30,,SRID=EPSG:4326;POINT(89.575296 21.811678),EPSG:4326,90.275296,21.111678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,,,999,Dubla,Other,Shoronkhula Range,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,104_25646fa9-3f2e-4ab0-a1a6-09883abf091e.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,65.6,30,,15.7,,SRID=EPSG:4326;POINT(89.575160 21.811590),EPSG:4326,89.57516,21.81159,104_70ba23b5-f3f3-42bd-a22f-f43793bec162.jpg,,104_1efc1216-36ef-4280-8cb9-b7f03be263af.jpg,2,Mother Vessel,Another plot / Other,,,,,12:00,12,0
+7,29/12/2016,2016,12,29,2,Mother Vessel (Tricon Island),Another plot / Other,08:00,8,0,999,Ambaria,Other,10:45,10,45,,SRID=EPSG:4326;POINT(89.658630 21.786678),EPSG:4326,90.35863,21.086678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,,,999,Dubla,Other,Shoronkhula Range,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,105_04444c15-723b-474b-bb12-8b495c338db1.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,19,278,,9.52,,SRID=EPSG:4326;POINT(89.658740 21.786700),EPSG:4326,89.65874,21.7867,105_1da80b2a-bd1b-4b5d-8f5a-a7259363465d.jpg,,105_34b18f4e-b4c8-4ea2-ba95-546db6ed68e7.jpg,2,Mother Vessel,Another plot / Other,999,Ambaria,Other,,16:00,16,0
+821,11/01/2017,2017,1,11,2,Mother Vessel,Another plot / Other,06:30,6,30,,,,08:50,8,50,,SRID=EPSG:4326;POINT(89.091963 21.911678),EPSG:4326,89.791963,21.211678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,,,,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,106_ed395b32-65cd-4cdd-a524-63b002fce981.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,18.1,63,,8,,SRID=EPSG:4326;POINT(89.091890 21.911660),EPSG:4326,89.09189,21.91166,106_f664730f-1d48-4d5f-8d97-12f9cfc6eab9.jpg,,106_77f6159c-b357-4517-b605-544914523128.jpg,2,Plot-816,Another plot / Other,,,,,10:00,10,0
+833,05/01/2017,2017,1,5,2,Plot-516,Another plot / Other,12:00,12,0,,,,14:30,14,30,,SRID=EPSG:4326;POINT(89.275296 22.011678),EPSG:4326,89.975296,21.311678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Pushpokathi,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,107_19143b4e-b2cf-47cd-a105-a03cb77ff1db.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,19.3,268,,4.05,,SRID=EPSG:4326;POINT(89.275350 22.011690),EPSG:4326,89.27535,22.01169,,,107_e710d43b-9a4f-4c94-b85b-3f79157dd238.jpg,2,Mother Vessel,Another plot / Other,,,,,16:10,16,10
+814,08/01/2017,2017,1,8,2,Mother Vessel,Another plot / Other,06:30,6,30,,,,08:25,8,25,,SRID=EPSG:4326;POINT(89.241963 21.861678),EPSG:4326,89.941963,21.161678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Pushpokathi,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,2,Partially accessible,4,,Water,108_b7f95e7a-8771-49e2-9a00-17a5629bd90b.jpg,11:29,11,29,1,Centre,1,,Tree,UNK,Other unknowntree,,,,24.5,169,,3.5,,SRID=EPSG:4326;POINT(89.241960 21.861680),EPSG:4326,89.24196,21.86168,108_d3494a19-87d1-4c0d-b97c-e2e39592b028.jpg,"WO-3, tree name: Dhundol",108_76070399-6d05-4bc5-b9f3-1d9ef776f851.jpg,2,Plot-815,Another plot / Other,,,,,13:05,13,5
+828,13/01/2017,2017,1,13,2,Mother Vessel,Another plot / Other,07:00,7,0,,,,09:53,9,53,,SRID=EPSG:4326;POINT(89.141963 21.986678),EPSG:4326,89.841963,21.286678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Notabaki,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,109_c220dd12-dc65-41fe-9e58-cba0de55d1eb.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,17.1,229,,12.8,,SRID=EPSG:4326;POINT(89.142070 21.986760),EPSG:4326,89.14207,21.98676,109_e923a328-1eb0-4f55-b4c5-0a834560d07a.jpg,,109_735827b6-d14d-4a2d-8482-2e45a02bc5d5.jpg,2,Plot-832,Another plot / Other,,,,,12:05,12,5
+811,11/01/2017,2017,1,11,2,Plot-816,Another plot / Other,13:30,13,30,,,,15:15,15,15,,SRID=EPSG:4326;POINT(89.075296 21.836678),EPSG:4326,89.775296,21.136678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,,,,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,2,Partially accessible,4,,Water,110_7af55a97-f661-47f0-b40e-6b7dab7d5557.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,25.9,145,,5.7,,SRID=EPSG:4326;POINT(89.072500 21.836770),EPSG:4326,89.0725,21.83677,110_95338449-c6c0-48d9-a24b-776c75649d11.jpg,Within the canal and W.O.,110_64d853fe-3b66-4c01-a407-f88418f7c88c.jpg,2,Mother Vessel,Another plot / Other,,,,,17:00,17,0
+822,07/01/2017,2017,1,7,2,Plot-824,Another plot / Other,12:25,12,25,,,,13:30,13,30,,SRID=EPSG:4326;POINT(89.191963 21.911678),EPSG:4326,89.891963,21.211678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Pushpokathi,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,2,Partially accessible,2,,Hazardous,111_b6c15193-1e0c-40c0-9bec-551714e7fd07.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,16.5,188,,3.5,,SRID=EPSG:4326;POINT(89.191960 21.911740),EPSG:4326,89.19196,21.91174,111_879e7b6b-2cab-4f40-b2cb-f8770a8dad0f.jpg,,,2,Mother Vessel,Another plot / Other,,,,,16:25,16,25
+831,12/01/2017,2017,1,12,2,plot no.818,Another plot / Other,12:15,12,15,,,,15:45,15,45,,SRID=EPSG:4326;POINT(89.108630 22.011678),EPSG:4326,89.80863,21.311678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,koikhali,Other,Koikhali,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul karim,1,Accessible - Sampled completely,,,,112_994bc3cd-4588-4d86-9ff1-900b0c520554.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,47.2,120,,10.7,,SRID=EPSG:4326;POINT(89.108540 22.011710),EPSG:4326,89.10854,22.01171,112_a529861b-7800-49c0-8190-2a1b52adf5b0.jpg,Rp picture is taken from the approach,,2,Mother Vessel (Notabaki),Another plot / Other,,,,,17:00,17,0
+803,09/01/2017,2017,1,9,2,Plot-804,Another plot / Other,14:48,14,48,,,,15:26,15,26,,SRID=EPSG:4326;POINT(89.241963 21.711678),EPSG:4326,89.941963,21.011678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,,,,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md.vRezaul Karim,1,Accessible - Sampled completely,,,,113_5e7bac44-7b7f-4afc-8af6-718f3b2209d2.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,26.1,28,,9.78,,SRID=EPSG:4326;POINT(89.241910 21.711610),EPSG:4326,89.24191,21.71161,113_3e12b153-8285-43af-a787-8e9df8122e47.jpg,,113_5393eb8a-44eb-48f3-bda2-d3018e7800df.jpg,2,Mother Vessel,Another plot / Other,,,,,17:24,17,24
+843,14/01/2017,2017,1,14,2,Plot-839,Another plot / Other,12:10,12,10,,,,14:05,14,5,,SRID=EPSG:4326;POINT(89.225296 22.111678),EPSG:4326,89.925296,21.411678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Dubeki,Other,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,2,Partially accessible,4,,Water,114_78eaadad-af9c-40ea-9ee3-bbc9a28b950b.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,34.8,192,,7.9,,SRID=EPSG:4326;POINT(89.225330 22.111730),EPSG:4326,89.22533,22.11173,114_9fcda32b-b3b5-4030-8c3d-d9c0b2fd96d9.jpg,,114_74195b48-c723-4191-b1d1-b625fb96f9f4.jpg,2,Mother Vessel (Dubeki),Another plot / Other,,,,,16:00,16,0
+839,14/01/2017,2017,1,14,2,Mother Vessel (Dubeki),Another plot / Other,06:30,6,30,,,,09:00,9,0,,SRID=EPSG:4326;POINT(89.158630 22.086678),EPSG:4326,89.85863,21.386678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,,,,,4,,Inventory Team 4,Md. Sajjaduzzaman,Md. Rezaul Karim,1,Accessible - Sampled completely,,,,115_e257a0ea-ae96-4d7e-ae4f-295868780b49.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,30.1,327,,12.08,,SRID=EPSG:4326;POINT(89.158680 22.088600),EPSG:4326,89.15868,22.0886,115_2e691551-7b89-4db6-b119-07b1e3646265.jpg,,115_c6ed053a-bea3-43a4-82d9-6ccd32256474.jpg,2,Plot-843,Another plot / Other,,,,,10:55,10,55
+43,10/01/2017,2017,1,10,1,,FD Office,07:00,7,0,999,andarmanik tahal camp,Other,11:47,11,47,,SRID=EPSG:4326;POINT(89.741963 22.361678),EPSG:4326,90.441963,21.661678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,kalamteji tahal camp,Other,,9,,Inventory Team 9,Md.Mahedi zzaman. Acf.,Shahinoor rahman. Fr,1,Accessible - Sampled completely,,,,116_8e859734-b369-4a49-b14a-25d4bd9de466.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,21.2,26,,12.64,,SRID=EPSG:4326;POINT(89.741880 22.361570),EPSG:4326,89.74188,22.36157,,,116_a173d7b1-2666-4a14-ba36-f336f470d141.jpg,1,,FD Office,999,andarmanik tahal camp,Other,,16:33,16,33
+39,11/01/2017,2017,1,11,1,,FD Office,08:30,8,30,999,andarmanik tahal camp,Other,08:30,8,30,,SRID=EPSG:4326;POINT(89.708630 22.311678),EPSG:4326,90.40863,21.611678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,andarmanik tahal camp.,Other,,9,,Inventory Team 9,Md.Mahida zzaman.Acf.,Shahinoor Rahman. Fr.,1,Accessible - Sampled completely,,,,117_4106571b-21a5-4ebf-b148-878d8931cf51.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,34.8,80,,8.74,,SRID=EPSG:4326;POINT(89.708590 22.311670),EPSG:4326,89.70859,22.31167,117_c28cde9b-9b82-4154-b033-d31f225b90cb.jpg,,117_89791362-cf5c-44c0-8100-321e83053a31.jpg,1,,FD Office,999,andarmank tahal camp.,Other,,14:25,14,25
+37,12/01/2017,2017,1,12,1,,FD Office,08:30,8,30,999,andarmanik tahal camp.,Other,09:46,9,46,,SRID=EPSG:4326;POINT(89.741963 22.286678),EPSG:4326,90.441963,21.586678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,danshahgar station,Other,,9,,Inventory Team 9,Md. Madehi zzaman. Acf.,Shahinoor rahman. Fr.,1,Accessible - Sampled completely,,,,118_c3c1715d-debd-4b2d-9aa6-fe2a47557aef.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,35,1,,3.72,,SRID=EPSG:4326;POINT(89.742020 22.286690),EPSG:4326,89.74202,22.28669,118_9b68a973-ce30-4fa1-8e75-e38e02cda605.jpg,,118_81bcf046-e9fa-456e-a5b2-eb6ef1c7bab0.jpg,1,,FD Office,999,andarmanik tahal camp.,Other,,14:30,14,30
+35,13/01/2017,2017,1,13,1,,FD Office,08:24,8,24,999,andarmanik tahal camp,Other,10:26,10,26,,SRID=EPSG:4326;POINT(89.708630 22.261678),EPSG:4326,90.40863,21.561678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,tambulbuny tahal camp.,Other,,9,,Inventory Team 9,Md.Mahide zzaman. Acf,Shinoor rahman. Fr.,1,Accessible - Sampled completely,,,,119_872d51c3-fe7e-49dd-a67d-a90b59852c44.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,43.5,85,,10.59,,SRID=EPSG:4326;POINT(89.708530 22.261700),EPSG:4326,89.70853,22.2617,119_4aab5492-da3b-484d-a7de-229fe857963b.jpg,,119_41f20ead-a578-4391-be12-94f3c797cf10.jpg,1,,FD Office,,,,,14:45,14,45
+36,08/01/2017,2017,1,8,1,,FD Office,07:58,7,58,128,Chandpai RO,Chandpai RO,09:32,9,32,,SRID=EPSG:4326;POINT(89.708630 22.286678),EPSG:4326,90.40863,21.586678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,andar manik tahal camp.,Other,,9,,Inventory Team 9,Md.Madhi zzaman. Acf,Shahinoor rahman. Fr.,1,Accessible - Sampled completely,,,,,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,26.7,87,,11.9,,SRID=EPSG:4326;POINT(89.708410 22.286620),EPSG:4326,89.70841,22.28662,120_ebb419cb-3d7d-4d81-866b-663e2b85394c.jpg,This tree is butres. RP DBH measurment up to 1.45 m.,120_4af7d7b8-43cf-430c-aa1f-50f0cf7d6b3c.jpg,2,,Another plot / Other,,,,,15:18,15,18
+40,09/01/2017,2017,1,9,2,,Another plot / Other,08:00,8,0,,,,10:10,10,10,,SRID=EPSG:4326;POINT(89.708630 22.336678),EPSG:4326,90.40863,21.636678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,338,Chandpai Range,999,Adndarmanik tahal camp,Other,,9,,Inventory Team 9,Md.Mahedi zzaman. Acf,Shinoor rahman. Fr.,1,Accessible - Sampled completely,,,,121_1da70570-c2d1-43e3-b65e-7514d02e5987.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,27.6,236,,6.27,,SRID=EPSG:4326;POINT(89.708620 22.336700),EPSG:4326,89.70862,22.3367,121_b5fd8097-84c6-40ac-8489-eb1394b09ccd.jpg,,121_20590b49-b027-48b0-8711-20c35382ebb6.jpg,2,,Another plot / Other,,,,,15:25,15,25
+481,27/12/2016,2016,12,27,2,Mother vessel,Another plot / Other,10:20,10,20,,,,11:18,11,18,,SRID=EPSG:4326;POINT(89.558630 22.236678),EPSG:4326,90.25863,21.536678,"Khulna
+Khulna
+Dacope
+Khulna Range",999,Sundarban West Forest Division,Other,340,Khulna Range,999,Vodra,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,4,,Water,122_70c3d18e-dbd7-433e-acf9-e02c9bcab5c7.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,22.5,191,,8.6,,SRID=EPSG:4326;POINT(89.558650 22.236750),EPSG:4326,89.55865,22.23675,122_aceaf655-dc93-46e9-97d8-21f6fcef7ae3.jpg,Big sundari tree with brach below 1 m and another 3 sundari tree from the same/nearest distance,122_28cbbeb2-a1cb-4887-be32-ff9adb13fde1.jpg,2,Mother vessel,Another plot / Other,,,,There are +/- 3.4 cm error per m in DME reading,17:33,17,33
+836,13/01/2017,2017,1,13,2,Mother vessel,Another plot / Other,06:07,6,7,,,,10:12,10,12,,SRID=EPSG:4326;POINT(89.191963 22.061678),EPSG:4326,89.891963,21.361678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Dubeki,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,123_2529bdff-7d3f-4b1f-98ff-0971481f175b.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,15.3,240,,1.56,,SRID=EPSG:4326;POINT(89.191960 22.061680),EPSG:4326,89.19196,22.06168,123_12501592-4ab7-45c6-a329-e422ac7a058c.jpg,This is also WO 1,123_ed8a54e4-c3e9-4271-9805-1abd169139b8.jpg,2,834,Another plot / Other,,,,Except seedling data every HD measured with DME. But the problem is DME gives 3.4 cm/ m extra reading,11:54,11,54
+505,03/01/2017,2017,1,3,2,Mother vessel at balirgang khal,Another plot / Other,06:04,6,4,,,,08:35,8,35,,SRID=EPSG:4326;POINT(89.391963 21.786678),EPSG:4326,90.091963,21.086678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,340,Khulna Range,999,Nilkomol,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,124_8b9534a6-9e4f-4835-88a3-b2ae991433e3.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,25.8,98,,1.96,,SRID=EPSG:4326;POINT(89.391940 21.786690),EPSG:4326,89.39194,21.78669,124_36220432-1eb7-4a94-ba3a-ede145fb17b0.jpg,,124_f99207da-4a3b-4093-9c46-903a8db98cf9.jpg,2,503,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME,11:29,11,29
+823,07/01/2017,2017,1,7,2,805,Another plot / Other,10:50,10,50,,,,12:28,12,28,,SRID=EPSG:4326;POINT(89.308630 21.911678),EPSG:4326,90.00863,21.211678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,,,,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,125_e137952f-11da-4095-8781-5ce8ca54b9de.jpg,11:29,11,29,1,Centre,1,,Tree,UNK,Other unknowntree,,,,13.2,303,,7.39,,SRID=EPSG:4326;POINT(89.308720 21.911650),EPSG:4326,89.30872,21.91165,125_25d3040c-9391-4851-a5d4-2b5d985194ed.jpg,This is xylocarpus granatum but this species is not available in checklist.,,2,820,Another plot / Other,,,,Due to shortage of tree tag portion of plastic have been used as tree tag. WO tree bark also removed to indicate tree tag number. There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME.,14:57,14,57
+802,11/01/2017,2017,1,11,2,Mother vessel at khejurbari khal,Another plot / Other,04:54,4,54,,,,08:40,8,40,,SRID=EPSG:4326;POINT(89.258630 21.686678),EPSG:4326,89.95863,20.986678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Haldibunia,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,126_59634476-070e-4948-835b-e89035dcddd7.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,23.2,165,,8.63,,SRID=EPSG:4326;POINT(89.258610 21.686740),EPSG:4326,89.25861,21.68674,126_0d4b2556-325f-45a4-9a7b-1e5bf036a2b6.jpg,,126_6bbfeb10-c28a-46bc-9e78-7f93c36b2721.jpg,2,801,Another plot / Other,,,,There are 3.4 cm error in DME which is extra reading from the real .,11:21,11,21
+508,01/01/2017,2017,1,1,2,Mother vessel at Nilkomol,Another plot / Other,08:25,8,25,,,,10:12,10,12,,SRID=EPSG:4326;POINT(89.408630 21.836678),EPSG:4326,90.10863,21.136678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,340,Khulna Range,999,Nilkomol,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,2,Partially accessible,4,,Water,127_b84932de-c2cd-41f7-ba9a-d5c52e5a3a3a.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,23.6,173,,22.2,,SRID=EPSG:4326;POINT(89.408610 21.836900),EPSG:4326,89.40861,21.8369,,Besides the canal. DBH measured at 1.04 m,127_91c6b0eb-b3b5-4c05-94b5-aee9bf910fbb.jpg,2,Mother vessel at Nilkomol.,Another plot / Other,,,,2nd subplot center fallen into water(canal).  There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME,15:16,15,16
+829,05/01/2017,2017,1,5,2,827,Another plot / Other,11:45,11,45,,,,12:47,12,47,,SRID=EPSG:4326;POINT(89.291963 21.986678),EPSG:4326,89.991963,21.286678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Dubeki,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,128_5e76134d-3f10-4cb2-99ab-1909a7bd6194.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,10,162.5,,1.46,,SRID=EPSG:4326;POINT(89.291890 21.986710),EPSG:4326,89.29189,21.98671,128_8dc51581-a137-4550-af9d-9ddd9ed10b47.jpg,Double stem from ground level,128_535484bd-a8ad-4a8b-abee-a57624d4ae4d.jpg,2,Mother vessel,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME,17:26,17,26
+805,07/01/2017,2017,1,7,2,Mother vessel at Pushpakathi,Another plot / Other,05:42,5,42,,,,07:33,7,33,,SRID=EPSG:4326;POINT(89.258630 21.761678),EPSG:4326,89.95863,21.061678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",,,,341,Satkhira Range,999,Pushpakathi,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,129_4b642a01-cbce-421d-94d9-0221c2bdd7a2.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,22.3,40.5,,4.1,,SRID=EPSG:4326;POINT(89.258610 21.761680),EPSG:4326,89.25861,21.76168,129_97c777b7-c119-4162-bd21-02fc3eac9e50.jpg,,129_2a464e1f-b2c5-4503-9cd0-ee11e7743bdf.jpg,2,820,Another plot / Other,,,,Due to shoratge of tree tag small portion of plastic have been used as a tree tag. Colour spray dot and removing bark also indicate WO number.      There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME.,10:49,10,49
+517,04/01/2017,2017,1,4,2,518,Another plot / Other,13:20,13,20,,,,13:46,13,46,,SRID=EPSG:4326;POINT(89.375296 22.011678),EPSG:4326,90.075296,21.311678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Nilkomol,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,130_c7ca2789-e746-4e0a-8805-e9162302329b.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,33.9,127,,9.91,,SRID=EPSG:4326;POINT(89.375200 22.011710),EPSG:4326,89.3752,22.01171,130_f5efe658-a6da-4948-87f3-20b8e0dbf489.jpg,,130_f87b8298-653b-488f-954a-b242ac206329.jpg,2,Mother vessel at kaga dubeki,Another plot / Other,,,,Tree tag have been tied with plastic rope. There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME.,17:57,17,57
+830,12/01/2017,2017,1,12,2,817,Another plot / Other,11:40,11,40,,,,13:30,13,30,,SRID=EPSG:4326;POINT(89.091963 22.011678),EPSG:4326,89.791963,21.311678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,kachikata,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,131_9664423e-1995-4594-9ee7-f37504344a04.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,15.7,319.5,,4.86,,SRID=EPSG:4326;POINT(89.092020 22.011660),EPSG:4326,89.09202,22.01166,131_90dc7736-af11-43a7-8496-b54cf8d3ae3a.jpg,DBH measured at 0.92 m,131_47006574-68ab-43bf-91a7-baeb4bea1d01.jpg,2,Mother vessel at Notabeki,Another plot / Other,,,,,16:59,16,59
+801,11/01/2017,2017,1,11,2,802,Another plot / Other,11:20,11,20,,,,13:02,13,2,,SRID=EPSG:4326;POINT(89.241963 21.661678),EPSG:4326,89.941963,20.961678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Haldibunia,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,132_4cdc0cb4-76c1-4b57-add0-a3505ef0337a.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,42.5,235,,10.54,,SRID=EPSG:4326;POINT(89.242070 21.661760),EPSG:4326,89.24207,21.66176,132_1c28804c-d027-4c19-893f-7f7c536e1cb5.jpg,,132_9f35b59a-cbd4-4121-af28-64d8f9197c48.jpg,2,Mother vessel,Another plot / Other,,,,DME has been given 3.4 cm / m error which is more than real reading,17:14,17,14
+812,10/01/2017,2017,1,10,2,,Another plot / Other,07:46,7,46,,,,08:47,8,47,,SRID=EPSG:4326;POINT(89.125296 21.836678),EPSG:4326,89.825296,21.136678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,,,,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,133_b9c0bae6-6ad4-41c8-ba4e-b0d3d61ff73b.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,14,302.5,,3.96,,SRID=EPSG:4326;POINT(89.125350 21.836660),EPSG:4326,89.12535,21.83666,133_d0e92adb-63dc-425e-8f2b-22c8265dd7b3.jpg,,133_c29e8683-ab8e-49af-b9b7-c6bf9d1d135b.jpg,2,807,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME,23:39,23,39
+834,13/01/2017,2017,1,13,2,836,Another plot / Other,12:03,12,3,,,,14:04,14,4,,SRID=EPSG:4326;POINT(89.208630 22.036678),EPSG:4326,89.90863,21.336678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Dubeki,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,2,Partially accessible,4,,Water,134_2c62155e-cf0a-4ffc-b8fb-a40e17b8160a.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,12.1,18.5,,3.83,,SRID=EPSG:4326;POINT(89.208630 22.036650),EPSG:4326,89.20863,22.03665,134_2e8676aa-8e22-4ee1-a636-bf8dba5266a8.jpg,This is also WO 2,134_8e99edf9-6ab3-4b0c-aeb9-d67c832d3205.jpg,2,Mother vessel at Firingi river,Another plot / Other,,,,3rd subplot center fall in to river. DME give 3.4 cm/m extra reading. Except sapling HD every HD have been measured with DME.,17:26,17,26
+827,05/01/2017,2017,1,5,2,Mother vessel,Another plot / Other,06:02,6,2,,,,08:39,8,39,,SRID=EPSG:4326;POINT(89.341963 21.936678),EPSG:4326,90.041963,21.236678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Dubeki,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,135_f85d40d6-8467-42b1-8680-04cc2fe71ebb.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,16,94.5,,5.47,,SRID=EPSG:4326;POINT(89.341880 21.936710),EPSG:4326,89.34188,21.93671,135_4848c940-1bfa-41e6-b84a-1cc8d91c17bb.jpg,,135_87ca9d31-37fa-477e-ad68-686d9f5c00a2.jpg,2,829,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME.,11:24,11,24
+809,09/01/2017,2017,1,9,2,Mother vessel,Another plot / Other,05:09,5,9,,,,08:25,8,25,,SRID=EPSG:4326;POINT(89.208630 21.811678),EPSG:4326,89.90863,21.111678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Pushpokathi,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,136_b4dbedab-7102-4324-87d8-0be17fdfd3e2.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,19.1,81,,12.41,,SRID=EPSG:4326;POINT(89.208480 21.811660),EPSG:4326,89.20848,21.81166,136_ddb72230-0c91-4946-9351-ca609db8d358.jpg,Besides a canal and 6 gewa tree from nearest point,136_87f9a4b5-7fdf-4040-9e43-0917caf96a2c.jpg,2,808,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME.,10:57,10,57
+837,14/01/2017,2017,1,14,2,840,Another plot / Other,11:32,11,32,,,,12:57,12,57,,SRID=EPSG:4326;POINT(89.258630 22.061678),EPSG:4326,89.95863,21.361678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Dubeki,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,137_8f2835ae-0186-4dc9-a2e5-3387a662ff44.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,27.2,211.5,,5.98,,SRID=EPSG:4326;POINT(89.258670 22.061740),EPSG:4326,89.25867,22.06174,137_ddcd3c47-53ba-4b67-84b5-3a0214a30967.jpg,No clear bole to measure DBH. Many small abnormal form in bole. 5/6 new shoot from the dying top at 2.84 m,137_ab3eb40e-de0e-4e11-b8f8-bcb5add148fe.jpg,2,Mother vessel at Dubeki,Another plot / Other,,,,,17:03,17,3
+475,30/12/2016,2016,12,30,2,Mother vessel,Another plot / Other,07:31,7,31,,,,10:04,10,4,,SRID=EPSG:4326;POINT(89.541963 21.761678),EPSG:4326,90.241963,21.061678,"Khulna
+Khulna
+Dacope
+Khulna Range",42,Sundarban East Forest,Sundarban East Forest,999,Other,999,Dubla (Alorkul).,Other,Shoronkhula Range,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,138_0cf09705-9a17-4502-ae68-120f73bc4fd0.jpg,11:29,11,29,1,Centre,1,,Tree,SON/Son/ape,Sonneratia apetala,,,,44.5,254,,9.9,,SRID=EPSG:4326;POINT(89.541850 21.761670),EPSG:4326,89.54185,21.76167,,,138_85cf0447-100a-439e-bcdc-32df0550a053.jpg,2,Mother vessel,Another plot / Other,,,,Forget to put wo  tag number at subplot 2. Sbubplot 3 center fallen into water. There is +/- 3.4 cm per m error in DME reading,16:05,16,5
+9,29/12/2016,2016,12,29,2,Trikona Island,Another plot / Other,07:24,7,24,,,,12:35,12,35,,SRID=EPSG:4326;POINT(89.641963 21.811678),EPSG:4326,90.341963,21.111678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,999,Other,999,Shelarchar,Other,Shoronkhula,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,2,Partially accessible,4,,Water,139_8fe7ac97-d450-4311-b56a-5065611c3006.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,99.1,118,,12.29,,SRID=EPSG:4326;POINT(89.641850 21.811710),EPSG:4326,89.64185,21.81171,,"Xylocarpus granatum species is RP. But this species is not available in software checklist,t herefore it has been recorded as xylocarpus mekongensis. This tree is not common here and this is why we decided to take it RP. DBH taken at ,2.1 cm point due to abnormal branch and fork formation.",139_6e8cc3ce-b0c4-41eb-9d7c-aa20c6fce032.jpg,2,Mother Vessel at Boroambaria Khal,Another plot / Other,,,,,17:27,17,27
+506,02/01/2017,2017,1,2,2,Mother vessel at nilkomol,Another plot / Other,07:18,7,18,,,,09:04,9,4,,SRID=EPSG:4326;POINT(89.441963 21.786678),EPSG:4326,90.141963,21.086678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,340,Khulna Range,999,Nilkomol,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,140_6dabdd4f-6791-4673-8972-739d0501dcde.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,12,52,,7.05,,SRID=EPSG:4326;POINT(89.441950 21.786630),EPSG:4326,89.44195,21.78663,140_0940f148-6013-4854-9621-bd6651e829ec.jpg,,140_814796f7-7d25-4902-9e21-829b91850047.jpg,2,Mother vessl,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME,15:38,15,38
+515,31/12/2016,2016,12,31,2,Mother vessel at Nilkomol,Another plot / Other,06:04,6,4,,,,08:45,8,45,,SRID=EPSG:4326;POINT(89.458630 21.961678),EPSG:4326,90.15863,21.261678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,340,Khulna Range,999,Other,Other,Brhomorkhali,12,,Inventory Team 12,Md.Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,141_4ef97b35-6f16-4eb1-8297-315e30ff23da.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,42.2,193,,9.73,,SRID=EPSG:4326;POINT(89.458620 21.961770),EPSG:4326,89.45862,21.96177,141_d441340a-d15b-42aa-93df-1757f0bc96ad.jpg,,,2,Plot number 514,Another plot / Other,,,,There is +/- 3.4 cm per m error in DME reading,12:48,12,48
+808,09/01/2017,2017,1,9,2,808,Another plot / Other,10:57,10,57,,,,12:50,12,50,,SRID=EPSG:4326;POINT(89.158630 21.811678),EPSG:4326,89.85863,21.111678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,,,,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,,11:29,11,29,1,Centre,1,,Tree,UNK,Other unknowntree,,,,15.7,25,,7.09,,SRID=EPSG:4326;POINT(89.158570 21.811620),EPSG:4326,89.15857,21.81162,142_a63e2320-a7ae-431c-a35d-c0afde494bde.jpg,RP species is xylocarpus granatum but its not available in the checklist.,142_4bba8e4b-c853-499d-b592-6c1502f6bc95.jpg,2,Mother vessel,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME,16:15,16,15
+503,03/01/2017,2017,1,3,2,505,Another plot / Other,11:30,11,30,,,,12:32,12,32,,SRID=EPSG:4326;POINT(89.375296 21.761678),EPSG:4326,90.075296,21.061678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,340,Khulna Range,999,Nilkomol,Other,,12,,Inventory Team 12,Md.Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,143_0baf83d4-3879-4c76-8d7e-889a86a548ab.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,22.8,184.5,,9.98,,SRID=EPSG:4326;POINT(89.375290 21.761770),EPSG:4326,89.37529,21.76177,143_a77c16ac-f46f-4b43-b5a7-a97382e309d2.jpg,,143_eaa91e6e-8f03-477c-b318-dbf8c107148f.jpg,2,Mother vessel,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME,18:15,18,15
+820,07/01/2017,2017,1,7,2,823,Another plot / Other,14:59,14,59,,,,15:21,15,21,,SRID=EPSG:4326;POINT(89.291963 21.886678),EPSG:4326,89.991963,21.186678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Dubeki,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,144_d6e4049b-ca12-4fe7-bcee-a907965057cb.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,20.9,288,,1.57,,SRID=EPSG:4326;POINT(89.292000 21.886700),EPSG:4326,89.292,21.8867,144_b72f968b-d4c5-4f8b-a912-339cea0b6cc6.jpg,,144_4cf70185-d9b9-46c5-addd-4a13a2db8a2b.jpg,2,Mother vessel at pushpakathi,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME.,17:19,17,19
+813,08/01/2017,2017,1,8,2,Mother vessel at Pushpakathi,Another plot / Other,06:33,6,33,,,,09:40,9,40,,SRID=EPSG:4326;POINT(89.241963 21.836678),EPSG:4326,89.941963,21.136678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,,,,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,145_03931d6d-57fa-4652-a031-4de9e0ccd453.jpg,11:29,11,29,1,Centre,1,,Tree,UNK,Other unknowntree,,,,16.2,182,,4.82,,SRID=EPSG:4326;POINT(89.241990 21.836720),EPSG:4326,89.24199,21.83672,145_8512face-c718-4613-858b-d46f49f29812.jpg,This is xylocarpus granatum but its not available in software checklist.,145_926b76d2-42a4-4595-ac21-c4699c3dee6a.jpg,2,Mother vessel at pushpakathi,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME.,12:57,12,57
+514,31/12/2016,2016,12,31,2,Plot 515,Another plot / Other,13:33,13,33,,,,14:30,14,30,,SRID=EPSG:4326;POINT(89.441963 21.936678),EPSG:4326,90.141963,21.236678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,340,Khulna Range,999,Patkusta,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,146_17584f9e-8f5e-4235-8663-5e66391956d4.jpg,11:29,11,29,1,Centre,1,,Tree,STE/Hel/fom,Heritiera fomes,,,,9.1,349,,5.6,,SRID=EPSG:4326;POINT(89.441930 21.936740),EPSG:4326,89.44193,21.93674,,Two heretiera fomes from a single stump,146_6612668f-d108-4000-87a9-d333f778c8f4.jpg,2,Mother vessel at Nilkomol,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME.,17:49,17,49
+518,04/01/2017,2017,1,4,2,Mother vessel,Another plot / Other,05:57,5,57,,,,08:38,8,38,,SRID=EPSG:4326;POINT(89.341963 22.036678),EPSG:4326,90.041963,21.336678,"Khulna
+Khulna
+Koyra
+Nalian Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,kubadok,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,147_689d75b5-918f-4f72-a8c8-94b00a1d9630.jpg,11:29,11,29,1,Centre,1,,Tree,VER/Avi/off,Avicennia officinalis,,,,79.7,39,,27,,SRID=EPSG:4326;POINT(89.341760 22.036520),EPSG:4326,89.34176,22.03652,147_9c47a11f-a13c-46e3-aee8-3ffbde204e15.jpg,,147_f58f0088-33c2-478a-a84f-25c7ea70d555.jpg,2,517,Another plot / Other,,,,Tree tag was tied withlastic roof due to shortage of nail.   There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME.,13:08,13,8
+840,14/01/2017,2017,1,14,2,Mother vessel at Dubeki,Another plot / Other,06:18,6,18,,,,09:22,9,22,,SRID=EPSG:4326;POINT(89.208630 22.086678),EPSG:4326,89.90863,21.386678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Dubeki,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,148_99336026-5645-45ab-ab4d-5183b9108ac4.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,15.2,69.5,,7.1,,SRID=EPSG:4326;POINT(89.208580 22.086630),EPSG:4326,89.20858,22.08663,148_ea493d9e-c014-4a8d-91a8-d678f9f6e10b.jpg,,,2,837,Another plot / Other,,,,,11:31,11,31
+817,12/01/2017,2017,1,12,2,Mother vessel,Another plot / Other,06:25,6,25,,,,08:50,8,50,,SRID=EPSG:4326;POINT(89.108630 21.886678),EPSG:4326,89.80863,21.186678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Notabeki,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,149_1076edee-c628-42f4-a58f-8388bb9677f9.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,20.2,250,,3.12,,SRID=EPSG:4326;POINT(89.108700 21.886670),EPSG:4326,89.1087,21.88667,,,149_4ac40408-7ed8-472c-8c59-179e106fbce6.jpg,2,830,Another plot / Other,,,,3.4 cm per m extra reading given by DME.,10:42,10,42
+10,28/12/2016,2016,12,28,2,from plot 481,Another plot / Other,11:10,11,10,,,,11:10,11,10,,SRID=EPSG:4326;POINT(89.608630 21.861678),EPSG:4326,90.30863,21.161678,"Khulna
+Bagerhat
+Mongla
+Sundarban",42,Sundarban East Forest,Sundarban East Forest,999,Other,999,Kukilmoni,Other,Shoronkhula Range,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,150_d8741fd2-b1a0-48d1-ab88-3dc24ec98b95.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,12.6,180,,15.5,,SRID=EPSG:4326;POINT(89.608620 21.861850),EPSG:4326,89.60862,21.86185,150_4b22cfb6-f6e1-42bf-ba55-a09b7c79ab34.jpg,Another few heriteara fomes around tge RP tree,150_8b5f9eda-a54e-45da-92fb-f44e3dc41218.jpg,2,Mother vessel,Another plot / Other,,,,There are +/- 3.4 cm error from DME reading,17:50,17,50
+825,06/01/2017,2017,1,6,2,Mother vessel at Pushpakathi,Another plot / Other,08:10,8,10,,,,11:02,11,2,,SRID=EPSG:4326;POINT(89.258630 21.936678),EPSG:4326,89.95863,21.236678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,999,Dubeki,Other,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,151_5b9b9022-f48d-42ac-a612-b0a5f367ca91.jpg,11:29,11,29,1,Centre,1,,Tree,MEL/Xyl/mek,Xylocarpus mekongensis,,,,29.1,255,,9.51,,SRID=EPSG:4326;POINT(89.258700 21.936710),EPSG:4326,89.2587,21.93671,151_01615bf1-d2fc-4786-a0e9-0e7b4dfdc45e.jpg,,151_9b8dd441-086b-4a6f-be52-85cf3c90a3e3.jpg,2,Mother vessel at Pushpakathi,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME,15:08,15,8
+807,10/01/2017,2017,1,10,2,812,Another plot / Other,11:39,11,39,,,,12:40,12,40,,SRID=EPSG:4326;POINT(89.141963 21.811678),EPSG:4326,89.841963,21.111678,"Khulna
+Satkhira
+Shyamnagar
+Satkhira Range",43,Sundarban West Forest,Sundarban West Forest,341,Satkhira Range,,,,,12,,Inventory Team 12,Md. Tauhidor Rahaman,Rabiul Islam,1,Accessible - Sampled completely,,,,152_d7ef200d-b33f-428d-8105-759930823f7b.jpg,11:29,11,29,1,Centre,1,,Tree,EUP/Exc/aga,Excoecaria agallocha,,,,24.4,120.5,,10.08,,SRID=EPSG:4326;POINT(89.141870 21.811740),EPSG:4326,89.14187,21.81174,152_c10f4e0f-1bf2-4401-9088-1b397ab6e005.jpg,Irregular bole formation,152_e289240e-f46e-473b-a552-24a639bd8887.jpg,2,Mother vessel,Another plot / Other,,,,There is +/- 3.4 cm per m error form DME reading. Except sapling every HD was taken with DME,16:35,16,35
