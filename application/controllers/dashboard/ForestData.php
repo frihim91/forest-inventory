@@ -1,4 +1,4 @@
-    <?php
+<?php
 
     /**
      
@@ -36,7 +36,7 @@
         }
         $this->load->library("form_validation");
         $this->load->model('utilities');
-        $this->load->model('ForestData_model');
+        $this->load->model('Forestdata_model');
         $this->load->library('upload');
         $this->load->library('csvimport');
         $this->load->helper(array('html', 
@@ -127,7 +127,7 @@
                             $insert_data[$col] =  $data ; 
                         } 
                         
-                      $this->ForestData_model->insert_csv($insert_data, $tableName);
+                      $this->Forestdata_model->insert_csv($insert_data, $tableName);
                       
                     
                     }

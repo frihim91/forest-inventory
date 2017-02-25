@@ -62,7 +62,7 @@
 				<div class="flexslider">
 					<ul class="slides">
 					<?php foreach($body_images as $body_image) {
-						$image = "resources/images/".$body_image->IMG_URL;
+						$image = "resources/images/post_pic/".$body_image->IMG_URL;
 						?>
 						<li>
 							<img src="<?php echo base_url($image); ?>">
@@ -78,7 +78,7 @@
 	}
 		?>
 		<div class=""><h4>DESCRIPTION</h4>
-			<?php echo $page_description->BODY_DESC;?></div>
+			<?php echo $post_description->BODY_DESC;?></div>
 		</div>
 
 

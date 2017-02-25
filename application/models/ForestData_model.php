@@ -1,6 +1,6 @@
-    <?php
+<?php
 
-    Class ForestData_model extends CI_Model {
+    Class Forestdata_model extends CI_Model {
 
         function __construct() {
             parent::__construct();

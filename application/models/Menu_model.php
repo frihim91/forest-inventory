@@ -1,4 +1,4 @@
-    <?php
+<?php
 
     Class Menu_model extends CI_Model {
 

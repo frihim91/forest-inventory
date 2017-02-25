@@ -49,7 +49,7 @@
                             <h4> <?php echo $post_cat->CAT_NAME;?></h4>
                         
                      
-                      <?php echo $post_description->BODY_DESC;?><a href="#" class="btn btn-more pull-right">View Details</a> 
+                      <?php echo $post_description->BODY_DESC;?><a href="<?php echo site_url('Portal/post_details/'.$post_cat->TITLE_ID.'/'.$post_cat->PG_URI); ?>" class="btn btn-more pull-right"><?php echo $this->lang->line("view_details"); ?></a> 
                        
                        <!--  <a href="#" class="btn btn-more pull-right">View Details</a> -->
                     </div>
@@ -66,12 +66,12 @@
                        <div class="col-md-4 col-sm-12 col-xs-12">
                     <div class="widget-main">
                         <div class="widget-main-title info_header_style">
-                            <h4 class="widget-title"><i class="fa fa-globe" aria-hidden="true"></i> News</h4>
+                            <h4 class="widget-title"><i class="fa fa-globe" aria-hidden="true"></i> <?php echo $this->lang->line("news"); ?></h4>
                         </div>
                         <ul class="widget-inner-list">
                          <?php foreach ($post_cat_two as $post_cat_twos){?>
                             <li>
-                                <a href="#"><?php echo $post_cat_twos->BODY_DESC; ?></a>
+                               <a href="<?php echo site_url('Portal/post_details/'.$post_cat_twos->TITLE_ID.'/'.$post_cat_twos->PG_URI); ?>" <?php echo $post_cat_twos->BODY_DESC; ?></a>
                             </li>
                              <p class="blog-list-meta small-text">
                                                 <span><a href="#"><?php echo date('d-m-Y - H:i:s', strtotime($post_cat_twos->CRE_DT)); ?></a></span>
@@ -80,7 +80,7 @@
                            
                         
                         </ul>
-                        <a href="#" class="btn btn-more pull-right">More</a><br><br>
+                        <a href="#" class="btn btn-more pull-right"><?php echo $this->lang->line("more"); ?></a><br><br>
                     </div>
                 </div>
 
@@ -88,21 +88,23 @@
                       <div class="col-md-4 col-sm-12 col-xs-12">
                     <div class="widget-main">
                         <div class="widget-main-title info_header_style">
-                            <h4 class="widget-title"><i class="fa fa-globe" aria-hidden="true"></i> Events</h4>
+                            <h4 class="widget-title"><i class="fa fa-globe" aria-hidden="true"></i> <?php echo $this->lang->line("events"); ?></h4>
                         </div>
+
                         <ul class="widget-inner-list">
                         <?php foreach ($post_cat_three as $post_cat_threes){?>
                         <p class="blog-list-meta small-text">
                                                 <span><a href="#"><?php echo date('l,F j,Y', strtotime($post_cat_threes->CRE_DT)); ?></a></span>
                                             </p>
                             <li>
-                                <a href="#"> <?php echo $post_cat_threes->BODY_DESC; ?></a>
+                                <a href="<?php echo site_url('Portal/post_details/'.$post_cat_threes->TITLE_ID.'/'.$post_cat_threes->PG_URI); ?>"><?php echo $post_cat_threes->BODY_DESC; ?></a>
                             </li>
-                              <?php } ?>
-                         
 
-                        </ul>
-                        <a href="#" class="btn btn-more pull-right">More</a><br><br>
+                              <?php } ?>
+                       </ul>
+
+
+                        <a href="#" class="btn btn-more pull-right"><?php echo $this->lang->line("more"); ?></a><br><br>
                     </div>
                 </div>
 
@@ -110,18 +112,18 @@
                      <div class="col-md-4 col-sm-12 col-xs-12">
                     <div class="widget-main">
                         <div class="widget-main-title info_header_style">
-                            <h4 class="widget-title"><i class="fa fa-globe" aria-hidden="true"></i> Quicklinks</h4>
+                            <h4 class="widget-title"><i class="fa fa-globe" aria-hidden="true"></i> <?php echo $this->lang->line("quick_link"); ?></h4>
                         </div>
                         <ul class="widget-inner-list">
                          <?php foreach ($post_cat_four as $post_cat_fours){?>
                     
                             <li>
-                                <a href="#"><?php echo $post_cat_fours->BODY_DESC; ?></a>
+                                <a href="<?php echo site_url('Portal/post_details/'.$post_cat_fours->TITLE_ID.'/'.$post_cat_fours->PG_URI); ?>"><?php echo $post_cat_fours->BODY_DESC; ?></a>
                             </li>
                              <?php } ?>
                             
                            </ul>
-                        <a href="#" class="btn btn-more pull-right">More</a><br><br>
+                        <a href="" class="btn btn-more pull-right"><?php echo $this->lang->line("more"); ?></a><br><br>
                     </div>
                 </div>
 
@@ -134,7 +136,7 @@
        <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="widget-main" style="padding-top: 15px;">
                         <div class="widget-main-title">
-                            <h4 class="widget-title">Gallery</h4>
+                            <h4 class="widget-title"><?php echo $this->lang->line("gallery"); ?></h4>
                         </div>
                         <div class="widget-inner">
                             <div class="gallery-small-thumbs clearfix">

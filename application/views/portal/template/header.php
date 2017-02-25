@@ -32,14 +32,43 @@
 
         ?>
         <div id="navbar-collapse-grid" class="navbar-collapse collapse">
+
             <ul class="nav navbar-nav">
-                <?php foreach($menus as $pm) {
+             <li class="">
+                        <a href="<?php echo site_url(); ?>" class="dropdown-toggle" data-toggle="" role="button" aria-haspopup="true" aria-expanded="false">Home
+                        </a>
+                       
+                    </li>
+
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="#">Forest Data</a></li>
+                                  <!--<li role="presentation" class="divider"></li>-->
+                                
+
+                        </ul>
+                    </li>
+                <?php 
+
+                foreach($menus as $pm) {
+
                     $link=$this->Menu_model->get_chile_menu($pm->TITLE_ID);
                     $count=count($link);
+                    if($count>0)
+                    {
+                        $className="dropdown";
+                    }
+                    else 
+                    {
+                        $className='';
+                    }
 
                     ?>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $pm->TITLE_NAME; ?>
+                    
+                    <li class="<?php echo $className; ?>">
+                        <a href="<?php echo site_url('Portal/details/'.$pm->TITLE_ID.'/'.$pm->PG_URI); ?>" class="dropdown-toggle" data-toggle="<?php echo $className; ?>" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $pm->TITLE_NAME; ?>
                             <?php if($count>0)
                             {
                                 echo '<span class="caret"></span>';
@@ -51,7 +80,7 @@
                             <?php foreach($link as $links){
                                 ?>
                                 <li ><a href="<?php echo site_url('Portal/details/'.$links->TITLE_ID.'/'.$links->PG_URI); ?>"><?php echo $links->TITLE_NAME; ?></a></li>
-                                 <li role="presentation" class="divider"></li>
+                                  <!--<li role="presentation" class="divider"></li>-->
                                 <?php 
                             } ?>
 

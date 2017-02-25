@@ -49,20 +49,22 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-6 col-sm-4">
-                                <a href="index.php/portal/index.html" title="Home" rel="home">
+                                <a href="<?php echo site_url(); ?>" title="Home" rel="home">
                                     
                                      <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/forest.jpg')?>" alt="logo"/>
                                 </a>
                             </div>
                             <div class="col-xs-6 col-sm-4" style="text-align:center;">
                                 
-                               <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png')?>" alt="logo"/>
+                               <a href="<?php echo site_url(); ?>" ><img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png')?>" alt="logo"/></a>
                             </div>
                             <div class="col-xs-6 col-sm-4">
 
-                             <p align="right"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/flag_eng.gif')?>" alt="flag"/>&nbsp;&nbsp;<img src="<?php echo base_url('resources/resource_potal/assets/portal/images/bangla.gif')?>" alt="flag"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php/portal/login.html" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;">Login</a></p>
+                             <p align="right">
+                             <a title="English" href="<?php echo site_url('langSwitch/switchLanguage/english'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/flag_eng.gif')?>" alt="flag"/></a>
+                             &nbsp;&nbsp;<a title="Bangla" href="<?php echo site_url('langSwitch/switchLanguage/bangla'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/bangla.gif')?>" alt="flag"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo site_url('dashboard/auth/index')?>" target="_blank" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("login"); ?></a></p>
                             
-                               <p><input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" /></p>
+                               <p><input type="text" class="form-control input-sm" maxlength="64" placeholder="<?php echo $this->lang->line("search"); ?>" /></p>
 
                               
                          <!--     <button type="submit" class="btn btn-primary btn-sm">Search</button> -->
