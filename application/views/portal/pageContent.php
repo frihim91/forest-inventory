@@ -31,12 +31,51 @@
 	}
 
 </style>
+<?php
+$lang_ses = $this->session->userdata("site_lang");
+?>
 <div class="col-sm-12 breadcump img-responsive">
 	<div class="row">
 		<div class="breadcump-wrapper">
 			<div class="wrapper">
-				<div style="font-size:25px;" class="breadcump_row"><?php echo $title_name->TITLE_NAME?></div>
-				<div class="breadcump_row"><a href="<?php echo base_url() ?>">Home</a> > <?php echo $title_name->TITLE_NAME?></div>
+				<div style="font-size:25px;" class="breadcump_row">
+		<?php 
+			if(!empty($title_name->TITLE_NAME_BN))
+			{
+				if ($lang_ses == "bangla") 
+				{
+					echo $title_name->TITLE_NAME_BN;
+				} 
+				else
+				{
+					echo $title_name->TITLE_NAME;
+				}
+			}
+			else 
+			{
+				echo $title_name->TITLE_NAME;
+			}
+		?>
+				</div>
+				<div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> >
+				<?php 
+			if(!empty($title_name->TITLE_NAME_BN))
+			{
+				if ($lang_ses == "bangla") 
+				{
+					echo $title_name->TITLE_NAME_BN;
+				} 
+				else
+				{
+					echo $title_name->TITLE_NAME;
+				}
+			}
+			else 
+			{
+				echo $title_name->TITLE_NAME;
+			}
+		?>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -77,7 +116,26 @@
 		<?php 
 	}
 		?>
-		<div class=""><h4>DESCRIPTION</h4>
+		<div class=""><h4>
+		<?php 
+			if(!empty($title_name->TITLE_NAME_BN))
+			{
+				if ($lang_ses == "bangla") 
+				{
+					echo $title_name->TITLE_NAME_BN;
+				} 
+				else
+				{
+					echo $title_name->TITLE_NAME;
+				}
+			}
+			else 
+			{
+				echo $title_name->TITLE_NAME;
+			}
+		?>
+
+		</h4>
 			<?php echo $page_description->BODY_DESC;?></div>
 		</div>
 

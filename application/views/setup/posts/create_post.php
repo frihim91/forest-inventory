@@ -87,6 +87,24 @@
                                         <p class="muted">Please enter  Post Title Name in english here.</p>
                                     </div> 
                                 </div> 
+                     </div>
+
+
+                         <div class="row">  
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                      
+                                        <div class="col-md-12"> 
+                                         <label for="firstname">Title Bangla</label>
+                                            <?php echo form_input(array('class' => 'form-control', 'placeholder' => '', 'id' => 'TITLE_NAME_BN', 'name' => 'TITLE_NAME_BN', 'value' => set_value('TITLE_NAME_BN'))); ?>      
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 help">
+                                        <strong><span  class="help-head">Help: </span>Post Title Bangla Name</strong>
+                                        <hr>
+                                        <p class="muted">Please enter Post Title Name in bangla here.</p>
+                                    </div> 
+                                </div> 
                             </div>
                       <div class="row">  
                                     <div class="form-group">
@@ -101,6 +119,24 @@
                                             <strong><span  class="help-head">Help: </span>Subtitle Name</strong>
                                             <hr>
                                             <p class="muted">Please enter Subtitle in english here.</p>
+                                        </div> 
+                                    </div> 
+                         </div>
+
+
+                              <div class="row">  
+                                    <div class="form-group">
+                                        <div class="col-md-8">
+                                           
+                                            <div class="col-md-12"> 
+                                             <label for="firstname" >Subtitle Bangla</label>
+                                                <?php echo form_input(array('class' => 'form-control', 'placeholder' => '', 'id' => 'SUB_TITLE_BN', 'name' => 'SUB_TITLE_BN', 'value' => set_value('SUB_TITLE_BN'), )); ?>      
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 help">
+                                            <strong><span  class="help-head">Help: </span>Subtitle Bangla Name</strong>
+                                            <hr>
+                                            <p class="muted">Please enter  Subtitle in bangla here.</p>
                                         </div> 
                                     </div> 
                                 </div>

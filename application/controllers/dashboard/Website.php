@@ -118,7 +118,9 @@
                         $pagelink = array(
                             'PARENT_ID' =>$pid,
                             'TITLE_NAME' => str_replace("'", "''", $this->input->post("TITLE_NAME")),
+                            'TITLE_NAME_BN' => str_replace("'", "''", $this->input->post("TITLE_NAME_BN")),
                             'SUB_TITLE' => str_replace("'", "''", $this->input->post("SUB_TITLE")),
+                            'SUB_TITLE_BN' => str_replace("'", "''", $this->input->post("SUB_TITLE_BN")),
                             'PG_URI' =>$uri,
                             
                             'ORDER_NO' => $this->input->post('ORDER_NO'),
@@ -236,7 +238,9 @@
                                     'PARENT_ID' =>$pid,
 
                                     'TITLE_NAME' => str_replace("'", "''", $this->input->post("TITLE_NAME")),
+                                    'TITLE_NAME_BN' => str_replace("'", "''", $this->input->post("TITLE_NAME_BN")),
                                     'SUB_TITLE' => str_replace("'", "''", $this->input->post("SUB_TITLE")),
+                                    'SUB_TITLE_BN' => str_replace("'", "''", $this->input->post("SUB_TITLE_BN")),
                                     'PG_URI' =>$uri,
                                     'ORDER_NO' => $this->input->post('ORDER_NO'),
                                     'ACTIVE_STAT' => (isset($_POST['ACTIVE_STAT'])) ? 1 : 0,
@@ -401,7 +405,9 @@
                         $postlink = array(
                             'CAT_ID' =>$pcatid,
                             'TITLE_NAME' => str_replace("'", "''", $this->input->post("TITLE_NAME")),
+                            'TITLE_NAME_BN' => str_replace("'", "''", $this->input->post("TITLE_NAME_BN")),
                             'SUB_TITLE' => str_replace("'", "''", $this->input->post("SUB_TITLE")),
+                            'SUB_TITLE_BN' => str_replace("'", "''", $this->input->post("SUB_TITLE_BN")),
                             'PG_URI' =>$uri,
                             
                             'ORDER_NO' => $this->input->post('ORDER_NO'),
@@ -511,11 +517,13 @@
                                     'CAT_ID' =>$pcatid,
 
                                     'TITLE_NAME' => str_replace("'", "''", $this->input->post("TITLE_NAME")),
+                                    'TITLE_NAME_BN' => str_replace("'", "''", $this->input->post("TITLE_NAME_BN")),
                                     'SUB_TITLE' => str_replace("'", "''", $this->input->post("SUB_TITLE")),
+                                    'SUB_TITLE_BN' => str_replace("'", "''", $this->input->post("SUB_TITLE_BN")),
                                     'PG_URI' =>$uri,
                                     'ORDER_NO' => $this->input->post('ORDER_NO'),
                                     'ACTIVE_STAT' => (isset($_POST['ACTIVE_STAT'])) ? 1 : 0,
-                                    'UPD_DT' =>date('Y-m-d H:i:s',time()),
+                                    'CRE_DT' =>date('Y-m-d H:i:s',time()),
                                     'CRE_BY' => $this->user_session["USER_ID"]
                                     );
 
@@ -785,49 +793,6 @@
             }
      
 
-        /*
-      $tableName =$this->input->post("table_name");
-      $tableCoulmn =  $this->db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$tableName'")->result();
-      $sourcePath = $_FILES['userfile']['tmp_name']; 
-      $temporary = explode(".", $_FILES["userfile"]["name"]);
-      $file_extension = end($temporary);
-      $targetPath = "resources/uploads/".$_FILES['userfile']['name']; 
-      $fileRename = $this->fileRename();
-      $succes=move_uploaded_file($sourcePath, "resources/uploads/".$fileRename.".".$file_extension);
-          if (!$succes) {
-             $data['error'] = $this->upload->display_errors();
- 
-             $data['content_view_page'] = 'setup/forestData/upload_data';
-            $this->template->display($data);
-        } else {
-            
-            $filePath = "resources/uploads/".$fileRename.".".$file_extension;
-
-            //echo $filePath; exit;
-            if ($this->csvimport->get_array($filePath)) {
-                $csv_array = $this->csvimport->get_array($filePath);
-
-                /*echo '<pre>';
-                print_r($csv_array); exit;
-                foreach ($csv_array as $key =>$row) {
-                    $insert_data = array();
-                    for ($i=0; $i < sizeof($tableCoulmn); $i++) { 
-                        $col    = $tableCoulmn[$i]->COLUMN_NAME;
-                        $data   = $row[$col];
-                        $insert_data[$col] =  $data ; 
-                    } 
-                    
-                $this->Menu_model->insert_csv($insert_data, $tableName);
-                }
-                $this->session->set_flashdata('success', 'Csv Data Imported Succesfully');
-                 redirect('dashboard/Website/uploadForestData', 'refresh');
-                //echo "<pre>"; print_r($insert_data);
-            } else 
-                $data['error'] = "Error occured";
-                $data['content_view_page'] = 'setup/forestData/upload_data';
-                    $this->template->display($data);
-            }
-            */
  
         } 
 

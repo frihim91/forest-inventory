@@ -154,6 +154,28 @@
             $name = $date->format('YmdHis');
             Return $name;
         }
+
+
+
+     /**
+      * Show all Species in datatable
+      
+      
+     */
+
+        public function speciesSetup() 
+        {
+            $data["breadcrumbs"] = array(
+                "Species" => "dashboard/ForestData/speciesSetup",
+                );
+            $data['pageTitle'] = "All Species List";
+            $data['all_family'] = $this->utilities->findAllFromView("fd_family");
+            $data['all_genus'] = $this->utilities->findAllFromView("fd_genus");
+            $data['all_species'] = $this->utilities->findAllFromView("fd_species_dataset");
+            $data['content_view_page'] = 'setup/species/all_species';
+            $this->template->display($data);
+         }
+
  
 
 

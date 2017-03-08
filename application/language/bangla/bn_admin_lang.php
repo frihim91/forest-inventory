@@ -4,7 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // Create Module
 $lang["news"] = "খবরাখবর";
+$lang["species_list"] = "স্পেসিস লিস্ট";
+$lang["home"] = "হোম ";
 $lang["events"] = "কর্মসূচী";
+$lang["data"] = "ডাটা";
+$lang["forest_data"] = "ফরেস্ট ডাটা";
 $lang["quick_link"] = "কুইক লিংক";
 $lang["gallery"] = "গ্যালারি";
 $lang["more"] = "আরও";
