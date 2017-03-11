@@ -183,7 +183,7 @@ class Portal extends CI_Controller
                     $this->template->display_portal($data);
             }
 
-         /*
+    /*
      * @methodName speciesData()
      * @access public
      * @param  none
@@ -198,5 +198,23 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/speciesData';
         $this->template->display_portal($data);
         }
+
+
+
+
+    /*
+     * @methodName allometricEquationData()
+     * @access public
+     * @param  none
+     * @return Allometric EquationData List page
+     */
+
+        public function allometricEquationData($specis_id)
+        {
+        $data['allometricEquationData'] = $this->Forestdata_model->get_allometric_equation($specis_id);
+        $data['content_view_page'] = 'portal/allometricEquation';
+        $this->template->display_portal($data);
+        }
+
 
 }

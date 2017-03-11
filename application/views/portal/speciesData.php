@@ -105,7 +105,7 @@
                                        <?php 
                                         $totalNumberC = sizeof($speciesId) - 1 ;
                                         foreach($speciesId as $key => $speciesIds){ ?>
-                                        <?php echo $speciesIds->Division;?>  
+                                        <?php echo $speciesIds->District;?>  
                                         <?php 
                                           if($totalNumberC != $key)
                                             echo ", ";
@@ -128,8 +128,20 @@
                                           
                                         </b>
                                         </p>
-                                     <p style="padding-left:41px;"><b>Types of data :</b></p>
-                                                                 <br>
+                                     <p style="padding-left:41px;">
+                                     <b>Types of data : <a href="<?php echo site_url('Portal/allometricEquationData/'.$speciesIds->ID_Species); ?>" style="color:#147A00;">Alometric Equation</a>
+                                     <?php 
+                                     $species_type_data = $this->Forestdata_model->get_data_type($speciesIds->ID_Species);
+                                     ?> <?php 
+                                         foreach($species_type_data as $row)
+                                        {
+                                        ?>
+                                        (<?php echo $row->TOTAL_EQN;?>)
+
+                                         <?php 
+                                       }?>
+                                     </b></p>
+                                  <br>
 
                                     
                                </div>
