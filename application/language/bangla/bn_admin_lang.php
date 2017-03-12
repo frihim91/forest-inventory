@@ -15,6 +15,7 @@ $lang["quick_link"] = "কুইক লিংক";
 $lang["gallery"] = "গ্যালারি";
 $lang["more"] = "আরও";
 $lang["login"] = "লগইন";
+$lang["register"] = "নিবন্ধন";
 $lang["view_details"] = "বিস্তারিত";
 $lang["search"] = "সার্চ";
 $lang["module_name_bangla"] = "মডিউলের নাম";

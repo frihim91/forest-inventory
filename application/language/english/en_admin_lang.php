@@ -15,6 +15,7 @@ $lang["quick_link"] = "Quicklinks";
 $lang["gallery"] = "Gallery";
 $lang["more"] = "More";
 $lang["login"] = "Login";
+$lang["register"] = "Register";
 $lang["view_details"] = "View Details";
 $lang["search"] = "Search";
 $lang["module_name_bangla"] = "Module Name (বাংলা)";
