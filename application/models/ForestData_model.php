@@ -95,7 +95,7 @@ Class Forestdata_model extends CI_Model {
 
 
 
-	public function get_allometric_equation_details($ID_EF_IPCC)
+	public function get_allometric_equation_details($ID_Species)
 	{
 		$data=$this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.* from ef_ipcc ip
          LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
@@ -106,7 +106,7 @@ Class Forestdata_model extends CI_Model {
 		 LEFT JOIN division d ON l.ID_Division=d.ID_Division
 		 LEFT JOIN district dis ON l.ID_District =dis.ID_District
 		 LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-		 where e.ID_EF_IPCC=$ID_EF_IPCC
+		 where e.ID_Species=$ID_Species
 		 GROUP BY e.ID_Species")->result();
 		 return $data; 
 	}

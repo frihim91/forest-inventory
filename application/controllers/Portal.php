@@ -238,9 +238,9 @@ class Portal extends CI_Controller
      * @return Allometric Equation Details page
      */
 
-        public function allometricEquationDetails($ID_EF_IPCC)
+        public function allometricEquationDetails($ID_Species)
         {
-        $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_EF_IPCC);
+        $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_Species);
         $data['content_view_page'] = 'portal/allometricEquationDetails';
         $this->template->display_portal($data);
         }
