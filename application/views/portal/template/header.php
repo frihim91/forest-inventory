@@ -49,7 +49,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line("data"); ?><span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                        <li ><a href="#"><?php echo $this->lang->line("forest_data"); ?></a></li>
+                        <li ><a href="<?php echo site_url('Portal/allometricEquationView'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a></li>
                         <li ><a href="<?php echo site_url('Portal/speciesData'); ?>"><?php echo $this->lang->line("species_list"); ?></a></li>
                                   <!--<li role="presentation" class="divider"></li>-->
                                 

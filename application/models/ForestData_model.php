@@ -62,17 +62,53 @@ Class Forestdata_model extends CI_Model {
 
 	public function get_allometric_equation($specis_id)
 	{
-		$data=$this->db->query("SELECT s.*, e.*,l.*,b.*,d.*,dis.*,zon.*,ip.*,r.* from  ef e
-			LEFT JOIN species s ON e.ID_Species=s.ID_Species
-			LEFT JOIN ef_ipcc ip ON e.ID_EF_IPCC=ip.ID_EF_IPCC
-			LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
-			LEFT JOIN location l ON e.ID_Location=l.ID_Location
-			LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-			LEFT JOIN division d ON l.ID_Division=d.ID_Division
-			LEFT JOIN district dis ON l.ID_District =dis.ID_District
-			LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-			WHERE e.ID_Species=$specis_id GROUP BY e.ID_Species;")->result();
-		return $data; 
+		$data=$this->db->query("SELECT s.*, e.*,l.*,b.*,d.*,dis.*,zon.*,ip.*,r.* from ef e
+		 LEFT JOIN species s ON e.ID_Species=s.ID_Species
+		 LEFT JOIN ef_ipcc ip ON e.ID_EF_IPCC=ip.ID_EF_IPCC
+		 LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+		 LEFT JOIN location l ON e.ID_Location=l.ID_Location
+		 LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+		 LEFT JOIN division d ON l.ID_Division=d.ID_Division
+		 LEFT JOIN district dis ON l.ID_District =dis.ID_District
+		 LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+		 WHERE e.ID_Species=$specis_id GROUP BY e.ID_EF_IPCC")->result();
+		 return $data; 
+	}
+
+
+
+	public function get_allometric_equation_list()
+	{
+		$data=$this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.* from ef_ipcc ip
+         LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
+		 LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+		 LEFT JOIN location l ON e.ID_Location=l.ID_Location
+		 LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+		 LEFT JOIN division d ON l.ID_Division=d.ID_Division
+		 LEFT JOIN district dis ON l.ID_District =dis.ID_District
+		 LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+		 GROUP BY e.ID_Species")->result();
+		 return $data; 
+	}
+
+
+
+
+	public function get_allometric_equation_details($ID_EF_IPCC)
+	{
+		$data=$this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.* from ef_ipcc ip
+         LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
+		 LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+		 LEFT JOIN location l ON e.ID_Location=l.ID_Location
+		 LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+		 LEFT JOIN division d ON l.ID_Division=d.ID_Division
+		 LEFT JOIN district dis ON l.ID_District =dis.ID_District
+		 LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+		 where e.ID_EF_IPCC=$ID_EF_IPCC
+		 GROUP BY e.ID_Species")->result();
+		 return $data; 
 	}
 
 

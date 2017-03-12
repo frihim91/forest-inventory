@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $lang["news"] = "খবরাখবর";
 $lang["species_list"] = "স্পেসিস লিস্ট";
 $lang["allometric_equation"] = "এলমেত্রিক একুয়েসন";
+$lang["allometric_equations"] = "এলমেত্রিক একুয়েসন";
 $lang["home"] = "হোম ";
 $lang["events"] = "কর্মসূচী";
 $lang["data"] = "ডাটা";

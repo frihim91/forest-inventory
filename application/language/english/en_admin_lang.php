@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $lang["news"] = "News";
 $lang["species_list"] = "Species List";
 $lang["allometric_equation"] = "Allometric Equation";
+$lang["allometric_equations"] = "Allometric equations";
 $lang["home"] = "Home";
 $lang["data"] = "Data";
 $lang["forest_data"] = "Forest Data";

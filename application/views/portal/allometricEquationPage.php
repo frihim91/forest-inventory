@@ -38,9 +38,9 @@ $lang_ses = $this->session->userdata("site_lang");
   <div class="row">
     <div class="breadcump-wrapper">
       <div class="wrapper">
-        <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("allometric_equation"); ?>
+        <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("allometric_equations"); ?>
     </div>
-        <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("allometric_equation"); ?>
+        <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("allometric_equations"); ?>
         
         </div>
       </div>
@@ -54,19 +54,19 @@ $lang_ses = $this->session->userdata("site_lang");
 
   <div class="col-sm-12 bdy_des">
   <?php 
-  foreach($allometricEquationData as $row)
+  foreach($allometricEquationView as $row)
   {
   ?>
   <div class="panel panel-default">
   <div class="panel-heading">Allometric Equation
-  <a href="#" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+  <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_EF_IPCC); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
   </div>
   <div class="panel-body">
-  <p style="padding-left:3px;"><b>Equation:<code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
+  <p style="padding-left:3px;"><b>Equation:<code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code> </b></p>
   <p style="padding-left:3px;"><b>Output:</b></p>
   <p style="padding-left:3px;"><b>Reference:</b><?php echo $row->Reference;?></p>
   <p style="padding-left:3px;"><b>Reference Year:</b><?php echo $row->Year;?></p>
-  <p style="padding-left:3px;"><b>FAO Biomes:</b><?php echo $row->FAOBiomes;?></p>
+  <p style="padding-left:3px;"><b>FAO Biomes:</b><<?php echo $row->FAOBiomes;?>/p>
   <p style="padding-left:3px;"><b>Species:</b> <?php echo $row->Species;?></p>
   <p style="padding-left:3px;"><b>Locations:</b><?php echo $row->District;?> (lat <?php echo $row->LatDD;?>,lon <?php echo $row->LongDD;?>)</p>
                

@@ -51,7 +51,7 @@
   </div>
     <div class="col-md-12 page_content">
        <div class="col-md-12">
-                <h2>Species List</h2>
+                <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Species List</h2>
                 <p>Click on a family in the list below for more information on the species in that family.</p>
 
             </div>
@@ -129,7 +129,7 @@
                                         </b>
                                         </p>
                                      <p style="padding-left:41px;">
-                                     <b>Types of data : <a href="<?php echo site_url('Portal/allometricEquationData/'.$speciesIds->ID_Species); ?>" style="color:#147A00;">Alometric Equation</a>
+                                     <b>Types of data : <a href="<?php echo site_url('Portal/allometricEquationData/'.$species_list->ID_Species); ?>" style="color:#147A00;">Alometric Equation</a>
                                      <?php 
                                      $species_type_data = $this->Forestdata_model->get_data_type($speciesIds->ID_Species);
                                      ?> <?php 

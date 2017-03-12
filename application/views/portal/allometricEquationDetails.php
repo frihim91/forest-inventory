@@ -48,32 +48,32 @@ $lang_ses = $this->session->userdata("site_lang");
   </div>
 </div>
 <div class="col-md-12 page_content">
-  <div class="col-sm-12">
-    
-  </div>
+    <div class="col-md-12">
+                <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Allometric Equation</h2>
+                
+            </div>
 
   <div class="col-sm-12 bdy_des">
-  <?php 
-  foreach($allometricEquationData as $row)
-  {
-  ?>
-  <div class="panel panel-default">
-  <div class="panel-heading">Allometric Equation
-  <a href="#" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
-  </div>
-  <div class="panel-body">
-  <p style="padding-left:3px;"><b>Equation:<code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
-  <p style="padding-left:3px;"><b>Output:</b></p>
-  <p style="padding-left:3px;"><b>Reference:</b><?php echo $row->Reference;?></p>
-  <p style="padding-left:3px;"><b>Reference Year:</b><?php echo $row->Year;?></p>
-  <p style="padding-left:3px;"><b>FAO Biomes:</b><?php echo $row->FAOBiomes;?></p>
-  <p style="padding-left:3px;"><b>Species:</b> <?php echo $row->Species;?></p>
-  <p style="padding-left:3px;"><b>Locations:</b><?php echo $row->District;?> (lat <?php echo $row->LatDD;?>,lon <?php echo $row->LongDD;?>)</p>
-               
-    
-
-  </div>
+  <h3 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Allometric</h3>
+  
+  <div class="row">     
+    <div class="col-md-12">
+         <br>
+        <h3>Allometry</h3>
+        <?php 
+        foreach($allometricEquationDetails as $row)
+        {
+        ?>
+        <table class="table">
+            <tr><th style="width:210px"> Equation: </th><td> <code><?php echo $row->Equation;?> </code> </td></tr>
+            <tr><th> Sample size: </th><td> 9 </td></tr>
+            <tr><th> R<sup>2</sup>: </th><td> 0.97 </td></tr>
+              <tr><th style="width:210px"> Population: </th><td> Individual </td></tr>
+        </table>
+    </div>
 </div>
+
+
  <?php 
   }?>
 
