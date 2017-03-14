@@ -61,13 +61,13 @@ $lang_ses = $this->session->userdata("site_lang");
          <br>
    <table class="table">
         
-            <tr><th style="width:210px"> Equation: </th><td> <code> 
+            <tr><th style="width:210px"> Equation: </th><td> <b><code style="color:#c7254e;font-size: 14px;">
             <?php 
             foreach($allometricEquationDetails as $row)
             {
             ?><?php echo $row->Equation;?>
             <?php 
-            }?></code></td></tr>
+            }?></code></b></td></tr>
             <tr><th> Sample size: </th><td></td></tr>
             <tr><th> R<sup>2</sup>: </th><td></td></tr>
               <tr><th style="width:210px"> Population: </th><td></td></tr>
@@ -154,15 +154,37 @@ $lang_ses = $this->session->userdata("site_lang");
                   <tr>
                         <th>Family:</th>
                         <th>Genus:</th>
-                      <th>Species:</th>
+                        <th>Species:</th>
                         <th>Subspecies:</th>
                         <th>Author:</th>
                         <th>Local Names:</th>
                     </tr>
                      
-                        <td >Pinaceae</td>
-                        <td >Pinus</td>
-                        <td >ponderosa</td>
+                        <td >
+                        <?php 
+                        foreach($allometricEquationDetails as $row){
+                         ?>
+                         <?php echo $row->Family;?>
+                         <?php 
+                          }?></td>
+                        <td>
+                         <?php 
+                         foreach($allometricEquationDetails as $row){
+                         ?>
+                         <?php echo $row->Genus;?>
+                         <?php 
+                         }?>
+                          
+                        </td>
+                        <td>
+                         <?php 
+                         foreach($allometricEquationDetails as $row){
+                         ?>
+                         <?php echo $row->Species;?>
+                         <?php 
+                         }?>
+                          
+                        </td>
                         <td >None</td>
                         <td >None</td>
                         <td >
@@ -234,7 +256,13 @@ $lang_ses = $this->session->userdata("site_lang");
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th><td  class="pdf-record-td">  </td></tr>
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> WWF Terrestrial Ecoregion: </th><td class="pdf-record-td">  </td></tr>
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division Bailey: </th><td class="pdf-record-td"> </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Holdridge Life Zone: </th><td  class="pdf-record-td"> </td></tr>
+                            <tr><th class="pdf-record-th"> Holdridge Life Zone:</th><td  class="pdf-record-td"> 
+                             <?php 
+                             foreach($allometricEquationDetails as $row){
+                             ?><?php echo $row->Zones;?>
+                             <?php 
+                             }?> 
+                             </td></tr>
 
                         </table>
                     </td>
