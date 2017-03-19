@@ -48,10 +48,27 @@
                        <p align="right">
                            <a title="English" href="<?php echo site_url('langSwitch/switchLanguage/english'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/flag_eng.gif')?>" alt="flag"/></a>
 
-                           &nbsp;&nbsp;<a title="Bangla" href="<?php echo site_url('langSwitch/switchLanguage/bangla'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/bangla.gif')?>" alt="flag"/></a>
+                           <a title="Bangla" href="<?php echo site_url('langSwitch/switchLanguage/bangla'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/bangla.gif')?>" alt="flag"/></a>
+                            <?php
+                           $session_info = $this->session->userdata("user_logged_in");
+                          //echo '<pre>';print_r($session_info);exit;
+                           ?>
+                        <?php
+                           if(!$this->session->userdata('user_logged_in')){
+                            ?>
+                             <a href="<?php echo site_url("accounts/userLogin"); ?>" target="_blank" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;">Login</a>
+                             <a href="<?php echo site_url('accounts/userRegistration')?>" target="_blank" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("register"); ?></a>
 
-                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo site_url('dashboard/auth/index')?>" target="_blank" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("login"); ?></a>
-                           <a href="<?php echo site_url('accounts/userRegistration')?>" target="_blank" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("register"); ?></a></p>
+                             <?php 
+                            }else{ ?>
+                                <a  class="btn btn-link" style="color: green;font-size: 16px;font-weight: 900;font-style: italic;"><?php echo $session_info["EMAIL"]; ?></a> <a href="<?php echo site_url("dashboard/auth/registerLogout"); ?>" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;">Logout</a>
+                                  <?php 
+                            }
+                            
+                           ?>
+                           
+                           
+                           </p>
                            <form action="<?php echo site_url('portal/search_keyword');?>" method = "post">
                              <p><input type="text" class="form-control input-sm" name = "keyword" maxlength="64" placeholder="<?php echo $this->lang->line("search"); ?>" />
                              </p>

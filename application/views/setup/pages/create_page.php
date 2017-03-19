@@ -52,7 +52,7 @@
                                       
                                         <div class="col-md-12"> 
                                          <label for="firstname">Parent Title </label>
-                                                        <?php
+                                            <?php
                                             $parents = $this->Menu_model->get_all_title();
                                             $options = array('' => 'Select Parent Title');
                                             foreach ($parents as $parent) {

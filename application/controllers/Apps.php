@@ -15,9 +15,12 @@ class Apps extends CI_Controller {
             redirect('dashboard/auth/index', 'refresh');
         }
     }
-/**
- * I belong to a file
- */
+    /**
+     * @methodName index()
+     * @param  none
+     * Show the admin dashboard page.
+     * index function here.
+     */
 
 
     public function index() {
@@ -26,9 +29,12 @@ class Apps extends CI_Controller {
 
     }
 
-/**
- * I belong to a file
- */
+    /**
+     * @methodName dismiss_dashboard_alert()
+     * @param  none
+     * Show the dashboard dismiss alert.
+     * dismiss_dashboard_alert function here.
+     */
 
 
     public function dismiss_dashboard_alert() {

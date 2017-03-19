@@ -8,8 +8,8 @@
             <div class="col-md-7">
                 <ul class="footer-nav">
                     <li><a href="<?php echo site_url('portal/index'); ?>">Home</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Registration</a></li>
+                    <li><a href="<?php echo site_url('dashboard/auth/index')?>">Admin Login</a></li>
+                    <li><a href="<?php echo site_url('accounts/userRegistration')?>">Registration</a></li>
                 </ul>
             </div>
         </div>

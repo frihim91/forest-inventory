@@ -70,7 +70,7 @@
     /**
       *Admin login operation
       * @param  array 
-      * @param  string  $password     A particular marked point
+      * @param  string  $password  A particular marked point
       * @return  string  Calculated elapsed time on success,
          
      */
@@ -306,5 +306,74 @@
             }
             $this->load->view('forgot_password');
         }
+
+
+    /**
+     * @methodName registerLogin()
+     * @param  none
+     * Show the Register Login page.
+     * registerLogin function here.
+     */
+
+        function registerLogin() {
+
+            if ($this->session->userdata('user_logged_in')) {
+                redirect('portal/index', 'refresh');
+            }
+            $data['pageTitle'] = "Login";
+            $this->form_validation->set_rules('txtUserName', 'Username', 'trim|required');
+            $this->form_validation->set_rules('txtPassword', 'Password', 'trim|required|callback_register_check_database');
+
+            if ($this->form_validation->run() == FALSE) {
+                $data['content_view_page'] = 'account/userLogin';
+                $this->template->display_portal($data);
+            } else {
+                redirect('portal/index', 'refresh');
+            }
+        }
+
+
+    /**
+     *Register logout function here
+     *End session for active user.
+     */
+
+
+        public function registerLogout() {
+            $this->session->unset_userdata('user_logged_in');
+            redirect('portal/index', 'refresh');
+        }
+
+
+
+
+
+    /**
+      *register login operation
+      * @param  array 
+      * @param  string  $password  A particular marked point
+      * @return  string  Calculated elapsed time on success,
+         
+     */
+
+      public function register_check_database($password) {
+            $username = $this->input->post('txtUserName');
+            $result = $this->auth_model->login($username, $password);
+            if ($result) {
+                $sess_array = array(
+                    'USER_ID' => $result->USER_ID,
+                    'USERNAME' => $result->USERNAME,
+                    'EMAIL' => $result->EMAIL
+               
+                );
+                //echo '<pre>';print_r($sess_array);exit;
+                $this->session->set_userdata('user_logged_in', $sess_array);
+                return TRUE;
+            } else {
+                $this->form_validation->set_message('register_check_database', 'Invalid username or password');
+                return false;
+            }
+        }
+
 
     }
