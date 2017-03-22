@@ -108,7 +108,7 @@ blockquote h5 {
 /*-----------------------------------------------------------------------------------*/
 /*	BOOTSTRAP OVERRIDING
 /*-----------------------------------------------------------------------------------*/
-.nav-tabs > li.active > a,
+/*-.nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   border: none;
@@ -148,7 +148,7 @@ blockquote h5 {
 .tab-content > .tab-pane {
   padding: 20px;
   border-top: 2px solid;
-}
+}*/
 
 .panel-group .panel {
   -webkit-border-radius: 0;

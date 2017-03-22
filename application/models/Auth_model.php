@@ -24,7 +24,7 @@ Class Auth_model extends CI_Model {
         $this->db->from('visitor_info');
         $this->db->where('USERNAME', "$username");
         $this->db->where('USERPW', md5($password));
-        $this->db->where('ACTIVE_FLAG', 1);
+        $this->db->where('ACTIVE_FLAG', 0);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             return $query->row();

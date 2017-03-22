@@ -79,9 +79,11 @@ Class Forestdata_model extends CI_Model {
 
 	public function get_allometric_equation_list()
 	{
-		$data=$this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.* from ef_ipcc ip
+		$data=$this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef_ipcc ip
          LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
 		 LEFT JOIN species s ON e.ID_Species=s.ID_Species
+		 LEFT JOIN family f ON s.ID_Family=f.ID_Family
+		 LEFT JOIN genus g ON f.ID_Family=g.ID_Family	
          LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
 		 LEFT JOIN location l ON e.ID_Location=l.ID_Location
 		 LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
@@ -112,6 +114,50 @@ Class Forestdata_model extends CI_Model {
 		 GROUP BY e.ID_Species")->result();
 		 return $data; 
 	}
+
+
+
+
+		public function get_raw_data_list()
+	{
+		$data=$this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         
+		 LEFT JOIN species s ON e.ID_Species=s.ID_Species
+		 LEFT JOIN family f ON s.ID_Family=f.ID_Family
+		 LEFT JOIN genus g ON f.ID_Family=g.ID_Family	
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+		 LEFT JOIN location l ON e.ID_Location=l.ID_Location
+		 LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+		 LEFT JOIN division d ON l.ID_Division=d.ID_Division
+		 LEFT JOIN district dis ON l.ID_District =dis.ID_District
+		 LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+	     GROUP BY e.ID_Species")->result();
+		 return $data; 
+	}
+
+
+			public function get_raw_data_details($ID_Species)
+	{
+		$data=$this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         
+		 LEFT JOIN species s ON e.ID_Species=s.ID_Species
+		 LEFT JOIN family f ON s.ID_Family=f.ID_Family
+		 LEFT JOIN genus g ON f.ID_Family=g.ID_Family	
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+		 LEFT JOIN location l ON e.ID_Location=l.ID_Location
+		 LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+		 LEFT JOIN division d ON l.ID_Division=d.ID_Division
+		 LEFT JOIN district dis ON l.ID_District =dis.ID_District
+		 LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+		 where e.ID_Species=$ID_Species
+		 GROUP BY e.ID_Species")->result();
+		 return $data; 
+	}
+
+
+
+	
+
 
 
 

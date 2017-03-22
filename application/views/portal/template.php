@@ -56,8 +56,8 @@
                         <?php
                            if(!$this->session->userdata('user_logged_in')){
                             ?>
-                             <a href="<?php echo site_url("accounts/userLogin"); ?>" target="_blank" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;">Login</a>
-                             <a href="<?php echo site_url('accounts/userRegistration')?>" target="_blank" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("register"); ?></a>
+                             <a href="<?php echo site_url("accounts/userLogin"); ?>"  class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;">Login</a>
+                             <a href="<?php echo site_url('accounts/userRegistration')?>"  class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("register"); ?></a>
 
                              <?php 
                             }else{ ?>

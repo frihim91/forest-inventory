@@ -51,6 +51,7 @@
                         <ul class="dropdown-menu">
                         <li ><a href="<?php echo site_url('Portal/allometricEquationView'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a></li>
                         <li ><a href="<?php echo site_url('Portal/speciesData'); ?>"><?php echo $this->lang->line("species_list"); ?></a></li>
+                        <li ><a href="<?php echo site_url('Portal/rawDataView'); ?>"><?php echo $this->lang->line("raw_data"); ?></a></li>
                                   <!--<li role="presentation" class="divider"></li>-->
                                 
                         </ul>

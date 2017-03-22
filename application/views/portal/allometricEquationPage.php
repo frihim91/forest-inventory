@@ -30,6 +30,14 @@
     color: white;
   }
 
+  #search-submit-holder, #tree-equation-footer {
+    height: 45px;
+    padding: 5px;
+    background-color: #f4f4f4;
+    border-top: 1px solid #d9d9d9;
+    border-radius: 0px 0px 4px 4px;
+}
+
 </style>
 <?php
 $lang_ses = $this->session->userdata("site_lang");
@@ -48,9 +56,118 @@ $lang_ses = $this->session->userdata("site_lang");
   </div>
 </div>
 <div class="col-md-12 page_content">
+<h3>Allometric Equation Search</h3>
+
+
   <div class="col-sm-12">
-    
+  <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Keyword</a></li>
+  <li><a data-toggle="tab" href="#menu1">Taxonomy</a></li>
+  <li><a data-toggle="tab" href="#menu2">Location</a></li>
+  <li><a data-toggle="tab" href="#menu3">Reference</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <p> Search allometric equations by keyword. 
+                    This searches accross several text fields. 
+                    <br>
+                    Example searches: <a href="#">Acacia</a>,
+                       <a href="#">Zambia</a>,
+                       <a href="#">Bellefontaine</a>, 
+                       <a href="#">Glutinosum</a>,
+                       <a href="#">rainforest</a>
+                </p>
+       <div class="col-md-6">
+              <div class="form-group">
+          <label>Keyword<span style="color:red;">*</span></label>
+           <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Keyword', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+           </div>
+        </div> 
+          
   </div>
+  <div id="menu1" class="tab-pane fade">
+    <p> Search allometric equations by family, genus or species.
+Example searches
+                    <br>
+                    Example searches: <a href="#">Genus</a>,
+                       <a href="#">Gmelina</a>,
+                       <a href="#"> Species</a>, 
+                       <a href="#">schweinfurthii</a>,
+                     
+                </p>
+       <div class="col-md-6">
+              <div class="form-group">
+          <label>Genus<span style="color:red;">*</span></label>
+           <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Genus', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+           </div>
+           <div class="form-group">
+          <label>Species<span style="color:red;">*</span></label>
+           <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Species', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+           </div>
+        </div> 
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    
+    <p> Search allometric equations by tree location and biome.
+Example searches
+                    <br>
+                    Example searches: <a href="#">Biome (FAO):</a>,
+                       <a href="#">Tropical dry forest</a>,
+                       <a href="#">Country: Benin</a>, 
+                       
+                     
+                </p>
+
+      <div class="col-md-6">
+            <div class="form-group">
+            <h3>Country</h3>
+            <label>District<span style="color:red;">*</span></label>
+           <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'District', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+           </div>
+           <div class="form-group">
+           <h3>Ecological Zone</h3>
+          <label>FAO Global Ecological Zone <span style="color:red;">*</span></label>
+           <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'FAO Global Ecological Zone', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+           </div>
+      </div> 
+  </div>
+  <div id="menu3" class="tab-pane fade">
+      <p> Search allometric equations by author, year, and reference.
+Example searches
+                    <br>
+                    Example searches: <a href="#"> Author: Henry M</a>,
+                       <a href="#">Reference: Pieper</a>,
+                       <a href="#"> Y. & Laumans,</a>, 
+                       <a href="#"> Year: 2004</a>, 
+                       
+                     
+                </p>
+
+                 <div class="col-md-6">
+            <div class="form-group">
+            
+            <label>Reference <span style="color:red;">*</span></label>
+           <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Reference ', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+           </div>
+           <div class="form-group">
+           <label>Author  <span style="color:red;">*</span></label>
+           <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Author', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+           </div>
+
+           <div class="form-group">
+           <label>Year  <span style="color:red;">*</span></label>
+           <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Year', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+           </div>
+      </div> 
+  </div>
+
+
+</div>
+</div>
+<div id="search-submit-holder">
+            <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+        </div>
 
   <div class="col-sm-12 bdy_des">
   <?php 
@@ -67,17 +184,15 @@ $lang_ses = $this->session->userdata("site_lang");
   <p style="padding-left:3px;"><b>Reference:</b><?php echo $row->Reference;?></p>
   <p style="padding-left:3px;"><b>Reference Year:</b><?php echo $row->Year;?></p>
   <p style="padding-left:3px;"><b>FAO Biomes:</b><?php echo $row->FAOBiomes;?></p>
-  <p style="padding-left:3px;"><b>Species:</b> <?php echo $row->Species;?></p>
+  <p style="padding-left:3px;"><b>Species:</b> <?php echo $row->Family.' '.$row->Species;?></p>
   <p style="padding-left:3px;"><b>Locations:</b><?php echo $row->District;?> (lat <?php echo $row->LatDD;?>,lon <?php echo $row->LongDD;?>)</p>
                
-    
-
-  </div>
+</div>
 </div>
  <?php 
   }?>
 
-   
+   <p><?php echo $links; ?></p>
     
   </div>
 

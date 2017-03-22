@@ -70,6 +70,17 @@
                                             <option value="subplot">subplot</option>
                                             <option value="tree">tree</option>
                                             <option value="wo">wo</option>
+                                            <option value="family">family</option>
+                                            <option value="genus">genus</option>
+                                            <option value="species">species</option>
+                                            <option value="volumerange">volumerange</option>
+                                            <option value="location">location</option>
+                                            <option value="faobiomes">faobiomes</option>
+                                            <option value="basalrange">basalrange</option>
+                                            <option value="heightrange">heightrange</option>
+                                            <option value="landcover">landcover</option>
+                                            <option value="ef">ef</option>
+                                            <option value="ef_ipcc">ef_ipcc</option>
                                          </select> 
                                         </div>
                                     </div>
