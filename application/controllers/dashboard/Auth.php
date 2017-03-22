@@ -358,7 +358,7 @@
 
       public function register_check_database($password) {
             $username = $this->input->post('txtUserName');
-            $result = $this->auth_model->login($username, $password);
+            $result = $this->auth_model->registerlogin($username, $password);
             if ($result) {
                 $sess_array = array(
                     'USER_ID' => $result->USER_ID,
