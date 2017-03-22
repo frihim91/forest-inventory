@@ -55,5 +55,48 @@
         </div>
     </div>
     <script src="<?php echo base_url(); ?>resources/assets/components/core/js/core.init.js"></script>
+<div class="modal fade" id="showDetaildModal" data-backdrop="static">
+  <div id="modalSize" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+        <h3 class="modal-title" id="showDetaildModalTile"></h3>
+      </div>
+      <div class="modal-body" id="showDetaildModalBody"></div>
+      <div class="modal-footer">
+        <a data-dismiss="modal" class="btn btn-default" href="#">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function(){
+   $(document).on("click", ".modalLink", function (e) {
+    var modal_size = $(this).attr('data-modal-size');
+    if ( modal_size!=='' && typeof modal_size !== typeof undefined && modal_size !== false ) {
+      $("#modalSize").addClass(modal_size);
+    }
+    else{
+      $("#modalSize").addClass('modal-lg');
+    }
+    var title = $(this).attr('title');
+    $("#showDetaildModalTile").text(title);
+    var data_title = $(this).attr('data-original-title');
+    $("#showDetaildModalTile").text(data_title);
+    $('div.ajaxLoader').show();
+    $.ajax({
+      type: "GET",
+      url: $(this).attr('href'),
+      success: function (data) {
+        $("#showDetaildModalBody").html(data);
+        $("#showDetaildModal").modal('show');
+        $('div.ajaxLoader').hide();
+      }
+
+    });
+  });
+ });
+
+</script>
 </body>
 </html>
