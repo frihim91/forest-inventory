@@ -16,6 +16,7 @@ $lang["quick_link"] = "Quicklinks";
 $lang["gallery"] = "Gallery";
 $lang["more"] = "More";
 $lang["login"] = "Login";
+$lang["logout"] = "Logout";
 $lang["register"] = "Register";
 $lang["view_details"] = "View Details";
 $lang["search"] = "Search";

@@ -179,12 +179,27 @@ class Portal extends CI_Controller
      * @return Search view page
      */
          public function search_keyword()
-            {
+         {
                     $keyword = $this->input->post('keyword');
                     $data['results'] = $this->Menu_model->search($keyword);
                     $data['content_view_page'] = 'portal/search_view';
                     $this->template->display_portal($data);
-            }
+         }
+
+
+            /*
+     * @methodName search_allometricequation()
+     * @access public
+     * @param  none
+     * @return Allometric Equation Search view page
+     */
+        public function search_allometricequation()
+        {
+                    $keyword = $this->input->post('keyword');
+                    $data['results'] = $this->Forestdata_model->search_allometricequation($keyword);
+                    $data['content_view_page'] = 'portal/allometricEquationPage';
+                    $this->template->display_portal($data);
+         }
 
     /*
      * @methodName speciesData()
@@ -390,7 +405,7 @@ class Portal extends CI_Controller
     }
 
 
-        /*
+    /*
      * @methodName allometricEquationDetails()
      * @access public
      * @param  none
