@@ -85,12 +85,13 @@
      */
 
     public function update_visitor() {
+        $this->load->library('encrypt');
         $USER_ID = $this->input->post('USER_ID');
         $USER_MAIL = $this->input->post('USER_MAIL');
         $USER_NAME = $this->input->post('USER_NAME');
         $USER_PW = $this->input->post('USER_PW');
-
-        $message = "Congratulation! Your account registered Successfully. <br>Dear" ."&nbsp;". $USER_NAME . ", <br> Please visit this link for login and update your information<br>" . base_url("index.php/Accounts/userLogin") . " <br>Your login details.<br /> Email:<b> " . $USER_MAIL . '</b><br> Password:<b>' . $USER_PW . '</b><br>Thanks <br> FAO';
+      
+        $message = "Congratulation! Your account registered Successfully. <br>Dear" ."&nbsp;". $USER_NAME . ", <br> Please visit this link for login and update your information<br>" . base_url("index.php/Accounts/userLogin") . " <br>Your login details.<br />Username:<b>".$USER_NAME."</b><br> Email:<b> " . $USER_MAIL . '</b><br> Password:<b>' . $USER_PW . '</b><br>Thanks <br> FAO';
 
         $subject = "FAO Applicant Login Info";
 

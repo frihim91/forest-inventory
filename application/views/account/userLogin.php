@@ -72,9 +72,9 @@ $lang_ses = $this->session->userdata("site_lang");
                                 </div>
                             <?php endif; ?>
                              <form role="form">
-		<div class="form-group">
+		      <div class="form-group">
 					<label>Username<span style="color:red;">*</span></label>
-					<input type="text" name="txtUserName" class="form-control" required="required" value="<?php echo set_value('txtUserName'); ?>" placeholder="Your Username"/> 
+					<input type="text" name="email" class="form-control" required="required" value="<?php echo set_value('email'); ?>" placeholder="Your Username"/> 
 					<label>Password<span style="color:red;">*</span></label>
 					 <input type="password" name="txtPassword" class="form-control" required="required" placeholder="Your Password" />
 					<p><a href="#">Lost your password?</a></p>

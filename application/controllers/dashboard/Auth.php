@@ -321,7 +321,7 @@
                 redirect('portal/index', 'refresh');
             }
             $data['pageTitle'] = "Login";
-            $this->form_validation->set_rules('txtUserName', 'Username', 'trim|required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
             $this->form_validation->set_rules('txtPassword', 'Password', 'trim|required|callback_register_check_database');
 
             if ($this->form_validation->run() == FALSE) {
@@ -357,12 +357,11 @@
      */
 
       public function register_check_database($password) {
-            $username = $this->input->post('txtUserName');
+            $username = $this->input->post('email');
             $result = $this->auth_model->registerlogin($username, $password);
             if ($result) {
                 $sess_array = array(
                     'USER_ID' => $result->USER_ID,
-                    'USERNAME' => $result->USERNAME,
                     'EMAIL' => $result->EMAIL
                
                 );
