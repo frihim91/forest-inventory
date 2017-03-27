@@ -44,14 +44,46 @@
                         </a>
                        
                     </li>
+                     <?php
+                     $session_info = $this->session->userdata("user_logged_in");
+                          //echo '<pre>';print_r($session_info);exit;
+                     ?>
 
                      <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line("data"); ?><span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                        <li ><a href="<?php echo site_url('Portal/allometricEquationView'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a></li>
-                        <li ><a href="<?php echo site_url('Portal/speciesData'); ?>"><?php echo $this->lang->line("species_list"); ?></a></li>
-                        <li ><a href="<?php echo site_url('Portal/rawDataView'); ?>"><?php echo $this->lang->line("raw_data"); ?></a></li>
+                        <li ><?php
+                           if(!$this->session->userdata('user_logged_in')){
+                            ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a>
+                                <?php 
+                            }else{ ?>
+                                <a href="<?php echo site_url('Portal/allometricEquationView'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a>
+                                  <?php 
+                            }
+                            
+                           ?>
+                           </li>
+                        <li ><?php
+                           if(!$this->session->userdata('user_logged_in')){
+                            ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
+                                <?php 
+                            }else{ ?>
+                               <a href="<?php echo site_url('Portal/speciesData'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
+                                  <?php 
+                            }
+                            
+                           ?></li>
+                        <li><?php
+                           if(!$this->session->userdata('user_logged_in')){
+                            ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("raw_data"); ?></a>
+                                <?php 
+                            }else{ ?>
+                               <a href="<?php echo site_url('Portal/rawDataView'); ?>"><?php echo $this->lang->line("raw_data"); ?></a>
+                                  <?php 
+                            }
+                            
+                           ?></li>
                                   <!--<li role="presentation" class="divider"></li>-->
                                 
                         </ul>

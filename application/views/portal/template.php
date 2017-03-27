@@ -49,7 +49,7 @@
                            <a title="English" href="<?php echo site_url('langSwitch/switchLanguage/english'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/flag_eng.gif')?>" alt="flag"/></a>
 
                            <a title="Bangla" href="<?php echo site_url('langSwitch/switchLanguage/bangla'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/bangla.gif')?>" alt="flag"/></a>
-                            <?php
+                          <?php
                            $session_info = $this->session->userdata("user_logged_in");
                           //echo '<pre>';print_r($session_info);exit;
                            ?>

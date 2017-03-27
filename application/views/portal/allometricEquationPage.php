@@ -1,3 +1,7 @@
+  <script type="text/javascript" src="<?php echo base_url('resources/js/leaflet/leaflet.js');?>">
+  </script>
+  <link href="<?php echo base_url('resources/js/leaflet/leaflet.css');?>" rel="stylesheet">
+
   <style type="text/css">
     .page_content{
       padding: 15px;
@@ -39,6 +43,8 @@
   }
 
   </style>
+ 
+
   <?php
   $lang_ses = $this->session->userdata("site_lang");
   ?>
@@ -177,7 +183,7 @@
   <div class="col-sm-12 bdy_des">
      <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#results-list"><span class="glyphicon glyphicon-list"></span> Results List</a></li>
-    <li><a data-toggle="tab" href="#results-map"><span class="glyphicon glyphicon-globe"></span> Map View</a></li>
+    <li><a data-toggle="tab" class="results-map" href="#results-map"><span class="glyphicon glyphicon-globe"></span> Map View</a></li>
     
   </ul>
   <div class="tab-content">
@@ -208,9 +214,35 @@
      <p><?php echo $links; ?></p>
       
     </div>
-       <div id="results-map" class="tab-pane fade">
-           <p align="center"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.6260039988224!2d90.38117511445805!3d23.867410790214326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c43ca7f68407%3A0x3f083770ea2fa274!2sATI+Limited!5e0!3m2!1sen!2sbd!4v1490249056352" width="1054" height="601" frameborder="0" style="border:0" allowfullscreen></iframe></p>
+       <div id="results-map" class="tab-pane fade" style="height:800px!important" >
+          <div id="map" class="" style="height:600px;overflow:hidden"></div>
+          
           </div>
         </div>
      </div>
    </div>
+
+<input type="hidden" class="mapUrl" value="<?php echo base_url('resources/mapdata.php'); ?>">
+  <script>
+$(document).on("click", "a.results-map", function () {
+  var destination=$("input.mapUrl").val();
+   $.ajax({
+      type: "GET",
+      url: destination,
+      success: function (data) {
+        console.log(data);
+         var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
+     var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+     map.addLayer(osm);
+      }
+    });
+})
+
+  
+  
+ 
+     
+      //alert("sdf");
+      //$(document).ready(function(){
+    //alert('shfd');
+   </script>
