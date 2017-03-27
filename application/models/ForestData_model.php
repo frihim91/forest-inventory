@@ -155,7 +155,7 @@ Class Forestdata_model extends CI_Model {
 	}
 
 
-	  public function search_allometricequation($keyword)
+	  public function search_allometricequation1($keyword)
       {
            
 	    $this->db->like('FAOBiomes', $keyword);
@@ -171,6 +171,15 @@ Class Forestdata_model extends CI_Model {
 	    return $query->result();
 
       }
+
+
+
+       public function search_allometricequation($keyword)
+        {
+            $this->db->like('District',$keyword);
+            $query  =   $this->db->get('district');
+            return $query->result();
+        }
 
 
 

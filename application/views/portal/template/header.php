@@ -45,7 +45,7 @@
                        
                     </li>
                      <?php
-                     $session_info = $this->session->userdata("user_logged_in");
+                     $session_info = $this->session->userdata("user_logged");
                           //echo '<pre>';print_r($session_info);exit;
                      ?>
 
@@ -54,7 +54,7 @@
                         </a>
                         <ul class="dropdown-menu">
                         <li ><?php
-                           if(!$this->session->userdata('user_logged_in')){
+                           if(!$this->session->userdata('user_logged')){
                             ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a>
                                 <?php 
                             }else{ ?>
@@ -65,7 +65,7 @@
                            ?>
                            </li>
                         <li ><?php
-                           if(!$this->session->userdata('user_logged_in')){
+                           if(!$this->session->userdata('user_logged')){
                             ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
                                 <?php 
                             }else{ ?>
@@ -75,7 +75,7 @@
                             
                            ?></li>
                         <li><?php
-                           if(!$this->session->userdata('user_logged_in')){
+                           if(!$this->session->userdata('user_logged')){
                             ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("raw_data"); ?></a>
                                 <?php 
                             }else{ ?>

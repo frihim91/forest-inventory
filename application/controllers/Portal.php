@@ -195,10 +195,58 @@ class Portal extends CI_Controller
      */
         public function search_allometricequation()
         {
-                    $keyword = $this->input->post('keyword');
-                    $data['results'] = $this->Forestdata_model->search_allometricequation($keyword);
-                    $data['content_view_page'] = 'portal/allometricEquationPage';
-                    $this->template->display_portal($data);
+        $keyword = $this->input->post('keyword');
+        $data['results'] = $this->Forestdata_model->search_allometricequation($keyword);
+        $this->load->library('pagination');
+        $config = array();
+        $config["base_url"] = base_url() . "index.php/portal/allometricEquationView";
+        $total_ef= $this->db->count_all("ef");
+
+        $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = 800;
+
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        $limit = $config["per_page"] = 20;
+        //pagination style start
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="current"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_link'] = '&lt;&lt;';
+        $config['last_link'] = '&gt;&gt;';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['allometricEquationView'] = $this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef_ipcc ip
+         LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
+         LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+         LEFT JOIN location l ON e.ID_Location=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         GROUP BY e.ID_Species LIMIT $limit OFFSET $page
+        ")->result();
+         $data["links"] = $this->pagination->create_links();
+         $data['content_view_page'] = 'portal/allometricEquationPage';
+         $this->template->display_portal($data);
          }
 
     /*

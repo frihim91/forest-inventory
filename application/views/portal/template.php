@@ -49,12 +49,12 @@
                            <a title="English" href="<?php echo site_url('langSwitch/switchLanguage/english'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/flag_eng.gif')?>" alt="flag"/></a>
 
                            <a title="Bangla" href="<?php echo site_url('langSwitch/switchLanguage/bangla'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/bangla.gif')?>" alt="flag"/></a>
-                          <?php
-                           $session_info = $this->session->userdata("user_logged_in");
+                            <?php
+                           $session_info = $this->session->userdata("user_logged");
                           //echo '<pre>';print_r($session_info);exit;
                            ?>
                         <?php
-                           if(!$this->session->userdata('user_logged_in')){
+                           if(!$this->session->userdata('user_logged')){
                             ?>
                              <a href="<?php echo site_url("accounts/userLogin"); ?>"  class="btn btn-link" style="color: green;text-decoration: underline;font-size: 14px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("login"); ?></a>
                              <a href="<?php echo site_url('accounts/userRegistration')?>"  class="btn btn-link" style="color: green;text-decoration: underline;font-size: 14px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("register"); ?></a>

@@ -317,7 +317,7 @@
 
         function registerLogin() {
 
-            if ($this->session->userdata('user_logged_in')) {
+            if ($this->session->userdata('user_logged')) {
                 redirect('portal/index', 'refresh');
             }
             $data['pageTitle'] = "Login";
@@ -340,7 +340,7 @@
 
 
         public function registerLogout() {
-            $this->session->unset_userdata('user_logged_in');
+            $this->session->unset_userdata('user_logged');
             redirect('portal/index', 'refresh');
         }
 
@@ -367,7 +367,7 @@
                
                 );
                 //echo '<pre>';print_r($sess_array);exit;
-                $this->session->set_userdata('user_logged_in', $sess_array);
+                $this->session->set_userdata('user_logged', $sess_array);
                 return TRUE;
             } else {
                 $this->form_validation->set_message('register_check_database', 'Invalid username or password');
