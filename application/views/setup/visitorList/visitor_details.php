@@ -55,11 +55,11 @@
  			<div class="col-md-6">
  				<label for="firstname" class="col-md-4 control-label">Active ?</label>
  				<div class="col-md-6">
- 				<?php echo form_checkbox(array('name' => 'ACTIVE_FLAG', 'id' => 'ACTIVE_FLAG', 'value' => $visitor_info->ACTIVE_FLAG, 'checked' => ($visitor_info->ACTIVE_FLAG == 1) ? TRUE : FALSE)); ?>
+ 				<?php echo form_checkbox(array('name' => 'ACTIVE_FLAG', 'id' => 'ACTIVE_FLAG', 'value' => $visitor_info->ACTIVE_FLAG, 'checked' => ($visitor_info->ACTIVE_FLAG == 2) ? TRUE : FALSE)); ?>
  					<?php echo form_hidden('USER_ID', $visitor_info->USER_ID); ?>
+ 					<?php echo form_hidden('FIRST_NAME', $visitor_info->FIRST_NAME); ?>
+ 					<?php echo form_hidden('LAST_NAME', $visitor_info->LAST_NAME); ?>
  					<?php echo form_hidden('USER_MAIL', $visitor_info->EMAIL); ?>
- 					<?php echo form_hidden('USER_NAME', $visitor_info->USERNAME); ?>
- 					<?php echo form_hidden('USER_PW', $visitor_info->USERPW); ?>
  				</div>
  			</div>
  		</div> 

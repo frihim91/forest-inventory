@@ -60,7 +60,7 @@
         $data['pageTitle'] = "All Visitor List ";
         $sql = "SELECT v.*, e.EDUCATION_DEGREE_NAME,i.INSTITUTE_NAME,i.INSTITUTE_ADDRESS,i.PHONE,i.FAX  FROM visitor_info v
         left JOIN education e ON v.EDUCATION_ID = e.EDUCATION_ID
-        left JOIN institution i ON v.USER_ID = i.USER_ID  ORDER BY v.USER_ID
+        left JOIN institution i ON v.USER_ID = i.USER_ID  ORDER BY  v.USER_ID DESC
         ;";
         $data['all_visitors'] = $this->db->query($sql)->result();
             //echo"<pre>";print_r( $data['all_visitors']);exit;
@@ -85,13 +85,11 @@
      */
 
     public function update_visitor() {
-        $this->load->library('encrypt');
         $USER_ID = $this->input->post('USER_ID');
+        $FIRST_NAME = $this->input->post('FIRST_NAME');
+        $LAST_NAME = $this->input->post('LAST_NAME');
         $USER_MAIL = $this->input->post('USER_MAIL');
-        $USER_NAME = $this->input->post('USER_NAME');
-        $USER_PW = $this->input->post('USER_PW');
-      
-        $message = "Congratulation! Your account registered Successfully. <br>Dear" ."&nbsp;". $USER_NAME . ", <br> Please visit this link for login and update your information<br>" . base_url("index.php/Accounts/userLogin") . " <br>Your login details.<br />Username:<b>".$USER_NAME."</b><br> Email:<b> " . $USER_MAIL . '</b><br> Password:<b>' . $USER_PW . '</b><br>Thanks <br> FAO';
+        $message = "Congratulation! You have been Successfully registered. <br>Dear" ."&nbsp;". $FIRST_NAME .$LAST_NAME. ", <br> To activate the account please click the following link<br>" . base_url("index.php/Accounts/userActivition/$USER_ID") . " <br>Your login details.<br />Email:<b> " . $USER_MAIL . '</b><br>Thanks <br> FAO';
 
         $subject = "FAO Applicant Login Info";
 
@@ -119,7 +117,7 @@
             echo "Faild";
         }
         $activeStatus = array(
-            'ACTIVE_FLAG' => isset($_POST['ACTIVE_FLAG']) ? 1 : 0,
+            'ACTIVE_FLAG' => isset($_POST['ACTIVE_FLAG']) ? 2 : 0,
             );
         if ($this->utilities->updateData('visitor_info', $activeStatus, array('USER_ID' => $USER_ID))) {
             $this->session->set_flashdata('Success', 'Mail send successfully.');
