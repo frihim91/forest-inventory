@@ -187,16 +187,15 @@ class Portal extends CI_Controller
          }
 
 
-            /*
+    /*
      * @methodName search_allometricequation()
      * @access public
      * @param  none
      * @return Allometric Equation Search view page
      */
-        public function search_allometricequation()
+        public function search_allometricequation_key()
         {
         $keyword = $this->input->post('keyword');
-        $data['results'] = $this->Forestdata_model->search_allometricequation($keyword);
         $this->load->library('pagination');
         $config = array();
         $config["base_url"] = base_url() . "index.php/portal/allometricEquationView";
@@ -242,11 +241,15 @@ class Portal extends CI_Controller
          LEFT JOIN division d ON l.ID_Division=d.ID_Division
          LEFT JOIN district dis ON l.ID_District =dis.ID_District
          LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         where dis.District LIKE '%$keyword%' OR d.Division LIKE '%$keyword%'
+         OR ip.Equation LIKE '%$keyword%' OR r.Reference LIKE '%$keyword%'
+         OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
          GROUP BY e.ID_Species LIMIT $limit OFFSET $page
         ")->result();
-         $data["links"] = $this->pagination->create_links();
-         $data['content_view_page'] = 'portal/allometricEquationPage';
-         $this->template->display_portal($data);
+        $data["links"] = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/allometricEquationPage';
+        $this->template->display_portal($data);
+        
          }
 
     /*

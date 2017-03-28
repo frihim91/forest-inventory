@@ -87,14 +87,17 @@
                     
                                <p>
                                </p>
-          <form action="<?php echo site_url('portal/search_allometricequation');?>" method = "post">                
+          <form action="<?php echo site_url('portal/search_allometricequation_key');?>" method = "post">                
          <div class="col-md-6">
                 <div class="form-group">
             <label>Keyword<span style="color:red;">*</span></label>
-            <input type="text" class="form-control input-sm" name = "keyword" maxlength="64" placeholder="Keyword" />
-           <!--   <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Keyword', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?>  -->
+            <input type="text" class="form-control input-sm" name = "keyword" maxlength="64" placeholder="Keyword" /><br>
+             <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+            
              </div>
           </div> 
+            
+
            </form>
             
     </div>
@@ -116,6 +119,8 @@
              <div class="form-group">
             <label>Species<span style="color:red;">*</span></label>
              <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Species', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+             <br>
+             <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
              </div>
           </div> 
     </div>
@@ -140,6 +145,8 @@
              <h3>Ecological Zone</h3>
             <label>FAO Global Ecological Zone <span style="color:red;">*</span></label>
              <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'FAO Global Ecological Zone', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+             <br>
+             <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
              </div>
         </div> 
     </div>
@@ -168,7 +175,9 @@
 
              <div class="form-group">
              <label>Year  <span style="color:red;">*</span></label>
-             <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Year', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+             <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Year', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?>
+             <br>
+             <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> 
              </div>
         </div> 
     </div>
@@ -176,9 +185,7 @@
 
   </div>
   </div>
-  <div id="search-submit-holder">
-              <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
-          </div>
+
 
   <div class="col-sm-12 bdy_des">
      <ul class="nav nav-tabs">

@@ -61,7 +61,7 @@
 
                              <?php 
                             }else{ ?>
-                                <a  class="btn btn-link" style="color: green;font-size: 14px;font-weight: 900;font-style: italic;"><?php echo $session_info["EMAIL"]; ?></a> <a href="<?php echo site_url("dashboard/auth/registerLogout"); ?>" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 16px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("logout"); ?></a>
+                                <a  class="btn btn-link" style="color: green;font-size: 14px;font-weight: 900;font-style: italic;"><?php echo $session_info["EMAIL"]; ?></a> <a href="<?php echo site_url("dashboard/auth/registerLogout"); ?>" class="btn btn-link" style="color: green;text-decoration: underline;font-size: 14px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("logout"); ?></a>
                                   <?php 
                             }
                             

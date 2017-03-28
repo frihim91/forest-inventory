@@ -155,40 +155,6 @@ Class Forestdata_model extends CI_Model {
 	}
 
 
-	  public function search_allometricequation1($keyword)
-      {
-           
-	    $this->db->like('FAOBiomes', $keyword);
-	    // $this->db->or_like('Postcode', $keyword);
-	    // $this->db->or_like('Plaats', $keyword);
-	    // $this->db->or_like('Telefoonnummer', $keyword);
-	    // $this->db->or_like('Email', $keyword);
-	    // $this->db->or_like('Website', $keyword);
-	    // $this->db->or_like('Profiel', $keyword);
-	    // $this->db->or_like('Adres', $keyword);
-	    $query = $this->db->get('faobiomes');
-
-	    return $query->result();
-
-      }
-
-
-
-       public function search_allometricequation($keyword)
-        {
-            $this->db->like('District',$keyword);
-            $query  =   $this->db->get('district');
-            return $query->result();
-        }
-
-
-
-
-	
-
-
-
-
 
 
 
