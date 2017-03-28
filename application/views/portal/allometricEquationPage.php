@@ -107,22 +107,24 @@
                       <br>
                       Example searches: <a href="#">Genus</a>,
                          <a href="#">Gmelina</a>,
-                         <a href="#"> Species</a>, 
+                         <a href="#">Species</a>, 
                          <a href="#">schweinfurthii</a>,
                        
                   </p>
+         <form action="<?php echo site_url('portal/search_allometricequation_tax');?>" method = "post"> 
          <div class="col-md-6">
                 <div class="form-group">
             <label>Genus<span style="color:red;">*</span></label>
-             <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Genus', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+             <input type="text" class="form-control input-sm" name ="Genus" maxlength="64" placeholder="Genus" />
              </div>
              <div class="form-group">
             <label>Species<span style="color:red;">*</span></label>
-             <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Species', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+            <input type="text" class="form-control input-sm" name ="Species" maxlength="64" placeholder="Species" />
              <br>
              <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
              </div>
           </div> 
+           </form>
     </div>
     <div id="menu2" class="tab-pane fade">
       
@@ -134,21 +136,22 @@
                          
                        
                   </p>
-
-        <div class="col-md-6">
+        <form action="<?php echo site_url('portal/search_allometricequation_loc');?>" method = "post"> 
+           <div class="col-md-6">
               <div class="form-group">
               <h3>Country</h3>
               <label>District<span style="color:red;">*</span></label>
-             <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'District', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+               <input type="text" class="form-control input-sm" name ="District" maxlength="64" placeholder="District" />
              </div>
              <div class="form-group">
              <h3>Ecological Zone</h3>
             <label>FAO Global Ecological Zone <span style="color:red;">*</span></label>
-             <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'FAO Global Ecological Zone', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+             <input type="text" class="form-control input-sm" name ="FAOBiomes" maxlength="64" placeholder="FAO Global Ecological Zone" />
              <br>
              <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
              </div>
         </div> 
+        </form>
     </div>
     <div id="menu3" class="tab-pane fade">
         <p> Search allometric equations by author, year, and reference.
@@ -161,25 +164,27 @@
                          
                        
                   </p>
+            <form action="<?php echo site_url('portal/search_allometricequation_ref');?>" method = "post">
 
-                   <div class="col-md-6">
+            <div class="col-md-6">
               <div class="form-group">
               
               <label>Reference <span style="color:red;">*</span></label>
-             <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Reference ', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+               <input type="text" class="form-control input-sm" name ="Reference" maxlength="200" placeholder="Reference" />
              </div>
              <div class="form-group">
              <label>Author  <span style="color:red;">*</span></label>
-             <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Author', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?> 
+             <input type="text" class="form-control input-sm" name ="Author" maxlength="64" placeholder="Author" />
              </div>
 
              <div class="form-group">
              <label>Year  <span style="color:red;">*</span></label>
-             <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Year', 'id' => 'USERNAME', 'name' => 'USERNAME', 'value' => set_value('USERNAME'), 'required' => 'required')); ?>
+              <input type="text" class="form-control input-sm" name ="Year" maxlength="64" placeholder="Year" />
              <br>
              <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> 
              </div>
         </div> 
+        </form>
     </div>
 
 

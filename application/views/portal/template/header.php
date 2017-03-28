@@ -69,7 +69,8 @@
                             ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
                                 <?php 
                             }else{ ?>
-                               <a href="<?php echo site_url('Portal/speciesData'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
+                               
+                               <a href="<?php echo site_url('Portal/rawDataView'); ?>"><?php echo $this->lang->line("raw_data"); ?></a>
                                   <?php 
                             }
                             
@@ -79,7 +80,7 @@
                             ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("raw_data"); ?></a>
                                 <?php 
                             }else{ ?>
-                               <a href="<?php echo site_url('Portal/rawDataView'); ?>"><?php echo $this->lang->line("raw_data"); ?></a>
+                              <a href="<?php echo site_url('Portal/speciesData'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
                                   <?php 
                             }
                             

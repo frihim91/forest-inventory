@@ -188,17 +188,17 @@ class Portal extends CI_Controller
 
 
     /*
-     * @methodName search_allometricequation()
+     * @methodName search_allometricequation_key()
      * @access public
      * @param  none
-     * @return Allometric Equation Search view page
+     * @return Allometric Equation key wise Search view page
      */
         public function search_allometricequation_key()
         {
         $keyword = $this->input->post('keyword');
         $this->load->library('pagination');
         $config = array();
-        $config["base_url"] = base_url() . "index.php/portal/allometricEquationView";
+        $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_key";
         $total_ef= $this->db->count_all("ef");
 
         $config["total_rows"] = $total_ef;
@@ -244,6 +244,8 @@ class Portal extends CI_Controller
          where dis.District LIKE '%$keyword%' OR d.Division LIKE '%$keyword%'
          OR ip.Equation LIKE '%$keyword%' OR r.Reference LIKE '%$keyword%'
          OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
+         OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+         OR r.Year LIKE '%$keyword%'
          GROUP BY e.ID_Species LIMIT $limit OFFSET $page
         ")->result();
         $data["links"] = $this->pagination->create_links();
@@ -251,6 +253,210 @@ class Portal extends CI_Controller
         $this->template->display_portal($data);
         
          }
+
+
+
+
+
+    /*
+     * @methodName search_allometricequation_tax()
+     * @access public
+     * @param  none
+     * @return Allometric Equation taxonomy wise Search view page
+     */
+        public function search_allometricequation_tax()
+        {
+        $Genus = $this->input->post('Genus');
+        $Species = $this->input->post('Species');
+        $this->load->library('pagination');
+        $config = array();
+        $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_tax";
+        $total_ef= $this->db->count_all("ef");
+
+        $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = 800;
+
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        $limit = $config["per_page"] = 20;
+        //pagination style start
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="current"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_link'] = '&lt;&lt;';
+        $config['last_link'] = '&gt;&gt;';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['allometricEquationView'] = $this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef_ipcc ip
+         LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
+         LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+         LEFT JOIN location l ON e.ID_Location=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         where g.Genus LIKE '%$Genus%' or s.Species LIKE '%$Species%'
+         GROUP BY e.ID_Species LIMIT $limit OFFSET $page
+        ")->result();
+        $data["links"] = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/allometricEquationPage';
+        $this->template->display_portal($data);
+        
+         }
+
+
+
+    /*
+     * @methodName search_allometricequation_loc()
+     * @access public
+     * @param  none
+     * @return Allometric Equation location wise Search view page
+     */
+        public function search_allometricequation_loc()
+        {
+        $District = $this->input->post('District');
+        $FAOBiomes = $this->input->post('FAOBiomes');
+        $this->load->library('pagination');
+        $config = array();
+        $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_loc";
+        $total_ef= $this->db->count_all("ef");
+
+        $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = 800;
+
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        $limit = $config["per_page"] = 20;
+        //pagination style start
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="current"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_link'] = '&lt;&lt;';
+        $config['last_link'] = '&gt;&gt;';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['allometricEquationView'] = $this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef_ipcc ip
+         LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
+         LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+         LEFT JOIN location l ON e.ID_Location=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         where dis.District LIKE '%$District%' or b.FAOBiomes LIKE '%$FAOBiomes%'
+         GROUP BY e.ID_Species LIMIT $limit OFFSET $page
+        ")->result();
+        $data["links"] = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/allometricEquationPage';
+        $this->template->display_portal($data);
+        
+         }
+
+
+
+         /*
+     * @methodName search_allometricequation_ref()
+     * @access public
+     * @param  none
+     * @return Allometric Equation Reference wise Search view page
+     */
+        public function search_allometricequation_ref()
+        {
+        $Reference = $this->input->post('Reference');
+        $Author = $this->input->post('Author');
+        $Year = $this->input->post('Year');
+        $this->load->library('pagination');
+        $config = array();
+        $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_ref";
+        $total_ef= $this->db->count_all("ef");
+
+        $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = 800;
+
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        $limit = $config["per_page"] = 20;
+        //pagination style start
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="current"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_link'] = '&lt;&lt;';
+        $config['last_link'] = '&gt;&gt;';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['allometricEquationView'] = $this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef_ipcc ip
+         LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
+         LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+         LEFT JOIN location l ON e.ID_Location=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         where r.Reference LIKE '%$Reference%' or r.Author LIKE '%$Author%'
+         or r.Year LIKE '%$Year%'
+         GROUP BY e.ID_Species LIMIT $limit OFFSET $page
+        ")->result();
+        $data["links"] = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/allometricEquationPage';
+        $this->template->display_portal($data);
+        
+         }
+
+
 
     /*
      * @methodName speciesData()
@@ -448,6 +654,332 @@ class Portal extends CI_Controller
          LEFT JOIN division d ON l.ID_Division=d.ID_Division
          LEFT JOIN district dis ON l.ID_District =dis.ID_District
          LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         GROUP BY e.ID_Species LIMIT $limit OFFSET $page
+        ")->result();
+        $data["links"] = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/rawDataView';
+        $this->template->display_portal($data);
+    }
+
+
+
+    /*
+     * @methodName search_rawequation_key()
+     * @access public
+     * @param  none
+     * @return Raw Data key wise Search view page
+     */
+
+     public function search_rawequation_key()
+     {
+        $keyword = $this->input->post('keyword');
+        $this->load->library('pagination');
+        $config = array();
+        $config["base_url"] = base_url() . "index.php/portal/search_rawequation_key";
+        $total_rawData = $this->db->count_all("ef");
+
+        $config["total_rows"] = $total_rawData;
+        // $config["total_rows"] = 800;
+
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        $limit = $config["per_page"] = 20;
+        //pagination style start
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="current"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_link'] = '&lt;&lt;';
+        $config['last_link'] = '&gt;&gt;';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['rawDataView'] = $this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e 
+         LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+         LEFT JOIN location l ON e.ID_Location=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         where dis.District LIKE '%$keyword%' OR d.Division LIKE '%$keyword%'
+         OR e.HeightRange LIKE '%$keyword%' OR r.Reference LIKE '%$keyword%'
+         OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
+         OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+         OR r.Year LIKE '%$keyword%' OR e.VolumeRange LIKE '%$keyword%'
+         GROUP BY e.ID_Species LIMIT $limit OFFSET $page
+        ")->result();
+        $data["links"] = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/rawDataView';
+        $this->template->display_portal($data);
+    }
+
+
+
+     /*
+     * @methodName search_rawequation_tax()
+     * @access public
+     * @param  none
+     * @return Raw Data taxonomy wise Search view page
+     */
+
+     public function search_rawequation_tax()
+     {
+        $Genus = $this->input->post('Genus');
+        $Species = $this->input->post('Species');
+        $this->load->library('pagination');
+        $config = array();
+        $config["base_url"] = base_url() . "index.php/portal/search_rawequation_tax";
+        $total_rawData = $this->db->count_all("ef");
+
+        $config["total_rows"] = $total_rawData;
+        // $config["total_rows"] = 800;
+
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        $limit = $config["per_page"] = 20;
+        //pagination style start
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="current"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_link'] = '&lt;&lt;';
+        $config['last_link'] = '&gt;&gt;';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['rawDataView'] = $this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e 
+         LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+         LEFT JOIN location l ON e.ID_Location=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         where g.Genus LIKE '%$Genus%' or s.Species LIKE '%$Species%'
+         GROUP BY e.ID_Species LIMIT $limit OFFSET $page
+        ")->result();
+        $data["links"] = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/rawDataView';
+        $this->template->display_portal($data);
+    }
+
+
+    /*
+     * @methodName search_rawequation_loc()
+     * @access public
+     * @param  none
+     * @return Raw Data location wise Search view page
+     */
+
+     public function search_rawequation_loc()
+     {
+        $District = $this->input->post('District');
+        $FAOBiomes = $this->input->post('FAOBiomes');
+        $this->load->library('pagination');
+        $config = array();
+        $config["base_url"] = base_url() . "index.php/portal/search_rawequation_loc";
+        $total_rawData = $this->db->count_all("ef");
+
+        $config["total_rows"] = $total_rawData;
+        // $config["total_rows"] = 800;
+
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        $limit = $config["per_page"] = 20;
+        //pagination style start
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="current"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_link'] = '&lt;&lt;';
+        $config['last_link'] = '&gt;&gt;';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['rawDataView'] = $this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e 
+         LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+         LEFT JOIN location l ON e.ID_Location=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         where dis.District LIKE '%$District%' or b.FAOBiomes LIKE '%$FAOBiomes%'
+         GROUP BY e.ID_Species LIMIT $limit OFFSET $page
+        ")->result();
+        $data["links"] = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/rawDataView';
+        $this->template->display_portal($data);
+    }
+
+    /*
+     * @methodName search_rawequation_ref()
+     * @access public
+     * @param  none
+     * @return Raw Data Reference wise Search view page
+     */
+
+     public function search_rawequation_ref()
+     {
+        $Reference = $this->input->post('Reference');
+        $Author = $this->input->post('Author');
+        $Year = $this->input->post('Year');
+        $this->load->library('pagination');
+        $config = array();
+        $config["base_url"] = base_url() . "index.php/portal/search_rawequation_ref";
+        $total_rawData = $this->db->count_all("ef");
+
+        $config["total_rows"] = $total_rawData;
+        // $config["total_rows"] = 800;
+
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        $limit = $config["per_page"] = 20;
+        //pagination style start
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="current"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_link'] = '&lt;&lt;';
+        $config['last_link'] = '&gt;&gt;';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['rawDataView'] = $this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e 
+         LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+         LEFT JOIN location l ON e.ID_Location=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         where r.Reference LIKE '%$Reference%' or r.Author LIKE '%$Author%'
+         or r.Year LIKE '%$Year%'
+         GROUP BY e.ID_Species LIMIT $limit OFFSET $page
+        ")->result();
+        $data["links"] = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/rawDataView';
+        $this->template->display_portal($data);
+    }
+
+
+    /*
+     * @methodName search_rawequation_raw()
+     * @access public
+     * @param  none
+     * @return Raw Data raw data wise Search view page
+     */
+
+     public function search_rawequation_raw()
+     {
+        $HeightRange = $this->input->post('HeightRange');
+        $VolumeRange = $this->input->post('VolumeRange');
+        $this->load->library('pagination');
+        $config = array();
+        $config["base_url"] = base_url() . "index.php/portal/search_rawequation_raw";
+        $total_rawData = $this->db->count_all("ef");
+
+        $config["total_rows"] = $total_rawData;
+        // $config["total_rows"] = 800;
+
+        $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        $limit = $config["per_page"] = 20;
+        //pagination style start
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['prev_link'] = '&lt;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&gt;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="current"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['first_link'] = '&lt;&lt;';
+        $config['last_link'] = '&gt;&gt;';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['rawDataView'] = $this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e 
+         LEFT JOIN species s ON e.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+         LEFT JOIN location l ON e.ID_Location=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         where e.HeightRange LIKE '%$HeightRange%' or e.VolumeRange LIKE '%$VolumeRange%'
          GROUP BY e.ID_Species LIMIT $limit OFFSET $page
         ")->result();
         $data["links"] = $this->pagination->create_links();

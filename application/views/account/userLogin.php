@@ -93,7 +93,7 @@ $lang_ses = $this->session->userdata("site_lang");
 		<li>Submit your own allometric equations</li>
 		<li>Download datasets of tree allometric data</li>
 	    </ul>
-			<a href="<?php echo site_url('accounts/userRegistration')?>" target="_blank" class="btn btn-link" style="color: #147A00;text-decoration: none;">Register Now>></a></p>
+			<a href="<?php echo site_url('accounts/userRegistration')?>" class="btn btn-link" style="color: #147A00;text-decoration: none;">Register Now>></a></p>
 			
 			</div>
  </div>
