@@ -57,14 +57,14 @@ class Accounts extends CI_Controller {
                 'ACTIVE_FLAG' => '1',
                 );
             if ($this->utilities->updateData('visitor_info', $activeStatus, array('USER_ID' => $id))) {
-                $this->session->set_flashdata('Success', 'Mail send successfully.');
+                $this->session->set_flashdata('Success', 'Your activated successfully.');
                 redirect('Accounts/userLogin');
             }
         }
 
         else 
         {
-            $this->session->set_flashdata('Success', 'Mail send successfully.');
+            $this->session->set_flashdata('Error', 'You are not Successfully activated!.');
             redirect('portal');
         }
 
@@ -78,7 +78,6 @@ class Accounts extends CI_Controller {
 
 
         function createRegistration() {
-            $this->form_validation->set_rules('USERNAME', 'Username', 'required');
             $this->form_validation->set_rules('USERPW', 'Password', 'required|matches[password_conf]|min_length[4]|max_length[20]|md5');
             $this->form_validation->set_rules('password_conf', 'Confirm Password', 'required');
             if ($this->form_validation->run() == FALSE) {
@@ -89,7 +88,6 @@ class Accounts extends CI_Controller {
 
                 $regInfo = array(
                     'EDUCATION_ID' => $this->input->post('EDUCATION_ID'),
-                    'USERNAME' => str_replace("'", "''", $this->input->post("USERNAME")),
                     'USERPW' => $this->input->post('USERPW'),
                     'TITLE' => str_replace("'", "''", $this->input->post("TITLE")),
                     'FIRST_NAME' => str_replace("'", "''", $this->input->post("FIRST_NAME")),
@@ -112,17 +110,17 @@ class Accounts extends CI_Controller {
                     if($Institute != ""){
                       $InstituteInsert = $this->utilities->insertData($Institute, 'institution');
                       if ($InstituteInsert == TRUE) {
-                         $this->session->set_flashdata('msg','<div class="alert alert-success text-center">You are Successfully Registered!  <button data-dismiss="alert" class="close" type="button">×</button></div>');
-                     }
-                 }
-                 else{
-                    $this->session->set_flashdata('Error', 'You are not Successfully Registered!.');
-                } 
-            }                      
-        }
-
-        redirect('accounts/userRegistration', 'refresh');
+                       $this->session->set_flashdata('msg','<div class="alert alert-success text-center">You are Successfully Registered!  <button data-dismiss="alert" class="close" type="button">×</button></div>');
+                   }
+               }
+               else{
+                $this->session->set_flashdata('Error', 'You are not Successfully Registered!.');
+            } 
+        }                      
     }
+
+    redirect('accounts/userRegistration', 'refresh');
+}
 }
 
 
