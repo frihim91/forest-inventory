@@ -89,9 +89,9 @@ $lang_ses = $this->session->userdata("site_lang");
 							<label>Email<span style="color:red;">*</span></label>
 							<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'EMAIL', 'id' => 'EMAIL', 'name' => 'EMAIL','type' => 'email', 'value' => set_value('EMAIL'), 'required' => 'required')); ?>  
 							<label>Password<span style="color:red;">*</span></label>
-							<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Password', 'id' => 'USERPW', 'name' => 'USERPW','type' => 'password', 'value' => set_value('USERPW'), 'required' => 'required')); ?>
+							<?php echo form_input(array('class' => 'USERPW form-control', 'placeholder' => 'Password', 'id' => 'USERPW', 'name' => 'USERPW','type' => 'password', 'value' => set_value('USERPW'), 'required' => 'required')); ?>
 							<label>Confirm Password<span style="color:red;">*</span></label>
-							<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Confirm Password', 'id' => 'password_conf','type' => 'password', 'name' => 'password_conf', 'value' => set_value('password_conf'), 'required' => 'required')); ?>
+							<?php echo form_input(array('class' => 'password_conf form-control', 'placeholder' => 'Confirm Password', 'id' => 'password_conf','type' => 'password', 'name' => 'password_conf', 'value' => set_value('password_conf'), 'required' => 'required')); ?>
 						</div><br>
 						<legend>Institution</legend>
 						<div class="form-group">
@@ -138,11 +138,24 @@ $lang_ses = $this->session->userdata("site_lang");
 						</div>
 					</div>
 				</div>
-
-
-				
-				
 			</div>
-
-
 		</div>
+<!-- author reazul@atilimited.net -->
+ <script type="text/javascript">
+    $(function () {
+    	 $("#password_conf").on('blur', function(){
+            var password = $(".USERPW").val();
+            var confirmPassword = $(".password_conf").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                $(".USERPW").val('');
+                $(".password_conf").val('');
+                return false;
+            }
+            return true;
+        });
+    });
+</script>
+
+
+
