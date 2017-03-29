@@ -39,9 +39,9 @@ $lang_ses = $this->session->userdata("site_lang");
 		<div class="breadcump-wrapper">
 			<div class="wrapper">
 				<div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("search"); ?>
-		</div>
+				</div>
 				<div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("search"); ?>
-				
+					
 				</div>
 			</div>
 		</div>
@@ -57,24 +57,24 @@ $lang_ses = $this->session->userdata("site_lang");
 		<div class="col-sm-5">
 			
 		</div>
-	
-		<div class=""><h4>
 		
+		<div class=""><h4>
+			
 
 		</h4>
-	<table>
-	 <?php foreach($results as $row){ ?>
-	    <tr>
-	        <td><a href="<?php echo site_url('Portal/details/'.$row->TITLE_ID.'/'.$row->PG_URI); ?>">
-	        <?php echo $row->TITLE_NAME;?></a>
-	        </td>
-	        
-	    </tr>
-	<?php } ?>
-	</table>
+		<table>
+			<?php foreach($results as $row){ ?>
+			<tr>
+				<td><a href="<?php echo site_url('Portal/details/'.$row->TITLE_ID.'/'.$row->PG_URI); ?>">
+					<?php echo $row->TITLE_NAME;?></a>
+				</td>
+				
+			</tr>
+			<?php } ?>
+		</table>
 	</div>
-		
-	</div>
+	
+</div>
 
 
-	</div>
+</div>

@@ -61,6 +61,7 @@ $lang_ses = $this->session->userdata("site_lang");
 
   <div class="row">
 	<div class="col-md-6">
+  <?php echo $this->session->flashdata('msg'); ?>
 		<h2>Login</h2>
 		<h4>Please log in to access the Foreast Inventory site</h4>
          <?php echo form_open('dashboard/auth/registerLogin', "class='form-vertical'"); ?>

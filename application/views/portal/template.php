@@ -38,9 +38,10 @@
 
                                <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/forest.jpg')?>" alt="logo"/>
                            </a>
+                           <?php echo $this->session->flashdata('error'); ?>
                        </div>
                        <div class="col-xs-6 col-sm-4" style="text-align:center;">
-
+                        
                          <!-- <a href="<?php echo site_url(); ?>" ><img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png')?>" alt="logo"/></a> -->
                      </div>
                      <div class="col-xs-6 col-sm-4">

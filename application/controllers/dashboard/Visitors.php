@@ -123,6 +123,9 @@
             $this->session->set_flashdata('Success', 'Mail send successfully.');
             redirect('dashboard/Visitors/visitorList');
         }
+        else{
+                $this->session->set_flashdata('Error', 'Mail send failed!.');
+            }
     }
 
 

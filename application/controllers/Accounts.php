@@ -56,21 +56,25 @@ class Accounts extends CI_Controller {
             $activeStatus = array(
                 'ACTIVE_FLAG' => '1',
                 );
-            if ($this->utilities->updateData('visitor_info', $activeStatus, array('USER_ID' => $id))) {
-                $this->session->set_flashdata('Success', 'Your activated successfully.');
-                redirect('Accounts/userLogin');
-            }
-        }
+            if ($statusUpdate=$this->utilities->updateData('visitor_info', $activeStatus, array('USER_ID' => $id))) {
+               if ($statusUpdate == TRUE) {
+                 $this->session->set_flashdata('msg','<div class="alert alert-success text-center">You are Successfully Activited!  <button data-dismiss="alert" class="close" type="button">×</button></div>');
+             }
+             redirect('Accounts/userLogin');
+         }
+     }
 
-        else 
-        {
-            $this->session->set_flashdata('Error', 'You are not Successfully activated!.');
-            redirect('portal');
-        }
+     else 
+     {
+       if ($statusUpdate == FALSE) {
+         $this->session->set_flashdata('error','<div class="alert alert-warning text-center">You are not Successfully Activited!  <button data-dismiss="alert" class="close" type="button">×</button></div>');
+     }
+     redirect('portal');
+ }
 
 
 
-    }
+}
         /**
          * Show Create Registration Form 
          * Registration page  
@@ -110,17 +114,17 @@ class Accounts extends CI_Controller {
                     if($Institute != ""){
                       $InstituteInsert = $this->utilities->insertData($Institute, 'institution');
                       if ($InstituteInsert == TRUE) {
-                       $this->session->set_flashdata('msg','<div class="alert alert-success text-center">You are Successfully Registered!  <button data-dismiss="alert" class="close" type="button">×</button></div>');
-                   }
-               }
-               else{
-                $this->session->set_flashdata('Error', 'You are not Successfully Registered!.');
-            } 
-        }                      
-    }
+                         $this->session->set_flashdata('msg','<div class="alert alert-success text-center">You are Successfully Registered!  <button data-dismiss="alert" class="close" type="button">×</button></div>');
+                     }
+                 }
+                 else{
+                    $this->session->set_flashdata('Error', 'You are not Successfully Registered!.');
+                } 
+            }                      
+        }
 
-    redirect('accounts/userRegistration', 'refresh');
-}
+        redirect('accounts/userRegistration', 'refresh');
+    }
 }
 
 
