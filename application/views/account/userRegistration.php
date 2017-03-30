@@ -83,13 +83,14 @@ $lang_ses = $this->session->userdata("site_lang");
 					<div class="col-md-6">
 						<legend>Account Details</legend>
 						<?php echo $this->session->flashdata('msg'); ?>
-						
+						<?php echo $this->session->flashdata('Error'); ?>
 						
 						<div class="form-group">
 							<label>Email<span style="color:red;">*</span></label>
-							<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'EMAIL', 'id' => 'EMAIL', 'name' => 'EMAIL','type' => 'email', 'value' => set_value('EMAIL'), 'required' => 'required')); ?>  
+							<?php echo form_input(array('class' => 'checkUserEmail form-control', 'placeholder' => 'EMAIL', 'id' => 'EMAIL', 'name' => 'EMAIL','type' => 'email', 'value' => set_value('EMAIL'), 'required' => 'required')); ?> 
+							 <div id="checkUsermail"></div> 
 							<label>Password<span style="color:red;">*</span></label>
-							<?php echo form_input(array('class' => 'USERPW form-control', 'placeholder' => 'Password', 'id' => 'USERPW', 'name' => 'USERPW','type' => 'password', 'value' => set_value('USERPW'), 'required' => 'required')); ?>
+							<?php echo form_input(array('class' => 'minLength USERPW form-control', 'placeholder' => 'Password', 'id' => 'USERPW', 'name' => 'USERPW','type' => 'password', 'value' => set_value('USERPW'), 'required' => 'required')); ?>
 							<label>Confirm Password<span style="color:red;">*</span></label>
 							<?php echo form_input(array('class' => 'password_conf form-control', 'placeholder' => 'Confirm Password', 'id' => 'password_conf','type' => 'password', 'name' => 'password_conf', 'value' => set_value('password_conf'), 'required' => 'required')); ?>
 						</div><br>
@@ -147,7 +148,7 @@ $lang_ses = $this->session->userdata("site_lang");
             var password = $(".USERPW").val();
             var confirmPassword = $(".password_conf").val();
             if (password != confirmPassword) {
-                alert("Passwords do not match.");
+                alert("These passwords don't match.");
                 $(".USERPW").val('');
                 $(".password_conf").val('');
                 return false;
@@ -156,6 +157,37 @@ $lang_ses = $this->session->userdata("site_lang");
         });
     });
 </script>
+<script type="text/javascript">
+	$('.minLength').on('blur', function(){
+    if($(this).val().length < 6){
+      alert('You have to enter at least 6 digit!');
+       $(".USERPW").val('');
+    }
+});
+</script>
+<script type="text/javascript">
+	$(document).on("keyup", "#EMAIL", function() {
+	    var EMAIL = $(this).val();
+	    var url = '<?php echo site_url('accounts/checkUserEmail') ?>';
+	    $.ajax({
+	        type: "POST",
+	        url: url,
+	        dataType : 'html',
+	        data: {EMAIL: EMAIL},
+	        success: function(data) {
+	        	//console.log(data);
+	        	if(data == 'emailExit'){
+		        	$("#EMAIL").val('');
+		            $('#checkUsermail').html("<span style='color:red'>This Email Already Exist!</span>");	        		
+	        	}
+	        	else{
+	        		$('#checkUsermail').html('');
+	        	}
+	        }
+	    });
+	});	
+</script>
+ 
 
 
 

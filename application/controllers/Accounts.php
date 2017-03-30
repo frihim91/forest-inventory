@@ -75,6 +75,16 @@ class Accounts extends CI_Controller {
 
 
 }
+
+ public function checkUserEmail() {
+        $EMAIL = $this->input->post("EMAIL");
+        $check_userEmail = $this->utilities->findByAttribute("visitor_info", array("EMAIL" => "$EMAIL"));
+        if (!empty($check_userEmail)) {
+            echo "emailExit";
+        } else {
+            echo "emailNotExit";
+        }
+    }
         /**
          * Show Create Registration Form 
          * Registration page  
