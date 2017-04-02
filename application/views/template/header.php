@@ -83,6 +83,27 @@ instead of the minified CSS loaded by default.
     });
     </script>
 
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example1').DataTable({
+            responsive: true
+        });
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example2').DataTable({
+            responsive: true
+        });
+    });
+     $(document).ready(function() {
+        $('#dataTables-example3').DataTable({
+            responsive: true
+        });
+    });
+    </script>
+
+
 
 <script src="<?php echo base_url(); ?>resources/shared/components/library/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/plugins/slimscroll/jquery.slimscroll.js"></script>

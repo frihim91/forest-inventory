@@ -36,6 +36,7 @@
         }
         $this->load->library("form_validation");
         $this->load->model('utilities');
+        $this->load->model('Menu_model');
         $this->load->model('Forestdata_model');
         $this->load->library('upload');
         $this->load->library('csvimport');
@@ -169,12 +170,261 @@
                 "Species" => "dashboard/ForestData/speciesSetup",
                 );
             $data['pageTitle'] = "All Species List";
-            $data['all_family'] = $this->utilities->findAllFromView("fd_family");
-            $data['all_genus'] = $this->utilities->findAllFromView("fd_genus");
-            $data['all_species'] = $this->utilities->findAllFromView("fd_species_dataset");
+            $data['all_family'] = $this->utilities->findAllFromView("family");
+            $data['all_genus'] = $this->utilities->findAllFromView("genus");
+            $data['all_species'] = $this->utilities->findAllFromView("species");
+            $data['all_faobiomes'] = $this->utilities->findAllFromView("faobiomes");
             $data['content_view_page'] = 'setup/species/all_species';
             $this->template->display($data);
          }
+
+
+    /*
+     * @methodName createFamily()
+     * @access public
+     * @param  none
+     * @return add Family page
+     */
+        public function createFamily() {
+            $family = array(
+                'Family' => $this->input->post('Family'),
+               );
+            if ($this->utilities->insertData($family, 'family')) {
+                $this->session->set_flashdata('Success', 'New Family Added Successfully.');
+                redirect('dashboard/ForestData/speciesSetup');
+            }
+        }
+
+
+    /*
+     * @methodName deleteFamily()
+     * @access public
+     * @param  $id
+     * @return delete Family 
+     */
+
+
+           public function deleteFamily($id)
+           {
+                     
+               $attr = array(
+               "ID_Family" => $id
+                   );
+                return $this->utilities->deleteRowByAttribute("family", $attr);
+                        
+           }
+
+
+
+    /*
+     * @methodName createGenus()
+     * @access public
+     * @param  none
+     * @return add Genus page
+     */
+        public function createGenus() {
+            $genus = array(
+                'ID_Family' => $this->input->post('ID_Family'),
+                'Genus' => $this->input->post('Genus'),
+               );
+            if ($this->utilities->insertData($genus, 'genus')) {
+                $this->session->set_flashdata('Success', 'New Genus Added Successfully.');
+                redirect('dashboard/ForestData/speciesSetup');
+            }
+        }
+
+
+
+    /*
+     * @methodName deleteGenus()
+     * @access public
+     * @param  $id
+     * @return delete Genus 
+     */
+
+
+           public function deleteGenus($id)
+           {
+                     
+               $attr = array(
+               "ID_Genus" => $id
+                   );
+                return $this->utilities->deleteRowByAttribute("genus", $attr);
+                        
+           }
+
+
+    /*
+     * @methodName createSpecies()
+     * @access public
+     * @param  none
+     * @return add Species page
+     */
+        public function createSpecies() {
+            $species = array(
+                'ID_Family' => $this->input->post('ID_Family'),
+                'ID_Genus' => $this->input->post('ID_Genus'),
+                'Species' => $this->input->post('Species'),
+               );
+            if ($this->utilities->insertData($species, 'species')) {
+                $this->session->set_flashdata('Success', 'New Species Added Successfully.');
+                redirect('dashboard/ForestData/speciesSetup');
+            }
+        }
+
+
+    /*
+     * @methodName deleteSpecies()
+     * @access public
+     * @param  $id
+     * @return delete Species 
+     */
+
+
+           public function deleteSpecies($id)
+           {
+                     
+               $attr = array(
+               "ID_Species" => $id
+                   );
+                return $this->utilities->deleteRowByAttribute("species", $attr);
+                        
+           }
+
+
+           /*
+     * @methodName createFAOBiomes()
+     * @access public
+     * @param  none
+     * @return add FAOBiomes page
+     */
+        public function createFAOBiomes() {
+            $faobiomes = array(
+                'FAOBiomes' => $this->input->post('FAOBiomes'),
+               );
+            if ($this->utilities->insertData($faobiomes, 'faobiomes')) {
+                $this->session->set_flashdata('Success', 'New FAOBiomes Added Successfully.');
+                redirect('dashboard/ForestData/speciesSetup');
+            }
+        }
+
+
+
+         /*
+     * @methodName deleteFAOBiomes()
+     * @access public
+     * @param  $id
+     * @return delete FAOBiomes 
+     */
+
+
+           public function deleteEfData($id)
+           {
+                     
+               $attr = array(
+               "ID_EF" => $id
+                   );
+                return $this->utilities->deleteRowByAttribute("ef", $attr);
+                        
+           }
+
+           /**
+      * Show all EF Data in datatable
+      
+      
+     */
+
+        public function all_ef_data() {
+
+            $data["breadcrumbs"] = array(
+                "Page" => "dashboard/ForestData/all_ef_data",
+                );
+            $data['pageTitle'] = "All EF Data ";
+            $data['all_ef_data'] = $this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.*,ip.* from ef e
+             LEFT JOIN ef_ipcc ip ON e.ID_EF_IPCC=ip.ID_EF_IPCC
+             LEFT JOIN species s ON e.ID_Species=s.ID_Species
+             LEFT JOIN family f ON s.ID_Family=f.ID_Family
+             LEFT JOIN genus g ON f.ID_Family=g.ID_Family 
+             LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+             LEFT JOIN location l ON e.ID_Location=l.ID_Location
+             LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+             LEFT JOIN division d ON l.ID_Division=d.ID_Division
+             LEFT JOIN district dis ON l.ID_District =dis.ID_District
+             LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+             Group BY e.ID_EF")->result();
+            $data['content_view_page'] = 'setup/ForestData/all_ef_data';
+            $this->template->display($data);
+        }
+
+
+
+          /*
+     * @methodName createEFData()
+     * @access public
+     * @param  none
+     * @return add EF Data page
+     */
+        public function createEFData() {
+
+           if($_POST){
+            $ID_VolumeRange = $this->input->post('ID_VolumeRange');
+            $x = explode(",", $ID_VolumeRange);
+            $first_value = $x[0];
+            $second_value = $x[1];
+
+            $ID_HeightRange = $this->input->post('ID_HeightRange');
+            $h = explode(",", $ID_HeightRange);
+            $first_value_HeightRange = $h[0];
+            $second_value_HeightRange = $h[1];
+
+
+            $ID_AgeRange = $this->input->post('ID_AgeRange');
+            $a = explode(",", $ID_AgeRange);
+            $first_value_AgeRange = $a[0];
+            $second_value_AgeRange = $a[1];
+
+            $ID_BasalRange = $this->input->post('ID_BasalRange');
+            $b = explode(",", $ID_BasalRange);
+            $first_value_BasalRange = $b[0];
+            $second_value_BasalRange = $b[1];
+
+            }
+           
+              $ef = array(
+                'EmissionFactor' => $this->input->post('EmissionFactor'),
+                'ID_LandCover' => $this->input->post('ID_LandCover'),
+                'ID_Species' => $this->input->post('ID_Species'),
+                'ID_Species_new' => $this->input->post('ID_Species'),
+                'ID_AgeRange' => $first_value_AgeRange,
+                'AgeRange' => $second_value_AgeRange,
+                'ID_HeightRange' => $first_value_HeightRange,
+                'HeightRange' => $second_value_HeightRange,
+                'ID_VolumeRange' => $first_value,
+                'VolumeRange' => $second_value,
+                'ID_BasalArea' => $first_value_BasalRange,
+                'BasalRange' => $second_value_BasalRange,
+                'Value' => $this->input->post('Value'),
+                'Unit' => $this->input->post('Unit'),
+                'ID_EF_IPCC' => $this->input->post('ID_EF_IPCC'),
+                'ID_Reference' => $this->input->post('ID_Reference'),
+                'Lower_Confidence_Limit' => $this->input->post('Lower_Confidence_Limit'),
+                'Upper_Confidence_Limit' => $this->input->post('Upper_Confidence_Limit'),
+                'Type_of_Parameter' => $this->input->post('Type_of_Parameter'),
+                'ID_Location' => $this->input->post('ID_Location'),
+               );
+            if ($this->utilities->insertData($ef, 'ef')) {
+                $this->session->set_flashdata('Success', 'New EF Data Added Successfully.');
+                redirect('dashboard/ForestData/all_ef_data');
+            }
+        }
+
+
+
+
+
+
+
+
 
  
 

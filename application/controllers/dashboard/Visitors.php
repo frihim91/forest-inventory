@@ -55,7 +55,7 @@
     public function visitorList() {
 
         $data["breadcrumbs"] = array(
-            "Page" => "dashboard/Website/postSetup",
+            "Page" => "dashboard/Visitors/visitorList",
             );
         $data['pageTitle'] = "All Visitor List ";
         $sql = "SELECT v.*, e.EDUCATION_DEGREE_NAME,i.INSTITUTE_NAME,i.INSTITUTE_ADDRESS,i.PHONE,i.FAX  FROM visitor_info v

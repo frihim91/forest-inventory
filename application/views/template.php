@@ -6,7 +6,9 @@
 <!--[if !IE]><!--><html class="fluid top-full sticky-top"><!-- <![endif]-->
 <head>
    <title>.: FAO || Food and Agriculture Organization of the United Nations:. Login Panel</title>
+ 
    <?php $this->load->view('template/header'); ?>
+
 </head>
 <body class="">
     <!-- Main Container Fluid -->
@@ -70,7 +72,7 @@
   </div>
 </div>
 <script>
-    $(document).ready(function(){
+   $(document).ready(function(){
    $(document).on("click", ".modalLink", function (e) {
     var modal_size = $(this).attr('data-modal-size');
     if ( modal_size!=='' && typeof modal_size !== typeof undefined && modal_size !== false ) {

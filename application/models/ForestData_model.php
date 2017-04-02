@@ -154,6 +154,101 @@ Class Forestdata_model extends CI_Model {
 		 return $data; 
 	}
 
+	  public function get_all_family() 
+      {
+            $this->db->select('family.*');
+            $this->db->from('family');
+            $this->db->order_by('family.ID_Family', 'ASC');
+            return $this->db->get()->result();
+       }
+        public function get_all_landcover() 
+      {
+            $this->db->select('landcover.*');
+            $this->db->from('landcover');
+            $this->db->order_by('landcover.ID_LandCover ', 'ASC');
+            return $this->db->get()->result();
+       }
+
+      public function get_all_species() 
+      {
+            $this->db->select('species.*');
+            $this->db->from('species');
+            $this->db->order_by('species.ID_Species	', 'ASC');
+            return $this->db->get()->result();
+       }
+
+
+      public function get_all_heightrange() 
+      {
+            $this->db->select('heightrange.*');
+            $this->db->from('heightrange');
+            $this->db->order_by('heightrange.ID_HeightRange', 'ASC');
+            return $this->db->get()->result();
+       }
+
+
+       public function get_all_volumerange() 
+      {
+            $this->db->select('volumerange.*');
+            $this->db->from('volumerange');
+            $this->db->order_by('volumerange.ID_VolumeRange', 'ASC');
+            return $this->db->get()->result();
+       }
+
+
+         public function get_all_basalrange() 
+      {
+            $this->db->select('basalrange.*');
+            $this->db->from('basalrange');
+            $this->db->order_by('basalrange.ID_BasalRange', 'ASC');
+            return $this->db->get()->result();
+       }
+
+       public function get_all_equation() 
+      {
+            $this->db->select('ef_ipcc.*');
+            $this->db->from('ef_ipcc');
+            $this->db->order_by('ef_ipcc.ID_EF_IPCC', 'ASC');
+            return $this->db->get()->result();
+       }
+
+       public function get_all_reference() 
+      {
+            $this->db->select('reference.*');
+            $this->db->from('reference');
+            $this->db->order_by('reference.ID_Reference', 'ASC');
+            return $this->db->get()->result();
+       }
+
+        public function get_all_agerange() 
+      {
+            $this->db->select('agerange.*');
+            $this->db->from('agerange');
+            $this->db->order_by('agerange.ID_AgeRange', 'ASC');
+            return $this->db->get()->result();
+       }
+
+
+
+       public function get_all_genus() 
+      {
+            $this->db->select('genus.*');
+            $this->db->from('genus');
+            $this->db->order_by('genus.ID_Genus', 'ASC');
+            return $this->db->get()->result();
+      }
+
+
+    public function get_all_location()
+	{
+		$data=$this->db->query("SELECT l.*,dis.* from location l
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         group by l.ID_District
+		")->result();
+		 return $data; 
+	}
+
+
 
 
 

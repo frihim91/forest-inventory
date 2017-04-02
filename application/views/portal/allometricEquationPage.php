@@ -1,3 +1,5 @@
+
+
 <style type="text/css">
    .page_content{
    padding: 15px;
@@ -37,11 +39,7 @@
    border-radius: 0px 0px 4px 4px;
    }
 </style>
-  
-
-   
 <?php
-
    $lang_ses = $this->session->userdata("site_lang");
    ?>
 <div class="col-sm-12 breadcump img-responsive">
@@ -196,49 +194,44 @@
             <p><?php echo $links; ?></p>
          </div>
          <div id="results-map" class="tab-pane fade">
-		 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-        crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
-  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-  <style>
-    #map{ height: 100% }
-  </style>
-  <div class="row">
- 
-    <div class="col-md-12" style="height:500px!important; overflow:hidden">
-       <div id="map"></div>
-
-  <script>
-
-  // initialize the map
-var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
-     var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-     map.addLayer(osm);
-   
-   
-    $.getJSON("http://192.168.0.21/forest-inventory/resources/map.json",function(data){
-    var ratIcon = L.icon({
-      iconUrl: 'http://192.168.0.21/forest-inventory/resources/final.png',
-      iconSize: [60,50]
-    });
-    L.geoJson(data,{
-      pointToLayer: function(feature,latlng){
-     var marker = L.marker(latlng,{icon: ratIcon});
-  
-   marker.bindPopup('<b>District : </b>'+feature.properties.ID_District );
-  
-  return marker;
-      }
-    }).addTo(map);
-  });
- 
-
-  </script>
-
-    </div>
-  </div>
+            <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
+            <script src="<?php echo base_url(); ?>resources/js/leaflet/leaflet.js"></script>
+           
+            <style type="text/css">
+               #map{ height: 100% }
+            </style>
+            <div class="row">
+               <div class="col-md-12" style="height:500px!important; overflow:hidden">
+                  <div id="map"></div>
+                  <script>
+                     // initialize the map
+                     var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
+                        var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+                        map.addLayer(osm);
+                      
+                      
+                       $.getJSON("<?php echo base_url(); ?>resources/map.json",function(data){
+                       var ratIcon = L.icon({
+                         iconUrl: '<?php echo base_url(); ?>resources/final.png',
+                         iconSize: [60,50]
+                       });
+                       L.geoJson(data,{
+                         pointToLayer: function(feature,latlng){
+                        var marker = L.marker(latlng,{icon: ratIcon});
+                     
+                      marker.bindPopup('<b>District : </b>'+feature.properties.ID_District );
+                     
+                     return marker;
+                         }
+                       }).addTo(map);
+                     });
+                     
+                     
+                  </script>
+               </div>
+            </div>
          </div>
       </div>
    </div>
 </div>
+
