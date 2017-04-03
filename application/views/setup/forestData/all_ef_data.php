@@ -185,7 +185,7 @@
                                 <div class="col-md-4">
                                 <label for="firstname">Value</label>
                                
-                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Value', 'id' => 'Value', 'name' => 'Value', 'value' => set_value('Value'), 'required' => 'required')); ?>      
+                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Value', 'id' => 'Value', 'name' => 'Value', 'value' => set_value('Value'), 'required' => 'required')); ?>  
                                
                                 </div>
 
