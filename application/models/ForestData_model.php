@@ -136,7 +136,7 @@ Class Forestdata_model extends CI_Model {
 	}
 
 
-			public function get_raw_data_details($ID_Species)
+	public function get_raw_data_details($ID_Species)
 	{
 		$data=$this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
          
@@ -247,6 +247,8 @@ Class Forestdata_model extends CI_Model {
 		")->result();
 		 return $data; 
 	}
+
+
 
 
 

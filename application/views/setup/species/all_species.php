@@ -132,7 +132,9 @@
                      <thead>
                         <tr>
                            <th>#</th>
-                           <th>Speciess Name</th>
+                           <th>Family</th>
+                           <th>Genus</th>
+                           <th>Speciess</th>
                            <th>Action</th>
                         </tr>
                      </thead>
@@ -143,6 +145,8 @@
                                ?>
                         <tr>
                            <td><?php echo $i; ?></td>
+                           <td><?php echo $all_speciess->Family; ?></td>
+                           <td><?php echo $all_speciess->Genus; ?></td>
                            <td><?php echo $all_speciess->Species; ?></td>
                            <td>
                               <a class="label btn-danger btn-xs deleteUrlS" href="<?php echo site_url('dashboard/ForestData/deleteSpecies/'.$all_speciess->ID_Species);?>">

@@ -172,7 +172,10 @@
             $data['pageTitle'] = "All Species List";
             $data['all_family'] = $this->utilities->findAllFromView("family");
             $data['all_genus'] = $this->utilities->findAllFromView("genus");
-            $data['all_species'] = $this->utilities->findAllFromView("species");
+            $data['all_species'] =  $this->db->query("SELECT s.*,g.*,f.* from species s
+            LEFT JOIN genus g ON s.ID_Genus =g.ID_Genus
+            LEFT JOIN family f ON s.ID_Family =f.ID_Family
+            order by s.ID_Species")->result();
             $data['all_faobiomes'] = $this->utilities->findAllFromView("faobiomes");
             $data['content_view_page'] = 'setup/species/all_species';
             $this->template->display($data);
@@ -337,7 +340,7 @@
         public function all_ef_data() {
 
             $data["breadcrumbs"] = array(
-                "Page" => "dashboard/ForestData/all_ef_data",
+                "All EF Data" => "dashboard/ForestData/all_ef_data",
                 );
             $data['pageTitle'] = "All EF Data ";
             $data['all_ef_data'] = $this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.*,ip.* from ef e
@@ -365,6 +368,18 @@
      * @return add EF Data page
      */
         public function createEFData() {
+
+            $this->form_validation->set_rules('ID_Species', 'Species Name', 'required');
+           
+              if ($this->form_validation->run() == FALSE) {
+                $data["breadcrumbs"] = array(
+                    "ALL EF Data" => "dashboard/ForestData/all_ef_data",
+                    "Create EF Data" => "#",
+                );
+                $data['pageTitle'] = "Add EF Data";
+                $data['content_view_page'] = 'setup/modules/create_module_link';
+                $this->template->display($data);
+            } else {
 
            if($_POST){
             $ID_VolumeRange = $this->input->post('ID_VolumeRange');
@@ -414,8 +429,14 @@
                );
             if ($this->utilities->insertData($ef, 'ef')) {
                 $this->session->set_flashdata('Success', 'New EF Data Added Successfully.');
-                redirect('dashboard/ForestData/all_ef_data');
+
+                
             }
+            else {
+                    $this->session->set_flashdata('Error', 'Sorry ! You Already Added this Link Name .');
+                }
+                redirect('dashboard/ForestData/all_ef_data');
+        }
         }
 
 
