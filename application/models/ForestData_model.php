@@ -90,7 +90,7 @@ Class Forestdata_model extends CI_Model {
 		 LEFT JOIN division d ON l.ID_Division=d.ID_Division
 		 LEFT JOIN district dis ON l.ID_District =dis.ID_District
 		 LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-		 GROUP BY e.ID_Species")->result();
+		 GROUP BY e.ID_Species order by e.ID_Species desc")->result();
 		 return $data; 
 	}
 
@@ -169,13 +169,24 @@ Class Forestdata_model extends CI_Model {
             return $this->db->get()->result();
        }
 
-      public function get_all_species() 
+      public function get_all_species11() 
       {
             $this->db->select('species.*');
             $this->db->from('species');
             $this->db->order_by('species.ID_Species	', 'ASC');
             return $this->db->get()->result();
        }
+
+
+       public function get_all_species()
+	{
+		$data=$this->db->query("SELECT s.*,g.*,f.* from species s
+            LEFT JOIN genus g ON s.ID_Genus =g.ID_Genus
+            LEFT JOIN family f ON s.ID_Family =f.ID_Family
+            order by s.ID_Species ASC
+		")->result();
+		 return $data; 
+	}
 
 
       public function get_all_heightrange() 

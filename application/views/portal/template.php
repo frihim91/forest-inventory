@@ -2,12 +2,12 @@
     <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <title>.: FAO || Food and Agriculture Organization of the United Nations:.</title>
-        <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/images/logo.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/favIcon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="description" content=" Food and Agriculture Organization of the United Nations"/>
         <meta name="author" content="ATI Limited"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/logo.jpg">
+      
         <!-- CSS Bootstrap & Custom -->
         <link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/bootstrap.min.css" rel="stylesheet">
         <!-- portal.css -->
@@ -37,7 +37,7 @@
                         <div class="col-xs-6 col-sm-4">
                             <a href="<?php echo site_url(); ?>" title="Home" rel="home">
 
-                               <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/forest.jpg')?>" alt="logo"/>
+                               <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png')?>" alt="logo"/>
                            </a>
                            <?php echo $this->session->flashdata('error'); ?>
                        </div>

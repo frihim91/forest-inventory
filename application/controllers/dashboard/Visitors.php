@@ -38,7 +38,7 @@
         $this->load->model('utilities');
         $this->load->model('Menu_model');
         $this->load->library('upload');
-        $this->load->library('csvimport');
+        $this->load->library('Csvimport');
         $this->load->helper(array('html', 
 
             'form'));

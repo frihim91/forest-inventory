@@ -140,29 +140,15 @@
                         </div>
                         <div class="widget-inner">
                             <div class="gallery-small-thumbs clearfix">
-                                
+                                 <?php foreach($gallery as $galleries){?>
                                     <div class="thumb-small-gallery">
-                                        <a class="fancybox" rel="gallery1" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/1.jpg" title="Forest">
-                                            <img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/1-small.jpg" alt=""/>
+                                        <a class="fancybox" rel="gallery1" href="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>" title="Forest">
+                                            <img src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"/>
 
                                         </a>
 
                                     </div>
-
-
-                                    <div class="thumb-small-gallery">
-                                        <a class="fancybox" rel="gallery1" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/2.jpg" title="Forest">
-                                            <img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/2-small.jpg" alt=""/>
-                                        </a>
-
-                                    </div>
-
-                                    <div class="thumb-small-gallery">
-                                        <a class="fancybox" rel="gallery1" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/3.jpg" title="Forest">
-                                            <img src="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/gallery/3-small.jpg" alt=""/>
-                                        </a>
-                                    </div>
-                               
+                                    <?php } ?>  
                             </div>
 
 

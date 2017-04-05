@@ -103,7 +103,7 @@
                                    $species = $this->Forestdata_model->get_all_species();
                                    $options = array('' => '--Select Species--');
                                    foreach ($species as $speciess) {
-                                   $options["$speciess->ID_Species"] = $speciess->Species;
+                                   $options["$speciess->ID_Species"] =$speciess->Family . " " .$speciess->Species;
                                    }
                                    $mId = set_value('ID_Species');
                                    echo form_dropdown('ID_Species', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Species..." required="required"');
@@ -269,7 +269,7 @@
                                    $species = $this->Forestdata_model->get_all_species();
                                    $options = array('' => '--Select Species--');
                                    foreach ($species as $speciess) {
-                                   $options["$speciess->ID_Species"] = $speciess->Species;
+                                   $options["$speciess->ID_Species"] =$speciess->Family . " " .$speciess->Species;
                                    }
                                    $mId = set_value('ID_Species');
                                    echo form_dropdown('ID_Species', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Species..." required="required"');
