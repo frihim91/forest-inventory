@@ -89,7 +89,7 @@
         $FIRST_NAME = $this->input->post('FIRST_NAME');
         $LAST_NAME = $this->input->post('LAST_NAME');
         $USER_MAIL = $this->input->post('USER_MAIL');
-        $message = "Congratulation! You have been Successfully registered. <br>Dear" ."&nbsp;". $FIRST_NAME .$LAST_NAME. ", <br> To activate the account please click the following link<br>" . base_url("index.php/Accounts/userActivition/$USER_ID") . " <br>Your login details.<br />Email:<b> " . $USER_MAIL . '</b><br>Thanks <br> FAO';
+        $message = "Dear<br>$FIRST_NAME $LAST_NAME,<br>Congratulation! You have been Successfully registered.  <br> To activate the account please click the following link<br>" . base_url("index.php/Accounts/userActivition/$USER_ID") . " <br>Your login details.<br />Email:<b> " . $USER_MAIL . '</b><br>Thanks <br> FAO';
 
         $subject = "FAO Applicant Login Info";
 
@@ -126,6 +126,29 @@
         else{
                 $this->session->set_flashdata('Error', 'Mail send failed!.');
             }
+    }
+   public function generatePassword() {
+
+        $random_code = $this->uri->segment(3, '');
+        if ($random_code == '') {
+            $this->session->set_flashdata('Error', 'Sorry ! You are Trying Invalid Way to Reset Password.');
+            redirect('auth/index', 'refresh');
+        }
+        $data['requestinfo'] = $this->utilities->findByAttribute('sa_forget_pass_request', array('REQUESTED_CODE' => $random_code));
+        if (empty($data['requestinfo'])) {
+            $this->session->set_flashdata('Error', 'Sorry ! You are Trying Invalid Way to Reset Password.');
+            redirect('auth/index', 'refresh');
+        } else {
+            if ($data['requestinfo']->IS_USED != 0) {
+
+                $data['content_view_page'] = 'auth/errorMessage';
+                $this->template_auth->display($data);
+            } else {
+
+                $data['content_view_page'] = 'auth/generateNewPasswordPage';
+                $this->template_auth->display($data);
+            }
+        }
     }
 
 

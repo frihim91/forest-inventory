@@ -72,9 +72,9 @@ $lang_ses = $this->session->userdata("site_lang");
 			<div class="col-md-5">
 				<h2>Already have an <br> account?</h2>
 				<p>If you already have an account:<br>
-					<a href="<?php echo site_url('dashboard/auth/index')?>" target="_blank" class="btn btn-link" style="color: #147A00;text-decoration: none;"><?php echo $this->lang->line("login"); ?>&gt;&gt;</a></p>
-					<p>If you have lost your password::<br>
-						<a href="<?php echo site_url('dashboard/auth/index')?>" target="_blank" class="btn btn-link" style="color: #147A00;text-decoration: none;">Reset your password&gt;&gt;</a></p>
+					<a href="<?php echo site_url('accounts/userLogin')?>" class="btn btn-link" style="color: #147A00;text-decoration: none;"><?php echo $this->lang->line("login"); ?>&gt;&gt;</a></p>
+					<p>If you have lost your password:<br>
+						<a href="<?php echo site_url('accounts/forgot_password')?>" class="btn btn-link" style="color: #147A00;text-decoration: none;">Reset your password&gt;&gt;</a></p>
 					</div>
 				</div>
 				<?php echo form_open_multipart('accounts/createRegistration', "class='form-vertical'"); ?>
@@ -87,8 +87,8 @@ $lang_ses = $this->session->userdata("site_lang");
 						
 						<div class="form-group">
 							<label>Email<span style="color:red;">*</span></label>
-							<?php echo form_input(array('class' => 'checkUserEmail form-control', 'placeholder' => 'EMAIL', 'id' => 'EMAIL', 'name' => 'EMAIL','type' => 'email', 'value' => set_value('EMAIL'), 'required' => 'required')); ?> 
-							 <div id="checkUsermail"></div> 
+							<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'EMAIL', 'id' => 'EMAIL', 'name' => 'EMAIL','type' => 'email', 'value' => set_value('EMAIL'), 'required' => 'required')); ?> 
+							<div id="checkUsermail"></div>
 							<label>Password<span style="color:red;">*</span></label>
 							<?php echo form_input(array('class' => 'minLength USERPW form-control', 'placeholder' => 'Password', 'id' => 'USERPW', 'name' => 'USERPW','type' => 'password', 'value' => set_value('USERPW'), 'required' => 'required')); ?>
 							<label>Confirm Password<span style="color:red;">*</span></label>
@@ -148,7 +148,7 @@ $lang_ses = $this->session->userdata("site_lang");
             var password = $(".USERPW").val();
             var confirmPassword = $(".password_conf").val();
             if (password != confirmPassword) {
-                alert("These passwords don't match.");
+                alert("These passwords miss match.");
                 $(".USERPW").val('');
                 $(".password_conf").val('');
                 return false;
@@ -166,7 +166,7 @@ $lang_ses = $this->session->userdata("site_lang");
 });
 </script>
 <script type="text/javascript">
-	$(document).on("keyup", "#EMAIL", function() {
+	$(document).on("blur", "#EMAIL", function() {
 	    var EMAIL = $(this).val();
 	    var url = '<?php echo site_url('accounts/checkUserEmail') ?>';
 	    $.ajax({
@@ -174,15 +174,15 @@ $lang_ses = $this->session->userdata("site_lang");
 	        url: url,
 	        dataType : 'html',
 	        data: {EMAIL: EMAIL},
-	        success: function(data) {
-	        	//console.log(data);
-	        	if(data == 'emailExit'){
-		        	$("#EMAIL").val('');
-		            $('#checkUsermail').html("<span style='color:red'>This Email Already Exist!</span>");	        		
+	        success: function(data1) {
+	        	//console.log(data1);
+	        	if(data1 == 1){
+	        		$('#EMAIL').val('');
+	        		$('#checkUsermail').html("<span style='color:red'>This Email Already Exist</span>");
+	        	}else{
+	        	$('#checkUsermail').html('');
 	        	}
-	        	else{
-	        		$('#checkUsermail').html('');
-	        	}
+	        	
 	        }
 	    });
 	});	
