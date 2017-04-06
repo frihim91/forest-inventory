@@ -66,8 +66,8 @@ $lang_ses = $this->session->userdata("site_lang");
 		<h4>Please log in to access the Foreast Inventory site</h4>
          <?php echo form_open('dashboard/auth/registerLogin', "class='form-vertical'"); ?>
                             <?php if (validation_errors()): ?>
-                                <div class="row"><button data-dismiss="alert" class="close" type="button">×</button>
-                                    <div class="alert alert-danger">
+                                <div class="row">
+                                    <div class="alert alert-danger"><button data-dismiss="alert" class="close" type="button">×</button>
                                         <?php echo validation_errors(); ?>
                                     </div>
                                 </div>

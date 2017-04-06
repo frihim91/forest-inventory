@@ -228,8 +228,8 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -300,8 +300,8 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -366,8 +366,8 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -433,8 +433,8 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -524,15 +524,17 @@ class Portal extends CI_Controller
         
         $this->load->library('pagination');
         $config             = array();
-        $config["base_url"] = base_url() . "index.php/portal/allometricEquationView";
+        $config["base_url"] = base_url() .  "index.php/portal/allometricEquationView";
         $total_ef           = $this->db->count_all("ef");
         
         $config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
         
         $config["per_page"]        = 20;
-        $config["uri_segment"]     = 3;
+        //$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"] = 20;
+        $config["uri_segment"] = 3;
+        //$config["num_links"] = round($total_ef );
         //pagination style start
         $config['full_tag_open']   = '<ul class="pagination">';
         $config['full_tag_close']  = '</ul>';
@@ -550,25 +552,26 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
-        //pagination style end
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+        // //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         
-        $data['allometricEquationView'] = $this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef_ipcc ip
-         LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
-         LEFT JOIN species s ON e.ID_Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
-         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
-         LEFT JOIN location l ON e.ID_Location=l.ID_Location
-         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON l.ID_Division=d.ID_Division
-         LEFT JOIN district dis ON l.ID_District =dis.ID_District
-         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         GROUP BY e.ID_Species order by e.ID_EF desc LIMIT $limit OFFSET $page
-        ")->result();
+        // $data['allometricEquationView'] = $this->db->query("SELECT ip.*, e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef_ipcc ip
+        //  LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
+        //  LEFT JOIN species s ON e.ID_Species=s.ID_Species
+        //  LEFT JOIN family f ON s.ID_Family=f.ID_Family
+        //  LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+        //  LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+        //  LEFT JOIN location l ON e.ID_Location=l.ID_Location
+        //  LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        //  LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        //  LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        //  LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        //  GROUP BY e.ID_Species order by e.ID_EF desc LIMIT $limit OFFSET $page $config["per_page"]
+        // ")->result();
+         $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid($config["per_page"],  $page);
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
@@ -642,24 +645,25 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         
-        $data['rawDataView']       = $this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e 
-         LEFT JOIN species s ON e.ID_Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
-         LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
-         LEFT JOIN location l ON e.ID_Location=l.ID_Location
-         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON l.ID_Division=d.ID_Division
-         LEFT JOIN district dis ON l.ID_District =dis.ID_District
-         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         GROUP BY e.ID_Species order by e.ID_EF desc LIMIT $limit OFFSET $page
-        ")->result();
+        // $data['rawDataView']       = $this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e 
+        //  LEFT JOIN species s ON e.ID_Species=s.ID_Species
+        //  LEFT JOIN family f ON s.ID_Family=f.ID_Family
+        //  LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+        //  LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
+        //  LEFT JOIN location l ON e.ID_Location=l.ID_Location
+        //  LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        //  LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        //  LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        //  LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        //  GROUP BY e.ID_Species order by e.ID_EF desc LIMIT $limit OFFSET $page
+        // ")->result();
+         $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid($config["per_page"],  $page);
         $data["links"]             = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
@@ -705,8 +709,8 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -774,8 +778,8 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -838,8 +842,8 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -902,8 +906,8 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -967,8 +971,8 @@ class Portal extends CI_Controller
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open']   = '<li>';
         $config['last_tag_close']  = '</li>';
-        $config['first_link']      = '&lt;&lt;';
-        $config['last_link']       = '&gt;&gt;';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
