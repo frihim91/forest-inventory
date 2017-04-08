@@ -33,4 +33,11 @@ Class Auth_model extends CI_Model {
         }
     }
 
+  public function getUsersData($username_email) {
+        return $this->db->query("select a.* from visitor_info a where EMAIL = '$username_email'")->row();
+    }
+    public function getPassRequestData($user_id){
+        return $this->db->query("select a.* from sa_forget_pass_request a where USER_ID = '$user_id'")->row();
+    }
+
 }
