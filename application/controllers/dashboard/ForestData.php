@@ -416,7 +416,7 @@ class ForestData extends CI_Controller
              LEFT JOIN district dis ON l.ID_District =dis.ID_District
              LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
              Group BY e.ID_EF desc")->result();
-        $data['content_view_page'] = 'setup/ForestData/all_ef_data';
+        $data['content_view_page'] = 'setup/forestData/all_ef_data';
         $this->template->display($data);
     }
     
