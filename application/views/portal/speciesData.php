@@ -69,7 +69,7 @@
                 <div class="panel-heading">
                   <h4 class="panel-title">
                     <a data-toggle="collapse" style="font-family:Tahoma, Verdana, Segoe, sans-serif; font-weight: 400;font-size:20px;color:inherit;" data-parent="#accordion" href="#collapse<?php echo $i; ?>" >
-                        <?php echo $row->Family;?> </a> (<?php echo $row->GENUSCOUNT;?> Genus ,<?php echo $row->SPECIESCOUNT;?> Species)
+                        <?php echo $row->Family;?> </a> (<?php echo $row->GENUSCOUNT;?> Genus, <?php echo $row->SPECIESCOUNT;?> Species)
                     </h4>
                 </div>
                 <div id="collapse<?php echo $i; ?>" class="panel-collapse collapse">

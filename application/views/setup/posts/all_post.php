@@ -7,7 +7,7 @@
 <div class="widget">  
     <div class="widget-head"> 
        <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create New Page</a> -->
-         <a class="btn btn-sm btn-danger pull-right col-md-2" href="<?php echo site_url("dashboard/website/createPostLink"); ?>">Create New Post</a>
+         <a class="btn btn-sm btn-danger pull-right col-md-2" href="<?php echo site_url("dashboard/website/createPostLink"); ?>">Add New Post</a>
         <small style="margin-left: 10px;">All Posts Create, Edit, Inactivate and Delete from here</small> 
     </div> 
     <div class="widget-body">    

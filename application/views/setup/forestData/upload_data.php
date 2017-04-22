@@ -73,8 +73,12 @@
                                             <option value="family">family</option>
                                             <option value="genus">genus</option>
                                             <option value="species">species</option>
+                                            <option value="reference">reference</option>
+                                            <option value="agerange">agerange</option>
                                             <option value="volumerange">volumerange</option>
                                             <option value="location">location</option>
+                                            <option value="zones">zones</option>
+                                            <option value="1988ecozones">1988ecozones</option>
                                             <option value="faobiomes">faobiomes</option>
                                             <option value="basalrange">basalrange</option>
                                             <option value="heightrange">heightrange</option>

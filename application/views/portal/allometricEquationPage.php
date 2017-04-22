@@ -168,7 +168,25 @@
       <ul class="nav nav-tabs">
          <li class="active"><a data-toggle="tab" href="#results-list"><span class="glyphicon glyphicon-list"></span> Results List</a></li>
          <li><a data-toggle="tab" class="results-map" href="#results-map"><span class="glyphicon glyphicon-globe"></span> Map View</a></li>
+            <div style="float:right;"> 
+                    <form action='export/' id="export-form" method="POST">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='EUSnAj1qQRRf6anXMDF1cWRSTLAwax2J' />
+                        <input type="hidden" name="query" id="export-query" />
+                        <input type="hidden" name="extension" id="export-extension" />
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >
+                            <span class="glyphicon glyphicon-download"></span> Export Results <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu">
+                           <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
+                            <li><a href="<?php echo site_url('Portal/allometricEquationViewjson/'); ?>" id="export-json">Download JSON</a></li>
+                            <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
+                          </ul>
+                        </div>
+                    <form>
+                </div>
       </ul>
+       
       <div class="tab-content">
          <div id="results-list" class="tab-pane fade in active">
             <?php 

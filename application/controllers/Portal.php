@@ -154,7 +154,8 @@ class Portal extends CI_Controller
             //$data['IMAGE_PATH'] = 'asdasdsad';
             
             $this->utilities->insertData($data, 'home_page_slider');
-            redirect('portal/addImageinSlider');
+            $this->session->set_flashdata('Success', 'New Slider Added Successfully.');
+            redirect('portal/viewSliderData');
         }
         
         else {
@@ -163,16 +164,23 @@ class Portal extends CI_Controller
         }
     }
     
-    public function deleteImage($id)
+
+
+      public function deleteImage($id)
     {
         
+        $attr = array(
+            "ID" => $id
+        );
         
-        //$this->db->query("DELETE FROM home_page_slider WHERE ID = $id");
-        $this->utilities->deleteRowByAttribute('home_page_slider', array(
-            'ID' => $id
-        ));
-        redirect('portal/viewSliderData');
+        if ($this->utilities->deleteRowByAttribute("home_page_slider", $attr)) {
+            $this->session->set_flashdata('Error', ' Slider Deleted Successfully.');
+        } else {
+            $this->session->set_flashdata('Error', 'Slider Not Deleted Successfull.');
+        }
+        
     }
+    
     
     
     
@@ -494,6 +502,13 @@ class Portal extends CI_Controller
         $data['content_view_page']      = 'portal/allometricEquation';
         $this->template->display_portal($data);
     }
+
+
+      public function allometricEquationDataJson($specis_id)
+    {
+        $data['allometricEquationDataJson'] = $this->Forestdata_model->get_allometric_equation_list_json($specis_id);
+       
+    }
     
     
     /*
@@ -503,11 +518,11 @@ class Portal extends CI_Controller
      * @return Allometric Equation Menu page
      */
     
-    public function allometricEquationView1()
+    public function allometricEquationViewjson()
     {
-        $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_list();
-        $data['content_view_page']      = 'portal/allometricEquationPage';
-        $this->template->display_portal($data);
+        $data['allometricEquationViewJson'] = $this->Forestdata_model->get_allometric_equation_json();
+        //$data['content_view_page']      = 'portal/allometricEquationPage';
+        //$this->template->display_portal($data);
     }
     
     
@@ -591,6 +606,28 @@ class Portal extends CI_Controller
         $data['content_view_page']         = 'portal/allometricEquationDetails';
         $this->template->display_portal($data);
     }
+
+
+    /*
+     * @methodName allometricEquationDetailsPdf()
+     * @access public
+     * @param  none
+     * @return Allometric Equation Details PDF page
+     */
+
+
+     public function allometricEquationDetailsPdf($ID_Species) 
+     {
+        $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_Species);
+        include('mpdf/mpdf.php');
+        $mpdf = new mPDF('utf-8', 'A4', '', '', 20, 20, 25, 47, 10, 10);
+        $mpdf->SetTitle('Allometric Equation Details');
+        $mpdf->mirrorMargins = 1;
+        $report = $this->load->view('portal/allometricEquationDetailsPdf', $data, TRUE);
+        $mpdf->WriteHTML($report);
+        $mpdf->Output();
+     }
+
     
     
     /*
@@ -606,6 +643,24 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
+
+
+    /*
+     * @methodName rawDataViewjson()
+     * @access public
+     * @param  none
+     * @return Raw Data json 
+     */
+    
+
+
+
+    public function rawDataViewjson()
+    {
+        $data['rawDataViewjson']       = $this->Forestdata_model->get_raw_data_grid_json();
+       
+    }
+    
     
     /*
      * @methodName rawDataView()
@@ -997,10 +1052,10 @@ class Portal extends CI_Controller
     
     
     /*
-     * @methodName allometricEquationDetails()
+     * @methodName rawDataDetails()
      * @access public
      * @param  none
-     * @return Allometric Equation Details page
+     * @return Raw Data Details page
      */
     
     public function rawDataDetails($ID_Species)
@@ -1009,6 +1064,28 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/rawDataDetails';
         $this->template->display_portal($data);
     }
+
+
+     /*
+     * @methodName rawDataDetailsPdf()
+     * @access public
+     * @param  none
+     * @return Raw Data Details PDF page
+     */
+
+
+     public function rawDataDetailsPdf($ID_Species) 
+     {
+        $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID_Species);
+        include('mpdf/mpdf.php');
+        $mpdf = new mPDF('utf-8', 'A4', '', '', 20, 20, 25, 47, 10, 10);
+        $mpdf->SetTitle('Raw Data Details');
+        $mpdf->mirrorMargins = 1;
+        $report = $this->load->view('portal/rawDataDetailsPdf', $data, TRUE);
+        $mpdf->WriteHTML($report);
+        $mpdf->Output();
+     }
+
     
     
     

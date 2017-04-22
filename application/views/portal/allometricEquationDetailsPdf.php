@@ -34,96 +34,32 @@
 <?php
 $lang_ses = $this->session->userdata("site_lang");
 ?>
-<div class="col-sm-12 breadcump img-responsive">
-  <div class="row">
-    <div class="breadcump-wrapper">
-      <div class="wrapper">
-        <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("raw_data"); ?>
-    </div>
-        <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("raw_data"); ?>
-        
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <div class="col-md-12 page_content">
     <div class="col-md-12">
-                <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Raw Data</h2>
+                <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Allometric Equation</h2>
                 
             </div>
 
   <div class="col-sm-12 bdy_des">
-     <div style="float:right;"> 
-                    <form action='export/' id="export-form" method="POST">
-                        <input type='hidden' name='csrfmiddlewaretoken' value='EUSnAj1qQRRf6anXMDF1cWRSTLAwax2J' />
-                        <input type="hidden" name="query" id="export-query" />
-                        <input type="hidden" name="extension" id="export-extension" />
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >
-                            <span class="glyphicon glyphicon-download"></span> Export Results <span class="caret"></span>
-                          </button>
-                            <?php 
-                           foreach($rawDataDetails as $row)
-                           {
-                           ?>
-                          <ul class="dropdown-menu" role="menu">
-                           <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-                            <li><a href="<?php echo site_url('Portal/rawDataDetailsPdf/'.$row->ID_Species); ?>" id="export-json">Download PDF</a></li>
-                            <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
-                          </ul>
-                          <?php 
-                          }?>
-                        </div>
-                    <form>
-                </div>
-  <h3 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Record Details</h3>
+  
+  <h3 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Allometric</h3>
   
   <div class="row">     
     <div class="col-md-12">
          <br>
    <table class="table">
         
-            <tr><th style="width:210px"> DBH (cm): </th><td> <b>
-            </b></td></tr>
-            <tr><th> Total Tree Height (m): </th><td>
+            <tr><th style="width:210px"> Equation: </th><td> <b><code style="color:#c7254e;font-size: 14px;">
             <?php 
-            foreach($rawDataDetails as $row)
+            foreach($allometricEquationDetails as $row)
             {
-            ?><?php echo $row->HeightRange;?>
+            ?><?php echo $row->Equation;?>
             <?php 
-            }?>
-
-            </td></tr>
-            
-              <tr><th style="width:210px"> Crown Diameter (m): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Bole Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Branch Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Foliage Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Stump Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Buttress Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Roots Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Total Tree Volume (m3): </th><td>
-              <?php 
-              foreach($rawDataDetails as $row)
-              {
-              ?><?php echo $row->VolumeRange;?>
-              <?php 
-              }?>
-              </td></tr>
-              <tr><th style="width:210px"> Bole Volume (m3): </th><td></td></tr>
-              <tr><th style="width:210px"> Tree Wood Density Avg (g/cm3): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Bole Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Branch Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Foliage Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Stump Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Buttress Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Roots Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Total Aboveground Mass (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Total Belowground Mass (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> TTotal Biomass (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Remark: </th><td></td></tr>
-              <tr><th style="width:210px"> Contact: </th><td></td></tr>
+            }?></code></b></td></tr>
+            <tr><th> Sample size: </th><td></td></tr>
+            <tr><th> R<sup>2</sup>: </th><td></td></tr>
+              <tr><th style="width:210px"> Population: </th><td></td></tr>
         </table>
       
 
@@ -203,7 +139,7 @@ $lang_ses = $this->session->userdata("site_lang");
         </h3>
         
             
-              <table class="table">
+              <table class="table" border="1px">
                   <tr>
                         <th>Family:</th>
                         <th>Genus:</th>
@@ -212,17 +148,17 @@ $lang_ses = $this->session->userdata("site_lang");
                         <th>Author:</th>
                         <th>Local Names:</th>
                     </tr>
-                     
+                     <tr>
                         <td >
                         <?php 
-                        foreach($rawDataDetails as $row){
+                        foreach($allometricEquationDetails as $row){
                          ?>
                          <?php echo $row->Family;?>
                          <?php 
                           }?></td>
                         <td>
                          <?php 
-                         foreach($rawDataDetails as $row){
+                         foreach($allometricEquationDetails as $row){
                          ?>
                          <?php echo $row->Genus;?>
                          <?php 
@@ -231,7 +167,7 @@ $lang_ses = $this->session->userdata("site_lang");
                         </td>
                         <td>
                          <?php 
-                         foreach($rawDataDetails as $row){
+                         foreach($allometricEquationDetails as $row){
                          ?>
                          <?php echo $row->Species;?>
                          <?php 
@@ -272,7 +208,7 @@ $lang_ses = $this->session->userdata("site_lang");
                         <table>
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Location Name: </th><td  class="pdf-record-td">
                              <?php 
-                             foreach($rawDataDetails as $row){
+                             foreach($allometricEquationDetails as $row){
                              ?><?php echo $row->District;?>
                              <?php 
                              }?>
@@ -282,7 +218,7 @@ $lang_ses = $this->session->userdata("site_lang");
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th><td  class="pdf-record-td">  </td></tr>
                              <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th><td  class="pdf-record-td"> 
                              <?php 
-                             foreach($rawDataDetails as $row){
+                             foreach($allometricEquationDetails as $row){
                              ?><?php echo $row->LatDD;?>
                             <?php 
                              }?>
@@ -290,7 +226,7 @@ $lang_ses = $this->session->userdata("site_lang");
                              </td></tr>
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Longitude: </th><td  class="pdf-record-td">
                              <?php 
-                             foreach($rawDataDetails as $row){
+                             foreach($allometricEquationDetails as $row){
                              ?><?php echo $row->LongDD;?>
                              <?php 
                              }?>
@@ -301,7 +237,7 @@ $lang_ses = $this->session->userdata("site_lang");
                         <table>
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone: </th><td class="pdf-record-td">
                             <?php 
-                             foreach($rawDataDetails as $row){
+                             foreach($allometricEquationDetails as $row){
                              ?><?php echo $row->FAOBiomes;?>
                              <?php 
                              }?> 
@@ -311,7 +247,7 @@ $lang_ses = $this->session->userdata("site_lang");
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division Bailey: </th><td class="pdf-record-td"> </td></tr>
                             <tr><th class="pdf-record-th"> Holdridge Life Zone:</th><td  class="pdf-record-td"> 
                              <?php 
-                             foreach($rawDataDetails as $row){
+                             foreach($allometricEquationDetails as $row){
                              ?><?php echo $row->Zones;?>
                              <?php 
                              }?> 
@@ -341,14 +277,14 @@ $lang_ses = $this->session->userdata("site_lang");
             <table class="table">
                 <tr><th> Reference: </th><td> 
             <?php 
-            foreach($rawDataDetails as $row)
+            foreach($allometricEquationDetails as $row)
             {
             ?><?php echo $row->Reference;?>
             <?php 
             }?></td></tr>
                 <tr><th> Author: </th><td>
             <?php 
-            foreach($rawDataDetails as $row)
+            foreach($allometricEquationDetails as $row)
             {
             ?><?php echo $row->Author;?>
             <?php 
@@ -357,7 +293,7 @@ $lang_ses = $this->session->userdata("site_lang");
                 <tr><th> Year: </th><td> 
 
             <?php 
-            foreach($rawDataDetails as $row)
+            foreach($allometricEquationDetails as $row)
             {
             ?><?php echo $row->Year;?>
             <?php 
