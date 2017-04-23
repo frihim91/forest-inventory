@@ -502,7 +502,7 @@ class Website extends CI_Controller
                     $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
                     $_FILES['userfile']['error']    = $files['userfile']['error'][$i];
                     $_FILES['userfile']['size']     = $files['userfile']['size'][$i];
-                    $this->upload->initialize($this->set_upload_options());
+                    $this->upload->initialize($this->set_upload_options_post());
                     $this->upload->do_upload();
                     $fileName = $_FILES['userfile']['name'];
                     $images[] = $fileName;

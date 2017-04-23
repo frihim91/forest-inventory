@@ -101,7 +101,7 @@ $lang_ses = $this->session->userdata("site_lang");
 				<div class="flexslider">
 					<ul class="slides">
 					<?php foreach($body_images as $body_image) {
-						$image = "resources/images/".$body_image->IMG_URL;
+						$image = "resources/images/page_pic/".$body_image->IMG_URL;
 						?>
 						<li>
 							<img src="<?php echo base_url($image); ?>">
