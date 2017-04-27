@@ -152,8 +152,8 @@ class Website extends CI_Controller
                                 "IMG_URL" => $images[$i]
                             );
                             if ($images[$i] != "") {
-                            $pageImg   = $this->utilities->insertData($pg_images, 'pg_images');
-                        }
+                                $pageImg = $this->utilities->insertData($pg_images, 'pg_images');
+                            }
                             
                         }
                         
@@ -445,11 +445,11 @@ class Website extends CI_Controller
                                 
                                 "IMG_URL" => $images[$i]
                             );
-
-                             if ($images[$i] != "") {
-                            $postImg   = $this->utilities->insertData($post_images, 'post_images');
-                        }
-                          
+                            
+                            if ($images[$i] != "") {
+                                $postImg = $this->utilities->insertData($post_images, 'post_images');
+                            }
+                            
                             
                         }
                         
@@ -879,16 +879,16 @@ class Website extends CI_Controller
         $name = $date->format('YmdHis');
         Return $name;
     }
-
-
+    
+    
     public function viewGalleryData()
     {
         $data['gallery']           = $this->db->query("SELECT * FROM home_page_gallery")->result();
         $data['content_view_page'] = 'setup/gallery/viewGalleryData';
         $this->template->display($data);
     }
-
-
+    
+    
     public function addImageinGallery()
     {
         if (isset($_POST['title'])) {
@@ -934,10 +934,71 @@ class Website extends CI_Controller
             $this->template->display($data);
         }
     }
-
-
-
-       /*
+    
+     /*
+     * @methodName upload_file_page()
+     * @access public
+     * @param  none
+     * @return Upload File in Page
+     */
+    
+    
+    public function upload_file_page()
+    {
+        //$config['upload_path'] = './uploads_file'; 
+        
+        $config['upload_path']   = 'uploads_file';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|pdf|doc|docx|csv|xls|xlsx';
+        $config['file_name']     = $_FILES['main_image']['name'];
+        // load upload library and initialize config file
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        
+        
+        if ($this->upload->do_upload('file')) {
+            $image_data = $this->upload->data();
+            
+            $json = array(
+                'filelink' => base_url("uploads_file/{$image_data['file_name']}")
+            );
+            echo stripslashes(json_encode($json));
+        }
+    }
+    
+    /*
+     * @methodName upload_file_post()
+     * @access public
+     * @param  none
+     * @return Upload File in Post
+     */
+    
+    
+    public function upload_file_post()
+    {
+        //$config['upload_path'] = './uploads_file'; 
+        
+        $config['upload_path']   = 'uploads_file';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|pdf|doc|docx|csv|xls|xlsx';
+        $config['file_name']     = $_FILES['main_image']['name'];
+        // load upload library and initialize config file
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        
+        
+        if ($this->upload->do_upload('file')) {
+            $image_data = $this->upload->data();
+            
+            $json = array(
+                'filelink' => base_url("uploads_file/{$image_data['file_name']}")
+            );
+            echo stripslashes(json_encode($json));
+        }
+    }
+    
+    
+    
+    
+    /*
      * @methodName deleteImageGallery()
      * @access public
      * @param  $id

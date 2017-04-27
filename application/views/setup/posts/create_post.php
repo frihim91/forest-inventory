@@ -9,7 +9,10 @@
         <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.min.js"></script>
     <script>
     $(document).ready(function () {
-        $('.redactor').redactor();
+        $('.redactor').redactor({
+        fileUpload: '<?php echo site_url('dashboard/Website/upload_file_post')?>',
+          //dragFileUpload: true
+    });
         $('.dropdown-option').select2();
 
         var warning = true;

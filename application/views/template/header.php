@@ -4,7 +4,7 @@
 <meta name="ATI Limited, PMIS, UGC, HEQEP, GOB, AIF, ANSI, Project Management Information System, University Grant Commission, Higher Education Quality Enhancement Project " content="yes">
 <meta name="ATI Limited, PMIS, UGC, HEQEP, GOB, AIF, ANSI, Project Management Information System, University Grant Commission, Higher Education Quality Enhancement Project" content="black">
 <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
-<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/images/logo.ico">
+<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/favIcon.png">
 <!-- 
 **********************************************************
 In development, use the LESS files and the less.js compiler
