@@ -7,7 +7,7 @@
             padding-bottom: 0px;
         }
 		.slider_img{
-			width:760px !important;
+			width:887px !important;
 			height:335px !important;
 		}
     </style>

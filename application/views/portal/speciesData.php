@@ -100,12 +100,27 @@
                                     ?>
                                    
                                    
-                                       <p style="padding-left:3px;">
-                                       <b>Data from countries : 
+                                    <p style="padding-left:3px;">
+                                       <b>Wood Density : 
                                        <?php 
                                         $totalNumberC = sizeof($speciesId) - 1 ;
                                         foreach($speciesId as $key => $speciesIds){ ?>
-                                        <?php echo $speciesIds->District;?>  
+                                        <?php echo $speciesIds->WoodDensity;?>  
+                                        <?php 
+                                          if($totalNumberC != $key)
+                                            echo ", ";
+                                         }
+                                         ?>
+                                           
+                                         </b>
+                                         </p>
+
+                                    <p style="padding-left:3px;">
+                                       <b>Description: 
+                                       <?php 
+                                        $totalNumberC = sizeof($speciesId) - 1 ;
+                                        foreach($speciesId as $key => $speciesIds){ ?>
+                                        <?php echo $speciesIds->Description;?>  
                                         <?php 
                                           if($totalNumberC != $key)
                                             echo ", ";

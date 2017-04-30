@@ -88,7 +88,7 @@
                <div class="col-md-12">
                   <label for="firstname">Image</label> 
                <input type="file" name="main_image" required="required" class="form-control">
-                <p style="color:red;font-size:16px;padding-top:10px;">(Maximum Image size:758*335)</p>
+                <p style="color:red;font-size:16px;padding-top:10px;">(Maximum Image size:887*335)</p>
                </div>
             </div>
             <div class="col-md-4 help">

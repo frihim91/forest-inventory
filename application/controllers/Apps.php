@@ -24,6 +24,10 @@ class Apps extends CI_Controller {
 
 
     public function index() {
+             $data['total_family'] = $this->db->query("SELECT COUNT(f.ID_Family) as TOTAL_FAMILY FROM family f ")->row();
+             $data['total_genus'] = $this->db->query("SELECT COUNT(g.ID_Genus) as TOTAL_GENUS FROM genus g ")->row();
+              $data['total_species'] = $this->db->query("SELECT COUNT(s.ID_Species) as TOTAL_SPECIES FROM species s ")->row();
+              $data['total_ef'] = $this->db->query("SELECT COUNT(e.ID_EF) as TOTAL_EF FROM ef e")->row();
             $data['content_view_page'] = 'template/blank.php';
             $this->template->display($data);
 

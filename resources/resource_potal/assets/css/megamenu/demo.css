@@ -14,7 +14,8 @@ footer {
   margin-top: 200px;
 }
 
-.container, .jumbotron .container { width: auto; max-width: 1170px; }
+/*.container, .jumbotron .container { width: auto; max-width: 1170px; }*/
+.container, .jumbotron .container { width:100%; }
 
 .jumbotron {
   margin: 60px 0;

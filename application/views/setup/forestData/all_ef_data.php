@@ -6,9 +6,9 @@
 
 <div class="widget">  
     <div class="widget-head"> 
-       <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create EF Data</a>
+       <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create Emission Factor</a>
          
-        <small style="margin-left: 10px;">All EF Data Create, Edit, Inactivate and Delete from here</small> 
+        <small style="margin-left: 10px;">All Emission Factor Create, Edit, Inactivate and Delete from here</small> 
     </div> 
     <div class="widget-body">    
         <div class="table-responsive">
@@ -262,29 +262,8 @@
                                 
                             </div>
 
-                              <div class="col-md-4">
-                                <label for="firstname">New Species Name</label>
+
                                 
-                                   <?php
-                                   $species = $this->Forestdata_model->get_all_species();
-                                   $options = array('' => '--Select Species--');
-                                   foreach ($species as $speciess) {
-                                   $options["$speciess->ID_Species"] =$speciess->Family . " " .$speciess->Species;
-                                   }
-                                   $mId = set_value('ID_Species');
-                                   echo form_dropdown('ID_Species', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Species..." required="required"');
-                                 ?>     
-                               
-                            </div>
-                            
-                        </div> 
-                    </div>
-
-
-                          <div class="row">  
-                        <div class="form-group">
-                           
-                          
                                <div class="col-md-4">
                                 <label for="firstname">Location</label>
                                  
@@ -299,6 +278,47 @@
                                  ?>     
                                
                             </div>
+
+                       <!--        <div class="col-md-4">
+                                <label for="firstname">New Species Name</label>
+                                
+                                   <?php
+                                   $species = $this->Forestdata_model->get_all_species();
+                                   $options = array('' => '--Select Species--');
+                                   foreach ($species as $speciess) {
+                                   $options["$speciess->ID_Species"] =$speciess->Family . " " .$speciess->Species;
+                                   }
+                                   $mId = set_value('ID_Species');
+                                   echo form_dropdown('ID_Species', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Species..." required="required"');
+                                 ?>     
+                               
+                            </div> -->
+                            
+                        </div> 
+                    </div>
+
+
+                          <div class="row">  
+                        <div class="form-group">
+                           
+                      
+
+                           <div class="col-md-4">
+                                <label for="firstname">Wood Density</label>
+                                 
+                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Wood Density', 'id' => 'WoodDensity', 'name' => 'WoodDensity', 'value' => set_value('WoodDensity'), 'required' => 'required')); ?>      
+                               
+                            </div>
+
+                                <div class="col-md-4">
+                                <label for="firstname">Description</label>
+                                 
+                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Description', 'id' => 'Description', 'name' => 'Description', 'value' => set_value('Description'), 'required' => 'required')); ?>      
+                               
+                            </div>
+
+
+
                             
                         </div> 
                     </div>

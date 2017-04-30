@@ -464,14 +464,21 @@ class ForestData extends CI_Controller
                 $b                       = explode(",", $ID_BasalRange);
                 $first_value_BasalRange  = $b[0];
                 $second_value_BasalRange = $b[1];
+
+                $ID_Species           = $this->input->post('ID_Species');
+                $s                       = explode(",", $ID_Species);
+                $first_value_Species  = $s[0];
+                $second_value_Species = $s[1];
                 
             }
             
             $ef = array(
                 'EmissionFactor' => $this->input->post('EmissionFactor'),
+                'Description' => $this->input->post('Description'),
+                'WoodDensity' => $this->input->post('WoodDensity'),
                 'ID_LandCover' => $this->input->post('ID_LandCover'),
                 'ID_Species' => $this->input->post('ID_Species'),
-                'ID_Species_new' => $this->input->post('ID_Species'),
+                'ID_Species_new' => $second_value_Species,
                 'ID_AgeRange' => $first_value_AgeRange,
                 'AgeRange' => $second_value_AgeRange,
                 'ID_HeightRange' => $first_value_HeightRange,
