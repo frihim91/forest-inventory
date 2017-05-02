@@ -26,6 +26,7 @@ instead of the minified CSS loaded by default.
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/shared/components/modules/admin/font-awesome/css/font-awesome.min.css" />
 
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/sb-admin-2.css" />
+<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/morris.css" />
 
 
 
@@ -44,6 +45,12 @@ instead of the minified CSS loaded by default.
 <script src="<?php echo base_url(); ?>resources/shared/components/plugins/less-js/less.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/metisMenu/metisMenu.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/js/sb-admin-2.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/morrisjs/morris.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/morrisjs/morris.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/data/morris-data.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/data/flot-data.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/raphael/raphael.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/raphael/raphael.js"></script>
 
 <script src="<?php echo base_url(); ?>resources/shared/components/modules/admin/charts/flot/assets/lib/excanvas.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/common/tables/datatables/assets/custom/js/jquery.dataTables.min.js"></script>
