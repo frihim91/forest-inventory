@@ -1,0 +1,1076 @@
+ID_EF,EmissionFactor,ID_LandCover,ID_Species,AgeRange,ID_AgeRange,HeightRange,ID_HeightRange,VolumeRange,ID_VolumeRange,BasalRange,ID_BasalArea,Value,Unit,ID_EF_IPCC,Reference,Lower_Confidence_Limit,Upper_Confidence_Limit,Type_of_Parameter,latitude,longitude,Country,Division,District,Upazila,Union,FAO_biome,WWF_Eco_zone,BFI_zone
+1,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,0.01,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+2,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,0.03,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+3,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,0.1,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+4,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,0.2,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+5,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,2.09,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+6,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,0.3,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+7,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,0.28,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+8,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,3,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+9,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,0.3,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+10,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,0.79,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+11,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,1.27,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+12,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,11.59,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+13,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,0.4,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+14,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,3.52,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+15,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,27.4,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+16,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,0.7,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+17,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,3.15,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+18,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,27.28,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+19,Soil Carbon Stock,6,3,1-10,1,0-10,1,Unknown,9,Unknown,4,6.77,tonnes C/ha (274),4,3,Unknown,Unknown,Measured (1),22.53445,91.9225,Bangladesh,20,2015,,,11,17,5
+20,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,1,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+21,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,5.92,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+22,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,5.12,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+23,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,2.27,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+24,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,45.62,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+25,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,16.4,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+26,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,3.33,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+27,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,2.15,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+28,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,6.85,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+29,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,64.25,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+30,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,2.3,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+31,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,9.97,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+32,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,6.63,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+33,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,8.24,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+34,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,82.07,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+35,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,4.8,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+36,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,35.41,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+37,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,9.5,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+38,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,9.3,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+39,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,4,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+40,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,98.6,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+41,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,23.21,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+42,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,5.45,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+43,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,16.8,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+44,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,11.7,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+45,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,10.08,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+46,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,113.73,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+47,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,13.24,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+48,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,6.45,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+49,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,0-20,1,14.28,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+50,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,7.2,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+51,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,56.19,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+52,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,0-20,1,10.62,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+53,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,100-200,2,0-20,1,127.49,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+54,Aboveground Biomass Stock,6,80,Unknown,0,0-10,1,0-100,1,0-20,1,254,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+55,Belowground Biomass Stock,6,80,Unknown,0,0-10,1,0-100,1,0-20,1,42,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+56,Aboveground Biomass Carbon Stock,6,80,Unknown,0,0-10,1,0-100,1,0-20,1,97,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+57,Belowground Biomass Carbon Stock,6,80,Unknown,0,0-10,1,0-100,1,0-20,1,38,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+58,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,0-20,1,14.92,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+59,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,6.93,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+60,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,20-40,2,15.3,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+61,Annual Average Volume Increment,6,7,10-20,2,0-10,1,100-200,2,20-40,2,15.47,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+62,Annual Average Volume Increment,6,7,10-20,2,0-10,1,100-200,2,0-20,1,10.99,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+63,Aboveground Biomass Stock,6,7,10-20,2,0-10,1,100-200,2,0-20,1,139.98,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+64,Annual Average Volume Increment,6,7,10-20,2,0-10,1,100-200,2,20-40,2,15.49,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+65,Annual Average Volume Increment,6,7,10-20,2,0-10,1,100-200,2,0-20,1,11.22,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+66,Aboveground Biomass Stock,6,7,10-20,2,0-10,1,100-200,2,0-20,1,151.32,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+67,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,9.12,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+68,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,7.38,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+69,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,7.07,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+70,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,76.44,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+71,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,45.94,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+72,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,32.85,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+73,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,11.48,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+74,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,19.35,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+75,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,14.76,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+76,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,10.14,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+77,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,69.21,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+78,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,14.47,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+79,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,11.51,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+80,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,12.47,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+81,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,112.32,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+82,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,46.5,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+83,Aboveground Biomass Stock,6,759,Unknown,0,0-10,1,0-100,1,0-20,1,129,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+84,Belowground Biomass Stock,6,759,Unknown,0,0-10,1,0-100,1,0-20,1,25,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+85,Aboveground Biomass Carbon Stock,6,759,Unknown,0,0-10,1,0-100,1,0-20,1,82,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+86,Belowground Biomass Carbon Stock,6,759,Unknown,0,0-10,1,0-100,1,0-20,1,11,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+87,Aboveground Biomass Carbon Stock,3,1079,Unknown,0,0-10,1,Unknown,9,Unknown,4,0.59,tonnes C/ha (274),3,6,Unknown,Unknown,Measured (1),24.9,91.84167,Bangladesh,60,6091,,,11,17,5
+88,Aboveground Biomass Stock,6,38,Unknown,0,0-10,1,0-100,1,0-20,1,187,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+89,Belowground Biomass Stock,6,38,Unknown,0,0-10,1,0-100,1,0-20,1,28,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+90,Aboveground Biomass Carbon Stock,6,38,Unknown,0,0-10,1,0-100,1,0-20,1,99,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+91,Belowground Biomass Carbon Stock,6,38,Unknown,0,0-10,1,0-100,1,0-20,1,25,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+92,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,0-20,1,16.88,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+93,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,11.3,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+94,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,59.62,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+95,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,0-20,1,18.13,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+96,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,0-20,1,58.15,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+97,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,0-20,1,12.18,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+98,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,100-200,2,0-20,1,127.7,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+99,Aboveground Biomass Stock,6,1302,Unknown,0,0-10,1,0-100,1,0-20,1,89,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+100,Belowground Biomass Stock,6,1302,Unknown,0,0-10,1,0-100,1,0-20,1,41,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+101,Aboveground Biomass Carbon Stock,6,1302,Unknown,0,0-10,1,0-100,1,0-20,1,54,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+102,Belowground Biomass Carbon Stock,6,1302,Unknown,0,0-10,1,0-100,1,0-20,1,1,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+103,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,0-20,1,18.8,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+104,Aboveground Biomass Carbon Stock,3,376,Unknown,0,0-10,1,Unknown,9,Unknown,4,12.48,tonnes C/ha (274),3,6,Unknown,Unknown,Measured (1),24.9,91.84167,Bangladesh,60,6091,,,11,17,5
+105,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,20-40,2,19.07,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+106,Annual Average Volume Increment,6,7,1-10,1,0-10,1,0-100,1,0-20,1,12.1,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+107,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,0-100,1,0-20,1,90.94,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+108,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,20-40,2,19.07,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+109,Annual Average Volume Increment,6,7,1-10,1,0-10,1,100-200,2,0-20,1,12.6,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+110,Aboveground Biomass Stock,6,7,1-10,1,0-10,1,100-200,2,0-20,1,141.5,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+111,Aboveground Biomass Stock,6,433,Unknown,0,0-10,1,0-100,1,0-20,1,70,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+112,Belowground Biomass Stock,6,433,Unknown,0,0-10,1,0-100,1,0-20,1,50,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+113,Aboveground Biomass Carbon Stock,6,433,Unknown,0,0-10,1,0-100,1,0-20,1,34,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+114,Belowground Biomass Carbon Stock,6,433,Unknown,0,0-10,1,0-100,1,0-20,1,18,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+115,Aboveground Biomass Carbon Stock,3,4,Unknown,0,10-20,2,Unknown,9,Unknown,4,4.2,tonnes C/ha (274),3,6,Unknown,Unknown,Measured (1),24.9,91.84167,Bangladesh,60,6091,,,11,17,5
+116,Annual Average Volume Increment,6,7,10-20,2,10-20,2,200-300,3,20-40,2,18.9,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+117,Belowground Biomass Stock,6,810,Unknown,0,10-20,2,0-100,1,0-20,1,50,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+118,Aboveground Biomass Carbon Stock,6,810,Unknown,0,10-20,2,0-100,1,0-20,1,111,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+119,Belowground Biomass Carbon Stock,6,810,Unknown,0,10-20,2,0-100,1,0-20,1,18,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+120,Annual Average Volume Increment,6,140,30-40,4,10-20,2,Unknown,9,Unknown,4,2.4,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),21.936983,90.649181,Bangladesh,10,1009,,,12,9,1
+121,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,0-20,1,14.25,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+122,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,0-20,1,127.95,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+123,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,0-20,1,24.37,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+124,Aboveground Biomass Stock,6,50,Unknown,0,10-20,2,0-100,1,0-20,1,320,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+125,Belowground Biomass Stock,6,50,Unknown,0,10-20,2,0-100,1,0-20,1,45,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+126,Aboveground Biomass Carbon Stock,6,50,Unknown,0,10-20,2,0-100,1,0-20,1,170,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+127,Belowground Biomass Carbon Stock,6,50,Unknown,0,10-20,2,0-100,1,0-20,1,24,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+128,Aboveground Biomass Stock,6,284,Unknown,0,10-20,2,0-100,1,0-20,1,81,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+129,Aboveground Biomass Stock,6,287,Unknown,0,10-20,2,0-100,1,0-20,1,179,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+130,Belowground Biomass Stock,6,287,Unknown,0,10-20,2,0-100,1,0-20,1,27,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+131,Aboveground Biomass Carbon Stock,6,287,Unknown,0,10-20,2,0-100,1,0-20,1,101,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+132,Belowground Biomass Carbon Stock,6,287,Unknown,0,10-20,2,0-100,1,0-20,1,14,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+133,Annual Average Volume Increment,6,7,10-20,2,10-20,2,200-300,3,20-40,2,18.62,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+134,Annual Average Volume Increment,6,7,1-10,1,10-20,2,0-100,1,0-20,1,19.9,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+135,Aboveground Biomass Carbon Stock,3,197,Unknown,0,10-20,2,Unknown,9,Unknown,4,3.02,tonnes C/ha (274),3,6,Unknown,Unknown,Measured (1),24.9,91.84167,Bangladesh,60,6091,,,11,17,5
+136,Aboveground Biomass Stock,6,130,Unknown,0,10-20,2,0-100,1,0-20,1,124,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+137,Belowground Biomass Stock,6,130,Unknown,0,10-20,2,0-100,1,0-20,1,19,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+138,Aboveground Biomass Carbon Stock,6,130,Unknown,0,10-20,2,0-100,1,0-20,1,61,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+139,Belowground Biomass Carbon Stock,6,130,Unknown,0,10-20,2,0-100,1,0-20,1,8,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+140,Annual Average Volume Increment,6,7,10-20,2,10-20,2,100-200,2,20-40,2,12.84,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+141,Aboveground Biomass Stock,6,7,10-20,2,10-20,2,100-200,2,20-40,2,153.89,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+142,Annual Average Volume Increment,6,7,1-10,1,10-20,2,0-100,1,0-20,1,30.1,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+143,Annual Average Volume Increment,6,7,10-20,2,10-20,2,100-200,2,20-40,2,12.93,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+144,Annual Average Volume Increment,6,7,1-10,1,10-20,2,0-100,1,0-20,1,13.43,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+145,Belowground Biomass Stock,6,284,Unknown,0,10-20,2,0-100,1,0-20,1,22,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+146,Aboveground Biomass Carbon Stock,6,284,Unknown,0,10-20,2,0-100,1,0-20,1,55,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+147,Belowground Biomass Carbon Stock,6,284,Unknown,0,10-20,2,0-100,1,0-20,1,7,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+148,Aboveground Biomass Stock,6,1282,Unknown,0,10-20,2,0-100,1,0-20,1,102,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+149,Aboveground Biomass Stock,6,69,Unknown,0,10-20,2,0-100,1,0-20,1,171,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+150,Belowground Biomass Stock,6,1282,Unknown,0,10-20,2,0-100,1,0-20,1,55,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+151,Belowground Biomass Stock,6,69,Unknown,0,10-20,2,0-100,1,0-20,1,41,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+152,Aboveground Biomass Carbon Stock,6,1282,Unknown,0,10-20,2,0-100,1,0-20,1,89,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+153,Aboveground Biomass Carbon Stock,6,69,Unknown,0,10-20,2,0-100,1,0-20,1,73,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+154,Belowground Biomass Carbon Stock,6,1282,Unknown,0,10-20,2,0-100,1,0-20,1,8,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+155,Belowground Biomass Carbon Stock,6,69,Unknown,0,10-20,2,0-100,1,0-20,1,21,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+156,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,0-20,1,24.84,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+157,Aboveground Biomass Stock,6,161,Unknown,0,10-20,2,0-100,1,0-20,1,268,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+158,Belowground Biomass Stock,6,161,Unknown,0,10-20,2,0-100,1,0-20,1,52,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+159,Annual Average Volume Increment,6,7,1-10,1,10-20,2,0-100,1,0-20,1,14.26,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+160,Aboveground Biomass Stock,6,7,10-20,2,10-20,2,100-200,2,20-40,2,165.05,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+161,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,0-100,1,0-20,1,110.54,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+162,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,0-100,1,0-20,1,85.25,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+163,Aboveground Biomass Stock,6,102,Unknown,0,10-20,2,0-100,1,0-20,1,282,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+164,Belowground Biomass Stock,6,102,Unknown,0,10-20,2,0-100,1,0-20,1,42,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+165,Aboveground Biomass Carbon Stock,6,102,Unknown,0,10-20,2,0-100,1,0-20,1,102,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+166,Belowground Biomass Carbon Stock,6,102,Unknown,0,10-20,2,0-100,1,0-20,1,16,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+167,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,0-20,1,22.92,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+168,Annual Average Volume Increment,6,7,1-10,1,10-20,2,0-100,1,0-20,1,17.3,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+169,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,0-100,1,0-20,1,77.36,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+170,Aboveground Biomass Stock,6,71,Unknown,0,10-20,2,0-100,1,0-20,1,285,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+171,Belowground Biomass Stock,6,71,Unknown,0,10-20,2,0-100,1,0-20,1,35,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+172,Aboveground Biomass Carbon Stock,6,71,Unknown,0,10-20,2,0-100,1,0-20,1,140,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+173,Belowground Biomass Carbon Stock,6,71,Unknown,0,10-20,2,0-100,1,0-20,1,19,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+174,Aboveground Biomass Stock,6,810,Unknown,0,10-20,2,0-100,1,0-20,1,254,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+175,Aboveground Biomass Carbon Stock,6,161,Unknown,0,10-20,2,0-100,1,0-20,1,158,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+176,Belowground Biomass Carbon Stock,6,161,Unknown,0,10-20,2,0-100,1,0-20,1,20,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+177,Annual Average Volume Increment,6,7,1-10,1,10-20,2,0-100,1,0-20,1,16.1,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+178,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,0-100,1,0-20,1,108.2,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+179,Aboveground Biomass Stock,6,7,Unknown,0,10-20,2,0-100,1,0-20,1,201,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+180,Belowground Biomass Stock,6,7,Unknown,0,10-20,2,0-100,1,0-20,1,50,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+181,Aboveground Biomass Carbon Stock,6,7,Unknown,0,10-20,2,0-100,1,0-20,1,140,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+182,Belowground Biomass Carbon Stock,6,7,Unknown,0,10-20,2,0-100,1,0-20,1,20,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+183,Annual Average Volume Increment,6,7,1-10,1,10-20,2,0-100,1,0-20,1,10.51,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+184,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,14.72,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+185,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,0-100,1,0-20,1,95.25,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+186,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,143.38,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+187,Aboveground Biomass Stock,6,243,Unknown,0,10-20,2,0-100,1,0-20,1,157,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+188,Belowground Biomass Stock,6,243,Unknown,0,10-20,2,0-100,1,0-20,1,18,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+189,Aboveground Biomass Carbon Stock,6,243,Unknown,0,10-20,2,0-100,1,0-20,1,49,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+190,Belowground Biomass Carbon Stock,6,243,Unknown,0,10-20,2,0-100,1,0-20,1,5,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+191,Annual Average Volume Increment,6,140,10-20,2,10-20,2,Unknown,9,Unknown,4,6.44,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),22.53333,90.75,Bangladesh,10,1078,,,12,17,1
+192,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,24.75,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+193,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,0-20,1,34.5,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+194,Annual Average Volume Increment,6,140,30-40,4,10-20,2,Unknown,9,Unknown,4,2.16,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),21.936983,90.649181,Bangladesh,10,1009,,,12,9,1
+195,Annual Average Volume Increment,6,140,10-20,2,10-20,2,Unknown,9,Unknown,4,6.5,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),22.53333,90.75,Bangladesh,10,1078,,,12,17,1
+196,Annual Average Volume Increment,6,7,1-10,1,10-20,2,200-300,3,20-40,2,24.36,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+197,Annual Average Volume Increment,6,140,30-40,4,10-20,2,Unknown,9,Unknown,4,1.55,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),21.936983,90.649181,Bangladesh,10,1009,,,12,9,1
+198,Annual Average Volume Increment,6,140,20-30,3,10-20,2,Unknown,9,Unknown,4,5.73,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),21.90067,90.413839,Bangladesh,10,1078,,,12,9,1
+199,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,0-20,1,62.73,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+200,Annual Average Volume Increment,6,140,10-20,2,10-20,2,Unknown,9,Unknown,4,6.02,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),22.53333,90.75,Bangladesh,10,1078,,,12,17,1
+201,Aboveground Biomass Stock,6,950,Unknown,0,10-20,2,0-100,1,0-20,1,129,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+202,Belowground Biomass Stock,6,950,Unknown,0,10-20,2,0-100,1,0-20,1,39,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+203,Aboveground Biomass Carbon Stock,6,950,Unknown,0,10-20,2,0-100,1,0-20,1,79,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+204,Belowground Biomass Carbon Stock,6,950,Unknown,0,10-20,2,0-100,1,0-20,1,11,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+205,Annual Average Volume Increment,6,140,10-20,2,10-20,2,Unknown,9,Unknown,4,7.84,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),22.53333,90.75,Bangladesh,10,1078,,,12,17,1
+206,Aboveground Biomass Stock,6,149,Unknown,0,10-20,2,0-100,1,0-20,1,191,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+207,Belowground Biomass Stock,6,149,Unknown,0,10-20,2,0-100,1,0-20,1,39,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+208,Aboveground Biomass Carbon Stock,6,149,Unknown,0,10-20,2,0-100,1,0-20,1,83,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+209,Belowground Biomass Carbon Stock,6,149,Unknown,0,10-20,2,0-100,1,0-20,1,5,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+210,Annual Average Volume Increment,6,7,1-10,1,10-20,2,200-300,3,20-40,2,23.77,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+211,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,20.06,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+212,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,105,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+213,Annual Average Volume Increment,6,140,10-20,2,10-20,2,Unknown,9,Unknown,4,10.04,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),22.53333,90.75,Bangladesh,10,1078,,,12,17,1
+214,Aboveground Biomass Stock,6,4,Unknown,0,10-20,2,0-100,1,0-20,1,102,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+215,Belowground Biomass Stock,6,4,Unknown,0,10-20,2,0-100,1,0-20,1,26,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+216,Aboveground Biomass Carbon Stock,6,4,Unknown,0,10-20,2,0-100,1,0-20,1,41,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+217,Belowground Biomass Carbon Stock,6,4,Unknown,0,10-20,2,0-100,1,0-20,1,7,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+218,Annual Average Volume Increment,6,7,10-20,2,10-20,2,200-300,3,20-40,2,23.08,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+219,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,14.94,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+220,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,157.04,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+221,Annual Average Volume Increment,6,7,10-20,2,10-20,2,200-300,3,40-60,3,22.37,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+222,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,17.13,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+223,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,128.28,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+224,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,0-20,1,35.6,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+225,Annual Average Volume Increment,6,7,10-20,2,10-20,2,100-200,2,20-40,2,14.99,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+226,Aboveground Biomass Stock,6,7,10-20,2,10-20,2,100-200,2,20-40,2,169.19,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+227,Aboveground Biomass Stock,6,35,Unknown,0,10-20,2,0-100,1,0-20,1,278,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+228,Belowground Biomass Stock,6,35,Unknown,0,10-20,2,0-100,1,0-20,1,52,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+229,Aboveground Biomass Carbon Stock,6,35,Unknown,0,10-20,2,0-100,1,0-20,1,150,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+230,Belowground Biomass Carbon Stock,6,35,Unknown,0,10-20,2,0-100,1,0-20,1,28,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+231,Aboveground Biomass Stock,6,483,Unknown,0,10-20,2,100-200,2,0-20,1,283,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+232,Belowground Biomass Stock,6,483,Unknown,0,10-20,2,100-200,2,0-20,1,32,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+233,Aboveground Biomass Carbon Stock,6,483,Unknown,0,10-20,2,100-200,2,0-20,1,160,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+234,Belowground Biomass Carbon Stock,6,483,Unknown,0,10-20,2,100-200,2,0-20,1,24,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+235,Aboveground Biomass Stock,6,3,Unknown,0,10-20,2,0-100,1,0-20,1,98,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+236,Belowground Biomass Stock,6,3,Unknown,0,10-20,2,0-100,1,0-20,1,48,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+237,Aboveground Biomass Carbon Stock,6,3,Unknown,0,10-20,2,0-100,1,0-20,1,56,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+238,Belowground Biomass Carbon Stock,6,3,Unknown,0,10-20,2,0-100,1,0-20,1,9,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+239,Annual Average Volume Increment,6,7,1-10,1,10-20,2,200-300,3,0-20,1,35.17,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+240,Annual Average Volume Increment,6,7,10-20,2,10-20,2,100-200,2,0-20,1,14.91,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+241,Aboveground Biomass Stock,6,7,10-20,2,10-20,2,100-200,2,0-20,1,180.02,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+242,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,17.64,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+243,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,145.76,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+244,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,21.38,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+245,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,128.72,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+246,Aboveground Biomass Stock,6,153,Unknown,0,10-20,2,0-100,1,0-20,1,189,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+247,Belowground Biomass Stock,6,153,Unknown,0,10-20,2,0-100,1,0-20,1,58,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+248,Aboveground Biomass Carbon Stock,6,153,Unknown,0,10-20,2,0-100,1,0-20,1,98,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+249,Belowground Biomass Carbon Stock,6,153,Unknown,0,10-20,2,0-100,1,0-20,1,24,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+250,Annual Average Volume Increment,6,7,1-10,1,10-20,2,200-300,3,0-20,1,59.85,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+251,Aboveground Biomass Stock,6,52,Unknown,0,10-20,2,0-100,1,0-20,1,99,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+252,Aboveground Biomass Stock,6,826,Unknown,0,10-20,2,0-100,1,0-20,1,121,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+253,Belowground Biomass Stock,6,52,Unknown,0,10-20,2,0-100,1,0-20,1,24,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+254,Belowground Biomass Stock,6,826,Unknown,0,10-20,2,0-100,1,0-20,1,23,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+255,Aboveground Biomass Carbon Stock,6,52,Unknown,0,10-20,2,0-100,1,0-20,1,62,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+256,Aboveground Biomass Carbon Stock,6,826,Unknown,0,10-20,2,0-100,1,0-20,1,71,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+257,Belowground Biomass Carbon Stock,6,52,Unknown,0,10-20,2,0-100,1,0-20,1,14,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+258,Belowground Biomass Carbon Stock,6,826,Unknown,0,10-20,2,0-100,1,0-20,1,2,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+259,Annual Average Volume Increment,6,7,1-10,1,10-20,2,200-300,3,20-40,2,34.01,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+260,Aboveground Biomass Stock,6,54,Unknown,0,10-20,2,0-100,1,0-20,1,189,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+261,Belowground Biomass Stock,6,54,Unknown,0,10-20,2,0-100,1,0-20,1,40,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+262,Aboveground Biomass Carbon Stock,6,54,Unknown,0,10-20,2,0-100,1,0-20,1,39,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+263,Belowground Biomass Carbon Stock,6,54,Unknown,0,10-20,2,0-100,1,0-20,1,6,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+264,Aboveground Biomass Stock,6,54,Unknown,0,10-20,2,0-100,1,0-20,1,245,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+265,Belowground Biomass Stock,6,54,Unknown,0,10-20,2,0-100,1,0-20,1,75,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+266,Aboveground Biomass Carbon Stock,6,54,Unknown,0,10-20,2,0-100,1,0-20,1,1.4,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+267,Belowground Biomass Carbon Stock,6,54,Unknown,0,10-20,2,0-100,1,0-20,1,25,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+268,Annual Average Volume Increment,6,7,1-10,1,10-20,2,200-300,3,20-40,2,32.6,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+269,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,17.8,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+270,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,160.98,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+271,Annual Average Volume Increment,6,7,1-10,1,10-20,2,200-300,3,20-40,2,31.1,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+272,Aboveground Biomass Stock,6,1231,Unknown,0,10-20,2,0-100,1,0-20,1,388,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+273,Belowground Biomass Stock,6,1231,Unknown,0,10-20,2,0-100,1,0-20,1,30,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+274,Aboveground Biomass Carbon Stock,6,1231,Unknown,0,10-20,2,0-100,1,0-20,1,127,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+275,Belowground Biomass Carbon Stock,6,1231,Unknown,0,10-20,2,0-100,1,0-20,1,17,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+276,Annual Average Volume Increment,6,7,1-10,1,10-20,2,200-300,3,20-40,2,29.62,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+277,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,21.87,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+278,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,148.88,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+279,Annual Average Volume Increment,6,7,10-20,2,10-20,2,300-400,4,40-60,3,28.2,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+280,Annual Average Volume Increment,6,7,1-10,1,10-20,2,200-300,3,0-20,1,55.32,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+281,Aboveground Biomass Stock,6,552,Unknown,0,10-20,2,0-100,1,0-20,1,104,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+282,Belowground Biomass Stock,6,552,Unknown,0,10-20,2,0-100,1,0-20,1,25,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+283,Aboveground Biomass Carbon Stock,6,552,Unknown,0,10-20,2,0-100,1,0-20,1,48,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+284,Belowground Biomass Carbon Stock,6,552,Unknown,0,10-20,2,0-100,1,0-20,1,17,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+285,Aboveground Biomass Stock,6,84,Unknown,0,10-20,2,0-100,1,0-20,1,45,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+286,Belowground Biomass Stock,6,84,Unknown,0,10-20,2,0-100,1,0-20,1,28,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+287,Aboveground Biomass Carbon Stock,6,84,Unknown,0,10-20,2,0-100,1,0-20,1,38,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+288,Belowground Biomass Carbon Stock,6,84,Unknown,0,10-20,2,0-100,1,0-20,1,16,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+289,Annual Average Volume Increment,6,7,10-20,2,10-20,2,300-400,4,40-60,3,26.87,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+290,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,17.72,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+291,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,174.29,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+292,Aboveground Biomass Stock,6,53,Unknown,0,10-20,2,0-100,1,0-20,1,265,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+293,Belowground Biomass Stock,6,53,Unknown,0,10-20,2,0-100,1,0-20,1,46,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+294,Aboveground Biomass Carbon Stock,6,53,Unknown,0,10-20,2,0-100,1,0-20,1,149,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+295,Belowground Biomass Carbon Stock,6,53,Unknown,0,10-20,2,0-100,1,0-20,1,20,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+296,Aboveground Biomass Stock,6,38,Unknown,0,10-20,2,0-100,1,0-20,1,189,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+297,Belowground Biomass Stock,6,38,Unknown,0,10-20,2,0-100,1,0-20,1,42,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+298,Aboveground Biomass Carbon Stock,6,38,Unknown,0,10-20,2,0-100,1,0-20,1,81,tonnes C/ha (274),3,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+299,Belowground Biomass Carbon Stock,6,38,Unknown,0,10-20,2,0-100,1,0-20,1,12,tonnes C/ha (274),2,1,Unknown,Unknown,Measured (1),22.47083,91.785415,Bangladesh,20,2015,,,11,22,2
+300,Annual Average Volume Increment,6,7,1-10,1,10-20,2,300-400,4,20-40,2,50.75,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+301,Annual Average Volume Increment,6,7,10-20,2,10-20,2,100-200,2,20-40,2,17.5,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+302,Aboveground Biomass Stock,6,7,10-20,2,10-20,2,100-200,2,20-40,2,186,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+303,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,21.84,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+304,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,166.04,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+305,Annual Average Volume Increment,6,7,1-10,1,10-20,2,300-400,4,20-40,2,46.6,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+306,Annual Average Volume Increment,6,7,10-20,2,10-20,2,200-300,3,20-40,2,17.19,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+307,Aboveground Biomass Stock,6,7,10-20,2,10-20,2,200-300,3,20-40,2,196.36,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+308,Annual Average Volume Increment,6,7,1-10,1,10-20,2,300-400,4,20-40,2,42.93,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+309,Annual Average Volume Increment,6,7,1-10,1,10-20,2,300-400,4,40-60,3,39.72,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+310,Annual Average Volume Increment,6,7,1-10,1,10-20,2,100-200,2,20-40,2,21.51,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+311,Aboveground Biomass Stock,6,7,1-10,1,10-20,2,100-200,2,20-40,2,180.74,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+312,Annual Average Volume Increment,6,7,1-10,1,20-30,3,300-400,4,40-60,3,36.91,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+313,Annual Average Volume Increment,6,7,10-20,2,20-30,3,300-400,4,40-60,3,34.45,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+314,Annual Average Volume Increment,6,7,10-20,2,20-30,3,300-400,4,40-60,3,32.28,m3/ha/year (359),2,10,Unknown,Unknown,Modeled (2),24.272724,89.9211,Bangladesh,30,3093,,,12,17,5
+315,Annual Average Volume Increment,6,7,1-10,1,20-30,3,200-300,3,20-40,2,21.02,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+316,Aboveground Biomass Stock,6,7,1-10,1,20-30,3,200-300,3,20-40,2,193.44,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+317,Annual Average Volume Increment,6,7,10-20,2,20-30,3,200-300,3,40-60,3,20.45,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+318,Aboveground Biomass Stock,6,7,10-20,2,20-30,3,200-300,3,40-60,3,204.48,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+319,Annual Average Volume Increment,6,7,10-20,2,20-30,3,200-300,3,40-60,3,19.82,m3/ha/year (359),2,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+320,Aboveground Biomass Stock,6,7,10-20,2,20-30,3,200-300,3,40-60,3,214.17,tonnes C/ha (274),3,8,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+321,Annual Average Volume Increment,6,140,20-30,3,10-20,2,Unknown,9,Unknown,4,2.96,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),21.936983,90.649181,Bangladesh,10,1009,,,12,9,1
+322,Annual Average Volume Increment,6,140,10-20,2,10-20,2,Unknown,9,Unknown,4,7.36,m3/ha/year (359),2,9,Unknown,Unknown,Measured (1),22.53333,90.75,Bangladesh,10,1078,,,12,17,1
+323,Aboveground Biomass Stock,2,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.78,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+324,Aboveground Biomass Carbon Stock,2,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.41,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+325,Aboveground Biomass Stock,2,56,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+326,Aboveground Biomass Carbon Stock,2,56,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+327,Aboveground Biomass Stock,2,50,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.42,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+328,Aboveground Biomass Carbon Stock,2,50,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.21,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+329,Aboveground Biomass Stock,2,53,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.7,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+330,Aboveground Biomass Carbon Stock,2,53,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.83,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+331,Aboveground Biomass Stock,2,73,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.19,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+332,Aboveground Biomass Carbon Stock,2,73,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+333,Aboveground Biomass Stock,2,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.88,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+334,Aboveground Biomass Carbon Stock,2,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.03,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+335,Aboveground Biomass Stock,2,93,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+336,Aboveground Biomass Carbon Stock,2,93,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+337,Aboveground Biomass Stock,2,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.56,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+338,Aboveground Biomass Carbon Stock,2,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.24,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+339,Aboveground Biomass Stock,2,35,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.8,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+340,Aboveground Biomass Carbon Stock,2,35,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.45,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+341,Aboveground Biomass Stock,2,194,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.15,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+342,Aboveground Biomass Carbon Stock,2,194,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+343,Aboveground Biomass Stock,2,163,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.26,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+344,Aboveground Biomass Carbon Stock,2,163,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+345,Aboveground Biomass Stock,2,284,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.25,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+346,Aboveground Biomass Carbon Stock,2,284,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.56,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+347,Aboveground Biomass Stock,2,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+348,Aboveground Biomass Carbon Stock,2,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+349,Aboveground Biomass Stock,2,31,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.11,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+350,Aboveground Biomass Carbon Stock,2,31,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+351,Aboveground Biomass Stock,2,106,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+352,Aboveground Biomass Carbon Stock,2,106,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+353,Aboveground Biomass Stock,2,117,Unknown,0,Unknown,0,Unknown,9,Unknown,4,5.22,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+354,Aboveground Biomass Carbon Stock,2,117,Unknown,0,Unknown,0,Unknown,9,Unknown,4,2.83,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+355,Aboveground Biomass Stock,2,478,Unknown,0,Unknown,0,Unknown,9,Unknown,4,10.74,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+356,Aboveground Biomass Carbon Stock,2,478,Unknown,0,Unknown,0,Unknown,9,Unknown,4,5.89,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+357,Aboveground Biomass Stock,2,479,Unknown,0,Unknown,0,Unknown,9,Unknown,4,15.53,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+358,Aboveground Biomass Carbon Stock,2,479,Unknown,0,Unknown,0,Unknown,9,Unknown,4,8.25,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+359,Aboveground Biomass Stock,2,483,Unknown,0,Unknown,0,Unknown,9,Unknown,4,70.8,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+360,Aboveground Biomass Carbon Stock,2,483,Unknown,0,Unknown,0,Unknown,9,Unknown,4,39.48,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+361,Aboveground Biomass Stock,2,500,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+362,Aboveground Biomass Carbon Stock,2,500,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+363,Aboveground Biomass Stock,2,516,Unknown,0,Unknown,0,Unknown,9,Unknown,4,2.37,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+364,Aboveground Biomass Carbon Stock,2,516,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.09,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+365,Aboveground Biomass Stock,2,140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.46,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+366,Aboveground Biomass Carbon Stock,2,140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.23,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+367,Aboveground Biomass Stock,2,574,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+368,Aboveground Biomass Carbon Stock,2,574,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+369,Aboveground Biomass Stock,2,588,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.92,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+370,Aboveground Biomass Carbon Stock,2,588,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.78,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+371,Aboveground Biomass Stock,2,641,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.27,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+372,Aboveground Biomass Carbon Stock,2,641,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.15,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+373,Aboveground Biomass Stock,2,651,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.46,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+374,Aboveground Biomass Carbon Stock,2,651,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.2,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+375,Aboveground Biomass Stock,2,673,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+376,Aboveground Biomass Carbon Stock,2,673,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+377,Aboveground Biomass Stock,2,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.07,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+378,Aboveground Biomass Carbon Stock,2,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.55,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+379,Aboveground Biomass Stock,2,10,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+380,Aboveground Biomass Carbon Stock,2,10,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+381,Aboveground Biomass Stock,2,126,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.18,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+382,Aboveground Biomass Carbon Stock,2,126,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+383,Aboveground Biomass Stock,2,810,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.42,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+384,Aboveground Biomass Carbon Stock,2,810,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.67,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+385,Aboveground Biomass Stock,2,813,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.72,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+386,Aboveground Biomass Carbon Stock,2,813,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.93,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+387,Aboveground Biomass Stock,2,909,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.73,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+388,Aboveground Biomass Carbon Stock,2,909,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.89,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+389,Aboveground Biomass Stock,2,927,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+390,Aboveground Biomass Carbon Stock,2,927,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+391,Aboveground Biomass Stock,2,950,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.18,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+392,Aboveground Biomass Carbon Stock,2,950,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+393,Aboveground Biomass Stock,2,114,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.13,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+394,Aboveground Biomass Carbon Stock,2,114,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.62,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+395,Aboveground Biomass Stock,2,977,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.52,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+396,Aboveground Biomass Carbon Stock,2,977,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.25,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+397,Aboveground Biomass Stock,2,1127,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.86,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+398,Aboveground Biomass Carbon Stock,2,1127,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.69,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+399,Aboveground Biomass Stock,2,1140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,2.65,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+400,Aboveground Biomass Carbon Stock,2,1140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.3,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+401,Aboveground Biomass Stock,2,154,Unknown,0,Unknown,0,Unknown,9,Unknown,4,3.94,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+402,Aboveground Biomass Carbon Stock,2,154,Unknown,0,Unknown,0,Unknown,9,Unknown,4,2.14,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+403,Aboveground Biomass Stock,2,52,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.29,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+404,Aboveground Biomass Carbon Stock,2,52,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+405,Aboveground Biomass Stock,2,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.39,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+406,Aboveground Biomass Carbon Stock,2,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.21,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+407,Aboveground Biomass Stock,2,1265,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+408,Aboveground Biomass Carbon Stock,2,1265,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+409,Aboveground Biomass Stock,2,1280,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.45,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+410,Aboveground Biomass Carbon Stock,2,1280,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.18,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+411,Aboveground Biomass Stock,2,1285,Unknown,0,Unknown,0,Unknown,9,Unknown,4,8.21,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+412,Aboveground Biomass Carbon Stock,2,1285,Unknown,0,Unknown,0,Unknown,9,Unknown,4,4.46,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+413,Aboveground Biomass Stock,2,1300,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.63,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+414,Aboveground Biomass Carbon Stock,2,1300,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.33,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+415,Aboveground Biomass Stock,2,1302,Unknown,0,Unknown,0,Unknown,9,Unknown,4,7.43,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+416,Aboveground Biomass Carbon Stock,2,1302,Unknown,0,Unknown,0,Unknown,9,Unknown,4,3.73,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+417,Aboveground Biomass Stock,2,1307,Unknown,0,Unknown,0,Unknown,9,Unknown,4,16.48,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+418,Aboveground Biomass Carbon Stock,2,1307,Unknown,0,Unknown,0,Unknown,9,Unknown,4,8.13,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+419,Aboveground Biomass Stock,2,69,Unknown,0,Unknown,0,Unknown,9,Unknown,4,8.08,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+420,Aboveground Biomass Carbon Stock,2,69,Unknown,0,Unknown,0,Unknown,9,Unknown,4,4.13,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+421,Aboveground Biomass Stock,2,1349,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.67,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+422,Aboveground Biomass Carbon Stock,2,1349,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.34,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+423,Aboveground Biomass Stock,2,1352,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.52,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+424,Aboveground Biomass Carbon Stock,2,1352,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.24,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+425,Aboveground Biomass Stock,2,1360,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.22,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+426,Aboveground Biomass Carbon Stock,2,1360,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+427,Aboveground Biomass Stock,2,1397,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.28,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+428,Aboveground Biomass Carbon Stock,2,1397,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.14,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+429,Aboveground Biomass Stock,2,1400,Unknown,0,Unknown,0,Unknown,9,Unknown,4,3.59,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+430,Aboveground Biomass Carbon Stock,2,1400,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.71,tonnes C/ha (274),3,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+431,Belowground Biomass Stock,2,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+432,Belowground Biomass Carbon Stock,2,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+433,Belowground Biomass Stock,2,56,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+434,Belowground Biomass Carbon Stock,2,56,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+435,Belowground Biomass Stock,2,50,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+436,Belowground Biomass Carbon Stock,2,50,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+437,Belowground Biomass Stock,2,53,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.25,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+438,Belowground Biomass Carbon Stock,2,53,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+439,Belowground Biomass Stock,2,73,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+440,Belowground Biomass Carbon Stock,2,73,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+441,Belowground Biomass Stock,2,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.28,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+442,Belowground Biomass Carbon Stock,2,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.16,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+443,Belowground Biomass Stock,2,93,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+444,Belowground Biomass Carbon Stock,2,93,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+445,Belowground Biomass Stock,2,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+446,Belowground Biomass Carbon Stock,2,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+447,Belowground Biomass Stock,2,35,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+448,Belowground Biomass Carbon Stock,2,35,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+449,Belowground Biomass Stock,2,194,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+450,Belowground Biomass Carbon Stock,2,194,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+451,Belowground Biomass Stock,2,163,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+452,Belowground Biomass Carbon Stock,2,163,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+453,Belowground Biomass Stock,2,284,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.19,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+454,Belowground Biomass Carbon Stock,2,284,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+455,Belowground Biomass Stock,2,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+456,Belowground Biomass Carbon Stock,2,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+457,Belowground Biomass Stock,2,31,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+458,Belowground Biomass Carbon Stock,2,31,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+459,Belowground Biomass Stock,2,106,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+460,Belowground Biomass Carbon Stock,2,106,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+461,Belowground Biomass Stock,2,117,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.78,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+462,Belowground Biomass Carbon Stock,2,117,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.42,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+463,Belowground Biomass Stock,2,478,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.61,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+464,Belowground Biomass Carbon Stock,2,478,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.88,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+465,Belowground Biomass Stock,2,479,Unknown,0,Unknown,0,Unknown,9,Unknown,4,2.33,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+466,Belowground Biomass Carbon Stock,2,479,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.24,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+467,Belowground Biomass Stock,2,483,Unknown,0,Unknown,0,Unknown,9,Unknown,4,10.62,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+468,Belowground Biomass Carbon Stock,2,483,Unknown,0,Unknown,0,Unknown,9,Unknown,4,5.92,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+469,Belowground Biomass Stock,2,500,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+470,Belowground Biomass Carbon Stock,2,500,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+471,Belowground Biomass Stock,2,516,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.36,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+472,Belowground Biomass Carbon Stock,2,516,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.16,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+473,Belowground Biomass Stock,2,140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+474,Belowground Biomass Carbon Stock,2,140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+475,Belowground Biomass Stock,2,574,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+476,Belowground Biomass Carbon Stock,2,574,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+477,Belowground Biomass Stock,2,588,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.29,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+478,Belowground Biomass Carbon Stock,2,588,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.11,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+479,Belowground Biomass Stock,2,641,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+480,Belowground Biomass Carbon Stock,2,641,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+481,Belowground Biomass Stock,2,651,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+482,Belowground Biomass Carbon Stock,2,651,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+483,Belowground Biomass Stock,2,673,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+484,Belowground Biomass Carbon Stock,2,673,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+485,Belowground Biomass Stock,2,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.16,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+486,Belowground Biomass Carbon Stock,2,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+487,Belowground Biomass Stock,2,10,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+488,Belowground Biomass Carbon Stock,2,10,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+489,Belowground Biomass Stock,2,126,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+490,Belowground Biomass Carbon Stock,2,126,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+491,Belowground Biomass Stock,2,810,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.21,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+492,Belowground Biomass Carbon Stock,2,810,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+493,Belowground Biomass Stock,2,813,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.26,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+494,Belowground Biomass Carbon Stock,2,813,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.14,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+495,Belowground Biomass Stock,2,909,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.26,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+496,Belowground Biomass Carbon Stock,2,909,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+497,Belowground Biomass Stock,2,927,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+498,Belowground Biomass Carbon Stock,2,927,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+499,Belowground Biomass Stock,2,950,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+500,Belowground Biomass Carbon Stock,2,950,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+501,Belowground Biomass Stock,2,114,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.17,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+502,Belowground Biomass Carbon Stock,2,114,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+503,Belowground Biomass Stock,2,977,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+504,Belowground Biomass Carbon Stock,2,977,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+505,Belowground Biomass Stock,2,1127,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.28,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+506,Belowground Biomass Carbon Stock,2,1127,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+507,Belowground Biomass Stock,2,1140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.4,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+508,Belowground Biomass Carbon Stock,2,1140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.2,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+509,Belowground Biomass Stock,2,154,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.59,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+510,Belowground Biomass Carbon Stock,2,154,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.32,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+511,Belowground Biomass Stock,2,52,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+512,Belowground Biomass Carbon Stock,2,52,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+513,Belowground Biomass Stock,2,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+514,Belowground Biomass Carbon Stock,2,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+515,Belowground Biomass Stock,2,1265,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+516,Belowground Biomass Carbon Stock,2,1265,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+517,Belowground Biomass Stock,2,1280,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+518,Belowground Biomass Carbon Stock,2,1280,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+519,Belowground Biomass Stock,2,1285,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.23,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+520,Belowground Biomass Carbon Stock,2,1285,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.67,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+521,Belowground Biomass Stock,2,1300,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+522,Belowground Biomass Carbon Stock,2,1300,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+523,Belowground Biomass Stock,2,1302,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.11,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+524,Belowground Biomass Carbon Stock,2,1302,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.56,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+525,Belowground Biomass Stock,2,1307,Unknown,0,Unknown,0,Unknown,9,Unknown,4,2.47,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+526,Belowground Biomass Carbon Stock,2,1307,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.22,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+527,Belowground Biomass Stock,2,69,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.21,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+528,Belowground Biomass Carbon Stock,2,69,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.62,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+529,Belowground Biomass Stock,2,1349,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+530,Belowground Biomass Carbon Stock,2,1349,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+531,Belowground Biomass Stock,2,1352,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+532,Belowground Biomass Carbon Stock,2,1352,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+533,Belowground Biomass Stock,2,1360,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+534,Belowground Biomass Carbon Stock,2,1360,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+535,Belowground Biomass Stock,2,1397,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+536,Belowground Biomass Carbon Stock,2,1397,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+537,Belowground Biomass Stock,2,1400,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.54,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+538,Belowground Biomass Carbon Stock,2,1400,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.26,tonnes C/ha (274),2,14,Unknown,Unknown,Measured (1),22.052915,92.0825,Bangladesh,20,2015,,,11,17,5
+539,Aboveground Biomass Carbon Stock,6,163,1-10,1,Unknown,0,Unknown,9,Unknown,4,50.44,tonnes C/ha (274),3,13,Unknown,Unknown,Measured (1),24.516665,91.633335,Bangladesh,60,6058,,,11,17,5
+540,Belowground Biomass Carbon Stock,6,163,1-10,1,Unknown,0,Unknown,9,Unknown,4,2.52,tonnes C/ha (274),2,13,Unknown,Unknown,Measured (1),24.516665,91.633335,Bangladesh,60,6058,,,11,17,5
+541,Soil Carbon Stock,6,163,1-10,1,Unknown,0,Unknown,9,Unknown,4,24.71,tonnes C/ha (274),4,13,Unknown,Unknown,Measured (1),24.516665,91.633335,Bangladesh,60,6058,,,11,17,5
+542,Aboveground Biomass Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,110.25,tonnes C/ha (274),3,15,Unknown,Unknown,Measured (1),21.95833,92.158335,Bangladesh,20,2015,,,11,4,5
+543,Belowground Biomass Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,100.84,tonnes C/ha (274),2,15,Unknown,Unknown,Measured (1),21.95833,92.158335,Bangladesh,20,2015,,,11,4,5
+544,Soil Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,99.32,tonnes C/ha (274),4,15,Unknown,Unknown,Measured (1),21.95833,92.158335,Bangladesh,20,2015,,,11,4,5
+545,Aboveground Biomass Carbon Stock,6,71,10-20,2,Unknown,0,Unknown,9,Unknown,4,91.28,tonnes C/ha (274),3,15,Unknown,Unknown,Measured (1),21.95833,92.158335,Bangladesh,20,2015,,,11,4,5
+546,Belowground Biomass Carbon Stock,6,71,10-20,2,Unknown,0,Unknown,9,Unknown,4,80.33,tonnes C/ha (274),2,15,Unknown,Unknown,Measured (1),21.95833,92.158335,Bangladesh,20,2015,,,11,4,5
+547,Soil Carbon Stock,6,71,10-20,2,Unknown,0,Unknown,9,Unknown,4,77.87,tonnes C/ha (274),4,15,Unknown,Unknown,Measured (1),21.95833,92.158335,Bangladesh,20,2015,,,11,4,5
+548,Aboveground Biomass Carbon Stock,6,38,10-20,2,Unknown,0,Unknown,9,Unknown,4,63.7,tonnes C/ha (274),3,15,Unknown,Unknown,Measured (1),21.95833,92.158335,Bangladesh,20,2015,,,11,4,5
+549,Belowground Biomass Carbon Stock,6,38,10-20,2,Unknown,0,Unknown,9,Unknown,4,85.26,tonnes C/ha (274),2,15,Unknown,Unknown,Measured (1),21.95833,92.158335,Bangladesh,20,2015,,,11,4,5
+550,Soil Carbon Stock,6,38,10-20,2,Unknown,0,Unknown,9,Unknown,4,83.37,tonnes C/ha (274),4,15,Unknown,Unknown,Measured (1),21.95833,92.158335,Bangladesh,20,2015,,,11,4,5
+551,Annual Average Aboveground Biomass Increment,6,3,1-10,1,Unknown,0,Unknown,9,Unknown,4,12.96,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+552,Annual Average Aboveground Biomass Increment,6,3,1-10,1,Unknown,0,Unknown,9,Unknown,4,26.4,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+553,Annual Average Aboveground Biomass Increment,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,17.48,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+554,Annual Average Aboveground Biomass Increment,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,18.83,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+555,Annual Average Aboveground Biomass Increment,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,20.04,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+556,Annual Average Aboveground Biomass Increment,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,17.87,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+557,Annual Average Aboveground Biomass Increment,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,16.51,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+558,Annual Average Aboveground Biomass Increment,6,7,10-20,2,Unknown,0,Unknown,9,Unknown,4,20.16,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+559,Annual Average Aboveground Biomass Increment,6,53,10-20,2,Unknown,0,Unknown,9,Unknown,4,14.12,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+560,Annual Average Aboveground Biomass Increment,6,102,10-20,2,Unknown,0,Unknown,9,Unknown,4,31.28,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+561,Annual Average Aboveground Biomass Increment,6,102,10-20,2,Unknown,0,Unknown,9,Unknown,4,21.54,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+562,Annual Average Aboveground Biomass Increment,6,161,1-10,1,Unknown,0,Unknown,9,Unknown,4,16.34,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+563,Annual Average Aboveground Biomass Increment,6,161,10-20,2,Unknown,0,Unknown,9,Unknown,4,12.19,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+564,Annual Average Aboveground Biomass Increment,6,483,1-10,1,Unknown,0,Unknown,9,Unknown,4,12.02,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+565,Annual Average Aboveground Biomass Increment,6,483,1-10,1,Unknown,0,Unknown,9,Unknown,4,12.86,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+566,Annual Average Aboveground Biomass Increment,6,483,10-20,2,Unknown,0,Unknown,9,Unknown,4,17.8,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+567,Annual Average Aboveground Biomass Increment,6,483,20-30,3,Unknown,0,Unknown,9,Unknown,4,12.8,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+568,Annual Average Aboveground Biomass Increment,6,552,1-10,1,Unknown,0,Unknown,9,Unknown,4,21.21,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+569,Annual Average Aboveground Biomass Increment,6,552,10-20,2,Unknown,0,Unknown,9,Unknown,4,20.25,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+570,Annual Average Aboveground Biomass Increment,6,243,10-20,2,Unknown,0,Unknown,9,Unknown,4,13.33,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+571,Annual Average Aboveground Biomass Increment,6,810,10-20,2,Unknown,0,Unknown,9,Unknown,4,21.14,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+572,Annual Average Aboveground Biomass Increment,6,810,10-20,2,Unknown,0,Unknown,9,Unknown,4,16.05,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+573,Annual Average Aboveground Biomass Increment,6,1090,10-20,2,Unknown,0,Unknown,9,Unknown,4,14.13,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+574,Annual Average Aboveground Biomass Increment,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,9.62,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+575,Annual Average Aboveground Biomass Increment,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,8.01,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+576,Annual Average Aboveground Biomass Increment,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,12.5,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+577,Annual Average Aboveground Biomass Increment,6,69,10-20,2,Unknown,0,Unknown,9,Unknown,4,11.44,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+578,Annual Average Aboveground Biomass Increment,6,71,10-20,2,Unknown,0,Unknown,9,Unknown,4,18.94,tonnes C/ha/yr (355),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+579,Aboveground Biomass Stock,6,3,1-10,1,Unknown,0,Unknown,9,Unknown,4,38.76,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+580,Aboveground Biomass Stock,6,3,1-10,1,Unknown,0,Unknown,9,Unknown,4,301.15,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+581,Aboveground Biomass Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,113.61,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+582,Aboveground Biomass Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,177.14,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+583,Aboveground Biomass Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,190.31,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+584,Aboveground Biomass Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,147.24,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+585,Aboveground Biomass Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,123.8,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+586,Aboveground Biomass Stock,6,7,10-20,2,Unknown,0,Unknown,9,Unknown,4,166,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+587,Aboveground Biomass Stock,6,53,10-20,2,Unknown,0,Unknown,9,Unknown,4,176,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+588,Aboveground Biomass Stock,6,102,10-20,2,Unknown,0,Unknown,9,Unknown,4,288.18,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+589,Aboveground Biomass Stock,6,102,10-20,2,Unknown,0,Unknown,9,Unknown,4,215.81,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+590,Aboveground Biomass Stock,6,161,1-10,1,Unknown,0,Unknown,9,Unknown,4,97.23,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+591,Aboveground Biomass Stock,6,161,10-20,2,Unknown,0,Unknown,9,Unknown,4,162.76,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+592,Aboveground Biomass Stock,6,483,1-10,1,Unknown,0,Unknown,9,Unknown,4,17.97,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+593,Aboveground Biomass Stock,6,483,1-10,1,Unknown,0,Unknown,9,Unknown,4,78.03,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+594,Aboveground Biomass Stock,6,483,10-20,2,Unknown,0,Unknown,9,Unknown,4,228.09,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+595,Aboveground Biomass Stock,6,483,20-30,3,Unknown,0,Unknown,9,Unknown,4,187.91,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+596,Aboveground Biomass Stock,6,552,1-10,1,Unknown,0,Unknown,9,Unknown,4,150.35,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+597,Aboveground Biomass Stock,6,552,10-20,2,Unknown,0,Unknown,9,Unknown,4,227.85,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+598,Aboveground Biomass Stock,6,243,10-20,2,Unknown,0,Unknown,9,Unknown,4,102.96,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+599,Aboveground Biomass Stock,6,810,10-20,2,Unknown,0,Unknown,9,Unknown,4,266.84,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+600,Aboveground Biomass Stock,6,810,10-20,2,Unknown,0,Unknown,9,Unknown,4,189.16,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+601,Aboveground Biomass Stock,6,1090,10-20,2,Unknown,0,Unknown,9,Unknown,4,176,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+602,Aboveground Biomass Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,57.62,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+603,Aboveground Biomass Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,60.63,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+604,Aboveground Biomass Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,108.29,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+605,Aboveground Biomass Stock,6,69,10-20,2,Unknown,0,Unknown,9,Unknown,4,94.15,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+606,Aboveground Biomass Stock,6,71,10-20,2,Unknown,0,Unknown,9,Unknown,4,210,tonnes C/ha (274),3,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+607,Belowground Biomass Stock,6,3,1-10,1,Unknown,0,Unknown,9,Unknown,4,5.81,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+608,Belowground Biomass Stock,6,3,1-10,1,Unknown,0,Unknown,9,Unknown,4,45.17,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+609,Belowground Biomass Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,17.04,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+610,Belowground Biomass Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,26.57,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+611,Belowground Biomass Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,28.55,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+612,Belowground Biomass Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,22.08,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+613,Belowground Biomass Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,18.57,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+614,Belowground Biomass Stock,6,7,10-20,2,Unknown,0,Unknown,9,Unknown,4,24.9,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+615,Belowground Biomass Stock,6,53,10-20,2,Unknown,0,Unknown,9,Unknown,4,26.4,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+616,Belowground Biomass Stock,6,102,10-20,2,Unknown,0,Unknown,9,Unknown,4,43.23,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+617,Belowground Biomass Stock,6,102,10-20,2,Unknown,0,Unknown,9,Unknown,4,32.37,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+618,Belowground Biomass Stock,6,161,1-10,1,Unknown,0,Unknown,9,Unknown,4,14.59,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+619,Belowground Biomass Stock,6,161,10-20,2,Unknown,0,Unknown,9,Unknown,4,24.41,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+620,Belowground Biomass Stock,6,483,1-10,1,Unknown,0,Unknown,9,Unknown,4,2.7,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+621,Belowground Biomass Stock,6,483,1-10,1,Unknown,0,Unknown,9,Unknown,4,11.71,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+622,Belowground Biomass Stock,6,483,10-20,2,Unknown,0,Unknown,9,Unknown,4,34.21,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+623,Belowground Biomass Stock,6,483,20-30,3,Unknown,0,Unknown,9,Unknown,4,28.19,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+624,Belowground Biomass Stock,6,552,1-10,1,Unknown,0,Unknown,9,Unknown,4,22.55,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+625,Belowground Biomass Stock,6,552,10-20,2,Unknown,0,Unknown,9,Unknown,4,34.18,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+626,Belowground Biomass Stock,6,243,10-20,2,Unknown,0,Unknown,9,Unknown,4,15.45,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+627,Belowground Biomass Stock,6,810,10-20,2,Unknown,0,Unknown,9,Unknown,4,40.03,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+628,Belowground Biomass Stock,6,810,10-20,2,Unknown,0,Unknown,9,Unknown,4,28.37,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+629,Belowground Biomass Stock,6,1090,10-20,2,Unknown,0,Unknown,9,Unknown,4,26.4,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+630,Belowground Biomass Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,8.64,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+631,Belowground Biomass Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,9.09,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+632,Belowground Biomass Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,16.24,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+633,Belowground Biomass Stock,6,69,10-20,2,Unknown,0,Unknown,9,Unknown,4,14.12,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+634,Belowground Biomass Stock,6,71,10-20,2,Unknown,0,Unknown,9,Unknown,4,31.5,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+635,Total Biomass Carbon Stock,6,3,1-10,1,Unknown,0,Unknown,9,Unknown,4,22.29,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+636,Total Biomass Carbon Stock,6,3,1-10,1,Unknown,0,Unknown,9,Unknown,4,173.16,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+637,Total Biomass Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,65.32,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+638,Total Biomass Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,101.86,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+639,Total Biomass Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,109.43,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+640,Total Biomass Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,84.66,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+641,Total Biomass Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,71.19,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+642,Total Biomass Carbon Stock,6,7,10-20,2,Unknown,0,Unknown,9,Unknown,4,95.45,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+643,Total Biomass Carbon Stock,6,53,10-20,2,Unknown,0,Unknown,9,Unknown,4,101.2,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+644,Total Biomass Carbon Stock,6,102,10-20,2,Unknown,0,Unknown,9,Unknown,4,165.7,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+645,Total Biomass Carbon Stock,6,102,10-20,2,Unknown,0,Unknown,9,Unknown,4,124.09,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+646,Total Biomass Carbon Stock,6,161,1-10,1,Unknown,0,Unknown,9,Unknown,4,55.91,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+647,Total Biomass Carbon Stock,6,161,10-20,2,Unknown,0,Unknown,9,Unknown,4,93.59,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+648,Total Biomass Carbon Stock,6,483,1-10,1,Unknown,0,Unknown,9,Unknown,4,10.33,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+649,Total Biomass Carbon Stock,6,483,1-10,1,Unknown,0,Unknown,9,Unknown,4,44.87,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+650,Total Biomass Carbon Stock,6,483,10-20,2,Unknown,0,Unknown,9,Unknown,4,131.15,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+651,Total Biomass Carbon Stock,6,483,20-30,3,Unknown,0,Unknown,9,Unknown,4,108.05,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+652,Total Biomass Carbon Stock,6,552,1-10,1,Unknown,0,Unknown,9,Unknown,4,86.45,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+653,Total Biomass Carbon Stock,6,552,10-20,2,Unknown,0,Unknown,9,Unknown,4,131.02,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+654,Total Biomass Carbon Stock,6,243,10-20,2,Unknown,0,Unknown,9,Unknown,4,59.2,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+655,Total Biomass Carbon Stock,6,810,10-20,2,Unknown,0,Unknown,9,Unknown,4,153.43,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+656,Total Biomass Carbon Stock,6,810,10-20,2,Unknown,0,Unknown,9,Unknown,4,108.77,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+657,Total Biomass Carbon Stock,6,1090,10-20,2,Unknown,0,Unknown,9,Unknown,4,101.2,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+658,Total Biomass Carbon Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,33.13,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+659,Total Biomass Carbon Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,34.86,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+660,Total Biomass Carbon Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,62.27,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+661,Total Biomass Carbon Stock,6,69,10-20,2,Unknown,0,Unknown,9,Unknown,4,54.14,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+662,Total Biomass Carbon Stock,6,71,10-20,2,Unknown,0,Unknown,9,Unknown,4,120.75,tonnes C/ha (274),2,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+663,Soil Carbon Stock,6,3,1-10,1,Unknown,0,Unknown,9,Unknown,4,83,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+664,Soil Carbon Stock,6,3,1-10,1,Unknown,0,Unknown,9,Unknown,4,91.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+665,Soil Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,95.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+666,Soil Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,95.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+667,Soil Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,100.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+668,Soil Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,105.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+669,Soil Carbon Stock,6,3,10-20,2,Unknown,0,Unknown,9,Unknown,4,107,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+670,Soil Carbon Stock,6,7,10-20,2,Unknown,0,Unknown,9,Unknown,4,95.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+671,Soil Carbon Stock,6,53,10-20,2,Unknown,0,Unknown,9,Unknown,4,107,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+672,Soil Carbon Stock,6,102,10-20,2,Unknown,0,Unknown,9,Unknown,4,100.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+673,Soil Carbon Stock,6,102,10-20,2,Unknown,0,Unknown,9,Unknown,4,114,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+674,Soil Carbon Stock,6,161,1-10,1,Unknown,0,Unknown,9,Unknown,4,83.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+675,Soil Carbon Stock,6,161,10-20,2,Unknown,0,Unknown,9,Unknown,4,102,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+676,Soil Carbon Stock,6,483,1-10,1,Unknown,0,Unknown,9,Unknown,4,86,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+677,Soil Carbon Stock,6,483,1-10,1,Unknown,0,Unknown,9,Unknown,4,86.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+678,Soil Carbon Stock,6,483,10-20,2,Unknown,0,Unknown,9,Unknown,4,99,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+679,Soil Carbon Stock,6,483,20-30,3,Unknown,0,Unknown,9,Unknown,4,133,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+680,Soil Carbon Stock,6,552,1-10,1,Unknown,0,Unknown,9,Unknown,4,81.67,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+681,Soil Carbon Stock,6,552,10-20,2,Unknown,0,Unknown,9,Unknown,4,100.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+682,Soil Carbon Stock,6,243,10-20,2,Unknown,0,Unknown,9,Unknown,4,89,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+683,Soil Carbon Stock,6,810,10-20,2,Unknown,0,Unknown,9,Unknown,4,105.67,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+684,Soil Carbon Stock,6,810,10-20,2,Unknown,0,Unknown,9,Unknown,4,120.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+685,Soil Carbon Stock,6,1090,10-20,2,Unknown,0,Unknown,9,Unknown,4,83,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+686,Soil Carbon Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,90.67,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+687,Soil Carbon Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,94,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+688,Soil Carbon Stock,6,1283,10-20,2,Unknown,0,Unknown,9,Unknown,4,102,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+689,Soil Carbon Stock,6,69,10-20,2,Unknown,0,Unknown,9,Unknown,4,84,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+690,Soil Carbon Stock,6,71,10-20,2,Unknown,0,Unknown,9,Unknown,4,100.33,tonnes C/ha (274),4,16,Unknown,Unknown,Measured (1),22.347536,91.812332,Bangladesh,20,2015,,,11,22,5
+691,Aboveground Biomass Stock,4,48,Unknown,0,Unknown,0,Unknown,9,Unknown,4,33.49,tonnes C/ha (274),3,7,Unknown,Unknown,Measured (1),21.80833,89.633335,Bangladesh,40,4047,,,12,21,4
+692,Aboveground Biomass Stock,4,48,Unknown,0,Unknown,0,Unknown,9,Unknown,4,14.36,tonnes C/ha (274),3,7,Unknown,Unknown,Measured (1),21.80833,89.633335,Bangladesh,40,4047,,,12,21,4
+693,Aboveground Biomass Carbon Stock,4,64,Unknown,0,Unknown,0,Unknown,9,Unknown,4,152.57,tonnes C/ha (274),3,11,Unknown,Unknown,Measured (1),22,89.458335,Bangladesh,40,4047,,,12,21,4
+694,Aboveground Biomass Carbon Stock,4,48,Unknown,0,Unknown,0,Unknown,9,Unknown,4,45.24,tonnes C/ha (274),3,11,Unknown,Unknown,Measured (1),22,89.458335,Bangladesh,40,4047,,,12,21,4
+695,Belowground Biomass Carbon Stock,4,64,Unknown,0,Unknown,0,Unknown,9,Unknown,4,196.54,tonnes C/ha (274),2,11,Unknown,Unknown,Measured (1),22,89.458335,Bangladesh,40,4047,,,12,21,4
+696,Belowground Biomass Carbon Stock,4,48,Unknown,0,Unknown,0,Unknown,9,Unknown,4,90.83,tonnes C/ha (274),2,11,Unknown,Unknown,Measured (1),22,89.458335,Bangladesh,40,4047,,,12,21,4
+697,Aboveground Biomass Carbon Stock,1,50,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.93,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+698,Aboveground Biomass Carbon Stock,1,56,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.46,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+699,Aboveground Biomass Carbon Stock,1,41,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.14,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+700,Aboveground Biomass Carbon Stock,1,92,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.19,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+701,Aboveground Biomass Carbon Stock,1,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.44,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+702,Aboveground Biomass Carbon Stock,1,53,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.7,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+703,Aboveground Biomass Carbon Stock,1,140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.66,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+704,Aboveground Biomass Carbon Stock,1,73,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.52,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+705,Aboveground Biomass Carbon Stock,1,107,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.19,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+706,Aboveground Biomass Carbon Stock,1,84,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.34,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+707,Aboveground Biomass Carbon Stock,1,574,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.17,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+708,Aboveground Biomass Carbon Stock,1,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+709,Aboveground Biomass Carbon Stock,1,95,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.19,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+710,Aboveground Biomass Carbon Stock,1,102,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.84,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+711,Aboveground Biomass Carbon Stock,1,51,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+712,Aboveground Biomass Carbon Stock,1,4,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+713,Aboveground Biomass Carbon Stock,1,35,Unknown,0,Unknown,0,Unknown,9,Unknown,4,2.32,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+714,Aboveground Biomass Carbon Stock,1,130,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.7,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+715,Aboveground Biomass Carbon Stock,1,131,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.97,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+716,Aboveground Biomass Carbon Stock,1,23,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.26,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+717,Aboveground Biomass Carbon Stock,1,136,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+718,Aboveground Biomass Carbon Stock,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.42,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+719,Aboveground Biomass Carbon Stock,1,474,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.56,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+720,Aboveground Biomass Carbon Stock,1,47,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+721,Aboveground Biomass Carbon Stock,1,78,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.52,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+722,Aboveground Biomass Carbon Stock,1,194,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.67,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+723,Aboveground Biomass Carbon Stock,1,197,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+724,Aboveground Biomass Carbon Stock,1,147,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.41,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+725,Aboveground Biomass Carbon Stock,1,230,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.84,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+726,Aboveground Biomass Carbon Stock,1,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.21,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+727,Aboveground Biomass Carbon Stock,1,163,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+728,Aboveground Biomass Carbon Stock,1,88,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+729,Aboveground Biomass Carbon Stock,1,284,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.19,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+730,Aboveground Biomass Carbon Stock,1,287,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.19,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+731,Aboveground Biomass Carbon Stock,1,149,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+732,Aboveground Biomass Carbon Stock,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+733,Aboveground Biomass Carbon Stock,1,161,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.84,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+734,Aboveground Biomass Carbon Stock,1,155,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+735,Aboveground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+736,Aboveground Biomass Carbon Stock,1,376,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+737,Aboveground Biomass Carbon Stock,1,386,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+738,Aboveground Biomass Carbon Stock,1,433,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.17,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+739,Aboveground Biomass Carbon Stock,1,441,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.31,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+740,Aboveground Biomass Carbon Stock,1,117,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+741,Aboveground Biomass Carbon Stock,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.11,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+742,Aboveground Biomass Carbon Stock,1,118,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+743,Aboveground Biomass Carbon Stock,1,474,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+744,Aboveground Biomass Carbon Stock,1,478,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+745,Aboveground Biomass Carbon Stock,1,479,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.22,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+746,Aboveground Biomass Carbon Stock,1,483,Unknown,0,Unknown,0,Unknown,9,Unknown,4,7.9,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+747,Aboveground Biomass Carbon Stock,1,500,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.97,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+748,Aboveground Biomass Carbon Stock,1,135,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+749,Aboveground Biomass Carbon Stock,1,140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.16,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+750,Aboveground Biomass Carbon Stock,1,535,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+751,Aboveground Biomass Carbon Stock,1,166,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.65,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+752,Aboveground Biomass Carbon Stock,1,85,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+753,Aboveground Biomass Carbon Stock,1,588,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.14,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+754,Aboveground Biomass Carbon Stock,1,604,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.7,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+755,Aboveground Biomass Carbon Stock,1,614,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.22,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+756,Aboveground Biomass Carbon Stock,1,641,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+757,Aboveground Biomass Carbon Stock,1,651,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+758,Aboveground Biomass Carbon Stock,1,1112,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+759,Aboveground Biomass Carbon Stock,1,99,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+760,Aboveground Biomass Carbon Stock,1,672,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+761,Aboveground Biomass Carbon Stock,1,99,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+762,Aboveground Biomass Carbon Stock,1,678,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+763,Aboveground Biomass Carbon Stock,1,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+764,Aboveground Biomass Carbon Stock,1,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.67,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+765,Aboveground Biomass Carbon Stock,1,94,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+766,Aboveground Biomass Carbon Stock,1,162,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.23,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+767,Aboveground Biomass Carbon Stock,1,126,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+768,Aboveground Biomass Carbon Stock,1,1039,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+769,Aboveground Biomass Carbon Stock,1,759,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.92,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+770,Aboveground Biomass Carbon Stock,1,68,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.21,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+771,Aboveground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+772,Aboveground Biomass Carbon Stock,1,977,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.23,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+773,Aboveground Biomass Carbon Stock,1,810,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.31,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+774,Aboveground Biomass Carbon Stock,1,813,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.58,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+775,Aboveground Biomass Carbon Stock,1,141,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+776,Aboveground Biomass Carbon Stock,1,826,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+777,Aboveground Biomass Carbon Stock,1,49,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.37,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+778,Aboveground Biomass Carbon Stock,1,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.32,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+779,Aboveground Biomass Carbon Stock,1,857,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+780,Aboveground Biomass Carbon Stock,1,122,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+781,Aboveground Biomass Carbon Stock,1,989,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+782,Aboveground Biomass Carbon Stock,1,894,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+783,Aboveground Biomass Carbon Stock,1,139,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+784,Aboveground Biomass Carbon Stock,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.92,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+785,Aboveground Biomass Carbon Stock,1,909,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.71,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+786,Aboveground Biomass Carbon Stock,1,146,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+787,Aboveground Biomass Carbon Stock,1,942,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.45,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+788,Aboveground Biomass Carbon Stock,1,950,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.29,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+789,Aboveground Biomass Carbon Stock,1,127,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+790,Aboveground Biomass Carbon Stock,1,138,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+791,Aboveground Biomass Carbon Stock,1,972,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+792,Aboveground Biomass Carbon Stock,1,977,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+793,Aboveground Biomass Carbon Stock,1,114,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+794,Aboveground Biomass Carbon Stock,1,114,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+795,Aboveground Biomass Carbon Stock,1,86,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+796,Aboveground Biomass Carbon Stock,1,51,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+797,Aboveground Biomass Carbon Stock,1,1079,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+798,Aboveground Biomass Carbon Stock,1,9,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+799,Aboveground Biomass Carbon Stock,1,1112,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.11,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+800,Aboveground Biomass Carbon Stock,1,1127,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+801,Aboveground Biomass Carbon Stock,1,72,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+802,Aboveground Biomass Carbon Stock,1,1136,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+803,Aboveground Biomass Carbon Stock,1,1140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+804,Aboveground Biomass Carbon Stock,1,1142,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+805,Aboveground Biomass Carbon Stock,1,574,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+806,Aboveground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+807,Aboveground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+808,Aboveground Biomass Carbon Stock,1,1283,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.64,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+809,Aboveground Biomass Carbon Stock,1,1185,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+810,Aboveground Biomass Carbon Stock,1,1193,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.3,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+811,Aboveground Biomass Carbon Stock,1,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+812,Aboveground Biomass Carbon Stock,1,1210,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+813,Aboveground Biomass Carbon Stock,1,1231,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.46,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+814,Aboveground Biomass Carbon Stock,1,1112,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+815,Aboveground Biomass Carbon Stock,1,1265,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.2,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+816,Aboveground Biomass Carbon Stock,1,37,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+817,Aboveground Biomass Carbon Stock,1,37,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.39,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+818,Aboveground Biomass Carbon Stock,1,1271,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+819,Aboveground Biomass Carbon Stock,1,1280,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+820,Aboveground Biomass Carbon Stock,1,1285,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.57,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+821,Aboveground Biomass Carbon Stock,1,1301,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+822,Aboveground Biomass Carbon Stock,1,1302,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+823,Aboveground Biomass Carbon Stock,1,1307,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+824,Aboveground Biomass Carbon Stock,1,69,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.17,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+825,Aboveground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+826,Aboveground Biomass Carbon Stock,1,160,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+827,Aboveground Biomass Carbon Stock,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.42,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+828,Aboveground Biomass Carbon Stock,1,71,Unknown,0,Unknown,0,Unknown,9,Unknown,4,5.66,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+829,Aboveground Biomass Carbon Stock,1,1348,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+830,Aboveground Biomass Carbon Stock,1,1349,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.5,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+831,Aboveground Biomass Carbon Stock,1,1351,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.36,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+832,Aboveground Biomass Carbon Stock,1,1352,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.32,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+833,Aboveground Biomass Carbon Stock,1,1360,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.17,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+834,Aboveground Biomass Carbon Stock,1,33,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.85,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+835,Aboveground Biomass Carbon Stock,1,112,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+836,Aboveground Biomass Carbon Stock,1,1397,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.12,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+837,Aboveground Biomass Carbon Stock,1,1400,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+838,Aboveground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+839,Aboveground Biomass Carbon Stock,1,132,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+840,Aboveground Biomass Carbon Stock,1,93,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),3,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+841,Belowground Biomass Carbon Stock,1,50,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.29,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+842,Belowground Biomass Carbon Stock,1,56,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+843,Belowground Biomass Carbon Stock,1,41,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+844,Belowground Biomass Carbon Stock,1,92,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+845,Belowground Biomass Carbon Stock,1,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+846,Belowground Biomass Carbon Stock,1,53,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.26,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+847,Belowground Biomass Carbon Stock,1,140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+848,Belowground Biomass Carbon Stock,1,73,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+849,Belowground Biomass Carbon Stock,1,107,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+850,Belowground Biomass Carbon Stock,1,84,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+851,Belowground Biomass Carbon Stock,1,574,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+852,Belowground Biomass Carbon Stock,1,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+853,Belowground Biomass Carbon Stock,1,95,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+854,Belowground Biomass Carbon Stock,1,102,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+855,Belowground Biomass Carbon Stock,1,51,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+856,Belowground Biomass Carbon Stock,1,4,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+857,Belowground Biomass Carbon Stock,1,35,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.35,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+858,Belowground Biomass Carbon Stock,1,130,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.26,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+859,Belowground Biomass Carbon Stock,1,131,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.3,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+860,Belowground Biomass Carbon Stock,1,23,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+861,Belowground Biomass Carbon Stock,1,136,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+862,Belowground Biomass Carbon Stock,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+863,Belowground Biomass Carbon Stock,1,474,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+864,Belowground Biomass Carbon Stock,1,47,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+865,Belowground Biomass Carbon Stock,1,78,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.08,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+866,Belowground Biomass Carbon Stock,1,194,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.25,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+867,Belowground Biomass Carbon Stock,1,197,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+868,Belowground Biomass Carbon Stock,1,147,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+869,Belowground Biomass Carbon Stock,1,230,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+870,Belowground Biomass Carbon Stock,1,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+871,Belowground Biomass Carbon Stock,1,163,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+872,Belowground Biomass Carbon Stock,1,88,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+873,Belowground Biomass Carbon Stock,1,284,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+874,Belowground Biomass Carbon Stock,1,287,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+875,Belowground Biomass Carbon Stock,1,149,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+876,Belowground Biomass Carbon Stock,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+877,Belowground Biomass Carbon Stock,1,161,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+878,Belowground Biomass Carbon Stock,1,155,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+879,Belowground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+880,Belowground Biomass Carbon Stock,1,376,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+881,Belowground Biomass Carbon Stock,1,386,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+882,Belowground Biomass Carbon Stock,1,433,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+883,Belowground Biomass Carbon Stock,1,441,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+884,Belowground Biomass Carbon Stock,1,117,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+885,Belowground Biomass Carbon Stock,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+886,Belowground Biomass Carbon Stock,1,118,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+887,Belowground Biomass Carbon Stock,1,474,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+888,Belowground Biomass Carbon Stock,1,478,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+889,Belowground Biomass Carbon Stock,1,479,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+890,Belowground Biomass Carbon Stock,1,483,Unknown,0,Unknown,0,Unknown,9,Unknown,4,1.19,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+891,Belowground Biomass Carbon Stock,1,500,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.15,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+892,Belowground Biomass Carbon Stock,1,135,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+893,Belowground Biomass Carbon Stock,1,140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+894,Belowground Biomass Carbon Stock,1,535,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+895,Belowground Biomass Carbon Stock,1,166,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+896,Belowground Biomass Carbon Stock,1,85,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+897,Belowground Biomass Carbon Stock,1,588,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.17,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+898,Belowground Biomass Carbon Stock,1,604,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.11,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+899,Belowground Biomass Carbon Stock,1,614,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+900,Belowground Biomass Carbon Stock,1,641,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+901,Belowground Biomass Carbon Stock,1,651,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+902,Belowground Biomass Carbon Stock,1,1112,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+903,Belowground Biomass Carbon Stock,1,99,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+904,Belowground Biomass Carbon Stock,1,672,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+905,Belowground Biomass Carbon Stock,1,99,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+906,Belowground Biomass Carbon Stock,1,678,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+907,Belowground Biomass Carbon Stock,1,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+908,Belowground Biomass Carbon Stock,1,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+909,Belowground Biomass Carbon Stock,1,94,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+910,Belowground Biomass Carbon Stock,1,162,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+911,Belowground Biomass Carbon Stock,1,126,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+912,Belowground Biomass Carbon Stock,1,1039,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+913,Belowground Biomass Carbon Stock,1,759,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.14,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+914,Belowground Biomass Carbon Stock,1,68,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+915,Belowground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+916,Belowground Biomass Carbon Stock,1,977,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+917,Belowground Biomass Carbon Stock,1,810,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.2,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+918,Belowground Biomass Carbon Stock,1,813,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+919,Belowground Biomass Carbon Stock,1,141,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+920,Belowground Biomass Carbon Stock,1,826,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+921,Belowground Biomass Carbon Stock,1,49,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+922,Belowground Biomass Carbon Stock,1,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+923,Belowground Biomass Carbon Stock,1,857,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+924,Belowground Biomass Carbon Stock,1,122,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+925,Belowground Biomass Carbon Stock,1,989,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+926,Belowground Biomass Carbon Stock,1,894,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+927,Belowground Biomass Carbon Stock,1,139,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+928,Belowground Biomass Carbon Stock,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.14,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+929,Belowground Biomass Carbon Stock,1,909,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.26,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+930,Belowground Biomass Carbon Stock,1,146,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+931,Belowground Biomass Carbon Stock,1,942,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+932,Belowground Biomass Carbon Stock,1,950,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.04,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+933,Belowground Biomass Carbon Stock,1,127,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+934,Belowground Biomass Carbon Stock,1,138,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+935,Belowground Biomass Carbon Stock,1,972,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+936,Belowground Biomass Carbon Stock,1,977,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+937,Belowground Biomass Carbon Stock,1,114,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+938,Belowground Biomass Carbon Stock,1,114,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+939,Belowground Biomass Carbon Stock,1,86,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+940,Belowground Biomass Carbon Stock,1,51,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+941,Belowground Biomass Carbon Stock,1,1079,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+942,Belowground Biomass Carbon Stock,1,9,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+943,Belowground Biomass Carbon Stock,1,1112,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+944,Belowground Biomass Carbon Stock,1,1127,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+945,Belowground Biomass Carbon Stock,1,72,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+946,Belowground Biomass Carbon Stock,1,1136,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+947,Belowground Biomass Carbon Stock,1,1140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+948,Belowground Biomass Carbon Stock,1,1142,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+949,Belowground Biomass Carbon Stock,1,574,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+950,Belowground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+951,Belowground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+952,Belowground Biomass Carbon Stock,1,1283,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.1,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+953,Belowground Biomass Carbon Stock,1,1185,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+954,Belowground Biomass Carbon Stock,1,1193,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+955,Belowground Biomass Carbon Stock,1,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+956,Belowground Biomass Carbon Stock,1,1210,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+957,Belowground Biomass Carbon Stock,1,1231,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.07,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+958,Belowground Biomass Carbon Stock,1,1112,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+959,Belowground Biomass Carbon Stock,1,1265,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+960,Belowground Biomass Carbon Stock,1,37,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+961,Belowground Biomass Carbon Stock,1,37,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+962,Belowground Biomass Carbon Stock,1,1271,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+963,Belowground Biomass Carbon Stock,1,1280,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+964,Belowground Biomass Carbon Stock,1,1285,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.09,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+965,Belowground Biomass Carbon Stock,1,1301,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+966,Belowground Biomass Carbon Stock,1,1302,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+967,Belowground Biomass Carbon Stock,1,1307,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+968,Belowground Biomass Carbon Stock,1,69,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.18,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+969,Belowground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+970,Belowground Biomass Carbon Stock,1,160,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+971,Belowground Biomass Carbon Stock,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.06,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+972,Belowground Biomass Carbon Stock,1,71,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.85,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+973,Belowground Biomass Carbon Stock,1,1348,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+974,Belowground Biomass Carbon Stock,1,1349,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.22,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+975,Belowground Biomass Carbon Stock,1,1351,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.05,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+976,Belowground Biomass Carbon Stock,1,1352,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.2,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+977,Belowground Biomass Carbon Stock,1,1360,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.03,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+978,Belowground Biomass Carbon Stock,1,33,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.13,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+979,Belowground Biomass Carbon Stock,1,112,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+980,Belowground Biomass Carbon Stock,1,1397,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.02,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+981,Belowground Biomass Carbon Stock,1,1400,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+982,Belowground Biomass Carbon Stock,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+983,Belowground Biomass Carbon Stock,1,132,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+984,Belowground Biomass Carbon Stock,1,93,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.01,tonnes C/ha (274),2,2,Unknown,Unknown,Measured (1),22.125,92.016665,Bangladesh,20,2015,,,11,17,5
+985,Annual Average Volume Increment,2,0,Unknown,0,Unknown,0,Unknown,9,Unknown,4,10.36,m3/ha/year (359),2,12,Unknown,Unknown,Modeled (2),22.26667,91.81667,Bangladesh,20,2015,,,11,17,5
+986,Annual Average Volume Increment,7,1231,Unknown,0,Unknown,0,Unknown,9,Unknown,4,9.15,m3/ha/year (359),2,12,Unknown,Unknown,Modeled (2),24.16667,91,Bangladesh,20,2015,,,11,14,5
+987,Annual Average Volume Increment,7,1231,Unknown,0,Unknown,0,Unknown,9,Unknown,4,8.91,m3/ha/year (359),2,12,Unknown,Unknown,Modeled (2),24.36667,88.7,Bangladesh,20,2015,,,12,7,5
+988,Annual Average Volume Increment,4,0,Unknown,0,Unknown,0,Unknown,9,Unknown,4,8.95,m3/ha/year (359),2,12,Unknown,Unknown,Modeled (2),22.78333,89.53333,Bangladesh,20,2015,,,12,9,5
+989,Annual Average Volume Increment,5,0,Unknown,0,Unknown,0,Unknown,9,Unknown,4,10.15,m3/ha/year (359),2,12,Unknown,Unknown,Modeled (2),22.33333,90.33333,Bangladesh,20,2015,,,12,17,5
+990,Wood density,1,1360,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.4,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+991,Wood density,1,749,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.37,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+992,Wood density,1,813,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.62,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+993,Wood density,1,71,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.5,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+994,Wood density,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.52,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+995,Wood density,1,909,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.49,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+996,Wood density,1,1285,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.53,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+997,Wood density,1,1039,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.39,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+998,Wood density,1,37,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.62,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+999,Wood density,1,195,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.33,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1000,Wood density,1,1127,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.75,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1001,Wood density,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.69,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1002,Wood density,1,149,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.67,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1003,Wood density,1,5,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.36,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1004,Wood density,1,641,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.5,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1005,Wood density,1,942,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.84,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1006,Wood density,1,1349,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.67,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1007,Wood density,1,1352,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.64,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1008,Wood density,1,574,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.79,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1009,Wood density,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.51,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1010,Wood density,1,117,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.52,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1011,Wood density,1,478,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.55,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1012,Wood density,1,120,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.58,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1013,Wood density,1,142,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.66,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1014,Wood density,1,483,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.65,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1015,Wood density,1,759,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.59,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1016,Wood density,1,1231,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.73,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1017,Wood density,1,118,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.56,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1018,Wood density,1,736,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.51,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1019,Wood density,1,8,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.63,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1020,Wood density,1,140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.54,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1021,Wood density,1,433,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.65,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1022,Wood density,1,112,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.22,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1023,Wood density,1,113,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.25,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1024,Wood density,1,1112,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.54,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1025,Wood density,1,58,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.38,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1026,Wood density,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.74,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1027,Wood density,1,753,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.8,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1028,Wood density,1,123,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.56,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1029,Wood density,1,259,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.51,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1030,Wood density,1,535,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.48,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1031,Wood density,1,31,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.52,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1032,Wood density,1,500,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.41,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1033,Wood density,1,810,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.51,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1034,Wood density,1,1244,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.51,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1035,Wood density,1,950,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.56,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1036,Wood density,1,102,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.55,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1037,Wood density,1,295,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.69,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1038,Wood density,1,164,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.4,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1039,Wood density,1,161,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.55,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1040,Wood density,1,17,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.4,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1041,Wood density,1,95,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.64,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1042,Wood density,1,136,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.51,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1043,Wood density,1,3,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.57,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1044,Wood density,1,7,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.56,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1045,Wood density,1,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.39,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1046,Wood density,1,53,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.67,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1047,Wood density,1,35,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.44,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1048,Wood density,1,130,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.46,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1049,Wood density,1,80,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.45,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1050,Wood density,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.29,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1051,Wood density,1,86,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.36,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1052,Wood density,1,153,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.6,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1053,Wood density,1,69,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.68,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1054,Wood density,1,101,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.43,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1055,Wood density,1,61,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.5,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1056,Wood density,1,40,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.71,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1057,Wood density,1,38,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.43,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1058,Wood density,1,55,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.4,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1059,Wood density,1,978,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.58,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1060,Wood density,1,123,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.6,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1061,Wood density,1,152,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.41,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1062,Wood density,1,1140,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.56,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1063,Wood density,1,8,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.57,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1064,Wood density,1,1265,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.29,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1065,Wood density,1,1360,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.31,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1066,Wood density,1,170,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.61,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1067,Wood density,1,243,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.41,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1068,Wood density,1,71,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.58,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1069,Wood density,1,1400,Unknown,0,Unknown,0,Unknown,9,Unknown,4,0.84,g/cm3,1,4,Unknown,Unknown,Other (3),0,0,Bangladesh,61,0,,,99,24,6
+1070,Aboveground Biomass Stock,6,0,Unknown,0,Unknown,0,Unknown,9,Unknown,4,43.58,tonnes C/ha (274),3,5,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+1071,Aboveground Biomass Stock,6,0,Unknown,0,Unknown,0,Unknown,9,Unknown,4,15.32,tonnes C/ha (274),3,5,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+1072,Aboveground Biomass Stock,7,1231,Unknown,0,Unknown,0,Unknown,9,Unknown,4,57.41,tonnes C/ha (274),3,5,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+1073,Aboveground Biomass Stock,7,1231,Unknown,0,Unknown,0,Unknown,9,Unknown,4,63.82,tonnes C/ha (274),3,5,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+1074,Aboveground Biomass Stock,4,0,Unknown,0,Unknown,0,Unknown,9,Unknown,4,50.45,tonnes C/ha (274),3,5,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
+1075,Aboveground Biomass Stock,2,0,Unknown,0,Unknown,0,Unknown,9,Unknown,4,50,tonnes C/ha (274),3,5,Unknown,Unknown,Measured (1),0,0,Bangladesh,61,0,,,99,24,6
