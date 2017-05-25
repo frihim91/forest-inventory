@@ -1,3 +1,9 @@
+<script src="<?php echo base_url(); ?>resources/js/morrisjs/morris.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/morrisjs/morris.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/data/morris-data.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/data/flot-data.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/raphael/raphael.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/js/raphael/raphael.js"></script>
       <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
