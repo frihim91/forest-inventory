@@ -24,7 +24,7 @@
 								
                                     <img class="slider_img" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>"/>
 
-                                    <div class="slider-caption">
+                                    <div class="slider-caption" style="width: 100%;">
                                         <h2><a href="#"><?php echo $slider->IMAGE_TITLE?></a></h2>
                                         <p><?php echo $slider->IMAGE_DESC?></p>
                                     </div>

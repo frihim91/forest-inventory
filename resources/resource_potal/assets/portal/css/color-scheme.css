@@ -41,6 +41,8 @@ body,
 .cat-blog,
 .blog-post-meta ul li {
   background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+
 }
 
 .mainBtn,
