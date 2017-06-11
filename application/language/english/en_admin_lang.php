@@ -5,6 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // Create Module
 $lang["news"] = "News";
 $lang["species_list"] = "Species List";
+$lang["Wood_densities"] = "Wood densities";
+$lang["biomass_expansion_factor"] = "Biomass Expansion Factor";
 $lang["allometric_equation"] = "Allometric Equation";
 $lang["allometric_equations"] = "Allometric Equations";
 $lang["home"] = "Home";

@@ -100,7 +100,7 @@
                                     ?>
                                    
                                    
-                                    <p style="padding-left:3px;">
+                         <!--            <p style="padding-left:3px;">
                                        <b>Wood Density : 
                                        <?php 
                                         $totalNumberC = sizeof($speciesId) - 1 ;
@@ -128,7 +128,7 @@
                                          ?>
                                            
                                          </b>
-                                         </p>
+                                         </p> -->
                
                                        <p><b>Data in FAO Biomes :
                                         <?php 

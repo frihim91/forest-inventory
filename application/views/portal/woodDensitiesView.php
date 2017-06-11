@@ -31,13 +31,6 @@
    .breadcump_row a{
    color: white;
    }
-   #search-submit-holder, #tree-equation-footer {
-   height: 45px;
-   padding: 5px;
-   background-color: #f4f4f4;
-   border-top: 1px solid #d9d9d9;
-   border-radius: 0px 0px 4px 4px;
-   }
 </style>
 <?php
    $lang_ses = $this->session->userdata("site_lang");
@@ -46,26 +39,27 @@
    <div class="row">
       <div class="breadcump-wrapper">
          <div class="wrapper">
-            <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("allometric_equations"); ?>
+            <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("Wood_densities"); ?>
             </div>
-            <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("allometric_equations"); ?>
+            <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("Wood_densities"); ?>
             </div>
          </div>
       </div>
    </div>
 </div>
 <div class="col-md-12 page_content">
-   <h3>Allometric Equation Search</h3>
+   <h3>Wood Density Search</h3>
    <div class="col-sm-12">
       <ul class="nav nav-tabs">
          <li class="active"><a data-toggle="tab" href="#home">Keyword</a></li>
+         <li><a data-toggle="tab" href="#menu4">Wood Density</a></li>
          <li><a data-toggle="tab" href="#menu1">Taxonomy</a></li>
          <li><a data-toggle="tab" href="#menu2">Location</a></li>
          <li><a data-toggle="tab" href="#menu3">Reference</a></li>
       </ul>
       <div class="tab-content">
          <div id="home" class="tab-pane fade in active">
-            <p> Search allometric equations by keyword. 
+            <p> Search Wood Density by keyword. 
                This searches accross several text fields. 
                <br>
                Example searches: <a href="#">Acacia</a>,
@@ -76,7 +70,7 @@
             </p>
             <p>
             </p>
-            <form action="<?php echo site_url('portal/search_allometricequation_key');?>" method = "post">
+            <form action="<?php echo site_url('portal/search_woodDensities_key');?>" method = "post">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Keyword<span style="color:red;">*</span></label>
@@ -86,16 +80,77 @@
                </div>
             </form>
          </div>
+         <div id="menu4" class="tab-pane fade">
+            <p>Search by tree height, diameter, and volume.</p>
+            <form action="<?php echo site_url('portal/search_woodDensities_raw');?>" method = "post">
+            <div class="row">
+               <h4>Height</h4>
+               <div class="col-md-3">
+                  <div class="form-group">
+                     <label>Average Height <span style="color:red;">*</span></label>
+                     <input type="text" class="form-control input-sm" name ="H_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
+                  </div>
+                  </div>
+                  <div class="col-md-3">
+                  <div class="form-group">
+                     <label>Minimum Height<span style="color:red;">*</span></label>
+                     <input type="text" class="form-control input-sm" name ="H_tree_min" maxlength="64" placeholder="Volume (m3)" />
+                     
+                  </div>
+               </div>
+
+                 <div class="col-md-3">
+                  <div class="form-group">
+                     <label>Maximum Height<span style="color:red;">*</span></label>
+                     <input type="text" class="form-control input-sm" name ="H_tree_max" maxlength="64" placeholder="Volume (m3)" />
+                     
+                  </div>
+               </div>
+
+
+               </div>
+
+                        <div class="row">
+               <h4>DBH</h4>
+               <div class="col-md-3">
+                  <div class="form-group">
+                     <label>Average DBH <span style="color:red;">*</span></label>
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
+                  </div>
+                  </div>
+                  <div class="col-md-3">
+                  <div class="form-group">
+                     <label>Minimum DBH<span style="color:red;">*</span></label>
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_min" maxlength="64" placeholder="Volume (m3)" />
+                     
+                  </div>
+               </div>
+                 <div class="col-md-3">
+                  <div class="form-group">
+                     <label>Maximum DBH<span style="color:red;">*</span></label>
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_max" maxlength="64" placeholder="Volume (m3)" />
+                     
+                  </div>
+               </div>
+                <br>
+                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+
+
+               </div>
+
+
+            </form>
+         </div>
          <div id="menu1" class="tab-pane fade">
             <p> Search allometric equations by family, genus or species.
                Example searches
                <br>
                Example searches: <a href="#">Genus</a>,
                <a href="#">Gmelina</a>,
-               <a href="#">Species</a>, 
+               <a href="#"> Species</a>, 
                <a href="#">schweinfurthii</a>,
             </p>
-            <form action="<?php echo site_url('portal/search_allometricequation_tax');?>" method = "post">
+            <form action="<?php echo site_url('portal/search_woodDensities_tax');?>" method = "post">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Genus<span style="color:red;">*</span></label>
@@ -117,7 +172,7 @@
                <a href="#">Tropical dry forest</a>,
                <a href="#">Country: Benin</a>, 
             </p>
-            <form action="<?php echo site_url('portal/search_allometricequation_loc');?>" method = "post">
+            <form action="<?php echo site_url('portal/search_woodDensities_loc');?>" method = "post">
                <div class="col-md-6">
                   <div class="form-group">
                      <h3>Country</h3>
@@ -127,7 +182,7 @@
                   <div class="form-group">
                      <h3>Ecological Zone</h3>
                      <label>FAO Global Ecological Zone <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="EcoZones" maxlength="64" placeholder="FAO Global Ecological Zone" />
+                     <input type="text" class="form-control input-sm" name ="FAOBiomes" maxlength="64" placeholder="FAO Global Ecological Zone" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -143,7 +198,7 @@
                <a href="#"> Y. & Laumans,</a>, 
                <a href="#"> Year: 2004</a>, 
             </p>
-            <form action="<?php echo site_url('portal/search_allometricequation_ref');?>" method = "post">
+            <form action="<?php echo site_url('portal/search_woodDensities_ref');?>" method = "post">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reference <span style="color:red;">*</span></label>
@@ -167,7 +222,7 @@
    <div class="col-sm-12 bdy_des">
       <ul class="nav nav-tabs">
          <li class="active"><a data-toggle="tab" href="#results-list"><span class="glyphicon glyphicon-list"></span> Results List</a></li>
-         <li><a data-toggle="tab" class="results-map" href="#results-map"><span class="glyphicon glyphicon-globe"></span> Map View</a></li>
+         <li><a data-toggle="tab" href="#results-map"><span class="glyphicon glyphicon-globe"></span> Map View</a></li>
          <div style="float:right;">
             <form action='export/' id="export-form" method="POST">
             <input type='hidden' name='csrfmiddlewaretoken' value='EUSnAj1qQRRf6anXMDF1cWRSTLAwax2J' />
@@ -179,7 +234,7 @@
                </button>
                <ul class="dropdown-menu" role="menu">
                   <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-                  <li><a href="<?php echo site_url('Portal/allometricEquationViewjson/'); ?>" id="export-json">Download JSON</a></li>
+                  <li><a href="<?php echo site_url('Portal/woodDensityViewjson/'); ?>" id="export-json">Download JSON</a></li>
                   <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
                </ul>
             </div>
@@ -189,21 +244,19 @@
       <div class="tab-content">
          <div id="results-list" class="tab-pane fade in active">
             <?php 
-               foreach($allometricEquationView as $row)
+               foreach($woodDensitiesView as $row)
                {
                ?>
             <div class="panel panel-default">
-               <div class="panel-heading">Allometric Equation
-                  <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_Species.'/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+               <div class="panel-heading">Wood densities
+                  <a href="<?php echo site_url('Portal/woodDensitiesDetails/'.$row->ID_Species); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
                <div class="panel-body">
-                  <p style="padding-left:3px;"><b>Equation:<code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code> </b></p>
-                  <p style="padding-left:3px;"><b>Output:</b><?php echo $row->Output;?></p>
+                  <p style="padding-left:3px;"><b>Density g/cm3:</b><?php echo $row->Density_green;?></p>
                   <p style="padding-left:3px;"><b>Reference:</b><?php echo $row->Reference;?></p>
                   <p style="padding-left:3px;"><b>Reference Year:</b><?php echo $row->Year;?></p>
-                  <p style="padding-left:3px;"><b>FAO Biomes:</b><?php echo $row->FAOBiomes;?></p>
-                  <p style="padding-left:3px;"><b>Species:</b> <?php echo $row->Family.' '.$row->Species;?></p>
-                  <p style="padding-left:3px;"><b>Locations:</b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>
+                  <p style="padding-left:3px;"><b>Species:</b> <?php echo $row->Species;?></p>
+                  <p style="padding-left:3px;"><b>Locations:</b>Bangladesh</p>
                </div>
             </div>
             <?php 

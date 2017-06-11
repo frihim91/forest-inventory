@@ -39,9 +39,9 @@
    <div class="row">
       <div class="breadcump-wrapper">
          <div class="wrapper">
-            <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("raw_data"); ?>
+            <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("allometric_equation"); ?>
             </div>
-            <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("raw_data"); ?>
+            <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("allometric_equation"); ?>
             </div>
          </div>
       </div>
@@ -49,7 +49,7 @@
 </div>
 <div class="col-md-12 page_content">
    <div class="col-md-12">
-      <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Raw Data</h2>
+      <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Biomass Expansion Factor</h2>
    </div>
    <div class="col-sm-12 bdy_des">
       <div style="float:right;">
@@ -62,18 +62,18 @@
             <span class="glyphicon glyphicon-download"></span> Export Results <span class="caret"></span>
             </button>
             <?php 
-               foreach($rawDataDetails as $row)
+               foreach($biomassExpansionFacDetails as $row)
                {
                ?>
             <ul class="dropdown-menu" role="menu">
                <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-               <li><a href="<?php echo site_url('Portal/rawDataDetailsPdf/'.$row->ID_Species); ?>" id="export-json">Download PDF</a></li>
+               <li><a href="<?php echo site_url('Portal/biomassExpansionFacPdf/'.$row->ID_Species); ?>" id="export-json">Download PDF</a></li>
                <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
             </ul>
             <?php 
                }?>
          </div>
-         </form>
+         <form>
       </div>
       <h3 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Record Details</h3>
       <div class="row">
@@ -81,119 +81,45 @@
             <br>
             <table class="table">
                <tr>
-                  <th style="width:210px"> DBH (cm): </th>
-                  <td> <b> <?php echo $row->DBH_cm;?>
+                  <th style="width:210px"> Biomass Expansion Factor: </th>
+                  <td> <b>
+                     <?php echo $row->Value;?>
                      </b>
                   </td>
                </tr>
                <tr>
-                  <th> Total Tree Height (m): </th>
-                  <td>
-                     <?php echo $row->H_m;?>
-                  </td>
+                  <th> Growing Stock: </th>
+                  <td></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Crown Diameter (m): </th>
-                  <td> <?php echo $row->CD_m;?></td>
+                  <th>Aboveground Biomass: </th>
+                  <td></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Bole Weight (kg): </th>
-                  <td><?php echo $row->F_Bole_kg;?></td>
+                  <th>Net Annual Increment: </th>
+                  <td></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Branch Weight (kg): </th>
-                  <td><?php echo $row->F_Branch_kg;?></td>
+                  <th>Stand Density: </th>
+                  <td></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Foliage Weight (kg): </th>
-                  <td><?php echo $row->F_Foliage_kg;?></td>
+                  <th>Age: </th>
+                  <td></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Stump Weight (kg): </th>
-                  <td><?php echo $row->F_Stump_kg;?></td>
+                  <th>Input: </th>
+                  <td></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Buttress Weight (kg): </th>
-                  <td><?php echo $row->F_Buttress_kg;?></td>
+                  <th>Output: </th>
+                  <td></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Roots Weight (kg): </th>
-                  <td><?php echo $row->F_Roots_kg;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Total Tree Volume (m3): </th>
-                  <td><?php echo $row->Volume_m3;?>
-                  </td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Bole Volume (m3): </th>
-                  <td><?php echo $row->Volume_bole_m3;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Tree Wood Density Avg (g/cm3): </th>
-                  <td><?php echo $row->WD_AVG_gcm3;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Dry Bole Weight (kg): </th>
-                  <td><?php echo $row->D_Bole_kg;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Dry Branch Weight (kg): </th>
-                  <td><?php echo $row->D_Branch_kg;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Dry Foliage Weight (kg): </th>
-                  <td><?php echo $row->D_Foliage_kg;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Dry Stump Weight (kg): </th>
-                  <td><?php echo $row->D_Stump_kg;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Dry Buttress Weight (kg): </th>
-                  <td><?php echo $row->D_Buttress_kg;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Dry Roots Weight (kg): </th>
-                  <td><?php echo $row->D_Roots_kg;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Total Aboveground Mass (kg): </th>
-                  <td><?php echo $row->ABG_kg;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Total Belowground Mass (kg): </th>
-                  <td><?php echo $row->BGB_kg;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Total Biomass (kg): </th>
-                  <td><?php echo $row->Volume_bole_m3;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Remark: </th>
-                  <td><?php echo $row->Remark;?></td>
-               </tr>
-               <tr>
-                  <th style="width:210px"> Contact: </th>
-                  <td><?php echo $row->Contact;?></td>
+                  <th>Interval Validity: </th>
+                  <td></td>
                </tr>
             </table>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-12">
-            <br>
-            <h3 class="section-header">Components</h3>
-            <table class="table" >
-               <tr>
-                  <th style="width:210px"> Components: </th>
-                  <td >
-                     <strong><em>
-                     </em></strong>
-                  </td>
-               </tr>
-            </table>
-            <br><br>
          </div>
       </div>
       <div class="row">
@@ -203,11 +129,11 @@
             <table class="table">
                <tr>
                   <th> Tree type: </th>
-                  <td><?php echo $row->Tree_type;?></td>
+                  <td><?php echo $row->Tree_type;?> </td>
                </tr>
                <tr>
                   <th> Vegetation type: </th>
-                  <td> <?php echo $row->Vegetation_type;?></td>
+                  <td> <?php echo $row->Vegetation_type;?> </td>
                </tr>
             </table>
          </div>
@@ -230,7 +156,7 @@
                   <th>Author:</th>
                   <th>Local Names:</th>
                </tr>
-               <td>
+               <td >
                   <?php echo $row->Family;?>
                </td>
                <td>
@@ -239,9 +165,9 @@
                <td>
                   <?php echo $row->Species;?>
                </td>
-               <td><?php echo $row->Subspecies;?></td>
+               <td > <?php echo $row->Subspecies;?></td>
                <td >None</td>
-               <td>
+               <td >
                </td>
                </tr>
             </table>
@@ -263,7 +189,6 @@
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Location Name: </th>
                            <td  class="pdf-record-td">
-                              <?php echo $row->District;?>
                            </td>
                         </tr>
                         <tr>
@@ -272,7 +197,7 @@
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th>
-                           <td  class="pdf-record-td">  </td>
+                           <td  class="pdf-record-td"> Bangladesh </td>
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th>
@@ -280,14 +205,14 @@
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
-                           <td  class="pdf-record-td"> 
-                              <?php echo $row->Latitude;?>
+                           <td class="pdf-record-td"> 
+                              <?php echo $row->latitude;?>
                            </td>
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Longitude: </th>
                            <td  class="pdf-record-td">
-                              <?php echo $row->Longitude;?>
+                              <?php echo $row->longitude;?>
                            </td>
                         </tr>
                      </table>
@@ -302,7 +227,7 @@
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th>
-                           <td  class="pdf-record-td">  <?php echo $row->Ecoregion_Udvardy;?> </td>
+                           <td  class="pdf-record-td"> <?php echo $row->Ecoregion_Udvardy;?> </td>
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> WWF Terrestrial Ecoregion: </th>
@@ -359,7 +284,7 @@
             <table class="table">
                <tr>
                   <th style="width:210px">Contributor:</th>
-                  <td><?php echo $row->Contributor;?></td>
+                  <td> <?php echo $row->Contributor;?></td>
                </tr>
             </table>
          </div>
@@ -371,7 +296,7 @@
             <table class="table">
                <tr>
                   <th style="width:210px">Dataset:</th>
-                  <td>RD </td>
+                  <td>EF </td>
                </tr>
             </table>
          </div>

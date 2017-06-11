@@ -42,56 +42,118 @@ $lang_ses = $this->session->userdata("site_lang");
             </div>
 
   <div class="col-sm-12 bdy_des">
+    <?php 
+               foreach($rawDataDetails as $row)
+               {
+               ?>
+          
+            <?php 
+               }?>
   
   <h3 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Record Details</h3>
   
   <div class="row">     
     <div class="col-md-12">
          <br>
-   <table class="table">
-        
-            <tr><th style="width:210px"> DBH (cm): </th><td> <b>
-            </b></td></tr>
-            <tr><th> Total Tree Height (m): </th><td>
-            <?php 
-            foreach($rawDataDetails as $row)
-            {
-            ?><?php echo $row->HeightRange;?>
-            <?php 
-            }?>
-
-            </td></tr>
-            
-              <tr><th style="width:210px"> Crown Diameter (m): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Bole Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Branch Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Foliage Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Stump Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Buttress Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Fresh Roots Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Total Tree Volume (m3): </th><td>
-              <?php 
-              foreach($rawDataDetails as $row)
-              {
-              ?><?php echo $row->VolumeRange;?>
-              <?php 
-              }?>
-              </td></tr>
-              <tr><th style="width:210px"> Bole Volume (m3): </th><td></td></tr>
-              <tr><th style="width:210px"> Tree Wood Density Avg (g/cm3): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Bole Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Branch Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Foliage Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Stump Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Buttress Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Dry Roots Weight (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Total Aboveground Mass (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Total Belowground Mass (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> TTotal Biomass (kg): </th><td></td></tr>
-              <tr><th style="width:210px"> Remark: </th><td></td></tr>
-              <tr><th style="width:210px"> Contact: </th><td></td></tr>
-        </table>
-      
+             <table class="table">
+               <tr>
+                  <th style="width:210px"> DBH (cm): </th>
+                  <td> <b> <?php echo $row->DBH_cm;?>
+                     </b>
+                  </td>
+               </tr>
+               <tr>
+                  <th> Total Tree Height (m): </th>
+                  <td>
+                     <?php echo $row->H_m;?>
+                  </td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Crown Diameter (m): </th>
+                  <td> <?php echo $row->CD_m;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Fresh Bole Weight (kg): </th>
+                  <td><?php echo $row->F_Bole_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Fresh Branch Weight (kg): </th>
+                  <td><?php echo $row->F_Branch_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Fresh Foliage Weight (kg): </th>
+                  <td><?php echo $row->F_Foliage_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Fresh Stump Weight (kg): </th>
+                  <td><?php echo $row->F_Stump_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Fresh Buttress Weight (kg): </th>
+                  <td><?php echo $row->F_Buttress_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Fresh Roots Weight (kg): </th>
+                  <td><?php echo $row->F_Roots_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Total Tree Volume (m3): </th>
+                  <td><?php echo $row->Volume_m3;?>
+                  </td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Bole Volume (m3): </th>
+                  <td><?php echo $row->Volume_bole_m3;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Tree Wood Density Avg (g/cm3): </th>
+                  <td><?php echo $row->WD_AVG_gcm3;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Dry Bole Weight (kg): </th>
+                  <td><?php echo $row->D_Bole_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Dry Branch Weight (kg): </th>
+                  <td><?php echo $row->D_Branch_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Dry Foliage Weight (kg): </th>
+                  <td><?php echo $row->D_Foliage_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Dry Stump Weight (kg): </th>
+                  <td><?php echo $row->D_Stump_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Dry Buttress Weight (kg): </th>
+                  <td><?php echo $row->D_Buttress_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Dry Roots Weight (kg): </th>
+                  <td><?php echo $row->D_Roots_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Total Aboveground Mass (kg): </th>
+                  <td><?php echo $row->ABG_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Total Belowground Mass (kg): </th>
+                  <td><?php echo $row->BGB_kg;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Total Biomass (kg): </th>
+                  <td><?php echo $row->Volume_bole_m3;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Remark: </th>
+                  <td><?php echo $row->Remark;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Contact: </th>
+                  <td><?php echo $row->Contact;?></td>
+               </tr>
+            </table>
 
     </div>
 </div>
@@ -116,42 +178,22 @@ $lang_ses = $this->session->userdata("site_lang");
     </div>
 </div>
 
-<div class="row">     
-    <div class="col-md-12">
-        <br>
-        <h3>Input/Output</h3>
-        <table class="table">
-            <tr><th style="width:340px"> X: </th><td> </td></tr>
-            <tr><th> Unit X: </th><td> </td></tr>
-            <tr><th> Z: </th><td>  </td></tr>
-            <tr><th> Unit Z: </th><td> </td></tr>
-            <tr><th> W: </th><td></td></tr>
-            <tr><th> Unit_W: </th><td></td></tr>
-            <tr><th> U: </th><td> </td></tr>
-            <tr><th> Unit_U: </th><td></td></tr>
-            <tr><th> V: </th><td></td></tr>
-            <tr><th> Unit V: </td></tr>
-            <tr><th> Min X: </th><td> </td></tr>
-            <tr><th> Max X: </th><td></td></tr>
-            <tr><th> Min Z: </th><td></td></tr>
-            <tr><th> Max Z: </th><td>    </td></tr>
-            <tr><th> Output: </th><td> </td></tr>
-            <tr><th> Output TR: </th><td> </td></tr>
-            <tr><th> Age: </th><td> </td></tr>
-            <tr><th> Veg component: </th><td>  </td></tr>
-        </table>
-    </div>
-</div>
 
 
 <div class="row">     
     <div class="col-md-12">
         <br>
         <h3 class="section-header">Idendification</h3>       
-        <table class="table">
-            <tr><th> Tree type: </th><td> </td></tr>
-            <tr><th> Vegetation type: </th><td>  </td></tr>
-        </table>
+       <table class="table">
+               <tr>
+                  <th> Tree type: </th>
+                  <td><?php echo $row->Tree_type;?></td>
+               </tr>
+               <tr>
+                  <th> Vegetation type: </th>
+                  <td> <?php echo $row->Vegetation_type;?></td>
+               </tr>
+            </table>
     </div>
 </div>
 
@@ -169,48 +211,31 @@ $lang_ses = $this->session->userdata("site_lang");
         </h3>
         
             
-              <table class="table">
-                  <tr>
-                        <th>Family:</th>
-                        <th>Genus:</th>
-                        <th>Species:</th>
-                        <th>Subspecies:</th>
-                        <th>Author:</th>
-                        <th>Local Names:</th>
-                    </tr>
-                     <tr>
-                        <td >
-                        <?php 
-                        foreach($rawDataDetails as $row){
-                         ?>
-                         <?php echo $row->Family;?>
-                         <?php 
-                          }?></td>
-                        <td>
-                         <?php 
-                         foreach($rawDataDetails as $row){
-                         ?>
-                         <?php echo $row->Genus;?>
-                         <?php 
-                         }?>
-                          
-                        </td>
-                        <td>
-                         <?php 
-                         foreach($rawDataDetails as $row){
-                         ?>
-                         <?php echo $row->Species;?>
-                         <?php 
-                         }?>
-                          
-                        </td>
-                        <td >None</td>
-                        <td >None</td>
-                        <td >
-                        </td>
-                        </tr>
-                    
-              </table>
+                        <table class="table">
+               <tr>
+                  <th>Family:</th>
+                  <th>Genus:</th>
+                  <th>Species:</th>
+                  <th>Subspecies:</th>
+                  <th>Author:</th>
+                  <th>Local Names:</th>
+               </tr>
+               <tr>
+               <td>
+                  <?php echo $row->Family;?>
+               </td>
+               <td>
+                  <?php echo $row->Genus;?>
+               </td>
+               <td>
+                  <?php echo $row->Species;?>
+               </td>
+               <td><?php echo $row->Subspecies;?></td>
+               <td >None</td>
+               <td>
+               </td>
+               </tr>
+            </table>
             
         
   </div>
@@ -232,60 +257,71 @@ $lang_ses = $this->session->userdata("site_lang");
             
            
             
-            <table class="table">
-                <tr>
-                    <td style="width:40%">
-                        <table>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Location Name: </th><td  class="pdf-record-td">
-                             <?php 
-                             foreach($rawDataDetails as $row){
-                             ?><?php echo $row->District;?>
-                             <?php 
-                             }?>
-                            </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th><td  class="pdf-record-td">  </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th><td  class="pdf-record-td">  </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th><td  class="pdf-record-td">  </td></tr>
-                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th><td  class="pdf-record-td"> 
-                             <?php 
-                             foreach($rawDataDetails as $row){
-                             ?><?php echo $row->LatDD;?>
-                            <?php 
-                             }?>
-
-                             </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Longitude: </th><td  class="pdf-record-td">
-                             <?php 
-                             foreach($rawDataDetails as $row){
-                             ?><?php echo $row->LongDD;?>
-                             <?php 
-                             }?>
-                            </td></tr>
-                        </table>
-                    </td>
-                    <td style="width:60%">
-                        <table>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone: </th><td class="pdf-record-td">
-                            <?php 
-                             foreach($rawDataDetails as $row){
-                             ?><?php echo $row->FAOBiomes;?>
-                             <?php 
-                             }?> 
-                             </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th><td  class="pdf-record-td">  </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> WWF Terrestrial Ecoregion: </th><td class="pdf-record-td">  </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division Bailey: </th><td class="pdf-record-td"> </td></tr>
-                            <tr><th class="pdf-record-th"> Holdridge Life Zone:</th><td  class="pdf-record-td"> 
-                             <?php 
-                             foreach($rawDataDetails as $row){
-                             ?><?php echo $row->Zones;?>
-                             <?php 
-                             }?> 
-                             </td></tr>
-
-                        </table>
-                    </td>
-                </tr>
+                 <table class="table">
+               <tr>
+                  <td style="width:40%">
+                     <table>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Location Name: </th>
+                           <td  class="pdf-record-td">
+                              <?php echo $row->District;?>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th>
+                           <td  class="pdf-record-td">  </td>
+                        </tr>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th>
+                           <td  class="pdf-record-td">  </td>
+                        </tr>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th>
+                           <td  class="pdf-record-td">  </td>
+                        </tr>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
+                           <td  class="pdf-record-td"> 
+                              <?php echo $row->Latitude;?>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Longitude: </th>
+                           <td  class="pdf-record-td">
+                              <?php echo $row->Longitude;?>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+                  <td style="width:60%">
+                     <table>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone: </th>
+                           <td class="pdf-record-td">
+                              <?php echo $row->FAOBiomes;?>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th>
+                           <td  class="pdf-record-td">  <?php echo $row->Ecoregion_Udvardy;?> </td>
+                        </tr>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> WWF Terrestrial Ecoregion: </th>
+                           <td class="pdf-record-td"><?php echo $row->Ecoregion_WWF;?>  </td>
+                        </tr>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division Bailey: </th>
+                           <td class="pdf-record-td"><?php echo $row->Division_Bailey;?>  </td>
+                        </tr>
+                        <tr>
+                           <th class="pdf-record-th"> Holdridge Life Zone:</th>
+                           <td  class="pdf-record-td"> 
+                              <?php echo $row->Zone_Holdridge;?>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
             </table>
             <br>
             
@@ -304,31 +340,25 @@ $lang_ses = $this->session->userdata("site_lang");
         <br>
         <h3 class="section-header">Reference</h3>
          
-            <table class="table">
-                <tr><th> Reference: </th><td> 
-            <?php 
-            foreach($rawDataDetails as $row)
-            {
-            ?><?php echo $row->Reference;?>
-            <?php 
-            }?></td></tr>
-                <tr><th> Author: </th><td>
-            <?php 
-            foreach($rawDataDetails as $row)
-            {
-            ?><?php echo $row->Author;?>
-            <?php 
-            }?>
-                </td></tr>
-                <tr><th> Year: </th><td> 
-
-            <?php 
-            foreach($rawDataDetails as $row)
-            {
-            ?><?php echo $row->Year;?>
-            <?php 
-            }?>
-                </td></tr>
+          <table class="table">
+               <tr>
+                  <th> Reference: </th>
+                  <td> 
+                     <?php echo $row->Reference;?>
+                  </td>
+               </tr>
+               <tr>
+                  <th> Author: </th>
+                  <td>
+                     <?php echo $row->Author;?>
+                  </td>
+               </tr>
+               <tr>
+                  <th> Year: </th>
+                  <td> 
+                     <?php echo $row->Year;?>
+                  </td>
+               </tr>
             </table>
         
     </div>
@@ -340,7 +370,10 @@ $lang_ses = $this->session->userdata("site_lang");
         <h3 class="section-header">Contributor</h3>
         
             <table class="table">
-                <tr><th style="width:210px">Contributor:</th><td></td></tr>
+               <tr>
+                  <th style="width:210px">Contributor:</th>
+                  <td><?php echo $row->Contributor;?></td>
+               </tr>
             </table>
             
         
@@ -354,7 +387,7 @@ $lang_ses = $this->session->userdata("site_lang");
 
          
             <table class="table">
-                <tr><th style="width:210px">Dataset:</th><td> </td></tr>
+                <tr><th style="width:210px">Dataset:</th><td> RD</td></tr>
             </table>
         
     </div>

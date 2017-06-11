@@ -46,16 +46,16 @@
    <div class="row">
       <div class="breadcump-wrapper">
          <div class="wrapper">
-            <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("allometric_equations"); ?>
+            <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("biomass_expansion_factor"); ?>
             </div>
-            <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("allometric_equations"); ?>
+            <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("biomass_expansion_factor"); ?>
             </div>
          </div>
       </div>
    </div>
 </div>
 <div class="col-md-12 page_content">
-   <h3>Allometric Equation Search</h3>
+   <h3>Biomass Expansion Factor Search</h3>
    <div class="col-sm-12">
       <ul class="nav nav-tabs">
          <li class="active"><a data-toggle="tab" href="#home">Keyword</a></li>
@@ -65,7 +65,7 @@
       </ul>
       <div class="tab-content">
          <div id="home" class="tab-pane fade in active">
-            <p> Search allometric equations by keyword. 
+            <p> Search Biomas Expension Factor equations by keyword. 
                This searches accross several text fields. 
                <br>
                Example searches: <a href="#">Acacia</a>,
@@ -76,7 +76,7 @@
             </p>
             <p>
             </p>
-            <form action="<?php echo site_url('portal/search_allometricequation_key');?>" method = "post">
+            <form action="<?php echo site_url('portal/search_biomas_expansion_key');?>" method = "post">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Keyword<span style="color:red;">*</span></label>
@@ -87,7 +87,7 @@
             </form>
          </div>
          <div id="menu1" class="tab-pane fade">
-            <p> Search allometric equations by family, genus or species.
+            <p> Search Biomas Expension Factor by family, genus or species.
                Example searches
                <br>
                Example searches: <a href="#">Genus</a>,
@@ -95,7 +95,7 @@
                <a href="#">Species</a>, 
                <a href="#">schweinfurthii</a>,
             </p>
-            <form action="<?php echo site_url('portal/search_allometricequation_tax');?>" method = "post">
+            <form action="<?php echo site_url('portal/search_biomas_expansion_tax');?>" method = "post">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Genus<span style="color:red;">*</span></label>
@@ -179,7 +179,7 @@
                </button>
                <ul class="dropdown-menu" role="menu">
                   <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-                  <li><a href="<?php echo site_url('Portal/allometricEquationViewjson/'); ?>" id="export-json">Download JSON</a></li>
+                  <li><a href="<?php echo site_url('Portal/biomassExpansionFacViewjson/'); ?>" id="export-json">Download JSON</a></li>
                   <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
                </ul>
             </div>
@@ -189,21 +189,20 @@
       <div class="tab-content">
          <div id="results-list" class="tab-pane fade in active">
             <?php 
-               foreach($allometricEquationView as $row)
+               foreach($biomassExpansionFacView as $row)
                {
                ?>
             <div class="panel panel-default">
-               <div class="panel-heading">Allometric Equation
-                  <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_Species.'/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+               <div class="panel-heading">Biomass Expansion Factor
+                  <a href="<?php echo site_url('Portal/biomassExpansionFacDetails/'.$row->ID_Species); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
                <div class="panel-body">
-                  <p style="padding-left:3px;"><b>Equation:<code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code> </b></p>
-                  <p style="padding-left:3px;"><b>Output:</b><?php echo $row->Output;?></p>
+                  <p style="padding-left:3px;"><b>Biomass Expansion Factor:</b><?php echo $row->Value;?></p>
                   <p style="padding-left:3px;"><b>Reference:</b><?php echo $row->Reference;?></p>
                   <p style="padding-left:3px;"><b>Reference Year:</b><?php echo $row->Year;?></p>
                   <p style="padding-left:3px;"><b>FAO Biomes:</b><?php echo $row->FAOBiomes;?></p>
                   <p style="padding-left:3px;"><b>Species:</b> <?php echo $row->Family.' '.$row->Species;?></p>
-                  <p style="padding-left:3px;"><b>Locations:</b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>
+                  <p style="padding-left:3px;"><b>Locations:</b><?php echo $row->Country;?></p>
                </div>
             </div>
             <?php 

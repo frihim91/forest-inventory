@@ -404,21 +404,73 @@ class ForestData extends CI_Controller
             "All EF Data" => "dashboard/ForestData/all_ef_data"
         );
         $data['pageTitle']         = "All EF Data ";
-        $data['all_ef_data']       = $this->db->query("SELECT  e.*,l.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.*,ip.* from ef e
+        $data['all_ef_data']       = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.*,ip.* from ef e
              LEFT JOIN ef_ipcc ip ON e.ID_EF_IPCC=ip.ID_EF_IPCC
-             LEFT JOIN species s ON e.ID_Species=s.ID_Species
+             LEFT JOIN species s ON e.Species=s.ID_Species
              LEFT JOIN family f ON s.ID_Family=f.ID_Family
              LEFT JOIN genus g ON f.ID_Family=g.ID_Family 
-             LEFT JOIN reference r ON e.ID_Reference=r.ID_Reference
-             LEFT JOIN location l ON e.ID_Location=l.ID_Location
-             LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-             LEFT JOIN division d ON l.ID_Division=d.ID_Division
-             LEFT JOIN district dis ON l.ID_District =dis.ID_District
-             LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+             LEFT JOIN reference r ON e.Reference=r.ID_Reference
+             LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+             LEFT JOIN division d ON e.Division=d.ID_Division
+             LEFT JOIN district dis ON e.District =dis.ID_District
+             LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+             LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
              Group BY e.ID_EF desc")->result();
         $data['content_view_page'] = 'setup/forestData/all_ef_data';
         $this->template->display($data);
     }
+
+
+
+ 
+
+     function ajax_get_division() {
+        //$ID_Division = $_POST['Division'];
+         $ID_Division = $this->input->post('Division');
+         $divi             = explode(",", $ID_Division);
+         $second_value_divi   = $divi[1];
+
+        $query = $this->utilities->findAllByAttribute('district', array("DIVISION" => $second_value_divi));
+        $returnVal = '<option value = "">Select one</option>';
+        if (!empty($query)) {
+            foreach ($query as $row) {
+                $returnVal .= '<option value = "' .$row->ID_District . ','. $row->District  . '">' . $row->District . '</option>';
+            }
+        }
+        echo $returnVal;
+    }
+
+      function up_thana_by_dis_id() {
+        $DISTNAME = $_POST['District'];
+        $divi             = explode(",", $DISTNAME);
+         $second_value_divi   = $divi[1];
+        $query = $this->utilities->findAllByAttribute('upazilla', array("DISTNAME" => $second_value_divi));
+        //var_dump($query);exit;
+        $returnVal = '<option value = "">Select one</option>';
+        if (!empty($query)) {
+            foreach ($query as $row) {
+                $returnVal .= '<option value = "' .$row->UPZ_CODE_1. ','. $row->THANAME . '">' . $row->THANAME . '</option>';
+            }
+        }
+        echo $returnVal;
+    }
+
+
+      function up_union_by_dis_id() {
+        $THANAME = $_POST['THANAME'];
+        $divi             = explode(",", $THANAME);
+        $second_value_divi   = $divi[1];
+
+        $query = $this->utilities->findAllByAttribute('union', array("THANAME" => $second_value_divi));
+        $returnVal = '<option value = "">Select one</option>';
+        if (!empty($query)) {
+            foreach ($query as $row) {
+                $returnVal .= '<option value = "' . $row->UNI_CODE_1 . '">' . $row->UNINAME . '</option>';
+            }
+        }
+        echo $returnVal;
+    }
+    
     
     
     
@@ -430,7 +482,7 @@ class ForestData extends CI_Controller
      */
     public function createEFData()
     {
-        
+      
         $this->form_validation->set_rules('ID_Species', 'Species Name', 'required');
         
         if ($this->form_validation->run() == FALSE) {
@@ -439,6 +491,7 @@ class ForestData extends CI_Controller
                 "Create EF Data" => "#"
             );
             $data['pageTitle']         = "Add EF Data";
+
             $data['content_view_page'] = 'setup/modules/create_module_link';
             $this->template->display($data);
         } else {
@@ -448,7 +501,7 @@ class ForestData extends CI_Controller
                 $x              = explode(",", $ID_VolumeRange);
                 $first_value    = $x[0];
                 $second_value   = $x[1];
-                
+
                 $ID_HeightRange           = $this->input->post('ID_HeightRange');
                 $h                        = explode(",", $ID_HeightRange);
                 $first_value_HeightRange  = $h[0];
@@ -465,20 +518,30 @@ class ForestData extends CI_Controller
                 $first_value_BasalRange  = $b[0];
                 $second_value_BasalRange = $b[1];
 
-                $ID_Species           = $this->input->post('ID_Species');
-                $s                       = explode(",", $ID_Species);
-                $first_value_Species  = $s[0];
-                $second_value_Species = $s[1];
-                
+
+                $ID_Division = explode(",", $_POST['ID_Division']);
+                $divi = $ID_Division[0];
+
+                $ID_District = explode(",", $_POST['ID_District']);
+                $dis = $ID_District[0];
+
+                $UPZ_CODE_1 = explode(",", $_POST['UPZ_CODE_1']);
+                $upazila = $UPZ_CODE_1[0];
+
+                $UNI_CODE_1 = explode(",", $_POST['UNI_CODE_1']);
+                $union = $UNI_CODE_1[0];
+
+
+
+
             }
             
             $ef = array(
                 'EmissionFactor' => $this->input->post('EmissionFactor'),
-                'Description' => $this->input->post('Description'),
-                'WoodDensity' => $this->input->post('WoodDensity'),
+                'longitude' => $this->input->post('longitude'),
+                'latitude' => $this->input->post('latitude'),
                 'ID_LandCover' => $this->input->post('ID_LandCover'),
-                'ID_Species' => $this->input->post('ID_Species'),
-                'ID_Species_new' => $second_value_Species,
+                'Species' => $this->input->post('ID_Species'),
                 'ID_AgeRange' => $first_value_AgeRange,
                 'AgeRange' => $second_value_AgeRange,
                 'ID_HeightRange' => $first_value_HeightRange,
@@ -490,12 +553,20 @@ class ForestData extends CI_Controller
                 'Value' => $this->input->post('Value'),
                 'Unit' => $this->input->post('Unit'),
                 'ID_EF_IPCC' => $this->input->post('ID_EF_IPCC'),
-                'ID_Reference' => $this->input->post('ID_Reference'),
+                'Reference' => $this->input->post('ID_Reference'),
                 'Lower_Confidence_Limit' => $this->input->post('Lower_Confidence_Limit'),
                 'Upper_Confidence_Limit' => $this->input->post('Upper_Confidence_Limit'),
                 'Type_of_Parameter' => $this->input->post('Type_of_Parameter'),
-                'ID_Location' => $this->input->post('ID_Location')
+                'Country' =>'Bangladesh',
+                'Division' => $divi,
+                'District' =>  $dis,
+                'Upazila' =>  $upazila,
+                'Union' =>  $union,
+                'FAO_biome' => $this->input->post('ID_FAOBiomes'),
+                'WWF_Eco_zone' => $this->input->post('ID_1988EcoZones'),
+                'BFI_zone' => $this->input->post('ID_Zones')
             );
+
             if ($this->utilities->insertData($ef, 'ef')) {
                 $this->session->set_flashdata('Success', 'New EF Data Added Successfully.');
                 

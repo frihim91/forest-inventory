@@ -35,181 +35,156 @@
 <?php
    $lang_ses = $this->session->userdata("site_lang");
    ?>
-<div class="col-sm-12 breadcump img-responsive">
-   <div class="row">
-      <div class="breadcump-wrapper">
-         <div class="wrapper">
-            <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("raw_data"); ?>
-            </div>
-            <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("raw_data"); ?>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
+
 <div class="col-md-12 page_content">
    <div class="col-md-12">
-      <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Raw Data</h2>
+      <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Wood Density</h2>
    </div>
    <div class="col-sm-12 bdy_des">
-      <div style="float:right;">
-         <form action='export/' id="export-form" method="POST">
-         <input type='hidden' name='csrfmiddlewaretoken' value='EUSnAj1qQRRf6anXMDF1cWRSTLAwax2J' />
-         <input type="hidden" name="query" id="export-query" />
-         <input type="hidden" name="extension" id="export-extension" />
-         <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >
-            <span class="glyphicon glyphicon-download"></span> Export Results <span class="caret"></span>
-            </button>
-            <?php 
-               foreach($rawDataDetails as $row)
+     <?php 
+               foreach($woodDensitiesDetails as $row)
                {
                ?>
-            <ul class="dropdown-menu" role="menu">
-               <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-               <li><a href="<?php echo site_url('Portal/rawDataDetailsPdf/'.$row->ID_Species); ?>" id="export-json">Download PDF</a></li>
-               <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
-            </ul>
+          
             <?php 
                }?>
-         </div>
-         </form>
-      </div>
       <h3 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Record Details</h3>
       <div class="row">
          <div class="col-md-12">
             <br>
+         
             <table class="table">
                <tr>
-                  <th style="width:210px"> DBH (cm): </th>
-                  <td> <b> <?php echo $row->DBH_cm;?>
-                     </b>
+                  <th style="width:210px"> Density (g/cm3): </th>
+                  <td>  <?php echo $row->Density_green;?>
                   </td>
                </tr>
                <tr>
-                  <th> Total Tree Height (m): </th>
-                  <td>
-                     <?php echo $row->H_m;?>
+                  <th> Tree height avg: </th>
+                  <td><?php echo $row->H_tree_avg;?>
                   </td>
                </tr>
                <tr>
-                  <th style="width:210px"> Crown Diameter (m): </th>
-                  <td> <?php echo $row->CD_m;?></td>
+                  <th style="width:210px"> Tree height min: </th>
+                  <td><?php echo $row->H_tree_min;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Bole Weight (kg): </th>
-                  <td><?php echo $row->F_Bole_kg;?></td>
+                  <th style="width:210px"> Tree height max: </th>
+                  <td><?php echo $row->H_tree_max;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Branch Weight (kg): </th>
-                  <td><?php echo $row->F_Branch_kg;?></td>
+                  <th style="width:210px"> Tree DBH avg: </th>
+                  <td><?php echo $row->DBH_tree_avg;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Foliage Weight (kg): </th>
-                  <td><?php echo $row->F_Foliage_kg;?></td>
+                  <th style="width:210px"> Tree DBH min: </th>
+                  <td><?php echo $row->DBH_tree_min;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Stump Weight (kg): </th>
-                  <td><?php echo $row->F_Stump_kg;?></td>
+                  <th style="width:210px"> Tree DBH max: </th>
+                  <td><?php echo $row->DBH_tree_max;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Buttress Weight (kg): </th>
-                  <td><?php echo $row->F_Buttress_kg;?></td>
+                  <th style="width:210px"> Wood mass: </th>
+                  <td><?php echo $row->m_WD;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Fresh Roots Weight (kg): </th>
-                  <td><?php echo $row->F_Roots_kg;?></td>
+                  <th style="width:210px"> Mass Moisture Content: </th>
+                  <td><?php echo $row->MC_m;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Total Tree Volume (m3): </th>
-                  <td><?php echo $row->Volume_m3;?>
+                  <th style="width:210px"> Wood volume: </th>
+                  <td><?php echo $row->V_WD;?>
                   </td>
                </tr>
                <tr>
-                  <th style="width:210px"> Bole Volume (m3): </th>
-                  <td><?php echo $row->Volume_bole_m3;?></td>
+                  <th style="width:210px"> Volume Moisture Content: </th>
+                  <td><?php echo $row->MC_V;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Tree Wood Density Avg (g/cm3): </th>
-                  <td><?php echo $row->WD_AVG_gcm3;?></td>
+                  <th style="width:210px"> Coefficient of Retraction: </th>
+                  <td><?php echo $row->CR;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Dry Bole Weight (kg): </th>
-                  <td><?php echo $row->D_Bole_kg;?></td>
+                  <th style="width:210px"> Fiber Saturation Point (%): </th>
+                  <td><?php echo $row->FSP;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Dry Branch Weight (kg): </th>
-                  <td><?php echo $row->D_Branch_kg;?></td>
+                  <th style="width:210px"> Methodology: </th>
+                  <td><?php echo $row->Methodology_Green;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Dry Foliage Weight (kg): </th>
-                  <td><?php echo $row->D_Foliage_kg;?></td>
+                  <th style="width:210px"> Bark: </th>
+                  <td><?php echo $row->Bark;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Dry Stump Weight (kg): </th>
-                  <td><?php echo $row->D_Stump_kg;?></td>
+                  <th style="width:210px"> Moisture Content Density: </th>
+                  <td><?php echo $row->Methodology_Ovendry;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Dry Buttress Weight (kg): </th>
-                  <td><?php echo $row->D_Buttress_kg;?></td>
+                  <th style="width:210px"> Data origin: </th>
+                  <td><?php echo $row->Data_origin;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Dry Roots Weight (kg): </th>
-                  <td><?php echo $row->D_Roots_kg;?></td>
+                  <th style="width:210px"> Data type: </th>
+                  <td><?php echo $row->Data_type;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Total Aboveground Mass (kg): </th>
-                  <td><?php echo $row->ABG_kg;?></td>
+                  <th style="width:210px"> Samples per tree: </th>
+                  <td><?php echo $row->Samples_per_tree;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Total Belowground Mass (kg): </th>
-                  <td><?php echo $row->BGB_kg;?></td>
+                  <th style="width:210px"> Number of trees: </th>
+                  <td><?php echo $row->Number_of_trees;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Total Biomass (kg): </th>
-                  <td><?php echo $row->Volume_bole_m3;?></td>
+                  <th style="width:210px"> Standard Deviation: </th>
+                  <td><?php echo $row->SD;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Remark: </th>
-                  <td><?php echo $row->Remark;?></td>
+                  <th style="width:210px"> Min of Wood Density: </th>
+                  <td><?php echo $row->Min;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Contact: </th>
-                  <td><?php echo $row->Contact;?></td>
+                  <th style="width:210px"> Max of Wood Density: </th>
+                  <td><?php echo $row->Max;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Height sample collected: </th>
+                  <td><?php echo $row->H_measure;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Bark distance: </th>
+                  <td><?php echo $row->Bark_distance;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> Convert BD: </th>
+                  <td><?php echo $row->Convert_BD;?></td>
+               </tr>
+               <tr>
+                  <th style="width:210px"> CV: </th>
+                  <td><?php echo $row->CV;?></td>
                </tr>
             </table>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-12">
-            <br>
-            <h3 class="section-header">Components</h3>
-            <table class="table" >
-               <tr>
-                  <th style="width:210px"> Components: </th>
-                  <td >
-                     <strong><em>
-                     </em></strong>
-                  </td>
-               </tr>
-            </table>
-            <br><br>
+          
          </div>
       </div>
       <div class="row">
          <div class="col-md-12">
             <br>
             <h3 class="section-header">Idendification</h3>
+          
             <table class="table">
                <tr>
-                  <th> Tree type: </th>
-                  <td><?php echo $row->Tree_type;?></td>
+                  <th style="width:210px"> Tree type: </th>
+                  <td> <?php echo $row->Tree_type;?></td>
                </tr>
                <tr>
-                  <th> Vegetation type: </th>
-                  <td> <?php echo $row->Vegetation_type;?></td>
+                  <th style="width:210px"> Vegetation type: </th>
+                  <td><?php echo $row->Vegetation_type;?></td>
                </tr>
             </table>
+           
          </div>
       </div>
       <div class="row">
@@ -221,6 +196,7 @@
                &nbsp;&nbsp;&nbsp;&nbsp;
                </span>
             </h3>
+        
             <table class="table">
                <tr>
                   <th>Family:</th>
@@ -230,7 +206,8 @@
                   <th>Author:</th>
                   <th>Local Names:</th>
                </tr>
-               <td>
+               <tr>
+               <td >
                   <?php echo $row->Family;?>
                </td>
                <td>
@@ -239,12 +216,13 @@
                <td>
                   <?php echo $row->Species;?>
                </td>
-               <td><?php echo $row->Subspecies;?></td>
-               <td >None</td>
-               <td>
+               <td ><?php echo $row->Subspecies;?></td>
+               <td><?php echo $row->Author;?>
                </td>
+               <td>None</td>
                </tr>
             </table>
+           
          </div>
       </div>
       <div class="row">
@@ -256,6 +234,7 @@
                &nbsp;&nbsp;&nbsp;&nbsp;
                </span>
             </h3>
+        
             <table class="table">
                <tr>
                   <td style="width:40%">
@@ -268,11 +247,11 @@
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th>
-                           <td  class="pdf-record-td">  </td>
+                           <td  class="pdf-record-td"> <?php echo $row->Region;?> </td>
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th>
-                           <td  class="pdf-record-td">  </td>
+                           <td  class="pdf-record-td"> Bangladesh </td>
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th>
@@ -302,11 +281,11 @@
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th>
-                           <td  class="pdf-record-td">  <?php echo $row->Ecoregion_Udvardy;?> </td>
+                           <td  class="pdf-record-td"> <?php echo $row->Ecoregion_Udvardy;?> </td>
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> WWF Terrestrial Ecoregion: </th>
-                           <td class="pdf-record-td"><?php echo $row->Ecoregion_WWF;?>  </td>
+                           <td class="pdf-record-td"> <?php echo $row->Ecoregion_WWF;?> </td>
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division Bailey: </th>
@@ -322,6 +301,7 @@
                   </td>
                </tr>
             </table>
+           
             <br>
             <div id="point_map_canvas"></div>
          </div>
@@ -330,38 +310,43 @@
          <div class="col-md-12">
             <br>
             <h3 class="section-header">Reference</h3>
+          
             <table class="table">
                <tr>
-                  <th> Reference: </th>
+                  <th style="width:210px"> Reference: </th>
                   <td> 
                      <?php echo $row->Reference;?>
                   </td>
                </tr>
                <tr>
-                  <th> Author: </th>
+                  <th style="width:210px"> Author: </th>
                   <td>
                      <?php echo $row->Author;?>
                   </td>
                </tr>
                <tr>
-                  <th> Year: </th>
+                  <th style="width:210px"> Year: </th>
                   <td> 
                      <?php echo $row->Year;?>
                   </td>
                </tr>
             </table>
+          
          </div>
       </div>
       <div class="row">
          <div class="col-md-12">
             <br>
             <h3 class="section-header">Contributor</h3>
+          
+        
             <table class="table">
                <tr>
                   <th style="width:210px">Contributor:</th>
-                  <td><?php echo $row->Contributor;?></td>
+                  <td> <?php echo $row->Contributor;?></td>
                </tr>
             </table>
+         
          </div>
       </div>
       <div class="row">
@@ -371,7 +356,7 @@
             <table class="table">
                <tr>
                   <th style="width:210px">Dataset:</th>
-                  <td>RD </td>
+                  <td>wd</td>
                </tr>
             </table>
          </div>

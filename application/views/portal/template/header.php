@@ -66,7 +66,9 @@
                            </li>
                         <li ><?php
                            if(!$this->session->userdata('user_logged')){
-                            ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
+                            ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("Wood_densities"); ?></a>
+                            <a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("biomass_expansion_factor"); ?></a>
+                            <a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
                                 <?php 
                             }else{ ?>
                                
@@ -80,6 +82,8 @@
                             ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("raw_data"); ?></a>
                                 <?php 
                             }else{ ?>
+                             <a href="<?php echo site_url('Portal/woodDensitiesView'); ?>"><?php echo $this->lang->line("Wood_densities"); ?></a>
+                             <a href="<?php echo site_url('Portal/biomassExpansionFacView'); ?>"><?php echo $this->lang->line("biomass_expansion_factor"); ?></a>
                               <a href="<?php echo site_url('Portal/speciesData'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
                                   <?php 
                             }
