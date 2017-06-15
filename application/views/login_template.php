@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/images/logo.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/favIcon.png">
 
     
      <title>.: FAO || Food and Agriculture Organization of the United Nations:. Login Panel</title>
@@ -50,7 +50,7 @@
             <div class="col-md-4 col-md-offset-4">
 
                 <div class="login-panel panel panel-default">
-                 <h1 style="padding: 0;" align="center"><a href="<?php echo site_url(); ?>"><img style="height: 100px;" src="<?php echo base_url('resources/images/logo.jpg'); ?>" alt="HEQEP" /></a></h1>
+                 <h1 style="padding: 0;" align="center"><a href="<?php echo site_url(); ?>"><img style="height: 100px;" src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png'); ?>" alt="HEQEP" /></a></h1>
                     <div class="panel-heading">
 
                         <h3 class="panel-title">Please Sign In</h3>

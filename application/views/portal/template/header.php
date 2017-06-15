@@ -93,6 +93,12 @@
                                 
                         </ul>
                     </li>
+
+                   <li class="">
+                        <a href="<?php echo site_url('Portal/viewLibraryPage'); ?>" class="dropdown-toggle" data-toggle="" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line("library"); ?>
+                        </a>
+                       
+                    </li>
                 <?php 
 
                 foreach($menus as $pm) {
@@ -172,7 +178,12 @@
                     <?php 
                 }
                 ?>
+
+
+
+
             </ul>
+
 
 
 

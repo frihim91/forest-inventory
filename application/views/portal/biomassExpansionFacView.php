@@ -1,5 +1,3 @@
-
-
 <style type="text/css">
    .page_content{
    padding: 15px;
@@ -166,7 +164,7 @@
    </div>
    <div class="col-sm-12 bdy_des">
       <ul class="nav nav-tabs">
-         <li class="active"><a data-toggle="tab" href="#results-list"><span class="glyphicon glyphicon-list"></span> Results List</a></li>
+         <li class="active"><a data-toggle="tab" class="resultList" href="#results-list"><span class="glyphicon glyphicon-list"></span> Results List</a></li>
          <li><a data-toggle="tab" class="results-map" href="#results-map"><span class="glyphicon glyphicon-globe"></span> Map View</a></li>
          <div style="float:right;">
             <form action='export/' id="export-form" method="POST">
@@ -215,38 +213,50 @@
             <style type="text/css">
                #map{ height: 100% }
             </style>
-            <div class="row">
-               <div class="col-md-12" style="height:500px!important; overflow:hidden">
-                  <div id="map"></div>
-                  <script>
-                     // initialize the map
-                     var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
-                        var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-                        map.addLayer(osm);
-                      
-                      
-                       $.getJSON("<?php echo base_url(); ?>resources/map.json",function(data){
-                       var ratIcon = L.icon({
-                         iconUrl: '<?php echo base_url(); ?>resources/final.png',
-                         iconSize: [60,50]
-                       });
-                       L.geoJson(data,{
-                         pointToLayer: function(feature,latlng){
-                        var marker = L.marker(latlng,{icon: ratIcon});
-                     
-                      marker.bindPopup('<b>District : </b>'+feature.properties.ID_District );
-                     
-                     return marker;
-                         }
-                       }).addTo(map);
-                     });
-                     
-                     
-                  </script>
-               </div>
-            </div>
-         </div>
-      </div>
+    
+     </div>
    </div>
+ </div>
 </div>
+ <div class="row mapBlock" style="display:none">
+      <div class="col-md-12" style="height:500px!important;width:100%">
+        <div id="map"></div>
+        <script>
+        // initialize the map
+
+
+        </script>
+      </div>
+    </div>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a.results-map").click(function(){
+    $("div.mapBlock").show();
+    var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
+    var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+    map.addLayer(osm);
+
+
+    $.getJSON("<?php echo base_url(); ?>resources/mapEfdata.php",function(data){
+      var ratIcon = L.icon({
+        iconUrl: '<?php echo base_url(); ?>resources/final.png',
+        iconSize: [60,50]
+      });
+      L.geoJson(data,{
+        pointToLayer: function(feature,latlng){
+          var marker = L.marker(latlng,{icon: ratIcon});
+
+          marker.bindPopup('<b>EF : </b>'+feature.properties.ID_EF);
+
+          return marker;
+        }
+      }).addTo(map);
+    });
+
+  });
+});
+$("a.resultList").click(function(){
+  $("div.mapBlock").hide();
+});
+</script>
 

@@ -241,7 +241,7 @@ $(document).ready(function(){
     map.addLayer(osm);
 
 
-    $.getJSON("<?php echo base_url(); ?>resources/map.json",function(data){
+    $.getJSON("<?php echo base_url(); ?>resources/mapdata.php",function(data){
       var ratIcon = L.icon({
         iconUrl: '<?php echo base_url(); ?>resources/final.png',
         iconSize: [60,50]
@@ -250,7 +250,7 @@ $(document).ready(function(){
         pointToLayer: function(feature,latlng){
           var marker = L.marker(latlng,{icon: ratIcon});
 
-          marker.bindPopup('<b>District : </b>'+feature.properties.ID_District );
+          marker.bindPopup('<b>AE : </b>'+feature.properties.ID_AE);
 
           return marker;
         }

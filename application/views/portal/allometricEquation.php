@@ -59,7 +59,7 @@
             <span class="glyphicon glyphicon-download"></span> Export Results <span class="caret"></span>
             </button>
             <?php 
-               foreach($allometricEquationData as $row)
+               foreach($allometricEquationDatagrid as $row)
                 {
                 ?>
             <ul class="dropdown-menu" role="menu">
@@ -75,7 +75,7 @@
    </div>
    <div class="col-sm-12 bdy_des">
       <?php 
-         foreach($allometricEquationData as $row)
+         foreach($allometricEquationDatagrid as $row)
          {
          ?>
       <div class="panel panel-default">
@@ -94,6 +94,7 @@
       </div>
       <?php 
          }?>
+           <p><?php echo $links; ?></p>
    </div>
 </div>
 

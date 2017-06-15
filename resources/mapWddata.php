@@ -11,7 +11,7 @@
 $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db','maruf','maruf');
 
 # Build SQL SELECT statement including x and y columns
-$sql = 'SELECT *,   Latitude as y,Longitude x FROM ae l WHERE ID_AE!=0';
+$sql = 'SELECT *,   Latitude as y,Longitude x FROM wd l WHERE ID_WD!=0';
 
 /*
 * If bbox variable is set, only return records that are within the bounding box

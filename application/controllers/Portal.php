@@ -591,6 +591,62 @@ class Portal extends CI_Controller
 
 
 
+
+        /*
+     * @methodName allometricEquationViewSpeciesData()
+     * @access public
+     * @param  none
+     * @return Allometric Equation Menu page
+     */
+    
+    
+    public function allometricEquationViewSpeciesData($specis_id)
+    {
+        $this->load->library('pagination');
+      //  $specis_id = $this->input->post('Species');
+        
+        $config             = array();
+        $config["base_url"] = base_url() .  "index.php/portal/allometricEquationViewSpeciesData/".$specis_id;
+        $total_ef           = $this->db->count_all("ae");
+        
+        $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = 800;
+        
+        $config["per_page"]        = 20;
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $limit                     = $config["per_page"];
+        $config["uri_segment"] = 4;
+        //$config["num_links"] = round($total_ef );
+        //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+        // //pagination style end
+        $this->pagination->initialize($config);
+        $data['allometricEquationDatagrid'] = $this->Forestdata_model->get_allometric_equation_grid_Speciesdata($specis_id,$limit,$page);
+        //print_r($data['allometricEquationDatagrid']);exit();
+        $data["links"]                  = $this->pagination->create_links();
+        $data['content_view_page']      = 'portal/allometricEquation';
+        $this->template->display_portal($data);
+    }
+
+
+
       /*
      * @methodName biomassExpansionFacView()
      * @access public
@@ -640,6 +696,64 @@ class Portal extends CI_Controller
         
         // ")->result();
          $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor($limit,$page);
+        $data["links"]                  = $this->pagination->create_links();
+        $data['content_view_page']      = 'portal/biomassExpansionFacView';
+        $this->template->display_portal($data);
+    }
+
+
+
+
+
+     /*
+     * @methodName biomassExpansionFacSpeciesView()
+     * @access public
+     * @param  none
+     * @return Biomass Expension Factor Menu page
+     */
+    
+    
+    public function biomassExpansionFacSpeciesView($specis_id)
+    {
+        
+        $this->load->library('pagination');
+        $config             = array();
+        $config["base_url"] = base_url() .  "index.php/portal/biomassExpansionFacSpeciesView/".$specis_id;
+        $total_ef           = $this->db->count_all("ef");
+        
+        $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = 800;
+        
+        $config["per_page"]        = 20;
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $limit                     = $config["per_page"];
+        $config["uri_segment"] = 4;
+        //$config["num_links"] = round($total_ef );
+        //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+        // //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        
+        // ")->result();
+         $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor_species($specis_id,$limit,$page);
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
@@ -1112,6 +1226,61 @@ class Portal extends CI_Controller
     }
 
 
+
+
+
+
+    /*
+     * @methodName rawDataSpeciesView()
+     * @access public
+     * @param  none
+     * @return Raw Data Menu page
+     */
+    
+    public function rawDataSpeciesView($specis_id)
+    {
+        
+        $this->load->library('pagination');
+        $config             = array();
+        $config["base_url"] = base_url() . "index.php/portal/rawDataSpeciesView/".$specis_id;
+        $total_rawData      = $this->db->count_all("rd");
+        
+        $config["total_rows"] = $total_rawData;
+        // $config["total_rows"] = 800;
+        
+        $config["per_page"]        = 20;
+        $config["uri_segment"]     = 4;
+        $limit                     = $config["per_page"];
+        //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid_species($specis_id,$limit,$page);
+        $data["links"]             = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/rawDataView';
+        $this->template->display_portal($data);
+    }
+
+
+
     /*
      * @methodName woodDensitiesView()
      * @access public
@@ -1161,6 +1330,61 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/woodDensitiesView';
         $this->template->display_portal($data);
     }
+
+
+
+        /*
+     * @methodName woodDensitiesSpeciesView()
+     * @access public
+     * @param  none
+     * @return wood densities Menu page
+     */
+    
+    public function woodDensitiesSpeciesView($specis_id)
+    {
+        
+        $this->load->library('pagination');
+        $config             = array();
+        $config["base_url"] = base_url() . "index.php/portal/woodDensitiesSpeciesView/".$specis_id;
+        $total_woodDensities      = $this->db->count_all("wd");
+        
+        $config["total_rows"] = $total_woodDensities;
+        // $config["total_rows"] = 800;
+        
+        $config["per_page"]        = 20;
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $limit                     = $config["per_page"];
+        $config["uri_segment"] = 4;
+        //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+        //pagination style end
+        $this->pagination->initialize($config);
+        
+     
+        $data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid_species($specis_id,$limit,$page);
+        //print_r( $data['woodDensitiesView']);exit();
+        $data["links"]             = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/woodDensitiesView';
+        $this->template->display_portal($data);
+    }
+    
     
     
     
@@ -1929,6 +2153,37 @@ class Portal extends CI_Controller
         $mpdf->WriteHTML($report);
         $mpdf->Output();
       }
+
+
+
+       /*
+     * @methodName speciesListViewjson()
+     * @access public
+     * @param  none
+     * @return Species List Json data show
+     */
+    
+    public function speciesListViewjson()
+    {
+        $data['speciesListViewjson'] = $this->Forestdata_model->get_species_list_json();
+      
+    }
+
+    /*
+     * @methodName viewLibraryPage()
+     * @access public
+     * @param  none
+     * @return Library View Page
+     */
+
+    public function viewLibraryPage()
+    {
+        $data['reference']           = $this->db->query("SELECT * FROM reference")->result();
+        $data['content_view_page'] = 'portal/viewLibraryPage';
+        $this->template->display_portal($data);
+    }
+    
+
 
 
 
