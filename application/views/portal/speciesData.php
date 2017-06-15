@@ -137,7 +137,7 @@
                                         
                                       </b>
                                       </p> -->
-                                 <p><b>Data in FAO Biomes :
+                                 <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data:
                                     <?php 
                                        $totalNumber = sizeof($speciesId) - 1 ;
                                        foreach($speciesId as $key => $speciesIds){ 
