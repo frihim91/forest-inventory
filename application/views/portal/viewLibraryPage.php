@@ -62,10 +62,13 @@ $lang_ses = $this->session->userdata("site_lang");
 		<div class=""><h4>Library</h4>
 
          <?php
+            $pdf_values=".pdf";
             foreach($reference as $row)
+            	
             {
               ?>
               <h4><?php echo $row->Title;?></h4>
+              <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/>Download <?php echo $row->Title;?></a></p>
 
 
                 <?php

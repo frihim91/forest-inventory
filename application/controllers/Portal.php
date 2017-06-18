@@ -2178,7 +2178,7 @@ class Portal extends CI_Controller
 
     public function viewLibraryPage()
     {
-        $data['reference']           = $this->db->query("SELECT * FROM reference")->result();
+        $data['reference']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
     }
