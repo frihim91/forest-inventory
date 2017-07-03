@@ -307,8 +307,7 @@
             $this->load->view('forgot_password');
         }
 
-
-    /**
+   /**
      * @methodName registerLogin()
      * @param  none
      * Show the Register Login page.
@@ -362,7 +361,9 @@
             if ($result) {
                 $sess_array = array(
                     'USER_ID' => $result->USER_ID,
-                    'EMAIL' => $result->EMAIL
+                    'EMAIL' => $result->EMAIL,
+                    'FIRST_NAME' => $result->FIRST_NAME,
+                    'LAST_NAME' => $result->LAST_NAME
                
                 );
                 //echo '<pre>';print_r($sess_array);exit;
@@ -373,6 +374,5 @@
                 return false;
             }
         }
-
-
+   
     }

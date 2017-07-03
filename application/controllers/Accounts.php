@@ -230,6 +230,41 @@
               $data['content_view_page'] = 'setup/pages/create_page';
               $this->template->display_portal($data);
             }else {
+                 $imgUrl='';
+   
+  
+
+           /*start image upload*/
+
+            $imgFile = $_FILES['user_img']['name'];
+            $tmp_dir = $_FILES['user_img']['tmp_name'];
+            $imgSize = $_FILES['user_img']['size'];
+
+            $upload_dir = 'uploads_file/PROFILE_IMG/'; // upload directory
+            $saveImg = $imgFile;
+
+            $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
+
+               // valid image extensions
+               $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
+
+               // rename uploading image
+               //$userpic = rand(1000,1000000).".".$imgExt;
+
+               // allow valid image file formats
+               if(in_array($imgExt, $valid_extensions)){
+                // Check file size '5MB'
+                if($imgSize < 5000000)    {
+                 move_uploaded_file($tmp_dir,$upload_dir.$imgFile);
+               }
+               else{
+                 $errMSG = "Sorry, your file is too large.";
+               }
+             }
+             else{
+              $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            }
+            /*end image upload*/
 
               $regInfo = array(
                 'EDUCATION_ID' => $this->input->post('EDUCATION_ID'),
@@ -239,9 +274,12 @@
                 'LAST_NAME' => str_replace("'", "''", $this->input->post("LAST_NAME")),
                 'EMAIL' => $this->input->post('EMAIL'),
                 'ADDRESS' => $this->input->post('ADDRESS'),
-                'FIELD_SUBJECT' => $this->input->post('FIELD_SUBJECT')
+                'FIELD_SUBJECT' => $this->input->post('FIELD_SUBJECT'),
+                'ID_Zones' => $this->input->post('ID_Zones'),
+                'PROFILE_IMG' =>   $saveImg
                 );
-
+            
+                 
               $regInfomax =$this->db->insert( 'visitor_info',$regInfo);
 
               if($regInfomax != ''){

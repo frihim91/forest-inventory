@@ -11,6 +11,12 @@ Class Account_model extends CI_Model {
 	        $data=$this->db->query("SELECT * FROM education edu ORDER BY edu.	EDUCATION_ID ASC")->result();
 	        return $data;
 	     }
+	     
+	     public function get_zone() 
+	     {
+	        $data=$this->db->query("SELECT * FROM zones z ORDER BY z.	ID_Zones ASC")->result();
+	        return $data;
+	     }
 
 
 }

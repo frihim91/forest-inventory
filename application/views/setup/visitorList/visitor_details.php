@@ -2,8 +2,8 @@
  	<?php echo form_open('dashboard/Visitors/update_visitor'); ?>
  	<table id="datatable" class="table table-striped table-bordered" width="100%" cellspacing="0">
  		<tr>
- 			<th width="20%">User Name</th>
- 			<td><?php echo $visitor_info->USERNAME?></td>
+ 			<th width="20%">Full Name</th>
+ 			<td><?php echo $visitor_info->FIRST_NAME." ".$visitor_info->LAST_NAME?></td>
  		</tr>
  		<tr>
  			<th width="20%">Tittle</th>
@@ -48,6 +48,10 @@
  		<tr>
  			<th>Institution Fax</th>
  			<td><?php echo $visitor_info->FAX?></td>
+ 		</tr>
+ 		<tr>
+ 			<th>Zone</th>
+ 			<td><?php echo $visitor_info->zones?></td>
  		</tr>
  	</table>
  	<div class="row">  

@@ -70,9 +70,10 @@
 
 
     function visitor_detail($USER_ID) {
-        $data['visitor_info'] = $this->db->query("SELECT v.*, e.EDUCATION_DEGREE_NAME,i.INSTITUTE_NAME,i.INSTITUTE_ADDRESS,i.PHONE,i.FAX  FROM visitor_info v
+        $data['visitor_info'] = $this->db->query("SELECT v.*, e.EDUCATION_DEGREE_NAME,i.INSTITUTE_NAME,i.INSTITUTE_ADDRESS,i.PHONE,i.FAX,z.zones  FROM visitor_info v
          left JOIN education e ON v.EDUCATION_ID = e.EDUCATION_ID
-         left JOIN institution i ON v.USER_ID = i.USER_ID 
+         left JOIN institution i ON v.USER_ID = i.USER_ID
+        left JOIN zones z ON v.ID_Zones = z.ID_Zones 
          WHERE v.USER_ID= $USER_ID ORDER BY i.USER_ID")->row();
         //echo "<pre>";print_r($data['visitor_info']);exit;
         $this->load->view('setup/visitorList/visitor_details', $data);

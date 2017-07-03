@@ -35,7 +35,17 @@
 		clear: both;
 	}
 
+	#blah{
+		display: none;
+		width: 130px;
+		height: 130px;
+		margin-top: -45px;
+	}
+		
+	}
+
 </style>
+
 <?php
 $lang_ses = $this->session->userdata("site_lang");
 ?>
@@ -129,9 +139,25 @@ $lang_ses = $this->session->userdata("site_lang");
 								echo form_dropdown('EDUCATION_ID', $options, $EDUCATION_ID, 'id="id" class="tag-select form-control" data-placeholder="Choose a Education Institute..." ');
 								?>    
 								<label>Field Subject<span style="color:red;">*</span></label>
-								<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Field Subject', 'id' => 'FIELD_SUBJECT', 'name' => 'FIELD_SUBJECT', 'value' => set_value('	FIELD_SUBJECT'), 'required' => 'required')); ?> 
+								<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Field Subject', 'id' => 'FIELD_SUBJECT', 'name' => 'FIELD_SUBJECT', 'value' => set_value('	FIELD_SUBJECT'), 'required' => 'required')); ?>
+								<label>Zone<span style="color:red;">*</span></label>
+								<?php
+								$zone = $this->Account_model->get_zone();
+								$options = array('' => '--Select-- ');
+								foreach ($zone as $zones) {
+									$options["$zones->ID_Zones"] = $zones->Zones;
+								}
+								$zoneId = set_value('ID_Zones');
+								echo form_dropdown('ID_Zones', $options, $zoneId, 'id="id" class="tag-select form-control" data-placeholder="Choose a  Zone..." ');
+								?>
+								<label>User Image</label>
+								 <?php echo form_input(array('type' => 'file', 'name' => 'user_img', 'id' => 'PROFILE_IMG')); ?>
+							 
 								<div class="submit_block" align="right">
 									<input type="submit" value="Register" class="btn-success btn"/>
+								</div>
+								<div>
+								<img id="blah"  class=""  src=""/>
 								</div>
 								<?php echo form_close(); ?>
 
@@ -189,5 +215,23 @@ $lang_ses = $this->session->userdata("site_lang");
 </script>
  
 
+<script type="text/javascript">
+	function readURL(input) {
 
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$("#blah").show();
+				$('#blah').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("input#PROFILE_IMG").change(function(){
+		readURL(this);
+	});
+</script>
 
