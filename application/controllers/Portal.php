@@ -14,6 +14,7 @@ class Portal extends CI_Controller
     
     function __construct()
     {
+      
         parent::__construct();
         $this->load->model('utilities');
         $this->load->model('setup_model');
@@ -263,6 +264,30 @@ class Portal extends CI_Controller
         $this->template->display_portal($data);
         
     }
+
+
+
+
+      /*
+     * @methodName search_document_key()
+     * @access public
+     * @param  none
+     * @return Documents Search view page
+     */
+    public function search_document()
+    {
+         $Title = $this->input->post('Title');
+         $Author = $this->input->post('Author');
+         $Keywords = $this->input->post('Keywords');
+         $data['reference'] = $this->db->query("SELECT r.* from reference r
+         where r.Title LIKE '%$Title%' OR r.Author LIKE '%$Author%' OR r.Keywords LIKE '%$Keywords%'
+         order by r.ID_Reference desc 
+         ")->result();
+         $data['content_view_page']      = 'portal/viewLibraryPage';
+         $this->template->display_portal($data);
+        
+    }
+    
     
     
     
@@ -343,6 +368,7 @@ class Portal extends CI_Controller
     {
         $District  = $this->input->post('District');
         $EcoZones = $this->input->post('EcoZones');
+        $Division = $this->input->post('Division');
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_loc";
@@ -387,7 +413,7 @@ class Portal extends CI_Controller
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where dis.District LIKE '%$District%' or eco.EcoZones LIKE '%$EcoZones%'
+         where dis.District LIKE '%$District%' or eco.EcoZones LIKE '%$EcoZones%'or d.Division LIKE '%$Division%'
         group by a.ID_AE order by a.ID_AE desc LIMIT $limit OFFSET $page
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
@@ -475,7 +501,7 @@ class Portal extends CI_Controller
     public function speciesData()
     {
         $data['family_details']    = $this->db->query("select f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
-            FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT from family as f
+            FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT from family as f ORDER BY f.Family 
             ")->result();
         $data['content_view_page'] = 'portal/speciesData';
         $this->template->display_portal($data);
@@ -521,20 +547,140 @@ class Portal extends CI_Controller
     }
 
 
-
-      /*
-     * @methodName biomassExpansionFacViewjson()
+          /*
+     * @methodName allometricEquationViewcsv()
      * @access public
      * @param  none
-     * @return Biomass Expansion Factor json Menu page
+     * @return Allometric Equation CSV Menu page
      */
+
+
+ public function allometricEquationViewcsv()
+ {
+ $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         group by a.ID_AE order by a.ID_AE desc")->result_array();
+ //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
+ header("Content-type: application/csv");
+ header("Content-Disposition: attachment; filename=\"Allometric Equation".".csv\"");
+ header("Pragma: no-cache");
+ header("Expires: 0");
+ $handle = fopen('php://output', 'w');
+ fputcsv($handle, array('ID_AE',' ID_RD', 'Population', 'Tree_type','Vegetation_type','Country','Division','District','Upazila','Union'
+  ,'location_notes','Latitude','Longitude','BFI_zone','FAO_biome','WWF_Eco_zone','X','Unit_X','Z'
+  ,'Unit_Z','W','Unit_W','U ','Unit_U',' V','Unit_V',' Mean_X',' Min_X',' Max_X',' Mean_Z','Min_Z','Max_Z','Mean_W','Min_W','Max_W','Output'
+  ,'Output_TR','Unit_Y','Min_age','Max_age',' Av_age','B','Bd','Bg','Bt',' L','Rb','Rf','Rm','S','T','F','Family','Genus','Species','Subspecies','Species_local_name_latin'
+  ,'Species_local_name_iso','Equation','Sample_size','Top_dob','Top_girth_over_bark',' Stump_height','Reference','Label','R2','R2_Adjusted','Corrected_for_bias',' MSE','RMSE'
+  ,'SEY','SEE','AIC','FI','Bias_correction',' Ratio_equation','Segmented_equation','Contributor','Operator','Remark','Contact','  Verified'));
+                    $i = 1;
+                    foreach ($allometricEquationViewcsv as $data) {
+                        fputcsv($handle, array($i, $data["ID_AE"], $data["ID_RD"], $data["Population"], $data["Tree_type"], $data["Vegetation_type"], $data["Country"], $data["Division"]
+                          , $data["District"], $data["Upazila"], $data["Union"], $data["location_notes"], $data["Latitude"], $data["Longitude"], $data["BFI_zone"], $data["FAO_biome"]
+                          , $data["WWF_Eco_zone"], $data["X"], $data["Unit_X"], $data["Z"], $data["Unit_Z"], $data["W"], $data["Unit_W"], $data["U"], 
+                           $data["Unit_U"], $data["V"], $data["Unit_V"], $data["Mean_X"],$data["Min_X"],$data["Max_X"],$data["Mean_Z"],$data["Min_Z"],$data["Max_Z"],$data["Mean_W"],$data["Min_W"]
+                          ,$data["Max_W"],$data["Output"],$data["Output_TR"],$data["Unit_Y"],$data["Min_age"],$data["Max_age"],$data["Av_age"],$data["B"],$data["Bd"],$data["Bg"],$data["Bt"],$data["L"],$data["Rb"]
+                          ,$data["Rf"],$data["S"],$data["T"],$data["F"],$data["Family"],$data["Genus"],$data["Species"],$data["Subspecies"],$data["Species_local_name_latin"],$data["Species_local_name_iso"],$data["Equation"],$data["Sample_size"],$data["Top_dob"],$data["Top_girth_over_bark"],$data["Stump_height"]
+                          ,$data["Reference"],$data["Label"],$data["R2"],$data["R2_Adjusted"],$data["Corrected_for_bias"],$data["MSE"],$data["RMSE"],$data["SEY"],$data["SEE"],$data["AIC"] ,$data["FI"],$data["Bias_correction"],$data["Ratio_equation"],$data["Segmented_equation"],$data["Contributor"],$data["Operator"],$data["Remark"],$data["Contact"],$data["Verified"]));
+                        $i++;
+                    }
+                        fclose($handle);
+                    exit;
+ }
+
+
+          /*
+     * @methodName speciesListViewcsv()
+     * @access public
+     * @param  none
+     * @return Species List CSV Menu page
+     */
+
+
+ public function speciesListViewcsv()
+ {
+ $speciesListViewcsv=$this->db->query("SELECT * FROM (SELECT CONCAT(f.Family,' ',s.Species) NAME,s.ID_Species FROM species s
+      LEFT JOIN family f ON s.ID_Family=f.ID_Family order by s.ID_Species ASC
+     ) m")->result_array();
+ //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
+ header("Content-type: application/csv");
+ header("Content-Disposition: attachment; filename=\"Species List".".csv\"");
+ header("Pragma: no-cache");
+ header("Expires: 0");
+ $handle = fopen('php://output', 'w');
+ fputcsv($handle, array('NAME',' ID_Species'));
+                    $i = 1;
+                    foreach ($speciesListViewcsv as $data) {
+                        fputcsv($handle, array($i, $data["NAME"], $data["ID_Species"]));
+                        $i++;
+                    }
+                        fclose($handle);
+                    exit;
+ }
+
+
+
+
+      /*
+     * @methodName biomassExpansionFacViewcsv()
+     * @access public
+     * @param  none
+     * @return Biomass Expansion Factor CSV Menu page
+     */
+
+
+ public function biomassExpansionFacViewcsv()
+ {
+ $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+         GROUP BY e.ID_EF order by e.ID_EF desc")->result_array();
+ //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
+ header("Content-type: application/csv");
+ header("Content-Disposition: attachment; filename=\"Biomass Expansion Factor".".csv\"");
+ header("Pragma: no-cache");
+ header("Expires: 0");
+ $handle = fopen('php://output', 'w');
+ fputcsv($handle, array('ID_EF',' ID_LandCover', 'Species', 'AgeRange','ID_AgeRange','HeightRange','ID_HeightRange','VolumeRange',' ID_VolumeRange','BasalRange'
+  ,'ID_BasalArea','Value','Unit','ID_EF_IPCC','Reference','Lower_Confidence_Limit','Upper_Confidence_Limit ','Type_of_Parameter','latitude  '
+  ,'longitude  ','Country  ','Division  ',' District  ',' Upazila',' Union',' FAO_biome',' WWF_Eco_zone',' BFI_zone'));
+                    $i = 1;
+                    foreach ($biomassExpansionFacView as $data) {
+                        fputcsv($handle, array($i, $data["ID_EF"], $data["ID_LandCover"], $data["Species"], $data["AgeRange"], $data["ID_AgeRange"], $data["HeightRange"], $data["ID_HeightRange"]
+                          , $data["VolumeRange"], $data["ID_VolumeRange"], $data["BasalRange"], $data["ID_BasalArea"], $data["Value"], $data["Unit"], $data["ID_EF_IPCC"], $data["Reference"]
+                          , $data["Lower_Confidence_Limit"], $data["Upper_Confidence_Limit"], $data["Type_of_Parameter"], $data["latitude"], $data["longitude"], $data["Country"], $data["Division"], $data["District"], 
+                          $data["Upazila"], $data["Union"], $data["FAO_biome"], $data["WWF_Eco_zone"], $data["BFI_zone"]));
+                        $i++;
+                    }
+                        fclose($handle);
+                    exit;
+ }
     
     public function biomassExpansionFacViewjson()
     {
-        $data['biomassExpansionFacViewjson'] = $this->Forestdata_model->get_biomass_expansion_factor_json();
+        $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomass_expansion_factor_json();
         //$data['content_view_page']      = 'portal/allometricEquationPage';
         //$this->template->display_portal($data);
     }
+
+
+
+
     
     
     
@@ -923,7 +1069,7 @@ class Portal extends CI_Controller
     
     public function search_biomas_expansion_loc()
     {
-
+        $Division  = $this->input->post('Division');
         $District  = $this->input->post('District');
         $EcoZones = $this->input->post('EcoZones');
         
@@ -976,7 +1122,7 @@ class Portal extends CI_Controller
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-        where dis.District LIKE '%$District%' or eco.EcoZones LIKE '%$EcoZones%'
+         where dis.District LIKE '%$District%' or eco.EcoZones LIKE '%$EcoZones%' or d.Division LIKE '%$Division%'
          GROUP BY e.ID_EF order by e.ID_EF desc LIMIT $limit OFFSET $page
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
@@ -1157,6 +1303,55 @@ class Portal extends CI_Controller
 
 
 
+          /*
+     * @methodName rawDataViewcsv()
+     * @access public
+     * @param  none
+     * @return Raw Data CSV Menu page
+     */
+
+
+ public function rawDataViewcsv()
+ {
+ $rawDataViewcsv=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         group by r.ID order by r.ID desc")->result_array();
+ //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
+ header("Content-type: application/csv");
+ header("Content-Disposition: attachment; filename=\"Raw Data".".csv\"");
+ header("Pragma: no-cache");
+ header("Expires: 0");
+ $handle = fopen('php://output', 'w');
+ fputcsv($handle, array('ID','ID_RD', 'ID_tree', 'Tree_type','Vegetation_type','Division','District','Upazila','Union','Latitude'
+  ,'Longitude','Zone_FAO',' ID_FAO_Biomes','Ecoregion_Udvardy','Ecoregion_WWF','Division_Bailey','Zone_Holdridge',' Bioecological_zones_Bangladesh_IUCN ','Family_ID'
+  ,'Genus_ID','Species_ID','Subspecies','DBH_cm','H_m','Collar_girth','CD_m',' Veg_Component','B','Bd','Bg','Bt',' L','Rb','Rf','Rm','S','T','F','F_Bole_kg','F_Branch_kg','F_Foliage_kg','F_Foliage_and_twigs_kg','F_Bark_kg'
+  ,'F_Fruit_kg','F_Stump_kg','F_Buttress_kg','F_Roots_kg','Volume_m3','Volume_bole_m3','WD_AVG_gcm3','D_Bole_kg','D_Branch_kg','D_Foliage_g','  D_Foliage_kg',' D_Branch_g',' Field61'
+  ,'D_Bark_g','D_Bark_kg',' D_Stem_with_Bark_g','D_Stem_without_Bark_g',' D_Stem_without_Bark_kg',' D_Stump_kg',' D_Buttress_kg','D_Roots_kg',' ABG_g','ABG_kg',' BGB_kg','ID_Reference','Contributor',' Operator','Remark'
+  ,'Contact'));
+                    $i = 1;
+                    foreach ($rawDataViewcsv as $data) {
+                        fputcsv($handle, array($i, $data["ID"], $data["ID_RD"], $data["ID_tree"], $data["Tree_type"], $data["Vegetation_type"], $data["Division"], $data["District"]
+                          , $data["Upazila"], $data["Union"], $data["Latitude"], $data["Longitude"], $data["Zone_FAO"], $data["ID_FAO_Biomes"], $data["Ecoregion_Udvardy"], $data["Ecoregion_WWF"]
+                          , $data["Division_Bailey"], $data["Zone_Holdridge"], $data["Bioecological_zones_Bangladesh_IUCN"], $data["Family_ID"], $data["Genus_ID"], $data["Species_ID"], $data["Subspecies"], $data["DBH_cm"], 
+                          $data["H_m"], $data["Collar_girth"], $data["CD_m"], $data["Veg_Component"],$data["B"],$data["Bd"],$data["Bg"],$data["Bt"],$data["L"],$data["Rb"]
+                          ,$data["Rf"],$data["S"],$data["T"],$data["F"],$data["F_Bole_kg"],$data["F_Branch_kg"],$data["F_Foliage_kg"],$data["F_Foliage_and_twigs_kg"],$data["F_Bark_kg"],$data["F_Fruit_kg"],$data["F_Stump_kg"],$data["F_Buttress_kg"],$data["F_Roots_kg"],$data["Volume_m3"],$data["Volume_bole_m3"]
+                          ,$data["WD_AVG_gcm3"],$data["D_Bole_kg"],$data["D_Branch_kg"],$data["D_Foliage_g"],$data["D_Foliage_kg"],$data["D_Branch_g"],$data["Field61"],$data["D_Bark_g"],$data["D_Bark_kg"],$data["D_Stem_with_Bark_g"] ,$data["D_Stem_without_Bark_g"],$data["D_Stem_without_Bark_kg"],$data["D_Stump_kg"],$data["D_Buttress_kg"],$data["D_Roots_kg"],$data["ABG_g"],$data["ABG_kg"],$data["BGB_kg"],$data["ID_Reference"],
+                          $data["Contributor"],$data["Operator"],$data["Remark"] ,$data["Contact"]));
+                        $i++;
+                    }
+                        fclose($handle);
+                    exit;
+ }
+
+
+
+
 
      /*
      * @methodName woodDensityViewjson()
@@ -1173,6 +1368,57 @@ class Portal extends CI_Controller
         $data['woodDensityViewjson']       = $this->Forestdata_model->get_wood_density_grid_json();
        
     }
+
+
+
+
+           /*
+     * @methodName woodDensityViewcsv()
+     * @access public
+     * @param  none
+     * @return Wood Density CSV Menu page
+     */
+
+
+ public function woodDensityViewcsv()
+ {
+ $woodDensityViewcsv=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+         LEFT JOIN species s ON w.ID_Species=s.ID_Species
+         LEFT JOIN family f ON w.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON w.ID_Family=g.ID_Family   
+         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+         LEFT JOIN location l ON w.ID_Location=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones  
+         order by w.ID_WD desc")->result_array();
+ //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
+ header("Content-type: application/csv");
+ header("Content-Disposition: attachment; filename=\"Wood Densities".".csv\"");
+ header("Pragma: no-cache");
+ header("Expires: 0");
+ $handle = fopen('php://output', 'w');
+ fputcsv($handle, array('ID_WD',' Tree_type', 'Vegetation_type', 'Region','ID_Location_group','ID_Location','Group_Location','Location','Longitude','Latitude'
+  ,'Zone_FAO','Ecoregion_Udvardy','Ecoregion_WWF','Division_Bailey','Zone_Holdridge','ID_family','ID_genus','ID_species','Subspecies'
+  ,'Species_local_name_iso','ID_reference','ID_RD','H_tree_avg','H_tree_max','DBH_tree_avg','DBH_tree_min','DBH_tree_max',' m_WD','MC_m',' MC_V','CR','FSP','Methodology_Green','Methodology_Airdry','Bark','Methodology_Ovendry'
+  ,'Density_green','Density_airdry','Density_ovendry','MC_Density','Data_origin','Data_type','Samples_per_tree','Number_of_trees','SD','Min','Max','H_measure','Bark_distance','CV','Convert_BD','Contributor','Operator','Remark','Contact'));
+                    $i = 1;
+                    foreach ($woodDensityViewcsv as $data) {
+                        fputcsv($handle, array($i, $data["ID_WD"], $data["Tree_type"], $data["Vegetation_type"], $data["Region"], $data["ID_Location_group"], $data["ID_Location"], $data["Group_Location"]
+                          , $data["Location"], $data["Longitude"], $data["Latitude"], $data["Zone_FAO"], $data["Ecoregion_Udvardy"], $data["Ecoregion_WWF"], $data["Division_Bailey"], $data["Zone_Holdridge"]
+                          , $data["ID_family"], $data["ID_genus"], $data["ID_species"], $data["Subspecies"], $data["Species_local_name_iso"], $data["ID_reference"],$data["ID_RD"], $data["H_tree_avg"], 
+                           $data["H_tree_min"],$data["H_tree_max"],$data["DBH_tree_avg"], $data["DBH_tree_min"],$data["DBH_tree_max"],$data["m_WD"],$data["MC_m"],$data["V_WD"],$data["MC_V"],$data["CR"],$data["FSP"]
+                          ,$data["Methodology_Green"],$data["Methodology_Airdry"],$data["Bark"],$data["Methodology_Ovendry"],$data["Density_green"],$data["Density_airdry"],$data["Density_ovendry"],$data["MC_Density"],$data["Data_origin"],$data["Data_type"],$data["Samples_per_tree"],$data["Number_of_trees"]
+                          ,$data["SD"],$data["Min"],$data["Max"],$data["H_measure"],$data["Bark_distance"],$data["CV"],$data["Convert_BD"],$data["Contributor"],$data["Operator"],$data["Remark"],$data["Contact"]
+       ));
+                        $i++;
+                    }
+                        fclose($handle);
+                    exit;
+ }
+
     
     
     
@@ -1528,6 +1774,7 @@ class Portal extends CI_Controller
     {
         $District  = $this->input->post('District');
         $FAOBiomes = $this->input->post('FAOBiomes');
+        $Division = $this->input->post('Division');
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_loc";
@@ -1570,7 +1817,7 @@ class Portal extends CI_Controller
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where dis.District LIKE '%$District%' or b.FAOBiomes LIKE '%$FAOBiomes%'
+         where dis.District LIKE '%$District%' or b.FAOBiomes LIKE '%$FAOBiomes%' or d.Division LIKE '%$Division%'
          group by r.ID order by r.ID desc LIMIT $limit OFFSET $page
         ")->result();
         $data["links"]             = $this->pagination->create_links();
@@ -1928,6 +2175,7 @@ class Portal extends CI_Controller
     {
         $District  = $this->input->post('District');
         $EcoZones = $this->input->post('EcoZones');
+        $Division = $this->input->post('Division');
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_woodDensities_loc";
@@ -1973,6 +2221,7 @@ class Portal extends CI_Controller
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
         where dis.District LIKE '%$District%' or eco.EcoZones LIKE '%$EcoZones%'
+        or d.Division LIKE '%$Division%'
         order by w.ID_WD desc LIMIT $limit OFFSET $page
         ")->result();
      
@@ -2182,6 +2431,251 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
     }
+
+
+
+    public function get_genus() 
+    {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT Genus FROM genus WHERE Genus LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Genus);
+                    $new_row['value'] = stripslashes($row->Genus);
+                    $new_row['id'] = stripslashes($row->Genus);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+    }
+
+     public function get_species() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT Species FROM species WHERE Species LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Species);
+                    $new_row['value'] = stripslashes($row->Species);
+                    $new_row['id'] = stripslashes($row->Species);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+     }
+
+
+      public function get_district() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT District FROM district WHERE District LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->District);
+                    $new_row['value'] = stripslashes($row->District);
+                    $new_row['id'] = stripslashes($row->District);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+     }
+
+
+
+     public function get_division() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT Division FROM division WHERE Division LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Division);
+                    $new_row['value'] = stripslashes($row->Division);
+                    $new_row['id'] = stripslashes($row->Division);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+      public function get_ecological_zones() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT EcoZones FROM ecological_zones WHERE EcoZones LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->EcoZones);
+                    $new_row['value'] = stripslashes($row->EcoZones);
+                    $new_row['id'] = stripslashes($row->EcoZones);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+
+
+      public function get_reference() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT Reference FROM reference WHERE Reference LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Reference);
+                    $new_row['value'] = stripslashes($row->Reference);
+                    $new_row['id'] = stripslashes($row->Reference);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+
+     public function get_author() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT Author FROM reference WHERE Author LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Author);
+                    $new_row['value'] = stripslashes($row->Author);
+                    $new_row['id'] = stripslashes($row->Author);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+     public function get_year() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT Year FROM reference WHERE Year LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Year);
+                    $new_row['value'] = stripslashes($row->Year);
+                    $new_row['id'] = stripslashes($row->Year);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+
+
+
+     public function get_h_m() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT H_m FROM rd WHERE H_m LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->H_m);
+                    $new_row['value'] = stripslashes($row->H_m);
+                    $new_row['id'] = stripslashes($row->H_m);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+    
+      public function get_volume_m3() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT Volume_m3 FROM rd WHERE Volume_m3 LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Volume_m3);
+                    $new_row['value'] = stripslashes($row->Volume_m3);
+                    $new_row['id'] = stripslashes($row->Volume_m3);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+
+     public function get_title() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT Title FROM reference WHERE Title LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Title);
+                    $new_row['value'] = stripslashes($row->Title);
+                    $new_row['id'] = stripslashes($row->Title);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+
+         public function get_keyword() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT Keywords FROM reference WHERE Keywords LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Keywords);
+                    $new_row['value'] = stripslashes($row->Keywords);
+                    $new_row['id'] = stripslashes($row->Keywords);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+    
+    
+    
+    
+    
+    
+    
     
 
 

@@ -1,5 +1,3 @@
-
-
 <style type="text/css">
    .page_content{
    padding: 15px;
@@ -64,6 +62,7 @@
             </button>
             <ul class="dropdown-menu" role="menu">
                <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
+                <li><a href="<?php echo site_url('Portal/speciesListViewcsv/'); ?>" id="export-json">Download CSV</a></li>
                <li><a href="<?php echo site_url('Portal/speciesListViewjson/'); ?>" id="export-json">Download JSON</a></li>
                <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
             </ul>
@@ -78,6 +77,7 @@
                {
                ?>
             <div class="panel panel-default">
+            <?php if($row->GENUSCOUNT != 0 || $row->SPECIESCOUNT !=0): ?>
                <div class="panel-heading">
                   <h4 class="panel-title">
                      <a data-toggle="collapse" style="font-family:Tahoma, Verdana, Segoe, sans-serif; font-weight: 400;font-size:20px;color:inherit;" data-parent="#accordion" href="#collapse<?php echo $i; ?>" >
@@ -108,35 +108,6 @@
                                     $speciesId = $this->Forestdata_model->get_location_data_type($species_list->ID_Species);
                                     
                                      ?>
-                                 <!--            <p style="padding-left:3px;">
-                                    <b>Wood Density : 
-                                    <?php 
-                                       $totalNumberC = sizeof($speciesId) - 1 ;
-                                       foreach($speciesId as $key => $speciesIds){ ?>
-                                     <?php echo $speciesIds->WoodDensity;?>  
-                                     <?php 
-                                       if($totalNumberC != $key)
-                                         echo ", ";
-                                       }
-                                       ?>
-                                        
-                                      </b>
-                                      </p>
-                                    
-                                    <p style="padding-left:3px;">
-                                    <b>Description: 
-                                    <?php 
-                                       $totalNumberC = sizeof($speciesId) - 1 ;
-                                       foreach($speciesId as $key => $speciesIds){ ?>
-                                     <?php echo $speciesIds->Description;?>  
-                                     <?php 
-                                       if($totalNumberC != $key)
-                                         echo ", ";
-                                       }
-                                       ?>
-                                        
-                                      </b>
-                                      </p> -->
                                  <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data:
                                     <?php 
                                        $totalNumber = sizeof($speciesId) - 1 ;
@@ -150,71 +121,73 @@
                                     </b>
                                  </p>
                                  <p style="padding-left:41px;">
-                                    <b>Types of data : <a href="<?php echo site_url('Portal/allometricEquationViewSpeciesData/'.$species_list->ID_Species); ?>" style="color:#147A00;">Allometric Equations</a>
+                                    <b>Types of data : 
                                     <?php 
                                        $species_type_data = $this->Forestdata_model->get_data_type($speciesIds->ID_Species);
-                                       ?> <?php 
-                                       foreach($species_type_data as $row)
-                                       {
-                                       ?>
+                                       ?> <?php foreach ($species_type_data as $row) : ?>
+                                    <?php if($row->TOTAL_EQN !=0) { ?>
+                                    <b> <a href="<?php echo site_url('Portal/allometricEquationViewSpeciesData/'.$species_list->ID_Species); ?>" style="color:#147A00;">Allometric Equations</a>
                                     (<?php echo $row->TOTAL_EQN;?>)
-                                    <?php 
-                                       }?>
+                                    <?php  break; ?>
+                                    <?php } else { ?>
+                                    <?php  } ?>
+                                    <?php endforeach; ?>
                                     </b><br>
+                                    <?php 
+                                       $species_type_data_ef = $this->Forestdata_model->get_data_type_ef($speciesIds->ID_Species);
+                                       ?> <?php foreach ($species_type_data_ef as $row) : ?>
+                                    <?php if($row->TOTAL_EQN !=0) { ?>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                     <b><a href="<?php echo site_url('Portal/biomassExpansionFacSpeciesView/'.$species_list->ID_Species); ?>" style="color:#147A00;">Emission Factors (EF)</a>
-                                    <?php 
-                                       $species_type_data_ef = $this->Forestdata_model->get_data_type_ef($speciesIds->ID_Species);
-                                       ?> <?php 
-                                       foreach($species_type_data_ef as $row)
-                                       {
-                                       ?>
                                     (<?php echo $row->TOTAL_EQN;?>)
-                                    <?php 
-                                       }?>
+                                    <?php  break; ?>
+                                    <?php } else { ?>
+                                    <?php  } ?>
+                                    <?php endforeach; ?>
                                     </b>
                                     <br>
+                                    <?php 
+                                       $species_type_data_wd = $this->Forestdata_model->get_data_type_wd($speciesIds->ID_Species);
+                                       ?> <?php foreach ($species_type_data_wd as $row) : ?>
+                                    <?php if($row->TOTAL_EQN !=0) { ?>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                     <b><a href="<?php echo site_url('Portal/woodDensitiesSpeciesView/'.$species_list->ID_Species); ?>" style="color:#147A00;">Wood Density (WD) </a>
-                                    <?php 
-                                       $species_type_data_wd = $this->Forestdata_model->get_data_type_wd($speciesIds->ID_Species);
-                                       ?> <?php 
-                                       foreach($species_type_data_wd as $row)
-                                       {
-                                       ?>
                                     (<?php echo $row->TOTAL_EQN;?>)
-                                    <?php 
-                                       }?>
+                                    <?php  break; ?>
+                                    <?php } else { ?>
+                                    <?php  } ?>
+                                    <?php endforeach; ?>
                                     </b>
                                     <br>
+                                    <?php 
+                                       $species_type_data_rd = $this->Forestdata_model->get_data_type_rd($speciesIds->ID_Species);
+                                       ?> 
+                                    <?php foreach ($species_type_data_rd as $row) : ?>
+                                    <?php if($row->TOTAL_EQN !=0) { ?>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                     <b><a href="<?php echo site_url('Portal/rawDataSpeciesView/'.$species_list->ID_Species); ?>" style="color:#147A00;">Raw Data</a>
-                                    <?php 
-                                       $species_type_data_rd = $this->Forestdata_model->get_data_type_rd($speciesIds->ID_Species);
-                                       ?> <?php 
-                                       foreach($species_type_data_rd as $row)
-                                       {
-                                       ?>
                                     (<?php echo $row->TOTAL_EQN;?>)
-                                    <?php 
-                                       }?>
+                                    <?php  break; ?>
+                                    <?php } else { ?>
+                                    <?php  } ?>
+                                    <?php endforeach; ?>
                                     </b>
-                                   
-                                    <p style="text-align: justify;width: 980px;"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    Description:</b>
-                                     <?php 
-                                       $botanical_description = $this->Forestdata_model->get_botanical_description($speciesIds->ID_Species);
-                                       ?> <?php 
-                                       foreach($botanical_description as $row)
-                                       {
-                                       ?>
-                                    <?php echo $row->description;?>
+                                 <p style="text-align: justify;width: 980px;">
                                     <?php 
-                                       }?>
-                                     </p>
+                                       $botanical_description = $this->Forestdata_model->get_botanical_description($speciesIds->ID_Species);
+                                       ?> 
+                                    <?php foreach ($botanical_description as $row) : ?>
+                                    <?php if($botanical_description !=0) { ?>
+                                    <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Description : </b><?php echo $row->description;?>
+                                    <?php  break; ?>
+                                    <?php } else { ?>
+                                    <?php  } ?>
+                                    <?php endforeach; ?>
+                                 </p>
                                  </p>
                                  <br>
                               </div>
@@ -227,6 +200,7 @@
                      </div>
                   </div>
                </div>
+            <?php endif; ?>
             </div>
             <?php 
                $i++;

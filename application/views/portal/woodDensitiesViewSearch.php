@@ -130,8 +130,13 @@
             </p>
             <form action="<?php echo site_url('portal/search_rawequation_tax');?>" method = "post">
                <div class="col-md-6">
+                 <div class="form-group">
+                     
+                     <label>Division<span style="color:red;">*</span></label>
+                     <input type="text" class="form-control input-sm" name ="Division" maxlength="64" placeholder="Division" />
+                  </div>
                   <div class="form-group">
-                     <h3>Country</h3>
+                    
                      <label>District<span style="color:red;">*</span></label>
                      <input type="text" class="form-control input-sm" name ="District" maxlength="64" placeholder="District" />
                   </div>

@@ -39,6 +39,7 @@
   border-radius: 0px 0px 4px 4px;
 }
 </style>
+
 <?php
 $lang_ses = $this->session->userdata("site_lang");
 ?>
@@ -99,11 +100,11 @@ $lang_ses = $this->session->userdata("site_lang");
           <div class="col-md-6">
             <div class="form-group">
               <label>Genus<span style="color:red;">*</span></label>
-              <input type="text" class="form-control input-sm" name ="Genus" maxlength="64" placeholder="Genus" />
+              <input type="text" class="form-control input-sm" name ="Genus" id ="Genus" class ="Genus" maxlength="64" placeholder="Genus" />
             </div>
             <div class="form-group">
               <label>Species<span style="color:red;">*</span></label>
-              <input type="text" class="form-control input-sm" name ="Species" maxlength="64" placeholder="Species" />
+              <input type="text" class="form-control input-sm" name ="Species" maxlength="64" id ="Species" class ="Species" placeholder="Species" />
               <br>
               <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
             </div>
@@ -119,15 +120,22 @@ $lang_ses = $this->session->userdata("site_lang");
         </p>
         <form action="<?php echo site_url('portal/search_allometricequation_loc');?>" method = "post">
           <div class="col-md-6">
-            <div class="form-group">
-              <h3>Country</h3>
-              <label>District<span style="color:red;">*</span></label>
-              <input type="text" class="form-control input-sm" name ="District" maxlength="64" placeholder="District" />
+              <div class="form-group">
+             
+              <label>Division<span style="color:red;">*</span></label>
+              <input type="text" class="form-control input-sm" name ="Division" id ="division" class ="division" maxlength="64" placeholder="Division" />
             </div>
+            <div class="form-group">
+             
+              <label>District<span style="color:red;">*</span></label>
+              <input type="text" class="form-control input-sm" name ="District" id ="District" class ="District" maxlength="64" placeholder="District" />
+            </div>
+
+        
             <div class="form-group">
               <h3>Ecological Zone</h3>
               <label>FAO Global Ecological Zone <span style="color:red;">*</span></label>
-              <input type="text" class="form-control input-sm" name ="EcoZones" maxlength="64" placeholder="FAO Global Ecological Zone" />
+              <input type="text" class="form-control input-sm" name ="EcoZones" maxlength="64" id ="ecoZones" class ="ecoZones" placeholder="FAO Global Ecological Zone" />
               <br>
               <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
             </div>
@@ -147,15 +155,15 @@ $lang_ses = $this->session->userdata("site_lang");
           <div class="col-md-6">
             <div class="form-group">
               <label>Reference <span style="color:red;">*</span></label>
-              <input type="text" class="form-control input-sm" name ="Reference" maxlength="200" placeholder="Reference" />
+              <input type="text" class="form-control input-sm" name ="Reference" id ="reference" class ="reference" maxlength="200" placeholder="Reference" />
             </div>
             <div class="form-group">
               <label>Author  <span style="color:red;">*</span></label>
-              <input type="text" class="form-control input-sm" name ="Author" maxlength="64" placeholder="Author" />
+              <input type="text" class="form-control input-sm" name ="Author" id ="author" class ="author" maxlength="64" placeholder="Author" />
             </div>
             <div class="form-group">
               <label>Year  <span style="color:red;">*</span></label>
-              <input type="text" class="form-control input-sm" name ="Year" maxlength="64" placeholder="Year" />
+              <input type="text" class="form-control input-sm" name ="Year" maxlength="64" id ="year" class ="year" placeholder="Year" />
               <br>
               <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
             </div>
@@ -179,7 +187,9 @@ $lang_ses = $this->session->userdata("site_lang");
             </button>
             <ul class="dropdown-menu" role="menu">
               <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
+                  <li><a href="<?php echo site_url('Portal/allometricEquationViewcsv/'); ?>" id="export-json">Download CSV</a></li>
               <li><a href="<?php echo site_url('Portal/allometricEquationViewjson/'); ?>" id="export-json">Download JSON</a></li>
+
               <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
             </ul>
           </div>
@@ -232,6 +242,110 @@ $lang_ses = $this->session->userdata("site_lang");
         </script>
       </div>
     </div>
+
+    <script type="text/javascript">
+     $(document).on('keypress', '#Genus', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_genus'); ?>",
+                select: function (event, ui) {
+                    $("#Genus" + id).val(ui.item.id);
+                }
+            });
+        });
+      $(document).on('keypress', '#Species', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_species'); ?>",
+                select: function (event, ui) {
+                    $("#Species" + id).val(ui.item.id);
+                }
+            });
+        });
+
+      $(document).on('keypress', '#District', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_district'); ?>",
+                select: function (event, ui) {
+                    $("#District" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+       $(document).on('keypress', '#division', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_division'); ?>",
+                select: function (event, ui) {
+                    $("#division" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+            $(document).on('keypress', '#ecoZones', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_ecological_zones'); ?>",
+                select: function (event, ui) {
+                    $("#ecoZones" + id).val(ui.item.id);
+                }
+            });
+        });
+
+             $(document).on('keypress', '#reference', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_reference'); ?>",
+                select: function (event, ui) {
+                    $("#reference" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+               $(document).on('keypress', '#author', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_author'); ?>",
+                select: function (event, ui) {
+                    $("#author" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+                       $(document).on('keypress', '#year', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_year'); ?>",
+                select: function (event, ui) {
+                    $("#year" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+</script>
+
 <script type="text/javascript">
 $(document).ready(function(){
   $("a.results-map").click(function(){
@@ -263,3 +377,5 @@ $("a.resultList").click(function(){
   $("div.mapBlock").hide();
 });
 </script>
+
+
