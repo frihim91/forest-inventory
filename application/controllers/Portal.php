@@ -2629,6 +2629,25 @@ class Portal extends CI_Controller
       }
 
 
+        public function get_fao_biome() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT FAOBiomes FROM faobiomes WHERE FAOBiomes LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->FAOBiomes);
+                    $new_row['value'] = stripslashes($row->FAOBiomes);
+                    $new_row['id'] = stripslashes($row->FAOBiomes);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
 
      public function get_title() 
      {
@@ -2667,6 +2686,39 @@ class Portal extends CI_Controller
             echo json_encode($row_set);
         }
       }
+
+
+
+      public function get_keyword_all() 
+     {
+        if (isset($_GET['term'])) {
+            $keyword = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where dis.District LIKE '%$keyword%' OR r.H_m LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
+         OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
+         OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+         OR ref.Year LIKE '%$keyword%' OR r.Volume_m3 LIKE '%$keyword%' OR r.DBH_cm LIKE '%$keyword%'
+         group by r.ID order by r.ID desc ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Species);
+                    $new_row['value'] = stripslashes($row->Species);
+                    $new_row['id'] = stripslashes($row->Species);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
 
 
     

@@ -188,7 +188,7 @@
                   <div class="form-group">
                      <h3>Ecological Zone</h3>
                      <label>FAO Global Ecological Zone <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="FAOBiomes" maxlength="64" placeholder="FAO Global Ecological Zone" />
+                     <input type="text" class="form-control input-sm" name ="FAOBiomes"  id ="fao_biome" class ="fao_biome" maxlength="64" placeholder="FAO Global Ecological Zone" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -392,6 +392,19 @@
                 }
             });
         });
+
+            $(document).on('keypress', '#fao_biome', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_fao_biome'); ?>",
+                select: function (event, ui) {
+                    $("#fao_biome" + id).val(ui.item.id);
+                }
+            });
+        });
+
 
 
 </script>
