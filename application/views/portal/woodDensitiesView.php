@@ -88,13 +88,13 @@
                <div class="col-md-3">
                   <div class="form-group">
                      <label>Average Height <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="H_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
+                     <input type="text" class="form-control input-sm" name ="H_tree_avg"  id ="h_tree_avg" class ="h_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
                   </div>
                   </div>
                   <div class="col-md-3">
                   <div class="form-group">
                      <label>Minimum Height<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="H_tree_min" maxlength="64" placeholder="Volume (m3)" />
+                     <input type="text" class="form-control input-sm" name ="H_tree_min"  id ="h_tree_min" class ="h_tree_min" maxlength="64" placeholder="Volume (m3)" />
                      
                   </div>
                </div>
@@ -102,7 +102,7 @@
                  <div class="col-md-3">
                   <div class="form-group">
                      <label>Maximum Height<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="H_tree_max" maxlength="64" placeholder="Volume (m3)" />
+                     <input type="text" class="form-control input-sm" name ="H_tree_max" maxlength="64" id ="h_tree_max" class ="h_tree_max" placeholder="Volume (m3)" />
                      
                   </div>
                </div>
@@ -115,20 +115,20 @@
                <div class="col-md-3">
                   <div class="form-group">
                      <label>Average DBH <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="DBH_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_avg" id ="dbh_tree_avg" class ="dbh_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
                   </div>
                   </div>
                   <div class="col-md-3">
                   <div class="form-group">
                      <label>Minimum DBH<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="DBH_tree_min" maxlength="64" placeholder="Volume (m3)" />
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_min" maxlength="64" id ="dbh_tree_min" class ="dbh_tree_min" placeholder="Volume (m3)" />
                      
                   </div>
                </div>
                  <div class="col-md-3">
                   <div class="form-group">
                      <label>Maximum DBH<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="DBH_tree_max" maxlength="64" placeholder="Volume (m3)" />
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_max" maxlength="64" id ="dbh_tree_max" class ="dbh_tree_max" placeholder="Volume (m3)" />
                      
                   </div>
                </div>
@@ -404,6 +404,91 @@
                 }
             });
         });
+
+
+
+              $(document).on('keypress', '#h_tree_avg', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_h_tree_avg'); ?>",
+                select: function (event, ui) {
+                    $("#h_tree_avg" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+            $(document).on('keypress', '#h_tree_min', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_h_tree_min'); ?>",
+                select: function (event, ui) {
+                    $("#h_tree_min" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+               $(document).on('keypress', '#h_tree_max', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_h_tree_max'); ?>",
+                select: function (event, ui) {
+                    $("#h_tree_max" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+
+          $(document).on('keypress', '#dbh_tree_avg', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_dbh_tree_avg'); ?>",
+                select: function (event, ui) {
+                    $("#dbh_tree_avg" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+           $(document).on('keypress', '#dbh_tree_min', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_dbh_tree_min'); ?>",
+                select: function (event, ui) {
+                    $("#dbh_tree_min" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+            $(document).on('keypress', '#dbh_tree_max', function () {
+      
+            var pattern = /[0-9]+/g;
+            var id = $(this).attr('id').match(pattern);
+            $(this).autocomplete({
+                source: "<?php echo site_url('Portal/get_dbh_tree_max'); ?>",
+                select: function (event, ui) {
+                    $("#dbh_tree_max" + id).val(ui.item.id);
+                }
+            });
+        });
+
+
+
+
+
 
 
 

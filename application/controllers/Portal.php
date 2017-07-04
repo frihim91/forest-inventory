@@ -2669,7 +2669,7 @@ class Portal extends CI_Controller
 
 
 
-         public function get_keyword() 
+     public function get_keyword() 
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -2718,6 +2718,133 @@ class Portal extends CI_Controller
             echo json_encode($row_set);
         }
       }
+
+
+
+
+     public function get_h_tree_avg() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT H_tree_avg FROM wd WHERE H_tree_avg LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->H_tree_avg);
+                    $new_row['value'] = stripslashes($row->H_tree_avg);
+                    $new_row['id'] = stripslashes($row->H_tree_avg);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+
+     public function get_h_tree_min() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT  H_tree_min FROM wd WHERE H_tree_min LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->H_tree_min);
+                    $new_row['value'] = stripslashes($row->H_tree_min);
+                    $new_row['id'] = stripslashes($row->H_tree_min);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+     public function get_h_tree_max() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT  H_tree_max FROM wd WHERE H_tree_max LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->H_tree_max);
+                    $new_row['value'] = stripslashes($row->H_tree_max);
+                    $new_row['id'] = stripslashes($row->H_tree_max);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+
+
+     public function get_dbh_tree_avg() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT DBH_tree_avg FROM wd WHERE DBH_tree_avg LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->DBH_tree_avg);
+                    $new_row['value'] = stripslashes($row->DBH_tree_avg);
+                    $new_row['id'] = stripslashes($row->DBH_tree_avg);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+
+
+     public function get_dbh_tree_min() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT DBH_tree_min FROM wd WHERE DBH_tree_min LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->DBH_tree_min);
+                    $new_row['value'] = stripslashes($row->DBH_tree_min);
+                    $new_row['id'] = stripslashes($row->DBH_tree_min);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+     public function get_dbh_tree_max() 
+     {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT DBH_tree_max FROM wd WHERE DBH_tree_max LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->DBH_tree_max);
+                    $new_row['value'] = stripslashes($row->DBH_tree_max);
+                    $new_row['id'] = stripslashes($row->DBH_tree_max);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+      }
+
+
+
+
+
+
 
 
 
