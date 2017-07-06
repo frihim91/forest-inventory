@@ -58,44 +58,61 @@
                             ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a>
                                 <?php 
                             }else{ ?>
-                                <a href="<?php echo site_url('Portal/allometricEquationView'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a>
+                                <a href="<?php echo site_url('data/allometricEquationView'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a>
                                   <?php 
                             }
                             
                            ?>
                            </li>
-                        <li ><?php
-                           if(!$this->session->userdata('user_logged')){
-                            ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("Wood_densities"); ?></a>
-                            <a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("biomass_expansion_factor"); ?></a>
-                            <a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
-                                <?php 
-                            }else{ ?>
-                               
-                               <a href="<?php echo site_url('Portal/rawDataView'); ?>"><?php echo $this->lang->line("raw_data"); ?></a>
-                                  <?php 
-                            }
-                            
-                           ?></li>
-                        <li><?php
+                             <li ><?php
                            if(!$this->session->userdata('user_logged')){
                             ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("raw_data"); ?></a>
                                 <?php 
                             }else{ ?>
-                             <a href="<?php echo site_url('Portal/woodDensitiesView'); ?>"><?php echo $this->lang->line("Wood_densities"); ?></a>
-                             <a href="<?php echo site_url('Portal/biomassExpansionFacView'); ?>"><?php echo $this->lang->line("biomass_expansion_factor"); ?></a>
-                              <a href="<?php echo site_url('Portal/speciesData'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
+                                <a href="<?php echo site_url('data/rawDataView'); ?>"><?php echo $this->lang->line("raw_data"); ?></a>
                                   <?php 
                             }
                             
-                           ?></li>
-                                  <!--<li role="presentation" class="divider"></li>-->
-                                
+                           ?>
+                           </li>
+                            <li ><?php
+                           if(!$this->session->userdata('user_logged')){
+                            ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("Wood_densities"); ?></a>
+                                <?php 
+                            }else{ ?>
+                                <a href="<?php echo site_url('data/woodDensitiesView'); ?>"><?php echo $this->lang->line("Wood_densities"); ?></a>
+                                  <?php 
+                            }
+                            
+                           ?>
+                           </li>
+                             <li ><?php
+                           if(!$this->session->userdata('user_logged')){
+                            ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("biomass_expansion_factor"); ?></a>
+                                <?php 
+                            }else{ ?>
+                                <a href="<?php echo site_url('data/biomassExpansionFacView'); ?>"><?php echo $this->lang->line("biomass_expansion_factor"); ?></a>
+                                  <?php 
+                            }
+                            
+                           ?>
+                           </li>
+                          <li ><?php
+                           if(!$this->session->userdata('user_logged')){
+                            ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
+                                <?php 
+                            }else{ ?>
+                                <a href="<?php echo site_url('data/speciesData'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
+                                  <?php 
+                            }
+                            
+                           ?>
+                           </li>    
                         </ul>
                     </li>
 
                    <li class="">
-                        <a href="<?php echo site_url('Portal/viewLibraryPage'); ?>" class="dropdown-toggle" data-toggle="" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line("library"); ?>
+                        <a href="<?php echo site_url('portal/viewLibraryPage'); ?>" class="dropdown-toggle" data-toggle="" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line("library"); ?>
                         </a>
                        
                     </li>
@@ -118,7 +135,7 @@
                     ?>
                     
                     <li class="<?php echo $className; ?>">
-                        <a href="<?php echo site_url('Portal/details/'.$pm->TITLE_ID.'/'.$pm->PG_URI); ?>" class="dropdown-toggle" data-toggle="<?php echo $className; ?>" role="button" aria-haspopup="true" aria-expanded="false"> 
+                        <a href="<?php echo site_url('portal/details/'.$pm->TITLE_ID.'/'.$pm->PG_URI); ?>" class="dropdown-toggle" data-toggle="<?php echo $className; ?>" role="button" aria-haspopup="true" aria-expanded="false"> 
                            <?php 
                            if(!empty($pm->TITLE_NAME_BN))
                                 {
@@ -146,7 +163,7 @@
                         <ul class="dropdown-menu">
                             <?php foreach($link as $links){
                                 ?>
-                                <li ><a href="<?php echo site_url('Portal/details/'.$links->TITLE_ID.'/'.$links->PG_URI); ?>"> <?php
+                                <li ><a href="<?php echo site_url('portal/details/'.$links->TITLE_ID.'/'.$links->PG_URI); ?>"> <?php
                                 $lang_ses = $this->session->userdata("site_lang");
                                 
                                 if(!empty($links->TITLE_NAME_BN))

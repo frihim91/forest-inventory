@@ -16,6 +16,9 @@ class Portal extends CI_Controller
     {
       
         parent::__construct();
+         /*if (!isset($_SESSION['user_loggeed'])) {
+         redirect('/');
+        }*/
         $this->load->model('utilities');
         $this->load->model('setup_model');
         $this->load->model('Menu_model');
