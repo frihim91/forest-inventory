@@ -421,7 +421,7 @@ $(document).ready(function(){
     $.getJSON("<?php echo base_url(); ?>resources/mapRawdata.php",function(data){
       var ratIcon = L.icon({
         iconUrl: '<?php echo base_url(); ?>resources/final.png',
-        iconSize: [60,50]
+        iconSize: [19,30]
       });
       L.geoJson(data,{
         pointToLayer: function(feature,latlng){
