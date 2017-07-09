@@ -570,14 +570,14 @@ class Portal extends CI_Controller
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         group by a.ID_AE order by a.ID_AE desc")->result_array();
+         group by a.ID_AE order by a.ID_AE asc")->result_array();
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
  header("Content-Disposition: attachment; filename=\"Allometric Equation".".csv\"");
  header("Pragma: no-cache");
  header("Expires: 0");
  $handle = fopen('php://output', 'w');
- fputcsv($handle, array('ID_AE',' ID_RD', 'Population', 'Tree_type','Vegetation_type','Country','Division','District','Upazila','Union'
+ fputcsv($handle, array('ID_AE','ID_RD', 'Population', 'Tree_type','Vegetation_type','Country','Division','District','Upazila','Union'
   ,'location_notes','Latitude','Longitude','BFI_zone','FAO_biome','WWF_Eco_zone','X','Unit_X','Z'
   ,'Unit_Z','W','Unit_W','U ','Unit_U',' V','Unit_V',' Mean_X',' Min_X',' Max_X',' Mean_Z','Min_Z','Max_Z','Mean_W','Min_W','Max_W','Output'
   ,'Output_TR','Unit_Y','Min_age','Max_age',' Av_age','B','Bd','Bg','Bt',' L','Rb','Rf','Rm','S','T','F','Family','Genus','Species','Subspecies','Species_local_name_latin'
@@ -585,7 +585,7 @@ class Portal extends CI_Controller
   ,'SEY','SEE','AIC','FI','Bias_correction',' Ratio_equation','Segmented_equation','Contributor','Operator','Remark','Contact','  Verified'));
                     $i = 1;
                     foreach ($allometricEquationViewcsv as $data) {
-                        fputcsv($handle, array($i, $data["ID_AE"], $data["ID_RD"], $data["Population"], $data["Tree_type"], $data["Vegetation_type"], $data["Country"], $data["Division"]
+                        fputcsv($handle, array($data["ID_AE"], $data["ID_RD"], $data["Population"], $data["Tree_type"], $data["Vegetation_type"], $data["Country"], $data["Division"]
                           , $data["District"], $data["Upazila"], $data["Union"], $data["location_notes"], $data["Latitude"], $data["Longitude"], $data["BFI_zone"], $data["FAO_biome"]
                           , $data["WWF_Eco_zone"], $data["X"], $data["Unit_X"], $data["Z"], $data["Unit_Z"], $data["W"], $data["Unit_W"], $data["U"], 
                            $data["Unit_U"], $data["V"], $data["Unit_V"], $data["Mean_X"],$data["Min_X"],$data["Max_X"],$data["Mean_Z"],$data["Min_Z"],$data["Max_Z"],$data["Mean_W"],$data["Min_W"]
@@ -618,10 +618,10 @@ class Portal extends CI_Controller
  header("Pragma: no-cache");
  header("Expires: 0");
  $handle = fopen('php://output', 'w');
- fputcsv($handle, array('NAME',' ID_Species'));
+ fputcsv($handle, array('ID_Species',' NAME'));
                     $i = 1;
                     foreach ($speciesListViewcsv as $data) {
-                        fputcsv($handle, array($i, $data["NAME"], $data["ID_Species"]));
+                        fputcsv($handle, array($data["ID_Species"], $data["NAME"]));
                         $i++;
                     }
                         fclose($handle);
@@ -652,7 +652,7 @@ class Portal extends CI_Controller
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         GROUP BY e.ID_EF order by e.ID_EF desc")->result_array();
+         GROUP BY e.ID_EF order by e.ID_EF asc")->result_array();
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
  header("Content-Disposition: attachment; filename=\"Biomass Expansion Factor".".csv\"");
@@ -664,7 +664,7 @@ class Portal extends CI_Controller
   ,'longitude  ','Country  ','Division  ',' District  ',' Upazila',' Union',' FAO_biome',' WWF_Eco_zone',' BFI_zone'));
                     $i = 1;
                     foreach ($biomassExpansionFacView as $data) {
-                        fputcsv($handle, array($i, $data["ID_EF"], $data["ID_LandCover"], $data["Species"], $data["AgeRange"], $data["ID_AgeRange"], $data["HeightRange"], $data["ID_HeightRange"]
+                        fputcsv($handle, array($data["ID_EF"], $data["ID_LandCover"], $data["Species"], $data["AgeRange"], $data["ID_AgeRange"], $data["HeightRange"], $data["ID_HeightRange"]
                           , $data["VolumeRange"], $data["ID_VolumeRange"], $data["BasalRange"], $data["ID_BasalArea"], $data["Value"], $data["Unit"], $data["ID_EF_IPCC"], $data["Reference"]
                           , $data["Lower_Confidence_Limit"], $data["Upper_Confidence_Limit"], $data["Type_of_Parameter"], $data["latitude"], $data["longitude"], $data["Country"], $data["Division"], $data["District"], 
                           $data["Upazila"], $data["Union"], $data["FAO_biome"], $data["WWF_Eco_zone"], $data["BFI_zone"]));
@@ -1324,7 +1324,7 @@ class Portal extends CI_Controller
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         group by r.ID order by r.ID desc")->result_array();
+         group by r.ID order by r.ID asc")->result_array();
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
  header("Content-Disposition: attachment; filename=\"Raw Data".".csv\"");
@@ -1339,7 +1339,7 @@ class Portal extends CI_Controller
   ,'Contact'));
                     $i = 1;
                     foreach ($rawDataViewcsv as $data) {
-                        fputcsv($handle, array($i, $data["ID"], $data["ID_RD"], $data["ID_tree"], $data["Tree_type"], $data["Vegetation_type"], $data["Division"], $data["District"]
+                        fputcsv($handle, array($data["ID"], $data["ID_RD"], $data["ID_tree"], $data["Tree_type"], $data["Vegetation_type"], $data["Division"], $data["District"]
                           , $data["Upazila"], $data["Union"], $data["Latitude"], $data["Longitude"], $data["Zone_FAO"], $data["ID_FAO_Biomes"], $data["Ecoregion_Udvardy"], $data["Ecoregion_WWF"]
                           , $data["Division_Bailey"], $data["Zone_Holdridge"], $data["Bioecological_zones_Bangladesh_IUCN"], $data["Family_ID"], $data["Genus_ID"], $data["Species_ID"], $data["Subspecies"], $data["DBH_cm"], 
                           $data["H_m"], $data["Collar_girth"], $data["CD_m"], $data["Veg_Component"],$data["B"],$data["Bd"],$data["Bg"],$data["Bt"],$data["L"],$data["Rb"]
@@ -1396,7 +1396,7 @@ class Portal extends CI_Controller
          LEFT JOIN district dis ON l.ID_District =dis.ID_District
          LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones  
-         order by w.ID_WD desc")->result_array();
+         order by w.ID_WD asc")->result_array();
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
  header("Content-Disposition: attachment; filename=\"Wood Densities".".csv\"");
@@ -1409,7 +1409,7 @@ class Portal extends CI_Controller
   ,'Density_green','Density_airdry','Density_ovendry','MC_Density','Data_origin','Data_type','Samples_per_tree','Number_of_trees','SD','Min','Max','H_measure','Bark_distance','CV','Convert_BD','Contributor','Operator','Remark','Contact'));
                     $i = 1;
                     foreach ($woodDensityViewcsv as $data) {
-                        fputcsv($handle, array($i, $data["ID_WD"], $data["Tree_type"], $data["Vegetation_type"], $data["Region"], $data["ID_Location_group"], $data["ID_Location"], $data["Group_Location"]
+                        fputcsv($handle, array($data["ID_WD"], $data["Tree_type"], $data["Vegetation_type"], $data["Region"], $data["ID_Location_group"], $data["ID_Location"], $data["Group_Location"]
                           , $data["Location"], $data["Longitude"], $data["Latitude"], $data["Zone_FAO"], $data["Ecoregion_Udvardy"], $data["Ecoregion_WWF"], $data["Division_Bailey"], $data["Zone_Holdridge"]
                           , $data["ID_family"], $data["ID_genus"], $data["ID_species"], $data["Subspecies"], $data["Species_local_name_iso"], $data["ID_reference"],$data["ID_RD"], $data["H_tree_avg"], 
                            $data["H_tree_min"],$data["H_tree_max"],$data["DBH_tree_avg"], $data["DBH_tree_min"],$data["DBH_tree_max"],$data["m_WD"],$data["MC_m"],$data["V_WD"],$data["MC_V"],$data["CR"],$data["FSP"]
