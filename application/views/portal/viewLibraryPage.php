@@ -144,16 +144,17 @@
             {
               ?>
          <h4><?php echo $row->Title;?></h4>
-         <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/>Download <?php echo $row->Title;?></a>
+         <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/> Download <?php echo $row->Title;?></a>
          <br>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?>
          </p>
          <?php
             }?>
+            <p><?php echo $links; ?></p>
          <h4>Scientific articles</h4>
          <p>Here you can find links to articles providing information about GlobAllomeTree and associated tools.</p>
          <p><a href=""> <?php
             $i=1;
-            foreach ($reference as  $row){
+            foreach ($reference_author as  $row){
             if($i==1){
             echo "$row->Author";
             }else{
@@ -164,6 +165,7 @@
                 
             ?>
             </a>
+
             iForest (early view) - doi: 10.3832/ifor0901-006
          <p>
       </div>

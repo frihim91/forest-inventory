@@ -205,7 +205,8 @@
                   <p style="padding-left:3px;"><b>Reference : </b><?php echo $row->Reference;?></p>
                   <p style="padding-left:3px;"><b>Reference Year : </b><?php echo $row->Year;?></p>
                   <p style="padding-left:3px;"><b>FAO Biomes : </b><?php echo $row->FAOBiomes;?></p>
-                  <p style="padding-left:3px;"><b>Species : </b><?php echo $row->Family.' '.$row->Species;?></p>
+                   <p style="padding-left:3px;"><b>Family : </b><?php echo $row->Family;?></p>
+                  <p style="padding-left:3px;"><b>Species : </b><?php echo $row->Species;?></p>
                   <p style="padding-left:3px;"><b>Locations : </b><?php echo $row->District;?> (lat <?php echo $row->latitude;?>,lon <?php echo $row->longitude;?>)</p>
                </div>
             </div>

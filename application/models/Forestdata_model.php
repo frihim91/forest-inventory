@@ -628,7 +628,7 @@ Class Forestdata_model extends CI_Model {
 
 	 public function get_wood_densities_grid($limit,$page)
 	{
-		$data=$this->db->query("SELECT m.*,CONCAT(f.Family,' ',s.Species) Species,wd.Density_green,r.Reference,r.Year FROM (SELECT ID_WD,ID_Species FROM wd w) m
+		$data=$this->db->query("SELECT m.*,s.Species,f.Family,wd.Density_green,r.Reference,r.Year FROM (SELECT ID_WD,ID_Species FROM wd w) m
         LEFT JOIN wd  ON m.ID_WD=wd.ID_WD
         LEFT JOIN reference r ON wd.ID_Reference = r.ID_Reference
         LEFT JOIN species s ON m.ID_Species=s.ID_Species

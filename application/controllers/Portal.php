@@ -279,13 +279,49 @@ class Portal extends CI_Controller
      */
     public function search_document()
     {
-         $Title = $this->input->post('Title');
-         $Author = $this->input->post('Author');
-         $Keywords = $this->input->post('Keywords');
+        $Title = $this->input->post('Title');
+        $Author = $this->input->post('Author');
+        $Keywords = $this->input->post('Keywords');
+        $this->load->library('pagination');
+        $config             = array();
+        $config["base_url"] = base_url() . "index.php/portal/search_document";
+        $total_ef           = $this->db->count_all("reference");
+        
+        $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = 800;
+        
+        $config["per_page"]        = 20;
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $limit                     = $config["per_page"];
+        $config["uri_segment"] = 3;
+        //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+        //pagination style end
+         $this->pagination->initialize($config);
+         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+         $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
          $data['reference'] = $this->db->query("SELECT r.* from reference r
-         where r.Title LIKE '%$Title%' OR r.Author LIKE '%$Author%' OR r.Keywords LIKE '%$Keywords%'
-         order by r.ID_Reference desc 
+         where r.Title LIKE '%$Title%' OR r.Author LIKE '%$Author%' OR r.Keywords LIKE '%$Keywords%' order by r.Title desc LIMIT $limit OFFSET $page
+         
          ")->result();
+         $data["links"]                  = $this->pagination->create_links();
          $data['content_view_page']      = 'portal/viewLibraryPage';
          $this->template->display_portal($data);
         
@@ -2430,7 +2466,43 @@ class Portal extends CI_Controller
 
     public function viewLibraryPage()
     {
-        $data['reference']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
+        $this->load->library('pagination');
+        $config             = array();
+        $config["base_url"] = base_url() . "index.php/portal/viewLibraryPage";
+        $total_ef           = $this->db->count_all("reference");
+        
+        $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = 800;
+        
+        $config["per_page"]        = 20;
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $limit                     = $config["per_page"];
+        $config["uri_segment"] = 3;
+        //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data['reference']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc LIMIT $limit OFFSET $page")->result();
+        $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
+        $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
     }
@@ -2558,7 +2630,7 @@ class Portal extends CI_Controller
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
-            $result = $this->db->query("SELECT Author FROM reference WHERE Author LIKE '%$q%' ")->result();
+            $result = $this->db->query("SELECT Author FROM reference WHERE Author LIKE '%$q%' limit 15  ")->result();
             $row_set = array();
             if (!empty($result)) {
                 foreach ($result as $row) {
@@ -2656,7 +2728,7 @@ class Portal extends CI_Controller
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
-            $result = $this->db->query("SELECT Title FROM reference WHERE Title LIKE '%$q%' ")->result();
+            $result = $this->db->query("SELECT Title FROM reference WHERE Title LIKE '%$q%' limit 15 ")->result();
             $row_set = array();
             if (!empty($result)) {
                 foreach ($result as $row) {
@@ -2676,7 +2748,7 @@ class Portal extends CI_Controller
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
-            $result = $this->db->query("SELECT Keywords FROM reference WHERE Keywords LIKE '%$q%' ")->result();
+            $result = $this->db->query("SELECT Keywords FROM reference WHERE Keywords LIKE '%$q%' limit 15 ")->result();
             $row_set = array();
             if (!empty($result)) {
                 foreach ($result as $row) {

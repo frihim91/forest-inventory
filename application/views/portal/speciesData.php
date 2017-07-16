@@ -108,7 +108,22 @@
                                     $speciesId = $this->Forestdata_model->get_location_data_type($species_list->ID_Species);
                                     
                                      ?>
-                                 <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data:
+                                 <p>
+
+                                    <b> <?php 
+                                   
+                                    foreach ($speciesId as $row) : ?>
+                                    <?php if($row->FAOBiomes!='') { ?>
+                                    <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data :
+                                   
+                                    <?php  break; ?>
+                                    <?php } else { ?> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data : No Data</b>
+                                    <?php  } ?>
+                                    <?php endforeach; ?>
+                                    </b>
+
+
+                                 <b>
                                     <?php 
                                        $totalNumber = sizeof($speciesId) - 1 ;
                                        foreach($speciesId as $key => $speciesIds){ 
@@ -121,7 +136,17 @@
                                     </b>
                                  </p>
                                  <p style="padding-left:41px;">
-                                    <b>Types of data : 
+                                    <b><?php 
+                                       $species_type_data = $this->Forestdata_model->get_data_type($speciesIds->ID_Species);
+                                       ?> <?php foreach ($species_type_data as $row) : ?>
+                                    <?php if($row->TOTAL_EQN !=0) { ?>
+                                    <b>Types Of Data :
+                                   
+                                    <?php  break; ?>
+                                    <?php } else { ?><b>Types Of Data : No Data</b>
+                                    <?php  } ?>
+                                    <?php endforeach; ?>
+                                    </b>
                                     <?php 
                                        $species_type_data = $this->Forestdata_model->get_data_type($speciesIds->ID_Species);
                                        ?> <?php foreach ($species_type_data as $row) : ?>
