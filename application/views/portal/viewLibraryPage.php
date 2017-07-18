@@ -111,20 +111,32 @@
           <a href="#"> Keyword: Barua </a>,
         </p>
         <form action="<?php echo site_url('portal/search_document');?>" method = "post">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group">
-              <label>Title <span style="color:red;">*</span></label>
+              <label>Title <span style="color:red;"></span></label>
               <input type="text" class="form-control input-sm" name ="Title" id ="title" class ="title" maxlength="200" placeholder="Title" />
             </div>
+            </div>
+            <div class="col-md-3">
             <div class="form-group">
-              <label>Author  <span style="color:red;">*</span></label>
+              <label>Author  <span style="color:red;"></span></label>
               <input type="text" class="form-control input-sm" name ="Author" id ="author" class ="author" maxlength="64" placeholder="Author" />
             </div>
+            </div>
+            <div class="col-md-3">
             <div class="form-group">
-              <label>Keyword  <span style="color:red;">*</span></label>
+              <label>Keyword  <span style="color:red;"></span></label>
               <input type="text" class="form-control input-sm" name ="Keywords" id ="keyword" class ="keyword" maxlength="64" placeholder="Keywords" />
-              <br>
+             
+              
+            </div>
+            </div>
+             <div class="col-md-2">
+            <div class="form-group">
+            <br>
+            
               <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+            </div>
             </div>
         </form>
       </div>

@@ -201,13 +201,13 @@
                   <a href="<?php echo site_url('Portal/biomassExpansionFacDetails/'.$row->ID_Species); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
                <div class="panel-body">
-                  <p style="padding-left:3px;"><b>Biomass Expansion Factor : </b><?php echo $row->Value;?></p>
-                  <p style="padding-left:3px;"><b>Reference : </b><?php echo $row->Reference;?></p>
-                  <p style="padding-left:3px;"><b>Reference Year : </b><?php echo $row->Year;?></p>
-                  <p style="padding-left:3px;"><b>FAO Biomes : </b><?php echo $row->FAOBiomes;?></p>
-                   <p style="padding-left:3px;"><b>Family : </b><?php echo $row->Family;?></p>
-                  <p style="padding-left:3px;"><b>Species : </b><?php echo $row->Species;?></p>
-                  <p style="padding-left:3px;"><b>Locations : </b><?php echo $row->District;?> (lat <?php echo $row->latitude;?>,lon <?php echo $row->longitude;?>)</p>
+                  <p style="padding-left:3px;"><b>Biomass Expansion Factor: </b><?php echo $row->Value;?></p>
+                  <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
+                  <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
+                  <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
+                   <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
+                  <p style="padding-left:3px;"><b>Species: </b><?php echo $row->Species;?></p>
+                  <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->latitude;?>,lon <?php echo $row->longitude;?>)</p>
                </div>
             </div>
             <?php 

@@ -220,7 +220,7 @@
                   <p style="padding-left:3px;"><b>Total Volume (Volume_m3): </b><?php echo $row->Volume_m3;?></p>
                   <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
                   <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
-                  <p style="padding-left:3px;"><b>FAO Biomes: </b><?php echo $row->FAOBiomes;?></p>
+                  <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
                    <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
                   <p style="padding-left:3px;"><b>Species: </b><?php echo $row->Species;?></p>
                   <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>

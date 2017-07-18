@@ -5,7 +5,7 @@
 <!--[if gt IE 8]> <html class="ie gt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
 <!--[if !IE]><!--><html class="fluid top-full sticky-top"><!-- <![endif]-->
 <head>
-   <title>.: FAO || Food and Agriculture Organization of the United Nations:. Login Panel</title>
+   <title>.: BFI || Bangladesh Forest Inventory:. Login Panel</title>
  
    <?php $this->load->view('template/header'); ?>
 

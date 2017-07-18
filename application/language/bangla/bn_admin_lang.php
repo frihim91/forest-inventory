@@ -3,7 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // Create Module
-$lang["news"] = "খবরাখবর";
+$lang["media"] = "মিডিয়া";
 $lang["library"] = "লাইব্রেরি";
 $lang["species_list"] = "স্পেসিস লিস্ট";
 $lang["Wood_densities"] = "কাঠের ঘনত্ব";

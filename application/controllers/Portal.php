@@ -58,13 +58,19 @@ class Portal extends CI_Controller
             left JOIN post_category c ON t.CAT_ID = c.CAT_ID
             left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
             left JOIN post_images i ON b.BODY_ID = i.BODY_ID
-            where t.CAT_ID=2")->result();
-        $data['post_cat_three'] = $this->db->query("SELECT t.*,c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,t.PG_URI,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+            where t.CAT_ID=2 ORDER BY b.TITLE_ID LIMIT 2")->result();
+        $data['post_cat_three_latest'] = $this->db->query("SELECT t.*,c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,t.PG_URI,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
             FROM post_title t
             left JOIN post_category c ON t.CAT_ID = c.CAT_ID
             left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
             left JOIN post_images i ON b.BODY_ID = i.BODY_ID
-            where t.CAT_ID=3")->result();
+            where t.CAT_ID=3 ORDER BY b.TITLE_ID DESC LIMIT 1")->result();
+         $data['post_cat_three_upcoming'] = $this->db->query("SELECT t.*,c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,t.PG_URI,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+            FROM post_title t
+            left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+            left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+            left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+            where t.CAT_ID=3 ORDER BY b.TITLE_ID ASC LIMIT 1")->result();
         $data['post_cat_four']  = $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,t.PG_URI,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
             FROM post_title t
             left JOIN post_category c ON t.CAT_ID = c.CAT_ID
@@ -256,10 +262,10 @@ class Portal extends CI_Controller
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where dis.District LIKE '%$keyword%' OR a.Equation LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
-         OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
-         OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
-         OR ref.Year LIKE '%$keyword%'
+         where dis.District='$keyword' OR a.Equation ='$keyword' OR ref.Reference='$keyword'
+         OR b.FAOBiomes ='$keyword' OR s.Species= '$keyword'
+         OR f.Family='$keyword' OR g.Genus='$keyword'
+         OR ref.Year='$keyword'
          group by a.ID_AE order by a.ID_AE desc LIMIT $limit OFFSET $page
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
@@ -290,7 +296,7 @@ class Portal extends CI_Controller
         $config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
         
-        $config["per_page"]        = 20;
+        $config["per_page"]        = 10;
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"];
         $config["uri_segment"] = 3;
@@ -318,7 +324,7 @@ class Portal extends CI_Controller
          $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
          $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
          $data['reference'] = $this->db->query("SELECT r.* from reference r
-         where r.Title LIKE '%$Title%' OR r.Author LIKE '%$Author%' OR r.Keywords LIKE '%$Keywords%' order by r.Title desc LIMIT $limit OFFSET $page
+         where r.Title='$Title' OR r.Author ='$Author' OR r.Keywords='$Keywords' order by r.Title desc LIMIT $limit OFFSET $page
          
          ")->result();
          $data["links"]                  = $this->pagination->create_links();
@@ -453,7 +459,7 @@ class Portal extends CI_Controller
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
          where dis.District LIKE '%$District%' or eco.EcoZones LIKE '%$EcoZones%'or d.Division LIKE '%$Division%'
-        group by a.ID_AE order by a.ID_AE desc LIMIT $limit OFFSET $page
+         group by a.ID_AE order by a.ID_AE desc LIMIT $limit OFFSET $page
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';
@@ -2474,7 +2480,7 @@ class Portal extends CI_Controller
         $config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
         
-        $config["per_page"]        = 20;
+        $config["per_page"]        = 10;
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"];
         $config["uri_segment"] = 3;
