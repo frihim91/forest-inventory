@@ -80,7 +80,7 @@
          ?>
       <div class="panel panel-default">
          <div class="panel-heading">Allometric Equation
-            <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_Species); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
          </div>
          <div class="panel-body">
             <p style="padding-left:3px;"><b>Equation:<code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>

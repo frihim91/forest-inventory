@@ -212,7 +212,7 @@
                ?>
             <div class="panel panel-default">
                <div class="panel-heading">Raw Data
-                  <a href="<?php echo site_url('Portal/rawDataDetails/'.$row->Species_ID); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+                  <a href="<?php echo site_url('Portal/rawDataDetails/'.$row->ID); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
                <div class="panel-body">
                   <p style="padding-left:3px;"><b>Tree Height (H_m): </b><?php echo $row->H_m;?></p>

@@ -53,6 +53,51 @@ Class Forestdata_model extends CI_Model {
 	}
 
 
+      function get_books($limit, $start, $keyword = NULL)
+    {
+        if ($keyword == "NIL") $keyword = "";
+        $sql = "SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where dis.District LIKE '%$keyword%' OR a.Equation LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
+         OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
+         OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+         OR ref.Year LIKE '%$keyword%'
+         group by a.Equation order by a.ID_AE desc limit " . $start . ", " . $limit;
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
+    function get_books_count($keyword = NULL)
+    {
+        if ($keyword == "NIL") $keyword = "";
+        $sql = "SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where dis.District LIKE '%$keyword%' OR a.Equation LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
+         OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
+         OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+         OR ref.Year LIKE '%$keyword%'group by a.Equation order by a.ID_AE desc";
+        $query = $this->db->query($sql);
+        return $query->num_rows();
+    }
+    
+
+
 	public function get_data_type($specisId)
 	{
 		$data=$this->db->query("SELECT COUNT(m.ID_AE) AS TOTAL_EQN FROM (SELECT distinct(ID_AE) FROM ae WHERE Species='$specisId') m;")->result();
@@ -191,12 +236,12 @@ Class Forestdata_model extends CI_Model {
 	}
 
 
-	public function get_allometric_equation_details($ID_Species,$ID_AE)
+	public function get_allometric_equation_details($ID_AE)
 	{
 		$data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,r.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Family 
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus 
          LEFT JOIN rd r ON a.ID_RD=r.ID   
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
@@ -204,8 +249,8 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN district dis ON a.District =dis.ID_District
 		     LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where a.Species=$ID_Species and  a.ID_AE=$ID_AE
-		     group by a.ID_AE order by a.ID_AE desc")->result();
+         where a.ID_AE=$ID_AE
+		     order by a.ID_AE desc")->result();
 		 return $data; 
 	}
 
@@ -230,17 +275,17 @@ Class Forestdata_model extends CI_Model {
 	}
 
 
-	public function get_raw_data_details($ID_Species)
+	public function get_raw_data_details($ID)
 	{
 		$data=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where r.Species_ID=$ID_Species group by r.ID order by r.ID desc
+         where r.ID=$ID order by r.ID desc
 		 ")->result();
 		 return $data; 
 	}
@@ -403,14 +448,14 @@ Class Forestdata_model extends CI_Model {
 		$data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         group by a.ID_AE order by a.ID_AE desc LIMIT $limit OFFSET $page")->result();
+         order by a.ID_AE desc LIMIT $limit OFFSET $page")->result();
 		 return $data; 
 	}
 
@@ -429,7 +474,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
          where a.Species=$specis_id
-         group by a.ID_AE order by a.ID_AE desc LIMIT  $limit OFFSET $page")->result();
+         order by a.ID_AE desc LIMIT  $limit OFFSET $page")->result();
 
     //print($this->db->last_query());exit;
      return $data; 
@@ -463,14 +508,14 @@ Class Forestdata_model extends CI_Model {
          
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         GROUP BY e.ID_EF order by e.ID_EF desc LIMIT $limit OFFSET $page
+         order by e.ID_EF desc LIMIT $limit OFFSET $page
     ")->result();
      return $data; 
   }
@@ -500,7 +545,7 @@ Class Forestdata_model extends CI_Model {
 
 
 
-    public function get_biomas_expension_factor_details($ID_Species)
+    public function get_biomas_expension_factor_details($ID)
   {
     $data=$this->db->query("SELECT e.*,eco.*,b.*,d.*,rda.Species_ID,rda.Tree_type,rda.Vegetation_type,
      rda.Ecoregion_Udvardy,rda.Ecoregion_WWF,rda.Division_Bailey,rda.Zone_Holdridge,rda.Contributor,rda.Subspecies,
@@ -517,8 +562,8 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
          
-         where e.Species=$ID_Species
-     group by e.ID_EF order by e.ID_EF desc")->result();
+         where e.ID_EF=$ID
+         order by e.ID_EF desc")->result();
      return $data; 
   }
 
@@ -531,14 +576,14 @@ Class Forestdata_model extends CI_Model {
 		$data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         group by a.ID_AE order by a.ID_AE desc
+         order by a.ID_AE ASC
 		");
 		 //return $data; 
 		 //echo "<pre>";
@@ -554,14 +599,14 @@ Class Forestdata_model extends CI_Model {
          
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         GROUP BY e.ID_EF order by e.ID_EF desc
+          order by e.ID_EF desc
     ");
      //return $data; 
      //echo "<pre>";
@@ -578,12 +623,12 @@ Class Forestdata_model extends CI_Model {
 		$data=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         group by r.ID order by r.ID desc LIMIT $limit OFFSET $page
+         order by r.ID desc LIMIT $limit OFFSET $page
 		")->result();
 		 return $data; 
 	}
@@ -632,7 +677,7 @@ Class Forestdata_model extends CI_Model {
         LEFT JOIN wd  ON m.ID_WD=wd.ID_WD
         LEFT JOIN reference r ON wd.ID_Reference = r.ID_Reference
         LEFT JOIN species s ON m.ID_Species=s.ID_Species
-        left join family f ON s.ID_Family=f.ID_Family
+        left join family f ON wd.ID_family=f.ID_Family
         order by wd.ID_WD desc LIMIT $limit OFFSET $page
 		")->result();
 		 return $data; 
@@ -653,12 +698,12 @@ Class Forestdata_model extends CI_Model {
      return $data; 
   }
 
-	public function get_wood_densities_details($ID_Species)
+	public function get_wood_densities_details($ID)
 	{
-		$data=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
-     LEFT JOIN species s ON w.ID_Species=s.ID_Species
-     LEFT JOIN family f ON w.ID_Family=f.ID_Family
-     LEFT JOIN genus g ON w.ID_Family=g.ID_Family   
+		$data=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.ID_Family,f.Family,g.* ,l.* from wd w
+     LEFT JOIN species s ON w.ID_species=s.ID_Species
+     LEFT JOIN family f ON w.ID_family=f.ID_Family
+     LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
      LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
      LEFT JOIN location l ON w.ID_Location=l.ID_Location
 		 LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
@@ -666,7 +711,7 @@ Class Forestdata_model extends CI_Model {
 		 LEFT JOIN district dis ON l.ID_District =dis.ID_District
 		 LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
      LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones  
-		 where w.ID_Species=$ID_Species
+		 where w.ID_WD=$ID
 		 order by w.ID_WD desc")->result();
 		 return $data; 
 	}
@@ -680,12 +725,12 @@ Class Forestdata_model extends CI_Model {
 		$data=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         group by r.ID order by r.ID desc
+         order by r.ID ASC
 		");
 		 header('Content-disposition: attachment; filename=Raw_Data.json');
          header('Content-type: application/json');
@@ -698,9 +743,9 @@ Class Forestdata_model extends CI_Model {
    public function get_wood_density_grid_json()
   {
     $data=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
-         LEFT JOIN species s ON w.ID_Species=s.ID_Species
-         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON w.ID_Family=g.ID_Family   
+         LEFT JOIN species s ON w.ID_species=s.ID_Species
+         LEFT JOIN family f ON w.ID_family=f.ID_Family
+         LEFT JOIN genus g ON w.ID_genus=g.ID_Family   
          LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
          LEFT JOIN location l ON w.ID_Location=l.ID_Location
          LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
@@ -708,7 +753,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN district dis ON l.ID_District =dis.ID_District
          LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones  
-         order by w.ID_WD desc
+         order by w.ID_WD ASC
     ");
      header('Content-disposition: attachment; filename=Wood_Density.json');
          header('Content-type: application/json');

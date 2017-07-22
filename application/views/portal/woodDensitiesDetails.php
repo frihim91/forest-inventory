@@ -67,7 +67,7 @@
                ?>
             <ul class="dropdown-menu" role="menu">
                <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-               <li><a href="<?php echo site_url('Portal/woodDensitiesPdf/'.$row->ID_Species); ?>" id="export-json">Download PDF</a></li>
+               <li><a href="<?php echo site_url('Portal/woodDensitiesPdf/'.$row->ID_WD); ?>" id="export-json">Download PDF</a></li>
                <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
             </ul>
             <?php 

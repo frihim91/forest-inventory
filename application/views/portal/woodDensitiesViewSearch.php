@@ -210,13 +210,14 @@
                ?>
             <div class="panel panel-default">
                <div class="panel-heading">Wood densities
-                  <a href="<?php echo site_url('Portal/woodDensitiesDetails/'.$row->ID_Species); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+                  <a href="<?php echo site_url('Portal/woodDensitiesDetails/'.$row->ID_WD); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
                <div class="panel-body">
                   <p style="padding-left:3px;"><b>Density g/cm3:</b><?php echo $row->Density_green;?></p>
                   <p style="padding-left:3px;"><b>Reference:</b><?php echo $row->Reference;?></p>
                   <p style="padding-left:3px;"><b>Reference Year:</b><?php echo $row->Year;?></p>
-                  <p style="padding-left:3px;"><b>Species:</b> <?php echo $row->Family.' '.$row->Species;?></p>
+                  <p style="padding-left:3px;"><b>Family:</b><?php echo $row->Family;?></p>
+                  <p style="padding-left:3px;"><b>Species:</b> <?php echo $row->Species;?></p>
                   <p style="padding-left:3px;"><b>Locations:</b>Bangladesh</p>
                </div>
             </div>

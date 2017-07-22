@@ -198,7 +198,7 @@
                ?>
             <div class="panel panel-default">
                <div class="panel-heading">Biomass Expansion Factor
-                  <a href="<?php echo site_url('Portal/biomassExpansionFacDetails/'.$row->ID_Species); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+                  <a href="<?php echo site_url('Portal/biomassExpansionFacDetails/'.$row->ID_EF); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
                <div class="panel-body">
                   <p style="padding-left:3px;"><b>Biomass Expansion Factor: </b><?php echo $row->Value;?></p>

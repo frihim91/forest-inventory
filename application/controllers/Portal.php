@@ -215,7 +215,7 @@ class Portal extends CI_Controller
      * @param  none
      * @return Allometric Equation key wise Search view page
      */
-    public function search_allometricequation_key()
+    public function search_allometricequation_key1111()
     {
         $keyword = $this->input->post('keyword');
         $this->load->library('pagination');
@@ -262,10 +262,10 @@ class Portal extends CI_Controller
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where dis.District='$keyword' OR a.Equation ='$keyword' OR ref.Reference='$keyword'
-         OR b.FAOBiomes ='$keyword' OR s.Species= '$keyword'
-         OR f.Family='$keyword' OR g.Genus='$keyword'
-         OR ref.Year='$keyword'
+         where dis.District LIKE '%$keyword%' OR a.Equation LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
+         OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
+         OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+         OR ref.Year LIKE '%$keyword%'
          group by a.ID_AE order by a.ID_AE desc LIMIT $limit OFFSET $page
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
@@ -273,6 +273,60 @@ class Portal extends CI_Controller
         $this->template->display_portal($data);
         
     }
+
+
+
+
+    function search_allometricequation_keydg()
+    {
+        // get search string
+        $this->load->library('pagination');
+        $keyword = ($this->input->post("keyword"))? $this->input->post("keyword") : "NIL";
+
+
+        $keyword = ($this->uri->segment(3)) ? $this->uri->segment(3) : $keyword;
+
+        // pagination settings
+        $config = array();
+        $config['base_url'] = site_url("portal/search_allometricequation_key/$keyword");
+        $config['total_rows'] = $this->Forestdata_model->get_books_count($keyword);
+        $config['per_page'] = "5";
+        $config["uri_segment"] = 4;
+        $choice = $config["total_rows"]/$config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        // integrate bootstrap pagination
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = false;
+        $config['last_link'] = false;
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = 'Prev';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = 'Next';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $this->pagination->initialize($config);
+
+        $data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        // get books list
+        $data['allometricEquationView'] = $this->Forestdata_model->get_books($config['per_page'], $data['page'], $keyword);
+
+        $data['pagination'] = $this->pagination->create_links();
+
+        //load view
+         $data['content_view_page']      = 'portal/allometricEquationPage';
+        $this->template->display_portal($data);
+    }
+
 
 
 
@@ -605,14 +659,14 @@ class Portal extends CI_Controller
  $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         group by a.ID_AE order by a.ID_AE asc")->result_array();
+         order by a.ID_AE asc")->result_array();
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
  header("Content-Disposition: attachment; filename=\"Allometric Equation".".csv\"");
@@ -687,14 +741,14 @@ class Portal extends CI_Controller
          
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         GROUP BY e.ID_EF order by e.ID_EF asc")->result_array();
+         order by e.ID_EF asc")->result_array();
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
  header("Content-Disposition: attachment; filename=\"Biomass Expansion Factor".".csv\"");
@@ -1269,9 +1323,9 @@ class Portal extends CI_Controller
      * @return Biomass Expension Factor Details page
      */
     
-    public function biomassExpansionFacDetails($ID_Species)
+    public function biomassExpansionFacDetails($ID)
     {
-        $data['biomassExpansionFacDetails'] = $this->Forestdata_model->get_biomas_expension_factor_details($ID_Species);
+        $data['biomassExpansionFacDetails'] = $this->Forestdata_model->get_biomas_expension_factor_details($ID);
         $data['content_view_page']         = 'portal/biomassExpansionFacDetails';
         $this->template->display_portal($data);
     }
@@ -1285,9 +1339,9 @@ class Portal extends CI_Controller
      * @return Allometric Equation Details page
      */
     
-    public function allometricEquationDetails($ID_Species,$ID_AE)
+    public function allometricEquationDetails($ID_AE)
     {
-        $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_Species,$ID_AE);
+        $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_AE);
         $data['content_view_page']         = 'portal/allometricEquationDetails';
         $this->template->display_portal($data);
     }
@@ -1301,9 +1355,9 @@ class Portal extends CI_Controller
      */
 
 
-     public function allometricEquationDetailsPdf($ID_Species,$ID_AE) 
+     public function allometricEquationDetailsPdf($ID_AE) 
      {
-        $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_Species,$ID_AE);
+        $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_AE);
         include('mpdf/mpdf.php');
         $mpdf = new mPDF('utf-8', 'A4', '', '', 20, 20, 25, 47, 10, 10);
         $mpdf->SetTitle('Allometric Equation Details');
@@ -1361,12 +1415,12 @@ class Portal extends CI_Controller
  $rawDataViewcsv=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         group by r.ID order by r.ID asc")->result_array();
+         order by r.ID asc")->result_array();
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
  header("Content-Disposition: attachment; filename=\"Raw Data".".csv\"");
@@ -1428,9 +1482,9 @@ class Portal extends CI_Controller
  public function woodDensityViewcsv()
  {
  $woodDensityViewcsv=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
-         LEFT JOIN species s ON w.ID_Species=s.ID_Species
-         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON w.ID_Family=g.ID_Family   
+         LEFT JOIN species s ON w.ID_species=s.ID_Species
+         LEFT JOIN family f ON w.ID_family=f.ID_Family
+         LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
          LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
          LEFT JOIN location l ON w.ID_Location=l.ID_Location
          LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
@@ -2043,7 +2097,7 @@ class Portal extends CI_Controller
         $data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_Family=g.ID_Family   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus       
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
@@ -2361,9 +2415,9 @@ class Portal extends CI_Controller
      * @return Raw Data Details page
      */
     
-    public function rawDataDetails($ID_Species)
+    public function rawDataDetails($ID)
     {
-        $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID_Species);
+        $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID);
         $data['content_view_page'] = 'portal/rawDataDetails';
         $this->template->display_portal($data);
     }
@@ -2377,9 +2431,9 @@ class Portal extends CI_Controller
      * @return Wood Densities Details page
      */
     
-    public function woodDensitiesDetails($ID_Species)
+    public function woodDensitiesDetails($ID)
     {
-        $data['woodDensitiesDetails']    = $this->Forestdata_model->get_wood_densities_details($ID_Species);
+        $data['woodDensitiesDetails']    = $this->Forestdata_model->get_wood_densities_details($ID);
         $data['content_view_page'] = 'portal/woodDensitiesDetails';
         $this->template->display_portal($data);
     }
@@ -2394,9 +2448,9 @@ class Portal extends CI_Controller
      */
 
 
-     public function rawDataDetailsPdf($ID_Species) 
+     public function rawDataDetailsPdf($ID) 
      {
-        $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID_Species);
+        $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID);
         include('mpdf/mpdf.php');
         $mpdf = new mPDF('utf-8', 'A4', '', '', 20, 20, 25, 47, 10, 10);
         $mpdf->SetTitle('Raw Data Details');
@@ -2415,9 +2469,9 @@ class Portal extends CI_Controller
      */
 
 
-     public function woodDensitiesPdf($ID_Species) 
+     public function woodDensitiesPdf($ID) 
      {
-        $data['woodDensitiesDetails']    = $this->Forestdata_model->get_wood_densities_details($ID_Species);
+        $data['woodDensitiesDetails']    = $this->Forestdata_model->get_wood_densities_details($ID);
         include('mpdf/mpdf.php');
         $mpdf = new mPDF('utf-8', 'A4', '', '', 20, 20, 25, 47, 10, 10);
         $mpdf->SetTitle('Wood Densities Details PDF');
@@ -2436,9 +2490,9 @@ class Portal extends CI_Controller
      */
 
 
-     public function biomassExpansionFacPdf($ID_Species) 
+     public function biomassExpansionFacPdf($ID) 
      {
-         $data['biomassExpansionFacDetails'] = $this->Forestdata_model->get_biomas_expension_factor_details($ID_Species);
+         $data['biomassExpansionFacDetails'] = $this->Forestdata_model->get_biomas_expension_factor_details($ID);
         include('mpdf/mpdf.php');
         $mpdf = new mPDF('utf-8', 'A4', '', '', 20, 20, 25, 47, 10, 10);
         $mpdf->SetTitle('Biomass Expension Factor PDF');

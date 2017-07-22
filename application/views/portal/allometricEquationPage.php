@@ -77,7 +77,7 @@ $lang_ses = $this->session->userdata("site_lang");
         </p>
         <p>
         </p>
-        <form action="<?php echo site_url('portal/search_allometricequation_key');?>" method = "post">
+       <form action="<?php echo site_url('data/search_allometricequation_key');?>" method = "post">
           <div class="col-md-6">
             <div class="form-group">
               <label>Keyword<span style="color:red;">*</span></label>
@@ -204,7 +204,7 @@ $lang_ses = $this->session->userdata("site_lang");
               ?>
               <div class="panel panel-default">
                 <div class="panel-heading">Allometric Equation
-                  <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_Species.'/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+                  <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
                 <div class="panel-body">
                   <p style="padding-left:3px;"><b>Equation: <code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
@@ -219,7 +219,7 @@ $lang_ses = $this->session->userdata("site_lang");
               </div>
               <?php
             }?>
-            <p><?php echo $links; ?></p>
+            <p> <?php echo $links; ?></p>
           </div>
           <div id="results-map" class="tab-pane fade">
             <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
