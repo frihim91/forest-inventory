@@ -11,8 +11,8 @@
 <script src="<?php echo base_url(); ?>resources/shared/components/library/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/library/jquery/jquery-migrate.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/library/modernizr/modernizr.js"></script>
-<title>.: PMIS || Project Management Information System :. Generate New  Password Panel</title>
-<?php $random_code = $this->uri->segment(3); ?>
+<title>.: FAO || Food and Agriculture Organization of the United Nations :. Generate New  Password Panel</title>
+<?php $random_code = $this->uri->segment(4); ?>
 <body class="login">
     <div id="login">
         <div class="container">
@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                         <?php endif; ?>
-                        <div><h3 style="margin-left:0%;"><a href="<?php echo site_url(); ?>"><img style="height: 65px; margin-left: 0%;" src="<?php echo base_url('resources/images/HEQEPLogoPng.png'); ?>" alt="HEQEP" /></a></h3></div><br/>
+                        <div><h3 style="margin-left:0%;"><a href="<?php echo site_url(); ?>"><img style="height: 65px; margin-left: 0%;" src="<?php echo base_url('resources/images/logo.jpg'); ?>" alt="FAO" /></a></h3></div><br/>
                         <div><h4><b>Reset your password</b></h4></div><br/>
                         <div>Please choose a new password to finish signing in. </div><br/>
                         <input type="hidden" name="randomCode" id="randomCode" value="<?php echo $random_code ?>"/>
