@@ -5,7 +5,7 @@
 <script src="<?php echo base_url(); ?>resources/shared/components/library/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/library/jquery/jquery-migrate.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/library/modernizr/modernizr.js"></script>
-<title>.: PMIS || Project Management Information System :. Forgot Password Panel</title>
+<title>.: FAO || Food and Agriculture Organization of the United Nations:. Forgot Password Panel</title>
 <body class="login ">
     <div id="login" >
         <div class="container" style=" font-size: ">

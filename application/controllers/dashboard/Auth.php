@@ -124,12 +124,16 @@
     /**
      * endmail_forgot_password function here
      * Send mail for password reset.
-    
+        @author  Md.Reazul Islam <reazul@atilimited.net>
      */
 
         public function sendmail_forgot_password() {
             $this->load->helper('string');
             if ($_POST) {
+                 $UserName = $this->input->post('txtUserName');
+                 $user_id = $this->utilities->get_field_value_by_attribute('sa_users', 'USER_ID', array('USERNAME' => $UserName));
+                 if (!$user_id == 0) {
+                // echo "<pre>";print_r($user_id);exit();
                 $UserName = $this->input->post('txtUserName');
                 $fullName = $this->utilities->get_field_value_by_attribute('sa_users', 'FULL_NAME', array('USERNAME' => $UserName));
                 $showemail = $this->utilities->get_field_value_by_attribute('sa_users', 'EMAIL', array('USERNAME' => $UserName));
@@ -143,39 +147,39 @@
                     'REQUESTED_CODE' => $random_id
                 );
                 //echo '<pre>';print_r($data);exit;
-                $this->utilities->insertData($data, 'sa_forget_pass_request');
+                $this->utilities->insertData($data, 'sa_forget_pass_request_admin');
                 $msgBody = "<html><head></html><body>Dear $fullName,<br> <br><br>
             Hi!<br/>
             I have some good news!<br/>
-            You're one step away from regaining access to your HEQEP account, <br/>
+            You're one step away from regaining access to your FAO account, <br/>
             $showemail. Just click below to reset your password:<br/>
-            <a  href='" . site_url() . "dashboard/auth/generate_password/$random_id'><button class='btn btn-success' style='background: #10b7e8; height:6%; margin-left:24%;'>Reset Password</button></a> <br/>
-            If you the link don't use, simply <a  href='" . site_url() . "dashboard/auth/forgot_password'>request a new link.</a> If you didn't initiate this request,<br/>
+            <a  href='" . site_url() . "/dashboard/auth/generate_password/$random_id'><button class='btn btn-success' style='background: #10b7e8; height:6%; margin-left:24%;'>Reset Password</button></a> <br/>
+            If you the link don't use, simply <a  href='" . site_url() . "/dashboard/auth/forgot_password'>request a new link.</a> If you didn't initiate this request,<br/>
             don't worry; you don't need to take any action and you can disregard this email.<br/>
             We're glad to have you back!<br/>
                     <br/><br/.<br/>
                         Thanks and regards,<br>
-                        HEQEP<br/><br/>        
+                        FAO<br/><br/>        
             </body></html>";
                 //echo '<pre>';print_r($msgBody);exit;
                 $email = $this->utilities->get_field_value_by_attribute('sa_users', 'EMAIL', array('USERNAME' => $UserName));
                 $user = $this->utilities->get_field_value_by_attribute('sa_users', 'USERNAME', array('USERNAME' => $UserName));
                 if ($user == $UserName) {
                     require 'gmail_app/class.phpmailer.php';
-                    $mail = new PHPMailer;
+                     $mail = new PHPMailer;
                     $mail->IsSMTP();
-                    $mail->Host = "cloud2.eicra.com";
+                    $mail->Host = "mail.harnest.com";
                     $mail->Port = "465";
                     $mail->SMTPAuth = true;
-                    $mail->Username = "pmis@atilimited.net";
-                    $mail->Password = "@ti789#";
+                    $mail->Username = "support@harnest.com";
+                    $mail->Password = "Ati@2017";
                     $mail->SMTPSecure = 'ssl';
-                    $mail->From = "pmis@atilimited.net";
-                    $mail->FromName = "HEQEP";
+                    $mail->From = "support@harnest.com";
+                    $mail->FromName = "FAO";
                     $mail->AddAddress($email);
                     //$mail->AddReplyTo($emp_info->EMPLOYEE);
                     $mail->IsHTML(TRUE);
-                    $mail->Subject = "HEQEP New Password Confirmation";
+                    $mail->Subject = "FAO New Password Confirmation";
                     $mail->Body = $msgBody;
                     if ($mail->Send()) {
                         //echo '<p style="color:red; margin-left: 38%;">Mail send  successfully please check your mail. </p>';
@@ -186,6 +190,11 @@
                     echo '<p style="color:red; margin-top:6%; margin-left: 38%; font-size:112%;">Please enter valid user name.</p>';
                     //  redirect('auth/forgot_passworddddd');
                 }
+            } else{
+                echo '<p style="color:red; margin-top:6%; margin-left: 38%; font-size:112%;">Please enter valid user name.</p>';
+                    //  redirect('auth/forgot_passworddddd'); 
+            }
+
             }
             $this->load->view('forgot_password');
         }
@@ -210,12 +219,12 @@
 
 
         public function generate_password() {
-            $random_code = $this->uri->segment(3, '');
+            $random_code = $this->uri->segment(4, '');
             if ($random_code == '') {
                 $this->session->set_flashdata('Error', 'Sorry ! You are Trying Invalid Way to Reset Password.');
                 redirect('dashboard/auth/index', 'refresh');
             }
-            $requestInfo = $this->utilities->findByAttribute('sa_forget_pass_request', array('REQUESTED_CODE' => $random_code));
+            $requestInfo = $this->utilities->findByAttribute('sa_forget_pass_request_admin', array('REQUESTED_CODE' => $random_code));
             if (empty($requestInfo)) {
                 $this->session->set_flashdata('Error', 'Sorry ! You are Trying Invalid Way to Reset Password.');
                 redirect('dashboard/auth/index', 'refresh');
@@ -237,7 +246,7 @@
 
         public function generate_new_password() {
             $random_id = $this->input->post('randomCode');
-            $requestInfo = $this->utilities->findByAttribute('sa_forget_pass_request', array('REQUESTED_CODE' => $random_id));
+            $requestInfo = $this->utilities->findByAttribute('sa_forget_pass_request_admin', array('REQUESTED_CODE' => $random_id));
             if ($requestInfo !== 1) {
                 $db_insert = array(
                     'USERPW' => md5($this->input->post('textPassword'))
@@ -246,7 +255,7 @@
                     'IS_USED' => 1
                 );
                 $this->utilities->updateData('sa_users', $db_insert, array('USER_ID' => $requestInfo->USER_ID));
-                $this->utilities->updateData('sa_forget_pass_request', $data, array('USER_ID' => $requestInfo->USER_ID));
+                $this->utilities->updateData('sa_forget_pass_request_admin', $data, array('USER_ID' => $requestInfo->USER_ID));
                 redirect('dashboard/auth/reset_passwordMessages', 'refresh');
             }
         }
@@ -277,34 +286,34 @@
             $msgBody = "<html><head></html><body>Dear $fullName,<br> <br>
                                              Your user name is <b style='color: green; font-size:125%;'>$userName</b><br/><br/>
                         Thanks and regards,<br>
-                        HEQEP<br/><br/>        
+                        FAO<br/><br/>        
             </body></html>";
             $user = $this->utilities->get_field_value_by_attribute('sa_users', 'EMAIL', array('EMAIL' => $txtEmail));
             if ($user == $txtEmail) {
-                require 'gmail_app/class.phpmailer.php';
-                $mail = new PHPMailer;
-                $mail->IsSMTP();
-                $mail->Host = "cloud2.eicra.com";
-                $mail->Port = "465";
-                $mail->SMTPAuth = true;
-                $mail->Username = "pmis@atilimited.net";
-                $mail->Password = "@ti789#";
-                $mail->SMTPSecure = 'ssl';
-                $mail->From = "pmis@atilimited.net";
-                $mail->FromName = "HEQEP";
-                $mail->AddAddress($email);
-                //$mail->AddReplyTo($emp_info->EMPLOYEE);
-                $mail->IsHTML(TRUE);
-                $mail->Subject = "HEQEP User Name Information";
-                $mail->Body = $msgBody;
+                  require 'gmail_app/class.phpmailer.php';
+                     $mail = new PHPMailer;
+                    $mail->IsSMTP();
+                    $mail->Host = "mail.harnest.com";
+                    $mail->Port = "465";
+                    $mail->SMTPAuth = true;
+                    $mail->Username = "support@harnest.com";
+                    $mail->Password = "Ati@2017";
+                    $mail->SMTPSecure = 'ssl';
+                    $mail->From = "support@harnest.com";
+                    $mail->FromName = "FAO";
+                    $mail->AddAddress($email);
+                    //$mail->AddReplyTo($emp_info->EMPLOYEE);
+                    $mail->IsHTML(TRUE);
+                    $mail->Subject = "FAO User Name Information";
+                    $mail->Body = $msgBody;
                 if ($mail->Send()) {
                     $this->session->set_flashdata('flashMessage', 'Mail send  successfully please check mail.');
                     redirect('dashboard/auth/email_send_messages', 'refresh');
                 }
             } else {
-                echo '<p style="color:red; margin-top:6%; margin-left: 38%; font-size:112%;">Please enter valid email address.</p>';
+                echo '<p style="color:red; margin-top:6%; margin-left: 38%; font-size:112%;">Please enter valid email address.</p>';      
             }
-            $this->load->view('forgot_password');
+         $this->load->view('forgot_password');
         }
 
    /**
