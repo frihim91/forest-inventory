@@ -96,7 +96,7 @@ class Data extends CI_Controller
         // //pagination style end
         $this->pagination->initialize($config);
         $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid($limit,$page);
-<<<<<<< HEAD
+
          $data['links'] = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
@@ -350,11 +350,11 @@ class Data extends CI_Controller
         //load view
          $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
-=======
+
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
->>>>>>> d1164e4edb73ee86dec317f37b7a846bb7bba34e
+
     }
 
       /*
