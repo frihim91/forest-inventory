@@ -46,7 +46,11 @@ class Data extends CI_Controller
     public function speciesData()
     {
         $data['family_details']    = $this->db->query("select f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
-            FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT from family as f ORDER BY f.Family 
+            FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT,(SELECT count(ID) FROM rd as rd WHERE rd.Family_ID=f.ID_Family)
+            as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae WHERE ae.Family=f.ID_Family)
+            as AECOUNT,(SELECT count(ID_WD) FROM wd as wd WHERE wd.ID_family=f.ID_Family)
+            as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
+             from family as f ORDER BY f.Family
             ")->result();
         $data['content_view_page'] = 'portal/speciesData';
         $this->template->display_portal($data);
@@ -59,7 +63,7 @@ class Data extends CI_Controller
         
         $this->load->library('pagination');
         $config             = array();
-        $config["base_url"] = base_url() .  "index.php/portal/allometricEquationView";
+        $config["base_url"] = base_url() .  "index.php/data/allometricEquationView";
         $total_ef           = $this->db->count_all("ae");
         
         $config["total_rows"] = $total_ef;
@@ -104,10 +108,26 @@ class Data extends CI_Controller
         $keyword = $this->input->post('keyword');
         $this->load->library('pagination');
         $config             = array();
-        $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_key";
-        $total_ef           = $this->db->count_all("ae");
+        $config["base_url"] = base_url() . "index.php/data/search_allometricequation_key";
+       // $total_ef           = 50;
+        $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where s.Species LIKE '%$keyword%' OR dis.District LIKE '%$keyword%' OR a.Equation LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
+         OR b.FAOBiomes LIKE '%$keyword%' OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+         OR ref.Year LIKE '%$keyword%'
+         
         
-        $config["total_rows"] = $total_ef;
+        ")->row();
+        //echo $total_ae->total_ae;exit;
+        $config["total_rows"] = $total_ae->ID_AE;
         // $config["total_rows"] = 800;
         
         $config["per_page"]        = 20;
@@ -152,11 +172,30 @@ class Data extends CI_Controller
          OR ref.Year LIKE '%$keyword%'
          order by a.ID_AE desc LIMIT $limit OFFSET $page
         ")->result();
+
+         $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where s.Species LIKE '%$keyword%' OR dis.District LIKE '%$keyword%' OR a.Equation LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
+         OR b.FAOBiomes LIKE '%$keyword%' OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+         OR ref.Year LIKE '%$keyword%'
+         
+        
+        ")->result();
+
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
         
     }
+
 
 
 

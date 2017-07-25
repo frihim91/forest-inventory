@@ -47,7 +47,7 @@ Class Forestdata_model extends CI_Model {
 		 LEFT JOIN division d ON e.Division=d.ID_Division
 		 LEFT JOIN district dis ON e.District =dis.ID_District
 		 LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+      LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
 			WHERE s.ID_Species=$specis_id GROUP BY b.ID_FAOBiomes;")->result();
 		return $data; 
 	}

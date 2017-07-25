@@ -81,6 +81,36 @@ class Portal extends CI_Controller
          $data['gallery']           = $this->db->query("SELECT * FROM home_page_gallery")->result();
         $this->template->display_portal($data);
     }
+
+
+        /*
+     * @methodName searchAttributeString()
+     * @access private
+     * @param  none
+     * @return search string
+     */
+    private function searchAttributeString($searchFields)
+    {
+        $n=count($searchFields);
+        $string='';
+        $i=0;
+        foreach ($searchFields as $key => $value) {
+            if(!empty($value))
+            {
+                if($i==0)
+                {
+                    $string=$string.$key." like '%$value%'";
+                }
+                else
+                {
+                    $string=$string.' OR '.$key." like '%$value%'";
+                }
+                $i++;
+            }
+
+        }
+            return $string;
+    }
     
     public function adasdds($TITLE_ID)
     {
@@ -342,6 +372,13 @@ class Portal extends CI_Controller
         $Title = $this->input->post('Title');
         $Author = $this->input->post('Author');
         $Keywords = $this->input->post('Keywords');
+        $searchFields=array(
+            'r.Title'=>$Title,
+            'r.Author'=>$Author,
+            'r.Keywords'=>$Keywords
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_document";
@@ -378,11 +415,11 @@ class Portal extends CI_Controller
          $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
          $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
          $data['reference'] = $this->db->query("SELECT r.* from reference r
-         where r.Title='$Title' OR r.Author ='$Author' OR r.Keywords='$Keywords' order by r.Title desc LIMIT $limit OFFSET $page
+         where $string order by r.Title desc LIMIT $limit OFFSET $page
          
          ")->result();
          $data["links"]                  = $this->pagination->create_links();
-         $data['content_view_page']      = 'portal/viewLibraryPage';
+         $data['content_view_page']      = 'portal/viewLibraryPageSearch';
          $this->template->display_portal($data);
         
     }
@@ -400,10 +437,25 @@ class Portal extends CI_Controller
      */
     public function search_allometricequation_tax()
     {
+        
+
         $Genus   = $this->input->post('Genus');
         $Species = $this->input->post('Species');
+        $Family = $this->input->post('Family');
+        $searchFields=array(
+            'f.Family'=>$Family,
+            'g.Genus'=>$Genus,
+            's.Species'=>$Species
+            );
+        // echo "<pre>";
+        // print_r($searchFields);
+        
+        $string=$this->searchAttributeString($searchFields);
+         //echo $string;
+        // exit;
         $this->load->library('pagination');
         $config             = array();
+        //$config["base_url"] = base_url() . "index.php/portal/search_allometricequation_tax/".$Genus.$Species.$Family;
         $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_tax";
         $total_ef           = $this->db->count_all("ae");
         
@@ -432,6 +484,10 @@ class Portal extends CI_Controller
         $config['last_tag_close']  = '</li>';
         $config['first_link']      = 'First';
         $config['last_link']       = 'Last';
+        $config['last_link']       = 'Last';
+        $config['uri_protocol'] = 'AUTO';
+         $config['url_suffix'] = '.html';
+        // 'suffix' => '?' . http_build_query($_GET, '', "&")
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -439,17 +495,36 @@ class Portal extends CI_Controller
         $data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where g.Genus LIKE '%$Genus%' or s.Species LIKE '%$Species%'
-         group by a.ID_AE order by a.ID_AE desc LIMIT $limit OFFSET $page
+         where  $string
+         order by a.ID_AE desc LIMIT $limit OFFSET $page
         ")->result();
+
+
+        $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where  $string
+         order by a.ID_AE desc 
+        ")->result();
+
+       // $viewdata['search_result_count'] = count($data['allometricEquationView'] );
         $data["links"]                  = $this->pagination->create_links();
+        $data["searchType"]=2;
+        $data['string']=$string;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
         
@@ -457,17 +532,20 @@ class Portal extends CI_Controller
     
     
     
-    /*
-     * @methodName search_allometricequation_loc()
-     * @access public
-     * @param  none
-     * @return Allometric Equation location wise Search view page
-     */
+
     public function search_allometricequation_loc()
     {
         $District  = $this->input->post('District');
         $EcoZones = $this->input->post('EcoZones');
         $Division = $this->input->post('Division');
+        $searchFields=array(
+            'dis.District'=>$District,
+            'eco.EcoZones'=>$EcoZones,
+            'd.Division'=>$Division
+            );
+        $string=$this->searchAttributeString($searchFields);
+      
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_loc";
@@ -505,17 +583,36 @@ class Portal extends CI_Controller
         $data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where dis.District LIKE '%$District%' or eco.EcoZones LIKE '%$EcoZones%'or d.Division LIKE '%$Division%'
-         group by a.ID_AE order by a.ID_AE desc LIMIT $limit OFFSET $page
+         where  $string
+         order by a.ID_AE desc LIMIT $limit OFFSET $page
         ")->result();
+
+
+         $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where  $string
+         
+        ")->result();
+        // echo "<pre>";
+        // print_r($k);
+        // exit;
         $data["links"]                  = $this->pagination->create_links();
+        $data["searchType"]=3;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
         
@@ -534,6 +631,12 @@ class Portal extends CI_Controller
         $Reference = $this->input->post('Reference');
         $Author    = $this->input->post('Author');
         $Year      = $this->input->post('Year');
+        $searchFields=array(
+            'ref.Reference'=>$Reference,
+            'ref.Author'=>$Author,
+            'ref.Year'=>$Year
+            );
+        $string=$this->searchAttributeString($searchFields);
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_ref";
@@ -571,18 +674,30 @@ class Portal extends CI_Controller
         $data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where ref.Reference LIKE '%$Reference%' or ref.Author LIKE '%$Author%'
-         or ref.Year LIKE '%$Year%'
-         group by a.ID_AE order by a.ID_AE desc LIMIT $limit OFFSET $page
+         where $string order by a.ID_AE desc LIMIT $limit OFFSET $page
+        ")->result();
+
+         $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where $string 
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
+        $data["searchType"]=4;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
         
@@ -600,7 +715,11 @@ class Portal extends CI_Controller
     public function speciesData()
     {
         $data['family_details']    = $this->db->query("select f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
-            FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT from family as f ORDER BY f.Family 
+            FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT,(SELECT count(ID) FROM rd as rd WHERE rd.Family_ID=f.ID_Family)
+            as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae WHERE ae.Family=f.ID_Family)
+            as AECOUNT,(SELECT count(ID_WD) FROM wd as wd WHERE wd.ID_family=f.ID_Family)
+            as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
+             from family as f ORDER BY f.Family
             ")->result();
         $data['content_view_page'] = 'portal/speciesData';
         $this->template->display_portal($data);
@@ -1062,18 +1181,36 @@ class Portal extends CI_Controller
          
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         where dis.District LIKE '%$keyword%' OR e.Value LIKE '%$keyword%' OR r.Reference LIKE '%$keyword%'
+         where dis.District LIKE '%$keyword%' OR d.Division LIKE '%$keyword%' OR e.Value LIKE '%$keyword%' OR r.Reference LIKE '%$keyword%'
          OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
          OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
          OR r.Year LIKE '%$keyword%'
-          GROUP BY e.ID_EF order by e.ID_EF desc LIMIT $limit OFFSET $page
+         order by e.ID_EF desc LIMIT $limit OFFSET $page
+        ")->result();
+
+           $data['biomassExpansionFacView_count'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+        where dis.District LIKE '%$keyword%' OR d.Division LIKE '%$keyword%' OR e.Value LIKE '%$keyword%' OR r.Reference LIKE '%$keyword%'
+         OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
+         OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+         OR r.Year LIKE '%$keyword%'
+         
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
@@ -1095,7 +1232,15 @@ class Portal extends CI_Controller
     {
 
         $Genus   = $this->input->post('Genus');
+        $Family   = $this->input->post('Family');
         $Species = $this->input->post('Species');
+         $searchFields=array(
+            'f.Family'=>$Family,
+            'g.Genus'=>$Genus,
+            's.Species'=>$Species
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
         
         
         $this->load->library('pagination');
@@ -1136,21 +1281,35 @@ class Portal extends CI_Controller
         
         // ")->result();
         // $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor($limit,$page);
-         $data['biomassExpansionFacView'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         $data['biomassExpansionFacView'] = $this->db->query("SELECT e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
          
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         where g.Genus LIKE '%$Genus%' or s.Species LIKE '%$Species%'
-         GROUP BY e.ID_EF order by e.ID_EF desc LIMIT $limit OFFSET $page
+         where $string order by e.ID_EF desc LIMIT $limit OFFSET $page
+        ")->result();
+
+           $data['biomassExpansionFacView_count'] = $this->db->query("SELECT e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+         where $string 
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
+        $data["searchType"]=2;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
     }
@@ -1171,6 +1330,14 @@ class Portal extends CI_Controller
         $Division  = $this->input->post('Division');
         $District  = $this->input->post('District');
         $EcoZones = $this->input->post('EcoZones');
+        $searchFields=array(
+            'dis.District'=>$District,
+            'd.Division'=>$Division,
+            'eco.EcoZones'=>$EcoZones
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
+        
         
         $this->load->library('pagination');
         $config             = array();
@@ -1214,17 +1381,31 @@ class Portal extends CI_Controller
          
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus     
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         where dis.District LIKE '%$District%' or eco.EcoZones LIKE '%$EcoZones%' or d.Division LIKE '%$Division%'
-         GROUP BY e.ID_EF order by e.ID_EF desc LIMIT $limit OFFSET $page
+         where $string order by e.ID_EF desc LIMIT $limit OFFSET $page
+        ")->result();
+
+         $data['biomassExpansionFacView_count'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus     
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+         where $string 
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
+        $data["searchType"]=3;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
     }
@@ -1250,6 +1431,13 @@ class Portal extends CI_Controller
         $Reference = $this->input->post('Reference');
         $Author    = $this->input->post('Author');
         $Year      = $this->input->post('Year');
+        $searchFields=array(
+            'r.Reference'=>$Reference,
+            'r.Author'=>$Author,
+            'r.Year'=>$Year
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
         
         $this->load->library('pagination');
         $config             = array();
@@ -1293,18 +1481,31 @@ class Portal extends CI_Controller
          
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus  
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         where r.Reference LIKE '%$Reference%' or r.Author LIKE '%$Author%'
-         or r.Year LIKE '%$Year%'
-         GROUP BY e.ID_EF order by e.ID_EF desc LIMIT $limit OFFSET $page
+         where $string order by e.ID_EF desc LIMIT $limit OFFSET $page
+        ")->result();
+
+          $data['biomassExpansionFacView_count'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus  
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+         where $string 
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
+        $data["searchType"]=4;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
     }
@@ -1782,7 +1983,7 @@ class Portal extends CI_Controller
         $data['rawDataView']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -1791,9 +1992,25 @@ class Portal extends CI_Controller
          OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
          OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
          OR ref.Year LIKE '%$keyword%' OR r.Volume_m3 LIKE '%$keyword%' OR r.DBH_cm LIKE '%$keyword%'
-         group by r.ID order by r.ID desc LIMIT $limit OFFSET $page
+         order by r.ID desc LIMIT $limit OFFSET $page
+        ")->result();
+
+         $data['rawDataView_count']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where dis.District LIKE '%$keyword%' OR r.H_m LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
+         OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
+         OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+         OR ref.Year LIKE '%$keyword%' OR r.Volume_m3 LIKE '%$keyword%' OR r.DBH_cm LIKE '%$keyword%'
+         
         ")->result();
         $data["links"]             = $this->pagination->create_links();
+
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
@@ -1810,7 +2027,15 @@ class Portal extends CI_Controller
     public function search_rawequation_tax()
     {
         $Genus   = $this->input->post('Genus');
+        $Family   = $this->input->post('Family');
         $Species = $this->input->post('Species');
+          $searchFields=array(
+            'f.Family'=>$Family,
+            'g.Genus'=>$Genus,
+            's.Species'=>$Species
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_tax";
@@ -1853,10 +2078,21 @@ class Portal extends CI_Controller
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where g.Genus LIKE '%$Genus%' or s.Species LIKE '%$Species%'
-         group by r.ID order by r.ID desc LIMIT $limit OFFSET $page
+         where $string order by r.ID desc LIMIT $limit OFFSET $page
+        ")->result();
+
+         $data['rawDataView_count']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where $string 
         ")->result();
         $data["links"]             = $this->pagination->create_links();
+        $data["searchType"]=3;
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
@@ -1874,6 +2110,13 @@ class Portal extends CI_Controller
         $District  = $this->input->post('District');
         $FAOBiomes = $this->input->post('FAOBiomes');
         $Division = $this->input->post('Division');
+           $searchFields=array(
+            'dis.District'=>$District,
+            'd.Division'=>$Division,
+            'b.FAOBiomes'=>$FAOBiomes
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_loc";
@@ -1911,15 +2154,26 @@ class Portal extends CI_Controller
         $data['rawDataView']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where dis.District LIKE '%$District%' or b.FAOBiomes LIKE '%$FAOBiomes%' or d.Division LIKE '%$Division%'
-         group by r.ID order by r.ID desc LIMIT $limit OFFSET $page
+         where $string order by r.ID desc LIMIT $limit OFFSET $page
+        ")->result();
+
+         $data['rawDataView_count']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where $string 
         ")->result();
         $data["links"]             = $this->pagination->create_links();
+        $data["searchType"]=4;
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
@@ -1936,6 +2190,14 @@ class Portal extends CI_Controller
         $Reference = $this->input->post('Reference');
         $Author    = $this->input->post('Author');
         $Year      = $this->input->post('Year');
+         $searchFields=array(
+            'ref.Reference'=>$Reference,
+            'ref.Author'=>$Author,
+            'ref.Year'=>$Year
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_ref";
@@ -1973,16 +2235,26 @@ class Portal extends CI_Controller
         $data['rawDataView']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where ref.Reference LIKE '%$Reference%' or ref.Author LIKE '%$Author%'
-         or ref.Year LIKE '%$Year%'
-         group by r.ID order by r.ID desc LIMIT $limit OFFSET $page
+         where $string order by r.ID desc LIMIT $limit OFFSET $page
+        ")->result();
+
+        $data['rawDataView_count']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where $string 
         ")->result();
         $data["links"]             = $this->pagination->create_links();
+        $data["searchType"]=5;
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
@@ -1999,6 +2271,12 @@ class Portal extends CI_Controller
     {
         $H_m = $this->input->post('H_m');
         $Volume_m3 = $this->input->post('Volume_m3');
+         $searchFields=array(
+            'r.H_m'=>$H_m,
+            'r.Volume_m3'=>$Volume_m3
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_raw";
@@ -2036,15 +2314,26 @@ class Portal extends CI_Controller
         $data['rawDataView']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where r.H_m LIKE '%$H_m%' or r.Volume_m3 LIKE '%$Volume_m3%'
-         group by r.ID order by r.ID desc LIMIT $limit OFFSET $page
+         where $string order by r.ID desc LIMIT $limit OFFSET $page
+        ")->result();
+
+         $data['rawDataView_count'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where $string 
         ")->result();
         $data["links"]             = $this->pagination->create_links();
+        $data["searchType"]=2;
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
@@ -2111,6 +2400,24 @@ class Portal extends CI_Controller
         OR r.Year LIKE '%$keyword%'
         order by w.ID_WD desc LIMIT $limit OFFSET $page
         ")->result();
+
+        $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus       
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        where dis.District LIKE '%$keyword%' OR w.Density_green LIKE '%$keyword%' OR r.Reference LIKE '%$keyword%'
+        OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
+        OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
+        OR r.Year LIKE '%$keyword%'
+        
+        ")->result();
      
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
@@ -2136,6 +2443,16 @@ class Portal extends CI_Controller
         $DBH_tree_avg = $this->input->post('DBH_tree_avg');
         $DBH_tree_min = $this->input->post('DBH_tree_min');
         $DBH_tree_max = $this->input->post('DBH_tree_max');
+          $searchFields=array(
+            'w.H_tree_avg'=>$H_tree_avg,
+            'w.H_tree_min'=>$H_tree_min,
+            'w.H_tree_max'=>$H_tree_max,
+            'w.DBH_tree_avg'=>$DBH_tree_avg,
+            'w.DBH_tree_min'=>$DBH_tree_min,
+            'w.DBH_tree_max'=>$DBH_tree_max
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_woodDensities_raw";
@@ -2172,7 +2489,7 @@ class Portal extends CI_Controller
         $data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_Family=g.ID_Family   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
@@ -2180,13 +2497,27 @@ class Portal extends CI_Controller
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
-        where w.H_tree_avg LIKE '%$H_tree_avg%' or w.H_tree_min LIKE '%$H_tree_min%'or w.H_tree_max LIKE '%$H_tree_max%'
-        or w.DBH_tree_avg LIKE '%$DBH_tree_avg%'or w.DBH_tree_min LIKE '%$DBH_tree_min%' or w.DBH_tree_max LIKE '%$DBH_tree_max%'
+        where $string
         order by w.ID_WD desc LIMIT $limit OFFSET $page
+        ")->result();
+         $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        where $string
+        
         ")->result();
      
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
+        $data["searchType"]=2;
         $data['content_view_page'] = 'portal/woodDensitiesViewSearch';
         $this->template->display_portal($data);
     }
@@ -2205,6 +2536,14 @@ class Portal extends CI_Controller
     {
         $Genus   = $this->input->post('Genus');
         $Species = $this->input->post('Species');
+        $Family   = $this->input->post('Family');
+         $searchFields=array(
+            'f.Family'=>$Family,
+            'g.Genus'=>$Genus,
+            's.Species'=>$Species
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_woodDensities_tax";
@@ -2241,7 +2580,7 @@ class Portal extends CI_Controller
         $data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_Family=g.ID_Family   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
@@ -2249,12 +2588,29 @@ class Portal extends CI_Controller
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
-        where g.Genus LIKE '%$Genus%' or s.Species LIKE '%$Species%'
+        where $string
         order by w.ID_WD desc LIMIT $limit OFFSET $page
         ")->result();
+
+         $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        where $string
+        
+        ")->result();
+     
      
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
+        $data["searchType"]=3;
         $data['content_view_page'] = 'portal/woodDensitiesViewSearch';
         $this->template->display_portal($data);
     }
@@ -2275,6 +2631,13 @@ class Portal extends CI_Controller
         $District  = $this->input->post('District');
         $EcoZones = $this->input->post('EcoZones');
         $Division = $this->input->post('Division');
+         $searchFields=array(
+            'dis.District'=>$District,
+            'd.Division'=>$Division,
+            'eco.EcoZones'=>$EcoZones
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_woodDensities_loc";
@@ -2311,7 +2674,7 @@ class Portal extends CI_Controller
         $data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_Family=g.ID_Family   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus  
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
@@ -2319,13 +2682,27 @@ class Portal extends CI_Controller
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
-        where dis.District LIKE '%$District%' or eco.EcoZones LIKE '%$EcoZones%'
-        or d.Division LIKE '%$Division%'
+        where $string
         order by w.ID_WD desc LIMIT $limit OFFSET $page
+        ")->result();
+
+        $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus  
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        where $string
         ")->result();
      
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
+        $data["searchType"]=4;
         $data['content_view_page'] = 'portal/woodDensitiesViewSearch';
         $this->template->display_portal($data);
     }
@@ -2345,6 +2722,13 @@ class Portal extends CI_Controller
         $Reference = $this->input->post('Reference');
         $Author    = $this->input->post('Author');
         $Year      = $this->input->post('Year');
+        $searchFields=array(
+            'r.Reference'=>$Reference,
+            'r.Author'=>$Author,
+            'r.Year'=>$Year
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_woodDensities_ref";
@@ -2381,7 +2765,7 @@ class Portal extends CI_Controller
         $data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_Family=g.ID_Family   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
@@ -2389,13 +2773,28 @@ class Portal extends CI_Controller
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
-        where r.Reference LIKE '%$Reference%' or r.Author LIKE '%$Author%'
-         or r.Year LIKE '%$Year%'
+        where $string
         order by w.ID_WD desc LIMIT $limit OFFSET $page
+        ")->result();
+
+         $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        where $string
+        
         ")->result();
      
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
+        $data["searchType"]=5;
         $data['content_view_page'] = 'portal/woodDensitiesViewSearch';
         $this->template->display_portal($data);
     }
@@ -2580,6 +2979,24 @@ class Portal extends CI_Controller
                     $new_row['label'] = stripslashes($row->Genus);
                     $new_row['value'] = stripslashes($row->Genus);
                     $new_row['id'] = stripslashes($row->Genus);
+                    $row_set[] = $new_row;
+                }
+            }
+            echo json_encode($row_set);
+        }
+    }
+
+     public function get_family() 
+    {
+        if (isset($_GET['term'])) {
+            $q = strtolower($_GET['term']);
+            $result = $this->db->query("SELECT Family FROM family WHERE Family LIKE '%$q%' ")->result();
+            $row_set = array();
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $new_row['label'] = stripslashes($row->Family);
+                    $new_row['value'] = stripslashes($row->Family);
+                    $new_row['id'] = stripslashes($row->Family);
                     $row_set[] = $new_row;
                 }
             }

@@ -51,22 +51,65 @@
    <h3>Wood Density Search</h3>
    <div class="col-sm-12">
       <ul class="nav nav-tabs">
-         <li class="active"><a data-toggle="tab" href="#home">Keyword</a></li>
-         <li><a data-toggle="tab" href="#menu4">Wood Density</a></li>
-         <li><a data-toggle="tab" href="#menu1">Taxonomy</a></li>
-         <li><a data-toggle="tab" href="#menu2">Location</a></li>
-         <li><a data-toggle="tab" href="#menu3">Reference</a></li>
+         <li class="<?php if(!isset($searchType)){ echo 'active'; } ?>"><a data-toggle="tab" href="#home">Keyword</a></li>
+         <li class="
+            <?php if(isset($searchType)){
+               if($searchType==2)
+               {
+                 echo 'active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>
+            "
+         ><a data-toggle="tab" href="#menu4">Wood Density</a></li>
+         <li class="
+            <?php if(isset($searchType)){
+               if($searchType==3)
+               {
+                 echo 'active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>
+            "><a data-toggle="tab" href="#menu1">Taxonomy</a></li>
+         <li class="
+            <?php if(isset($searchType)){
+               if($searchType==4)
+               {
+                 echo 'active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>
+            "><a data-toggle="tab" href="#menu2">Location</a></li>
+         <li class="
+            <?php if(isset($searchType)){
+               if($searchType==5)
+               {
+                 echo 'active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>
+            "><a data-toggle="tab" href="#menu3">Reference</a></li>
       </ul>
       <div class="tab-content">
-         <div id="home" class="tab-pane fade in active">
+         <div id="home" class="tab-pane fade 
+            <?php if(!isset($searchType)){ echo 'in active'; } ?>
+            ">
             <p> Search Wood Density by keyword. 
                This searches accross several text fields. 
                <br>
-               Example searches: <a href="#">Acacia</a>,
-               <a href="#">Zambia</a>,
-               <a href="#">Bellefontaine</a>, 
-               <a href="#">Glutinosum</a>,
-               <a href="#">rainforest</a>
+               Example searches: <a href="#">Leguminosae</a>,
+               <a href="#">Leguminosae</a>,
+               <a href="#">Pongamia</a>, 
+               <a href="#">Pongamia pinnata</a>,
+               <a href="#">Bangladesh</a>
             </p>
             <p>
             </p>
@@ -80,29 +123,38 @@
                </div>
             </form>
          </div>
-         <div id="menu4" class="tab-pane fade">
+         <div id="menu4" class="tab-pane fade
+         <?php if(isset($searchType)){
+               if($searchType==2)
+               {
+                 echo 'in active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>">
             <p>Search by tree height, diameter, and volume.</p>
             <form action="<?php echo site_url('portal/search_woodDensities_raw');?>" method = "post">
             <div class="row">
                <h4>Height</h4>
                <div class="col-md-3">
                   <div class="form-group">
-                     <label>Average Height <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="H_tree_avg"  id ="h_tree_avg" class ="h_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
+                     <label>Average Height <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="H_tree_avg"   class ="h_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
                   </div>
                   </div>
                   <div class="col-md-3">
                   <div class="form-group">
-                     <label>Minimum Height<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="H_tree_min"  id ="h_tree_min" class ="h_tree_min" maxlength="64" placeholder="Volume (m3)" />
+                     <label>Minimum Height<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="H_tree_min"   class ="h_tree_min" maxlength="64" placeholder="Volume (m3)" />
                      
                   </div>
                </div>
 
                  <div class="col-md-3">
                   <div class="form-group">
-                     <label>Maximum Height<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="H_tree_max" maxlength="64" id ="h_tree_max" class ="h_tree_max" placeholder="Volume (m3)" />
+                     <label>Maximum Height<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="H_tree_max" maxlength="64"  class ="h_tree_max" placeholder="Volume (m3)" />
                      
                   </div>
                </div>
@@ -114,21 +166,21 @@
                <h4>DBH</h4>
                <div class="col-md-3">
                   <div class="form-group">
-                     <label>Average DBH <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="DBH_tree_avg" id ="dbh_tree_avg" class ="dbh_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
+                     <label>Average DBH <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_avg"  class ="dbh_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
                   </div>
                   </div>
                   <div class="col-md-3">
                   <div class="form-group">
-                     <label>Minimum DBH<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="DBH_tree_min" maxlength="64" id ="dbh_tree_min" class ="dbh_tree_min" placeholder="Volume (m3)" />
+                     <label>Minimum DBH<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_min" maxlength="64"  class ="dbh_tree_min" placeholder="Volume (m3)" />
                      
                   </div>
                </div>
                  <div class="col-md-3">
                   <div class="form-group">
-                     <label>Maximum DBH<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="DBH_tree_max" maxlength="64" id ="dbh_tree_max" class ="dbh_tree_max" placeholder="Volume (m3)" />
+                     <label>Maximum DBH<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_max" maxlength="64"  class ="dbh_tree_max" placeholder="Volume (m3)" />
                      
                   </div>
                </div>
@@ -141,23 +193,36 @@
 
             </form>
          </div>
-         <div id="menu1" class="tab-pane fade">
+         <div id="menu1" class="tab-pane fade
+         <?php if(isset($searchType)){
+               if($searchType==3)
+               {
+                 echo 'in active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>">
             <p> Search allometric equations by family, genus or species.
                Example searches
                <br>
                Example searches: <a href="#">Genus</a>,
-               <a href="#">Gmelina</a>,
-               <a href="#"> Species</a>, 
-               <a href="#">schweinfurthii</a>,
+               <a href="#">Meliaceae</a>,
+               <a href="#">Xylocarpus</a>, 
+               <a href="#">moluccensis</a>,
             </p>
             <form action="<?php echo site_url('portal/search_woodDensities_tax');?>" method = "post">
                <div class="col-md-6">
+                <div class="form-group">
+              <label>Family<span style="color:red;"></span></label>
+              <input type="text" class="form-control input-sm" name ="Family"  class ="Family" maxlength="64" placeholder="Family" />
+               </div>
                   <div class="form-group">
-                     <label>Genus<span style="color:red;">*</span></label>
+                     <label>Genus<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="Genus" id ="Genus" class ="Genus" maxlength="64" placeholder="Genus" />
                   </div>
                   <div class="form-group">
-                     <label>Species<span style="color:red;">*</span></label>
+                     <label>Species<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="Species" id ="Species" class ="Species" maxlength="64" placeholder="Species" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
@@ -169,26 +234,26 @@
             <p> Search allometric equations by tree location and biome.Example searches
                <br>
                Example searches: <a href="#">Biome (FAO):</a>,
-               <a href="#">Tropical dry forest</a>,
-               <a href="#">Country: Benin</a>, 
+               <a href="#">Tropical moist forest</a>,
+               <a href="#">Country: Bangladesh</a>, 
             </p>
             <form action="<?php echo site_url('portal/search_woodDensities_loc');?>" method = "post">
                <div class="col-md-6">
 
                <div class="form-group">
                      
-                     <label>Division<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="Division" id ="division" class ="division" maxlength="64" placeholder="Division" />
+                     <label>Division<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Division"  class ="division" maxlength="64" placeholder="Division" />
                   </div>
                   <div class="form-group">
                      
-                     <label>District<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="District" id ="District" class ="District" maxlength="64" placeholder="District" />
+                     <label>District<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="District"  class ="District" maxlength="64" placeholder="District" />
                   </div>
                   <div class="form-group">
                      <h3>Ecological Zone</h3>
-                     <label>FAO Global Ecological Zone <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="FAOBiomes"  id ="fao_biome" class ="fao_biome" maxlength="64" placeholder="FAO Global Ecological Zone" />
+                     <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="EcoZones"  class ="fao_biome" maxlength="64" placeholder="FAO Global Ecological Zone" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -199,24 +264,24 @@
             <p> Search allometric equations by author, year, and reference.
                Example searches
                <br>
-               Example searches: <a href="#"> Author: Henry M</a>,
-               <a href="#">Reference: Pieper</a>,
-               <a href="#"> Y. & Laumans,</a>, 
-               <a href="#"> Year: 2004</a>, 
+               Example searches: <a href="#"> Author: Sattar, MA /a>,
+               <a href="#">Reference: Sattar MA 1981</a>,
+               <a href="#">Sattar, MA</a>, 
+               <a href="#"> Year: 1981</a>, 
             </p>
             <form action="<?php echo site_url('portal/search_woodDensities_ref');?>" method = "post">
                <div class="col-md-6">
                   <div class="form-group">
-                     <label>Reference <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="Reference" id ="reference" class ="reference" maxlength="200" placeholder="Reference" />
+                     <label>Reference <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Reference"  class ="reference" maxlength="200" placeholder="Reference" />
                   </div>
                   <div class="form-group">
-                     <label>Author  <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="Author" id ="author" class ="author" maxlength="64" placeholder="Author" />
+                     <label>Author  <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Author"  class ="author" maxlength="64" placeholder="Author" />
                   </div>
                   <div class="form-group">
-                     <label>Year  <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="Year" id ="year" class ="year" maxlength="64" placeholder="Year" />
+                     <label>Year  <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Year" class ="year" maxlength="64" placeholder="Year" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> 
                   </div>
@@ -226,6 +291,74 @@
       </div>
    </div>
    <div class="col-sm-12 bdy_des">
+       <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
+ 
+    <div class="col-lg-6">
+     
+     <h4>Result count: <span id="summary-results-total">
+    
+       <?php
+                           if(isset($woodDensitiesView_count)){
+                            ?>
+                            <?php echo count($woodDensitiesView_count); ?>
+                            
+
+                             <?php 
+                            }else{ ?>
+                             <?php echo $this->db->count_all_results('wd');?>
+
+
+                           
+                                  <?php 
+                            }
+                            
+                           ?>
+    
+     </span> </h4>
+     <br><br>
+    
+    </div>
+
+    <div class="col-lg-6">
+      
+      <h4> Search criteria</h4>
+      
+        <p> <?php
+                           if(isset($woodDensitiesView_count)){
+                            ?>
+                            <?php echo $keyword = $this->input->post('keyword'); ?>
+                            <?php echo $Family = $this->input->post('Family'); ?>
+                            <?php echo $Genus = $this->input->post('Genus'); ?>
+                            <?php echo $Species = $this->input->post('Species'); ?>
+                            <?php echo $District = $this->input->post('District'); ?>
+                            <?php echo $Division = $this->input->post('Division'); ?>
+                            <?php echo $EcoZones = $this->input->post('EcoZones'); ?>
+                            <?php echo $Reference = $this->input->post('Reference'); ?>
+                            <?php echo $Author = $this->input->post('Author'); ?>
+                            <?php echo $Year = $this->input->post('Year'); ?>
+                            <?php echo $H_tree_avg = $this->input->post('H_tree_avg'); ?>
+                            <?php echo $H_tree_min = $this->input->post('H_tree_min');?>
+                            <?php echo $H_tree_max = $this->input->post('H_tree_max'); ?>
+                            <?php echo $DBH_tree_avg = $this->input->post('DBH_tree_avg');?>
+                            <?php echo $DBH_tree_min = $this->input->post('DBH_tree_min');?>
+                            <?php echo $DBH_tree_max = $this->input->post('DBH_tree_max');?>
+                            
+
+                             <?php 
+                            }
+                            else{ ?>
+                             No criteria - All results are shown
+
+
+                           
+                                  <?php 
+                            }
+                            
+                           ?></p>
+      
+    </div>
+
+</div>
       <ul class="nav nav-tabs">
          <li class="active"><a data-toggle="tab" href="#results-list"  class="resultList"><span class="glyphicon glyphicon-list"></span> Results List</a></li>
          <li><a data-toggle="tab" href="#results-map" class="results-map"><span class="glyphicon glyphicon-globe"></span> Map View</a></li>

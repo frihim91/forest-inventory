@@ -72,16 +72,18 @@
       <div class="row">
          <div class="panel-group" id="accordion">
             <?php 
+
                $i=0;
                foreach($family_details as $row)
                {
                ?>
             <div class="panel panel-default">
-            <?php if($row->GENUSCOUNT != 0 || $row->SPECIESCOUNT !=0): ?>
-               <div class="panel-heading">
+            <?php if($row->GENUSCOUNT != 0 || $row->SPECIESCOUNT !=0 || $row->AECOUNT !=0|| $row->RDCOUNT !=0|| $row->WDCOUNT !=0|| $row->EFCOUNT !=0): ?>
+               <div class="panel-heading" style="width: 600px;">
                   <h4 class="panel-title">
                      <a data-toggle="collapse" style="font-family:Tahoma, Verdana, Segoe, sans-serif; font-weight: 400;font-size:20px;color:inherit;" data-parent="#accordion" href="#collapse<?php echo $i; ?>" >
-                     <?php echo $row->Family;?> </a> (<?php echo $row->GENUSCOUNT;?> Genus, <?php echo $row->SPECIESCOUNT;?> Species)
+                     <?php echo $row->Family;?> </a> (<?php echo $row->GENUSCOUNT;?> Genus, <?php echo $row->SPECIESCOUNT;?> Species, <?php echo $row->AECOUNT;?> AE, <?php echo $row->RDCOUNT;?> RD
+                     , <?php echo $row->WDCOUNT;?> WD, <?php echo $row->EFCOUNT;?> EF)
                   </h4>
                </div>
                <div id="collapse<?php echo $i; ?>" class="panel-collapse collapse">
@@ -117,7 +119,7 @@
                                     <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data :
                                    
                                     <?php  break; ?>
-                                    <?php } else { ?> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data : No Data</b>
+                                    <?php } else { ?> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data :</b>
                                     <?php  } ?>
                                     <?php endforeach; ?>
                                     </b>
@@ -127,7 +129,17 @@
                                     <?php 
                                        $totalNumber = sizeof($speciesId) - 1 ;
                                        foreach($speciesId as $key => $speciesIds){ 
-                                         ?><?php echo $speciesIds->FAOBiomes;?> 
+
+                                         ?>
+                                         <?php
+                                          if ($speciesIds->FAOBiomes!='No data') { //no news found
+                                         echo $speciesIds->FAOBiomes;
+                                         }  else {
+    //Do stuff here with news object.
+                                          }
+                                        ?>
+
+                                         
                                     <?php 
                                        if($totalNumber != $key)
                                          echo ", ";
@@ -139,11 +151,11 @@
                                     <b><?php 
                                        $species_type_data = $this->Forestdata_model->get_data_type($speciesIds->ID_Species);
                                        ?> <?php foreach ($species_type_data as $row) : ?>
-                                    <?php if($row->TOTAL_EQN !=0) { ?>
+                                    <?php if($row->TOTAL_EQN!=0) { ?>
                                     <b>Types Of Data :
                                    
                                     <?php  break; ?>
-                                    <?php } else { ?><b>Types Of Data : No Data</b>
+                                    <?php } else { ?><b>Types Of Data :</b>
                                     <?php  } ?>
                                     <?php endforeach; ?>
                                     </b>

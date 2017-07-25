@@ -56,21 +56,53 @@
    <h3>Biomass Expansion Factor Search</h3>
    <div class="col-sm-12">
       <ul class="nav nav-tabs">
-         <li class="active"><a data-toggle="tab" href="#home">Keyword</a></li>
-         <li><a data-toggle="tab" href="#menu1">Taxonomy</a></li>
-         <li><a data-toggle="tab" href="#menu2">Location</a></li>
-         <li><a data-toggle="tab" href="#menu3">Reference</a></li>
+         <li class="<?php if(!isset($searchType)){ echo 'active'; } ?>"><a data-toggle="tab" href="#home">Keyword</a></li>
+         <li class="
+            <?php if(isset($searchType)){
+               if($searchType==2)
+               {
+                 echo 'active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>
+            "><a data-toggle="tab" href="#menu1">Taxonomy</a></li>
+         <li class="
+            <?php if(isset($searchType)){
+               if($searchType==3)
+               {
+                 echo 'active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>
+            "><a data-toggle="tab" href="#menu2">Location</a></li>
+         <li class="
+            <?php if(isset($searchType)){
+               if($searchType==4)
+               {
+                 echo 'active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>
+            "><a data-toggle="tab" href="#menu3">Reference</a></li>
       </ul>
       <div class="tab-content">
-         <div id="home" class="tab-pane fade in active">
+         <div id="home" class="tab-pane fade 
+            <?php if(!isset($searchType)){ echo 'in active'; } ?>
+            ">
             <p> Search Biomas Expension Factor equations by keyword. 
                This searches accross several text fields. 
                <br>
-               Example searches: <a href="#">Acacia</a>,
-               <a href="#">Zambia</a>,
-               <a href="#">Bellefontaine</a>, 
-               <a href="#">Glutinosum</a>,
-               <a href="#">rainforest</a>
+               Example searches: <a href="#">Acacia </a>,
+               <a href="#">Mimosaceae</a>,
+               <a href="#">Acacia</a>, 
+               <a href="#">Acacia auriculiformis</a>,
+               <a href="#">Tropical dry forest</a>
             </p>
             <p>
             </p>
@@ -84,7 +116,16 @@
                </div>
             </form>
          </div>
-         <div id="menu1" class="tab-pane fade">
+         <div id="menu1" class="tab-pane fade
+         <?php if(isset($searchType)){
+               if($searchType==2)
+               {
+                 echo 'in active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>">
             <p> Search Biomas Expension Factor by family, genus or species.
                Example searches
                <br>
@@ -95,70 +136,92 @@
             </p>
             <form action="<?php echo site_url('portal/search_biomas_expansion_tax');?>" method = "post">
                <div class="col-md-6">
+            <div class="form-group">
+              <label>Family<span style="color:red;"></span></label>
+              <input type="text" class="form-control input-sm" name ="Family"  class ="Family" maxlength="64" placeholder="Family" />
+               </div>
                   <div class="form-group">
-                     <label>Genus<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="Genus" id ="Genus" class ="Genus" maxlength="64" placeholder="Genus" />
+                     <label>Genus<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Genus"  class ="Genus" maxlength="64" placeholder="Genus" />
                   </div>
                   <div class="form-group">
-                     <label>Species<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="Species" id ="Species" class ="Species" maxlength="64" placeholder="Species" />
+                     <label>Species<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Species"  class ="Species" maxlength="64" placeholder="Species" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
                </div>
             </form>
          </div>
-         <div id="menu2" class="tab-pane fade">
+         <div id="menu2" class="tab-pane fade
+         <?php if(isset($searchType)){
+               if($searchType==3)
+               {
+                 echo 'in active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>">
             <p> Search allometric equations by tree location and biome.Example searches
                <br>
                Example searches: <a href="#">Biome (FAO):</a>,
                <a href="#">Tropical dry forest</a>,
-               <a href="#">Country: Benin</a>, 
+               <a href="#">Country: Bangladesh</a>, 
             </p>
             <form action="<?php echo site_url('portal/search_biomas_expansion_loc');?>" method = "post">
                <div class="col-md-6">
                   <div class="form-group">
                    
-                     <label>Division<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="Division" id ="division" class ="division" maxlength="64" placeholder="Division" />
+                     <label>Division<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Division" class ="division" maxlength="64" placeholder="Division" />
                   </div>
                   <div class="form-group">
                    
-                     <label>District<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="District" id ="District" class ="District" maxlength="64" placeholder="District" />
+                     <label>District<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="District"  class ="District" maxlength="64" placeholder="District" />
                   </div>
                   <div class="form-group">
                      <h3>Ecological Zone</h3>
-                     <label>FAO Global Ecological Zone <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="EcoZones" id ="ecoZones" class ="ecoZones" maxlength="64" placeholder="FAO Global Ecological Zone" />
+                     <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="EcoZones" class ="ecoZones" maxlength="64" placeholder="FAO Global Ecological Zone" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
                </div>
             </form>
          </div>
-         <div id="menu3" class="tab-pane fade">
+         <div id="menu3" class="tab-pane fade
+         <?php if(isset($searchType)){
+               if($searchType==4)
+               {
+                 echo 'in active';
+               }
+               else {
+                 echo '';
+               }
+               }  ?>">
             <p> Search allometric equations by author, year, and reference.
                Example searches
                <br>
-               Example searches: <a href="#"> Author: Henry M</a>,
-               <a href="#">Reference: Pieper</a>,
-               <a href="#"> Y. & Laumans,</a>, 
-               <a href="#"> Year: 2004</a>, 
+               Example searches: <a href="#"> Author: Ullah, MR </a>,
+               <a href="#">Reference: Ullah, M.R., 2014</a>,
+               <a href="#">Ullah, MR ,</a>, 
+               <a href="#"> Year: 2014</a>, 
             </p>
-            <form action="<?php echo site_url('portal/search_allometricequation_ref');?>" method = "post">
+            <form action="<?php echo site_url('portal/search_biomas_expansion_ref');?>" method = "post">
                <div class="col-md-6">
                   <div class="form-group">
-                     <label>Reference <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="Reference" id ="reference" class ="reference" maxlength="200" placeholder="Reference" />
+                     <label>Reference <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Reference"  class ="reference" maxlength="200" placeholder="Reference" />
                   </div>
                   <div class="form-group">
-                     <label>Author  <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="Author" id ="author" class ="author" maxlength="64" placeholder="Author" />
+                     <label>Author  <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Author"  class ="author" maxlength="64" placeholder="Author" />
                   </div>
                   <div class="form-group">
-                     <label>Year  <span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name ="Year" id ="year" class ="year" maxlength="64" placeholder="Year" />
+                     <label>Year  <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Year"  class ="year" maxlength="64" placeholder="Year" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> 
                   </div>
@@ -168,6 +231,68 @@
       </div>
    </div>
    <div class="col-sm-12 bdy_des">
+   <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
+ 
+    <div class="col-lg-6">
+     
+     <h4>Result count: <span id="summary-results-total">
+    
+       <?php
+                           if(isset($biomassExpansionFacView_count)){
+                            ?>
+                            <?php echo count($biomassExpansionFacView_count); ?>
+                            
+
+                             <?php 
+                            }else{ ?>
+                             <?php echo $this->db->count_all_results('ef');?>
+
+
+                           
+                                  <?php 
+                            }
+                            
+                           ?>
+    
+     </span> </h4>
+     <br><br>
+    
+    </div>
+
+    <div class="col-lg-6">
+      
+      <h4> Search criteria</h4>
+      
+        <p> <?php
+                           if(isset($biomassExpansionFacView_count)){
+                            ?>
+                            <?php echo $keyword = $this->input->post('keyword'); ?>
+                            <?php echo $Family = $this->input->post('Family'); ?>
+                            <?php echo $Genus = $this->input->post('Genus'); ?>
+                            <?php echo $Species = $this->input->post('Species'); ?>
+                            <?php echo $District = $this->input->post('District'); ?>
+                            <?php echo $Division = $this->input->post('Division'); ?>
+                            <?php echo $EcoZones = $this->input->post('EcoZones'); ?>
+                            <?php echo $Reference = $this->input->post('Reference'); ?>
+                            <?php echo $Author = $this->input->post('Author'); ?>
+                            <?php echo $Year = $this->input->post('Year'); ?>
+                            
+
+                             <?php 
+                            }
+                            else{ ?>
+                             No criteria - All results are shown
+
+
+                           
+                                  <?php 
+                            }
+                            
+                           ?></p>
+      
+    </div>
+
+</div>
       <ul class="nav nav-tabs">
          <li class="active"><a data-toggle="tab" class="resultList" href="#results-list"><span class="glyphicon glyphicon-list"></span> Results List</a></li>
          <li><a data-toggle="tab" class="results-map" href="#results-map"><span class="glyphicon glyphicon-globe"></span> Map View</a></li>

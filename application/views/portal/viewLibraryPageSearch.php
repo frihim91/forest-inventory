@@ -94,7 +94,7 @@
    </div>
 </div>
 </div>
-<div class="col-md-12 page_content">
+<!-- <div class="col-md-12 page_content">
     <h3>Documents Search</h3>
   <div class="col-sm-12">
     <ul class="nav nav-tabs">
@@ -143,9 +143,9 @@
    
   
  
+     </div>
     </div>
-  </div>
-   </div>
+   </div> -->
    <div class="col-sm-12 bdy_des">
       <div class="">
          <h4>Library</h4>
