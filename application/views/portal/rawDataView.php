@@ -116,7 +116,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Keyword<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name = "keyword" class ="keyword" maxlength="64" placeholder="Keyword" /><br>
+                     <input type="text" class="form-control input-sm" name = "keyword" value ="<?php echo (isset($keyword))?$keyword:'';?>" class ="keyword" maxlength="64" placeholder="Keyword" /><br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
                </div>
@@ -138,11 +138,11 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Tree Height (m)<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="H_m"  class ="h_m" maxlength="64" placeholder="Tree Height (m)" />
+                     <input type="text" class="form-control input-sm" name ="H_m" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="Tree Height (m)" />
                   </div>
                   <div class="form-group">
                      <label>Volume (m3)<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Volume_m3"  class ="volume_m3" maxlength="64" placeholder="Volume (m3)" />
+                     <input type="text" class="form-control input-sm" name ="Volume_m3" value = "<?php echo (isset($Volume_m3))?$Volume_m3:'';?>"  class ="volume_m3" maxlength="64" placeholder="Volume (m3)" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -299,7 +299,7 @@
         <p> <?php
                            if(isset($rawDataView_count)){
                             ?>
-                            <?php echo $keyword = $this->input->post('keyword'); ?>
+                            <?php echo (isset($keyword))?$keyword:'';?>
                             <?php echo $Family = $this->input->post('Family'); ?>
                             <?php echo $Genus = $this->input->post('Genus'); ?>
                             <?php echo $Species = $this->input->post('Species'); ?>
@@ -309,8 +309,8 @@
                             <?php echo $Reference = $this->input->post('Reference'); ?>
                             <?php echo $Author = $this->input->post('Author'); ?>
                             <?php echo $Year = $this->input->post('Year'); ?>
-                            <?php echo $H_m = $this->input->post('H_m'); ?>
-                            <?php echo $Volume_m3 = $this->input->post('Volume_m3');?>
+                            <?php echo (isset($H_m))?$H_m:'';?>
+                           <?php echo (isset($Volume_m3))?$Volume_m3:'';?>
                             
 
                              <?php 

@@ -163,6 +163,19 @@ class Data extends CI_Controller
             $string=$this->session->userdata('aekeySearchString');
         }
 
+         if(!empty($keyword))
+        {
+            $this->session->set_userdata('aeSearchStringKeyword', $keyword);
+           
+        }
+    
+        else 
+        {
+            $keyword=$this->session->userdata('aeSearchStringKeyword');
+          
+           
+        }
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/data/search_allometricequation_key";
@@ -241,6 +254,7 @@ class Data extends CI_Controller
          
         
         ")->result();
+         $data['keyword']=$keyword;
 
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';

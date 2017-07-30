@@ -441,24 +441,12 @@ class Portal extends CI_Controller
     public function search_allometricequation_tax()
     {
         
-
+//var_dump($_POST);//exit;
         $Genus   = $this->input->post('Genus');
         $Family   = $this->input->post('Family');
         $Species   = $this->input->post('Species');
-       // $Species ="Sonneratia apetala";
-       //  $search_sess=array(
-        //     'Species'=>$this->input->post('Species'),
-        //     'Family'=>$this->input->post('Family'),
-        //     'Genus'=>$this->input->post('Genus'),
-        //     );
+     
 
-       // $this->session->set_userdata('test_ses', $search_sess);
-
-       //  $Species_data = $this->session->userdata('test_ses');
-       //  print_r($Species_data);exit;
-       //  $Species = $Species_data['Species'];
-       //   $Family = $Species_data['Family'];
-       // $Genus = $Species_data['Genus'];
 
 
        //  $Family = $this->input->post('Family');
@@ -467,6 +455,9 @@ class Portal extends CI_Controller
             'g.Genus'=>$Genus,
             's.Species'=>$Species
             );
+
+
+
         // echo "<pre>";
         // print_r($searchFields);
         // $where='';
@@ -487,8 +478,23 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('aeSearchString');
         }
-        
-         //echo $string;
+
+         if(!empty($Species) || !empty($Family) || !empty($Genus))
+        {
+            $this->session->set_userdata('aeSearchStringSpecies', $Species);
+            $this->session->set_userdata('aeSearchStringFamily', $Family);
+            $this->session->set_userdata('aeSearchStringGenus', $Genus);
+
+        }
+    
+        else 
+        {
+            $Species=$this->session->userdata('aeSearchStringSpecies');
+            $Family=$this->session->userdata('aeSearchStringFamily');
+            $Genus=$this->session->userdata('aeSearchStringGenus');
+           
+        }
+      
         
         $this->load->library('pagination');
         $config             = array();
@@ -577,7 +583,9 @@ class Portal extends CI_Controller
        // $viewdata['search_result_count'] = count($data['allometricEquationView'] );
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=2;
-        $data['string']=$string;
+        $data['Species']=$Species;
+        $data['Family']=$Family;
+        $data['Genus']=$Genus;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
         
@@ -605,6 +613,22 @@ class Portal extends CI_Controller
         else 
         {
             $string=$this->session->userdata('aeLocSearchString');
+        }
+
+         if(!empty($District) || !empty($EcoZones) || !empty($Division))
+        {
+            $this->session->set_userdata('aeSearchStringDis', $District);
+            $this->session->set_userdata('aeSearchStringEco', $EcoZones);
+            $this->session->set_userdata('aeSearchStringDiv', $Division);
+
+        }
+    
+        else 
+        {
+            $District=$this->session->userdata('aeSearchStringDis');
+            $EcoZones=$this->session->userdata('aeSearchStringEco');
+            $Division=$this->session->userdata('aeSearchStringDiv');
+           
         }
       
 
@@ -688,6 +712,9 @@ class Portal extends CI_Controller
         // exit;
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=3;
+        $data['District']=$District;
+        $data['Division']=$Division;
+        $data['EcoZones']=$EcoZones;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
         
@@ -720,6 +747,22 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('aeRefSearchString');
         }
+         if(!empty($Reference) || !empty($Author) || !empty($Year))
+        {
+            $this->session->set_userdata('aeSearchStringRef', $Reference);
+            $this->session->set_userdata('aeSearchStringAuth', $Author);
+            $this->session->set_userdata('aeSearchStringYear', $Year);
+
+        }
+    
+        else 
+        {
+            $Reference=$this->session->userdata('aeSearchStringRef');
+            $Author=$this->session->userdata('aeSearchStringAuth');
+            $Year=$this->session->userdata('aeSearchStringYear');
+           
+        }
+      
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_ref";
@@ -793,6 +836,9 @@ class Portal extends CI_Controller
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=4;
+        $data["Reference"]=$Reference;
+        $data["Author"]=$Author;
+        $data["Year"]=$Year;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
         
@@ -2220,6 +2266,20 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('rdkeySearchString');
         }
+
+
+         if(!empty($keyword))
+        {
+            $this->session->set_userdata('rdSearchStringKeyword', $keyword);
+           
+        }
+    
+        else 
+        {
+            $keyword=$this->session->userdata('rdSearchStringKeyword');
+          
+           
+        }
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_key";
@@ -2290,6 +2350,7 @@ class Portal extends CI_Controller
          
         ")->result();
         $data["links"]             = $this->pagination->create_links();
+        $data['keyword']=$keyword;
 
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
@@ -2619,6 +2680,22 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('rdraSearchString');
         }
+         if(!empty($H_m) || !empty($Volume_m3))
+        {
+            $this->session->set_userdata('rdSearchStringhm', $H_m);
+            $this->session->set_userdata('rdSearchStringvm', $Volume_m3);
+          
+
+        }
+    
+        else 
+        {
+            $H_m=$this->session->userdata('rdSearchStringhm');
+            $Volume_m3=$this->session->userdata('rdSearchStringvm');
+           
+           
+        }
+      
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_raw";
@@ -2686,6 +2763,8 @@ class Portal extends CI_Controller
         ")->result();
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=2;
+        $data['H_m']=$H_m;
+        $data['Volume_m3']=$Volume_m3;
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
