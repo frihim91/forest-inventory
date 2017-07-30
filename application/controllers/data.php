@@ -35,6 +35,37 @@ class Data extends CI_Controller
         $this->load->helper('url');
         $this->load->library("pagination");
     }
+
+
+          /*
+     * @methodName searchAttributeString()
+     * @access private
+     * @param  none
+     * @return search string
+     */
+    private function searchAttributeString($searchFields)
+    {
+        $n=count($searchFields);
+        $string='';
+        $i=0;
+        foreach ($searchFields as $key => $value) {
+            if(!empty($value))
+            {
+                if($i==0)
+                {
+                    $string=$string.$key." like '%$value%'";
+                }
+                else
+                {
+                    $string=$string.' OR '.$key." like '%$value%'";
+                }
+                $i++;
+            }
+
+        }
+            return $string;
+    }
+
      
     /*
      * @methodName speciesData()
@@ -102,33 +133,58 @@ class Data extends CI_Controller
         $this->template->display_portal($data);
     }
 
+   
 
     
      public function search_allometricequation_key()
     {
         $keyword = $this->input->post('keyword');
+           $searchFields=array(
+            's.Species'=>$keyword,
+            'dis.District'=>$keyword,
+            'a.Equation'=>$keyword,
+            'ref.Reference'=>$keyword,
+            'ref.Author'=>$keyword,
+            'b.FAOBiomes'=>$keyword,
+            'f.Family'=>$keyword,
+            'g.Genus'=>$keyword,
+            'ref.Year'=>$keyword,
+            'd.Division'=>$keyword
+
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
+         if(!empty($string))
+        {   
+            $this->session->set_userdata('aekeySearchString', $string);
+        }
+        else 
+        {
+            $string=$this->session->userdata('aekeySearchString');
+        }
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/data/search_allometricequation_key";
+
+              //$config["base_url"] = base_url() . "index.php/portal/search_allometricequation_tax/".$Genus.$Species.$Family;
        // $total_ef           = 50;
-        // $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
-        //  LEFT JOIN species s ON a.Species=s.ID_Species
-        //  LEFT JOIN family f ON a.Family=f.ID_Family
-        //  LEFT JOIN genus g ON a.Genus=g.ID_Genus   
-        //  LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-        //  LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
-        //  LEFT JOIN division d ON a.Division=d.ID_Division
-        //  LEFT JOIN district dis ON a.District =dis.ID_District
-        //  LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
-        //  LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-        //  where s.Species LIKE '%$keyword%' OR dis.District LIKE '%$keyword%' OR a.Equation LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
-        //  OR b.FAOBiomes LIKE '%$keyword%' OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
-        //  OR ref.Year LIKE '%$keyword%'  order by a.ID_AE desc")->row();
+        $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where $string  ")->num_rows();
         //echo $total_ae->total_ae;exit;
-        //$config["total_rows"] = $total_ae->ID_AE;
-        $total_ef           = $this->db->count_all("ae");
+        $config["total_rows"] = $total_ae;
+       // $total_ef           = $this->db->count_all("ae");
         
-        $config["total_rows"] = $total_ef;
+        //$config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
         
         $config["per_page"]        = 20;
@@ -167,10 +223,7 @@ class Data extends CI_Controller
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where dis.District LIKE '%$keyword%' OR a.Equation LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
-         OR b.FAOBiomes LIKE '%$keyword%' OR s.Species  LIKE '%$keyword%'
-         OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
-         OR ref.Year LIKE '%$keyword%'
+         where $string
          order by a.ID_AE desc LIMIT $limit OFFSET $page
         ")->result();
 
@@ -184,9 +237,7 @@ class Data extends CI_Controller
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where s.Species LIKE '%$keyword%' OR dis.District LIKE '%$keyword%' OR a.Equation LIKE '%$keyword%' OR ref.Reference LIKE '%$keyword%'
-         OR b.FAOBiomes LIKE '%$keyword%' OR f.Family LIKE '%$keyword%' OR g.Genus LIKE '%$keyword%'
-         OR ref.Year LIKE '%$keyword%'
+         where $string
          
         
         ")->result();

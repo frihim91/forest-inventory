@@ -219,11 +219,11 @@
                </div>
                   <div class="form-group">
                      <label>Genus<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Genus" id ="Genus" class ="Genus" maxlength="64" placeholder="Genus" />
+                     <input type="text" class="form-control input-sm" name ="Genus"  class ="Genus" maxlength="64" placeholder="Genus" />
                   </div>
                   <div class="form-group">
                      <label>Species<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Species" id ="Species" class ="Species" maxlength="64" placeholder="Species" />
+                     <input type="text" class="form-control input-sm" name ="Species"  class ="Species" maxlength="64" placeholder="Species" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -397,7 +397,7 @@
                   <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
                   <p style="padding-left:3px;"><b>Family: </b> <?php echo $row->Family;?></p>
                   <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
-                  <p style="padding-left:3px;"><b>Locations: </b>Bangladesh</p>
+                  <p style="padding-left:3px;"><b>Locations: </b>lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?></p>
                </div>
             </div>
             <?php 

@@ -58,7 +58,7 @@
 <div class="col-md-12 page_content">
    <h3>Allometric Equation Search</h3>
 
-   <div class="col-sm-12">
+<!--    <div class="col-sm-12">
       <ul class="nav nav-tabs">
          <li class="<?php if(!isset($searchType)){ echo 'active'; } ?>"  > <a data-toggle="tab" href="#home">Keyword</a></li>
          <li class="
@@ -147,15 +147,15 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Family<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm f" name ="Family"  class ="Family" maxlength="64" placeholder="Family" />
+                     <input type="text" class="form-control input-sm" name ="Family"  class ="Family" maxlength="64" placeholder="Family" />
                   </div>
                   <div class="form-group">
                      <label>Genus<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm g" name ="Genus"  class ="Genus" maxlength="64" placeholder="Genus" />
+                     <input type="text" class="form-control input-sm" name ="Genus"  class ="Genus" maxlength="64" placeholder="Genus" />
                   </div>
                   <div class="form-group">
                      <label>Species<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm s" name ="Species" maxlength="64"  class ="Species" placeholder="Species" />
+                     <input type="text" class="form-control input-sm" name ="Species" maxlength="64"  class ="Species" placeholder="Species" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -238,7 +238,7 @@
             </form>
          </div>
       </div>
-   </div>
+   </div> -->
 
    <div class="col-sm-12 bdy_des">
       <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
@@ -298,8 +298,6 @@
                             }
                             
                            ?></p>
-
-                           
       
        
       
@@ -523,38 +521,5 @@
    $("a.resultList").click(function(){
      $("div.mapBlock").hide();
    });
-
-
-
-
 </script>
 
-
-<script type="text/javascript">
-  $(document).on("click", "input.searchButton", function () {
-    var sp=$('input.s').val();
-    var ge=$('input.g').val();
-    var fa=$('input.f').val();
-
-    if(sp!='')
-        {
-         var Url='{{url("/view_Demand_Filter/")}}'+'/'+sp;
-       }
-       if(ge!='')
-        {
-         var Url='{{url("$roleName/view_Demand_Filter/")}}'+'/'+ge;
-        }
-        if(fa!='')
-        {
-         var Url='{{url("$roleName/view_Demand_Filter/")}}'+'/'+fa;
-        }
-        // $.ajax({
-        //     type: "GET",
-        //     url: destination,
-        //     success: function (data) {
-        //          $("div.dmndTbl").html(data);
-        //     }
-        //  });
-       alert(Url);
-        });
-</script>

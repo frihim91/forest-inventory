@@ -116,7 +116,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Keyword<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name = "keyword" id ="keyword" class ="keyword" maxlength="64" placeholder="Keyword" /><br>
+                     <input type="text" class="form-control input-sm" name = "keyword" class ="keyword" maxlength="64" placeholder="Keyword" /><br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
                </div>
