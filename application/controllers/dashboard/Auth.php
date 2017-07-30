@@ -171,8 +171,8 @@
                     $mail->Host = "mail.harnest.com";
                     $mail->Port = "465";
                     $mail->SMTPAuth = true;
-                    $mail->Username = "support@harnest.com";
-                    $mail->Password = "Ati@2017";
+                    $mail->Username = "dev@atilimited.net";
+                    $mail->Password = "@ti321$#";
                     $mail->SMTPSecure = 'ssl';
                     $mail->From = "support@harnest.com";
                     $mail->FromName = "FAO";
@@ -296,8 +296,8 @@
                     $mail->Host = "mail.harnest.com";
                     $mail->Port = "465";
                     $mail->SMTPAuth = true;
-                    $mail->Username = "support@harnest.com";
-                    $mail->Password = "Ati@2017";
+                    $mail->Username = "dev@atilimited.net";
+                    $mail->Password = "@ti321$#";
                     $mail->SMTPSecure = 'ssl';
                     $mail->From = "support@harnest.com";
                     $mail->FromName = "FAO";
