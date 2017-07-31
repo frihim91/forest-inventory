@@ -149,6 +149,8 @@ class Data extends CI_Controller
             'f.Family'=>$keyword,
             'g.Genus'=>$keyword,
             'ref.Year'=>$keyword,
+            'a.Latitude'=>$keyword,
+            'a.Longitude'=>$keyword,
             'd.Division'=>$keyword
 
             );

@@ -1348,6 +1348,8 @@ class Portal extends CI_Controller
             's.Species'=>$keyword,
             'dis.District'=>$keyword,
             'e.Value'=>$keyword,
+            'e.latitude'=>$keyword,
+            'e.longitude'=>$keyword,
             'r.Reference'=>$keyword,
             'r.Author'=>$keyword,
             'b.FAOBiomes'=>$keyword,
@@ -2358,6 +2360,8 @@ class Portal extends CI_Controller
             'g.Genus'=>$keyword,
             'ref.Year'=>$keyword,
             'ref.Author'=>$keyword,
+            'r.Latitude'=>$keyword,
+            'r.Longitude'=>$keyword,
             'd.Division'=>$keyword
 
             );
@@ -2960,6 +2964,8 @@ class Portal extends CI_Controller
             'f.Family'=>$keyword,
             'g.Genus'=>$keyword,
             'r.Year'=>$keyword,
+            'w.Latitude'=>$keyword,
+            'w.Longitude'=>$keyword,
             'd.Division'=>$keyword
 
             );
@@ -3784,7 +3790,7 @@ class Portal extends CI_Controller
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data['reference']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc LIMIT $limit OFFSET $page")->result();
         $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
-        
+
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
