@@ -171,15 +171,15 @@
                <div class="col-md-6">
                <div class="form-group">
               <label>Family<span style="color:red;"></span></label>
-              <input type="text" class="form-control input-sm" name ="Family"  class ="Family" maxlength="64" placeholder="Family" />
+              <input type="text" class="form-control input-sm" name ="Family" value = "<?php echo (isset($Family))?$Family:'';?>"  class ="Family" maxlength="64" placeholder="Family" />
                </div>
                   <div class="form-group">
                      <label>Genus<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Genus" class ="Genus" maxlength="64" placeholder="Genus" />
+                     <input type="text" class="form-control input-sm" name ="Genus" value = "<?php echo (isset($Genus))?$Genus:'';?>"  class ="Genus" maxlength="64" placeholder="Genus" />
                   </div>
                   <div class="form-group">
                      <label>Species<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Species" maxlength="64"  class ="Species" placeholder="Species" />
+                     <input type="text" class="form-control input-sm" name ="Species" value = "<?php echo (isset($Species))?$Species:'';?>"  maxlength="64"  class ="Species" placeholder="Species" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -207,17 +207,17 @@
                 <div class="form-group">
                    
                      <label>Division<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Division"   class ="division" maxlength="64" placeholder="Division" />
+                     <input type="text" class="form-control input-sm" name ="Division" value = "<?php echo (isset($Division))?$Division:'';?>"  class ="division" maxlength="64" placeholder="Division" />
                   </div>
                   <div class="form-group">
                    
                      <label>District<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="District" maxlength="64"  class ="District" placeholder="District" />
+                     <input type="text" class="form-control input-sm" name ="District" value = "<?php echo (isset($District))?$District:'';?>" maxlength="64"  class ="District" placeholder="District" />
                   </div>
                   <div class="form-group">
                      <h3>Ecological Zone</h3>
                      <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="FAOBiomes"   class ="fao_biome" maxlength="64" placeholder="FAO Global Ecological Zone" />
+                     <input type="text" class="form-control input-sm" name ="FAOBiomes" value = "<?php echo (isset($FAOBiomes))?$FAOBiomes:'';?>"  class ="fao_biome" maxlength="64" placeholder="FAO Global Ecological Zone" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -246,15 +246,15 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reference <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Reference"  class ="reference" maxlength="200" placeholder="Reference" />
+                     <input type="text" class="form-control input-sm" name ="Reference" value = "<?php echo (isset($Reference))?$Reference:'';?>"  class ="reference" maxlength="200" placeholder="Reference" />
                   </div>
                   <div class="form-group">
                      <label>Author  <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Author"  class ="author" maxlength="64" placeholder="Author" />
+                     <input type="text" class="form-control input-sm" name ="Author" value ="<?php echo (isset($Author))?$Author:'';?>"  class ="author" maxlength="64" placeholder="Author" />
                   </div>
                   <div class="form-group">
                      <label>Year  <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Year" maxlength="64" class ="year" placeholder="Year" />
+                     <input type="text" class="form-control input-sm" name ="Year" value ="<?php echo (isset($Year))?$Year:'';?>" maxlength="64" class ="year" placeholder="Year" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> 
                   </div>
@@ -300,15 +300,16 @@
                            if(isset($rawDataView_count)){
                             ?>
                             <?php echo (isset($keyword))?$keyword:'';?>
-                            <?php echo $Family = $this->input->post('Family'); ?>
-                            <?php echo $Genus = $this->input->post('Genus'); ?>
-                            <?php echo $Species = $this->input->post('Species'); ?>
-                            <?php echo $District = $this->input->post('District'); ?>
-                            <?php echo $Division = $this->input->post('Division'); ?>
-                            <?php echo $FAOBiomes = $this->input->post('FAOBiomes'); ?>
-                            <?php echo $Reference = $this->input->post('Reference'); ?>
-                            <?php echo $Author = $this->input->post('Author'); ?>
-                            <?php echo $Year = $this->input->post('Year'); ?>
+                            
+                            <?php echo (isset($Family))?$Family:'';?>
+                            <?php echo (isset($Genus))?$Genus:'';?>
+                            <?php echo (isset($Species))?$Species:'';?>
+                            <?php echo (isset($District))?$District:'';?>
+                             <?php echo (isset($Division))?$Division:'';?>
+                             <?php echo (isset($FAOBiomes))?$FAOBiomes:'';?>
+                             <?php echo (isset($Reference))?$Reference:'';?>
+                            <?php echo (isset($Author))?$Author:'';?>
+                            <?php echo (isset($Year))?$Year:'';?>
                             <?php echo (isset($H_m))?$H_m:'';?>
                            <?php echo (isset($Volume_m3))?$Volume_m3:'';?>
                             

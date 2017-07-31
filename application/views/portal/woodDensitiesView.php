@@ -117,7 +117,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Keyword<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name = "keyword" maxlength="64" placeholder="Keyword" /><br>
+                     <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>" maxlength="64" placeholder="Keyword" /><br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
                </div>
@@ -326,7 +326,7 @@
         <p> <?php
                            if(isset($woodDensitiesView_count)){
                             ?>
-                            <?php echo $keyword = $this->input->post('keyword'); ?>
+                            <?php echo (isset($keyword))?$keyword:'';?>
                             <?php echo $Family = $this->input->post('Family'); ?>
                             <?php echo $Genus = $this->input->post('Genus'); ?>
                             <?php echo $Species = $this->input->post('Species'); ?>

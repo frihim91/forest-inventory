@@ -382,12 +382,40 @@ class Portal extends CI_Controller
             );
         
         $string=$this->searchAttributeString($searchFields);
+         if(!empty($string))
+        {
+            $this->session->set_userdata('liRefSearchString', $string);
+        }
+        else 
+        {
+            $string=$this->session->userdata('liRefSearchString');
+        }
+          if(!empty($Title) || !empty($Author) || !empty($Keywords))
+        {
+            $this->session->set_userdata('libSearchStringTitle', $Title);
+            $this->session->set_userdata('libSearchStringAuth', $Author);
+            $this->session->set_userdata('libSearchStringKey', $Keywords);
+
+        }
+    
+        else 
+        {
+            $Title=$this->session->userdata('libSearchStringTitle');
+            $Author=$this->session->userdata('libSearchStringAuth');
+            $Keywords=$this->session->userdata('libSearchStringKey');
+           
+        }
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_document";
-        $total_ef           = $this->db->count_all("reference");
-        
-        $config["total_rows"] = $total_ef;
+      
+         $total_ae=$this->db->query("SELECT r.* from reference r
+         where $string order by r.Title desc
+          ")->num_rows();
+        // print_r($this->db->last_query());exit;
+        // echo $total_ae;exit;
+        $config["total_rows"] =$total_ae;
+
         // $config["total_rows"] = 800;
         
         $config["per_page"]        = 10;
@@ -421,7 +449,13 @@ class Portal extends CI_Controller
          where $string order by r.Title desc LIMIT $limit OFFSET $page
          
          ")->result();
+         $data['reference_count'] = $this->db->query("SELECT r.* from reference r
+         where $string order by r.Title desc
+        ")->result();
          $data["links"]                  = $this->pagination->create_links();
+        $data["Title"]=$Title;
+        $data["Author"]=$Author;
+        $data["Keywords"]=$Keywords;
          $data['content_view_page']      = 'portal/viewLibraryPageSearch';
          $this->template->display_portal($data);
         
@@ -1335,6 +1369,20 @@ class Portal extends CI_Controller
             $string=$this->session->userdata('efkeySearchString');
         }
 
+         if(!empty($keyword))
+        {
+            $this->session->set_userdata('efSearchStringKeyword', $keyword);
+           
+        }
+    
+        else 
+        {
+            $keyword=$this->session->userdata('efSearchStringKeyword');
+          
+           
+        }
+        
+
 
 
         $this->load->library('pagination');
@@ -1421,6 +1469,7 @@ class Portal extends CI_Controller
          
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
+        $data['keyword']=$keyword;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
     }
@@ -1456,6 +1505,22 @@ class Portal extends CI_Controller
         else 
         {
             $string=$this->session->userdata('efTaxSearchString');
+        }
+
+         if(!empty($Species) || !empty($Family) || !empty($Genus))
+        {
+            $this->session->set_userdata('efSearchStringSpecies', $Species);
+            $this->session->set_userdata('efSearchStringFamily', $Family);
+            $this->session->set_userdata('efSearchStringGenus', $Genus);
+
+        }
+    
+        else 
+        {
+            $Species=$this->session->userdata('efSearchStringSpecies');
+            $Family=$this->session->userdata('efSearchStringFamily');
+            $Genus=$this->session->userdata('efSearchStringGenus');
+           
         }
         
         
@@ -1539,6 +1604,9 @@ class Portal extends CI_Controller
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=2;
+        $data['Species']=$Species;
+        $data['Family']=$Family;
+        $data['Genus']=$Genus;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
     }
@@ -1573,6 +1641,21 @@ class Portal extends CI_Controller
         else 
         {
             $string=$this->session->userdata('eflocSearchString');
+        }
+           if(!empty($District) || !empty($EcoZones) || !empty($Division))
+        {
+            $this->session->set_userdata('efSearchStringDis', $District);
+            $this->session->set_userdata('efSearchStringEco', $EcoZones);
+            $this->session->set_userdata('efSearchStringDiv', $Division);
+
+        }
+    
+        else 
+        {
+            $District=$this->session->userdata('efSearchStringDis');
+            $EcoZones=$this->session->userdata('efSearchStringEco');
+            $Division=$this->session->userdata('efSearchStringDiv');
+           
         }
         
         $this->load->library('pagination');
@@ -1654,6 +1737,9 @@ class Portal extends CI_Controller
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=3;
+        $data['District']=$District;
+        $data['Division']=$Division;
+        $data['EcoZones']=$EcoZones;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
     }
@@ -1693,6 +1779,22 @@ class Portal extends CI_Controller
         else 
         {
             $string=$this->session->userdata('efRefSearchString');
+        }
+
+         if(!empty($Reference) || !empty($Author) || !empty($Year))
+        {
+            $this->session->set_userdata('efSearchStringRef', $Reference);
+            $this->session->set_userdata('efSearchStringAuth', $Author);
+            $this->session->set_userdata('efSearchStringYear', $Year);
+
+        }
+    
+        else 
+        {
+            $Reference=$this->session->userdata('efSearchStringRef');
+            $Author=$this->session->userdata('efSearchStringAuth');
+            $Year=$this->session->userdata('efSearchStringYear');
+           
         }
         
         $this->load->library('pagination');
@@ -1775,6 +1877,9 @@ class Portal extends CI_Controller
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=4;
+         $data["Reference"]=$Reference;
+        $data["Author"]=$Author;
+        $data["Year"]=$Year;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
     }
@@ -2385,13 +2490,28 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('rdtaxSearchString');
         }
+         if(!empty($Species) || !empty($Family) || !empty($Genus))
+        {
+            $this->session->set_userdata('rdSearchStringSpecies', $Species);
+            $this->session->set_userdata('rdSearchStringFamily', $Family);
+            $this->session->set_userdata('rdSearchStringGenus', $Genus);
+
+        }
+    
+        else 
+        {
+            $Species=$this->session->userdata('rdSearchStringSpecies');
+            $Family=$this->session->userdata('rdSearchStringFamily');
+            $Genus=$this->session->userdata('rdSearchStringGenus');
+           
+        }
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_tax";
         $total_rawData=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -2432,7 +2552,7 @@ class Portal extends CI_Controller
         $data['rawDataView']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -2443,7 +2563,7 @@ class Portal extends CI_Controller
          $data['rawDataView_count']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -2452,6 +2572,9 @@ class Portal extends CI_Controller
         ")->result();
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=3;
+        $data['Species']=$Species;
+        $data['Family']=$Family;
+        $data['Genus']=$Genus;
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
@@ -2484,6 +2607,23 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('rdlocSearchString');
         }
+
+         if(!empty($District) || !empty($FAOBiomes) || !empty($Division))
+        {
+            $this->session->set_userdata('rdSearchStringDis', $District);
+            $this->session->set_userdata('rdSearchStringFao', $FAOBiomes);
+            $this->session->set_userdata('rdSearchStringDiv', $Division);
+
+        }
+    
+        else 
+        {
+            $District=$this->session->userdata('rdSearchStringDis');
+            $EcoZones=$this->session->userdata('rdSearchStringFao');
+            $Division=$this->session->userdata('rdSearchStringDiv');
+           
+        }
+      
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_loc";
@@ -2551,6 +2691,9 @@ class Portal extends CI_Controller
         ")->result();
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=4;
+        $data['District']=$District;
+        $data['FAOBiomes']=$FAOBiomes;
+        $data['Division']=$Division;
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
@@ -2582,6 +2725,23 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('rdRefSearchString');
         }
+
+        if(!empty($Reference) || !empty($Author) || !empty($Year))
+        {
+            $this->session->set_userdata('rdSearchStringRef', $Reference);
+            $this->session->set_userdata('rdSearchStringAuth', $Author);
+            $this->session->set_userdata('rdSearchStringYear', $Year);
+
+        }
+    
+        else 
+        {
+            $Reference=$this->session->userdata('rdSearchStringRef');
+            $Author=$this->session->userdata('rdSearchStringAuth');
+            $Year=$this->session->userdata('rdSearchStringYear');
+           
+        }
+      
 
         $this->load->library('pagination');
         $config             = array();
@@ -2650,6 +2810,9 @@ class Portal extends CI_Controller
         ")->result();
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=5;
+        $data["Reference"]=$Reference;
+        $data["Author"]=$Author;
+        $data["Year"]=$Year;
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
@@ -2810,6 +2973,18 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('wdkeySearchString');
         }
+         if(!empty($keyword))
+        {
+            $this->session->set_userdata('wdSearchStringKeyword', $keyword);
+           
+        }
+    
+        else 
+        {
+            $keyword=$this->session->userdata('wdSearchStringKeyword');
+          
+           
+        }
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_woodDensities_key";
@@ -2892,6 +3067,7 @@ class Portal extends CI_Controller
      
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
+        $data['keyword']=$keyword;
         $data['content_view_page'] = 'portal/woodDensitiesViewSearch';
         $this->template->display_portal($data);
     }
@@ -2931,6 +3107,27 @@ class Portal extends CI_Controller
         else 
         {
             $string=$this->session->userdata('wdRawSearchString');
+        }
+
+         if(!empty($H_tree_avg) || !empty($H_tree_min) || !empty($H_tree_max) || !empty($DBH_tree_avg) || !empty($DBH_tree_min) || !empty($DBH_tree_max))
+        {
+            $this->session->set_userdata('wdSearchStringHTreeAv', $H_tree_avg);
+            $this->session->set_userdata('wdSearchStringHTreeMin', $H_tree_min);
+            $this->session->set_userdata('wdSearchStringHTreeMax', $H_tree_max);
+            $this->session->set_userdata('wdSearchStringDbTreeAv', $DBH_tree_avg);
+            $this->session->set_userdata('wdSearchStringDbTreeMin', $DBH_tree_min);
+            $this->session->set_userdata('wdSearchStringDbTreeMax', $DBH_tree_max);
+
+        }
+    
+        else 
+        {
+            $H_tree_avg=$this->session->userdata('wdSearchStringHTreeAv');
+            $H_tree_min=$this->session->userdata('wdSearchStringHTreeMin');
+            $H_tree_max=$this->session->userdata('wdSearchStringHTreeMax');
+            $DBH_tree_avg=$this->session->userdata('wdSearchStringDbTreeAv');
+            $DBH_tree_min=$this->session->userdata('wdSearchStringDbTreeMin');
+            $DBH_tree_max=$this->session->userdata('wdSearchStringDbTreeMax');
         }
         $this->load->library('pagination');
         $config             = array();
@@ -3012,6 +3209,12 @@ class Portal extends CI_Controller
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=2;
+        $data['H_tree_avg']=$H_tree_avg;
+        $data['H_tree_min']=$H_tree_min;
+        $data['H_tree_max']=$H_tree_max;
+        $data['DBH_tree_avg']=$DBH_tree_avg;
+        $data['DBH_tree_min']=$DBH_tree_min;
+        $data['DBH_tree_max']=$DBH_tree_max;
         $data['content_view_page'] = 'portal/woodDensitiesViewSearch';
         $this->template->display_portal($data);
     }
@@ -3046,6 +3249,23 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('wdTaxSearchString');
         }
+
+          if(!empty($Species) || !empty($Family) || !empty($Genus))
+        {
+            $this->session->set_userdata('wdSearchStringSpecies', $Species);
+            $this->session->set_userdata('wdSearchStringFamily', $Family);
+            $this->session->set_userdata('wdSearchStringGenus', $Genus);
+
+        }
+    
+        else 
+        {
+            $Species=$this->session->userdata('wdSearchStringSpecies');
+            $Family=$this->session->userdata('wdSearchStringFamily');
+            $Genus=$this->session->userdata('wdSearchStringGenus');
+           
+        }
+      
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_woodDensities_tax";
@@ -3127,6 +3347,9 @@ class Portal extends CI_Controller
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=3;
+        $data['Species']=$Species;
+        $data['Family']=$Family;
+        $data['Genus']=$Genus;
         $data['content_view_page'] = 'portal/woodDensitiesViewSearch';
         $this->template->display_portal($data);
     }
@@ -3161,6 +3384,22 @@ class Portal extends CI_Controller
         else 
         {
             $string=$this->session->userdata('wdLocSearchString');
+        }
+
+         if(!empty($District) || !empty($EcoZones) || !empty($Division))
+        {
+            $this->session->set_userdata('wdSearchStringDis', $District);
+            $this->session->set_userdata('wdSearchStringEco', $EcoZones);
+            $this->session->set_userdata('wdSearchStringDiv', $Division);
+
+        }
+    
+        else 
+        {
+            $District=$this->session->userdata('wdSearchStringDis');
+            $EcoZones=$this->session->userdata('wdSearchStringEco');
+            $Division=$this->session->userdata('wdSearchStringDiv');
+           
         }
         $this->load->library('pagination');
         $config             = array();
@@ -3241,6 +3480,9 @@ class Portal extends CI_Controller
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=4;
+        $data['District']=$District;
+        $data['Division']=$Division;
+        $data['EcoZones']=$EcoZones;
         $data['content_view_page'] = 'portal/woodDensitiesViewSearch';
         $this->template->display_portal($data);
     }
@@ -3275,6 +3517,22 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('wdRefSearchString');
         }
+         if(!empty($Reference) || !empty($Author) || !empty($Year))
+        {
+            $this->session->set_userdata('wdSearchStringRef', $Reference);
+            $this->session->set_userdata('wdSearchStringAuth', $Author);
+            $this->session->set_userdata('wdSearchStringYear', $Year);
+
+        }
+    
+        else 
+        {
+            $Reference=$this->session->userdata('wdSearchStringRef');
+            $Author=$this->session->userdata('wdSearchStringAuth');
+            $Year=$this->session->userdata('wdSearchStringYear');
+           
+        }
+      
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_woodDensities_ref";
@@ -3355,6 +3613,9 @@ class Portal extends CI_Controller
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=5;
+        $data["Reference"]=$Reference;
+        $data["Author"]=$Author;
+        $data["Year"]=$Year;
         $data['content_view_page'] = 'portal/woodDensitiesViewSearch';
         $this->template->display_portal($data);
     }
@@ -3491,6 +3752,8 @@ class Portal extends CI_Controller
         $total_ef           = $this->db->count_all("reference");
         
         $config["total_rows"] = $total_ef;
+
+
         // $config["total_rows"] = 800;
         
         $config["per_page"]        = 10;
@@ -3521,6 +3784,7 @@ class Portal extends CI_Controller
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data['reference']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc LIMIT $limit OFFSET $page")->result();
         $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
+        
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
