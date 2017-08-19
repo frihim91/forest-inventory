@@ -49,7 +49,7 @@
         img.img-circled{
           max-width: 150px;
           height: auto;
-          vertical-align: middle;
+          vertical-align: left;
             }
           </style>
 <div class="col-sm-12 breadcump img-responsive">

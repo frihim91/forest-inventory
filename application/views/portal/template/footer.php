@@ -3,7 +3,7 @@
     <div class="bottom-footer">
         <div class="row">
             <div class="col-md-5">
-                <p class="small-text">&copy; Copyright <?php echo date('Y') ?>. FAO, Designed &amp; developed by <a target="_blank" href="http://atilimited.net">ATI Ltd.</a></p>
+                <p class="small-text">&copy; Copyright <?php echo date('Y') ?>. BFI, Designed &amp; developed by <a target="_blank" href="http://atilimited.net">ATI Ltd.</a></p>
             </div>
             <div class="col-md-7">
                 <ul class="footer-nav">

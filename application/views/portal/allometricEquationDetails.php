@@ -68,6 +68,8 @@ $lang_ses = $this->session->userdata("site_lang");
                            {
                            ?>
                           <ul class="dropdown-menu" role="menu">
+                          
+
                            <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
                             <li><a href="<?php echo site_url('Portal/allometricEquationDetailsPdf/'.$row->ID_AE); ?>" id="export-json">Download PDF</a></li>
                             <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
@@ -77,6 +79,7 @@ $lang_ses = $this->session->userdata("site_lang");
                         </div>
                     </form>
                 </div>
+
   <h3 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Allometric</h3>
   
   <div class="row">     

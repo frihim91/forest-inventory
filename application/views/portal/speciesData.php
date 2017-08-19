@@ -119,7 +119,7 @@
                                     <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data :
                                    
                                     <?php  break; ?>
-                                    <?php } else { ?> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data :</b>
+                                    <?php } else { ?> <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available Data :No Data</b>
                                     <?php  } ?>
                                     <?php endforeach; ?>
                                     </b>
@@ -135,6 +135,8 @@
                                           if ($speciesIds->FAOBiomes!='No data') { //no news found
                                          echo $speciesIds->FAOBiomes;
                                          }  else {
+
+
     //Do stuff here with news object.
                                           }
                                         ?>
@@ -142,7 +144,7 @@
                                          
                                     <?php 
                                        if($totalNumber != $key)
-                                         echo ", ";
+                                         echo " ";
                                        }
                                        ?>
                                     </b>
@@ -162,6 +164,7 @@
                                     <?php 
                                        $species_type_data = $this->Forestdata_model->get_data_type($speciesIds->ID_Species);
                                        ?> <?php foreach ($species_type_data as $row) : ?>
+                                       
                                     <?php if($row->TOTAL_EQN !=0) { ?>
                                     <b> <a href="<?php echo site_url('Portal/allometricEquationViewSpeciesData/'.$species_list->ID_Species); ?>" style="color:#147A00;">Allometric Equations</a>
                                     (<?php echo $row->TOTAL_EQN;?>)
@@ -212,7 +215,7 @@
                                     <?php  } ?>
                                     <?php endforeach; ?>
                                     </b>
-                                 <p style="text-align: justify;width: 980px;">
+                                 <p style="text-align: justify;width:550px;">
                                     <?php 
                                        $botanical_description = $this->Forestdata_model->get_botanical_description($speciesIds->ID_Species);
                                        ?> 

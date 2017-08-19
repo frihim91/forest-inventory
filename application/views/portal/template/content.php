@@ -22,7 +22,7 @@
 							<?php foreach($sliders as $slider){?>
                                 <li>
 								
-                                    <img class="slider_img" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>"/>
+                                    <img class="slider_img img-responsive" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>"/>
 
                                     <div class="slider-caption" style="width: 100%;">
                                         <h2><a href="#"><?php echo $slider->IMAGE_TITLE?></a></h2>
