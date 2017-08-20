@@ -41,7 +41,7 @@
 </style>
 <?php
    $lang_ses = $this->session->userdata("site_lang");
-   
+
    ?>
 <div class="col-sm-12 breadcump img-responsive">
    <div class="row">
@@ -73,7 +73,7 @@
                }  ?>
             "> <a data-toggle="tab" href="#menu1">Taxonomy</a>
          </li>
-         <li 
+         <li
             class="
             <?php if(isset($searchType)){
                if($searchType==3)
@@ -100,7 +100,7 @@
             ><a data-toggle="tab" href="#menu3">Reference</a></li>
       </ul>
       <div class="tab-content">
-         <div id="home" class="tab-pane fade 
+         <div id="home" class="tab-pane fade
             <?php if(!isset($searchType)){ echo 'in active'; } ?>
             ">
             <p> Search allometric equations by keyword.
@@ -242,35 +242,35 @@
 
    <div class="col-sm-12 bdy_des">
       <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
- 
+
     <div class="col-lg-6">
-     
+
      <h4>Result count: <span id="summary-results-total">
 
          <?php
                            if(isset($allometricEquationView_count)){
                             ?>
                             <?php echo count($allometricEquationView_count); ?>
-                            
 
-                             <?php 
+
+                             <?php
                             }else{ ?>
                              <?php echo $this->db->count_all_results('ae');?>
 
 
-                           
-                                  <?php 
+
+                                  <?php
                             }
-                            
+
                            ?>
 
      </span> </h4>
      <br><br>
-    
+
     </div>
 
     <div class="col-lg-6">
-      
+
       <h4> Search criteria</h4>
         <p> <?php
                            if(isset($allometricEquationView_count)){
@@ -285,24 +285,24 @@
                             <?php echo (isset($Reference))?$Reference:'';?>
                             <?php echo (isset($Author))?$Author:'';?>
                             <?php echo (isset($Year))?$Year:'';?>
-                          
 
-                             <?php 
+
+                             <?php
                             }
                             else{ ?>
                              No criteria - All results are shown
 
 
-                           
-                                  <?php 
+
+                                  <?php
                             }
-                            
+
                            ?></p>
 
-                           
-      
-       
-      
+
+
+
+
     </div>
 
 </div>
@@ -368,14 +368,14 @@
       <div id="map"></div>
       <script>
          // initialize the map
-         
-         
+
+
       </script>
    </div>
 </div>
 <script type="text/javascript">
    $(document).on('keypress', '#Genus', function () {
-    
+
           var pattern = /[0-9]+/g;
           var id = $(this).attr('id').match(pattern);
           $(this).autocomplete({
@@ -385,9 +385,9 @@
               }
           });
       });
-   
+
     $(document).on('keypress', '#Family', function () {
-    
+
           var pattern = /[0-9]+/g;
           var id = $(this).attr('id').match(pattern);
           $(this).autocomplete({
@@ -398,7 +398,7 @@
           });
       });
     $(document).on('keypress', '#Species', function () {
-    
+
           var pattern = /[0-9]+/g;
           var id = $(this).attr('id').match(pattern);
           $(this).autocomplete({
@@ -408,9 +408,9 @@
               }
           });
       });
-   
+
     $(document).on('keypress', '#District', function () {
-    
+
           var pattern = /[0-9]+/g;
           var id = $(this).attr('id').match(pattern);
           $(this).autocomplete({
@@ -420,10 +420,10 @@
               }
           });
       });
-   
-   
+
+
      $(document).on('keypress', '#division', function () {
-    
+
           var pattern = /[0-9]+/g;
           var id = $(this).attr('id').match(pattern);
           $(this).autocomplete({
@@ -433,10 +433,10 @@
               }
           });
       });
-   
-   
+
+
           $(document).on('keypress', '#ecoZones', function () {
-    
+
           var pattern = /[0-9]+/g;
           var id = $(this).attr('id').match(pattern);
           $(this).autocomplete({
@@ -446,9 +446,9 @@
               }
           });
       });
-   
+
            $(document).on('keypress', '#reference', function () {
-    
+
           var pattern = /[0-9]+/g;
           var id = $(this).attr('id').match(pattern);
           $(this).autocomplete({
@@ -458,10 +458,10 @@
               }
           });
       });
-   
-   
+
+
              $(document).on('keypress', '#author', function () {
-    
+
           var pattern = /[0-9]+/g;
           var id = $(this).attr('id').match(pattern);
           $(this).autocomplete({
@@ -471,10 +471,10 @@
               }
           });
       });
-   
-   
+
+
                      $(document).on('keypress', '#year', function () {
-    
+
           var pattern = /[0-9]+/g;
           var id = $(this).attr('id').match(pattern);
           $(this).autocomplete({
@@ -484,9 +484,9 @@
               }
           });
       });
-   
-   
-   
+
+
+
 </script>
 <script type="text/javascript">
    $('#tabs a').click(function (e) {
@@ -500,8 +500,8 @@
        var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
        var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
        map.addLayer(osm);
-   
-   
+
+
        $.getJSON("<?php echo base_url(); ?>resources/mapdata.php",function(data){
          var ratIcon = L.icon({
            iconUrl: '<?php echo base_url(); ?>resources/final.png',
@@ -510,14 +510,14 @@
          L.geoJson(data,{
            pointToLayer: function(feature,latlng){
              var marker = L.marker(latlng,{icon: ratIcon});
-   
-             marker.bindPopup('<b>AE : </b>'+feature.properties.ID_AE);
-   
+
+             marker.bindPopup('<b>Equation Number : </b>'+feature.properties.ID_AE+'<br>'+feature.properties.species+'<br><br>'+feature.properties.description+'<br><b>FAO Biomes </b><br>'+feature.properties.FAOBiomes+'<br><b>Output </b><br>'+feature.properties.output);
+
              return marker;
            }
          }).addTo(map);
        });
-   
+
      });
    });
    $("a.resultList").click(function(){
