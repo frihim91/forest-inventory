@@ -53,7 +53,7 @@
    </div>
 </div>
 <div class="col-md-12 page_content">
-   <h3>Biomass Expansion Factor Search</h3>
+   <h3>Emission factors Search</h3>
    <div class="col-sm-12">
       <ul class="nav nav-tabs">
          <li class="<?php if(!isset($searchType)){ echo 'active'; } ?>"><a data-toggle="tab" href="#home">Keyword</a></li>
@@ -95,7 +95,7 @@
          <div id="home" class="tab-pane fade 
             <?php if(!isset($searchType)){ echo 'in active'; } ?>
             ">
-            <p> Search Biomas Expension Factor equations by keyword. 
+            <p> Search Emission factors equations by keyword. 
                This searches accross several text fields. 
                <br>
                Example searches: <a href="#">Acacia </a>,
@@ -126,7 +126,7 @@
                  echo '';
                }
                }  ?>">
-            <p> Search Biomas Expension Factor by family, genus or species.
+            <p> Search Emission factors by family, genus or species.
                Example searches
                <br>
                Example searches: <a href="#">Genus</a>,
@@ -182,9 +182,17 @@
                      <input type="text" class="form-control input-sm" name ="District" value = "<?php echo (isset($District))?$District:'';?>"  class ="District" maxlength="64" placeholder="District" />
                   </div>
                   <div class="form-group">
-                     <h3>Ecological Zone</h3>
+                   
                      <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="EcoZones" class ="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" placeholder="FAO Global Ecological Zone" />
+                     <input type="text" class="form-control input-sm" name ="FAOBiomes" class ="FAOBiomes" value = "<?php echo (isset($FAOBiomes))?$FAOBiomes:'';?>" maxlength="64" placeholder="FAO Global Ecological Zone" />
+
+                      
+                     <label>Bangladesh Zone <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Zones" class ="Zones" value = "<?php echo (isset($Zones))?$Zones:'';?>" maxlength="64" placeholder="Bangladesh Zone" />
+
+                     
+                     <label> Bangladesh Ecological Zones  <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="EcoZones" class ="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" placeholder=" Bangladesh Ecological Zones " />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -275,6 +283,8 @@
                             <?php echo (isset($EcoZones))?$EcoZones:'';?>
                             <?php echo (isset($Reference))?$Reference:'';?>
                             <?php echo (isset($Author))?$Author:'';?>
+                             <?php echo (isset($Zones))?$Zones:'';?>
+                             <?php echo (isset($FAOBiomes))?$FAOBiomes:'';?>
                             <?php echo (isset($Year))?$Year:'';?>
                             
 
@@ -322,14 +332,16 @@
                {
                ?>
             <div class="panel panel-default">
-               <div class="panel-heading">Biomass Expansion Factor
+               <div class="panel-heading">Emission factors
                   <a href="<?php echo site_url('Portal/biomassExpansionFacDetails/'.$row->ID_EF); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
                <div class="panel-body">
-                  <p style="padding-left:3px;"><b>Biomass Expansion Factor: </b><?php echo $row->Value;?></p>
+                  <p style="padding-left:3px;"><b>Emission Factor: </b><?php echo $row->EmissionFactor;?></p>
+                  <p style="padding-left:3px;"><b>Units: </b><?php echo $row->Unit;?></p>
+                   <p style="padding-left:3px;"><b>Value: </b><?php echo $row->Value;?></p>
                   <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
                   <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
-                  <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
+                  <p style="padding-left:3px;"><b>FAO Global Ecological Zone: </b><?php echo $row->FAOBiomes;?></p>
                    <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
                   <p style="padding-left:3px;"><b>Species: </b><?php echo $row->Species;?></p>
                   <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->latitude;?>,lon <?php echo $row->longitude;?>)</p>

@@ -74,7 +74,7 @@ $lang_ses = $this->session->userdata("site_lang");
 </div>
 
 
-<div class="row">    
+<!-- <div class="row">    
     <div class="col-md-12">
         <br>
         <h3 class="section-header">Components</h3>
@@ -91,7 +91,7 @@ $lang_ses = $this->session->userdata("site_lang");
       
         <br><br>
     </div>
-</div>
+</div> -->
 
 <div class="row">     
     <div class="col-md-12">
@@ -115,7 +115,7 @@ $lang_ses = $this->session->userdata("site_lang");
             <tr><th> Output: </th><td><?php echo $row->Output;?> </td></tr>
             <tr><th> Output TR: </th><td><?php echo $row->Output_TR;?> </td></tr>
             <tr><th> Age: </th><td> <?php echo $row->Max_age;?></td></tr>
-            <tr><th> Veg component: </th><td> <?php echo $row->Veg_Component;?> </td></tr>
+           <!--  <tr><th> Veg component: </th><td> <?php echo $row->Veg_Component;?> </td></tr> -->
         </table>
     </div>
 </div>
@@ -210,10 +210,11 @@ $lang_ses = $this->session->userdata("site_lang");
                              <?php 
                              }?>
                             </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th><td  class="pdf-record-td">  </td></tr>
+                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division: </th><td  class="pdf-record-td"> <?php echo $row->Division;?> </td></tr>
+                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th><td  class="pdf-record-td"> None </td></tr>
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th><td  class="pdf-record-td"> Bangladesh </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th><td  class="pdf-record-td">  </td></tr>
-                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th><td class="pdf-record-td"><?php echo $row->Latitude;?></td></tr>
+                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th><td  class="pdf-record-td">None  </td></tr>
+                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th><td class="pdf-record-td"><?php echo $row->Latitude;?></td></tr>
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Longitude: </th><td  class="pdf-record-td">
                             <?php echo $row->Longitude;?>
                              
@@ -221,18 +222,20 @@ $lang_ses = $this->session->userdata("site_lang");
                         </table>
                     </td>
                     <td style="width:60%">
-                        <table>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone: </th><td class="pdf-record-td">
+                     <table>
+                           <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone:  </th><td class="pdf-record-td">
                            <?php echo $row->FAOBiomes;?>
                            
                              </td></tr>
-                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th><td  class="pdf-record-td"> <?php echo $row->Ecoregion_Udvardy;?> </td></tr>
+
+                           
+                         <!--    <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th><td  class="pdf-record-td"> <?php echo $row->Ecoregion_Udvardy;?> </td></tr>
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> WWF Terrestrial Ecoregion: </th><td class="pdf-record-td"><?php echo $row->Ecoregion_WWF;?>  </td></tr>
                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division Bailey: </th><td class="pdf-record-td"><?php echo $row->Division_Bailey;?>  </td></tr>
                             <tr><th class="pdf-record-th"> Holdridge Life Zone:</th><td  class="pdf-record-td"> 
                            <?php echo $row->Zone_Holdridge;?>
                            
-                             </td></tr>
+                             </td></tr> -->
 
                         </table>
                     </td>

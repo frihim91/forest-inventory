@@ -29,10 +29,27 @@
    .breadcump_row a{
    color: white;
    }
+   .speciesImg{
+      width:250px!important;
+      height:auto!important;
+      float: left!important;
+      margin-right:10px!important
+   }
 </style>
 <?php
    $lang_ses = $this->session->userdata("site_lang");
    ?>
+
+   <?php 
+function getImageName($imageName){
+$pieces = explode(" ", $imageName);
+$fname= $pieces[0]; // piece1
+$lname= $pieces[1];
+$imgFullName=$fname.'  '.$lname.'.jpg';
+return $imgFullName;
+}
+
+?>
 <div class="col-sm-12 breadcump img-responsive">
    <div class="row">
       <div class="breadcump-wrapper">
@@ -222,7 +239,7 @@
                                     <?php foreach ($botanical_description as $row) : ?>
                                     <?php if($botanical_description !=0) { ?>
                                     <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    Description : </b><?php echo $row->description;?>
+                                    <img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $row->species.'.jpg'; //getImageName($row->species);  ?>" class="speciesImg">: </b><?php echo $row->description;?>
                                     <?php  break; ?>
                                     <?php } else { ?>
                                     <?php  } ?>

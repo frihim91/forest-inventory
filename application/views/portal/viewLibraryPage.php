@@ -109,7 +109,7 @@
                <a href="#"> Keyword: Barua </a>,
             </p>
             <form action="<?php echo site_url('portal/search_document');?>" method = "post">
-               <div class="col-md-4">
+               <div class="col-md-3">
                   <div class="form-group">
                      <label>Title <span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="Title"  class ="title" maxlength="200" placeholder="Title" />
@@ -121,10 +121,17 @@
                      <input type="text" class="form-control input-sm" name ="Author"  class ="author" maxlength="64" placeholder="Author" />
                   </div>
                </div>
-               <div class="col-md-3">
+               <div class="col-md-2">
                   <div class="form-group">
                      <label>Keyword  <span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="Keywords"  class ="keyword" maxlength="64" placeholder="Keywords" />
+                  </div>
+               </div>
+
+                <div class="col-md-2">
+                  <div class="form-group">
+                     <label>Year  <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Year"  class ="Year" maxlength="64" placeholder="Year" />
                   </div>
                </div>
                <div class="col-md-2">

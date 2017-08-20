@@ -183,16 +183,16 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Division<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Division" value = "<?php echo (isset($Division))?$Division:'';?>" class ="division" maxlength="64" placeholder="Division" />
+                     <input type="text" class="form-control input-sm" name ="Division"  id="division" value = "<?php echo (isset($Division))?$Division:'';?>" class ="division" maxlength="64" placeholder="Division" />
                   </div>
                   <div class="form-group">
                      <label>District<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="District" value = "<?php echo (isset($District))?$District:'';?>" class ="District" maxlength="64" placeholder="District" />
+                     <input type="text" class="form-control input-sm" name ="District" id="District" value = "<?php echo (isset($District))?$District:'';?>" class ="District" maxlength="64" placeholder="District" />
                   </div>
                   <div class="form-group">
                      <h3>Ecological Zone</h3>
                      <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="EcoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" />
+                     <input type="text" class="form-control input-sm" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" />
                      <br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -343,6 +343,7 @@
                   <p style="padding-left:3px;"><b>Output: </b><?php echo $row->Output;?></p>
                   <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
                   <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
+                  <p style="padding-left:3px;"><b>Author: </b><?php echo $row->Author;?></p>
                   <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
                   <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
                   <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>

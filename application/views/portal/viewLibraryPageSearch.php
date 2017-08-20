@@ -123,6 +123,7 @@
                   <?php echo (isset($Title))?$Title:'';?>
                   <?php echo (isset($Author))?$Author:'';?>
                   <?php echo (isset($Keywords))?$Keywords:'';?>
+                   <?php echo (isset($Year))?$Year:'';?>
                   <?php 
                      }
                      else{ ?>

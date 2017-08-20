@@ -375,9 +375,11 @@ class Portal extends CI_Controller
         $Title = $this->input->post('Title');
         $Author = $this->input->post('Author');
         $Keywords = $this->input->post('Keywords');
+        $Year = $this->input->post('Year');
         $searchFields=array(
             'r.Title'=>$Title,
             'r.Author'=>$Author,
+            'r.Year'=>$Year,
             'r.Keywords'=>$Keywords
             );
         
@@ -390,10 +392,11 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('liRefSearchString');
         }
-          if(!empty($Title) || !empty($Author) || !empty($Keywords))
+          if(!empty($Title) || !empty($Author) || !empty($Keywords) || !empty($Year))
         {
             $this->session->set_userdata('libSearchStringTitle', $Title);
             $this->session->set_userdata('libSearchStringAuth', $Author);
+             $this->session->set_userdata('libSearchStringYear', $Year);
             $this->session->set_userdata('libSearchStringKey', $Keywords);
 
         }
@@ -402,6 +405,7 @@ class Portal extends CI_Controller
         {
             $Title=$this->session->userdata('libSearchStringTitle');
             $Author=$this->session->userdata('libSearchStringAuth');
+            $Year=$this->session->userdata('libSearchStringYear');
             $Keywords=$this->session->userdata('libSearchStringKey');
            
         }
@@ -456,6 +460,7 @@ class Portal extends CI_Controller
         $data["Title"]=$Title;
         $data["Author"]=$Author;
         $data["Keywords"]=$Keywords;
+        $data["Year"]=$Year;
          $data['content_view_page']      = 'portal/viewLibraryPageSearch';
          $this->template->display_portal($data);
         
@@ -1348,6 +1353,7 @@ class Portal extends CI_Controller
             's.Species'=>$keyword,
             'dis.District'=>$keyword,
             'e.Value'=>$keyword,
+            'e.EmissionFactor'=>$keyword,
             'e.latitude'=>$keyword,
             'e.longitude'=>$keyword,
             'r.Reference'=>$keyword,
@@ -1629,9 +1635,13 @@ class Portal extends CI_Controller
         $Division  = $this->input->post('Division');
         $District  = $this->input->post('District');
         $EcoZones = $this->input->post('EcoZones');
+        $Zones = $this->input->post('Zones');
+        $FAOBiomes = $this->input->post('FAOBiomes');
         $searchFields=array(
             'dis.District'=>$District,
             'd.Division'=>$Division,
+            'zon.Zones'=>$Zones,
+            'b.FAOBiomes'=>$FAOBiomes,
             'eco.EcoZones'=>$EcoZones
             );
         
@@ -1644,11 +1654,13 @@ class Portal extends CI_Controller
         {
             $string=$this->session->userdata('eflocSearchString');
         }
-           if(!empty($District) || !empty($EcoZones) || !empty($Division))
+           if(!empty($District) || !empty($EcoZones) || !empty($Division) || !empty($Zones)|| !empty($FAOBiomes))
         {
             $this->session->set_userdata('efSearchStringDis', $District);
             $this->session->set_userdata('efSearchStringEco', $EcoZones);
             $this->session->set_userdata('efSearchStringDiv', $Division);
+            $this->session->set_userdata('efSearchStringzone', $Zones);
+            $this->session->set_userdata('efSearchStringfao',$FAOBiomes);
 
         }
     
@@ -1657,6 +1669,8 @@ class Portal extends CI_Controller
             $District=$this->session->userdata('efSearchStringDis');
             $EcoZones=$this->session->userdata('efSearchStringEco');
             $Division=$this->session->userdata('efSearchStringDiv');
+            $Zones=$this->session->userdata('efSearchStringzone');
+            $FAOBiomes=$this->session->userdata('efSearchStringfao');
            
         }
         
@@ -1742,6 +1756,8 @@ class Portal extends CI_Controller
         $data['District']=$District;
         $data['Division']=$Division;
         $data['EcoZones']=$EcoZones;
+        $data['Zones']=$Zones;
+        $data['FAOBiomes']=$FAOBiomes;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
     }

@@ -238,16 +238,15 @@ Class Forestdata_model extends CI_Model {
 
 	public function get_allometric_equation_details($ID_AE)
 	{
-		$data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,r.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+		$data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus 
-         LEFT JOIN rd r ON a.ID_RD=r.ID   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
-		     LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
          where a.ID_AE=$ID_AE
 		     order by a.ID_AE desc")->result();
@@ -547,15 +546,13 @@ Class Forestdata_model extends CI_Model {
 
     public function get_biomas_expension_factor_details($ID)
   {
-    $data=$this->db->query("SELECT e.*,eco.*,b.*,d.*,rda.Species_ID,rda.Tree_type,rda.Vegetation_type,
-     rda.Ecoregion_Udvardy,rda.Ecoregion_WWF,rda.Division_Bailey,rda.Zone_Holdridge,rda.Contributor,rda.Subspecies,
-      dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+    $data=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.*,ld.* from ef e
          
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family  
-         LEFT JOIN rd rda ON e.Species=rda.Species_ID  
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN landcover ld ON e.ID_LandCover=ld.ID_LandCover
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District

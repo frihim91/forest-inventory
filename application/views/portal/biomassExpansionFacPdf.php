@@ -38,7 +38,7 @@
 
 <div class="col-md-12 page_content">
    <div class="col-md-12">
-      <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Biomass Expansion Factor</h2>
+      <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Emission factors</h2>
    </div>
    <div class="col-sm-12 bdy_des">
        <?php 
@@ -54,45 +54,49 @@
     
          <div class="col-md-12">
             <br>
-            <table class="table">
+          <table class="table">
                <tr>
-                  <th style="width:210px"> Biomass Expansion Factor: </th>
+                  <th style="width:210px"> Emission Factor: </th>
                   <td> <b>
-                     <?php echo $row->Value;?>
+                     <?php echo $row->EmissionFactor;?>
                      </b>
                   </td>
                </tr>
                <tr>
-                  <th> Growing Stock: </th>
-                  <td></td>
+                  <th> Value: </th>
+                  <td> <?php echo $row->Value;?></td>
                </tr>
                <tr>
-                  <th>Aboveground Biomass: </th>
-                  <td></td>
+                  <th>Units: </th>
+                  <td><?php echo $row->Unit;?></td>
                </tr>
                <tr>
-                  <th>Net Annual Increment: </th>
-                  <td></td>
+                  <th>Lower confidence limit: </th>
+                  <td><?php echo $row->Lower_Confidence_Limit;?></td>
                </tr>
                <tr>
-                  <th>Stand Density: </th>
-                  <td></td>
+                  <th>Upper confidence limit: </th>
+                  <td><?php echo $row->Upper_Confidence_Limit;?></td>
                </tr>
                <tr>
-                  <th>Age: </th>
-                  <td></td>
+                  <th>Type of parameter: </th>
+                  <td><?php echo $row->Type_of_Parameter;?></td>
                </tr>
                <tr>
-                  <th>Input: </th>
-                  <td></td>
+                  <th>Age Range: </th>
+                  <td><?php echo $row->AgeRange;?></td>
                </tr>
                <tr>
-                  <th>Output: </th>
-                  <td></td>
+                  <th>Height Range: </th>
+                  <td><?php echo $row->HeightRange;?></td>
                </tr>
                <tr>
-                  <th>Interval Validity: </th>
-                  <td></td>
+                  <th>Volume Range: </th>
+                  <td><?php echo $row->VolumeRange;?></td>
+               </tr>
+                <tr>
+                  <th>Basal Area: </th>
+                  <td><?php echo $row->BasalRange;?></td>
                </tr>
             </table>
          </div>
@@ -102,13 +106,13 @@
             <br>
             <h3 class="section-header">Idendification</h3>
             <table class="table">
-               <tr>
+             <!--   <tr>
                   <th> Tree type: </th>
                   <td><?php echo $row->Tree_type;?> </td>
-               </tr>
+               </tr> -->
                <tr>
-                  <th> Vegetation type: </th>
-                  <td> <?php echo $row->Vegetation_type;?> </td>
+                  <th>Land Cover: </th>
+                  <td> <?php echo $row->LandCover;?> </td>
                </tr>
             </table>
          </div>
@@ -122,7 +126,7 @@
                &nbsp;&nbsp;&nbsp;&nbsp;
                </span>
             </h3>
-            <table class="table">
+                 <table class="table">
                <tr>
                   <th>Family:</th>
                   <th>Genus:</th>
@@ -141,7 +145,7 @@
                <td>
                   <?php echo $row->Species;?>
                </td>
-               <td > <?php echo $row->Subspecies;?></td>
+               <td >None</td>
                <td >None</td>
                <td >
                </td>
@@ -158,18 +162,19 @@
                &nbsp;&nbsp;&nbsp;&nbsp;
                </span>
             </h3>
-            <table class="table">
+      <table class="table">
                <tr>
                   <td style="width:40%">
                      <table>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Location Name: </th>
-                           <td  class="pdf-record-td">
+                           <td  class="pdf-record-td"><?php echo $row->District;?>
                            </td>
                         </tr>
+                           <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division: </th><td  class="pdf-record-td"> <?php echo $row->Division;?> </td></tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th>
-                           <td  class="pdf-record-td">  </td>
+                           <td  class="pdf-record-td">None  </td>
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th>
@@ -177,7 +182,7 @@
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th>
-                           <td  class="pdf-record-td">  </td>
+                           <td  class="pdf-record-td">None</td>
                         </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
@@ -201,7 +206,21 @@
                               <?php echo $row->FAOBiomes;?>
                            </td>
                         </tr>
-                        <tr>
+
+                          <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Bangladesh Zone: </th>
+                           <td class="pdf-record-td">
+                              <?php echo $row->Zones;?>
+                           </td>
+                        </tr>
+
+                         <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Bangladesh Ecological Zones : </th>
+                           <td class="pdf-record-td">
+                              <?php echo $row->EcoZones;?>
+                           </td>
+                        </tr>
+                       <!--  <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th>
                            <td  class="pdf-record-td"> <?php echo $row->Ecoregion_Udvardy;?> </td>
                         </tr>
@@ -218,7 +237,7 @@
                            <td  class="pdf-record-td"> 
                               <?php echo $row->Zone_Holdridge;?>
                            </td>
-                        </tr>
+                        </tr> -->
                      </table>
                   </td>
                </tr>
@@ -260,7 +279,7 @@
             <table class="table">
                <tr>
                   <th style="width:210px">Contributor:</th>
-                  <td> <?php echo $row->Contributor;?></td>
+                  <td> None</td>
                </tr>
             </table>
          </div>

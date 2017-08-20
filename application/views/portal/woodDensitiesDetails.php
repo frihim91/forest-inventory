@@ -48,6 +48,7 @@
    </div>
 </div>
 <div class="col-md-12 page_content">
+<a href="<?php echo site_url('data/woodDensitiesView'); ?>" class="btn btn-info" role="button"><< Back</a>
    <div class="col-md-12">
       <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Wood Density</h2>
    </div>
