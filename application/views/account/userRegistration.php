@@ -108,12 +108,7 @@ $lang_ses = $this->session->userdata("site_lang");
 						<div class="form-group">
 							<label>Name of Institution</label>
 							<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Name of Institution', 'id' => 'INSTITUTE_NAME', 'name' => 'INSTITUTE_NAME', 'value' => set_value('INSTITUTE_NAME'))); ?> 
-							<label>Institution Address</label>
-							<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Institution Address', 'id' => 'INSTITUTE_ADDRESS', 'name' => 'INSTITUTE_ADDRESS', 'value' => set_value('INSTITUTE_ADDRESS'))); ?> 
-							<label>Institution Phone</label>
-							<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Institution Phone', 'id' => 'PHONE', 'name' => 'PHONE', 'value' => set_value('PHONE'))); ?> 
-							<label>Institution Fax</label>
-							<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Institution Fax', 'id' => 'FAX', 'name' => 'FAX', 'value' => set_value('FAX'))); ?> 
+			
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -140,16 +135,20 @@ $lang_ses = $this->session->userdata("site_lang");
 								?>    
 								<label>Field Subject<span style="color:red;">*</span></label>
 								<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Field Subject', 'id' => 'FIELD_SUBJECT', 'name' => 'FIELD_SUBJECT', 'value' => set_value('	FIELD_SUBJECT'), 'required' => 'required')); ?>
-								<label>Zone<span style="color:red;">*</span></label>
+								<label>Purpose Of using the website<span style="color:red;">*</span></label>
 								<?php
-								$zone = $this->Account_model->get_zone();
+								$purpose = $this->Forestdata_model->get_purpose();
 								$options = array('' => '--Select-- ');
-								foreach ($zone as $zones) {
-									$options["$zones->ID_Zones"] = $zones->Zones;
+								foreach ($purpose as $purposes) {
+									$options["$purposes->PURPOSE_ID"] = $purposes->PURPOSE_NAME;
 								}
-								$zoneId = set_value('ID_Zones');
-								echo form_dropdown('ID_Zones', $options, $zoneId, 'id="id" class="tag-select form-control" data-placeholder="Choose a  Zone..." ');
+								$PURPOSE_ID = set_value('PURPOSE_ID');
+								echo form_dropdown('PURPOSE_ID', $options, $PURPOSE_ID, 'id="id" class="tag-select form-control" data-placeholder="Choose a Education Institute..." ');
 								?>
+								<label>Do you want to get notification of event?<span style="color:red;">*</span></label> <?php echo form_checkbox('NOTIFICATION', 1, False); ?><br>
+								
+                                 
+								
 								<label>User Image</label>
 								 <?php echo form_input(array('type' => 'file', 'name' => 'user_img', 'id' => 'PROFILE_IMG')); ?>
 							 

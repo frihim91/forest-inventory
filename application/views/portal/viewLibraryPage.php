@@ -1,5 +1,3 @@
-
-
 <style type="text/css">
    .page_content{
    padding: 15px;

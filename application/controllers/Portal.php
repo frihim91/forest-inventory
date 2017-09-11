@@ -638,37 +638,42 @@ class Portal extends CI_Controller
         $District  = $this->input->post('District');
         $EcoZones = $this->input->post('EcoZones');
         $Division = $this->input->post('Division');
+        $Zones = $this->input->post('Zones');
         $searchFields=array(
             'dis.District'=>$District,
             'eco.EcoZones'=>$EcoZones,
+            'zon.Zones'=>$Zones,
             'd.Division'=>$Division
             );
         $string=$this->searchAttributeString($searchFields);
           
-        if(!empty($string))
-        {
-            $this->session->set_userdata('aeLocSearchString', $string);
-        }
-        else 
-        {
-            $string=$this->session->userdata('aeLocSearchString');
-        }
+        // if(!empty($string))
+        // {
+        //     $this->session->set_userdata('aeLocSearchString', $string);
+        // }
+        // else 
+        // {
+        //     $string=$this->session->userdata('aeLocSearchString');
+        // }
 
-         if(!empty($District) || !empty($EcoZones) || !empty($Division))
-        {
-            $this->session->set_userdata('aeSearchStringDis', $District);
-            $this->session->set_userdata('aeSearchStringEco', $EcoZones);
-            $this->session->set_userdata('aeSearchStringDiv', $Division);
+        //  if(!empty($District) || !empty($EcoZones) || !empty($Division) || !empty($Zones))
+        // {
+        //     $this->session->set_userdata('aeSearchStringDis', $District);
+        //     $this->session->set_userdata('aeSearchStringEco', $EcoZones);
+        //      $this->session->set_userdata('aeSearchStringZone', $Zones);
+        //     $this->session->set_userdata('aeSearchStringDiv', $Division);
 
-        }
+        // }
     
-        else 
-        {
-            $District=$this->session->userdata('aeSearchStringDis');
-            $EcoZones=$this->session->userdata('aeSearchStringEco');
-            $Division=$this->session->userdata('aeSearchStringDiv');
+        // else 
+        // {
+        //     $District=$this->session->userdata('aeSearchStringDis');
+        //     $EcoZones=$this->session->userdata('aeSearchStringEco');
+        //     $Zones=$this->session->userdata('aeSearchStringZone');
+        //     $Division=$this->session->userdata('aeSearchStringDiv');
+
            
-        }
+        // }
       
 
         $this->load->library('pagination');
@@ -754,11 +759,64 @@ class Portal extends CI_Controller
         $data['District']=$District;
         $data['Division']=$Division;
         $data['EcoZones']=$EcoZones;
+        $data['Zones'] = $Zones;
+       // $data['Zones'] = $this->Forestdata_model->get_all_zones();
+        //print_r($data['Zones']);exit;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
         
     }
+
+
+
+     function ajax_get_division() {
+        //$ID_Division = $_POST['Division'];
+         $Division = $this->input->post('Division');
+         //$divi             = explode(",", $Division);
+        // $second_value_divi   = $divi[1];
+
+        $query = $this->utilities->findAllByAttribute('district', array("DIVISION" => $Division));
+        $returnVal = '<option value = "">Select one</option>';
+        if (!empty($query)) {
+            foreach ($query as $row) {
+                $returnVal .= '<option value = "' .$row->District . '">' . $row->District . '</option>';
+            }
+        }
+        echo $returnVal;
+    }
+
+      function up_thana_by_dis_id() {
+        $DISTNAME = $_POST['District'];
+        $divi             = explode(",", $DISTNAME);
+         $second_value_divi   = $divi[1];
+        $query = $this->utilities->findAllByAttribute('upazilla', array("DISTNAME" => $second_value_divi));
+        //var_dump($query);exit;
+        $returnVal = '<option value = "">Select one</option>';
+        if (!empty($query)) {
+            foreach ($query as $row) {
+                $returnVal .= '<option value = "' .$row->UPZ_CODE_1. ','. $row->THANAME . '">' . $row->THANAME . '</option>';
+            }
+        }
+        echo $returnVal;
+    }
+
+
+      function up_union_by_dis_id() {
+        $THANAME = $_POST['THANAME'];
+        $divi             = explode(",", $THANAME);
+        $second_value_divi   = $divi[1];
+
+        $query = $this->utilities->findAllByAttribute('union', array("THANAME" => $second_value_divi));
+        $returnVal = '<option value = "">Select one</option>';
+        if (!empty($query)) {
+            foreach ($query as $row) {
+                $returnVal .= '<option value = "' . $row->UNI_CODE_1 . '">' . $row->UNINAME . '</option>';
+            }
+        }
+        echo $returnVal;
+    }
     
+        
     
     
     /*
@@ -3810,6 +3868,117 @@ class Portal extends CI_Controller
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
+    }
+
+
+
+        public function viewCommunityPage($id)
+    {
+        $this->load->library('pagination');
+        $config             = array();
+        $config["base_url"] = base_url() . "index.php/portal/viewCommunityPage";
+        $total_ef           = $this->db->count_all("community");
+        
+        $config["total_rows"] = $total_ef;
+
+
+        // $config["total_rows"] = 800;
+        
+        $config["per_page"]        = 10;
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $limit                     = $config["per_page"];
+        $config["uri_segment"] = 3;
+        //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data['community']           = $this->db->query("SELECT * FROM community order by id asc LIMIT $limit OFFSET $page")->result();
+        //$data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
+        $data['author'] = $this->Forestdata_model->get_author_name($id);
+        //$data['user_id'] = $id;
+
+
+        $data["links"]                  = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/viewCommunityPage';
+        $this->template->display_portal($data);
+    }
+
+
+
+     public function viewAddCommunityPage()
+    {
+        
+        $data['content_view_page'] = 'portal/viewAddCommunityPage';
+        $this->template->display_portal($data);
+    }
+
+
+     public function viewDetailCommunityPage($id)
+    {
+        $data['viewDetailCommunityPage'] = $this->Forestdata_model->get_community_details($id);
+        $data['content_view_page'] = 'portal/viewDetailCommunityPage';
+        $this->template->display_portal($data);
+    }
+
+
+
+
+        public function addPost()
+    {
+             
+            
+        if (isset($_POST['title'])) {
+
+            
+            //$titles = count($this->input->post('title'));
+            $title    = $this->input->post('title');
+            $description    = $this->input->post('description');
+            $Author    = $this->input->post('Author');
+            $Year    = $this->input->post('Year');
+            $session = $this->user_session = $this->session->userdata('user_logged');
+            $userid =  $session["USER_ID"];
+
+            
+            
+           
+            $data = array(
+                'title' => $title,
+                'description' => $description,
+                'post_date' => date('Y-m-d H:i:s', time()),
+                'user_id' =>$userid 
+            
+               
+            );
+            
+            //$data['IMAGE_PATH'] = 'asdasdsad';
+
+            $this->utilities->insertData($data, 'community');
+             $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Post Added successfully.<button data-dismiss="alert" class="close" type="button">×</button></div>');
+            redirect('Portal/addPost');
+        }
+        
+        else {
+            $data['content_view_page'] = 'portal/viewAddCommunityPage';
+             $this->template->display_portal($data);
+        }
     }
 
 

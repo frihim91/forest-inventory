@@ -20,10 +20,15 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <link href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/css/animate.css" rel="stylesheet" media="screen"/>
         <link href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/style.css" rel="stylesheet" media="screen"/>
+              <link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/plugins/select2/select2.min.css" rel="stylesheet" media="screen"/>
 
         <!-- JavaScripts -->
         <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery-2.1.1.js"></script>
         <script src="<?php echo base_url();?>resources/resource_potal/assets/Angular/js/angular/angular.min.js"></script>
+        <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/plugins/select2/select2.full.min.js"></script>
+
+
+
 
     </head>
     <body>
@@ -51,7 +56,7 @@
                           <!--  <a title="English" href="<?php echo site_url('langSwitch/switchLanguage/english'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/flag_eng.gif')?>" alt="flag"/></a>
 
                            <a title="Bangla" href="<?php echo site_url('langSwitch/switchLanguage/bangla'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/bangla.gif')?>" alt="flag"/></a> -->
-                            <?php
+                           <?php
                            $session_info = $this->session->userdata("user_logged");
                           //echo '<pre>';print_r($session_info);exit;
                            ?>

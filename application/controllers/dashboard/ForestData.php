@@ -232,6 +232,83 @@ class ForestData extends CI_Controller
         }
         
     }
+
+
+
+          public function documentList()
+    {
+        $data['document']           = $this->db->query("SELECT * FROM reference  r order by  r.ID_Reference desc")->result();
+        $data['content_view_page'] = 'setup/documents/all_document';
+        $this->template->display($data);
+    }
+
+        public function addDocuments()
+    {
+        if (isset($_POST['Title'])) {
+            
+            //$titles = count($this->input->post('title'));
+            $Title    = $this->input->post('Title');
+            $Reference    = $this->input->post('Reference');
+            $Author    = $this->input->post('Author');
+            $Year    = $this->input->post('Year');
+            //$PDF_label    = $this->input->post('PDF_label');
+
+            $config['upload_path']   = 'resources/pdf/';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+            $config['file_name']     = $_FILES['main_image']['name'];
+            
+            //Load upload library and initialize configuration
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            
+            if ($this->upload->do_upload('main_image')) {
+                $uploadData = $this->upload->data();
+                $picture    = $uploadData['file_name'];
+            } else {
+                $picture = '';
+            }
+            $ext = explode('.',$picture);
+            echo $ext[0];
+            //exit;
+            
+           
+            $data = array(
+                'Title' => $Title,
+                'Reference' => $Reference,
+                'Author' => $Author,
+                'Year' => $Year,
+                'PDF_label' => $ext[0]
+               
+            );
+            
+            //$data['IMAGE_PATH'] = 'asdasdsad';
+            
+            $this->utilities->insertData($data, 'reference');
+            $this->session->set_flashdata('Success', 'New Document Added Successfully.');
+            redirect('dashboard/ForestData/documentList');
+        }
+        
+        else {
+            $data['content_view_page'] = 'setup/documents/addDocuments';
+            $this->template->display($data);
+        }
+    }
+
+
+       public function deleteDocuments($id)
+    {
+        
+        $attr = array(
+            "ID_Reference" => $id
+        );
+        //return $this->utilities->deleteRowByAttribute("family", $attr);
+        if ($this->utilities->deleteRowByAttribute("reference", $attr)) {
+            $this->session->set_flashdata('Error', ' Document Deleted Successfully.');
+        } else {
+            $this->session->set_flashdata('Error', 'Document Not Deleted Successfull.');
+        }
+    }
+        
     
     
     

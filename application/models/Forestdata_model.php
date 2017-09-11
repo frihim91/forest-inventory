@@ -252,6 +252,23 @@ Class Forestdata_model extends CI_Model {
 		     order by a.ID_AE desc")->result();
 		 return $data; 
 	}
+  public function get_community_details($id)
+  {
+    $data=$this->db->query("SELECT c.* from community c
+         where c.id=$id
+         order by c.id desc")->row();
+     return $data; 
+  }
+
+
+    public function get_author_name($id)
+  {
+    $data=$this->db->query("SELECT c.user_id,v.USER_ID,v.LAST_NAME from community c
+      LEFT JOIN visitor_info v ON c.user_id=v.USER_ID
+      where c.user_id=$id
+     ")->row();
+     return $data; 
+  }
 
 
 
@@ -296,6 +313,8 @@ Class Forestdata_model extends CI_Model {
             $this->db->order_by('family.ID_Family', 'ASC');
             return $this->db->get()->result();
        }
+
+
         public function get_all_landcover() 
       {
             $this->db->select('landcover.*');
@@ -781,6 +800,12 @@ Class Forestdata_model extends CI_Model {
          WHERE bd.species_id=$specis_id ")->result();
      return $data; 
     }
+
+      public function get_purpose() 
+       {
+          $data=$this->db->query("SELECT * FROM purpose p ORDER BY p. PURPOSE_ID ASC")->result();
+          return $data;
+       }
 
 
 

@@ -127,6 +127,11 @@ class Data extends CI_Controller
         // //pagination style end
         $this->pagination->initialize($config);
         $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid($limit,$page);
+         //$data['ID_1988EcoZone'] =  $this->Forestdata_model->get_all_ecological_zones();
+        $data['EcoZones'] = $this->Forestdata_model->get_all_ecological_zones();
+        $data['Zones'] = $this->Forestdata_model->get_all_zones();
+        //print_r($data['Zones']);exit;
+        $data['Division'] = $this->Forestdata_model->get_all_division();
 
          $data['links'] = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';
@@ -143,6 +148,7 @@ class Data extends CI_Controller
             's.Species'=>$keyword,
             'dis.District'=>$keyword,
             'a.Equation'=>$keyword,
+            'a.ID_AE'=>$keyword,
             'ref.Reference'=>$keyword,
             'ref.Author'=>$keyword,
             'b.FAOBiomes'=>$keyword,

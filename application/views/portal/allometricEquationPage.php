@@ -1,5 +1,4 @@
 
-
 <style type="text/css">
    .page_content{
    padding: 15px;
@@ -39,6 +38,21 @@
    border-radius: 0px 0px 4px 4px;
    }
 </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+
+<script type="text/javascript">
+  $('.selectpicker').selectpicker({
+ // style: 'btn-info',
+  size: 4
+});
+
+</script>
+
 <?php
    $lang_ses = $this->session->userdata("site_lang");
    
@@ -183,17 +197,49 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Division<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Division"  id="division" value = "<?php echo (isset($Division))?$Division:'';?>" class ="division" maxlength="64" placeholder="Division" />
+                   <!--   <input type="text" class="form-control input-sm" name ="Division"  id="division" value = "<?php echo (isset($Division))?$Division:'';?>" class ="division" maxlength="64" placeholder="Division" /> -->
+                     <?php
+                     $ID_Divisions = $this->Forestdata_model->get_all_division();
+                     $options = array('' => '--Select Division--');
+                     foreach ($ID_Divisions as $ID_Division) {
+                     $options["$ID_Division->Division"] = $ID_Division->Division;
+                     }
+                     $ID_Division = set_value('Division');
+                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" class="tag-select form-control" data-placeholder="Choose a Reference..." ');
+                     ?>     
                   </div>
                   <div class="form-group">
                      <label>District<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="District" id="District" value = "<?php echo (isset($District))?$District:'';?>" class ="District" maxlength="64" placeholder="District" />
+         
+                       <select class="form-control" id="ID_District" name="District">
+                     <option value="">Select District</option>
+                  </select>
                   </div>
                   <div class="form-group">
-                     <h3>Ecological Zone</h3>
-                     <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" />
-                     <br>
+            
+                     <label>FAO Global Ecological Zone <span style="color:red;"></span></label><br>
+      
+                 <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
+
+                        <select class="form-control singleSelectExample" name="EcoZones" style="width:620px;" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>">
+                            <option value="">Select Ecological Zone</option>
+                            <?php foreach ($EcoZones as $row): ?>
+                                <option value="<?php echo $row->EcoZones ?>"><?php echo $row->EcoZones ?></option>
+                            <?php endforeach; ?>
+                        </select>
+
+
+                     <label>BFI Zone <span style="color:red;"></span></label><br>
+      
+                 <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
+
+                        <select class="form-control singleSelectExample" name="Zones" style="width:620px;" value = "<?php echo (isset($Zones))?$Zones:'';?>">
+                            <option value="" >Select BFI Zone</option>
+                            <?php foreach ($Zones as $row): ?>
+                                <option value="<?php echo $row->Zones ?>"><?php echo $row->Zones ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                     <br><br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
                </div>
@@ -284,6 +330,8 @@
                             <?php echo (isset($EcoZones))?$EcoZones:'';?>
                             <?php echo (isset($Reference))?$Reference:'';?>
                             <?php echo (isset($Author))?$Author:'';?>
+                            <?php echo (isset($Zones))?$Zones:'';?>
+
                             <?php echo (isset($Year))?$Year:'';?>
                           
 
@@ -512,7 +560,7 @@
            pointToLayer: function(feature,latlng){
              var marker = L.marker(latlng,{icon: ratIcon});
    
-             marker.bindPopup('<b>AE : </b>'+feature.properties.ID_AE);
+            marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.ID_AE+'</h4><h5>Species Represented</h5>'+feature.properties.species+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.output);
    
              return marker;
            }
@@ -558,4 +606,88 @@
         //  });
        alert(Url);
         });
+
 </script>
+<script>
+// Setting default configuration here or you can set through configuration object as seen below
+$.fn.select2.defaults = $.extend($.fn.select2.defaults, {
+    allowClear: true, // Adds X image to clear select
+    closeOnSelect: true, // Only applies to multiple selects. Closes the select upon selection.
+    placeholder: 'Select...',
+    minimumResultsForSearch: 15 // Removes search when there are 15 or fewer options
+});
+
+$(document).ready(
+
+function () {
+
+    // Single select example if using params obj or configuration seen above
+    var configParamsObj = {
+        placeholder: 'Select an option...', // Place holder text to place in the select
+        minimumResultsForSearch: 3 // Overrides default of 15 set above
+    };
+    $(".singleSelectExample").select2(configParamsObj);
+});
+</script>
+
+<script type="text/javascript">
+   $(document).ready(function() {
+       $('#ID_Division').change(function() {
+           var Division = $(this).val();
+           //var ID_Division = $(this).val();
+           //alert(Division);
+           var url = '<?php echo site_url('Portal/ajax_get_division') ?>';
+           $.ajax({
+               type: "POST",
+               url: url,
+               data: {Division:Division},
+               dataType: 'html',
+               success: function(data) {
+                   $('#ID_District').html(data);
+               }
+           });
+       });
+   });
+   
+   
+    $(document).ready(function() {
+       $('#ID_District').change(function() {
+           var District = $(this).val();
+           //alert(District);
+           var url = '<?php echo site_url('Portal/up_thana_by_dis_id') ?>';
+           $.ajax({
+               type: "POST",
+               url: url,
+               data: {District:District},
+               dataType: 'html',
+               success: function(data) {
+                   $('#THANA_ID').html(data);
+               }
+           });
+       });
+   });
+   
+   
+       $(document).ready(function() {
+       $('#THANA_ID').change(function() {
+           var THANAME = $(this).val();
+           //alert(District);
+           var url = '<?php echo site_url('Portal/up_union_by_dis_id') ?>';
+           $.ajax({
+               type: "POST",
+               url: url,
+               data: {THANAME:THANAME},
+               dataType: 'html',
+               success: function(data) {
+                   $('#union_id').html(data);
+               }
+           });
+       });
+   });
+   
+   
+   
+   
+</script>
+
+

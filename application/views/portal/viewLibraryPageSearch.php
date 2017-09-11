@@ -96,6 +96,53 @@
 <div class="col-md-12 page_content">
    <h3>Documents Search</h3>
    <div class="col-sm-12">
+  <ul class="nav nav-tabs">
+         <li class="active"><a data-toggle="tab" href="#home">Search</a></li>
+      </ul>
+      <div class="tab-content">
+         <div id="home" class="tab-pane fade in active">
+            <p> Search Documents by Title, Author, and Keyword.
+               Example searches
+               <br>
+               Example searches: <a href="#"> Title: Chittagong university campus</a>,
+               <a href="#">Author: Barua, S. and S. Haque </a>,
+               <a href="#"> Keyword: Barua </a>,
+            </p>
+            <form action="<?php echo site_url('portal/search_document');?>" method = "post">
+               <div class="col-md-3">
+                  <div class="form-group">
+                     <label>Title <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Title"  class ="title" maxlength="200" placeholder="Title" />
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="form-group">
+                     <label>Author  <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Author"  class ="author" maxlength="64" placeholder="Author" />
+                  </div>
+               </div>
+               <div class="col-md-2">
+                  <div class="form-group">
+                     <label>Keyword  <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Keywords"  class ="keyword" maxlength="64" placeholder="Keywords" />
+                  </div>
+               </div>
+
+                <div class="col-md-2">
+                  <div class="form-group">
+                     <label>Year  <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="Year"  class ="Year" maxlength="64" placeholder="Year" />
+                  </div>
+               </div>
+               <div class="col-md-2">
+                  <div class="form-group">
+                     <br>
+                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
       <div class="col-sm-12 bdy_des">
          <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
             <div class="col-lg-6">

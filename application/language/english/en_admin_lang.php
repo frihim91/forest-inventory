@@ -5,11 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // Create Module
 $lang["media"] = "Media";
 $lang["library"] = "Library";
+$lang["community"] = "Community";
 $lang["species_list"] = "Species List";
 $lang["Wood_densities"] = "Wood densities";
 $lang["biomass_expansion_factor"] = "Emission factors";
 $lang["allometric_equation"] = "Allometric Equation";
-$lang["allometric_equations"] = "Allometric Equations";
+$lang["allometric_equations"] = "Allometric Equation";
 $lang["home"] = "Home";
 $lang["data"] = "Data";
 $lang["forest_data"] = "Forest Data";

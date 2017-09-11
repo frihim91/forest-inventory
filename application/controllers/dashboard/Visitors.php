@@ -68,6 +68,54 @@
         $this->template->display($data);
     }
 
+      public function purposeList()
+    {
+        $data['purpose']           = $this->db->query("SELECT * FROM purpose")->result();
+        $data['content_view_page'] = 'setup/purposeList/all_purpose';
+        $this->template->display($data);
+    }
+
+        public function addPurpose()
+    {
+        if (isset($_POST['PURPOSE_NAME'])) {
+            
+            //$titles = count($this->input->post('title'));
+            $PURPOSE_NAME    = $this->input->post('PURPOSE_NAME');
+           
+            $data = array(
+                'PURPOSE_NAME' => $PURPOSE_NAME
+               
+            );
+            
+            //$data['IMAGE_PATH'] = 'asdasdsad';
+            
+            $this->utilities->insertData($data, 'purpose');
+            $this->session->set_flashdata('Success', 'New Purpose Added Successfully.');
+            redirect('dashboard/Visitors/purposeList');
+        }
+        
+        else {
+            $data['content_view_page'] = 'setup/purposeList/addPurpose';
+            $this->template->display($data);
+        }
+    }
+
+      public function deletePurpose($id)
+    {
+        
+        $attr = array(
+            "PURPOSE_ID" => $id
+        );
+        //return $this->utilities->deleteRowByAttribute("family", $attr);
+        if ($this->utilities->deleteRowByAttribute("purpose", $attr)) {
+            $this->session->set_flashdata('Error', ' Purpose Deleted Successfully.');
+        } else {
+            $this->session->set_flashdata('Error', 'Purpose Not Deleted Successfully.');
+        }
+        
+    }
+    
+
 
     function visitor_detail($USER_ID) {
         $data['visitor_info'] = $this->db->query("SELECT v.*, e.EDUCATION_DEGREE_NAME,i.INSTITUTE_NAME,i.INSTITUTE_ADDRESS,i.PHONE,i.FAX,z.zones  FROM visitor_info v

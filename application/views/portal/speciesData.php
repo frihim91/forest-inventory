@@ -127,7 +127,7 @@ return $imgFullName;
                                     $speciesId = $this->Forestdata_model->get_location_data_type($species_list->ID_Species);
                                     
                                      ?>
-                                 <p>
+                                 <p style="background-color: #f5f5f5;">
 
                                     <b> <?php 
                                    
@@ -166,7 +166,7 @@ return $imgFullName;
                                        ?>
                                     </b>
                                  </p>
-                                 <p style="padding-left:41px;">
+                                 <p style="padding-left:41px;background-color: #f5f5f5;">
                                     <b><?php 
                                        $species_type_data = $this->Forestdata_model->get_data_type($speciesIds->ID_Species);
                                        ?> <?php foreach ($species_type_data as $row) : ?>
@@ -232,7 +232,7 @@ return $imgFullName;
                                     <?php  } ?>
                                     <?php endforeach; ?>
                                     </b>
-                                 <p style="text-align: justify;width:550px;">
+                                 <p style="text-align: justify;width:550px;background-color:#f5f5f5 ;">
                                     <?php 
                                        $botanical_description = $this->Forestdata_model->get_botanical_description($speciesIds->ID_Species);
                                        ?> 

@@ -268,14 +268,17 @@
 
               $regInfo = array(
                 'EDUCATION_ID' => $this->input->post('EDUCATION_ID'),
+                'PURPOSE_ID' => $this->input->post('PURPOSE_ID'),
                 'USERPW' => $this->input->post('USERPW'),
                 'TITLE' => str_replace("'", "''", $this->input->post("TITLE")),
                 'FIRST_NAME' => str_replace("'", "''", $this->input->post("FIRST_NAME")),
                 'LAST_NAME' => str_replace("'", "''", $this->input->post("LAST_NAME")),
                 'EMAIL' => $this->input->post('EMAIL'),
                 'ADDRESS' => $this->input->post('ADDRESS'),
+                //'NOTIFICATION' => $this->input->post('NOTIFICATION'),
+                'NOTIFICATION' => isset($_POST['NOTIFICATION']) ? 1 : 0,
                 'FIELD_SUBJECT' => $this->input->post('FIELD_SUBJECT'),
-                'ID_Zones' => $this->input->post('ID_Zones'),
+                
                 'PROFILE_IMG' =>   $saveImg
                 );
             
@@ -286,9 +289,7 @@
                 $Institute = array(
                   'USER_ID' => $this->db->insert_id(),
                   'INSTITUTE_NAME' => $this->input->post('INSTITUTE_NAME'),
-                  'INSTITUTE_ADDRESS' => $this->input->post('INSTITUTE_ADDRESS'),
-                  'PHONE' => $this->input->post('PHONE'),
-                  'FAX' => $this->input->post('FAX')
+                  
                   ); 
                 if($Institute != ""){
                   $InstituteInsert = $this->utilities->insertData($Institute, 'institution');

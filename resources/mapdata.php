@@ -11,7 +11,10 @@
 $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db','maruf','maruf');
 
 # Build SQL SELECT statement including x and y columns
-$sql = 'SELECT Latitude as y,Longitude x FROM ae l WHERE Longitude>0';
+$sql = 'SELECT a.ID_AE,a.latitude y,a.longitude x,bd.description,bd.species,a.output,FAOBiomes FROM ae a
+LEFT JOIN species s ON a.Species=s.ID_Species
+LEFT JOIN botanical_descriptions bd ON s.ID_Species=bd.species_id
+LEFT JOIN faobiomes fb ON a.FAO_Biome=fb.ID_FAOBiomes where Latitude>0';
 
 /*
 * If bbox variable is set, only return records that are within the bounding box

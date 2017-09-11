@@ -116,6 +116,12 @@
                         </a>
                        
                     </li>
+
+                     <li class="">
+                        <a href="<?php echo site_url('portal/viewCommunityPage'); ?>" class="dropdown-toggle" data-toggle="" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line("community"); ?>
+                        </a>
+                       
+                    </li>
                 <?php 
 
                 foreach($menus as $pm) {
