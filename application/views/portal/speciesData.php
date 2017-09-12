@@ -152,8 +152,6 @@ return $imgFullName;
                                           if ($speciesIds->FAOBiomes!='No data') { //no news found
                                          echo $speciesIds->FAOBiomes;
                                          }  else {
-
-
     //Do stuff here with news object.
                                           }
                                         ?>
@@ -187,6 +185,9 @@ return $imgFullName;
                                     (<?php echo $row->TOTAL_EQN;?>)
                                     <?php  break; ?>
                                     <?php } else { ?>
+                                      
+                                    Allometric Equations:No Data
+
                                     <?php  } ?>
                                     <?php endforeach; ?>
                                     </b><br>
@@ -200,6 +201,8 @@ return $imgFullName;
                                     (<?php echo $row->TOTAL_EQN;?>)
                                     <?php  break; ?>
                                     <?php } else { ?>
+                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emission Factors (EF):No Data
                                     <?php  } ?>
                                     <?php endforeach; ?>
                                     </b>
@@ -214,6 +217,8 @@ return $imgFullName;
                                     (<?php echo $row->TOTAL_EQN;?>)
                                     <?php  break; ?>
                                     <?php } else { ?>
+                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wood Density (WD):No Data
                                     <?php  } ?>
                                     <?php endforeach; ?>
                                     </b>
@@ -229,6 +234,8 @@ return $imgFullName;
                                     (<?php echo $row->TOTAL_EQN;?>)
                                     <?php  break; ?>
                                     <?php } else { ?>
+                                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Raw Data:No Data
                                     <?php  } ?>
                                     <?php endforeach; ?>
                                     </b>
@@ -238,10 +245,11 @@ return $imgFullName;
                                        ?> 
                                     <?php foreach ($botanical_description as $row) : ?>
                                     <?php if($botanical_description !=0) { ?>
-                                    <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $row->species.'.jpg'; //getImageName($row->species);  ?>" class="speciesImg">: </b><?php echo $row->description;?>
+                                    <b> 
+                                    <img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $row->species.'.jpg'; ?>" class="speciesImg">: </b><?php echo $row->description;?>
                                     <?php  break; ?>
                                     <?php } else { ?>
+                                     No Data
                                     <?php  } ?>
                                     <?php endforeach; ?>
                                  </p>

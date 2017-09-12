@@ -125,9 +125,52 @@
       <div class="col-sm-12 bdy_des">
       
          <div class="">
-            
+           <!--  <input type="hidden" name="user_id" value="<?php echo $id; ?>"/> -->
               <p><?php echo $viewDetailCommunityPage->description;?></p>
+              Comment:
+
+            <?php
+              
+               foreach($community_comment as $row)
+                 
+               {
+                 ?>
+                 <p><?php echo $row->comment;?>
+                   By <?php echo $row->LAST_NAME;?>
+                   
+                    <?php echo date('l,F j,Y- H:i:s', strtotime($row->date)); ?>
+                    </p>
+      
+           
+            <?php
+               }?>
+             <!--  <p><?php echo $viewDetailCommunityPage->comment;?>
+              By <?php echo $viewDetailCommunityPage->LAST_NAME;?> 
+              <?php echo date('l,F j,Y- H:i:s', strtotime($viewDetailCommunityPage->date)); ?></p> -->
+               
          </div>
+           <?php echo form_open_multipart('Portal/addComment', "class='form-vertical'"); ?>
+            
+            <div class="row">
+               <div class="col-md-6">
+                 
+                  <?php echo $this->session->flashdata('msg'); ?>
+                  <?php echo $this->session->flashdata('Error'); ?>
+                  <input type="hidden" value="<?php echo $coummunity_id;?>" name="COMMINITY_ID">
+                  
+                  <div class="form-group">
+ 
+                     <label>Comment<span style="color:red;">*</span></label>
+                  <?php echo form_textarea(array('name' => 'comment', "class" => "redactor form-control", 'placeholder' => 'Add details', 'rows' => '50')); ?>  
+                  </div><br>
+                  <div class="submit_block" align="right">
+                           <input type="submit" value="Post Comment" class="btn-success btn"/>
+                        </div>
+                        <?php echo form_close(); ?>
+               </div>
+            
+   
+            </div>
       </div>
    </div>
 </div>

@@ -130,6 +130,10 @@
             </p>
             <form action="<?php echo site_url('data/search_allometricequation_key');?>" method = "post">
                <div class="col-md-6">
+                 <div class="form-group">
+                     <label>AE ID<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm f" name ="ID_AE" value = "<?php echo (isset($ID_AE))?$ID_AE:'';?>"  class ="ID_AE" maxlength="64" placeholder="AE ID" />
+                  </div>
                   <div class="form-group">
                      <label>Keyword<span style="color:red;">*</span></label>
                      <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>"  maxlength="64" placeholder="Keyword" /><br>
@@ -159,6 +163,7 @@
             </p>
             <form action="<?php echo site_url('portal/search_allometricequation_tax');?>" method = "post">
                <div class="col-md-6">
+             
                   <div class="form-group">
                      <label>Family<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm f" name ="Family" value = "<?php echo (isset($Family))?$Family:'';?>"  class ="Family" maxlength="64" placeholder="Family" />
@@ -205,13 +210,13 @@
                      $options["$ID_Division->Division"] = $ID_Division->Division;
                      }
                      $ID_Division = set_value('Division');
-                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" class="tag-select form-control" data-placeholder="Choose a Reference..." ');
+                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Reference..." ');
                      ?>     
                   </div>
                   <div class="form-group">
                      <label>District<span style="color:red;"></span></label>
          
-                       <select class="form-control" id="ID_District" name="District">
+                       <select class="form-control singleSelectExample" id="ID_District" style="width:620px;"  name="District">
                      <option value="">Select District</option>
                   </select>
                   </div>
@@ -221,24 +226,44 @@
       
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
-                        <select class="form-control singleSelectExample" name="EcoZones" style="width:620px;" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>">
+                       <!--  <select class="form-control singleSelectExample" name="EcoZones" style="width:620px;" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>">
                             <option value="">Select Ecological Zone</option>
                             <?php foreach ($EcoZones as $row): ?>
                                 <option value="<?php echo $row->EcoZones ?>"><?php echo $row->EcoZones ?></option>
                             <?php endforeach; ?>
-                        </select>
+                        </select> -->
+                     <?php
+                     
+                     $EcoZoness = $this->Forestdata_model->get_all_ecological_zones();
+                     $options = array('' => '--Select Ecological Zone--');
+                     foreach ($EcoZoness as $EcoZones) {
+                     $options["$EcoZones->EcoZones"] = $EcoZones->EcoZones;
+                     }
+                     $EcoZones = set_value('EcoZones');
+                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Reference..." ');
+                     ?>     
 
 
                      <label>BFI Zone <span style="color:red;"></span></label><br>
       
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
-                        <select class="form-control singleSelectExample" name="Zones" style="width:620px;" value = "<?php echo (isset($Zones))?$Zones:'';?>">
+                     <!--    <select class="form-control singleSelectExample" name="Zones" style="width:620px;" value = "<?php echo (isset($Zones))?$Zones:'';?>">
                             <option value="" >Select BFI Zone</option>
                             <?php foreach ($Zones as $row): ?>
                                 <option value="<?php echo $row->Zones ?>"><?php echo $row->Zones ?></option>
                             <?php endforeach; ?>
-                        </select>
+                        </select> -->
+
+                      <?php
+                     $Zoness = $this->Forestdata_model->get_all_zones();
+                     $options = array('' => '--Select BFI Zone--');
+                     foreach ($Zoness as $Zones) {
+                     $options["$Zones->Zones"] = $Zones->Zones;
+                     }
+                     $Zones = set_value('Zones');
+                     echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Reference..." ');
+                     ?> 
                      <br><br>
                      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
@@ -321,7 +346,33 @@
         <p> <?php
                            if(isset($allometricEquationView_count)){
                             ?>
-                            <?php echo (isset($keyword))?$keyword:'';?>
+                             <?php
+
+                            if (isset($ID_AE)) // or is true 
+                            {
+                              echo "AE ID:$ID_AE";
+                            }
+                            else  // elseif is set to false
+                            {
+                              echo "";
+                              
+                            }
+                            ?>
+                             <?php
+
+                            if (isset($keyword)) // or is true 
+                            {
+                              echo "Keyword:$keyword";
+                            }
+                            else  // elseif is set to false
+                            {
+                              echo "";
+                              
+                            }
+                            ?>
+                            <?//php echo (isset($ID_AE))?'AE ID:'.$ID_AE:'';?>
+                            <?//php echo (isset($keyword))?$keyword:'';?>
+                            
                             <?php echo (isset($Family))?$Family:'';?>
                             <?php echo (isset($Genus))?$Genus:'';?>
                             <?php echo (isset($Species))?$Species:'';?>
@@ -690,6 +741,3 @@ function () {
 </script>
 
 
-=======
-</script>
->>>>>>> 779fc4590f202b6cd57e8c10cef436770abcc014

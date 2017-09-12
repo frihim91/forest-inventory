@@ -147,7 +147,7 @@
                {
                  ?>
              <h3> <a href="<?php echo site_url('Portal/viewDetailCommunityPage/'.$row->id); ?>"><?php echo $row->title;?></a></h3>
-             <span><?php echo date('l,F j,Y', strtotime($row->post_date)); ?> ><?php echo $author->LAST_NAME;?></span>
+             <span><?php echo date('l,F j,Y', strtotime($row->post_date)); ?> <?php echo $row->LAST_NAME;?></span>
            
             <?php
                }?>

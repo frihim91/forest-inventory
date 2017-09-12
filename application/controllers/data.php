@@ -143,12 +143,13 @@ class Data extends CI_Controller
     
      public function search_allometricequation_key()
     {
+        $ID_AE   = $this->input->post('ID_AE');
         $keyword = $this->input->post('keyword');
            $searchFields=array(
             's.Species'=>$keyword,
             'dis.District'=>$keyword,
             'a.Equation'=>$keyword,
-            'a.ID_AE'=>$keyword,
+            'a.ID_AE'=>$ID_AE,
             'ref.Reference'=>$keyword,
             'ref.Author'=>$keyword,
             'b.FAOBiomes'=>$keyword,
@@ -160,8 +161,18 @@ class Data extends CI_Controller
             'd.Division'=>$keyword
 
             );
+
+         if(!empty($ID_AE))
+        {
+            $string="a.ID_AE=$ID_AE";
+        }
+        else 
+        {
+                $string=$this->searchAttributeString($searchFields);
+        }
+
         
-        $string=$this->searchAttributeString($searchFields);
+        //$string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {   
             $this->session->set_userdata('aekeySearchString', $string);
@@ -171,15 +182,17 @@ class Data extends CI_Controller
             $string=$this->session->userdata('aekeySearchString');
         }
 
-         if(!empty($keyword))
+         if(!empty($keyword)||!empty($ID_AE))
         {
             $this->session->set_userdata('aeSearchStringKeyword', $keyword);
+            $this->session->set_userdata('aeSearchStringAE', $ID_AE);
            
         }
     
         else 
         {
             $keyword=$this->session->userdata('aeSearchStringKeyword');
+            $Species=$this->session->userdata('aeSearchStringAE');
           
            
         }
@@ -200,7 +213,7 @@ class Data extends CI_Controller
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where $string  ")->num_rows();
+         where $string")->num_rows();
         //echo $total_ae->total_ae;exit;
         $config["total_rows"] = $total_ae;
        // $total_ef           = $this->db->count_all("ae");
@@ -263,6 +276,7 @@ class Data extends CI_Controller
         
         ")->result();
          $data['keyword']=$keyword;
+          $data['ID_AE']=$ID_AE;
 
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';

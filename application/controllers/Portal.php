@@ -481,6 +481,7 @@ class Portal extends CI_Controller
     {
         
 //var_dump($_POST);//exit;
+        
         $Genus   = $this->input->post('Genus');
         $Family   = $this->input->post('Family');
         $Species   = $this->input->post('Species');
@@ -491,6 +492,7 @@ class Portal extends CI_Controller
        //  $Family = $this->input->post('Family');
         $searchFields=array(
             'f.Family'=>$Family,
+          
             'g.Genus'=>$Genus,
             's.Species'=>$Species
             );
@@ -508,7 +510,17 @@ class Portal extends CI_Controller
         // else if($Genus !=''){
         //     $where .=" g.Genus LIKE '%$Genus%' ";
         // }
-        $string=$this->searchAttributeString($searchFields);
+        if(!empty($ID_AE))
+        {
+            $string="a.ID_AE=$ID_AE";
+        }
+        else 
+        {
+                $string=$this->searchAttributeString($searchFields);
+        }
+       
+
+
         if(!empty($string))
         {
             $this->session->set_userdata('aeSearchString', $string);
@@ -521,6 +533,7 @@ class Portal extends CI_Controller
          if(!empty($Species) || !empty($Family) || !empty($Genus))
         {
             $this->session->set_userdata('aeSearchStringSpecies', $Species);
+           
             $this->session->set_userdata('aeSearchStringFamily', $Family);
             $this->session->set_userdata('aeSearchStringGenus', $Genus);
 
@@ -529,6 +542,7 @@ class Portal extends CI_Controller
         else 
         {
             $Species=$this->session->userdata('aeSearchStringSpecies');
+           
             $Family=$this->session->userdata('aeSearchStringFamily');
             $Genus=$this->session->userdata('aeSearchStringGenus');
            
@@ -622,6 +636,7 @@ class Portal extends CI_Controller
        // $viewdata['search_result_count'] = count($data['allometricEquationView'] );
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=2;
+        
         $data['Species']=$Species;
         $data['Family']=$Family;
         $data['Genus']=$Genus;
@@ -647,33 +662,33 @@ class Portal extends CI_Controller
             );
         $string=$this->searchAttributeString($searchFields);
           
-        // if(!empty($string))
-        // {
-        //     $this->session->set_userdata('aeLocSearchString', $string);
-        // }
-        // else 
-        // {
-        //     $string=$this->session->userdata('aeLocSearchString');
-        // }
+        if(!empty($string))
+        {
+            $this->session->set_userdata('aeLocSearchString', $string);
+        }
+        else 
+        {
+            $string=$this->session->userdata('aeLocSearchString');
+        }
 
-        //  if(!empty($District) || !empty($EcoZones) || !empty($Division) || !empty($Zones))
-        // {
-        //     $this->session->set_userdata('aeSearchStringDis', $District);
-        //     $this->session->set_userdata('aeSearchStringEco', $EcoZones);
-        //      $this->session->set_userdata('aeSearchStringZone', $Zones);
-        //     $this->session->set_userdata('aeSearchStringDiv', $Division);
+         if(!empty($District) || !empty($EcoZones) || !empty($Division) || !empty($Zones))
+        {
+            $this->session->set_userdata('aeSearchStringDis', $District);
+            $this->session->set_userdata('aeSearchStringEco', $EcoZones);
+             $this->session->set_userdata('aeSearchStringZone', $Zones);
+            $this->session->set_userdata('aeSearchStringDiv', $Division);
 
-        // }
+        }
     
-        // else 
-        // {
-        //     $District=$this->session->userdata('aeSearchStringDis');
-        //     $EcoZones=$this->session->userdata('aeSearchStringEco');
-        //     $Zones=$this->session->userdata('aeSearchStringZone');
-        //     $Division=$this->session->userdata('aeSearchStringDiv');
+        else 
+        {
+            $District=$this->session->userdata('aeSearchStringDis');
+            $EcoZones=$this->session->userdata('aeSearchStringEco');
+            $Zones=$this->session->userdata('aeSearchStringZone');
+            $Division=$this->session->userdata('aeSearchStringDiv');
 
            
-        // }
+        }
       
 
         $this->load->library('pagination');
@@ -759,6 +774,8 @@ class Portal extends CI_Controller
         $data['District']=$District;
         $data['Division']=$Division;
         $data['EcoZones']=$EcoZones;
+        
+        //$this->pr($m)
         $data['Zones'] = $Zones;
        // $data['Zones'] = $this->Forestdata_model->get_all_zones();
         //print_r($data['Zones']);exit;
@@ -3871,9 +3888,22 @@ class Portal extends CI_Controller
     }
 
 
-
-        public function viewCommunityPage($id)
+    private function pr($data)
     {
+
+        echo "<pre>";
+        print_r($data);
+    }
+    public function viewCommunityPage()
+    {
+        $userSession=$this->session->userdata("user_logged");
+        if(empty($userSession))
+        {
+            redirect('accounts/userLogin');
+        }
+        else 
+        {
+        $id=$userSession['USER_ID'];
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/viewCommunityPage";
@@ -3910,15 +3940,12 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data['community']           = $this->db->query("SELECT * FROM community order by id asc LIMIT $limit OFFSET $page")->result();
-        //$data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
-        $data['author'] = $this->Forestdata_model->get_author_name($id);
-        //$data['user_id'] = $id;
-
-
+        $data['community']           = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID order by c.id asc LIMIT $limit OFFSET $page")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewCommunityPage';
         $this->template->display_portal($data);
+    }
     }
 
 
@@ -3934,6 +3961,11 @@ class Portal extends CI_Controller
      public function viewDetailCommunityPage($id)
     {
         $data['viewDetailCommunityPage'] = $this->Forestdata_model->get_community_details($id);
+        $m=$data['community_comment']       = $this->db->query("select cc.*,vi.LAST_NAME from community_comment cc
+        left join visitor_info vi on cc.user_id=vi.USER_ID
+        where community_id=$id")->result();
+
+        $data['coummunity_id'] = $id;
         $data['content_view_page'] = 'portal/viewDetailCommunityPage';
         $this->template->display_portal($data);
     }
@@ -3977,6 +4009,40 @@ class Portal extends CI_Controller
         
         else {
             $data['content_view_page'] = 'portal/viewAddCommunityPage';
+             $this->template->display_portal($data);
+        }
+    }
+
+
+
+
+        public function addComment()
+    {
+             
+            
+        if (isset($_POST['comment'])) {
+            $comment    = $this->input->post('comment');
+            //$id = $this->input->post('user_id');
+            $session = $this->user_session = $this->session->userdata('user_logged');
+            $userid =  $session["USER_ID"];
+            $data = array(
+                'comment' => $comment,
+                'community_id' => $this->input->post('COMMINITY_ID'),
+                'date' => date('Y-m-d H:i:s', time()),
+                'user_id' =>$userid 
+            
+               
+            );
+            
+            //$data['IMAGE_PATH'] = 'asdasdsad';
+
+            $this->utilities->insertData($data, 'community_comment');
+            $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Comment Post successfully.<button data-dismiss="alert" class="close" type="button">×</button></div>');
+            redirect('Portal/viewDetailCommunityPage/'.$this->input->post('COMMINITY_ID'));
+        }
+        
+        else {
+            $data['content_view_page'] = 'portal/viewDetailCommunityPage';
              $this->template->display_portal($data);
         }
     }
