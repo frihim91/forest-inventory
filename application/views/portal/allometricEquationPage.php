@@ -206,19 +206,19 @@
                      }
                      $ID_Division = set_value('Division');
                      echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" class="tag-select form-control" data-placeholder="Choose a Reference..." ');
-                     ?>     
+                     ?>
                   </div>
                   <div class="form-group">
                      <label>District<span style="color:red;"></span></label>
-         
+
                        <select class="form-control" id="ID_District" name="District">
                      <option value="">Select District</option>
                   </select>
                   </div>
                   <div class="form-group">
-            
+
                      <label>FAO Global Ecological Zone <span style="color:red;"></span></label><br>
-      
+
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
                         <select class="form-control singleSelectExample" name="EcoZones" style="width:620px;" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>">
@@ -230,7 +230,7 @@
 
 
                      <label>BFI Zone <span style="color:red;"></span></label><br>
-      
+
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
                         <select class="form-control singleSelectExample" name="Zones" style="width:620px;" value = "<?php echo (isset($Zones))?$Zones:'';?>">
@@ -422,6 +422,7 @@
       </script>
    </div>
 </div>
+
 <script type="text/javascript">
    $(document).on('keypress', '#Genus', function () {
 
@@ -559,7 +560,7 @@
          L.geoJson(data,{
            pointToLayer: function(feature,latlng){
              var marker = L.marker(latlng,{icon: ratIcon});
-            marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.ID_AE+'</h4><h5>Species Represented</h5>'+feature.properties.species+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.output);
+            marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4>'+'Species Represented'+'<p>'+feature.properties.species_desc+'</p> <b>FAO Biomes</b> <br>'+feature.properties.FAOBiomes+'</p> <b>Output</b> <br>'+feature.properties.output);
              return marker;
            }
          }).addTo(map);
@@ -604,7 +605,7 @@
         //  });
        alert(Url);
         });
-<<<<<<< HEAD
+
 
 </script>
 <script>
@@ -647,8 +648,8 @@ function () {
            });
        });
    });
-   
-   
+
+
     $(document).ready(function() {
        $('#ID_District').change(function() {
            var District = $(this).val();
@@ -665,8 +666,8 @@ function () {
            });
        });
    });
-   
-   
+
+
        $(document).ready(function() {
        $('#THANA_ID').change(function() {
            var THANAME = $(this).val();
@@ -683,13 +684,8 @@ function () {
            });
        });
    });
-   
-   
-   
-   
-</script>
 
 
-=======
+
+
 </script>
->>>>>>> 779fc4590f202b6cd57e8c10cef436770abcc014

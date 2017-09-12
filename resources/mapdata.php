@@ -11,10 +11,13 @@
 $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db','maruf','maruf');
 
 # Build SQL SELECT statement including x and y columns
-$sql = 'SELECT a.ID_AE,a.latitude y,a.longitude x,bd.description,bd.species,a.output,FAOBiomes FROM ae a
-LEFT JOIN species s ON a.Species=s.ID_Species
-LEFT JOIN botanical_descriptions bd ON s.ID_Species=bd.species_id
-LEFT JOIN faobiomes fb ON a.FAO_Biome=fb.ID_FAOBiomes where Latitude>0';
+$sql = "SELECT k.*,fb.FAOBiomes FROM (select a.FAO_Biome,a.species,a.ID_AE AS ID_AE,a.Latitude AS y,a.Longitude AS x,a.output,
+(select count(ae.Species) from ae where ((ae.Latitude = a.Latitude) and (ae.Longitude = a.Longitude)))
+AS total_species,(select group_concat(distinct concat(s.Species),' (',(select count(m.Species) from ae m
+where ((m.Species = b.Species) and (a.Latitude = m.Latitude) and (a.Longitude = m.Longitude))),') ' separator ', ') AS m
+from (ae b left join species s on((b.Species = s.ID_Species))) where ((b.Latitude = a.Latitude)
+and (b.Longitude = a.Longitude))) AS species_desc from ae a where (a.Latitude > 0) group by a.Latitude,a.Longitude) k
+LEFT JOIN faobiomes fb ON k.FAO_Biome=fb.ID_FAOBiomes";
 
 /*
 * If bbox variable is set, only return records that are within the bounding box
