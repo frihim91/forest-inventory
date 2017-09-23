@@ -254,7 +254,7 @@ Class Forestdata_model extends CI_Model {
 	}
   public function get_community_details($id)
   {
-    $data=$this->db->query("SELECT c.id,c.user_id,c.description,v.USER_ID,v.LAST_NAME,cc.* from community c
+    $data=$this->db->query("SELECT c.id,c.user_id,c.description,c.title,v.USER_ID,v.LAST_NAME,cc.* from community c
        LEFT JOIN community_comment cc ON c.id=cc.community_id
        LEFT JOIN visitor_info v ON cc.user_id=v.USER_ID
          where c.id=$id

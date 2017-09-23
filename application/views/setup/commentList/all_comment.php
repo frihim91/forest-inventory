@@ -6,7 +6,7 @@
 </style> 
 <script type="text/javascript">
    $(document).on("click", "a.deleteUrl", function (e) {
-        var result = confirm("Are you sure want to delete Purpose?");
+        var result = confirm("Are you sure want to delete Comment?");
         if(result == true){
          var url = $(this).attr('href');
           var removeRow = $(this).parent().parent();
@@ -16,7 +16,7 @@
                          type: 'POST',
                         // dataType: 'JSON',
                          success: function (data) {
-                         window.location.href = "<?php echo site_url('dashboard/Visitors/purposeList');?>";
+                         window.location.href = "<?php echo site_url('dashboard/Visitors/commentList');?>";
                             
                          }
                      });
@@ -26,8 +26,8 @@
 </script>
 <div class="widget">  
     <div class="widget-head"> 
-        <a href="<?php echo site_url('dashboard/Visitors/addPurpose')?>" class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Add New Purpose</a>
-        <small style="margin-left: 10px;">All the system Purpose Create, Edit, Inactivate and Delete from here</small> 
+       <!--  <a href="<?php echo site_url('dashboard/Visitors/addPurpose')?>" class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Add New Purpose</a> -->
+        <small style="margin-left: 10px;">All the system Comment Show Here</small> 
     </div> 
     <div class="widget-body">    
         <div class="table-responsive">
@@ -36,21 +36,23 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Purpose Name</th>
+                            <th>Author Name</th>
+                            <th>Comment</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                    <tbody>
                         <?php
                         $i = 1;
-                        foreach ($purpose as $purposes) {
+                        foreach ($comment as $comments) {
                             ?>
                             <tr> 
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $purposes->PURPOSE_NAME?></a></td>
+                                 <td><?php echo $comments->FIRST_NAME . " " .$comments->LAST_NAME;?></a></td>
+                                <td><?php echo $comments->comment;?></a></td>
                               
                                  <td>
-                              <a class="label btn-danger btn-xs deleteUrl" href="<?php echo site_url('dashboard/Visitors/deletePurpose/'.$purposes->PURPOSE_ID);?>">
+                              <a class="label btn-danger btn-xs deleteUrl" href="<?php echo site_url('dashboard/Visitors/deleteComment/'.$comments->id);?>">
                               <i class="glyphicon glyphicon-remove"></i>
                               </a>  
                            </td>

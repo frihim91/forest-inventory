@@ -23,6 +23,7 @@
 							<th>Email</th>
 							<th>Address</th>
 							<th>Education</th>
+							<th>Purpose</th>
 							<th>Status</th>
 							<th>Action</th>
 						</tr>
@@ -38,6 +39,7 @@
 								<td><?php echo $all_visitor->EMAIL; ?></td>
 								<td><?php echo $all_visitor->ADDRESS;?></td>
 								<td><?php echo $all_visitor->EDUCATION_DEGREE_NAME; ?></td>
+								<td><?php echo $all_visitor->PURPOSE; ?></td>
 								<td><?php echo ($all_visitor->ACTIVE_FLAG == 1) ? '<span style="color:green">Active</span>' : '<span style="color:red">Inactive</span>'; ?></td>
 								<td>
 									<span  title="Visitor Details"  href="<?php echo site_url("dashboard/Visitors/visitor_detail/" . $all_visitor->USER_ID); ?>" class="label label-success  Modal modalLink" style="cursor: pointer">Details</span> 

@@ -106,6 +106,7 @@
    </div>
 </div>
 </div>
+
 <div class="col-md-12 page_content">
   
    <div class="col-sm-12">

@@ -164,9 +164,21 @@
                {
                  ?>
             <h4><?php echo $row->Title;?></h4>
-            <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/> Download <?php echo $row->Title;?></a>
-               <br>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?>
-            </p>
+            <?php
+                           if (empty($row->Journal)) {
+                             ?>
+                              <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/> Download <?php echo $row->Title;?></a>
+                               <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?></p>
+                               <?php
+                           }else{ ?>
+                             <p><?php echo $row->Title;?></p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?></p>
+                                  <?php 
+                            }
+                            
+                           ?>
+              
+         
             <?php
                }?>
             <p><?php echo $links; ?></p>

@@ -136,7 +136,8 @@ $lang_ses = $this->session->userdata("site_lang");
 								<label>Field Subject<span style="color:red;">*</span></label>
 								<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Field Subject', 'id' => 'FIELD_SUBJECT', 'name' => 'FIELD_SUBJECT', 'value' => set_value('	FIELD_SUBJECT'), 'required' => 'required')); ?>
 								<label>Purpose Of using the website<span style="color:red;">*</span></label>
-								<?php
+								<?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Purpose Of using the website', 'id' => 'PURPOSE', 'name' => 'PURPOSE', 'value' => set_value('	PURPOSE'), 'required' => 'required')); ?>
+							<!-- 	<?php
 								$purpose = $this->Forestdata_model->get_purpose();
 								$options = array('' => '--Select-- ');
 								foreach ($purpose as $purposes) {
@@ -144,7 +145,7 @@ $lang_ses = $this->session->userdata("site_lang");
 								}
 								$PURPOSE_ID = set_value('PURPOSE_ID');
 								echo form_dropdown('PURPOSE_ID', $options, $PURPOSE_ID, 'id="id" class="tag-select form-control" data-placeholder="Choose a Education Institute..." ');
-								?>
+								?> -->
 								<label>Do you want to get notification of event?<span style="color:red;">*</span></label> <?php echo form_checkbox('NOTIFICATION', 1, False); ?><br>
 								
                                  

@@ -100,8 +100,8 @@
                         <tr>
                           <td class="heading"><b>First Name : </b></th>
                             <td><?php echo $visitor_info->FIRST_NAME;?></td>
-                            <td class="heading"><b>Phone :</b></th>
-                              <td><?php echo $visitor_info->PHONE;?></td>
+                            <td class="heading"></th>
+                              <td></td>
                             </tr>
                             <tr>
                               <td class="heading"><b>Last Name : </b></th>
@@ -116,8 +116,8 @@
                                 <tr>
                                    <td class="heading"><b>Education : </b></th>
                                     <td><?php echo $visitor_info->EDUCATION_DEGREE_NAME;?></td>
-                                         <td class="heading"><b>Fax : </b></th>
-                                        <td><?php echo $visitor_info->FAX;?></td>
+                                         <td class="heading"></th>
+                                        <td></td>
                                       </tr>
                                     <tr>
                                      <td class="heading"><b>Subject :</b></th>
@@ -133,10 +133,10 @@
                                               <td><?php echo $visitor_info->ADDRESS;?></td>
                                           </tr>
                                          <tr>
-                                              <td class="heading"><b>Institution Address : </b></th>
-                                          <td><?php echo $visitor_info->INSTITUTE_ADDRESS;?></td>
-                                             <td class="heading"><b>Zone :</b></td>
-                                            	<td> <?php echo $visitor_info->Zones; ?></td>
+                                              <td class="heading"><b>Purpose : </b></th>
+                                          <td><?php echo $visitor_info->PURPOSE;?></td>
+                                        <!--      <td class="heading"><b>Zone :</b></td>
+                                            	<td> <?php echo $visitor_info->Zones; ?></td> -->
                                             </tr>
                                                 </table>
                                               </th>

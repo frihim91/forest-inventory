@@ -243,12 +243,25 @@
                <div class="form-group">
                      
                      <label>Division<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Division"  class ="division" maxlength="64" placeholder="Division" />
+                     <!-- <input type="text" class="form-control input-sm" name ="Division"  class ="division" maxlength="64" placeholder="Division" /> -->
+                      <?php
+                     $ID_Divisions = $this->Forestdata_model->get_all_division();
+                     $options = array('' => '--Select Division--');
+                     foreach ($ID_Divisions as $ID_Division) {
+                     $options["$ID_Division->Division"] = $ID_Division->Division;
+                     }
+                     $ID_Division = set_value('Division');
+                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                     ?>
+
                   </div>
                   <div class="form-group">
                      
                      <label>District<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="District"  class ="District" maxlength="64" placeholder="District" />
+                    <!--  <input type="text" class="form-control input-sm" name ="District"  class ="District" maxlength="64" placeholder="District" /> -->
+                    <select class="form-control singleSelectExample" id="ID_District" style="width:620px;"  name="District">
+                     <option value="">Select District</option>
+                  </select>
                   </div>
                   <div class="form-group">
                      <h3>Ecological Zone</h3>
@@ -626,6 +639,86 @@
 
 
 
+</script>
+<script>
+// Setting default configuration here or you can set through configuration object as seen below
+$.fn.select2.defaults = $.extend($.fn.select2.defaults, {
+    allowClear: true, // Adds X image to clear select
+    closeOnSelect: true, // Only applies to multiple selects. Closes the select upon selection.
+    placeholder: 'Select...',
+    minimumResultsForSearch: 15 // Removes search when there are 15 or fewer options
+});
+
+$(document).ready(
+
+function () {
+
+    // Single select example if using params obj or configuration seen above
+    var configParamsObj = {
+        placeholder: 'Select an option...', // Place holder text to place in the select
+        minimumResultsForSearch: 3 // Overrides default of 15 set above
+    };
+    $(".singleSelectExample").select2(configParamsObj);
+});
+</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+       $('#ID_Division').change(function() {
+           var Division = $(this).val();
+           //var ID_Division = $(this).val();
+           //alert(Division);
+           var url = '<?php echo site_url('Portal/ajax_get_division') ?>';
+           $.ajax({
+               type: "POST",
+               url: url,
+               data: {Division:Division},
+               dataType: 'html',
+               success: function(data) {
+                   $('#ID_District').html(data);
+               }
+           });
+       });
+   });
+   
+   
+    $(document).ready(function() {
+       $('#ID_District').change(function() {
+           var District = $(this).val();
+           //alert(District);
+           var url = '<?php echo site_url('Portal/up_thana_by_dis_id') ?>';
+           $.ajax({
+               type: "POST",
+               url: url,
+               data: {District:District},
+               dataType: 'html',
+               success: function(data) {
+                   $('#THANA_ID').html(data);
+               }
+           });
+       });
+   });
+   
+   
+       $(document).ready(function() {
+       $('#THANA_ID').change(function() {
+           var THANAME = $(this).val();
+           //alert(District);
+           var url = '<?php echo site_url('Portal/up_union_by_dis_id') ?>';
+           $.ajax({
+               type: "POST",
+               url: url,
+               data: {THANAME:THANAME},
+               dataType: 'html',
+               success: function(data) {
+                   $('#union_id').html(data);
+               }
+           });
+       });
+   });
+   
+   
+   
+   
 </script>
 <script type="text/javascript">
 $(document).ready(function(){

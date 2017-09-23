@@ -86,7 +86,11 @@ return $imgFullName;
          </div>
          <form>
       </div>
+         <h3 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">  Family: <?php echo $total_genus_species->total_family;?>
+      Genus: <?php echo $total_genus_species->total_genus;?>  Species: <?php echo $total_genus_species->total_species;?></h3>
+   
       <div class="row">
+   
          <div class="panel-group" id="accordion">
             <?php 
 
@@ -94,12 +98,13 @@ return $imgFullName;
                foreach($family_details as $row)
                {
                ?>
+
             <div class="panel panel-default">
             <?php if($row->GENUSCOUNT != 0 || $row->SPECIESCOUNT !=0 || $row->AECOUNT !=0|| $row->RDCOUNT !=0|| $row->WDCOUNT !=0|| $row->EFCOUNT !=0): ?>
                <div class="panel-heading" style="width: 600px;">
                   <h4 class="panel-title">
                      <a data-toggle="collapse" style="font-family:Tahoma, Verdana, Segoe, sans-serif; font-weight: 400;font-size:20px;color:inherit;" data-parent="#accordion" href="#collapse<?php echo $i; ?>" >
-                     <?php echo $row->Family;?> </a> (<?php echo $row->GENUSCOUNT;?> Genus, <?php echo $row->SPECIESCOUNT;?> Species, <?php echo $row->AECOUNT;?> AE, <?php echo $row->RDCOUNT;?> RD
+                     <?php echo $row->Family;?></a> (<?php echo $row->GENUSCOUNT;?> Genus, <?php echo $row->SPECIESCOUNT;?> Species, <?php echo $row->AECOUNT;?> AE, <?php echo $row->RDCOUNT;?> RD
                      , <?php echo $row->WDCOUNT;?> WD, <?php echo $row->EFCOUNT;?> EF)
                   </h4>
                </div>
@@ -244,9 +249,17 @@ return $imgFullName;
                                        $botanical_description = $this->Forestdata_model->get_botanical_description($speciesIds->ID_Species);
                                        ?> 
                                     <?php foreach ($botanical_description as $row) : ?>
-                                    <?php if($botanical_description !=0) { ?>
+                                    <?php if($botanical_description !='') { ?>
                                     <b> 
                                     <img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $row->species.'.jpg'; ?>" class="speciesImg">: </b><?php echo $row->description;?>
+                                    <br>
+                                    <?php if($row->name_bangla!='') { ?>
+                                   
+                                    <b>Local Name: <?php echo $row->name_bangla;?></b>
+                                    <?php  break; ?>
+                                    <?php } else { ?>
+                                        <b>Local Name: No Data</b>
+                                    <?php  } ?>
                                     <?php  break; ?>
                                     <?php } else { ?>
                                      No Data

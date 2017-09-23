@@ -112,26 +112,26 @@
                <div class="col-md-3">
                   <div class="form-group">
                      <label>Title <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Title"  class ="title" maxlength="200" placeholder="Title" />
+                     <input type="text" class="form-control input-sm" name ="Title" value = "<?php echo (isset($Title))?$Title:'';?>" class ="title" maxlength="200" placeholder="Title" />
                   </div>
                </div>
                <div class="col-md-3">
                   <div class="form-group">
                      <label>Author  <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Author"  class ="author" maxlength="64" placeholder="Author" />
+                     <input type="text" class="form-control input-sm" name ="Author" value = "<?php echo (isset($Author))?$Author:'';?>" class ="author" maxlength="64" placeholder="Author" />
                   </div>
                </div>
                <div class="col-md-2">
                   <div class="form-group">
                      <label>Keyword  <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Keywords"  class ="keyword" maxlength="64" placeholder="Keywords" />
+                     <input type="text" class="form-control input-sm" name ="Keywords" value = "<?php echo (isset($Keywords))?$Keywords:'';?>" class ="keyword" maxlength="64" placeholder="Keywords" />
                   </div>
                </div>
 
                 <div class="col-md-2">
                   <div class="form-group">
                      <label>Year  <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Year"  class ="Year" maxlength="64" placeholder="Year" />
+                     <input type="text" class="form-control input-sm" name ="Year" value = "<?php echo (isset($Year))?$Year:'';?>"  class ="Year" maxlength="64" placeholder="Year" />
                   </div>
                </div>
                <div class="col-md-2">
@@ -191,30 +191,25 @@
                {
                  ?>
             <h4><?php echo $row->Title;?></h4>
-            <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/> Download <?php echo $row->Title;?></a>
-               <br>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?>
-            </p>
+           <?php
+                           if (empty($row->Journal)) {
+                             ?>
+                              <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/> Download <?php echo $row->Title;?></a>
+                               <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?></p>
+                               <?php
+                           }else{ ?>
+                             <p><?php echo $row->Title;?></p>
+                              <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?></p>
+                                  <?php 
+                            }
+                            
+                           ?>
+              
+         
             <?php
                }?>
             <p><?php echo $links; ?></p>
-            <!-- <h4>Scientific articles</h4>
-               <p>Here you can find links to articles providing information about GlobAllomeTree and associated tools.</p>
-               <p><a href=""> <?php
-                  $i=1;
-                  foreach ($reference_author as  $row){
-                  if($i==1){
-                  echo "$row->Author";
-                  }else{
-                  echo ",$row->Author";
-                  }
-                  $i++;
-                  }
-                      
-                  ?>
-                  </a>
-               
-                  iForest (early view) - doi: 10.3832/ifor0901-006
-               <p> -->
+           
          </div>
       </div>
    </div>

@@ -83,6 +83,8 @@ class Data extends CI_Controller
             as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
              from family as f ORDER BY f.Family
             ")->result();
+         $data['total_genus_species']    = $this->db->query("select count(*) total_family,(select count(*)  from species) total_species,(select count(*)  from genus) total_genus from family
+            ")->row();
         $data['content_view_page'] = 'portal/speciesData';
         $this->template->display_portal($data);
     }
@@ -283,6 +285,11 @@ class Data extends CI_Controller
         $this->template->display_portal($data);
         
     }
+
+
+
+
+    
 
 
 

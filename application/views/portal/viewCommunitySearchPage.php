@@ -29,66 +29,6 @@
    .breadcump_row a{
    color: white;
    }
-
-   .tip {
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  background: transparent;
-  border: 10px solid #ccc;
-}
-
-.tip-up {
-  top: -25px; /* Same as body margin top + border */
-  left: 10px;
-  border-right-color: transparent;
-  border-left-color: transparent;
-  border-top-color: transparent;
-}
-
-.tip-down {
-  bottom: -25px;
-  left: 10px;
-  border-right-color: transparent;
-  border-left-color: transparent;
-  border-bottom-color: transparent;  
-}
-
-.tip-left {
-  top: 10px;
-  left: -25px;
-  border-top-color: transparent;
-  border-left-color: transparent;
-  border-bottom-color: transparent;  
-}
-
-.tip-right {
-  top: 10px;
-  right: -25px;
-  border-top-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: transparent;  
-}
-
-.dialogbox .body {
-  position: relative;
-  max-width: 600px;
-  height: auto;
-  margin: 20px 10px;
-  padding: 5px;
-  background-color: #DADADA;
-  border-radius: 3px;
-  border: 5px solid #ccc;
-}
-
-.body .message {
-  min-height: 30px;
-  border-radius: 3px;
-  font-family: Arial;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #797979;
-}
 </style>
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor2.css" />
 <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.js"></script>
@@ -180,75 +120,101 @@
 <div class="col-md-12 page_content">
    
    <div class="col-sm-12">
-   <h3>Post Detail</h3>
+   <h3>Post Search</h3>
+     <ul class="nav nav-tabs">
+         <li class="active"><a data-toggle="tab" href="#home">Search</a></li>
+      </ul>
+      <div class="tab-content">
+         <div id="home" class="tab-pane fade in active">
+            <p> Search Documents by Title
+               Example searches
+               <br>
+               Example searches: <a href="#"> Title: Chittagong university campus</a>,
+          
+            </p>
+            <form action="<?php echo site_url('portal/search_community');?>" method = "post">
+               <div class="col-md-3">
+                  <div class="form-group">
+                     <label>Title <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" value = "<?php echo (isset($title))?$title:'';?>" name ="title"  class ="title" maxlength="200" placeholder="Title" />
+                  </div>
+               </div>
+           
+            
+               <div class="col-md-2">
+                  <div class="form-group">
+                     <br>
+                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
    
       <div class="col-sm-12 bdy_des">
-      
-         <div class="">
-         <h3><?php echo $viewDetailCommunityPage->title;?></h3>
-           <!--  <input type="hidden" name="user_id" value="<?php echo $id; ?>"/> -->
-              <p><?php echo $viewDetailCommunityPage->description;?></p>
-             <h3> Comment:</h3>
-             <div class="container">
-                <?php
+         <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
+            <div class="col-lg-4">
+               <h4>Total Post: <span id="summary-results-total">
+                  <?php
+                     if(isset($community_count)){
+                      ?>
+                  <?php echo count($community_count); ?>
+                  <?php 
+                     }else{ ?>
+                  <?php echo $this->db->count_all_results('community');?>
+                  <?php 
+                     }
+                     
+                     ?>
+                  </span> 
+               </h4>
+               <br><br>
+            </div>
+            <div class="col-lg-4">
+            <h4> Search criteria</h4>
+               <p> <?php
+                  if(isset($community_count)){
+                   ?>
+                  <?php echo (isset($title))?$title:'';?>
+                 
+                  <?php 
+                     }
+                     else{ ?>
+                  No criteria - All results are shown
+                  <?php 
+                     }
+                     
+                     ?>
+               </p>
+
               
-               foreach($community_comment as $row)
+              
+            </div>
+
+               <div class="col-lg-4">
+         
+
+               <h4> <a href="<?php echo site_url('portal/viewAddCommunityPage'); ?>" class="btn btn-info" role="button">Add New Post</a></h4>
+              
+            </div>
+         </div>
+         <div class="">
+       
+            
+            <?php
+              
+               foreach($community as $row)
                  
                {
                  ?>
-  <div class="dialogbox">
-    <div class="body">
-      <span class="tip tip-up"></span>
-      <div class="message">
-        <span>
-                 <p><?php echo $row->comment;?>
-                   By <?php echo $row->LAST_NAME;?>
-
-                    <?php echo date('l,F j,Y- H:i:s', strtotime($row->date)); ?>
-                    </p>
-      
+             <h3> <a href="<?php echo site_url('Portal/viewDetailCommunityPage/'.$row->id); ?>"><?php echo $row->title;?></a></h3>
+             <span><?php echo date('l,F j,Y', strtotime($row->post_date)); ?> <?php echo $row->LAST_NAME;?></span>
            
-            </span>
-      </div>
-    </div>
-  </div>
-  <?php
+            <?php
                }?>
-  
- 
-
-  
-
-</div>
-
-         
-             <!--  <p><?php echo $viewDetailCommunityPage->comment;?>
-              By <?php echo $viewDetailCommunityPage->LAST_NAME;?> 
-              <?php echo date('l,F j,Y- H:i:s', strtotime($viewDetailCommunityPage->date)); ?></p> -->
-               
+            <p><?php echo $links; ?></p>
+          
          </div>
-           <?php echo form_open_multipart('Portal/addComment', "class='form-vertical'"); ?>
-            
-            <div class="row">
-               <div class="col-md-6">
-                 
-                  <?php echo $this->session->flashdata('msg'); ?>
-                  <?php echo $this->session->flashdata('Error'); ?>
-                  <input type="hidden" value="<?php echo $coummunity_id;?>" name="COMMINITY_ID">
-                  
-                  <div class="form-group">
- 
-                     <label>Comment<span style="color:red;">*</span></label>
-                  <?php echo form_textarea(array('name' => 'comment', "class" => "redactor form-control", 'placeholder' => 'Add details', 'rows' => '50', 'required' => 'required')); ?>  
-                  </div><br>
-                  <div class="submit_block" align="right">
-                           <input type="submit" value="Post Comment" class="btn-success btn"/>
-                        </div>
-                        <?php echo form_close(); ?>
-               </div>
-            
-   
-            </div>
       </div>
    </div>
 </div>

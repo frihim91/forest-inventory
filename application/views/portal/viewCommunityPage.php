@@ -108,7 +108,7 @@
    <div class="row">
       <div class="breadcump-wrapper">
          <div class="wrapper">
-            <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("comunity"); ?>
+            <div style="font-size:25px;" class="breadcump_row"><?php echo $this->lang->line("community"); ?>
             </div>
             <div class="breadcump_row"><a href="<?php echo base_url() ?>"><?php echo $this->lang->line("home"); ?></a> ><?php echo $this->lang->line("community"); ?>
             </div>
@@ -118,9 +118,37 @@
 </div>
 </div>
 <div class="col-md-12 page_content">
-   
+    <h3>Post Search</h3>
    <div class="col-sm-12">
-   <h3>Post List</h3>
+  
+     <ul class="nav nav-tabs">
+         <li class="active"><a data-toggle="tab" href="#home">Search</a></li>
+      </ul>
+      <div class="tab-content">
+         <div id="home" class="tab-pane fade in active">
+            <p> Search Documents by Title
+               <br>
+               Example searches: <a href="#"> Title: Chittagong university campus</a>,
+              
+            </p>
+            <form action="<?php echo site_url('portal/search_community');?>" method = "post">
+               <div class="col-md-3">
+                  <div class="form-group">
+                     <label>Title <span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="title"  class ="title" maxlength="200" placeholder="Title" />
+                  </div>
+               </div>
+           
+            
+               <div class="col-md-2">
+                  <div class="form-group">
+                     <br>
+                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
    
       <div class="col-sm-12 bdy_des">
          <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
@@ -137,7 +165,9 @@
               
             </div>
          </div>
+          
          <div class="">
+         <h3>Post List</h3>
        
             
             <?php
@@ -157,4 +187,5 @@
       </div>
    </div>
 </div>
+
 

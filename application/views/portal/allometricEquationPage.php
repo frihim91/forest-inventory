@@ -128,7 +128,8 @@
             </p>
             <p>
             </p>
-            <form action="<?php echo site_url('data/search_allometricequation_key');?>" method = "post">
+            <!-- <form action="<?php echo site_url('data/search_allometricequation_key');?>" method = "post"> -->
+        <form action="<?php echo site_url('portal/search_allometricequation_all');?>" method = "get">
                <div class="col-md-6">
                  <div class="form-group">
                      <label>AE ID<span style="color:red;"></span></label>
@@ -137,22 +138,12 @@
                   <div class="form-group">
                      <label>Keyword<span style="color:red;">*</span></label>
                      <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>"  maxlength="64" placeholder="Keyword" /><br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                     <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            </form>
+           
          </div>
-         <div id="menu1" class="tab-pane fade
-            <?php if(isset($searchType)){
-               if($searchType==2)
-               {
-                 echo 'in active';
-               }
-               else {
-                 echo '';
-               }
-               }  ?>
-            ">
+         <div id="menu1" class="tab-pane fade">
             <p> Search allometric equations by family, genus or species.
                Example searches
                <br>
@@ -161,7 +152,7 @@
                <a href="#">Aegiceras</a>,
                <a href="#">Aegiceras corniculatum</a>,
             </p>
-            <form action="<?php echo site_url('portal/search_allometricequation_tax');?>" method = "post">
+           
                <div class="col-md-6">
              
                   <div class="form-group">
@@ -176,29 +167,19 @@
                      <label>Species<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm s" name ="Species" value = "<?php echo (isset($Species))?$Species:'';?>" maxlength="64"  class ="Species" placeholder="Species" />
                      <br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                 <!--     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            </form>
+            
          </div>
-         <div id="menu2" class="tab-pane fade
-            <?php if(isset($searchType)){
-               if($searchType==3)
-               {
-                 echo 'in active';
-               }
-               else {
-                 echo '';
-               }
-               }  ?>
-            ">
+         <div id="menu2" class="tab-pane fade">
             <p> Search allometric equations by tree location and biome.Example searches
                <br>
                Example searches: <a href="#">Biome (FAO):</a>,
                <a href="#">Tropical moist forest</a>,
                <a href="#">Country: Bangladesh</a>,
             </p>
-            <form action="<?php echo site_url('portal/search_allometricequation_loc');?>" method = "post">
+        
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Division<span style="color:red;"></span></label>
@@ -210,29 +191,20 @@
                      $options["$ID_Division->Division"] = $ID_Division->Division;
                      }
                      $ID_Division = set_value('Division');
-
-                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Reference..." ');
+                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                      ?>     
                   </div>
                   <div class="form-group">
                      <label>District<span style="color:red;"></span></label>
          
                        <select class="form-control singleSelectExample" id="ID_District" style="width:620px;"  name="District">
-
-                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" class="tag-select form-control" data-placeholder="Choose a Reference..." ');
-                     ?>
-                  </div>
-                  <div class="form-group">
-                     <label>District<span style="color:red;"></span></label>
-
-                       <select class="form-control" id="ID_District" name="District">
-
+                     <option value="">Select District</option>
                   </select>
                   </div>
                   <div class="form-group">
-
+            
                      <label>FAO Global Ecological Zone <span style="color:red;"></span></label><br>
-
+      
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
                        <!--  <select class="form-control singleSelectExample" name="EcoZones" style="width:620px;" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>">
@@ -242,19 +214,18 @@
                             <?php endforeach; ?>
                         </select> -->
                      <?php
-                     
                      $EcoZoness = $this->Forestdata_model->get_all_ecological_zones();
                      $options = array('' => '--Select Ecological Zone--');
                      foreach ($EcoZoness as $EcoZones) {
                      $options["$EcoZones->EcoZones"] = $EcoZones->EcoZones;
                      }
                      $EcoZones = set_value('EcoZones');
-                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Reference..." ');
+                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
                      ?>     
 
 
                      <label>BFI Zone <span style="color:red;"></span></label><br>
-
+      
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
                      <!--    <select class="form-control singleSelectExample" name="Zones" style="width:620px;" value = "<?php echo (isset($Zones))?$Zones:'';?>">
@@ -271,25 +242,15 @@
                      $options["$Zones->Zones"] = $Zones->Zones;
                      }
                      $Zones = set_value('Zones');
-                     echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Reference..." ');
+                     echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
                      ?> 
                      <br><br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                    <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            </form>
+           
          </div>
-         <div id="menu3" class="tab-pane fade
-            <?php if(isset($searchType)){
-               if($searchType==4)
-               {
-                 echo 'in active';
-               }
-               else {
-                 echo '';
-               }
-               }  ?>
-            ">
+         <div id="menu3" class="tab-pane fade">
             <p> Search allometric equations by author, year, and reference.
                Example searches
                <br>
@@ -298,7 +259,7 @@
                <a href="#"> Latif, M.A</a>,
                <a href="#"> Year: 2004</a>,
             </p>
-            <form action="<?php echo site_url('portal/search_allometricequation_ref');?>" method = "post">
+           <!--  <form action="<?php echo site_url('portal/search_allometricequation_ref');?>" method = "post"> -->
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reference <span style="color:red;"></span></label>
@@ -312,13 +273,19 @@
                      <label>Year  <span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="Year" value = "<?php echo (isset($Year))?$Year:'';?>" maxlength="64"  class ="year" placeholder="Year" />
                      <br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                     <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            </form>
+               <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
+           
+
          </div>
       </div>
    </div>
+     <div class="col-lg-6">
+         <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+         </div>
+          </form>
 
    <div class="col-sm-12 bdy_des">
       <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
@@ -352,47 +319,100 @@
     <div class="col-lg-6">
 
       <h4> Search criteria</h4>
-        <p> <?php
+        <p>  <?php
                            if(isset($allometricEquationView_count)){
                             ?>
-                             <?php
+                           <p style="padding-left: 479px;" class="btn_remove_class"><a href="?">Clear all search criteria</a></p>
+                       <?php if (!empty($ID_AE)) {
+                              echo "<b>AE ID </b> : ";
+                               }  echo (isset($ID_AE))?$ID_AE:''; if (!empty($ID_AE)) {
+                               echo "<br>";
+                              }
+                              ?>
 
-                            if (isset($ID_AE)) // or is true 
-                            {
-                              echo "AE ID:$ID_AE";
-                            }
-                            else  // elseif is set to false
-                            {
-                              echo "";
-                              
-                            }
-                            ?>
-                             <?php
+                             <?php if (!empty($keyword)) {
+                              echo "<b>keyword</b> : ";
+                               } echo (isset($keyword))?$keyword:'';  echo'<a style="float:right; cursor:pointer" class="btn_remove_class" >remove filter</a><br>'; if (!empty($keyword)) {
+                               echo "<br>";
+                              }
+                              ?>
+                              <?php
 
-                            if (isset($keyword)) // or is true 
-                            {
-                              echo "Keyword:$keyword";
-                            }
-                            else  // elseif is set to false
-                            {
-                              echo "";
-                              
-                            }
-                            ?>
-                            <?//php echo (isset($ID_AE))?'AE ID:'.$ID_AE:'';?>
-                            <?//php echo (isset($keyword))?$keyword:'';?>
-                            
-                            <?php echo (isset($Family))?$Family:'';?>
-                            <?php echo (isset($Genus))?$Genus:'';?>
-                            <?php echo (isset($Species))?$Species:'';?>
-                             <?php echo (isset($District))?$District:'';?>
-                             <?php echo (isset($Division))?$Division:'';?>
-                            <?php echo (isset($EcoZones))?$EcoZones:'';?>
-                            <?php echo (isset($Reference))?$Reference:'';?>
-                            <?php echo (isset($Author))?$Author:'';?>
-                            <?php echo (isset($Zones))?$Zones:'';?>
+                              ?>
 
-                            <?php echo (isset($Year))?$Year:'';?>
+                             <?php if (!empty($Family)) {
+                             
+                              echo "<b>Family </b> : ";
+                               }  echo (isset($Family))?$Family:''; echo'<a href="'.site_url().'/Portal/remove_family/'.$this->uri->segment(5).'" style="float:right; cursor:pointer">remove filter</a>'; if (!empty($Family)) {
+                               echo "<br>";
+                              }
+                              ?>
+
+
+                               
+
+                               <?php if (!empty($Genus)) {
+                              echo "<b>Genus</b> : ";
+                               } echo (isset($Genus))?$Genus:''; if (!empty($Genus)) {
+                               echo "<br>";
+                              }
+                              ?>
+
+
+                               <?php  if (!empty($Species)) {
+                              echo "<b>Species</b> : ";
+                               } echo (isset($Species))?$Species:''; if (!empty($Species)) {
+                               echo "<br>";
+                              }
+                              ?>
+
+                               <?php if (!empty($District)) {
+                              echo "<b>District</b> : ";
+                               } echo (isset($District))?$District:''; if (!empty($District)) {
+                               echo "<br>";
+                              }
+                              ?>
+
+                                <?php if (!empty($Division)) {
+                              echo "<b>Division</b> : ";
+                               } echo (isset($Division))?$Division:''; if (!empty($Division)) {
+                               echo "<br>";
+                              }
+                              ?>
+
+                               <?php if (!empty($EcoZones)) {
+                              echo "<b>EcoZones</b> : ";
+                               } echo (isset($EcoZones))?$EcoZones:''; if (!empty($EcoZones)) {
+                               echo "<br>";
+                              }
+                              ?>
+
+                               <?php if (!empty($Reference)) {
+                              echo "<b>Reference</b> : ";
+                               } echo (isset($Reference))?$Reference:''; if (!empty($Reference)) {
+                               echo "<br>";
+                              }
+                              ?>
+
+                               <?php if (!empty($Author)) {
+                              echo "<b>Author</b> : ";
+                               } echo (isset($Author))?$Author:''; if (!empty($Author)) {
+                               echo "<br>";
+                              }
+                              ?>
+
+                                <?php if (!empty($Zones)) {
+                              echo "<b>Zones</b> : ";
+                               } echo (isset($Zones))?$Zones:''; if (!empty($Zones)) {
+                               echo "<br>";
+                              }
+                              ?>
+                               <?php if (!empty($Year)) {
+                              echo "<b>Year</b> : ";
+                               } echo (isset($Year))?$Year:''; if (!empty($Year)) {
+                               echo "<br>";
+                              }
+                              ?>
 
 
                              <?php
@@ -406,10 +426,6 @@
                             }
 
                            ?></p>
-
-
-
-
 
     </div>
 
@@ -440,25 +456,56 @@
          <div id="results-list" class="tab-pane fade in active">
             <?php
                foreach($allometricEquationView as $row)
+                // echo '<pre>';
+                // print_r($allometricEquationView);
+                // exit;
                {
-                 ?>
-            <div class="panel panel-default">
-               <div class="panel-heading">Allometric Equation
-                  <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
-               </div>
-               <div class="panel-body">
-                  <p style="padding-left:3px;"><b>Equation: <code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
-                  <p style="padding-left:3px;"><b>Output: </b><?php echo $row->Output;?></p>
-                  <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
-                  <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
-                  <p style="padding-left:3px;"><b>Author: </b><?php echo $row->Author;?></p>
-                  <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
-                  <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
-                  <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
-                  <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>
-               </div>
-            </div>
+                ?>
+                <?php
+                if($row->Family == 'Myrsinaceae'){
+                ?>
+                  <div class='panel panel-default content_area <?php echo $row->Family;?>'>
+                     <div class="panel-heading">Allometric Equation
+                        <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+                     </div>
+                     <div class="panel-body">
+                        <p style="padding-left:3px;"><b>Equation: <code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
+                        <p style="padding-left:3px;"><b>Output: </b><?php echo $row->Output;?></p>
+                        <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
+                        <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
+                        <p style="padding-left:3px;"><b>Author: </b><?php echo $row->Author;?></p>
+                        <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
+                        <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
+                        <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
+                        <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>
+                     </div>
+                  </div>
+                  <?php
+                  }
+                  ?>
+
+                  <?php
+                  if($row->Family == 'Lythraceae'){
+                  ?>
+                  <div class='panel panel-default content_area <?php echo $row->Family;?>'>
+                     <div class="panel-heading">Allometric Equation
+                        <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+                     </div>
+                     <div class="panel-body">
+                        <p style="padding-left:3px;"><b>Equation: <code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
+                        <p style="padding-left:3px;"><b>Output: </b><?php echo $row->Output;?></p>
+                        <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
+                        <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
+                        <p style="padding-left:3px;"><b>Author: </b><?php echo $row->Author;?></p>
+                        <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
+                        <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
+                        <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
+                        <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>
+                     </div>
+                  </div>
+                  <?php }?>
             <?php
+               
                }?>
             <p> <?php echo $links; ?></p>
          </div>
@@ -482,7 +529,6 @@
       </script>
    </div>
 </div>
-
 <script type="text/javascript">
    $(document).on('keypress', '#Genus', function () {
 
@@ -529,6 +575,13 @@
                   $("#District" + id).val(ui.item.id);
               }
           });
+      });
+
+     $(document).on('click', '.btn_remove_class', function () {
+          var id = $(this).attr('id');
+          alert(id);
+          $('.'+id).remove();
+          $(this).remove();
       });
 
 
@@ -620,7 +673,7 @@
          L.geoJson(data,{
            pointToLayer: function(feature,latlng){
              var marker = L.marker(latlng,{icon: ratIcon});
-            marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4>'+'Species Represented'+'<p>'+feature.properties.species_desc+'</p> <b>FAO Biomes</b> <br>'+feature.properties.FAOBiomes+'</p> <b>Output</b> <br>'+feature.properties.output);
+             marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.output);
              return marker;
            }
          }).addTo(map);
@@ -665,7 +718,7 @@
         //  });
        alert(Url);
         });
-
+<<<<<<< HEAD
 
 </script>
 <script>
@@ -708,8 +761,8 @@ function () {
            });
        });
    });
-
-
+   
+   
     $(document).ready(function() {
        $('#ID_District').change(function() {
            var District = $(this).val();
@@ -726,8 +779,8 @@ function () {
            });
        });
    });
-
-
+   
+   
        $(document).ready(function() {
        $('#THANA_ID').change(function() {
            var THANAME = $(this).val();
@@ -744,4 +797,10 @@ function () {
            });
        });
    });
+   
+   
+   
+   
+</script>
+
 

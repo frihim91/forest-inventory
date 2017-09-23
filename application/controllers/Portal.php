@@ -172,6 +172,8 @@ class Portal extends CI_Controller
             
             $config['upload_path']   = 'resources/images/home_page_slider/';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['max_width'] = '887';
+            $config['max_height'] = '335';
             $config['file_name']     = $_FILES['main_image']['name'];
             
             //Load upload library and initialize configuration
@@ -644,7 +646,228 @@ class Portal extends CI_Controller
         $this->template->display_portal($data);
         
     }
+
+
+    public function search_allometricequation_all($url = NULL,$removedAttr=NULL)
+    {
+        
+     if($url==NULL)
+     {
+        $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
+        $data['currentUrl']=$currentUrl;
+     }
+        
+        
+//var_dump($_POST);//exit;
+        
+        $Genus   = $this->input->get('Genus');
+        $Family   = $this->input->get('Family');
+        $Species   = $this->input->get('Species');
+        $District  = $this->input->get('District');
+        $EcoZones = $this->input->get('EcoZones');
+        $Division = $this->input->get('Division');
+        $Zones = $this->input->get('Zones');
+        $Reference = $this->input->get('Reference');
+        $Author    = $this->input->get('Author');
+        $Year      = $this->input->get('Year');
+        $ID_AE   = $this->input->get('ID_AE');
+        $keyword = $this->input->get('keyword');
+       
+       $searchFields=array(
+            'f.Family'=>$Family,
+            'g.Genus'=>$Genus,
+            's.Species'=>$Species,
+            'dis.District'=>$District,
+            'eco.EcoZones'=>$EcoZones,
+            'zon.Zones'=>$Zones,
+            'd.Division'=>$Division,
+            'ref.Reference'=>$Reference,
+            'ref.Author'=>$Author,
+            'ref.Year'=>$Year,
+            'a.ID_AE'=>$ID_AE
+       
+            );
+
+
+
+
+        if(!empty($ID_AE))
+        {
+            $string="a.ID_AE=$ID_AE";
+        }
+        else 
+        {
+                $string=$this->searchAttributeString($searchFields);
+        }
+       
+
+
+        if(!empty($string))
+        {
+            $this->session->set_userdata('aeAllSearchString', $string);
+        }
+        else 
+        {
+            $string=$this->session->userdata('aeAllSearchString');
+        }
+
+         if(!empty($keyword)||!empty($ID_AE)|| !empty($Species) || !empty($Family) || !empty($Genus) || !empty($District) || 
+            !empty($EcoZones) || !empty($Division) || !empty($Zones)
+            ||!empty($Reference) || !empty($Author) || !empty($Year) )
+        {
+            $this->session->set_userdata('aeSearchStringSpecies', $Species);
+            $this->session->set_userdata('aeSearchStringFamily', $Family);
+            $this->session->set_userdata('aeSearchStringGenus', $Genus);
+            $this->session->set_userdata('aeSearchStringDis', $District);
+            $this->session->set_userdata('aeSearchStringEco', $EcoZones);
+            $this->session->set_userdata('aeSearchStringZone', $Zones);
+            $this->session->set_userdata('aeSearchStringDiv', $Division);
+            $this->session->set_userdata('aeSearchStringRef', $Reference);
+            $this->session->set_userdata('aeSearchStringAuth', $Author);
+            $this->session->set_userdata('aeSearchStringYear', $Year);
+            $this->session->set_userdata('aeSearchStringKeyword', $keyword);
+            $this->session->set_userdata('aeSearchStringAE', $ID_AE);
+
+        }
     
+        else 
+        {
+            $Species=$this->session->userdata('aeSearchStringSpecies');
+            $Family=$this->session->userdata('aeSearchStringFamily');
+            $Genus=$this->session->userdata('aeSearchStringGenus');
+            $District=$this->session->userdata('aeSearchStringDis');
+            $EcoZones=$this->session->userdata('aeSearchStringEco');
+            $Zones=$this->session->userdata('aeSearchStringZone');
+            $Division=$this->session->userdata('aeSearchStringDiv');
+            $Reference=$this->session->userdata('aeSearchStringRef');
+            $Author=$this->session->userdata('aeSearchStringAuth');
+            $Year=$this->session->userdata('aeSearchStringYear');
+            $keyword=$this->session->userdata('aeSearchStringKeyword');
+            $Species=$this->session->userdata('aeSearchStringAE');
+           
+        }
+      
+        
+        $this->load->library('pagination');
+        $config             = array();
+        // $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_tax/".$string;
+        $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_all";
+        //$total_ef           = $this->db->count_all("ae");
+        
+        //$config["total_rows"] = $total_ef;
+         $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where $string 
+         order by a.ID_AE desc
+          ")->num_rows();
+        // print_r($this->db->last_query());exit;
+        // echo $total_ae;exit;
+        $config["total_rows"] =$total_ae;
+        // $config["total_rows"] = 800;
+        
+        $config["per_page"]        = 20;
+        $config["uri_segment"]     = 3;
+        $limit                     = $config["per_page"] = 20;
+        //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+        $config['last_link']       = 'Last';
+        $config['uri_protocol'] = 'AUTO';
+         $config['url_suffix'] = '.html';
+        // 'suffix' => '?' . http_build_query($_GET, '', "&")
+        //pagination style end
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        
+        $data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where $string
+         order by a.ID_AE desc LIMIT $limit OFFSET $page
+        ")->result();
+
+
+        $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON a.Family=f.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON a.Division=d.ID_Division
+         LEFT JOIN district dis ON a.District =dis.ID_District
+         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         where $string
+         order by a.ID_AE desc 
+        ")->result();
+
+       // $viewdata['search_result_count'] = count($data['allometricEquationView'] );
+        $data["links"]                  = $this->pagination->create_links();
+        // $data["searchType"]=2;
+        // $data["searchType"]=3;
+        // $data["searchType"]=4;
+        $data['keyField'] = $searchFields;
+        $data['Species']=$Species;
+        $data['Family']=$Family;
+        $data['Genus']=$Genus;
+        $data['District']=$District;
+        $data['Division']=$Division;
+        $data['EcoZones']=$EcoZones;
+        $data["Reference"]=$Reference;
+        $data["Author"]=$Author;
+        $data["Year"]=$Year;
+        $data['keyword']=$keyword;
+        $str = $this->uri->segment(5);
+        $data['ID_AE']=$ID_AE;
+        $data['content_view_page']      = 'portal/allometricEquationPage';
+        $this->template->display_portal($data);
+        
+    }
+
+   public function remove_family()
+    {
+        $prefix = '&Family=Myrsinaceae';
+        $str = $this->uri->segment(5);
+
+        if (substr($str, 0, strlen($prefix)) == $prefix) {
+         $str = substr($str, strlen($prefix));
+        }
+        //  $data['content_view_page']      = 'portal/allometricEquationPage';
+        // $this->template->display_portal($data);
+        
+        //echo $str;exit();
+    }
     
     
 
@@ -976,6 +1199,9 @@ class Portal extends CI_Controller
             as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
              from family as f ORDER BY f.Family
             ")->result();
+
+        $data['total_genus_species']    = $this->db->query("select count(*) total_family,(select count(*)  from species) total_species,(select count(*)  from genus) total_genus from family
+            ")->row();
         $data['content_view_page'] = 'portal/speciesData';
         $this->template->display_portal($data);
     }
@@ -3843,6 +4069,14 @@ class Portal extends CI_Controller
 
     public function viewLibraryPage()
     {
+        $userSession=$this->session->userdata("user_logged");
+        if(empty($userSession))
+        {
+            redirect('accounts/userLogin');
+        }
+        else 
+        {
+        $id=$userSession['USER_ID'];
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/viewLibraryPage";
@@ -3886,6 +4120,7 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
     }
+}
 
 
     private function pr($data)
@@ -3941,12 +4176,100 @@ class Portal extends CI_Controller
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data['community']           = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
-        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID order by c.id asc LIMIT $limit OFFSET $page")->result();
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID order by c.id desc LIMIT $limit OFFSET $page")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewCommunityPage';
         $this->template->display_portal($data);
     }
     }
+
+
+       public function search_community()
+    {
+        $title = $this->input->post('title');
+        
+        $searchFields=array(
+            'c.title'=>$title
+            
+            );
+        
+        $string=$this->searchAttributeString($searchFields);
+         if(!empty($string))
+        {
+            $this->session->set_userdata('ComfSearchString', $string);
+        }
+        else 
+        {
+            $string=$this->session->userdata('ComfSearchString');
+        }
+          if(!empty($title))
+        {
+            $this->session->set_userdata('comSearchStringTitle', $title);
+          
+
+        }
+    
+        else 
+        {
+            $title=$this->session->userdata('comSearchStringTitle');
+          
+           
+        }
+        $this->load->library('pagination');
+        $config             = array();
+        $config["base_url"] = base_url() . "index.php/portal/search_community";
+      
+         $total_ae=$this->db->query("SELECT c.* from community c
+         where $string order by c.title desc
+          ")->num_rows();
+        // print_r($this->db->last_query());exit;
+        // echo $total_ae;exit;
+        $config["total_rows"] =$total_ae;
+
+        // $config["total_rows"] = 800;
+        
+        $config["per_page"]        = 10;
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $limit                     = $config["per_page"];
+        $config["uri_segment"] = 3;
+        //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+        //pagination style end
+         $this->pagination->initialize($config);
+         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        // $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
+         $data['community'] = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.id desc LIMIT $limit OFFSET $page
+         
+         ")->result();
+         $data['community_count'] = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.id desc
+        ")->result();
+         $data["links"]                  = $this->pagination->create_links();
+        $data["title"]=$title;
+      
+         $data['content_view_page']      = 'portal/viewCommunitySearchPage';
+         $this->template->display_portal($data);
+        
+    }
+    
 
 
 
@@ -4037,7 +4360,7 @@ class Portal extends CI_Controller
             //$data['IMAGE_PATH'] = 'asdasdsad';
 
             $this->utilities->insertData($data, 'community_comment');
-            $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Comment Post successfully.<button data-dismiss="alert" class="close" type="button">×</button></div>');
+            $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Comment Posted successfully.<button data-dismiss="alert" class="close" type="button">×</button></div>');
             redirect('Portal/viewDetailCommunityPage/'.$this->input->post('COMMINITY_ID'));
         }
         

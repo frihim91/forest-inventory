@@ -87,7 +87,7 @@
             <div class="col-md-8">
                <div class="col-md-12">
                   <label for="firstname">Image</label> 
-               <input type="file" name="main_image" required="required" class="form-control">
+               <input type="file" name="main_image" id="file"  required="required" class="form-control">
                 <p style="color:red;font-size:16px;padding-top:10px;">(Maximum Image size:887*335)</p>
                </div>
             </div>
@@ -117,6 +117,62 @@
            $(this).val(val.replace(/[^\d]/g, ''));
        });
    });
+</script>
+
+<script type="text/javascript">
+   var _URL = window.URL || window.webkitURL;
+
+$("#file").change(function(e) {
+    
+    var image, file;
+
+
+    if ((file = this.files[0])) {
+       
+        image = new Image();
+        
+        image.onload = function() {
+          var widthImg=this.width;
+          var heightImg=this.height;
+          //alert(heightImg);
+           if(widthImg<400 && heightImg<250)
+           {
+            alert("Image Is So Small.Minimum Size is Height:400 Width:250");
+            $("#file").val("");
+           }
+           else if(widthImg>887 && heightImg>335)
+           {
+            alert("Image Is So Large.Maximum Size is Height:887 Width:335");
+            $("#file").val("");
+           }
+          //alert(widthImg);
+              
+            //alert("The image width is " +this.width + " and image height is " + this.height);
+        };
+  
+        image.src = _URL.createObjectURL(file);
+
+
+    }
+
+});
+</script>
+
+
+ <script type="text/javascript">
+function Upload() {
+    //Get reference of FileUpload.
+var fileUpload = document.getElementById("fileUpload");
+
+//or however you get a handle to the IMG
+var width = img.clientWidth;
+var height = img.clientHeight;
+   if (height > 100 || width > 100) {
+                        alert("Height and Width must not exceed 100px.");
+                        return false;
+                    }
+                   
+}
 </script>
 <script>
    $(document).ready(function() {

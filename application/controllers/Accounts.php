@@ -268,7 +268,7 @@
 
               $regInfo = array(
                 'EDUCATION_ID' => $this->input->post('EDUCATION_ID'),
-                'PURPOSE_ID' => $this->input->post('PURPOSE_ID'),
+                'PURPOSE' => $this->input->post('PURPOSE'),
                 'USERPW' => $this->input->post('USERPW'),
                 'TITLE' => str_replace("'", "''", $this->input->post("TITLE")),
                 'FIRST_NAME' => str_replace("'", "''", $this->input->post("FIRST_NAME")),

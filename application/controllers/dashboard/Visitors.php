@@ -75,6 +75,32 @@
         $this->template->display($data);
     }
 
+
+     public function commentList()
+    {
+        $data['comment']           = $this->db->query("SELECT c.*,v.FIRST_NAME,v.LAST_NAME,v.USER_ID FROM community_comment c 
+            left join visitor_info v on v.USER_ID=c.user_id order by c.id DESC")->result();
+        $data['content_view_page'] = 'setup/commentList/all_comment';
+        $this->template->display($data);
+    }
+
+        public function deleteComment($id)
+    {
+        
+        $attr = array(
+            "id" => $id
+        );
+        //return $this->utilities->deleteRowByAttribute("family", $attr);
+        if ($this->utilities->deleteRowByAttribute("community_comment", $attr)) {
+            $this->session->set_flashdata('Error', ' Comment Deleted Successfully.');
+        } else {
+            $this->session->set_flashdata('Error', 'Comment Not Deleted Successfully.');
+        }
+        
+    }
+    
+
+
         public function addPurpose()
     {
         if (isset($_POST['PURPOSE_NAME'])) {
