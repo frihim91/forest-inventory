@@ -11,10 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Portal extends CI_Controller
 {
-    
+
     function __construct()
     {
-      
+
         parent::__construct();
          /*if (!isset($_SESSION['user_loggeed'])) {
          redirect('/');
@@ -25,7 +25,7 @@ class Portal extends CI_Controller
         $this->load->model('Forestdata_model');
         $this->load->helper(array(
             'html',
-            
+
             'form'
         ));
         $this->load->library('form_validation');
@@ -33,16 +33,167 @@ class Portal extends CI_Controller
         $this->load->helper('url');
         $this->load->library("pagination");
     }
-    
-    
-    
+    private function getDtByAttrAe($attr)
+    {
+      $returnArray=array();
+      switch ($attr) {
+        case "ID_AE":
+        $returnArray[]='Allometric Equation';
+        $returnArray[]='a.';
+        break;
+        case "Family":
+        $returnArray[]='Family';
+        $returnArray[]='f.';
+        break;
+        case "Genus":
+        $returnArray[]='Genus';
+        $returnArray[]='g.';
+        break;
+        case "Species":
+        $returnArray[]='Species';
+        $returnArray[]='s.';
+        break;
+        case "Division":
+        $returnArray[]='Division';
+        $returnArray[]='d.';
+        break;
+        case "District":
+        $returnArray[]='District';
+        $returnArray[]='d2.';
+        break;
+        case "EcoZones":
+        $returnArray[]='Ecological zones';
+        $returnArray[]='e.';
+        break;
+        case "Reference":
+        $returnArray[]='Reference';
+        $returnArray[]='r.';
+        break;
+        case "Author":
+        $returnArray[]='Author';
+        $returnArray[]='r.';
+        break;
+        case "Zones":
+        $returnArray[]='Zones';
+        $returnArray[]='z.';
+        break;
+        case "Year":
+        $returnArray[]='Year';
+        $returnArray[]='r.';
+        break;
+        default:
+        $returnArray[]='';
+        $returnArray[]='';
+      }
+      return $returnArray;
+    }
+
+    public function searchAllometricEquationAll()
+    {
+      //  $r=$this->getDtByAttrAe('Author');
+      //$this->pr($_GET);
+      if(!empty($_GET)){
+        $searchFieldArray=$_GET;
+        if(!isset($searchFieldArray['keyword']))
+        {
+            $searchFieldArray['keyword']='';
+        }
+        if($searchFieldArray['keyword']!='')
+        {
+            foreach($searchFieldArray as $key=>$value)
+            {
+              if($key!='keyword')
+              {
+                $r=$this->getDtByAttrAe($key);
+                $validSearchKey[$r[1].$key]=$searchFieldArray['keyword'];
+                $fieldName[]=$r[0];
+                $filedNameValue[$r[0].'/'.$key]=$searchFieldArray['keyword'];
+              }
+            }
+        }
+        else
+        {
+          foreach($searchFieldArray as $key=>$value)
+          {
+            if($value!='')
+            {
+              $r=$this->getDtByAttrAe($key);
+              $validSearchKey[$r[1].$key]=$value;
+              $fieldName[]=$r[0];
+              $filedNameValue[$r[0].'/'.$key]=$value;
+            }
+          }
+        }
+      //  $this->pr($filedNameValue);
+        if(!isset($filedNameValue))
+        {
+          redirect('data/allometricEquationView');
+        }
+        else
+        {
+          $data['fieldNameValue']=$filedNameValue;
+        }
+        $string=$this->searchAttributeString($validSearchKey);
+        $k=$data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,d.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
+          LEFT JOIN species s ON a.Species=s.ID_Species
+          LEFT JOIN family f ON a.Family=f.ID_Family
+          LEFT JOIN genus g ON a.Genus=g.ID_Genus
+          LEFT JOIN reference r ON a.Reference=r.ID_Reference
+          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+          LEFT JOIN division d ON a.Division=d.ID_Division
+          LEFT JOIN district d2 ON a.District =d2.ID_District
+          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
+          LEFT JOIN ecological_zones e ON a.WWF_Eco_zone =e.ID_1988EcoZones
+          where $string
+          ")->result();
+          if($searchFieldArray['keyword']!='')
+          {
+            $subUrl='';
+            $i=0;
+            $n=count($searchFieldArray);
+            foreach($searchFieldArray as $row=> $val)
+            {
+              if($i<$n-1)
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'].'&';
+              }
+              else
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'];
+              }
+              $i++;
+
+            }
+          $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+          $pieces = explode("?", $url);
+          $urlTail=$pieces[1];
+          $url=str_ireplace($urlTail,$subUrl,$url);
+          $keyWord=$searchFieldArray['keyword'];
+          $removeString="keyword=$keyWord&";
+          $data['actualUrl']=str_replace($removeString,'',$url);
+          }
+          else
+          {
+            $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $data['actualUrl']=$url;
+          }
+        }
+        else
+        {
+            redirect('data/allometricEquationView');
+        }
+        $data['content_view_page']      = 'portal/allometricEquationPage';
+        $this->template->display_portal($data);
+      }
+
+
     /*
      * @methodName index()
      * @access public
      * @param  none
      * @return Fao portal home page
      */
-    
+
     public function index()
     {
         $data['post_description'] = $this->db->query("SELECT BODY_ID, BODY_DESC FROM post_body WHERE TITLE_ID = 1")->row();
@@ -52,7 +203,7 @@ class Portal extends CI_Controller
             left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
             left JOIN post_images i ON b.BODY_ID = i.BODY_ID
             where t.CAT_ID=1")->row();
-        
+
         $data['post_cat_two']   = $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,t.PG_URI,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
             FROM post_title t
             left JOIN post_category c ON t.CAT_ID = c.CAT_ID
@@ -111,15 +262,15 @@ class Portal extends CI_Controller
         }
             return $string;
     }
-    
+
     public function adasdds($TITLE_ID)
     {
-        
+
     }
-    
+
     public function details($TITLE_ID, $PG_URI)
     {
-        
+
         $data['title_name']        = $this->db->query("SELECT TITLE_NAME,TITLE_NAME_BN FROM pg_title WHERE TITLE_ID = $TITLE_ID")->row();
         $data['page_description']  = $this->db->query("SELECT BODY_ID, BODY_DESC FROM pg_body WHERE TITLE_ID = $TITLE_ID")->row();
         $body_id                   = $data['page_description']->BODY_ID;
@@ -128,17 +279,17 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/pageContent';
         $this->template->display_portal($data);
     }
-    
-    
-    
-    
+
+
+
+
     /**
-    
+
     * Show all homepage post
-    
-    
+
+
     */
-    
+
     public function post_details($TITLE_ID, $PG_URI)
     {
         $data['title_name']        = $this->db->query("SELECT TITLE_NAME,TITLE_NAME_BN FROM post_title WHERE TITLE_ID = $TITLE_ID")->row();
@@ -149,83 +300,83 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/postContent';
         $this->template->display_portal($data);
     }
-    
-    
+
+
     public function viewSliderData()
     {
         $data['sliders']           = $this->db->query("SELECT * FROM home_page_slider")->result();
         $data['content_view_page'] = 'portal/viewSliderData';
         $this->template->display($data);
     }
-    
+
     public function addImageinSlider()
     {
         if (isset($_POST['title'])) {
-            
+
             //$titles = count($this->input->post('title'));
             $title    = $this->input->post('title');
             $descript = $this->input->post('descript');
-            
-            
+
+
             //echo "test";
             //exit;
-            
+
             $config['upload_path']   = 'resources/images/home_page_slider/';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['max_width'] = '887';
             $config['max_height'] = '335';
             $config['file_name']     = $_FILES['main_image']['name'];
-            
+
             //Load upload library and initialize configuration
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
-            
+
             if ($this->upload->do_upload('main_image')) {
                 $uploadData = $this->upload->data();
                 $picture    = $uploadData['file_name'];
             } else {
                 $picture = '';
             }
-            
+
             $data = array(
                 'IMAGE_TITLE' => $title,
                 'IMAGE_DESC' => $descript,
                 'IMAGE_PATH' => $picture
             );
-            
+
             //$data['IMAGE_PATH'] = 'asdasdsad';
-            
+
             $this->utilities->insertData($data, 'home_page_slider');
             $this->session->set_flashdata('Success', 'New Slider Added Successfully.');
             redirect('portal/viewSliderData');
         }
-        
+
         else {
             $data['content_view_page'] = 'portal/addImageinSlider';
             $this->template->display($data);
         }
     }
-    
+
 
 
       public function deleteImage($id)
     {
-        
+
         $attr = array(
             "ID" => $id
         );
-        
+
         if ($this->utilities->deleteRowByAttribute("home_page_slider", $attr)) {
             $this->session->set_flashdata('Error', ' Slider Deleted Successfully.');
         } else {
             $this->session->set_flashdata('Error', 'Slider Not Deleted Successfull.');
         }
-        
+
     }
-    
-    
-    
-    
+
+
+
+
     /*
      * @methodName search_keyword()
      * @access public
@@ -239,8 +390,8 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/search_view';
         $this->template->display_portal($data);
     }
-    
-    
+
+
     /*
      * @methodName search_allometricequation_key()
      * @access public
@@ -257,10 +408,10 @@ class Portal extends CI_Controller
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_key";
         $total_ef           = $this->db->count_all("ae");
-        
+
         $config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -286,11 +437,11 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN genus g ON a.Genus=g.ID_Family
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -306,7 +457,7 @@ class Portal extends CI_Controller
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
-        
+
     }
 
 
@@ -384,13 +535,13 @@ class Portal extends CI_Controller
             'r.Year'=>$Year,
             'r.Keywords'=>$Keywords
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
             $this->session->set_userdata('liRefSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('liRefSearchString');
         }
@@ -402,19 +553,19 @@ class Portal extends CI_Controller
             $this->session->set_userdata('libSearchStringKey', $Keywords);
 
         }
-    
-        else 
+
+        else
         {
             $Title=$this->session->userdata('libSearchStringTitle');
             $Author=$this->session->userdata('libSearchStringAuth');
             $Year=$this->session->userdata('libSearchStringYear');
             $Keywords=$this->session->userdata('libSearchStringKey');
-           
+
         }
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_document";
-      
+
          $total_ae=$this->db->query("SELECT r.* from reference r
          where $string order by r.Title desc
           ")->num_rows();
@@ -423,7 +574,7 @@ class Portal extends CI_Controller
         $config["total_rows"] =$total_ae;
 
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 10;
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"];
@@ -453,7 +604,7 @@ class Portal extends CI_Controller
          $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
          $data['reference'] = $this->db->query("SELECT r.* from reference r
          where $string order by r.Title desc LIMIT $limit OFFSET $page
-         
+
          ")->result();
          $data['reference_count'] = $this->db->query("SELECT r.* from reference r
          where $string order by r.Title desc
@@ -465,14 +616,14 @@ class Portal extends CI_Controller
         $data["Year"]=$Year;
          $data['content_view_page']      = 'portal/viewLibraryPageSearch';
          $this->template->display_portal($data);
-        
+
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     /*
      * @methodName search_allometricequation_tax()
      * @access public
@@ -481,20 +632,20 @@ class Portal extends CI_Controller
      */
     public function search_allometricequation_tax()
     {
-        
+
 //var_dump($_POST);//exit;
-        
+
         $Genus   = $this->input->post('Genus');
         $Family   = $this->input->post('Family');
         $Species   = $this->input->post('Species');
-     
+
 
 
 
        //  $Family = $this->input->post('Family');
         $searchFields=array(
             'f.Family'=>$Family,
-          
+
             'g.Genus'=>$Genus,
             's.Species'=>$Species
             );
@@ -516,18 +667,18 @@ class Portal extends CI_Controller
         {
             $string="a.ID_AE=$ID_AE";
         }
-        else 
+        else
         {
                 $string=$this->searchAttributeString($searchFields);
         }
-       
+
 
 
         if(!empty($string))
         {
             $this->session->set_userdata('aeSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('aeSearchString');
         }
@@ -535,47 +686,47 @@ class Portal extends CI_Controller
          if(!empty($Species) || !empty($Family) || !empty($Genus))
         {
             $this->session->set_userdata('aeSearchStringSpecies', $Species);
-           
+
             $this->session->set_userdata('aeSearchStringFamily', $Family);
             $this->session->set_userdata('aeSearchStringGenus', $Genus);
 
         }
-    
-        else 
+
+        else
         {
             $Species=$this->session->userdata('aeSearchStringSpecies');
-           
+
             $Family=$this->session->userdata('aeSearchStringFamily');
             $Genus=$this->session->userdata('aeSearchStringGenus');
-           
+
         }
-      
-        
+
+
         $this->load->library('pagination');
         $config             = array();
         // $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_tax/".$string;
         $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_tax";
         //$total_ef           = $this->db->count_all("ae");
-        
+
         //$config["total_rows"] = $total_ef;
          $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where $string 
+         where $string
          order by a.ID_AE desc
           ")->num_rows();
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_ae;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -605,11 +756,11 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -624,7 +775,7 @@ class Portal extends CI_Controller
         $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -632,34 +783,34 @@ class Portal extends CI_Controller
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
          where $string
-         order by a.ID_AE desc 
+         order by a.ID_AE desc
         ")->result();
 
        // $viewdata['search_result_count'] = count($data['allometricEquationView'] );
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=2;
-        
+
         $data['Species']=$Species;
         $data['Family']=$Family;
         $data['Genus']=$Genus;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
-        
+
     }
 
 
     public function search_allometricequation_all($url = NULL,$removedAttr=NULL)
     {
-        
+
      if($url==NULL)
      {
-        $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
+        $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $data['currentUrl']=$currentUrl;
      }
-        
-        
+
+
 //var_dump($_POST);//exit;
-        
+
         $Genus   = $this->input->get('Genus');
         $Family   = $this->input->get('Family');
         $Species   = $this->input->get('Species');
@@ -672,7 +823,7 @@ class Portal extends CI_Controller
         $Year      = $this->input->get('Year');
         $ID_AE   = $this->input->get('ID_AE');
         $keyword = $this->input->get('keyword');
-       
+
        $searchFields=array(
             'f.Family'=>$Family,
             'g.Genus'=>$Genus,
@@ -685,7 +836,7 @@ class Portal extends CI_Controller
             'ref.Author'=>$Author,
             'ref.Year'=>$Year,
             'a.ID_AE'=>$ID_AE
-       
+
             );
 
 
@@ -695,23 +846,23 @@ class Portal extends CI_Controller
         {
             $string="a.ID_AE=$ID_AE";
         }
-        else 
+        else
         {
                 $string=$this->searchAttributeString($searchFields);
         }
-       
+
 
 
         if(!empty($string))
         {
             $this->session->set_userdata('aeAllSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('aeAllSearchString');
         }
 
-         if(!empty($keyword)||!empty($ID_AE)|| !empty($Species) || !empty($Family) || !empty($Genus) || !empty($District) || 
+         if(!empty($keyword)||!empty($ID_AE)|| !empty($Species) || !empty($Family) || !empty($Genus) || !empty($District) ||
             !empty($EcoZones) || !empty($Division) || !empty($Zones)
             ||!empty($Reference) || !empty($Author) || !empty($Year) )
         {
@@ -729,8 +880,8 @@ class Portal extends CI_Controller
             $this->session->set_userdata('aeSearchStringAE', $ID_AE);
 
         }
-    
-        else 
+
+        else
         {
             $Species=$this->session->userdata('aeSearchStringSpecies');
             $Family=$this->session->userdata('aeSearchStringFamily');
@@ -744,35 +895,35 @@ class Portal extends CI_Controller
             $Year=$this->session->userdata('aeSearchStringYear');
             $keyword=$this->session->userdata('aeSearchStringKeyword');
             $Species=$this->session->userdata('aeSearchStringAE');
-           
+
         }
-      
-        
+
+
         $this->load->library('pagination');
         $config             = array();
         // $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_tax/".$string;
         $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_all";
         //$total_ef           = $this->db->count_all("ae");
-        
+
         //$config["total_rows"] = $total_ef;
          $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where $string 
+         where $string
          order by a.ID_AE desc
           ")->num_rows();
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_ae;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -802,11 +953,11 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -821,7 +972,7 @@ class Portal extends CI_Controller
         $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -829,7 +980,7 @@ class Portal extends CI_Controller
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
          where $string
-         order by a.ID_AE desc 
+         order by a.ID_AE desc
         ")->result();
 
        // $viewdata['search_result_count'] = count($data['allometricEquationView'] );
@@ -852,7 +1003,7 @@ class Portal extends CI_Controller
         $data['ID_AE']=$ID_AE;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
-        
+
     }
 
    public function remove_family()
@@ -865,11 +1016,11 @@ class Portal extends CI_Controller
         }
         //  $data['content_view_page']      = 'portal/allometricEquationPage';
         // $this->template->display_portal($data);
-        
+
         //echo $str;exit();
     }
-    
-    
+
+
 
     public function search_allometricequation_loc()
     {
@@ -884,12 +1035,12 @@ class Portal extends CI_Controller
             'd.Division'=>$Division
             );
         $string=$this->searchAttributeString($searchFields);
-          
+
         if(!empty($string))
         {
             $this->session->set_userdata('aeLocSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('aeLocSearchString');
         }
@@ -902,17 +1053,17 @@ class Portal extends CI_Controller
             $this->session->set_userdata('aeSearchStringDiv', $Division);
 
         }
-    
-        else 
+
+        else
         {
             $District=$this->session->userdata('aeSearchStringDis');
             $EcoZones=$this->session->userdata('aeSearchStringEco');
             $Zones=$this->session->userdata('aeSearchStringZone');
             $Division=$this->session->userdata('aeSearchStringDiv');
 
-           
+
         }
-      
+
 
         $this->load->library('pagination');
         $config             = array();
@@ -920,21 +1071,21 @@ class Portal extends CI_Controller
         $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where $string 
+         where $string
          order by a.ID_AE desc
           ")->num_rows();
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_ae;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -960,11 +1111,11 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -979,7 +1130,7 @@ class Portal extends CI_Controller
          $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -987,7 +1138,7 @@ class Portal extends CI_Controller
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
          where  $string
-         
+
         ")->result();
         // echo "<pre>";
         // print_r($k);
@@ -997,14 +1148,14 @@ class Portal extends CI_Controller
         $data['District']=$District;
         $data['Division']=$Division;
         $data['EcoZones']=$EcoZones;
-        
+
         //$this->pr($m)
         $data['Zones'] = $Zones;
        // $data['Zones'] = $this->Forestdata_model->get_all_zones();
         //print_r($data['Zones']);exit;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
-        
+
     }
 
 
@@ -1055,10 +1206,10 @@ class Portal extends CI_Controller
         }
         echo $returnVal;
     }
-    
-        
-    
-    
+
+
+
+
     /*
      * @methodName search_allometricequation_ref()
      * @access public
@@ -1080,7 +1231,7 @@ class Portal extends CI_Controller
         {
             $this->session->set_userdata('aeRefSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('aeRefSearchString');
         }
@@ -1091,35 +1242,35 @@ class Portal extends CI_Controller
             $this->session->set_userdata('aeSearchStringYear', $Year);
 
         }
-    
-        else 
+
+        else
         {
             $Reference=$this->session->userdata('aeSearchStringRef');
             $Author=$this->session->userdata('aeSearchStringAuth');
             $Year=$this->session->userdata('aeSearchStringYear');
-           
+
         }
-      
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_allometricequation_ref";
         $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where $string 
+         where $string
          order by a.ID_AE desc
           ")->num_rows();
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_ae;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -1145,11 +1296,11 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -1162,14 +1313,14 @@ class Portal extends CI_Controller
          $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where $string 
+         where $string
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=4;
@@ -1178,18 +1329,18 @@ class Portal extends CI_Controller
         $data["Year"]=$Year;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
-        
+
     }
-    
-    
-    
+
+
+
     /*
      * @methodName speciesData()
      * @access public
      * @param  none
      * @return Species List page
      */
-    
+
     public function speciesData()
     {
         $data['family_details']    = $this->db->query("select f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
@@ -1205,17 +1356,17 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/speciesData';
         $this->template->display_portal($data);
     }
-    
-    
-    
-    
+
+
+
+
     /*
      * @methodName allometricEquationData()
      * @access public
      * @param  none
      * @return Allometric EquationData List page
      */
-    
+
     public function allometricEquationData($specis_id)
     {
         $data['allometricEquationData'] = $this->Forestdata_model->get_allometric_equation($specis_id);
@@ -1227,17 +1378,17 @@ class Portal extends CI_Controller
       public function allometricEquationDataJson($specis_id)
     {
         $data['allometricEquationDataJson'] = $this->Forestdata_model->get_allometric_equation_list_json($specis_id);
-       
+
     }
-    
-    
+
+
     /*
      * @methodName allometricEquationView()
      * @access public
      * @param  none
      * @return Allometric Equation Menu page
      */
-    
+
     public function allometricEquationViewjson()
     {
         $data['allometricEquationViewJson'] = $this->Forestdata_model->get_allometric_equation_json();
@@ -1259,7 +1410,7 @@ class Portal extends CI_Controller
  $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -1283,7 +1434,7 @@ class Portal extends CI_Controller
                     foreach ($allometricEquationViewcsv as $data) {
                         fputcsv($handle, array($data["ID_AE"], $data["ID_RD"], $data["Population"], $data["Tree_type"], $data["Vegetation_type"], $data["Country"], $data["Division"]
                           , $data["District"], $data["Upazila"], $data["Union"], $data["location_notes"], $data["Latitude"], $data["Longitude"], $data["BFI_zone"], $data["FAO_biome"]
-                          , $data["WWF_Eco_zone"], $data["X"], $data["Unit_X"], $data["Z"], $data["Unit_Z"], $data["W"], $data["Unit_W"], $data["U"], 
+                          , $data["WWF_Eco_zone"], $data["X"], $data["Unit_X"], $data["Z"], $data["Unit_Z"], $data["W"], $data["Unit_W"], $data["U"],
                            $data["Unit_U"], $data["V"], $data["Unit_V"], $data["Mean_X"],$data["Min_X"],$data["Max_X"],$data["Mean_Z"],$data["Min_Z"],$data["Max_Z"],$data["Mean_W"],$data["Min_W"]
                           ,$data["Max_W"],$data["Output"],$data["Output_TR"],$data["Unit_Y"],$data["Min_age"],$data["Max_age"],$data["Av_age"],$data["B"],$data["Bd"],$data["Bg"],$data["Bt"],$data["L"],$data["Rb"]
                           ,$data["Rf"],$data["S"],$data["T"],$data["F"],$data["Family"],$data["Genus"],$data["Species"],$data["Subspecies"],$data["Species_local_name_latin"],$data["Species_local_name_iso"],$data["Equation"],$data["Sample_size"],$data["Top_dob"],$data["Top_girth_over_bark"],$data["Stump_height"]
@@ -1338,10 +1489,10 @@ class Portal extends CI_Controller
  public function biomassExpansionFacViewcsv()
  {
  $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -1362,14 +1513,14 @@ class Portal extends CI_Controller
                     foreach ($biomassExpansionFacView as $data) {
                         fputcsv($handle, array($data["ID_EF"], $data["ID_LandCover"], $data["Species"], $data["AgeRange"], $data["ID_AgeRange"], $data["HeightRange"], $data["ID_HeightRange"]
                           , $data["VolumeRange"], $data["ID_VolumeRange"], $data["BasalRange"], $data["ID_BasalArea"], $data["Value"], $data["Unit"], $data["ID_EF_IPCC"], $data["Reference"]
-                          , $data["Lower_Confidence_Limit"], $data["Upper_Confidence_Limit"], $data["Type_of_Parameter"], $data["latitude"], $data["longitude"], $data["Country"], $data["Division"], $data["District"], 
+                          , $data["Lower_Confidence_Limit"], $data["Upper_Confidence_Limit"], $data["Type_of_Parameter"], $data["latitude"], $data["longitude"], $data["Country"], $data["Division"], $data["District"],
                           $data["Upazila"], $data["Union"], $data["FAO_biome"], $data["WWF_Eco_zone"], $data["BFI_zone"]));
                         $i++;
                     }
                         fclose($handle);
                     exit;
  }
-    
+
     public function biomassExpansionFacViewjson()
     {
         $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomass_expansion_factor_json();
@@ -1380,28 +1531,28 @@ class Portal extends CI_Controller
 
 
 
-    
-    
-    
+
+
+
     /*
      * @methodName allometricEquationView()
      * @access public
      * @param  none
      * @return Allometric Equation Menu page
      */
-    
-    
+
+
     public function allometricEquationView()
     {
-        
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() .  "index.php/portal/allometricEquationView";
         $total_ef           = $this->db->count_all("ae");
-        
+
         $config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"];
@@ -1443,20 +1594,20 @@ class Portal extends CI_Controller
      * @param  none
      * @return Allometric Equation Menu page
      */
-    
-    
+
+
     public function allometricEquationViewSpeciesData($specis_id)
     {
         $this->load->library('pagination');
       //  $specis_id = $this->input->post('Species');
-        
+
         $config             = array();
         $config["base_url"] = base_url() .  "index.php/portal/allometricEquationViewSpeciesData/".$specis_id;
-     
+
          $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Family   
+         LEFT JOIN genus g ON a.Genus=g.ID_Family
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -1470,7 +1621,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_ae;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $limit                     = $config["per_page"];
@@ -1512,19 +1663,19 @@ class Portal extends CI_Controller
      * @param  none
      * @return Biomass Expension Factor Menu page
      */
-    
-    
+
+
     public function biomassExpansionFacView()
     {
-        
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() .  "index.php/portal/biomassExpansionFacView";
         $total_ef           = $this->db->count_all("ef");
-        
+
         $config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         //$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"] = 20;
@@ -1552,7 +1703,7 @@ class Portal extends CI_Controller
         // //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         // ")->result();
          $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor($limit,$page);
         $data["links"]                  = $this->pagination->create_links();
@@ -1570,22 +1721,22 @@ class Portal extends CI_Controller
      * @param  none
      * @return Biomass Expension Factor Menu page
      */
-    
-    
+
+
     public function biomassExpansionFacSpeciesView($specis_id)
     {
-        
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() .  "index.php/portal/biomassExpansionFacSpeciesView/".$specis_id;
         $total_ef           = $this->db->count_all("ef");
-        
+
         $config["total_rows"] = $total_ef;
 
          $total_ef=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON f.ID_Family=g.ID_Family   
+         LEFT JOIN genus g ON f.ID_Family=g.ID_Family
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -1599,7 +1750,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_ef;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $limit                     = $config["per_page"];
@@ -1627,7 +1778,7 @@ class Portal extends CI_Controller
         // //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        
+
         // ")->result();
          $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor_species($specis_id,$limit,$page);
         $data["links"]                  = $this->pagination->create_links();
@@ -1644,10 +1795,10 @@ class Portal extends CI_Controller
      * @param  none
      * @return Biomass Expension Factor search key
      */
-    
-    
+
+
     public function search_biomas_expansion_key()
-    {   
+    {
         $keyword = $this->input->post('keyword');
 
            $searchFields=array(
@@ -1666,14 +1817,14 @@ class Portal extends CI_Controller
             'd.Division'=>$keyword
 
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
-            
+
             $this->session->set_userdata('efkeySearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('efkeySearchString');
         }
@@ -1681,16 +1832,16 @@ class Portal extends CI_Controller
          if(!empty($keyword))
         {
             $this->session->set_userdata('efSearchStringKeyword', $keyword);
-           
+
         }
-    
-        else 
+
+        else
         {
             $keyword=$this->session->userdata('efSearchStringKeyword');
-          
-           
+
+
         }
-        
+
 
 
 
@@ -1698,10 +1849,10 @@ class Portal extends CI_Controller
         $config             = array();
         $config["base_url"] = base_url() .  "index.php/portal/search_biomas_expansion_key";
          $total_ef=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -1713,11 +1864,11 @@ class Portal extends CI_Controller
           ")->num_rows();
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
-       
-        
+
+
         $config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         //$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"] = 20;
@@ -1745,14 +1896,14 @@ class Portal extends CI_Controller
         // //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         // ")->result();
         // $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor($limit,$page);
          $data['biomassExpansionFacView'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -1766,7 +1917,7 @@ class Portal extends CI_Controller
            $data['biomassExpansionFacView_count'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -1775,7 +1926,7 @@ class Portal extends CI_Controller
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
          where $string
          order by e.ID_EF desc
-         
+
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data['keyword']=$keyword;
@@ -1792,8 +1943,8 @@ class Portal extends CI_Controller
      * @param  none
      * @return Biomass Expension Factor search taxonomy
      */
-    
-    
+
+
     public function search_biomas_expansion_tax()
     {
 
@@ -1805,13 +1956,13 @@ class Portal extends CI_Controller
             'g.Genus'=>$Genus,
             's.Species'=>$Species
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
             if(!empty($string))
         {
             $this->session->set_userdata('efTaxSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('efTaxSearchString');
         }
@@ -1823,24 +1974,24 @@ class Portal extends CI_Controller
             $this->session->set_userdata('efSearchStringGenus', $Genus);
 
         }
-    
-        else 
+
+        else
         {
             $Species=$this->session->userdata('efSearchStringSpecies');
             $Family=$this->session->userdata('efSearchStringFamily');
             $Genus=$this->session->userdata('efSearchStringGenus');
-           
+
         }
-        
-        
+
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() .  "index.php/portal/search_biomas_expansion_tax";
         $total_ef=$this->db->query("SELECT e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -1853,7 +2004,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_ef;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         //$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"] = 20;
@@ -1881,14 +2032,14 @@ class Portal extends CI_Controller
         // //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         // ")->result();
         // $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor($limit,$page);
          $data['biomassExpansionFacView'] = $this->db->query("SELECT e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -1899,17 +2050,17 @@ class Portal extends CI_Controller
         ")->result();
 
            $data['biomassExpansionFacView_count'] = $this->db->query("SELECT e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus   
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         where $string 
+         where $string
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=2;
@@ -1929,8 +2080,8 @@ class Portal extends CI_Controller
      * @param  none
      * @return Biomass Expension Factor search location
      */
-    
-    
+
+
     public function search_biomas_expansion_loc()
     {
         $Division  = $this->input->post('Division');
@@ -1945,13 +2096,13 @@ class Portal extends CI_Controller
             'b.FAOBiomes'=>$FAOBiomes,
             'eco.EcoZones'=>$EcoZones
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
           if(!empty($string))
         {
             $this->session->set_userdata('eflocSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('eflocSearchString');
         }
@@ -1964,25 +2115,25 @@ class Portal extends CI_Controller
             $this->session->set_userdata('efSearchStringfao',$FAOBiomes);
 
         }
-    
-        else 
+
+        else
         {
             $District=$this->session->userdata('efSearchStringDis');
             $EcoZones=$this->session->userdata('efSearchStringEco');
             $Division=$this->session->userdata('efSearchStringDiv');
             $Zones=$this->session->userdata('efSearchStringzone');
             $FAOBiomes=$this->session->userdata('efSearchStringfao');
-           
+
         }
-        
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() .  "index.php/portal/search_biomas_expansion_loc";
         $total_ef=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus     
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -1994,7 +2145,7 @@ class Portal extends CI_Controller
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_ef;
-        
+
         $config["per_page"]        = 20;
         //$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"] = 20;
@@ -2022,14 +2173,14 @@ class Portal extends CI_Controller
         // //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         // ")->result();
         // $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor($limit,$page);
          $data['biomassExpansionFacView'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus     
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -2040,17 +2191,17 @@ class Portal extends CI_Controller
         ")->result();
 
          $data['biomassExpansionFacView_count'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus     
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         where $string 
+         where $string
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=3;
@@ -2076,8 +2227,8 @@ class Portal extends CI_Controller
      * @param  none
      * @return Biomass Expension Factor search reference
      */
-    
-    
+
+
     public function search_biomas_expansion_ref()
     {
 
@@ -2089,13 +2240,13 @@ class Portal extends CI_Controller
             'r.Author'=>$Author,
             'r.Year'=>$Year
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
             $this->session->set_userdata('efRefSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('efRefSearchString');
         }
@@ -2107,23 +2258,23 @@ class Portal extends CI_Controller
             $this->session->set_userdata('efSearchStringYear', $Year);
 
         }
-    
-        else 
+
+        else
         {
             $Reference=$this->session->userdata('efSearchStringRef');
             $Author=$this->session->userdata('efSearchStringAuth');
             $Year=$this->session->userdata('efSearchStringYear');
-           
+
         }
-        
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() .  "index.php/portal/search_biomas_expansion_ref";
         $total_ef=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus  
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -2136,7 +2287,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_ef;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         //$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"] = 20;
@@ -2164,14 +2315,14 @@ class Portal extends CI_Controller
         // //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         // ")->result();
         // $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor($limit,$page);
          $data['biomassExpansionFacView'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus  
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
@@ -2182,17 +2333,17 @@ class Portal extends CI_Controller
         ")->result();
 
           $data['biomassExpansionFacView_count'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-         
+
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus  
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference r ON e.Reference=r.ID_Reference
          LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         where $string 
+         where $string
         ")->result();
         $data["links"]                  = $this->pagination->create_links();
         $data["searchType"]=4;
@@ -2216,23 +2367,23 @@ class Portal extends CI_Controller
      * @param  none
      * @return Biomass Expension Factor Details page
      */
-    
+
     public function biomassExpansionFacDetails($ID)
     {
         $data['biomassExpansionFacDetails'] = $this->Forestdata_model->get_biomas_expension_factor_details($ID);
         $data['content_view_page']         = 'portal/biomassExpansionFacDetails';
         $this->template->display_portal($data);
     }
-    
-    
-    
+
+
+
     /*
      * @methodName allometricEquationDetails()
      * @access public
      * @param  none
      * @return Allometric Equation Details page
      */
-    
+
     public function allometricEquationDetails($ID_AE)
     {
         $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_AE);
@@ -2249,7 +2400,7 @@ class Portal extends CI_Controller
      */
 
 
-     public function allometricEquationDetailsPdf($ID_AE) 
+     public function allometricEquationDetailsPdf($ID_AE)
      {
         $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_AE);
         include('mpdf/mpdf.php');
@@ -2261,15 +2412,15 @@ class Portal extends CI_Controller
         $mpdf->Output();
      }
 
-    
-    
+
+
     /*
      * @methodName rawDataView()
      * @access public
      * @param  none
      * @return Raw Data Menu page
      */
-    
+
     public function rawDataView1()
     {
         $data['rawDataView']       = $this->Forestdata_model->get_raw_data_list();
@@ -2282,16 +2433,16 @@ class Portal extends CI_Controller
      * @methodName rawDataViewjson()
      * @access public
      * @param  none
-     * @return Raw Data json 
+     * @return Raw Data json
      */
-    
+
 
 
 
     public function rawDataViewjson()
     {
         $data['rawDataViewjson']       = $this->Forestdata_model->get_raw_data_grid_json();
-       
+
     }
 
 
@@ -2309,7 +2460,7 @@ class Portal extends CI_Controller
  $rawDataViewcsv=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -2331,7 +2482,7 @@ class Portal extends CI_Controller
                     foreach ($rawDataViewcsv as $data) {
                         fputcsv($handle, array($data["ID"], $data["ID_RD"], $data["ID_tree"], $data["Tree_type"], $data["Vegetation_type"], $data["Division"], $data["District"]
                           , $data["Upazila"], $data["Union"], $data["Latitude"], $data["Longitude"], $data["Zone_FAO"], $data["ID_FAO_Biomes"], $data["Ecoregion_Udvardy"], $data["Ecoregion_WWF"]
-                          , $data["Division_Bailey"], $data["Zone_Holdridge"], $data["Bioecological_zones_Bangladesh_IUCN"], $data["Family_ID"], $data["Genus_ID"], $data["Species_ID"], $data["Subspecies"], $data["DBH_cm"], 
+                          , $data["Division_Bailey"], $data["Zone_Holdridge"], $data["Bioecological_zones_Bangladesh_IUCN"], $data["Family_ID"], $data["Genus_ID"], $data["Species_ID"], $data["Subspecies"], $data["DBH_cm"],
                           $data["H_m"], $data["Collar_girth"], $data["CD_m"], $data["Veg_Component"],$data["B"],$data["Bd"],$data["Bg"],$data["Bt"],$data["L"],$data["Rb"]
                           ,$data["Rf"],$data["S"],$data["T"],$data["F"],$data["F_Bole_kg"],$data["F_Branch_kg"],$data["F_Foliage_kg"],$data["F_Foliage_and_twigs_kg"],$data["F_Bark_kg"],$data["F_Fruit_kg"],$data["F_Stump_kg"],$data["F_Buttress_kg"],$data["F_Roots_kg"],$data["Volume_m3"],$data["Volume_bole_m3"]
                           ,$data["WD_AVG_gcm3"],$data["D_Bole_kg"],$data["D_Branch_kg"],$data["D_Foliage_g"],$data["D_Foliage_kg"],$data["D_Branch_g"],$data["Field61"],$data["D_Bark_g"],$data["D_Bark_kg"],$data["D_Stem_with_Bark_g"] ,$data["D_Stem_without_Bark_g"],$data["D_Stem_without_Bark_kg"],$data["D_Stump_kg"],$data["D_Buttress_kg"],$data["D_Roots_kg"],$data["ABG_g"],$data["ABG_kg"],$data["BGB_kg"],$data["ID_Reference"],
@@ -2350,16 +2501,16 @@ class Portal extends CI_Controller
      * @methodName woodDensityViewjson()
      * @access public
      * @param  none
-     * @return Wood Density Data json 
+     * @return Wood Density Data json
      */
-    
+
 
 
 
     public function woodDensityViewjson()
     {
         $data['woodDensityViewjson']       = $this->Forestdata_model->get_wood_density_grid_json();
-       
+
     }
 
 
@@ -2378,14 +2529,14 @@ class Portal extends CI_Controller
  $woodDensityViewcsv=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
          LEFT JOIN species s ON w.ID_species=s.ID_Species
          LEFT JOIN family f ON w.ID_family=f.ID_Family
-         LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+         LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
          LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
          LEFT JOIN location l ON w.ID_Location=l.ID_Location
          LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
          LEFT JOIN division d ON l.ID_Division=d.ID_Division
          LEFT JOIN district dis ON l.ID_District =dis.ID_District
          LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones  
+         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
          order by w.ID_WD asc")->result_array();
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
@@ -2401,7 +2552,7 @@ class Portal extends CI_Controller
                     foreach ($woodDensityViewcsv as $data) {
                         fputcsv($handle, array($data["ID_WD"], $data["Tree_type"], $data["Vegetation_type"], $data["Region"], $data["ID_Location_group"], $data["ID_Location"], $data["Group_Location"]
                           , $data["Location"], $data["Longitude"], $data["Latitude"], $data["Zone_FAO"], $data["Ecoregion_Udvardy"], $data["Ecoregion_WWF"], $data["Division_Bailey"], $data["Zone_Holdridge"]
-                          , $data["ID_family"], $data["ID_genus"], $data["ID_species"], $data["Subspecies"], $data["Species_local_name_iso"], $data["ID_reference"],$data["ID_RD"], $data["H_tree_avg"], 
+                          , $data["ID_family"], $data["ID_genus"], $data["ID_species"], $data["Subspecies"], $data["Species_local_name_iso"], $data["ID_reference"],$data["ID_RD"], $data["H_tree_avg"],
                            $data["H_tree_min"],$data["H_tree_max"],$data["DBH_tree_avg"], $data["DBH_tree_min"],$data["DBH_tree_max"],$data["m_WD"],$data["MC_m"],$data["V_WD"],$data["MC_V"],$data["CR"],$data["FSP"]
                           ,$data["Methodology_Green"],$data["Methodology_Airdry"],$data["Bark"],$data["Methodology_Ovendry"],$data["Density_green"],$data["Density_airdry"],$data["Density_ovendry"],$data["MC_Density"],$data["Data_origin"],$data["Data_type"],$data["Samples_per_tree"],$data["Number_of_trees"]
                           ,$data["SD"],$data["Min"],$data["Max"],$data["H_measure"],$data["Bark_distance"],$data["CV"],$data["Convert_BD"],$data["Contributor"],$data["Operator"],$data["Remark"],$data["Contact"]
@@ -2412,27 +2563,27 @@ class Portal extends CI_Controller
                     exit;
  }
 
-    
-    
-    
+
+
+
     /*
      * @methodName rawDataView()
      * @access public
      * @param  none
      * @return Raw Data Menu page
      */
-    
+
     public function rawDataView()
     {
-        
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/rawDataView";
         $total_rawData      = $this->db->count_all("rd");
-        
+
         $config["total_rows"] = $total_rawData;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -2475,20 +2626,20 @@ class Portal extends CI_Controller
      * @param  none
      * @return Raw Data Menu page
      */
-    
+
     public function rawDataSpeciesView($specis_id)
     {
-        
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/rawDataSpeciesView/".$specis_id;
         $total_rawData      = $this->db->count_all("rd");
-        
+
         $config["total_rows"] = $total_rawData;
         $total_rawData=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -2500,7 +2651,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_rawData;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 4;
         $limit                     = $config["per_page"];
@@ -2540,18 +2691,18 @@ class Portal extends CI_Controller
      * @param  none
      * @return wood densities Menu page
      */
-    
+
     public function woodDensitiesView()
     {
-        
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/woodDensitiesView";
         $total_woodDensities      = $this->db->count_all("wd");
-        
+
         $config["total_rows"] = $total_woodDensities;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = 20;
@@ -2577,7 +2728,7 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-     
+
         $data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/woodDensitiesView';
@@ -2592,15 +2743,15 @@ class Portal extends CI_Controller
      * @param  none
      * @return wood densities Menu page
      */
-    
+
     public function woodDensitiesSpeciesView($specis_id)
     {
-        
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/woodDensitiesSpeciesView/".$specis_id;
         $total_woodDensities      = $this->db->count_all("wd");
-        
+
         $config["total_rows"] = $total_woodDensities;
 
         $total_woodDensities=$this->db->query("SELECT m.*,s.Species,f.Family,wd.Density_green,wd.Latitude,wd.Longitude,r.Reference,r.Year FROM (SELECT ID_WD,ID_Species FROM wd w) m
@@ -2615,7 +2766,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_woodDensities;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $limit                     = $config["per_page"];
@@ -2641,27 +2792,27 @@ class Portal extends CI_Controller
         $config['last_link']       = 'Last';
         //pagination style end
         $this->pagination->initialize($config);
-        
-     
+
+
         $data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid_species($specis_id,$limit,$page);
         //print_r( $data['woodDensitiesView']);exit();
         $data["links"]             = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/woodDensitiesView';
         $this->template->display_portal($data);
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     /*
      * @methodName search_rawequation_key()
      * @access public
      * @param  none
      * @return Raw Data key wise Search view page
      */
-    
+
     public function search_rawequation_key()
     {
         $keyword = $this->input->post('keyword');
@@ -2682,13 +2833,13 @@ class Portal extends CI_Controller
             'd.Division'=>$keyword
 
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
             $this->session->set_userdata('rdkeySearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('rdkeySearchString');
         }
@@ -2697,14 +2848,14 @@ class Portal extends CI_Controller
          if(!empty($keyword))
         {
             $this->session->set_userdata('rdSearchStringKeyword', $keyword);
-           
+
         }
-    
-        else 
+
+        else
         {
             $keyword=$this->session->userdata('rdSearchStringKeyword');
-          
-           
+
+
         }
         $this->load->library('pagination');
         $config             = array();
@@ -2712,7 +2863,7 @@ class Portal extends CI_Controller
          $total_rawData=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -2724,7 +2875,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_rawData;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -2750,11 +2901,11 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['rawDataView']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -2766,14 +2917,14 @@ class Portal extends CI_Controller
          $data['rawDataView_count']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
          where $string
          order by r.ID desc
-         
+
         ")->result();
         $data["links"]             = $this->pagination->create_links();
         $data['keyword']=$keyword;
@@ -2781,16 +2932,16 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
-    
-    
-    
+
+
+
     /*
      * @methodName search_rawequation_tax()
      * @access public
      * @param  none
      * @return Raw Data taxonomy wise Search view page
      */
-    
+
     public function search_rawequation_tax()
     {
         $Genus   = $this->input->post('Genus');
@@ -2801,13 +2952,13 @@ class Portal extends CI_Controller
             'g.Genus'=>$Genus,
             's.Species'=>$Species
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
             $this->session->set_userdata('rdtaxSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('rdtaxSearchString');
         }
@@ -2818,13 +2969,13 @@ class Portal extends CI_Controller
             $this->session->set_userdata('rdSearchStringGenus', $Genus);
 
         }
-    
-        else 
+
+        else
         {
             $Species=$this->session->userdata('rdSearchStringSpecies');
             $Family=$this->session->userdata('rdSearchStringFamily');
             $Genus=$this->session->userdata('rdSearchStringGenus');
-           
+
         }
         $this->load->library('pagination');
         $config             = array();
@@ -2832,7 +2983,7 @@ class Portal extends CI_Controller
         $total_rawData=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -2843,7 +2994,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_rawData;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -2869,11 +3020,11 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['rawDataView']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -2884,12 +3035,12 @@ class Portal extends CI_Controller
          $data['rawDataView_count']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string 
+         where $string
         ")->result();
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=3;
@@ -2899,15 +3050,15 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
-    
-    
+
+
     /*
      * @methodName search_rawequation_loc()
      * @access public
      * @param  none
      * @return Raw Data location wise Search view page
      */
-    
+
     public function search_rawequation_loc()
     {
         $District  = $this->input->post('District');
@@ -2918,13 +3069,13 @@ class Portal extends CI_Controller
             'd.Division'=>$Division,
             'b.FAOBiomes'=>$FAOBiomes
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
             $this->session->set_userdata('rdlocSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('rdlocSearchString');
         }
@@ -2936,22 +3087,22 @@ class Portal extends CI_Controller
             $this->session->set_userdata('rdSearchStringDiv', $Division);
 
         }
-    
-        else 
+
+        else
         {
             $District=$this->session->userdata('rdSearchStringDis');
             $EcoZones=$this->session->userdata('rdSearchStringFao');
             $Division=$this->session->userdata('rdSearchStringDiv');
-           
+
         }
-      
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_loc";
          $total_rawData=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -2962,7 +3113,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_rawData;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -2988,11 +3139,11 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['rawDataView']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -3003,12 +3154,12 @@ class Portal extends CI_Controller
          $data['rawDataView_count']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string 
+         where $string
         ")->result();
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=4;
@@ -3018,14 +3169,14 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
-    
+
     /*
      * @methodName search_rawequation_ref()
      * @access public
      * @param  none
      * @return Raw Data Reference wise Search view page
      */
-    
+
     public function search_rawequation_ref()
     {
         $Reference = $this->input->post('Reference');
@@ -3036,13 +3187,13 @@ class Portal extends CI_Controller
             'ref.Author'=>$Author,
             'ref.Year'=>$Year
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
             $this->session->set_userdata('rdRefSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('rdRefSearchString');
         }
@@ -3054,15 +3205,15 @@ class Portal extends CI_Controller
             $this->session->set_userdata('rdSearchStringYear', $Year);
 
         }
-    
-        else 
+
+        else
         {
             $Reference=$this->session->userdata('rdSearchStringRef');
             $Author=$this->session->userdata('rdSearchStringAuth');
             $Year=$this->session->userdata('rdSearchStringYear');
-           
+
         }
-      
+
 
         $this->load->library('pagination');
         $config             = array();
@@ -3070,7 +3221,7 @@ class Portal extends CI_Controller
         $total_rawData=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -3081,7 +3232,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_rawData;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -3107,11 +3258,11 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['rawDataView']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -3122,12 +3273,12 @@ class Portal extends CI_Controller
         $data['rawDataView_count']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string 
+         where $string
         ")->result();
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=5;
@@ -3137,15 +3288,15 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
-    
-    
+
+
     /*
      * @methodName search_rawequation_raw()
      * @access public
      * @param  none
      * @return Raw Data raw data wise Search view page
      */
-    
+
     public function search_rawequation_raw()
     {
         $H_m = $this->input->post('H_m');
@@ -3154,13 +3305,13 @@ class Portal extends CI_Controller
             'r.H_m'=>$H_m,
             'r.Volume_m3'=>$Volume_m3
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
           if(!empty($string))
         {
             $this->session->set_userdata('rdraSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('rdraSearchString');
         }
@@ -3168,25 +3319,25 @@ class Portal extends CI_Controller
         {
             $this->session->set_userdata('rdSearchStringhm', $H_m);
             $this->session->set_userdata('rdSearchStringvm', $Volume_m3);
-          
+
 
         }
-    
-        else 
+
+        else
         {
             $H_m=$this->session->userdata('rdSearchStringhm');
             $Volume_m3=$this->session->userdata('rdSearchStringvm');
-           
-           
+
+
         }
-      
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_rawequation_raw";
         $total_rawData=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -3197,7 +3348,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_rawData;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -3223,11 +3374,11 @@ class Portal extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['rawDataView']       = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -3238,12 +3389,12 @@ class Portal extends CI_Controller
          $data['rawDataView_count'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string 
+         where $string
         ")->result();
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=2;
@@ -3261,7 +3412,7 @@ class Portal extends CI_Controller
      * @param  none
      * @return wood densities key Search
      */
-    
+
     public function search_woodDensities_key()
     {
         $keyword = $this->input->post('keyword');
@@ -3286,27 +3437,27 @@ class Portal extends CI_Controller
             'd.Division'=>$keyword
 
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
             $this->session->set_userdata('wdkeySearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('wdkeySearchString');
         }
          if(!empty($keyword))
         {
             $this->session->set_userdata('wdSearchStringKeyword', $keyword);
-           
+
         }
-    
-        else 
+
+        else
         {
             $keyword=$this->session->userdata('wdSearchStringKeyword');
-          
-           
+
+
         }
         $this->load->library('pagination');
         $config             = array();
@@ -3314,24 +3465,24 @@ class Portal extends CI_Controller
          $total_woodDensities=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus       
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         order by w.ID_WD desc
           ")->num_rows();
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_woodDensities;
-      
-   
+
+
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = 20;
@@ -3360,14 +3511,14 @@ class Portal extends CI_Controller
         $data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus       
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         order by w.ID_WD desc LIMIT $limit OFFSET $page
         ")->result();
@@ -3375,19 +3526,19 @@ class Portal extends CI_Controller
         $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus       
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         order by w.ID_WD desc
-        
+
         ")->result();
-     
+
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data['keyword']=$keyword;
@@ -3404,7 +3555,7 @@ class Portal extends CI_Controller
      * @param  none
      * @return wood densities raw Search
      */
-    
+
     public function search_woodDensities_raw()
     {
         $H_tree_avg = $this->input->post('H_tree_avg');
@@ -3421,13 +3572,13 @@ class Portal extends CI_Controller
             'w.DBH_tree_min'=>$DBH_tree_min,
             'w.DBH_tree_max'=>$DBH_tree_max
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
             $this->session->set_userdata('wdRawSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('wdRawSearchString');
         }
@@ -3442,8 +3593,8 @@ class Portal extends CI_Controller
             $this->session->set_userdata('wdSearchStringDbTreeMax', $DBH_tree_max);
 
         }
-    
-        else 
+
+        else
         {
             $H_tree_avg=$this->session->userdata('wdSearchStringHTreeAv');
             $H_tree_min=$this->session->userdata('wdSearchStringHTreeMin');
@@ -3458,23 +3609,23 @@ class Portal extends CI_Controller
         $total_woodDensities=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         order by w.ID_WD desc
           ")->num_rows();
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_woodDensities;
-       
+
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = 20;
@@ -3503,32 +3654,32 @@ class Portal extends CI_Controller
         $data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         order by w.ID_WD desc LIMIT $limit OFFSET $page
         ")->result();
          $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
-        
+
         ")->result();
-     
+
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=2;
@@ -3551,7 +3702,7 @@ class Portal extends CI_Controller
      * @param  none
      * @return wood densities raw Search
      */
-    
+
     public function search_woodDensities_tax()
     {
         $Genus   = $this->input->post('Genus');
@@ -3562,13 +3713,13 @@ class Portal extends CI_Controller
             'g.Genus'=>$Genus,
             's.Species'=>$Species
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
         if(!empty($string))
         {
             $this->session->set_userdata('wdTaxSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('wdTaxSearchString');
         }
@@ -3580,22 +3731,22 @@ class Portal extends CI_Controller
             $this->session->set_userdata('wdSearchStringGenus', $Genus);
 
         }
-    
-        else 
+
+        else
         {
             $Species=$this->session->userdata('wdSearchStringSpecies');
             $Family=$this->session->userdata('wdSearchStringFamily');
             $Genus=$this->session->userdata('wdSearchStringGenus');
-           
+
         }
-      
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_woodDensities_tax";
         $total_woodDensities=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
@@ -3610,7 +3761,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_woodDensities;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = 20;
@@ -3639,14 +3790,14 @@ class Portal extends CI_Controller
         $data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         order by w.ID_WD desc LIMIT $limit OFFSET $page
         ")->result();
@@ -3654,19 +3805,19 @@ class Portal extends CI_Controller
          $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
-        
+
         ")->result();
-     
-     
+
+
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=3;
@@ -3687,7 +3838,7 @@ class Portal extends CI_Controller
      * @param  none
      * @return wood densities location Search
      */
-    
+
     public function search_woodDensities_loc()
     {
         $District  = $this->input->post('District');
@@ -3698,13 +3849,13 @@ class Portal extends CI_Controller
             'd.Division'=>$Division,
             'eco.EcoZones'=>$EcoZones
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
             if(!empty($string))
         {
             $this->session->set_userdata('wdLocSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('wdLocSearchString');
         }
@@ -3716,13 +3867,13 @@ class Portal extends CI_Controller
             $this->session->set_userdata('wdSearchStringDiv', $Division);
 
         }
-    
-        else 
+
+        else
         {
             $District=$this->session->userdata('wdSearchStringDis');
             $EcoZones=$this->session->userdata('wdSearchStringEco');
             $Division=$this->session->userdata('wdSearchStringDiv');
-           
+
         }
         $this->load->library('pagination');
         $config             = array();
@@ -3730,14 +3881,14 @@ class Portal extends CI_Controller
        $total_woodDensities=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus  
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         order by w.ID_WD desc
           ")->num_rows();
@@ -3745,7 +3896,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_woodDensities;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = 20;
@@ -3774,14 +3925,14 @@ class Portal extends CI_Controller
         $data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus  
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         order by w.ID_WD desc LIMIT $limit OFFSET $page
         ")->result();
@@ -3789,17 +3940,17 @@ class Portal extends CI_Controller
         $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus  
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         ")->result();
-     
+
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=4;
@@ -3819,7 +3970,7 @@ class Portal extends CI_Controller
      * @param  none
      * @return wood densities location Search
      */
-    
+
     public function search_woodDensities_ref()
     {
         $Reference = $this->input->post('Reference');
@@ -3830,13 +3981,13 @@ class Portal extends CI_Controller
             'r.Author'=>$Author,
             'r.Year'=>$Year
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
             $this->session->set_userdata('wdRefSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('wdRefSearchString');
         }
@@ -3847,29 +3998,29 @@ class Portal extends CI_Controller
             $this->session->set_userdata('wdSearchStringYear', $Year);
 
         }
-    
-        else 
+
+        else
         {
             $Reference=$this->session->userdata('wdSearchStringRef');
             $Author=$this->session->userdata('wdSearchStringAuth');
             $Year=$this->session->userdata('wdSearchStringYear');
-           
+
         }
-      
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_woodDensities_ref";
         $total_woodDensities=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones  
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         order by w.ID_WD desc
           ")->num_rows();
@@ -3877,7 +4028,7 @@ class Portal extends CI_Controller
         // echo $total_ae;exit;
         $config["total_rows"] =$total_woodDensities;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = 20;
@@ -3906,14 +4057,14 @@ class Portal extends CI_Controller
         $data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
         order by w.ID_WD desc LIMIT $limit OFFSET $page
         ")->result();
@@ -3921,18 +4072,18 @@ class Portal extends CI_Controller
          $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus   
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
         LEFT JOIN location l ON w.ID_Location=l.ID_Location
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones 
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
-        
+
         ")->result();
-     
+
         //$data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data["searchType"]=5;
@@ -3942,22 +4093,22 @@ class Portal extends CI_Controller
         $data['content_view_page'] = 'portal/woodDensitiesViewSearch';
         $this->template->display_portal($data);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
     /*
      * @methodName rawDataDetails()
      * @access public
      * @param  none
      * @return Raw Data Details page
      */
-    
+
     public function rawDataDetails($ID)
     {
         $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID);
@@ -3973,7 +4124,7 @@ class Portal extends CI_Controller
      * @param  none
      * @return Wood Densities Details page
      */
-    
+
     public function woodDensitiesDetails($ID)
     {
         $data['woodDensitiesDetails']    = $this->Forestdata_model->get_wood_densities_details($ID);
@@ -3991,7 +4142,7 @@ class Portal extends CI_Controller
      */
 
 
-     public function rawDataDetailsPdf($ID) 
+     public function rawDataDetailsPdf($ID)
      {
         $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID);
         include('mpdf/mpdf.php');
@@ -4012,7 +4163,7 @@ class Portal extends CI_Controller
      */
 
 
-     public function woodDensitiesPdf($ID) 
+     public function woodDensitiesPdf($ID)
      {
         $data['woodDensitiesDetails']    = $this->Forestdata_model->get_wood_densities_details($ID);
         include('mpdf/mpdf.php');
@@ -4033,7 +4184,7 @@ class Portal extends CI_Controller
      */
 
 
-     public function biomassExpansionFacPdf($ID) 
+     public function biomassExpansionFacPdf($ID)
      {
          $data['biomassExpansionFacDetails'] = $this->Forestdata_model->get_biomas_expension_factor_details($ID);
         include('mpdf/mpdf.php');
@@ -4053,11 +4204,11 @@ class Portal extends CI_Controller
      * @param  none
      * @return Species List Json data show
      */
-    
+
     public function speciesListViewjson()
     {
         $data['speciesListViewjson'] = $this->Forestdata_model->get_species_list_json();
-      
+
     }
 
     /*
@@ -4074,19 +4225,19 @@ class Portal extends CI_Controller
         {
             redirect('accounts/userLogin');
         }
-        else 
+        else
         {
         $id=$userSession['USER_ID'];
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/viewLibraryPage";
         $total_ef           = $this->db->count_all("reference");
-        
+
         $config["total_rows"] = $total_ef;
 
 
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 10;
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"];
@@ -4136,19 +4287,19 @@ class Portal extends CI_Controller
         {
             redirect('accounts/userLogin');
         }
-        else 
+        else
         {
         $id=$userSession['USER_ID'];
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/viewCommunityPage";
         $total_ef           = $this->db->count_all("community");
-        
+
         $config["total_rows"] = $total_ef;
 
 
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 10;
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"];
@@ -4187,38 +4338,38 @@ class Portal extends CI_Controller
        public function search_community()
     {
         $title = $this->input->post('title');
-        
+
         $searchFields=array(
             'c.title'=>$title
-            
+
             );
-        
+
         $string=$this->searchAttributeString($searchFields);
          if(!empty($string))
         {
             $this->session->set_userdata('ComfSearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('ComfSearchString');
         }
           if(!empty($title))
         {
             $this->session->set_userdata('comSearchStringTitle', $title);
-          
+
 
         }
-    
-        else 
+
+        else
         {
             $title=$this->session->userdata('comSearchStringTitle');
-          
-           
+
+
         }
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/search_community";
-      
+
          $total_ae=$this->db->query("SELECT c.* from community c
          where $string order by c.title desc
           ")->num_rows();
@@ -4227,7 +4378,7 @@ class Portal extends CI_Controller
         $config["total_rows"] =$total_ae;
 
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 10;
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"];
@@ -4257,25 +4408,25 @@ class Portal extends CI_Controller
         // $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
          $data['community'] = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
         LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.id desc LIMIT $limit OFFSET $page
-         
+
          ")->result();
          $data['community_count'] = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
         LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.id desc
         ")->result();
          $data["links"]                  = $this->pagination->create_links();
         $data["title"]=$title;
-      
+
          $data['content_view_page']      = 'portal/viewCommunitySearchPage';
          $this->template->display_portal($data);
-        
+
     }
-    
+
 
 
 
      public function viewAddCommunityPage()
     {
-        
+
         $data['content_view_page'] = 'portal/viewAddCommunityPage';
         $this->template->display_portal($data);
     }
@@ -4298,11 +4449,11 @@ class Portal extends CI_Controller
 
         public function addPost()
     {
-             
-            
+
+
         if (isset($_POST['title'])) {
 
-            
+
             //$titles = count($this->input->post('title'));
             $title    = $this->input->post('title');
             $description    = $this->input->post('description');
@@ -4311,25 +4462,25 @@ class Portal extends CI_Controller
             $session = $this->user_session = $this->session->userdata('user_logged');
             $userid =  $session["USER_ID"];
 
-            
-            
-           
+
+
+
             $data = array(
                 'title' => $title,
                 'description' => $description,
                 'post_date' => date('Y-m-d H:i:s', time()),
-                'user_id' =>$userid 
-            
-               
+                'user_id' =>$userid
+
+
             );
-            
+
             //$data['IMAGE_PATH'] = 'asdasdsad';
 
             $this->utilities->insertData($data, 'community');
              $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Post Added successfully.<button data-dismiss="alert" class="close" type="button">×</button></div>');
             redirect('Portal/addPost');
         }
-        
+
         else {
             $data['content_view_page'] = 'portal/viewAddCommunityPage';
              $this->template->display_portal($data);
@@ -4341,8 +4492,8 @@ class Portal extends CI_Controller
 
         public function addComment()
     {
-             
-            
+
+
         if (isset($_POST['comment'])) {
             $comment    = $this->input->post('comment');
             //$id = $this->input->post('user_id');
@@ -4352,18 +4503,18 @@ class Portal extends CI_Controller
                 'comment' => $comment,
                 'community_id' => $this->input->post('COMMINITY_ID'),
                 'date' => date('Y-m-d H:i:s', time()),
-                'user_id' =>$userid 
-            
-               
+                'user_id' =>$userid
+
+
             );
-            
+
             //$data['IMAGE_PATH'] = 'asdasdsad';
 
             $this->utilities->insertData($data, 'community_comment');
             $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Comment Posted successfully.<button data-dismiss="alert" class="close" type="button">×</button></div>');
             redirect('Portal/viewDetailCommunityPage/'.$this->input->post('COMMINITY_ID'));
         }
-        
+
         else {
             $data['content_view_page'] = 'portal/viewDetailCommunityPage';
              $this->template->display_portal($data);
@@ -4372,7 +4523,7 @@ class Portal extends CI_Controller
 
 
 
-    public function get_genus() 
+    public function get_genus()
     {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4390,7 +4541,7 @@ class Portal extends CI_Controller
         }
     }
 
-     public function get_family() 
+     public function get_family()
     {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4408,7 +4559,7 @@ class Portal extends CI_Controller
         }
     }
 
-     public function get_species() 
+     public function get_species()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4427,7 +4578,7 @@ class Portal extends CI_Controller
      }
 
 
-      public function get_district() 
+      public function get_district()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4447,7 +4598,7 @@ class Portal extends CI_Controller
 
 
 
-     public function get_division() 
+     public function get_division()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4466,7 +4617,7 @@ class Portal extends CI_Controller
       }
 
 
-      public function get_ecological_zones() 
+      public function get_ecological_zones()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4487,7 +4638,7 @@ class Portal extends CI_Controller
 
 
 
-      public function get_reference() 
+      public function get_reference()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4507,7 +4658,7 @@ class Portal extends CI_Controller
 
 
 
-     public function get_author() 
+     public function get_author()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4526,7 +4677,7 @@ class Portal extends CI_Controller
       }
 
 
-     public function get_year() 
+     public function get_year()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4548,7 +4699,7 @@ class Portal extends CI_Controller
 
 
 
-     public function get_h_m() 
+     public function get_h_m()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4565,8 +4716,8 @@ class Portal extends CI_Controller
             echo json_encode($row_set);
         }
       }
-    
-      public function get_volume_m3() 
+
+      public function get_volume_m3()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4585,7 +4736,7 @@ class Portal extends CI_Controller
       }
 
 
-        public function get_fao_biome() 
+        public function get_fao_biome()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4605,7 +4756,7 @@ class Portal extends CI_Controller
 
 
 
-     public function get_title() 
+     public function get_title()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4625,7 +4776,7 @@ class Portal extends CI_Controller
 
 
 
-     public function get_keyword() 
+     public function get_keyword()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4645,14 +4796,14 @@ class Portal extends CI_Controller
 
 
 
-      public function get_keyword_all() 
+      public function get_keyword_all()
      {
         if (isset($_GET['term'])) {
             $keyword = strtolower($_GET['term']);
             $result = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family   
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
@@ -4678,7 +4829,7 @@ class Portal extends CI_Controller
 
 
 
-     public function get_h_tree_avg() 
+     public function get_h_tree_avg()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4698,7 +4849,7 @@ class Portal extends CI_Controller
 
 
 
-     public function get_h_tree_min() 
+     public function get_h_tree_min()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4717,7 +4868,7 @@ class Portal extends CI_Controller
       }
 
 
-     public function get_h_tree_max() 
+     public function get_h_tree_max()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4738,7 +4889,7 @@ class Portal extends CI_Controller
 
 
 
-     public function get_dbh_tree_avg() 
+     public function get_dbh_tree_avg()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4759,7 +4910,7 @@ class Portal extends CI_Controller
 
 
 
-     public function get_dbh_tree_min() 
+     public function get_dbh_tree_min()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4778,7 +4929,7 @@ class Portal extends CI_Controller
       }
 
 
-     public function get_dbh_tree_max() 
+     public function get_dbh_tree_max()
      {
         if (isset($_GET['term'])) {
             $q = strtolower($_GET['term']);
@@ -4804,20 +4955,20 @@ class Portal extends CI_Controller
 
 
 
-    
-    
-    
-    
-    
-    
-    
-    
 
 
 
 
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
 }

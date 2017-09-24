@@ -129,7 +129,7 @@
             <p>
             </p>
             <!-- <form action="<?php echo site_url('data/search_allometricequation_key');?>" method = "post"> -->
-        <form action="<?php echo site_url('portal/search_allometricequation_all');?>" method = "get">
+        <form action="<?php echo site_url('portal/searchAllometricEquationAll');?>" method = "get">
                <div class="col-md-6">
                  <div class="form-group">
                      <label>AE ID<span style="color:red;"></span></label>
@@ -141,7 +141,7 @@
                      <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-           
+
          </div>
          <div id="menu1" class="tab-pane fade">
             <p> Search allometric equations by family, genus or species.
@@ -152,9 +152,9 @@
                <a href="#">Aegiceras</a>,
                <a href="#">Aegiceras corniculatum</a>,
             </p>
-           
+
                <div class="col-md-6">
-             
+
                   <div class="form-group">
                      <label>Family<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm f" name ="Family" value = "<?php echo (isset($Family))?$Family:'';?>"  class ="Family" maxlength="64" placeholder="Family" />
@@ -170,7 +170,7 @@
                  <!--     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            
+
          </div>
          <div id="menu2" class="tab-pane fade">
             <p> Search allometric equations by tree location and biome.Example searches
@@ -179,7 +179,7 @@
                <a href="#">Tropical moist forest</a>,
                <a href="#">Country: Bangladesh</a>,
             </p>
-        
+
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Division<span style="color:red;"></span></label>
@@ -192,19 +192,19 @@
                      }
                      $ID_Division = set_value('Division');
                      echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
-                     ?>     
+                     ?>
                   </div>
                   <div class="form-group">
                      <label>District<span style="color:red;"></span></label>
-         
+
                        <select class="form-control singleSelectExample" id="ID_District" style="width:620px;"  name="District">
                      <option value="">Select District</option>
                   </select>
                   </div>
                   <div class="form-group">
-            
+
                      <label>FAO Global Ecological Zone <span style="color:red;"></span></label><br>
-      
+
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
                        <!--  <select class="form-control singleSelectExample" name="EcoZones" style="width:620px;" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>">
@@ -221,11 +221,11 @@
                      }
                      $EcoZones = set_value('EcoZones');
                      echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
-                     ?>     
+                     ?>
 
 
                      <label>BFI Zone <span style="color:red;"></span></label><br>
-      
+
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
                      <!--    <select class="form-control singleSelectExample" name="Zones" style="width:620px;" value = "<?php echo (isset($Zones))?$Zones:'';?>">
@@ -243,12 +243,12 @@
                      }
                      $Zones = set_value('Zones');
                      echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
-                     ?> 
+                     ?>
                      <br><br>
                     <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-           
+
          </div>
          <div id="menu3" class="tab-pane fade">
             <p> Search allometric equations by author, year, and reference.
@@ -277,7 +277,7 @@
                   </div>
                </div>
                <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
-           
+
 
          </div>
       </div>
@@ -302,7 +302,7 @@
 
                              <?php
                             }else{ ?>
-                             <?php echo $this->db->count_all_results('ae');?>
+                             <?php echo COUNT($allometricEquationView); //$this->db->count_all_results('ae');?>
 
 
 
@@ -320,111 +320,34 @@
 
       <h4> Search criteria</h4>
         <p>  <?php
-                           if(isset($allometricEquationView_count)){
-                            ?>
-                           <p style="padding-left: 479px;" class="btn_remove_class"><a href="?">Clear all search criteria</a></p>
-                       <?php if (!empty($ID_AE)) {
-                              echo "<b>AE ID </b> : ";
-                               }  echo (isset($ID_AE))?$ID_AE:''; if (!empty($ID_AE)) {
-                               echo "<br>";
-                              }
-                              ?>
+        // echo "<pre>";
+        // print_r($fieldNameValue);
+                           if(!empty($fieldNameValue)){
+                              $n=count($fieldNameValue);
+                             $i=0;
+                             foreach($fieldNameValue as $key=>$value)
+                             {
+                                $pieces = explode("/", $key);
+                                $fieldName= $pieces[0]; // piece1
+                                $keyWord= $pieces[1]; // piece2
+                                if($i<$n-1)
+                                {
+                                  $substitute="$keyWord=$value&";
+                                }
+                                else {
+                                  $substitute="$keyWord=$value";
+                                }
+                                //echo $actualUrl;
+                             $newUrl=str_replace($substitute,'',$actualUrl);
+                            // $url=str_replace('','',$actualUrl);
+                                $i++;
+                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove</a> <br>";
+                             }
 
-                             <?php if (!empty($keyword)) {
-                              echo "<b>keyword</b> : ";
-                               } echo (isset($keyword))?$keyword:'';  echo'<a style="float:right; cursor:pointer" class="btn_remove_class" >remove filter</a><br>'; if (!empty($keyword)) {
-                               echo "<br>";
-                              }
-                              ?>
-                              <?php
-
-                              ?>
-
-                             <?php if (!empty($Family)) {
-                             
-                              echo "<b>Family </b> : ";
-                               }  echo (isset($Family))?$Family:''; echo'<a href="'.site_url().'/Portal/remove_family/'.$this->uri->segment(5).'" style="float:right; cursor:pointer">remove filter</a>'; if (!empty($Family)) {
-                               echo "<br>";
-                              }
-                              ?>
-
-
-                               
-
-                               <?php if (!empty($Genus)) {
-                              echo "<b>Genus</b> : ";
-                               } echo (isset($Genus))?$Genus:''; if (!empty($Genus)) {
-                               echo "<br>";
-                              }
-                              ?>
-
-
-                               <?php  if (!empty($Species)) {
-                              echo "<b>Species</b> : ";
-                               } echo (isset($Species))?$Species:''; if (!empty($Species)) {
-                               echo "<br>";
-                              }
-                              ?>
-
-                               <?php if (!empty($District)) {
-                              echo "<b>District</b> : ";
-                               } echo (isset($District))?$District:''; if (!empty($District)) {
-                               echo "<br>";
-                              }
-                              ?>
-
-                                <?php if (!empty($Division)) {
-                              echo "<b>Division</b> : ";
-                               } echo (isset($Division))?$Division:''; if (!empty($Division)) {
-                               echo "<br>";
-                              }
-                              ?>
-
-                               <?php if (!empty($EcoZones)) {
-                              echo "<b>EcoZones</b> : ";
-                               } echo (isset($EcoZones))?$EcoZones:''; if (!empty($EcoZones)) {
-                               echo "<br>";
-                              }
-                              ?>
-
-                               <?php if (!empty($Reference)) {
-                              echo "<b>Reference</b> : ";
-                               } echo (isset($Reference))?$Reference:''; if (!empty($Reference)) {
-                               echo "<br>";
-                              }
-                              ?>
-
-                               <?php if (!empty($Author)) {
-                              echo "<b>Author</b> : ";
-                               } echo (isset($Author))?$Author:''; if (!empty($Author)) {
-                               echo "<br>";
-                              }
-                              ?>
-
-                                <?php if (!empty($Zones)) {
-                              echo "<b>Zones</b> : ";
-                               } echo (isset($Zones))?$Zones:''; if (!empty($Zones)) {
-                               echo "<br>";
-                              }
-                              ?>
-                               <?php if (!empty($Year)) {
-                              echo "<b>Year</b> : ";
-                               } echo (isset($Year))?$Year:''; if (!empty($Year)) {
-                               echo "<br>";
-                              }
-                              ?>
-
-
-                             <?php
                             }
-                            else{ ?>
-                             No criteria - All results are shown
-
-
-
-                                  <?php
+                            else{
+                              echo "No criteria - All results are shown";
                             }
-
                            ?></p>
 
     </div>
@@ -505,7 +428,7 @@
                   </div>
                   <?php }?>
             <?php
-               
+
                }?>
             <p> <?php echo $links; ?></p>
          </div>
@@ -761,8 +684,8 @@ function () {
            });
        });
    });
-   
-   
+
+
     $(document).ready(function() {
        $('#ID_District').change(function() {
            var District = $(this).val();
@@ -779,8 +702,8 @@ function () {
            });
        });
    });
-   
-   
+
+
        $(document).ready(function() {
        $('#THANA_ID').change(function() {
            var THANAME = $(this).val();
@@ -797,10 +720,8 @@ function () {
            });
        });
    });
-   
-   
-   
-   
+
+
+
+
 </script>
-
-
