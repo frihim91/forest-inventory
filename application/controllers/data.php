@@ -91,7 +91,7 @@ class Data extends CI_Controller
     
     
     
-    public function allometricEquationView()
+    public function allometricEquationViewtrr()
     {
         
         $this->load->library('pagination');
@@ -102,7 +102,7 @@ class Data extends CI_Controller
         $config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
         
-        $config["per_page"]        = 20;
+        $config["per_page"]        = 5;
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"];
         $config["uri_segment"] = 3;
@@ -137,6 +137,33 @@ class Data extends CI_Controller
 
          $data['links'] = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';
+        $this->template->display_portal($data);
+    }
+
+
+
+
+
+     public function allometricEquationView()
+    {
+        
+        $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
+         //$data['ID_1988EcoZone'] =  $this->Forestdata_model->get_all_ecological_zones();
+        $data['EcoZones'] = $this->Forestdata_model->get_all_ecological_zones();
+        $data['Zones'] = $this->Forestdata_model->get_all_zones();
+        //print_r($data['Zones']);exit;
+        $data['Division'] = $this->Forestdata_model->get_all_division();
+        $data['content_view_page']      = 'portal/allometricEquationPage';
+        $this->template->display_portal($data);
+    }
+
+
+
+    public function allometricEquationViews()
+    {
+        
+      
+        $data['content_view_page']      = 'portal/page';
         $this->template->display_portal($data);
     }
 
@@ -462,45 +489,8 @@ class Data extends CI_Controller
     public function biomassExpansionFacView()
     {
         
-        $this->load->library('pagination');
-        $config             = array();
-        $config["base_url"] = base_url() .  "index.php/portal/biomassExpansionFacView";
-        $total_ef           = $this->db->count_all("ef");
-        
-        $config["total_rows"] = $total_ef;
-        // $config["total_rows"] = 800;
-        
-        $config["per_page"]        = 20;
-        //$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $limit                     = $config["per_page"] = 20;
-        $config["uri_segment"] = 3;
-        //$config["num_links"] = round($total_ef );
-        //pagination style start
-        $config['full_tag_open']   = '<ul class="pagination">';
-        $config['full_tag_close']  = '</ul>';
-        $config['prev_link']       = '&lt;';
-        $config['prev_tag_open']   = '<li>';
-        $config['prev_tag_close']  = '</li>';
-        $config['next_link']       = '&gt;';
-        $config['next_tag_open']   = '<li>';
-        $config['next_tag_close']  = '</li>';
-        $config['cur_tag_open']    = '<li class="current"><a href="#">';
-        $config['cur_tag_close']   = '</a></li>';
-        $config['num_tag_open']    = '<li>';
-        $config['num_tag_close']   = '</li>';
-        $config['first_tag_open']  = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['last_tag_open']   = '<li>';
-        $config['last_tag_close']  = '</li>';
-        $config['first_link']      = 'First';
-        $config['last_link']       = 'Last';
-        // //pagination style end
-        $this->pagination->initialize($config);
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
-        // ")->result();
-         $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor($limit,$page);
-        $data["links"]                  = $this->pagination->create_links();
+       
+        $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor();
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
     }
@@ -515,41 +505,7 @@ class Data extends CI_Controller
     public function rawDataView()
     {
         
-        $this->load->library('pagination');
-        $config             = array();
-        $config["base_url"] = base_url() . "index.php/portal/rawDataView";
-        $total_rawData      = $this->db->count_all("rd");
-        
-        $config["total_rows"] = $total_rawData;
-        // $config["total_rows"] = 800;
-        
-        $config["per_page"]        = 20;
-        $config["uri_segment"]     = 3;
-        $limit                     = $config["per_page"] = 20;
-        //pagination style start
-        $config['full_tag_open']   = '<ul class="pagination">';
-        $config['full_tag_close']  = '</ul>';
-        $config['prev_link']       = '&lt;';
-        $config['prev_tag_open']   = '<li>';
-        $config['prev_tag_close']  = '</li>';
-        $config['next_link']       = '&gt;';
-        $config['next_tag_open']   = '<li>';
-        $config['next_tag_close']  = '</li>';
-        $config['cur_tag_open']    = '<li class="current"><a href="#">';
-        $config['cur_tag_close']   = '</a></li>';
-        $config['num_tag_open']    = '<li>';
-        $config['num_tag_close']   = '</li>';
-        $config['first_tag_open']  = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['last_tag_open']   = '<li>';
-        $config['last_tag_close']  = '</li>';
-        $config['first_link']      = 'First';
-        $config['last_link']       = 'Last';
-        //pagination style end
-        $this->pagination->initialize($config);
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid($limit,$page);
-        $data["links"]             = $this->pagination->create_links();
+        $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid();
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
     }
@@ -564,42 +520,8 @@ class Data extends CI_Controller
     public function woodDensitiesView()
     {
         
-        $this->load->library('pagination');
-        $config             = array();
-        $config["base_url"] = base_url() . "index.php/portal/woodDensitiesView";
-        $total_woodDensities      = $this->db->count_all("wd");
         
-        $config["total_rows"] = $total_woodDensities;
-        // $config["total_rows"] = 800;
-        
-        $config["per_page"]        = 20;
-        $config["uri_segment"]     = 3;
-        $limit                     = 20;
-        //pagination style start
-        $config['full_tag_open']   = '<ul class="pagination">';
-        $config['full_tag_close']  = '</ul>';
-        $config['prev_link']       = '&lt;';
-        $config['prev_tag_open']   = '<li>';
-        $config['prev_tag_close']  = '</li>';
-        $config['next_link']       = '&gt;';
-        $config['next_tag_open']   = '<li>';
-        $config['next_tag_close']  = '</li>';
-        $config['cur_tag_open']    = '<li class="current"><a href="#">';
-        $config['cur_tag_close']   = '</a></li>';
-        $config['num_tag_open']    = '<li>';
-        $config['num_tag_close']   = '</li>';
-        $config['first_tag_open']  = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['last_tag_open']   = '<li>';
-        $config['last_tag_close']  = '</li>';
-        $config['first_link']      = 'First';
-        $config['last_link']       = 'Last';
-        //pagination style end
-        $this->pagination->initialize($config);
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-     
-        $data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid($limit,$page);
-        $data["links"]             = $this->pagination->create_links();
+        $data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid();
         $data['content_view_page'] = 'portal/woodDensitiesView';
         $this->template->display_portal($data);
     }
