@@ -11,7 +11,7 @@ $(function() {
 
 	$('#results-list').easyPaginate({
 		paginateElement: 'div.my',
-		elementsPerPage: 20,
+		elementsPerPage: 40,
 		effect: 'slide'
 	});
 });

@@ -371,12 +371,12 @@
          </div>
       </ul>
       <div class="tab-content">
-         <div id="results-list-bio" class="tab-pane fade in active">
+         <div id="results-list" class="tab-pane fade in active">
             <?php 
                foreach($biomassExpansionFacView as $row)
                {
                ?>
-            <div class="panel panel-default my_bio">
+            <div class="panel panel-default my">
                <div class="panel-heading">Emission factors
                   <a href="<?php echo site_url('Portal/biomassExpansionFacDetails/'.$row->ID_EF); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
@@ -632,7 +632,9 @@ $("a.resultList").click(function(){
   $("div.mapBlock").hide();
 });
 </script>
+
+
 <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
-<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts_ef.js"></script>
 

@@ -366,12 +366,12 @@
                 </div>
       </ul>
       <div class="tab-content">
-         <div id="results-list-raw" class="tab-pane fade in active">
+         <div id="results-list" class="tab-pane fade in active">
             <?php 
                foreach($rawDataView as $row)
                {
                ?>
-            <div class="panel panel-default my_raw">
+            <div class="panel panel-default my">
                <div class="panel-heading">Raw Data
                   <a href="<?php echo site_url('Portal/rawDataDetails/'.$row->ID); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
