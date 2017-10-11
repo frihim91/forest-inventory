@@ -26,6 +26,7 @@
         <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery-2.1.1.js"></script>
         <script src="<?php echo base_url();?>resources/resource_potal/assets/Angular/js/angular/angular.min.js"></script>
         <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/plugins/select2/select2.full.min.js"></script>
+         
 
 
 

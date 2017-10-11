@@ -463,7 +463,7 @@ Class Forestdata_model extends CI_Model {
 
 
 
-	 public function get_allometric_equation_grid($limit,$page)
+	 public function get_allometric_equation_grid()
 	{
 		$data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
@@ -475,7 +475,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         order by a.ID_AE desc LIMIT $limit OFFSET $page")->result();
+         order by a.ID_AE desc")->result();
 		 return $data; 
 	}
 
@@ -522,7 +522,7 @@ Class Forestdata_model extends CI_Model {
 
 
 
-     public function get_biomas_expension_factor($limit,$page)
+     public function get_biomas_expension_factor()
   {
     $data=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
          
@@ -535,7 +535,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         order by e.ID_EF desc LIMIT $limit OFFSET $page
+         order by e.ID_EF desc
     ")->result();
      return $data; 
   }
@@ -636,7 +636,7 @@ Class Forestdata_model extends CI_Model {
 
 
 
-	 public function get_raw_data_grid($limit,$page)
+	 public function get_raw_data_grid()
 	{
 		$data=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
@@ -646,7 +646,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         order by r.ID desc LIMIT $limit OFFSET $page
+         order by r.ID desc
 		")->result();
 		 return $data; 
 	}
@@ -689,14 +689,14 @@ Class Forestdata_model extends CI_Model {
 	}
 
 
-	 public function get_wood_densities_grid($limit,$page)
+	 public function get_wood_densities_grid()
 	{
 		$data=$this->db->query("SELECT m.*,s.Species,f.Family,wd.Density_green,wd.Latitude,wd.Longitude,r.Reference,r.Year FROM (SELECT ID_WD,ID_Species FROM wd w) m
         LEFT JOIN wd  ON m.ID_WD=wd.ID_WD
         LEFT JOIN reference r ON wd.ID_Reference = r.ID_Reference
         LEFT JOIN species s ON m.ID_Species=s.ID_Species
         left join family f ON wd.ID_family=f.ID_Family
-        order by wd.ID_WD desc LIMIT $limit OFFSET $page
+        order by wd.ID_WD desc 
 		")->result();
 		 return $data; 
 	}

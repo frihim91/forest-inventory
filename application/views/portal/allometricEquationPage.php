@@ -37,12 +37,21 @@
    border-top: 1px solid #d9d9d9;
    border-radius: 0px 0px 4px 4px;
    }
+#easyPaginate {width:800px;}
+#easyPaginate img {display:block;margin-bottom:10px;}
+.easyPaginateNav a {padding:5px;}
+.easyPaginateNav a.current {font-weight:bold;text-decoration:underline;}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/pagination/jquery.snippet.min.css" rel="stylesheet" media="screen"/>
+<!-- <link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/pagination/styles.css" rel="stylesheet" media="screen"/> -->
+
+   
+
 
 
 <script type="text/javascript">
@@ -132,8 +141,8 @@
         <form action="<?php echo site_url('portal/searchAllometricEquationAll');?>" method = "get">
                <div class="col-md-6">
                  <div class="form-group">
-                     <label>AE ID<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm f" name ="ID_AE" value = "<?php echo (isset($ID_AE))?$ID_AE:'';?>"  class ="ID_AE" maxlength="64" placeholder="AE ID" />
+                     <label>Allometric Equation<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm f" name ="ID_AE" value = "<?php echo (isset($ID_AE))?$ID_AE:'';?>"  class ="ID_AE" maxlength="64" placeholder="Allometric Equation" />
                   </div>
                   <div class="form-group">
                      <label>Keyword<span style="color:red;">*</span></label>
@@ -157,15 +166,44 @@
 
                   <div class="form-group">
                      <label>Family<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm f" name ="Family" value = "<?php echo (isset($Family))?$Family:'';?>"  class ="Family" maxlength="64" placeholder="Family" />
+                     <?php
+                     $Family = $this->Forestdata_model->get_all_family();
+                     $options = array('' => '--Select Family--');
+                     foreach ($Family as $Family) {
+                     $options["$Family->Family"] = $Family->Family;
+                     }
+                     $Family = set_value('Family');
+                     echo form_dropdown('Family', $options, $Family, 'id="Family" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Family" ');
+                     ?>
+
+
+                    <!--  <input type="text" class="form-control input-sm f" name ="Family" value = "<?php echo (isset($Family))?$Family:'';?>"  class ="Family" maxlength="64" placeholder="Family" /> -->
                   </div>
                   <div class="form-group">
                      <label>Genus<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm g" name ="Genus" value = "<?php echo (isset($Genus))?$Genus:'';?>"  class ="Genus" maxlength="64" placeholder="Genus" />
+                     <!-- <input type="text" class="form-control input-sm g" name ="Genus" value = "<?php echo (isset($Genus))?$Genus:'';?>"  class ="Genus" maxlength="64" placeholder="Genus" /> -->
+                     <?php
+                     $Genus = $this->Forestdata_model->get_all_genus();
+                     $options = array('' => '--Select Genus--');
+                     foreach ($Genus as $Genus) {
+                     $options["$Genus->Genus"] = $Genus->Genus;
+                     }
+                     $Genus = set_value('Genus');
+                     echo form_dropdown('Genus', $options, $Genus, 'id="Genus" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Genus" ');
+                     ?>
                   </div>
                   <div class="form-group">
                      <label>Species<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm s" name ="Species" value = "<?php echo (isset($Species))?$Species:'';?>" maxlength="64"  class ="Species" placeholder="Species" />
+                    <!--  <input type="text" class="form-control input-sm s" name ="Species" value = "<?php echo (isset($Species))?$Species:'';?>" maxlength="64"  class ="Species" placeholder="Species" /> -->
+                     <?php
+                     $Species = $this->Forestdata_model->get_all_species();
+                     $options = array('' => '--Select Species--');
+                     foreach ($Species as $Species) {
+                     $options["$Species->Species"] = $Species->Species;
+                     }
+                     $Species = set_value('Species');
+                     echo form_dropdown('Species', $options, $Species, 'id="Species" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Species" ');
+                     ?>
                      <br>
                  <!--     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
@@ -191,13 +229,13 @@
                      $options["$ID_Division->Division"] = $ID_Division->Division;
                      }
                      $ID_Division = set_value('Division');
-                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                      ?>
                   </div>
                   <div class="form-group">
                      <label>District<span style="color:red;"></span></label>
 
-                       <select class="form-control singleSelectExample" id="ID_District" style="width:620px;"  name="District">
+                       <select class="form-control singleSelectExample" id="ID_District" style="width:560px;"  name="District">
                      <option value="">Select District</option>
                   </select>
                   </div>
@@ -207,12 +245,6 @@
 
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
-                       <!--  <select class="form-control singleSelectExample" name="EcoZones" style="width:620px;" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>">
-                            <option value="">Select Ecological Zone</option>
-                            <?php foreach ($EcoZones as $row): ?>
-                                <option value="<?php echo $row->EcoZones ?>"><?php echo $row->EcoZones ?></option>
-                            <?php endforeach; ?>
-                        </select> -->
                      <?php
                      $EcoZoness = $this->Forestdata_model->get_all_ecological_zones();
                      $options = array('' => '--Select Ecological Zone--');
@@ -220,7 +252,7 @@
                      $options["$EcoZones->EcoZones"] = $EcoZones->EcoZones;
                      }
                      $EcoZones = set_value('EcoZones');
-                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
+                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
                      ?>
 
 
@@ -228,21 +260,14 @@
 
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
-                     <!--    <select class="form-control singleSelectExample" name="Zones" style="width:620px;" value = "<?php echo (isset($Zones))?$Zones:'';?>">
-                            <option value="" >Select BFI Zone</option>
-                            <?php foreach ($Zones as $row): ?>
-                                <option value="<?php echo $row->Zones ?>"><?php echo $row->Zones ?></option>
-                            <?php endforeach; ?>
-                        </select> -->
-
-                      <?php
+                    <?php
                      $Zoness = $this->Forestdata_model->get_all_zones();
                      $options = array('' => '--Select BFI Zone--');
                      foreach ($Zoness as $Zones) {
                      $options["$Zones->Zones"] = $Zones->Zones;
                      }
                      $Zones = set_value('Zones');
-                     echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
+                     echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
                      ?>
                      <br><br>
                     <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
@@ -302,7 +327,7 @@
 
                              <?php
                             }else{ ?>
-                             <?php echo COUNT($allometricEquationView); //$this->db->count_all_results('ae');?>
+                             <?php echo $this->db->count_all_results('ae');//COUNT($allometricEquationView_count); ?>
 
 
 
@@ -337,11 +362,12 @@
                                 else {
                                   $substitute="$keyWord=$value";
                                 }
+                                $sub=str_replace(' ','+',$substitute);
                                 //echo $actualUrl;
-                             $newUrl=str_replace($substitute,'',$actualUrl);
+                             $newUrl=str_replace($sub,'',$actualUrl);
                             // $url=str_replace('','',$actualUrl);
                                 $i++;
-                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove</a> <br>";
+                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
                              }
 
                             }
@@ -376,62 +402,34 @@
          </div>
       </ul>
       <div class="tab-content">
+
          <div id="results-list" class="tab-pane fade in active">
-            <?php
+         
+           <?php
                foreach($allometricEquationView as $row)
-                // echo '<pre>';
-                // print_r($allometricEquationView);
-                // exit;
                {
-                ?>
-                <?php
-                if($row->Family == 'Myrsinaceae'){
-                ?>
-                  <div class='panel panel-default content_area <?php echo $row->Family;?>'>
-                     <div class="panel-heading">Allometric Equation
-                        <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
-                     </div>
-                     <div class="panel-body">
-                        <p style="padding-left:3px;"><b>Equation: <code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
-                        <p style="padding-left:3px;"><b>Output: </b><?php echo $row->Output;?></p>
-                        <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
-                        <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
-                        <p style="padding-left:3px;"><b>Author: </b><?php echo $row->Author;?></p>
-                        <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
-                        <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
-                        <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
-                        <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>
-                     </div>
-                  </div>
-                  <?php
-                  }
-                  ?>
-
-                  <?php
-                  if($row->Family == 'Lythraceae'){
-                  ?>
-                  <div class='panel panel-default content_area <?php echo $row->Family;?>'>
-                     <div class="panel-heading">Allometric Equation
-                        <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
-                     </div>
-                     <div class="panel-body">
-                        <p style="padding-left:3px;"><b>Equation: <code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
-                        <p style="padding-left:3px;"><b>Output: </b><?php echo $row->Output;?></p>
-                        <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
-                        <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
-                        <p style="padding-left:3px;"><b>Author: </b><?php echo $row->Author;?></p>
-                        <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
-                        <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
-                        <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
-                        <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>
-                     </div>
-                  </div>
-                  <?php }?>
+                 ?>
+            <div class="panel panel-default my">
+               <div class="panel-heading">Allometric Equation
+                  <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
+               </div>
+               <div class="panel-body">
+                  <p style="padding-left:3px;"><b>Equation: <code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
+                  <p style="padding-left:3px;"><b>Output: </b><?php echo $row->Output;?></p>
+                  <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
+                  <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
+                  <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
+                  <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
+                  <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
+                  <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>
+               </div>
+            </div>
             <?php
-
                }?>
-            <p> <?php echo $links; ?></p>
+              
+           
          </div>
+
          <div id="results-map" class="tab-pane fade">
             <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
             <script src="<?php echo base_url(); ?>resources/js/leaflet/leaflet.js"></script>
@@ -725,3 +723,10 @@ function () {
 
 
 </script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>
+
+

@@ -133,8 +133,22 @@ class Portal extends CI_Controller
         {
           $data['fieldNameValue']=$filedNameValue;
         }
+
         $string=$this->searchAttributeString($validSearchKey);
-        $k=$data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,d.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
+    
+        $k=$data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
+          LEFT JOIN species s ON a.Species=s.ID_Species
+          LEFT JOIN family f ON a.Family=f.ID_Family
+          LEFT JOIN genus g ON a.Genus=g.ID_Genus
+          LEFT JOIN reference r ON a.Reference=r.ID_Reference
+          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+          LEFT JOIN division d ON a.Division=d.ID_Division
+          LEFT JOIN district d2 ON a.District =d2.ID_District
+          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
+          LEFT JOIN ecological_zones e ON a.WWF_Eco_zone =e.ID_1988EcoZones
+          where $string 
+          ")->result();
+          $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
           LEFT JOIN species s ON a.Species=s.ID_Species
           LEFT JOIN family f ON a.Family=f.ID_Family
           LEFT JOIN genus g ON a.Genus=g.ID_Genus
@@ -145,7 +159,9 @@ class Portal extends CI_Controller
           LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
           LEFT JOIN ecological_zones e ON a.WWF_Eco_zone =e.ID_1988EcoZones
           where $string
-          ")->result();
+        ")->result();
+         // $data["links"]                  = $this->pagination->create_links();
+
           if($searchFieldArray['keyword']!='')
           {
             $subUrl='';
@@ -186,6 +202,548 @@ class Portal extends CI_Controller
         $this->template->display_portal($data);
       }
 
+
+      
+
+     private function getDtByAttrRaw($attr)
+    {
+      $returnArray=array();
+      switch ($attr) {
+        case "H_m":
+        $returnArray[]='Tree Height (m)';
+        $returnArray[]='r.';
+        break;
+        case "Volume_m3":
+        $returnArray[]='Volume (m3)';
+        $returnArray[]='r.';
+        break;
+        case "Family":
+        $returnArray[]='Family';
+        $returnArray[]='f.';
+        break;
+        case "Genus":
+        $returnArray[]='Genus';
+        $returnArray[]='g.';
+        break;
+        case "Species":
+        $returnArray[]='Species';
+        $returnArray[]='s.';
+        break;
+        case "Division":
+        $returnArray[]='Division';
+        $returnArray[]='d.';
+        break;
+        case "District":
+        $returnArray[]='District';
+        $returnArray[]='dis.';
+        break;
+        case "FAOBiomes":
+        $returnArray[]='FAO Global Ecological Zone';
+        $returnArray[]='b.';
+        break;
+        case "Reference":
+        $returnArray[]='Reference';
+        $returnArray[]='ref.';
+        break;
+        case "Author":
+        $returnArray[]='Author';
+        $returnArray[]='ref.';
+        break;
+       
+        case "Year":
+        $returnArray[]='Year';
+        $returnArray[]='ref.';
+        break;
+        default:
+        $returnArray[]='';
+        $returnArray[]='';
+      }
+      return $returnArray;
+    }
+
+    public function searchRawEquationAll()
+    {
+      //  $r=$this->getDtByAttrAe('Author');
+      //$this->pr($_GET);
+      if(!empty($_GET)){
+        $searchFieldArray=$_GET;
+        if(!isset($searchFieldArray['keyword']))
+        {
+            $searchFieldArray['keyword']='';
+        }
+        if($searchFieldArray['keyword']!='')
+        {
+            foreach($searchFieldArray as $key=>$value)
+            {
+              if($key!='keyword')
+              {
+                $r=$this->getDtByAttrRaw($key);
+                $validSearchKey[$r[1].$key]=$searchFieldArray['keyword'];
+                $fieldName[]=$r[0];
+                $filedNameValue[$r[0].'/'.$key]=$searchFieldArray['keyword'];
+              }
+            }
+        }
+        else
+        {
+          foreach($searchFieldArray as $key=>$value)
+          {
+            if($value!='')
+            {
+              $r=$this->getDtByAttrRaw($key);
+              $validSearchKey[$r[1].$key]=$value;
+              $fieldName[]=$r[0];
+              $filedNameValue[$r[0].'/'.$key]=$value;
+            }
+          }
+        }
+      //  $this->pr($filedNameValue);
+        if(!isset($filedNameValue))
+        {
+          redirect('data/rawDataView');
+        }
+        else
+        {
+          $data['fieldNameValue']=$filedNameValue;
+        }
+
+        $string=$this->searchAttributeString($validSearchKey);
+    
+        $k=$data['rawDataView'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where $string order by r.ID desc 
+        ")->result();
+         $data['rawDataView_count'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where $string
+        ")->result();
+         // $data["links"]                  = $this->pagination->create_links();
+
+          if($searchFieldArray['keyword']!='')
+          {
+            $subUrl='';
+            $i=0;
+            $n=count($searchFieldArray);
+            foreach($searchFieldArray as $row=> $val)
+            {
+              if($i<$n-1)
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'].'&';
+              }
+              else
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'];
+              }
+              $i++;
+
+            }
+          $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+          $pieces = explode("?", $url);
+          $urlTail=$pieces[1];
+          $url=str_ireplace($urlTail,$subUrl,$url);
+          $keyWord=$searchFieldArray['keyword'];
+          $removeString="keyword=$keyWord&";
+          $data['actualUrl']=str_replace($removeString,'',$url);
+          }
+          else
+          {
+            $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $data['actualUrl']=$url;
+          }
+        }
+        else
+        {
+            redirect('data/rawDataView');
+        }
+        $data['content_view_page']      = 'portal/rawDataView';
+        $this->template->display_portal($data);
+      }
+
+
+
+       private function getDtByAttrEmission($attr)
+    {
+      $returnArray=array();
+      switch ($attr) {
+        case "Zones":
+        $returnArray[]='Bangladesh Zone';
+        $returnArray[]='zon.';
+        break;
+        case "EcoZones":
+        $returnArray[]='Bangladesh Ecological Zones';
+        $returnArray[]='eco.';
+        break;
+        case "Family":
+        $returnArray[]='Family';
+        $returnArray[]='f.';
+        break;
+        case "Genus":
+        $returnArray[]='Genus';
+        $returnArray[]='g.';
+        break;
+        case "Species":
+        $returnArray[]='Species';
+        $returnArray[]='s.';
+        break;
+        case "Division":
+        $returnArray[]='Division';
+        $returnArray[]='d.';
+        break;
+        case "District":
+        $returnArray[]='District';
+        $returnArray[]='dis.';
+        break;
+        case "FAOBiomes":
+        $returnArray[]='FAO Global Ecological Zone';
+        $returnArray[]='b.';
+        break;
+        case "Reference":
+        $returnArray[]='Reference';
+        $returnArray[]='r.';
+        break;
+        case "Author":
+        $returnArray[]='Author';
+        $returnArray[]='r.';
+        break;
+       
+        case "Year":
+        $returnArray[]='Year';
+        $returnArray[]='r.';
+        break;
+        default:
+        $returnArray[]='';
+        $returnArray[]='';
+      }
+      return $returnArray;
+    }
+
+    public function searchEmissionFactorAll()
+    {
+      //  $r=$this->getDtByAttrAe('Author');
+      //$this->pr($_GET);
+      if(!empty($_GET)){
+        $searchFieldArray=$_GET;
+        if(!isset($searchFieldArray['keyword']))
+        {
+            $searchFieldArray['keyword']='';
+        }
+        if($searchFieldArray['keyword']!='')
+        {
+            foreach($searchFieldArray as $key=>$value)
+            {
+              if($key!='keyword')
+              {
+                $r=$this->getDtByAttrEmission($key);
+                $validSearchKey[$r[1].$key]=$searchFieldArray['keyword'];
+                $fieldName[]=$r[0];
+                $filedNameValue[$r[0].'/'.$key]=$searchFieldArray['keyword'];
+              }
+            }
+        }
+        else
+        {
+          foreach($searchFieldArray as $key=>$value)
+          {
+            if($value!='')
+            {
+              $r=$this->getDtByAttrEmission($key);
+              $validSearchKey[$r[1].$key]=$value;
+              $fieldName[]=$r[0];
+              $filedNameValue[$r[0].'/'.$key]=$value;
+            }
+          }
+        }
+      //  $this->pr($filedNameValue);
+        if(!isset($filedNameValue))
+        {
+          redirect('data/biomassExpansionFacView');
+        }
+        else
+        {
+          $data['fieldNameValue']=$filedNameValue;
+        }
+
+        $string=$this->searchAttributeString($validSearchKey);
+    
+        $k=$data['biomassExpansionFacView'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+         where $string
+         order by e.ID_EF desc 
+        ")->result();
+
+         $data['biomassExpansionFacView_count'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+         where $string
+         order by e.ID_EF desc
+
+        ")->result();
+         // $data["links"]                  = $this->pagination->create_links();
+
+          if($searchFieldArray['keyword']!='')
+          {
+            $subUrl='';
+            $i=0;
+            $n=count($searchFieldArray);
+            foreach($searchFieldArray as $row=> $val)
+            {
+              if($i<$n-1)
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'].'&';
+              }
+              else
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'];
+              }
+              $i++;
+
+            }
+          $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+          $pieces = explode("?", $url);
+          $urlTail=$pieces[1];
+          $url=str_ireplace($urlTail,$subUrl,$url);
+          $keyWord=$searchFieldArray['keyword'];
+          $removeString="keyword=$keyWord&";
+          $data['actualUrl']=str_replace($removeString,'',$url);
+          }
+          else
+          {
+            $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $data['actualUrl']=$url;
+          }
+        }
+        else
+        {
+            redirect('data/biomassExpansionFacView');
+        }
+        $data['content_view_page']      = 'portal/biomassExpansionFacView';
+        $this->template->display_portal($data);
+      }
+
+
+
+
+      private function getDtByAttrWd($attr)
+    {
+      $returnArray=array();
+      switch ($attr) {
+        case "H_tree_avg":
+        $returnArray[]='Average Height';
+        $returnArray[]='w.';
+        break;
+        case "H_tree_max":
+        $returnArray[]='Maximum Height';
+        $returnArray[]='w.';
+        break;
+        case "DBH_tree_avg":
+        $returnArray[]='Average DBH';
+        $returnArray[]='w.';
+        break;
+         case "DBH_tree_min":
+        $returnArray[]='Minimum DBH';
+        $returnArray[]='w.';
+        break;
+        case "DBH_tree_max":
+        $returnArray[]='Maximum DBH';
+        $returnArray[]='w.';
+        break;
+        case "EcoZones":
+        $returnArray[]='FAO Global Ecological Zone';
+        $returnArray[]='eco.';
+        break;
+        case "Family":
+        $returnArray[]='Family';
+        $returnArray[]='f.';
+        break;
+        case "Genus":
+        $returnArray[]='Genus';
+        $returnArray[]='g.';
+        break;
+        case "Species":
+        $returnArray[]='Species';
+        $returnArray[]='s.';
+        break;
+        case "Division":
+        $returnArray[]='Division';
+        $returnArray[]='d.';
+        break;
+        case "District":
+        $returnArray[]='District';
+        $returnArray[]='dis.';
+        break;
+        case "FAOBiomes":
+        $returnArray[]='Minimum Height';
+        $returnArray[]='w.';
+        break;
+        case "Reference":
+        $returnArray[]='Reference';
+        $returnArray[]='r.';
+        break;
+        case "Author":
+        $returnArray[]='Author';
+        $returnArray[]='r.';
+        break;
+       
+        case "Year":
+        $returnArray[]='Year';
+        $returnArray[]='r.';
+        break;
+        default:
+        $returnArray[]='';
+        $returnArray[]='';
+      }
+      return $returnArray;
+    }
+
+    public function searchWdAll()
+    {
+      //  $r=$this->getDtByAttrAe('Author');
+      //$this->pr($_GET);
+      if(!empty($_GET)){
+        $searchFieldArray=$_GET;
+        if(!isset($searchFieldArray['keyword']))
+        {
+            $searchFieldArray['keyword']='';
+        }
+        if($searchFieldArray['keyword']!='')
+        {
+            foreach($searchFieldArray as $key=>$value)
+            {
+              if($key!='keyword')
+              {
+                $r=$this->getDtByAttrWd($key);
+                $validSearchKey[$r[1].$key]=$searchFieldArray['keyword'];
+                $fieldName[]=$r[0];
+                $filedNameValue[$r[0].'/'.$key]=$searchFieldArray['keyword'];
+              }
+            }
+        }
+        else
+        {
+          foreach($searchFieldArray as $key=>$value)
+          {
+            if($value!='')
+            {
+              $r=$this->getDtByAttrWd($key);
+              $validSearchKey[$r[1].$key]=$value;
+              $fieldName[]=$r[0];
+              $filedNameValue[$r[0].'/'.$key]=$value;
+            }
+          }
+        }
+      //  $this->pr($filedNameValue);
+        if(!isset($filedNameValue))
+        {
+          redirect('data/woodDensitiesView');
+        }
+        else
+        {
+          $data['fieldNameValue']=$filedNameValue;
+        }
+
+        $string=$this->searchAttributeString($validSearchKey);
+    
+        $k=$data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
+        where $string
+        order by w.ID_WD desc 
+        ")->result();
+         $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
+        where $string
+
+        ")->result();
+
+         // $data["links"]                  = $this->pagination->create_links();
+
+          if($searchFieldArray['keyword']!='')
+          {
+            $subUrl='';
+            $i=0;
+            $n=count($searchFieldArray);
+            foreach($searchFieldArray as $row=> $val)
+            {
+              if($i<$n-1)
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'].'&';
+              }
+              else
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'];
+              }
+              $i++;
+
+            }
+          $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+          $pieces = explode("?", $url);
+          $urlTail=$pieces[1];
+          $url=str_ireplace($urlTail,$subUrl,$url);
+          $keyWord=$searchFieldArray['keyword'];
+          $removeString="keyword=$keyWord&";
+          $data['actualUrl']=str_replace($removeString,'',$url);
+          }
+          else
+          {
+            $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $data['actualUrl']=$url;
+          }
+        }
+        else
+        {
+            redirect('data/woodDensitiesView');
+        }
+        $data['content_view_page']      = 'portal/woodDensitiesView';
+        $this->template->display_portal($data);
+      }
+
+
+
+      
 
     /*
      * @methodName index()
@@ -614,8 +1172,8 @@ class Portal extends CI_Controller
         $data["Author"]=$Author;
         $data["Keywords"]=$Keywords;
         $data["Year"]=$Year;
-         $data['content_view_page']      = 'portal/viewLibraryPageSearch';
-         $this->template->display_portal($data);
+        $data['content_view_page']      = 'portal/viewLibraryPageSearch';
+        $this->template->display_portal($data);
 
     }
 

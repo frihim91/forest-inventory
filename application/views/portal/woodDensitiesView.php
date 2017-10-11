@@ -1,5 +1,3 @@
-
-
 <style type="text/css">
    .page_content{
    padding: 15px;
@@ -31,7 +29,13 @@
    .breadcump_row a{
    color: white;
    }
+    #easyPaginate {width:800px;}
+#easyPaginate img {display:block;margin-bottom:10px;}
+.easyPaginateNav a {padding:5px;}
+.easyPaginateNav a.current {font-weight:bold;text-decoration:underline;}
 </style>
+
+<link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/pagination/jquery.snippet.min.css" rel="stylesheet" media="screen"/>
 <?php
    $lang_ses = $this->session->userdata("site_lang");
    ?>
@@ -113,28 +117,20 @@
             </p>
             <p>
             </p>
-            <form action="<?php echo site_url('portal/search_woodDensities_key');?>" method = "post">
+
+             <form action="<?php echo site_url('portal/searchWdAll');?>" method = "get">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Keyword<span style="color:red;">*</span></label>
                      <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>" maxlength="64" placeholder="Keyword" /><br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                    <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            </form>
+          
          </div>
-         <div id="menu4" class="tab-pane fade
-         <?php if(isset($searchType)){
-               if($searchType==2)
-               {
-                 echo 'in active';
-               }
-               else {
-                 echo '';
-               }
-               }  ?>">
+         <div id="menu4" class="tab-pane fade">
             <p>Search by tree height, diameter, and volume.</p>
-            <form action="<?php echo site_url('portal/search_woodDensities_raw');?>" method = "post">
+           
             <div class="row">
                <h4>Height</h4>
                <div class="col-md-3">
@@ -185,24 +181,15 @@
                   </div>
                </div>
                 <br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                   <!--   <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
 
-
+ -->
                </div>
 
 
-            </form>
+            
          </div>
-         <div id="menu1" class="tab-pane fade
-         <?php if(isset($searchType)){
-               if($searchType==3)
-               {
-                 echo 'in active';
-               }
-               else {
-                 echo '';
-               }
-               }  ?>">
+         <div id="menu1" class="tab-pane fade">
             <p> Search allometric equations by family, genus or species.
                Example searches
                <br>
@@ -211,24 +198,52 @@
                <a href="#">Xylocarpus</a>, 
                <a href="#">moluccensis</a>,
             </p>
-            <form action="<?php echo site_url('portal/search_woodDensities_tax');?>" method = "post">
+           
                <div class="col-md-6">
                 <div class="form-group">
               <label>Family<span style="color:red;"></span></label>
-              <input type="text" class="form-control input-sm" name ="Family"  class ="Family" maxlength="64" placeholder="Family" />
+            <!--   <input type="text" class="form-control input-sm" name ="Family"  class ="Family" maxlength="64" placeholder="Family" /> -->
+                    <?php
+                     $Family = $this->Forestdata_model->get_all_family();
+                     $options = array('' => '--Select Family--');
+                     foreach ($Family as $Family) {
+                     $options["$Family->Family"] = $Family->Family;
+                     }
+                     $Family = set_value('Family');
+                     echo form_dropdown('Family', $options, $Family, 'id="Family" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Family" ');
+                     ?>
                </div>
                   <div class="form-group">
                      <label>Genus<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Genus"  class ="Genus" maxlength="64" placeholder="Genus" />
+                     <!-- <input type="text" class="form-control input-sm" name ="Genus"  class ="Genus" maxlength="64" placeholder="Genus" /> -->
+                     <?php
+                     $Genus = $this->Forestdata_model->get_all_genus();
+                     $options = array('' => '--Select Genus--');
+                     foreach ($Genus as $Genus) {
+                     $options["$Genus->Genus"] = $Genus->Genus;
+                     }
+                     $Genus = set_value('Genus');
+                     echo form_dropdown('Genus', $options, $Genus, 'id="Genus" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Genus" ');
+                     ?>
                   </div>
                   <div class="form-group">
                      <label>Species<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Species"  class ="Species" maxlength="64" placeholder="Species" />
+                   <!--   <input type="text" class="form-control input-sm" name ="Species"  class ="Species" maxlength="64" placeholder="Species" /> -->
+                    <?php
+                     $Species = $this->Forestdata_model->get_all_species();
+                     $options = array('' => '--Select Species--');
+                     foreach ($Species as $Species) {
+                     $options["$Species->Species"] = $Species->Species;
+                     }
+                     $Species = set_value('Species');
+                     echo form_dropdown('Species', $options, $Species, 'id="Species" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Species" ');
+                     ?>
+
                      <br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                    <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            </form>
+        
          </div>
          <div id="menu2" class="tab-pane fade">
             <p> Search allometric equations by tree location and biome.Example searches
@@ -237,7 +252,7 @@
                <a href="#">Tropical moist forest</a>,
                <a href="#">Country: Bangladesh</a>, 
             </p>
-            <form action="<?php echo site_url('portal/search_woodDensities_loc');?>" method = "post">
+           
                <div class="col-md-6">
 
                <div class="form-group">
@@ -251,7 +266,7 @@
                      $options["$ID_Division->Division"] = $ID_Division->Division;
                      }
                      $ID_Division = set_value('Division');
-                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                      ?>
 
                   </div>
@@ -259,19 +274,28 @@
                      
                      <label>District<span style="color:red;"></span></label>
                     <!--  <input type="text" class="form-control input-sm" name ="District"  class ="District" maxlength="64" placeholder="District" /> -->
-                    <select class="form-control singleSelectExample" id="ID_District" style="width:620px;"  name="District">
+                    <select class="form-control singleSelectExample" id="ID_District" style="width:560px;"  name="District">
                      <option value="">Select District</option>
                   </select>
                   </div>
                   <div class="form-group">
                      <h3>Ecological Zone</h3>
                      <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="EcoZones"  class ="fao_biome" maxlength="64" placeholder="FAO Global Ecological Zone" />
+                    <!--  <input type="text" class="form-control input-sm" name ="EcoZones"  class ="fao_biome" maxlength="64" placeholder="FAO Global Ecological Zone" /> -->
+                     <?php
+                     $EcoZoness = $this->Forestdata_model->get_all_ecological_zones();
+                     $options = array('' => '--Select Ecological Zone--');
+                     foreach ($EcoZoness as $EcoZones) {
+                     $options["$EcoZones->EcoZones"] = $EcoZones->EcoZones;
+                     }
+                     $EcoZones = set_value('EcoZones');
+                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
+                     ?>
                      <br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                     
                   </div>
                </div>
-            </form>
+       
          </div>
          <div id="menu3" class="tab-pane fade">
             <p> Search allometric equations by author, year, and reference.
@@ -282,7 +306,7 @@
                <a href="#">Sattar, MA</a>, 
                <a href="#"> Year: 1981</a>, 
             </p>
-            <form action="<?php echo site_url('portal/search_woodDensities_ref');?>" method = "post">
+          
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reference <span style="color:red;"></span></label>
@@ -296,13 +320,17 @@
                      <label>Year  <span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="Year" class ="year" maxlength="64" placeholder="Year" />
                      <br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> 
+                     
                   </div>
                </div>
-            </form>
+            
          </div>
       </div>
    </div>
+    <div class="col-lg-6">
+         <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+         </div>
+  </form>
    <div class="col-sm-12 bdy_des">
        <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
  
@@ -337,36 +365,35 @@
       <h4> Search criteria</h4>
       
         <p> <?php
-                           if(isset($woodDensitiesView_count)){
-                            ?>
-                            <?php echo (isset($keyword))?$keyword:'';?>
-                            <?php echo $Family = $this->input->post('Family'); ?>
-                            <?php echo $Genus = $this->input->post('Genus'); ?>
-                            <?php echo $Species = $this->input->post('Species'); ?>
-                            <?php echo $District = $this->input->post('District'); ?>
-                            <?php echo $Division = $this->input->post('Division'); ?>
-                            <?php echo $EcoZones = $this->input->post('EcoZones'); ?>
-                            <?php echo $Reference = $this->input->post('Reference'); ?>
-                            <?php echo $Author = $this->input->post('Author'); ?>
-                            <?php echo $Year = $this->input->post('Year'); ?>
-                            <?php echo $H_tree_avg = $this->input->post('H_tree_avg'); ?>
-                            <?php echo $H_tree_min = $this->input->post('H_tree_min');?>
-                            <?php echo $H_tree_max = $this->input->post('H_tree_max'); ?>
-                            <?php echo $DBH_tree_avg = $this->input->post('DBH_tree_avg');?>
-                            <?php echo $DBH_tree_min = $this->input->post('DBH_tree_min');?>
-                            <?php echo $DBH_tree_max = $this->input->post('DBH_tree_max');?>
-                            
+        // echo "<pre>";
+        // print_r($fieldNameValue);
+                           if(!empty($fieldNameValue)){
+                              $n=count($fieldNameValue);
+                             $i=0;
+                             foreach($fieldNameValue as $key=>$value)
+                             {
+                                $pieces = explode("/", $key);
+                                $fieldName= $pieces[0]; // piece1
+                                $keyWord= $pieces[1]; // piece2
+                                if($i<$n-1)
+                                {
+                                  $substitute="$keyWord=$value&";
+                                }
+                                else {
+                                  $substitute="$keyWord=$value";
+                                }
+                                $sub=str_replace(' ','+',$substitute);
+                                //echo $actualUrl;
+                                $newUrl=str_replace($sub,'',$actualUrl);
+                            // $url=str_replace('','',$actualUrl);
+                                $i++;
+                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+                             }
 
-                             <?php 
                             }
-                            else{ ?>
-                             No criteria - All results are shown
-
-
-                           
-                                  <?php 
+                            else{
+                              echo "No criteria - All results are shown";
                             }
-                            
                            ?></p>
       
     </div>
@@ -399,8 +426,9 @@
             <?php 
                foreach($woodDensitiesView as $row)
                {
-               ?>
-            <div class="panel panel-default">
+
+                ?>
+            <div class="panel panel-default my">
                <div class="panel-heading">Wood densities
                   <a href="<?php echo site_url('Portal/woodDensitiesDetails/'.$row->ID_WD); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
@@ -415,7 +443,7 @@
             </div>
             <?php 
                }?>
-            <p><?php echo $links; ?></p>
+            <!-- <p><?php echo $links; ?></p> -->
          </div>
          <div id="results-map" class="tab-pane fade">
             <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
@@ -715,10 +743,6 @@ function () {
            });
        });
    });
-   
-   
-   
-   
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -752,6 +776,9 @@ $("a.resultList").click(function(){
   $("div.mapBlock").hide();
 });
 </script>
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>
 
 
 

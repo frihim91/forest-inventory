@@ -31,7 +31,12 @@
    .breadcump_row a{
    color: white;
    }
+#easyPaginate {width:800px;}
+#easyPaginate img {display:block;margin-bottom:10px;}
+.easyPaginateNav a {padding:5px;}
+.easyPaginateNav a.current {font-weight:bold;text-decoration:underline;}
 </style>
+<link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/pagination/jquery.snippet.min.css" rel="stylesheet" media="screen"/>
 <?php
    $lang_ses = $this->session->userdata("site_lang");
    ?>
@@ -112,29 +117,19 @@
             </p>
             <p>
             </p>
-            <form action="<?php echo site_url('portal/search_rawequation_key');?>" method = "post">
+            <form action="<?php echo site_url('portal/searchRawEquationAll');?>" method = "get">
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Keyword<span style="color:red;">*</span></label>
                      <input type="text" class="form-control input-sm" name = "keyword" value ="<?php echo (isset($keyword))?$keyword:'';?>" class ="keyword" maxlength="64" placeholder="Keyword" /><br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                     <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            </form>
+            
          </div>
-         <div id="menu4" class="tab-pane fade
-         <?php if(isset($searchType)){
-               if($searchType==2)
-               {
-                 echo 'in active';
-               }
-               else {
-                 echo '';
-               }
-               }  ?>
-         ">
+         <div id="menu4" class="tab-pane fade">
             <p>Search by tree height and volume.</p>
-            <form action="<?php echo site_url('portal/search_rawequation_raw');?>" method = "post">
+         
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Tree Height (m)<span style="color:red;"></span></label>
@@ -144,21 +139,12 @@
                      <label>Volume (m3)<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="Volume_m3" value = "<?php echo (isset($Volume_m3))?$Volume_m3:'';?>"  class ="volume_m3" maxlength="64" placeholder="Volume (m3)" />
                      <br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                    <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            </form>
+            
          </div>
-         <div id="menu1" class="tab-pane fade
-         <?php if(isset($searchType)){
-               if($searchType==3)
-               {
-                 echo 'in active';
-               }
-               else {
-                 echo '';
-               }
-               }  ?>">
+         <div id="menu1" class="tab-pane fade">
             <p> Search allometric equations by family, genus or species.
                Example searches
                <br>
@@ -167,42 +153,60 @@
                <a href="#">Excoecaria</a>, 
                <a href="#">Excoecaria agallocha</a>,
             </p>
-            <form action="<?php echo site_url('portal/search_rawequation_tax');?>" method = "post">
+      
                <div class="col-md-6">
                <div class="form-group">
               <label>Family<span style="color:red;"></span></label>
-              <input type="text" class="form-control input-sm" name ="Family" value = "<?php echo (isset($Family))?$Family:'';?>"  class ="Family" maxlength="64" placeholder="Family" />
+              <!-- <input type="text" class="form-control input-sm" name ="Family" value = "<?php echo (isset($Family))?$Family:'';?>"  class ="Family" maxlength="64" placeholder="Family" /> -->
+                <?php
+                     $Family = $this->Forestdata_model->get_all_family();
+                     $options = array('' => '--Select Family--');
+                     foreach ($Family as $Family) {
+                     $options["$Family->Family"] = $Family->Family;
+                     }
+                     $Family = set_value('Family');
+                     echo form_dropdown('Family', $options, $Family, 'id="Family" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Family" ');
+                     ?>
                </div>
                   <div class="form-group">
                      <label>Genus<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Genus" value = "<?php echo (isset($Genus))?$Genus:'';?>"  class ="Genus" maxlength="64" placeholder="Genus" />
+                    <!--  <input type="text" class="form-control input-sm" name ="Genus" value = "<?php echo (isset($Genus))?$Genus:'';?>"  class ="Genus" maxlength="64" placeholder="Genus" /> -->
+                    <?php
+                     $Genus = $this->Forestdata_model->get_all_genus();
+                     $options = array('' => '--Select Genus--');
+                     foreach ($Genus as $Genus) {
+                     $options["$Genus->Genus"] = $Genus->Genus;
+                     }
+                     $Genus = set_value('Genus');
+                     echo form_dropdown('Genus', $options, $Genus, 'id="Genus" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Genus" ');
+                     ?>
                   </div>
                   <div class="form-group">
                      <label>Species<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Species" value = "<?php echo (isset($Species))?$Species:'';?>"  maxlength="64"  class ="Species" placeholder="Species" />
+                   <!--   <input type="text" class="form-control input-sm" name ="Species" value = "<?php echo (isset($Species))?$Species:'';?>"  maxlength="64"  class ="Species" placeholder="Species" /> -->
+                      <?php
+                     $Species = $this->Forestdata_model->get_all_species();
+                     $options = array('' => '--Select Species--');
+                     foreach ($Species as $Species) {
+                     $options["$Species->Species"] = $Species->Species;
+                     }
+                     $Species = set_value('Species');
+                     echo form_dropdown('Species', $options, $Species, 'id="Species" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Species" ');
+                     ?>
                      <br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                    <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            </form>
+         
          </div>
-         <div id="menu2" class="tab-pane fade
-         <?php if(isset($searchType)){
-               if($searchType==4)
-               {
-                 echo 'in active';
-               }
-               else {
-                 echo '';
-               }
-               }  ?>">
+         <div id="menu2" class="tab-pane fade">
             <p> Search allometric equations by tree location and biome.Example searches
                <br>
                Example searches: <a href="#">Biome (FAO):</a>,
                <a href="#">Tropical dry forest</a>,
                <a href="#">Country: Benin</a>, 
             </p>
-            <form action="<?php echo site_url('portal/search_rawequation_loc');?>" method = "post">
+           
                <div class="col-md-6">
                 <div class="form-group">
                    
@@ -215,14 +219,14 @@
                      $options["$ID_Division->Division"] = $ID_Division->Division;
                      }
                      $ID_Division = set_value('Division');
-                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:620px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                      ?>   
                   </div>
                   <div class="form-group">
                    
                      <label>District<span style="color:red;"></span></label>
                     <!--  <input type="text" class="form-control input-sm" name ="District" value = "<?php echo (isset($District))?$District:'';?>" maxlength="64"  class ="District" placeholder="District" /> -->
-                     <select class="form-control singleSelectExample" id="ID_District" style="width:620px;"  name="District">
+                     <select class="form-control singleSelectExample" id="ID_District" style="width:560px;"  name="District">
                      <option value="">Select District</option>
                   </select>
                   </div>
@@ -231,21 +235,12 @@
                      <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="FAOBiomes" value = "<?php echo (isset($FAOBiomes))?$FAOBiomes:'';?>"  class ="fao_biome" maxlength="64" placeholder="FAO Global Ecological Zone" />
                      <br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+                    <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            </form>
+           
          </div>
-         <div id="menu3" class="tab-pane fade
-         <?php if(isset($searchType)){
-               if($searchType==5)
-               {
-                 echo 'in active';
-               }
-               else {
-                 echo '';
-               }
-               }  ?>">
+         <div id="menu3" class="tab-pane fade">
             <p> Search allometric equations by author, year, and reference.
                Example searches
                <br>
@@ -254,7 +249,7 @@
                <a href="#">Faruque, O.</a>, 
                <a href="#"> Year: 2010</a>, 
             </p>
-            <form action="<?php echo site_url('portal/search_rawequation_ref');?>" method = "post">
+           
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reference <span style="color:red;"></span></label>
@@ -268,13 +263,17 @@
                      <label>Year  <span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="Year" value ="<?php echo (isset($Year))?$Year:'';?>" maxlength="64" class ="year" placeholder="Year" />
                      <br>
-                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> 
+                 <!--     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">  -->
                   </div>
                </div>
-            </form>
+           
          </div>
       </div>
    </div>
+    <div class="col-lg-6">
+         <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
+         </div>
+          </form>
    <div class="col-sm-12 bdy_des">
       <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
  
@@ -308,34 +307,36 @@
       
       <h4> Search criteria</h4>
       
-        <p> <?php
-                           if(isset($rawDataView_count)){
-                            ?>
-                            <?php echo (isset($keyword))?$keyword:'';?>
-                            
-                            <?php echo (isset($Family))?$Family:'';?>
-                            <?php echo (isset($Genus))?$Genus:'';?>
-                            <?php echo (isset($Species))?$Species:'';?>
-                            <?php echo (isset($District))?$District:'';?>
-                             <?php echo (isset($Division))?$Division:'';?>
-                             <?php echo (isset($FAOBiomes))?$FAOBiomes:'';?>
-                             <?php echo (isset($Reference))?$Reference:'';?>
-                            <?php echo (isset($Author))?$Author:'';?>
-                            <?php echo (isset($Year))?$Year:'';?>
-                            <?php echo (isset($H_m))?$H_m:'';?>
-                           <?php echo (isset($Volume_m3))?$Volume_m3:'';?>
-                            
+        <p>  <?php
+        // echo "<pre>";
+        // print_r($fieldNameValue);
+                           if(!empty($fieldNameValue)){
+                              $n=count($fieldNameValue);
+                             $i=0;
+                             foreach($fieldNameValue as $key=>$value)
+                             {
+                                $pieces = explode("/", $key);
+                                $fieldName= $pieces[0]; // piece1
+                                $keyWord= $pieces[1]; // piece2
+                                if($i<$n-1)
+                                {
+                                  $substitute="$keyWord=$value&";
+                                }
+                                else {
+                                  $substitute="$keyWord=$value";
+                                }
+                                $sub=str_replace(' ','+',$substitute);
+                                //echo $actualUrl;
+                             $newUrl=str_replace($sub,'',$actualUrl);
+                            // $url=str_replace('','',$actualUrl);
+                                $i++;
+                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+                             }
 
-                             <?php 
                             }
-                            else{ ?>
-                             No criteria - All results are shown
-
-
-                           
-                                  <?php 
+                            else{
+                              echo "No criteria - All results are shown";
                             }
-                            
                            ?></p>
       
     </div>
@@ -370,7 +371,7 @@
                foreach($rawDataView as $row)
                {
                ?>
-            <div class="panel panel-default">
+            <div class="panel panel-default my">
                <div class="panel-heading">Raw Data
                   <a href="<?php echo site_url('Portal/rawDataDetails/'.$row->ID); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
@@ -388,7 +389,7 @@
             </div>
             <?php 
                }?>
-            <p><?php echo $links; ?></p>
+          <!--   <p><?php echo $links; ?></p> -->
          </div>
         <div id="results-map" class="tab-pane fade">
             <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
@@ -693,4 +694,8 @@ $("a.resultList").click(function(){
   $("div.mapBlock").hide();
 });
 </script>
+
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>
 
