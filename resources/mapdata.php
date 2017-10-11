@@ -11,13 +11,19 @@
 $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db','maruf','maruf');
 
 # Build SQL SELECT statement including x and y columns
-$sql = "SELECT k.*,fb.FAOBiomes FROM (select a.FAO_Biome,a.species,a.ID_AE AS ID_AE,a.Latitude AS y,a.Longitude AS x,a.output,
-(select count(ae.Species) from ae where ((ae.Latitude = a.Latitude) and (ae.Longitude = a.Longitude)))
-AS total_species,(select group_concat(distinct concat(s.Species),' (',(select count(m.Species) from ae m
-where ((m.Species = b.Species) and (a.Latitude = m.Latitude) and (a.Longitude = m.Longitude))),') ' separator ', ') AS m
-from (ae b left join species s on((b.Species = s.ID_Species))) where ((b.Latitude = a.Latitude)
-and (b.Longitude = a.Longitude))) AS species_desc from ae a where (a.Latitude > 0) group by a.Latitude,a.Longitude) k
-LEFT JOIN faobiomes fb ON k.FAO_Biome=fb.ID_FAOBiomes";
+$sql = "SELECT * FROM (SELECT x.latitude y, y.longitude x, y.total_species, x.species_desc,x.speciesId,x.fao_biome,x.output
+  FROM (SELECT   d.latitude, group_concat(d.species_desc) species_desc,d.fao_biome,d.speciesId,d.output
+            FROM (SELECT   b.latitude,b.species speciesId,b.fao_biome,b.output,
+                           CONCAT (a.species , ' (' , count(b.species)
+                           , ') ') species_desc
+                      FROM species a, ae b
+                     WHERE a.id_species = b.species and b.latitude>0
+                  GROUP BY a.species, b.latitude) d
+        GROUP BY d.latitude) x,
+       (SELECT   c.latitude, c.longitude, count(c.species) total_species
+            FROM ae c
+        GROUP BY c.latitude, c.longitude) y
+ WHERE x.latitude = y.latitude) m,faobiomes fb WHERE m.fao_biome=fb.id_faobiomes";
 
 /*
 * If bbox variable is set, only return records that are within the bounding box
