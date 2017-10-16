@@ -36,6 +36,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                             <th>Title</th>
                             <th>Author Name</th>
                             <th>Comment</th>
                             <th>Action</th>
@@ -48,6 +49,7 @@
                             ?>
                             <tr> 
                                 <td><?php echo $i; ?></td>
+                                <td><?php echo $comments->title;?></a></td>
                                  <td><?php echo $comments->FIRST_NAME . " " .$comments->LAST_NAME;?></a></td>
                                 <td><?php echo $comments->comment;?></a></td>
                               

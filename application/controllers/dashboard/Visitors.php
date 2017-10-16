@@ -78,8 +78,10 @@
 
      public function commentList()
     {
-        $data['comment']           = $this->db->query("SELECT c.*,v.FIRST_NAME,v.LAST_NAME,v.USER_ID FROM community_comment c 
-            left join visitor_info v on v.USER_ID=c.user_id order by c.id DESC")->result();
+        $data['comment']           = $this->db->query("SELECT c.*,cm.title,v.FIRST_NAME,v.LAST_NAME,v.USER_ID FROM community_comment c 
+            left join visitor_info v on v.USER_ID=c.user_id 
+            left join community cm on cm.id=c.community_id
+            order by c.id DESC")->result();
         $data['content_view_page'] = 'setup/commentList/all_comment';
         $this->template->display($data);
     }
