@@ -1,6 +1,6 @@
 <style>
    .help{border-left:1px solid #EAEAEA;padding: 0px 0px 0px 5px; transition: background ease-in-out .7s;}
-   .help-head{color:#A82400;} 
+   .help-head{color:#A82400;}
    .form-group:hover .help{ background: #e3e3e3;}
 </style>
 <div class="col-md-12">
@@ -10,7 +10,7 @@
             <div class="widget-head">
                <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create New Page</a> -->
              <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" ><i class="glyphicon glyphicon-plus"></i></a>
-               <small style="margin-left: 10px;">All Family</small> 
+               <small style="margin-left: 10px;">All Family</small>
             </div>
          </div>
          <div class="panel-body">
@@ -36,9 +36,12 @@
                            <td><?php echo $i; ?></td>
                            <td><?php echo $all_familys->Family; ?></td>
                            <td>
-                              <a class="label btn-danger btn-xs deleteUrl" href="<?php echo site_url('dashboard/ForestData/deleteFamily/'.$all_familys->ID_Family);?>">
+                              <a class="label btn-danger btn-xs modalLink" href="<?php echo site_url('dashboard/ForestData/deleteFamily/'.$all_familys->ID_Family);?>">
                               <i class="glyphicon glyphicon-remove"></i>
-                              </a>  
+                              </a>
+                              <span title="Edit  Module Name"
+                              href="http://localhost/forest-inventory/index.php/dashboard/securityAccess/edit_module/1"
+                              class="label label-info modalLink" style="cursor: pointer">Edit</span>
                            </td>
                         </tr>
                         <?php
@@ -63,7 +66,7 @@
             <div class="widget-head">
                <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create New Page</a> -->
                 <a class="btn btn-sm btn-danger pull-right col-md-2 ModalGenus" ><i class="glyphicon glyphicon-plus"></i></a></a>
-               <small style="margin-left: 10px;">All Genus</small> 
+               <small style="margin-left: 10px;">All Genus</small>
             </div>
          </div>
          <div class="panel-body">
@@ -91,7 +94,7 @@
                            <td>
                                <a class="label btn-danger btn-xs deleteUrlG" href="<?php echo site_url('dashboard/ForestData/deleteGenus/'.$all_genuss->ID_Genus);?>">
                               <i class="glyphicon glyphicon-remove"></i>
-                              </a>   
+                              </a>
                            </td>
                         </tr>
                         <?php
@@ -117,9 +120,9 @@
          <div class="panel-heading">
             <div class="widget-head">
                <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create New Page</a> -->
-            
+
                <a class="btn btn-sm btn-danger pull-right col-md-2 ModalSpecies" ><i class="glyphicon glyphicon-plus"></i></a></a>
-               <small style="margin-left: 10px;">All Species</small> 
+               <small style="margin-left: 10px;">All Species</small>
             </div>
          </div>
          <div class="panel-body">
@@ -151,7 +154,7 @@
                            <td>
                               <a class="label btn-danger btn-xs deleteUrlS" href="<?php echo site_url('dashboard/ForestData/deleteSpecies/'.$all_speciess->ID_Species);?>">
                               <i class="glyphicon glyphicon-remove"></i>
-                              </a>  
+                              </a>
                            </td>
                         </tr>
                         <?php
@@ -175,9 +178,9 @@
          <div class="panel-heading">
             <div class="widget-head">
                <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create New Page</a> -->
-            
+
                <a class="btn btn-sm btn-danger pull-right col-md-2 ModalFAOBiomes" ><i class="glyphicon glyphicon-plus"></i></a></a>
-               <small style="margin-left: 10px;">All FAOBiomes</small> 
+               <small style="margin-left: 10px;">All FAOBiomes</small>
             </div>
          </div>
          <div class="panel-body">
@@ -205,7 +208,7 @@
                            <td>
                               <a class="label btn-danger btn-xs deleteUrFao" href="<?php echo site_url('dashboard/ForestData/deleteFAOBiomes/'.$all_faobiomess->ID_FAOBiomes);?>">
                               <i class="glyphicon glyphicon-remove"></i>
-                              </a>  
+                              </a>
                            </td>
                         </tr>
                         <?php
@@ -234,20 +237,20 @@
                     <h4 class="modal-title">Add Family Name</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="row">  
+                    <div class="row">
                         <div class="form-group">
                             <div class="col-md-8">
                                 <label for="firstname" class="col-md-4 control-label">Family Name</label>
-                                <div class="col-md-8"> 
-                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Family Name', 'id' => 'Family', 'name' => 'Family', 'value' => set_value('Family'), 'required' => 'required')); ?>      
+                                <div class="col-md-8">
+                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Family Name', 'id' => 'Family', 'name' => 'Family', 'value' => set_value('Family'), 'required' => 'required')); ?>
                                 </div>
                             </div>
                             <div class="col-md-4 help">
                                 <strong><span  class="help-head">Help: </span>Family Name</strong>
                                 <hr>
                                 <p class="muted">Please enter Family Name in english here.</p>
-                            </div> 
-                        </div> 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -269,11 +272,11 @@
                     <h4 class="modal-title">Add Genus Name</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="row">  
+                    <div class="row">
                         <div class="form-group">
                             <div class="col-md-8">
                                 <label for="firstname" class="col-md-4 control-label">Family Name</label>
-                                <div class="col-md-8"> 
+                                <div class="col-md-8">
                                    <?php
                                    $family = $this->Forestdata_model->get_all_family();
                                    $options = array('' => '--Select Family--');
@@ -282,31 +285,31 @@
                                    }
                                    $mId = set_value('ID_Family');
                                    echo form_dropdown('ID_Family', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Family..." required="required"');
-                                 ?>     
+                                 ?>
                                 </div>
                             </div>
                             <div class="col-md-4 help">
                                 <strong><span  class="help-head">Help: </span>Family Name</strong>
                                 <hr>
                                 <p class="muted">Please enter Family Name in english here.</p>
-                            </div> 
-                        </div> 
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="row">  
+                    <div class="row">
                         <div class="form-group">
                             <div class="col-md-8">
                                 <label for="firstname" class="col-md-4 control-label">Genus Name</label>
-                                <div class="col-md-8"> 
-                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Genus Name', 'id' => 'Genus', 'name' => 'Genus', 'value' => set_value('Genus'), 'required' => 'required')); ?>      
+                                <div class="col-md-8">
+                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Genus Name', 'id' => 'Genus', 'name' => 'Genus', 'value' => set_value('Genus'), 'required' => 'required')); ?>
                                 </div>
                             </div>
                             <div class="col-md-4 help">
                                 <strong><span  class="help-head">Help: </span>Genus Name</strong>
                                 <hr>
                                 <p class="muted">Please enter Genus Name in english here.</p>
-                            </div> 
-                        </div> 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -327,11 +330,11 @@
                     <h4 class="modal-title">Add Species Name</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="row">  
+                    <div class="row">
                         <div class="form-group">
                             <div class="col-md-8">
                                 <label for="firstname" class="col-md-4 control-label">Family Name</label>
-                                <div class="col-md-8"> 
+                                <div class="col-md-8">
                                    <?php
                                    $family = $this->Forestdata_model->get_all_family();
                                    $options = array('' => '--Select Family--');
@@ -340,22 +343,22 @@
                                    }
                                    $mId = set_value('ID_Family');
                                    echo form_dropdown('ID_Family', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Family..." required="required"');
-                                 ?>     
+                                 ?>
                                 </div>
                             </div>
                             <div class="col-md-4 help">
                                 <strong><span  class="help-head">Help: </span>Family Name</strong>
                                 <hr>
                                 <p class="muted">Please enter Family Name in english here.</p>
-                            </div> 
-                        </div> 
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="row">  
+                    <div class="row">
                         <div class="form-group">
                             <div class="col-md-8">
                                 <label for="firstname" class="col-md-4 control-label">Genus Name</label>
-                                <div class="col-md-8"> 
+                                <div class="col-md-8">
                                    <?php
                                    $genus = $this->Forestdata_model->get_all_genus();
                                    $options = array('' => '--Select Genus--');
@@ -364,31 +367,31 @@
                                    }
                                    $mId = set_value('ID_Genus');
                                    echo form_dropdown('ID_Genus', $options, $mId, 'id="id" class="tag-select form-control" data-placeholder="Choose a Family..." required="required"');
-                                 ?>     
+                                 ?>
                                 </div>
                             </div>
                             <div class="col-md-4 help">
                                 <strong><span  class="help-head">Help: </span>Genus Name</strong>
                                 <hr>
                                 <p class="muted">Please enter Genus Name in english here.</p>
-                            </div> 
-                        </div> 
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="row">  
+                    <div class="row">
                         <div class="form-group">
                             <div class="col-md-8">
                                 <label for="firstname" class="col-md-4 control-label">Species Name</label>
-                                <div class="col-md-8"> 
-                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Species Name', 'id' => 'Species', 'name' => 'Species', 'value' => set_value('Species'), 'required' => 'required')); ?>      
+                                <div class="col-md-8">
+                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Species Name', 'id' => 'Species', 'name' => 'Species', 'value' => set_value('Species'), 'required' => 'required')); ?>
                                 </div>
                             </div>
                             <div class="col-md-4 help">
                                 <strong><span  class="help-head">Help: </span>Species Name</strong>
                                 <hr>
                                 <p class="muted">Please enter Species Name in english here.</p>
-                            </div> 
-                        </div> 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -409,20 +412,20 @@
                     <h4 class="modal-title">Add FAO Biomes Name</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="row">  
+                    <div class="row">
                         <div class="form-group">
                             <div class="col-md-8">
                                 <label for="firstname" class="col-md-4 control-label">FAO Biomes Name</label>
-                                <div class="col-md-8"> 
-                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'FAO Biomes Name', 'id' => 'FAOBiomes', 'name' => 'FAOBiomes', 'value' => set_value('FAOBiomes'), 'required' => 'required')); ?>      
+                                <div class="col-md-8">
+                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'FAO Biomes Name', 'id' => 'FAOBiomes', 'name' => 'FAOBiomes', 'value' => set_value('FAOBiomes'), 'required' => 'required')); ?>
                                 </div>
                             </div>
                             <div class="col-md-4 help">
                                 <strong><span  class="help-head">Help: </span>FAO Biomes Name</strong>
                                 <hr>
                                 <p class="muted">Please enter FAO Biomes Name in english here.</p>
-                            </div> 
-                        </div> 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -440,14 +443,14 @@
         if(result == true){
          var url = $(this).attr('href');
           var removeRow = $(this).parent().parent();
-   
+
                      $.ajax({
                          url: url,
                          type: 'POST',
                         // dataType: 'JSON',
                          success: function (data) {
                          window.location.href = "<?php echo site_url('dashboard/ForestData/speciesSetup');?>";
-                            
+
                          }
                      });
         }
@@ -459,14 +462,14 @@
         if(result == true){
          var url = $(this).attr('href');
           var removeRow = $(this).parent().parent();
-   
+
                      $.ajax({
                          url: url,
                          type: 'POST',
                         // dataType: 'JSON',
                          success: function (data) {
                          window.location.href = "<?php echo site_url('dashboard/ForestData/speciesSetup');?>";
-                            
+
                          }
                      });
         }
@@ -478,14 +481,14 @@
         if(result == true){
          var url = $(this).attr('href');
           var removeRow = $(this).parent().parent();
-   
+
                      $.ajax({
                          url: url,
                          type: 'POST',
                         // dataType: 'JSON',
                          success: function (data) {
                          window.location.href = "<?php echo site_url('dashboard/ForestData/speciesSetup');?>";
-                            
+
                          }
                      });
         }
@@ -497,14 +500,14 @@
         if(result == true){
          var url = $(this).attr('href');
           var removeRow = $(this).parent().parent();
-   
+
                      $.ajax({
                          url: url,
                          type: 'POST',
                         // dataType: 'JSON',
                          success: function (data) {
                          window.location.href = "<?php echo site_url('dashboard/ForestData/speciesSetup');?>";
-                            
+
                          }
                      });
         }
@@ -533,4 +536,3 @@
     });
 
 </script>
-

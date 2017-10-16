@@ -619,7 +619,7 @@ $(document).ready(function(){
         pointToLayer: function(feature,latlng){
           var marker = L.marker(latlng,{icon: ratIcon});
 
-          marker.bindPopup('<b>EF : </b>'+feature.properties.ID_EF);
+          marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes);
 
           return marker;
         }
