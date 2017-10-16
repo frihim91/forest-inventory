@@ -367,11 +367,12 @@
       </ul>
       <div class="tab-content">
          <div id="results-list" class="tab-pane fade in active">
+           <div id="paginationClass_raw">
             <?php 
                foreach($rawDataView as $row)
                {
                ?>
-            <div class="panel panel-default my">
+            <div class="panel panel-default my_raw">
                <div class="panel-heading">Raw Data
                   <a href="<?php echo site_url('Portal/rawDataDetails/'.$row->ID); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
@@ -390,6 +391,7 @@
             <?php 
                }?>
           <!--   <p><?php echo $links; ?></p> -->
+         </div>
          </div>
         <div id="results-map" class="tab-pane fade">
             <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />

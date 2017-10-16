@@ -403,13 +403,15 @@
       </ul>
       <div class="tab-content">
 
-         <div id="results-list" class="tab-pane fade in active">
-         
+         <div id="results-list" class="tab-pane fade in active ">
+          <div id="paginationClass">
            <?php
                foreach($allometricEquationView as $row)
                {
                  ?>
+
             <div class="panel panel-default my">
+            
                <div class="panel-heading">Allometric Equation
                   <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
@@ -423,11 +425,13 @@
                   <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
                   <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>
                </div>
+               
             </div>
             <?php
                }?>
               
            
+         </div>
          </div>
 
          <div id="results-map" class="tab-pane fade">
@@ -438,8 +442,9 @@
             </style>
          </div>
       </div>
-   </div>
-</div>
+          </div>
+      </div>
+
 <div class="row mapBlock" style="display:none">
    <div class="col-md-12" style="height:500px!important;width:100%">
       <div id="map"></div>

@@ -9,8 +9,8 @@ $(function() {
 	$("pre.css").snippet("css", {style:'matlab'});
 	$("pre.javascript").snippet("javascript", {style:'matlab'});
 
-	$('#results-list').easyPaginate({
-		paginateElement: 'div.my',
+	$('#paginationClass_ef').easyPaginate({
+		paginateElement: 'div.my_ef',
 		elementsPerPage: 40,
 		effect: 'slide'
 	});
