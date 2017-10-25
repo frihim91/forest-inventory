@@ -416,14 +416,24 @@
                   <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
                <div class="panel-body">
-                  <p style="padding-left:3px;"><b>Equation: <code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
+               <dl class="dl-horizontal">
+               <dt style="font-size:15px;"><small>Equation</small></dt> <dd style="font-size:15px;"><code><?php echo $row->Equation;?></code></dd> 
+               <dt style="font-size:15px;"><small>Output</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Output;?></small></dd>
+               <dt style="font-size:15px;"><small>Reference</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Author;?>.<?php echo $row->Reference;?></small></dd> 
+               <dt style="font-size:15px;"><small>Reference Year</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Year;?></small></dd> 
+               <dt style="font-size:15px;"><small>Biomass</small></dt> <dd style="font-size:15px;"><small><?php echo $row->FAOBiomes;?></small></dd> 
+               <dt style="font-size:15px;"><small>Family</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Family;?></small></dd> 
+               <dt style="font-size:15px;"><small>Species</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Species;?></small></dd> 
+               <dt style="font-size:15px;"><small>Locations</small></dt> <dd style="font-size:15px;"><small><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</small></dd> 
+                 <!--  <p style="padding-left:3px;"><b>Equation: <code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
                   <p style="padding-left:3px;"><b>Output: </b><?php echo $row->Output;?></p>
                   <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
                   <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
                   <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
                   <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
                   <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
-                  <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p>
+                  <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p> -->
+                  <dl> 
                </div>
                
             </div>

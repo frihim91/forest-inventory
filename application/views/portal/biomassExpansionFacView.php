@@ -58,7 +58,7 @@
    </div>
 </div>
 <div class="col-md-12 page_content">
-   <h3>Emission factors Search</h3>
+   <h3>Emission Factors Search</h3>
    <div class="col-sm-12">
       <ul class="nav nav-tabs">
          <li class="<?php if(!isset($searchType)){ echo 'active'; } ?>"><a data-toggle="tab" href="#home">Keyword</a></li>
@@ -378,11 +378,21 @@
                {
                ?>
             <div class="panel panel-default my_ef">
-               <div class="panel-heading">Emission factors
+               <div class="panel-heading">Emission Factors
                   <a href="<?php echo site_url('Portal/biomassExpansionFacDetails/'.$row->ID_EF); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
                <div class="panel-body">
-                  <p style="padding-left:3px;"><b>Emission Factor: </b><?php echo $row->EmissionFactor;?></p>
+               <dl class="dl-horizontal">
+                  <dt style="font-size:15px;"><small>Emission Factor</small></dt> <dd style="font-size:15px;"><small><?php echo $row->EmissionFactor;?></small></dd> 
+                  <dt style="font-size:15px;"><small>Units</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Unit;?></small></dd>
+                  <dt style="font-size:15px;"><small>Value</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Value;?></small></dd>
+                  <dt style="font-size:15px;"><small>Reference</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Author;?>.<?php echo $row->Reference;?></small></dd>
+                  <dt style="font-size:15px;"><small>Reference Year</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Year;?></small></dd> 
+                  <dt style="font-size:15px;"><small>Biomass</small></dt> <dd style="font-size:15px;"><small><?php echo $row->FAOBiomes;?></small></dd>
+                  <dt style="font-size:15px;"><small>Family</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Family;?></small></dd>
+                  <dt style="font-size:15px;"><small>Species</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Species;?></small></dd>
+                  <dt style="font-size:15px;"><small>Locations</small></dt> <dd style="font-size:15px;"><small><?php echo $row->District;?> (lat <?php echo $row->latitude;?>,lon <?php echo $row->longitude;?>)</small></dd>  
+<!--                   <p style="padding-left:3px;"><b>Emission Factor: </b><?php echo $row->EmissionFactor;?></p>
                   <p style="padding-left:3px;"><b>Units: </b><?php echo $row->Unit;?></p>
                   <p style="padding-left:3px;"><b>Value: </b><?php echo $row->Value;?></p>
                   <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
@@ -390,7 +400,9 @@
                   <p style="padding-left:3px;"><b>FAO Global Ecological Zone: </b><?php echo $row->FAOBiomes;?></p>
                   <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
                   <p style="padding-left:3px;"><b>Species: </b><?php echo $row->Species;?></p>
-                  <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->latitude;?>,lon <?php echo $row->longitude;?>)</p>
+                  <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->latitude;?>,lon <?php echo $row->longitude;?>)</p> -->
+
+                <dl>
                </div>
             </div>
             <?php 
