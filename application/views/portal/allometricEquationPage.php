@@ -166,7 +166,7 @@
 
                   <div class="form-group">
                      <label>Family<span style="color:red;"></span></label>
-                     <?php
+                     <p><?php
                      $Family = $this->Forestdata_model->get_all_family();
                      $options = array('' => '--Select Family--');
                      foreach ($Family as $Family) {
@@ -174,7 +174,7 @@
                      }
                      $Family = set_value('Family');
                      echo form_dropdown('Family', $options, $Family, 'id="Family" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Family" ');
-                     ?>
+                     ?></p>
 
 
                     <!--  <input type="text" class="form-control input-sm f" name ="Family" value = "<?php echo (isset($Family))?$Family:'';?>"  class ="Family" maxlength="64" placeholder="Family" /> -->
@@ -182,7 +182,7 @@
                   <div class="form-group">
                      <label>Genus<span style="color:red;"></span></label>
                      <!-- <input type="text" class="form-control input-sm g" name ="Genus" value = "<?php echo (isset($Genus))?$Genus:'';?>"  class ="Genus" maxlength="64" placeholder="Genus" /> -->
-                     <?php
+                    <p><?php
                      $Genus = $this->Forestdata_model->get_all_genus();
                      $options = array('' => '--Select Genus--');
                      foreach ($Genus as $Genus) {
@@ -190,12 +190,12 @@
                      }
                      $Genus = set_value('Genus');
                      echo form_dropdown('Genus', $options, $Genus, 'id="Genus" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Genus" ');
-                     ?>
+                     ?></p>
                   </div>
                   <div class="form-group">
                      <label>Species<span style="color:red;"></span></label>
                     <!--  <input type="text" class="form-control input-sm s" name ="Species" value = "<?php echo (isset($Species))?$Species:'';?>" maxlength="64"  class ="Species" placeholder="Species" /> -->
-                     <?php
+                    <p><?php
                      $Species = $this->Forestdata_model->get_all_species();
                      $options = array('' => '--Select Species--');
                      foreach ($Species as $Species) {
@@ -203,7 +203,7 @@
                      }
                      $Species = set_value('Species');
                      echo form_dropdown('Species', $options, $Species, 'id="Species" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Species" ');
-                     ?>
+                     ?></p>
                      <br>
                  <!--     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
@@ -222,7 +222,7 @@
                   <div class="form-group">
                      <label>Division<span style="color:red;"></span></label>
                    <!--   <input type="text" class="form-control input-sm" name ="Division"  id="division" value = "<?php echo (isset($Division))?$Division:'';?>" class ="division" maxlength="64" placeholder="Division" /> -->
-                     <?php
+                     <p><?php
                      $ID_Divisions = $this->Forestdata_model->get_all_division();
                      $options = array('' => '--Select Division--');
                      foreach ($ID_Divisions as $ID_Division) {
@@ -230,37 +230,51 @@
                      }
                      $ID_Division = set_value('Division');
                      echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
-                     ?>
+                     ?></p>
                   </div>
                   <div class="form-group">
                      <label>District<span style="color:red;"></span></label>
 
-                       <select class="form-control singleSelectExample" id="ID_District" style="width:560px;"  name="District">
-                     <option value="">Select District</option>
+                       <p><select class="form-control singleSelectExample" id="ID_District" style="width:560px;"  name="District">
+                     <option value="">Select District</option></p>
                   </select>
                   </div>
                   <div class="form-group">
 
-                     <label>FAO Global Ecological Zone <span style="color:red;"></span></label><br>
+                     <label>Bangladesh Agroecological Zone  <span style="color:red;"></span></label><br>
 
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
-                     <?php
+                     <p><?php
                      $EcoZoness = $this->Forestdata_model->get_all_ecological_zones();
-                     $options = array('' => '--Select Ecological Zone--');
+                     $options = array('' => '--Select Agroecological Zone--');
                      foreach ($EcoZoness as $EcoZones) {
                      $options["$EcoZones->EcoZones"] = $EcoZones->EcoZones;
                      }
                      $EcoZones = set_value('EcoZones');
                      echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
-                     ?>
+                     ?></p>
+
+                    <label>FAO Biomes   <span style="color:red;"></span></label><br>
+
+                 <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
+
+                     <p><?php
+                     $FAOBiomess = $this->Forestdata_model->get_all_faobiomes();
+                     $options = array('' => '--Select FAO Biomes --');
+                     foreach ($FAOBiomess as $FAOBiomes) {
+                     $options["$FAOBiomes->FAOBiomes"] = $FAOBiomes->FAOBiomes;
+                     }
+                     $EcoZones = set_value('EcoZones');
+                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
+                     ?></p>
 
 
                      <label>BFI Zone <span style="color:red;"></span></label><br>
 
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
-                    <?php
+                    <p><?php
                      $Zoness = $this->Forestdata_model->get_all_zones();
                      $options = array('' => '--Select BFI Zone--');
                      foreach ($Zoness as $Zones) {
@@ -268,7 +282,7 @@
                      }
                      $Zones = set_value('Zones');
                      echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
-                     ?>
+                     ?></p>
                      <br><br>
                     <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
