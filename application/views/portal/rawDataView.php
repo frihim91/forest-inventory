@@ -1,5 +1,8 @@
-
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>asset/datatable/dataTables.bootstrap.css">
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/jqueryDataTable.min.js">
+</script>
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/dataTableBootstrap.min.js">
+</script>
 <style type="text/css">
    .page_content{
    padding: 15px;
@@ -368,12 +371,21 @@
       <div class="tab-content">
          <div id="results-list" class="tab-pane fade in active">
            <div id="paginationClass_raw">
+              <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+           <thead>
+                <tr>
+                  <td><center>List Of Raw Data</center></td>
+                </tr>
+              </thead>
             <?php 
                foreach($rawDataView as $row)
                {
                ?>
-            <div class="panel panel-default my_raw">
-               <div class="panel-heading">Raw Data
+                 <tr>
+                  <td>
+
+            <div class="panel panel-default">
+               <div class="panel-heading">Raw Data <?php echo $row->ID; ?>
                   <a href="<?php echo site_url('Portal/rawDataDetails/'.$row->ID); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                </div>
                <div class="panel-body">
@@ -400,8 +412,23 @@
                    <dl> 
                </div>
             </div>
-            <?php 
-               }?>
+             </td>
+                    </tr>
+
+                    <?php
+                  }?>
+                </table>
+                <script>
+                $(document).ready(function() {
+                  $('#example').dataTable( {
+                    "searching": false,
+                    "bLengthChange": false,
+                    "pageLength": 20,
+                    "bSort" : false
+
+                  } );
+                } );
+                </script>
           <!--   <p><?php echo $links; ?></p> -->
          </div>
          </div>
@@ -695,7 +722,7 @@ $(document).ready(function(){
         pointToLayer: function(feature,latlng){
           var marker = L.marker(latlng,{icon: ratIcon});
 
-           marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes);
+           marker.bindPopup('<h4><b>Raw Data : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes);
 
           return marker;
         }

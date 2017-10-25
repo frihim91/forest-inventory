@@ -1,3 +1,8 @@
+<?php 
+  // echo "<pre>";
+  // print_r($allometricEquationView);
+  // exit;
+?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>asset/datatable/dataTables.bootstrap.css">
 <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/jqueryDataTable.min.js">
 </script>
@@ -269,8 +274,8 @@ $lang_ses = $this->session->userdata("site_lang");
           foreach ($FAOBiomess as $FAOBiomes) {
             $options["$FAOBiomes->FAOBiomes"] = $FAOBiomes->FAOBiomes;
           }
-          $EcoZones = set_value('EcoZones');
-          echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
+          $FAOBiomes = set_value('FAOBiomes');
+          echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes..." ');
           ?></p>
 
 
@@ -438,7 +443,7 @@ $lang_ses = $this->session->userdata("site_lang");
                   <td>
                     <div class="panel panel-default">
 
-                      <div class="panel-heading">Allometric Equation
+                      <div class="panel-heading">Allometric Equation <?php echo $row->ID_AE; ?>
                         <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
                       </div>
                       <div class="panel-body">
@@ -474,7 +479,9 @@ $lang_ses = $this->session->userdata("site_lang");
                   $('#example').dataTable( {
                     "searching": false,
                     "bLengthChange": false,
-                    "pageLength": 20
+                    "pageLength": 20,
+                    "bSort" : false
+                    
 
                   } );
                 } );

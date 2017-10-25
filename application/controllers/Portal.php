@@ -321,7 +321,7 @@ class Portal extends CI_Controller
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string order by r.ID desc 
+         where $string order by r.ID ASC 
         ")->result();
          $data['rawDataView_count'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
@@ -496,7 +496,7 @@ class Portal extends CI_Controller
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
          where $string
-         order by e.ID_EF desc 
+         order by e.ID_EF ASC 
         ")->result();
 
          $data['biomassExpansionFacView_count'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
@@ -510,7 +510,7 @@ class Portal extends CI_Controller
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
          where $string
-         order by e.ID_EF desc
+         order by e.ID_EF ASC
 
         ")->result();
          // $data["links"]                  = $this->pagination->create_links();
@@ -690,7 +690,7 @@ class Portal extends CI_Controller
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
-        order by w.ID_WD desc 
+        order by w.ID_WD ASC 
         ")->result();
          $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species

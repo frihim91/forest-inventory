@@ -475,7 +475,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         order by a.ID_AE desc")->result();
+         order by a.ID_AE ASC")->result();
 		 return $data; 
 	}
 
@@ -535,7 +535,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         order by e.ID_EF desc
+         order by e.ID_EF ASC
     ")->result();
      return $data; 
   }
@@ -646,7 +646,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         order by r.ID desc
+         order by r.ID ASC
 		")->result();
 		 return $data; 
 	}
@@ -696,7 +696,7 @@ Class Forestdata_model extends CI_Model {
         LEFT JOIN reference r ON wd.ID_Reference = r.ID_Reference
         LEFT JOIN species s ON m.ID_Species=s.ID_Species
         left join family f ON wd.ID_family=f.ID_Family
-        order by wd.ID_WD desc 
+        order by wd.ID_WD ASC 
 		")->result();
 		 return $data; 
 	}
