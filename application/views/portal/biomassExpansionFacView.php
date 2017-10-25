@@ -211,11 +211,25 @@
                   </div>
                   <div class="form-group">
                    
-                     <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
+                     <label>Bangladesh Agroecological Zone<span style="color:red;"></span></label>
                      <p><input type="text" class="form-control input-sm" name ="FAOBiomes" class ="FAOBiomes" value = "<?php echo (isset($FAOBiomes))?$FAOBiomes:'';?>" maxlength="64" placeholder="FAO Global Ecological Zone" /></p>
 
-                      
-                     <label>Bangladesh Zone <span style="color:red;"></span></label>
+                       
+                    <label>FAO Biomes   <span style="color:red;"></span></label><br>
+
+                 <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
+
+                     <p><?php
+                     $FAOBiomess = $this->Forestdata_model->get_all_faobiomes();
+                     $options = array('' => '--Select FAO Biomes --');
+                     foreach ($FAOBiomess as $FAOBiomes) {
+                     $options["$FAOBiomes->FAOBiomes"] = $FAOBiomes->FAOBiomes;
+                     }
+                     $FAOBiomes = set_value('FAOBiomes');
+                     echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes ..." ');
+                     ?></p>
+                     
+                     <label>BFI Zone <span style="color:red;"></span></label>
                      <p><?php
                      $Zoness = $this->Forestdata_model->get_all_zones();
                      $options = array('' => '--Select BFI Zone--');
@@ -228,17 +242,7 @@
                      <!-- <input type="text" class="form-control input-sm" name ="Zones" class ="Zones" value = "<?php echo (isset($Zones))?$Zones:'';?>" maxlength="64" placeholder="Bangladesh Zone" /> -->
 
                      
-                     <label>Bangladesh Ecological Zones<span style="color:red;"></span></label>
-                    <!--  <input type="text" class="form-control input-sm" name ="EcoZones" class ="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" placeholder=" Bangladesh Ecological Zones " /> -->
-                    <p><?php
-                     $EcoZoness = $this->Forestdata_model->get_all_ecological_zones();
-                     $options = array('' => '--Select Ecological Zone--');
-                     foreach ($EcoZoness as $EcoZones) {
-                     $options["$EcoZones->EcoZones"] = $EcoZones->EcoZones;
-                     }
-                     $EcoZones = set_value('EcoZones');
-                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
-                     ?></p>
+    
 
                      <br>
                     <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->

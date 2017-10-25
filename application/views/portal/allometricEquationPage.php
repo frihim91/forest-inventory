@@ -252,7 +252,7 @@
                      $options["$EcoZones->EcoZones"] = $EcoZones->EcoZones;
                      }
                      $EcoZones = set_value('EcoZones');
-                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
+                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
                      ?></p>
 
                     <label>FAO Biomes   <span style="color:red;"></span></label><br>
@@ -265,8 +265,8 @@
                      foreach ($FAOBiomess as $FAOBiomes) {
                      $options["$FAOBiomes->FAOBiomes"] = $FAOBiomes->FAOBiomes;
                      }
-                     $EcoZones = set_value('EcoZones');
-                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
+                     $FAOBiomes = set_value('FAOBiomes');
+                     echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes ..." ');
                      ?></p>
 
 

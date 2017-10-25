@@ -61,6 +61,10 @@ class Portal extends CI_Controller
         $returnArray[]='District';
         $returnArray[]='d2.';
         break;
+        case "FAOBiomes":
+        $returnArray[]='FAO Biomes';
+        $returnArray[]='b.';
+        break;
         case "EcoZones":
         $returnArray[]='Ecological zones';
         $returnArray[]='e.';
@@ -407,6 +411,10 @@ class Portal extends CI_Controller
         break;
         case "FAOBiomes":
         $returnArray[]='FAO Global Ecological Zone';
+        $returnArray[]='b.';
+        break;
+        case "FAOBiomes":
+        $returnArray[]='FAO Biomes';
         $returnArray[]='b.';
         break;
         case "Reference":
