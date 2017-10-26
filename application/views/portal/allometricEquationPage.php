@@ -255,13 +255,13 @@ $lang_ses = $this->session->userdata("site_lang");
           <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
 
           <p><?php
-          $EcoZoness = $this->Forestdata_model->get_all_ecological_zones();
+          $AEZ_NAMES = $this->Forestdata_model->get_all_agroecological_zones();
           $options = array('' => '--Select Agroecological Zone--');
-          foreach ($EcoZoness as $EcoZones) {
-            $options["$EcoZones->EcoZones"] = $EcoZones->EcoZones;
+          foreach ($AEZ_NAMES as $AEZ_NAME) {
+            $options["$AEZ_NAME->AEZ_NAME"] = $AEZ_NAME->AEZ_NAME;
           }
-          $EcoZones = set_value('EcoZones');
-          echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
+          $AEZ_NAME = set_value('AEZ_NAME');
+          echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
           ?></p>
 
           <label>FAO Biomes   <span style="color:red;"></span></label><br>

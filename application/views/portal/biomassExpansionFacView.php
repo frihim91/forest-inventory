@@ -216,8 +216,19 @@
                   </div>
                   <div class="form-group">
                    
-                     <label>Bangladesh Agroecological Zone<span style="color:red;"></span></label>
-                     <p><input type="text" class="form-control input-sm" name ="FAOBiomes" class ="FAOBiomes" value = "<?php echo (isset($FAOBiomes))?$FAOBiomes:'';?>" maxlength="64" placeholder="FAO Global Ecological Zone" /></p>
+                        <label>Bangladesh Agroecological Zone  <span style="color:red;"></span></label><br>
+
+          <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
+
+                        <p><?php
+                        $AEZ_NAMES = $this->Forestdata_model->get_all_agroecological_zones();
+                        $options = array('' => '--Select Agroecological Zone--');
+                        foreach ($AEZ_NAMES as $AEZ_NAME) {
+                          $options["$AEZ_NAME->AEZ_NAME"] = $AEZ_NAME->AEZ_NAME;
+                        }
+                        $AEZ_NAME = set_value('AEZ_NAME');
+                        echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
+                        ?></p>
 
                        
                     <label>FAO Biomes   <span style="color:red;"></span></label><br>
