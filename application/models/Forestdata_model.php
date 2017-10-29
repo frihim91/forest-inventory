@@ -450,6 +450,15 @@ Class Forestdata_model extends CI_Model {
       }
 
 
+           public function get_all_agroecological_zones() 
+      {
+            $this->db->select('bd_aez1988.*');
+            $this->db->from('bd_aez1988');
+            $this->db->order_by('bd_aez1988.MAJOR_AEZ', 'ASC');
+            return $this->db->get()->result();
+      }
+
+
            public function get_all_zones() 
       {
             $this->db->select('zones.*');
@@ -474,7 +483,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         LEFT JOIN bd_aez1988 eco ON a.WWF_Eco_zone =eco.MAJOR_AEZ
          order by a.ID_AE ASC")->result();
 		 return $data; 
 	}
@@ -534,7 +543,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
          order by e.ID_EF ASC
     ")->result();
      return $data; 

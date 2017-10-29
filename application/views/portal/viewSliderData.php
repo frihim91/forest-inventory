@@ -53,8 +53,10 @@
                                 <td><?php echo $slider->IMAGE_DESC?></td>
                                 <td><img class="slider_img" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>"/></td>
                              
-                                <td>
-                                   <a class="label btn-danger btn-xs deleteUrl" href="<?php echo site_url('portal/deleteImage/'.$slider->ID)?>">
+                                <td width="10%">
+                                <a class="label btn-danger btn-xs " href="<?php echo site_url("portal/updateSliderData/" . $slider->ID); ?>">
+                              <i class="glyphicon glyphicon-edit"></i>
+                              </a>&nbsp;<a class="label btn-danger btn-xs deleteUrl" href="<?php echo site_url('portal/deleteImage/'.$slider->ID)?>">
                               <i class="glyphicon glyphicon-remove"></i>
                               </a>  
                                 </td>

@@ -65,6 +65,10 @@ class Portal extends CI_Controller
         $returnArray[]='FAO Biomes';
         $returnArray[]='b.';
         break;
+         case "AEZ_NAMES":
+        $returnArray[]='Bangladesh Agroecological Zone ';
+        $returnArray[]='e.';
+        break;
         case "EcoZones":
         $returnArray[]='Ecological zones';
         $returnArray[]='e.';
@@ -149,7 +153,7 @@ class Portal extends CI_Controller
           LEFT JOIN division d ON a.Division=d.ID_Division
           LEFT JOIN district d2 ON a.District =d2.ID_District
           LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
-          LEFT JOIN ecological_zones e ON a.WWF_Eco_zone =e.ID_1988EcoZones
+          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
           where $string 
           ")->result();
           $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
@@ -161,7 +165,7 @@ class Portal extends CI_Controller
           LEFT JOIN division d ON a.Division=d.ID_Division
           LEFT JOIN district d2 ON a.District =d2.ID_District
           LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
-          LEFT JOIN ecological_zones e ON a.WWF_Eco_zone =e.ID_1988EcoZones
+          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
           where $string
         ")->result();
          // $data["links"]                  = $this->pagination->create_links();
@@ -494,7 +498,8 @@ class Portal extends CI_Controller
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
+        
          where $string
          order by e.ID_EF ASC 
         ")->result();
@@ -508,7 +513,7 @@ class Portal extends CI_Controller
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
          where $string
          order by e.ID_EF ASC
 
@@ -875,6 +880,31 @@ class Portal extends CI_Controller
         $this->template->display($data);
     }
 
+
+      public function updateSliderData($ID)
+    {   
+        $data['ID']          = $ID;
+        $data['images'] = $this->db->query("SELECT * FROM home_page_slider WHERE ID=$ID")->result();
+        $data['edit_sliders']           = $this->db->query("SELECT * FROM home_page_slider WHERE home_page_slider.ID=$ID")->row();
+        $data['content_view_page'] = 'portal/editSliderData';
+        $this->template->display($data);
+    }
+
+
+     function delete_images()
+    {
+        $ID    = $this->input->post("ID");
+        //echo $ID;exit();
+        $query = $this->db->query("UPDATE home_page_slider SET IMAGE_PATH = NULL WHERE ID=$ID");
+        
+        if ($query) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+
     public function addImageinSlider()
     {
         if (isset($_POST['title'])) {
@@ -921,6 +951,58 @@ class Portal extends CI_Controller
             $this->template->display($data);
         }
     }
+
+
+      public function editImageinSlider()
+      {
+              $slider_id = $this->uri->segment(3);
+              $title    = $this->input->post('title');
+              $descript = $this->input->post('descript');
+              $config['upload_path']   = 'resources/images/home_page_slider/';
+              $config['allowed_types'] = 'jpg|jpeg|png|gif';
+              $config['max_width'] = '887';
+              $config['max_height'] = '335';
+              $config['file_name']     = $_FILES['main_image']['name'];
+
+              //Load upload library and initialize configuration
+              $this->load->library('upload', $config);
+              $this->upload->initialize($config);
+
+              if ($this->upload->do_upload('main_image')) {
+                  $uploadData = $this->upload->data();
+                  $picture    = $uploadData['file_name'];
+                     $data = array(
+                  'IMAGE_TITLE' => $title,
+                  'IMAGE_DESC' => $descript,
+                  'IMAGE_PATH' => $picture
+              );
+
+              } else {
+                     $data = array(
+                  'IMAGE_TITLE' => $title,
+                  'IMAGE_DESC' => $descript
+                  
+              );
+
+              }
+
+           
+              //$data['IMAGE_PATH'] = 'asdasdsad';
+
+              //$this->utilities->insertData($data, 'home_page_slider');
+               if($this->db->update('home_page_slider', $data, array('ID' => $slider_id)))
+               {
+              $this->session->set_flashdata('Success', 'New Slider Updated Successfully.');
+              redirect('portal/viewSliderData');
+            }
+          
+
+          else {
+              $data['content_view_page'] = 'portal/editImageinSlider';
+              $this->template->display($data);
+          }
+      }
+
 
 
 
