@@ -886,8 +886,7 @@ class Portal extends CI_Controller
 
             //echo "test";
             //exit;
-
-            $config['upload_path']   = 'resources/images/home_page_slider/';
+            $config['upload_path']   = 'resources/images/home_page_slider';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['max_width'] = '887';
             $config['max_height'] = '335';
