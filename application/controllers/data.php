@@ -11,10 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Data extends CI_Controller
 {
-    
+
     function __construct()
     {
-      
+
         parent::__construct();
         //echo "<pre>"; print_r($_SESSION);exit();
         if(!isset($_SESSION['user_logged']))
@@ -27,7 +27,7 @@ class Data extends CI_Controller
         $this->load->model('Forestdata_model');
         $this->load->helper(array(
             'html',
-            
+
             'form'
         ));
         $this->load->library('form_validation');
@@ -66,14 +66,14 @@ class Data extends CI_Controller
             return $string;
     }
 
-     
+
     /*
      * @methodName speciesData()
      * @access public
      * @param  none
      * @return Species List page
      */
-    
+
     public function speciesData()
     {
         $data['family_details']    = $this->db->query("select f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
@@ -88,20 +88,42 @@ class Data extends CI_Controller
         $data['content_view_page'] = 'portal/speciesData';
         $this->template->display_portal($data);
     }
-    
-    
-    
+    private function pr($data)
+    {
+      echo "<pre>";
+      print_r($data);
+      exit;
+    }
+    public function dataSpecies()
+    {
+        $n=$data['family_details']    = $this->db->query("select f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
+            FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT,(SELECT count(ID) FROM rd as rd WHERE rd.Family_ID=f.ID_Family)
+            as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae WHERE ae.Family=f.ID_Family)
+            as AECOUNT,(SELECT count(ID_WD) FROM wd as wd WHERE wd.ID_family=f.ID_Family)
+            as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
+             from family as f ORDER BY f.Family
+            ")->result();
+      //  $this->pr($n);
+        $k= $data['total_genus_species']    = $this->db->query("select count(*) total_family,(select count(*)  from species) total_species,(select count(*)  from genus) total_genus from family
+            ")->row();
+      //  $this->pr($k);
+        $data['content_view_page'] = 'portal/data/speciesData';
+        $this->template->display_portal($data);
+    }
+
+
+
     public function allometricEquationViewtrr()
     {
-        
+
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() .  "index.php/data/allometricEquationView";
         $total_ef           = $this->db->count_all("ae");
-        
+
         $config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 5;
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $limit                     = $config["per_page"];
@@ -146,7 +168,7 @@ class Data extends CI_Controller
 
      public function allometricEquationView()
     {
-        
+
         $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
          //$data['ID_1988EcoZone'] =  $this->Forestdata_model->get_all_ecological_zones();
         $data['EcoZones'] = $this->Forestdata_model->get_all_ecological_zones();
@@ -161,15 +183,15 @@ class Data extends CI_Controller
 
     public function allometricEquationViews()
     {
-        
-      
+
+
         $data['content_view_page']      = 'portal/page';
         $this->template->display_portal($data);
     }
 
-   
 
-    
+
+
      public function search_allometricequation_key()
     {
         $ID_AE   = $this->input->post('ID_AE');
@@ -195,18 +217,18 @@ class Data extends CI_Controller
         {
             $string="a.ID_AE=$ID_AE";
         }
-        else 
+        else
         {
                 $string=$this->searchAttributeString($searchFields);
         }
 
-        
+
         //$string=$this->searchAttributeString($searchFields);
          if(!empty($string))
-        {   
+        {
             $this->session->set_userdata('aekeySearchString', $string);
         }
-        else 
+        else
         {
             $string=$this->session->userdata('aekeySearchString');
         }
@@ -215,15 +237,15 @@ class Data extends CI_Controller
         {
             $this->session->set_userdata('aeSearchStringKeyword', $keyword);
             $this->session->set_userdata('aeSearchStringAE', $ID_AE);
-           
+
         }
-    
-        else 
+
+        else
         {
             $keyword=$this->session->userdata('aeSearchStringKeyword');
             $Species=$this->session->userdata('aeSearchStringAE');
-          
-           
+
+
         }
 
         $this->load->library('pagination');
@@ -235,7 +257,7 @@ class Data extends CI_Controller
         $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -246,10 +268,10 @@ class Data extends CI_Controller
         //echo $total_ae->total_ae;exit;
         $config["total_rows"] = $total_ae;
        // $total_ef           = $this->db->count_all("ae");
-        
+
         //$config["total_rows"] = $total_ef;
         // $config["total_rows"] = 800;
-        
+
         $config["per_page"]        = 20;
         $config["uri_segment"]     = 3;
         $limit                     = $config["per_page"] = 20;
@@ -275,11 +297,11 @@ class Data extends CI_Controller
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         $data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -293,7 +315,7 @@ class Data extends CI_Controller
          $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -301,8 +323,8 @@ class Data extends CI_Controller
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
          LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
          where $string
-         
-        
+
+
         ")->result();
          $data['keyword']=$keyword;
           $data['ID_AE']=$ID_AE;
@@ -310,13 +332,13 @@ class Data extends CI_Controller
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
-        
+
     }
 
 
 
 
-    
+
 
 
 
@@ -354,12 +376,12 @@ class Data extends CI_Controller
         $this->pagination->initialize($config);
 
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
         // get books list
         $data['allometricEquationView'] = $this->Forestdata_model->get_books($config["per_page"], $data['page'], NULL);
-        
+
         $data['pagination'] = $this->pagination->create_links();
-        
+
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $this->template->display_portal($data);
     }
@@ -484,27 +506,27 @@ class Data extends CI_Controller
      * @param  none
      * @return Biomass Expension Factor Menu page
      */
-    
-    
+
+
     public function biomassExpansionFacView()
     {
-        
-       
+
+
         $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor();
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
     }
-    
+
     /*
      * @methodName rawDataView()
      * @access public
      * @param  none
      * @return Raw Data Menu page
      */
-    
+
     public function rawDataView()
     {
-        
+
         $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid();
         $data['content_view_page'] = 'portal/rawDataView';
         $this->template->display_portal($data);
@@ -516,11 +538,11 @@ class Data extends CI_Controller
      * @param  none
      * @return wood densities Menu page
      */
-    
+
     public function woodDensitiesView()
     {
-        
-        
+
+
         $data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid();
         $data['content_view_page'] = 'portal/woodDensitiesView';
         $this->template->display_portal($data);
@@ -531,20 +553,20 @@ class Data extends CI_Controller
 
 
 
-    
-    
-    
-    
-    
-    
-    
-    
 
 
 
 
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
 }

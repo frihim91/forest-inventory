@@ -11,11 +11,11 @@
 $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db','maruf','maruf');
 
 # Build SQL SELECT statement including x and y columns
-$sql = " SELECT * FROM (SELECT x.latitude y, y.longitude x, y.total_species, x.species species_desc,x.species_id,x.ID_FAO_Biomes
-  FROM (SELECT   d.latitude, group_concat(d.species) species,d.species_id,d.ID_FAO_Biomes
-            FROM (SELECT   b.latitude,b.species_id,b.ID_FAO_Biomes,
-                           CONCAT (a.species , ' (' , count(species_id)
-                           , ') ') species
+$sql = "  SELECT x.latitude y, y.longitude x, y.total_species, x.species species_desc
+  FROM (SELECT   d.latitude, group_concat(d.species) species
+            FROM (SELECT   b.latitude,
+                           CONCAT (a.species , '(' , count(species_id)
+                           , ')') species
                       FROM species a, rd b
                      WHERE a.id_species = b.species_id
                   GROUP BY a.species, b.latitude) d
@@ -23,7 +23,7 @@ $sql = " SELECT * FROM (SELECT x.latitude y, y.longitude x, y.total_species, x.s
        (SELECT   c.latitude, c.longitude, count(species_id) total_species
             FROM rd c
         GROUP BY c.latitude, c.longitude) y
- WHERE x.latitude = y.latitude) m,faobiomes fb WHERE m.ID_FAO_Biomes=fb.id_faobiomes";
+ WHERE x.latitude = y.latitude";
 
 /*
 * If bbox variable is set, only return records that are within the bounding box

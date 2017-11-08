@@ -143,7 +143,7 @@ class Portal extends CI_Controller
         }
 
         $string=$this->searchAttributeString($validSearchKey);
-    
+
         $k=$data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
           LEFT JOIN species s ON a.Species=s.ID_Species
           LEFT JOIN family f ON a.Family=f.ID_Family
@@ -154,7 +154,7 @@ class Portal extends CI_Controller
           LEFT JOIN district d2 ON a.District =d2.ID_District
           LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
           LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
-          where $string 
+          where $string
           ")->result();
           $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
           LEFT JOIN species s ON a.Species=s.ID_Species
@@ -211,7 +211,7 @@ class Portal extends CI_Controller
       }
 
 
-      
+
 
      private function getDtByAttrRaw($attr)
     {
@@ -257,7 +257,7 @@ class Portal extends CI_Controller
         $returnArray[]='Author';
         $returnArray[]='ref.';
         break;
-       
+
         case "Year":
         $returnArray[]='Year';
         $returnArray[]='ref.';
@@ -316,7 +316,7 @@ class Portal extends CI_Controller
         }
 
         $string=$this->searchAttributeString($validSearchKey);
-    
+
         $k=$data['rawDataView'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
@@ -325,7 +325,7 @@ class Portal extends CI_Controller
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string order by r.ID ASC 
+         where $string order by r.ID ASC
         ")->result();
          $data['rawDataView_count'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
@@ -429,7 +429,7 @@ class Portal extends CI_Controller
         $returnArray[]='Author';
         $returnArray[]='r.';
         break;
-       
+
         case "Year":
         $returnArray[]='Year';
         $returnArray[]='r.';
@@ -488,7 +488,7 @@ class Portal extends CI_Controller
         }
 
         $string=$this->searchAttributeString($validSearchKey);
-    
+
         $k=$data['biomassExpansionFacView'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
@@ -499,9 +499,9 @@ class Portal extends CI_Controller
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
          LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-        
+
          where $string
-         order by e.ID_EF ASC 
+         order by e.ID_EF ASC
         ")->result();
 
          $data['biomassExpansionFacView_count'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
@@ -623,7 +623,7 @@ class Portal extends CI_Controller
         $returnArray[]='Author';
         $returnArray[]='r.';
         break;
-       
+
         case "Year":
         $returnArray[]='Year';
         $returnArray[]='r.';
@@ -682,7 +682,7 @@ class Portal extends CI_Controller
         }
 
         $string=$this->searchAttributeString($validSearchKey);
-    
+
         $k=$data['woodDensitiesView']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
@@ -695,7 +695,7 @@ class Portal extends CI_Controller
         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
         where $string
-        order by w.ID_WD ASC 
+        order by w.ID_WD ASC
         ")->result();
          $data['woodDensitiesView_count']       = $this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
@@ -756,7 +756,7 @@ class Portal extends CI_Controller
 
 
 
-      
+
 
     /*
      * @methodName index()
@@ -882,7 +882,7 @@ class Portal extends CI_Controller
 
 
       public function updateSliderData($ID)
-    {   
+    {
         $data['ID']          = $ID;
         $data['images'] = $this->db->query("SELECT * FROM home_page_slider WHERE ID=$ID")->result();
         $data['edit_sliders']           = $this->db->query("SELECT * FROM home_page_slider WHERE home_page_slider.ID=$ID")->row();
@@ -896,7 +896,7 @@ class Portal extends CI_Controller
         $ID    = $this->input->post("ID");
         //echo $ID;exit();
         $query = $this->db->query("UPDATE home_page_slider SET IMAGE_PATH = NULL WHERE ID=$ID");
-        
+
         if ($query) {
             return 1;
         } else {
@@ -981,12 +981,12 @@ class Portal extends CI_Controller
                      $data = array(
                   'IMAGE_TITLE' => $title,
                   'IMAGE_DESC' => $descript
-                  
+
               );
 
               }
 
-           
+
               //$data['IMAGE_PATH'] = 'asdasdsad';
 
               //$this->utilities->insertData($data, 'home_page_slider');
@@ -995,7 +995,7 @@ class Portal extends CI_Controller
               $this->session->set_flashdata('Success', 'New Slider Updated Successfully.');
               redirect('portal/viewSliderData');
             }
-          
+
 
           else {
               $data['content_view_page'] = 'portal/editImageinSlider';
@@ -2254,7 +2254,7 @@ class Portal extends CI_Controller
          $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Family
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
