@@ -182,7 +182,8 @@
                Example searches: Biome (FAO):,Tropical dry forest,Country: Bangladesh 
             </p>
            
-               <div class="col-md-6">
+                 <div class="col-md-12">
+                   <div class="col-md-6">
                   <div class="form-group">
                    
                      <label>Division<span style="color:red;"></span></label>
@@ -196,7 +197,9 @@
                      $ID_Division = set_value('Division');
                      echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                      ?></p>   
+                     </div>
                   </div>
+                  <div class="col-md-6">
                   <div class="form-group">
                    
                      <label>District<span style="color:red;"></span></label>
@@ -205,6 +208,10 @@
                      <option value="">Select District</option></p>
                   </select>
                   </div>
+                </div>
+             </div>
+             <div class="col-md-12">
+            <div class="col-md-6">
                   <div class="form-group">
                    
                         <label>Bangladesh Agroecological Zone  <span style="color:red;"></span></label><br>
@@ -220,8 +227,10 @@
                         $AEZ_NAME = set_value('AEZ_NAME');
                         echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
                         ?></p>
+                           </div>
+                         </div>
 
-                       
+                  <div class="col-md-6">  
                     <label>FAO Biomes   <span style="color:red;"></span></label><br>
 
                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
@@ -235,8 +244,11 @@
                      $FAOBiomes = set_value('FAOBiomes');
                      echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes ..." ');
                      ?></p>
-
-                     <label>BFI Zone <span style="color:red;"></span></label>
+                      </div>
+                   </div>
+              <div class="col-md-12">
+                <div class="col-md-6">
+                   <label>BFI Zone <span style="color:red;"></span></label>
                      <p><?php
                      $Zoness = $this->Forestdata_model->get_all_zones();
                      $options = array('' => '--Select BFI Zone--');
@@ -253,10 +265,9 @@
 
                      <br>
                     <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
-                  </div>
-               </div>
-            
-         </div>
+                </div>
+      </div>
+    </div>
          <div id="menu3" class="tab-pane fade">
             <p> Search allometric equations by author, year, and reference.
                Example searches

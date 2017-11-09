@@ -222,7 +222,7 @@ $lang_ses = $this->session->userdata("site_lang");
         <br>
         Example searches:Biome (FAO):,Tropical moist forest,Country: Bangladesh
       </p>
-
+     <div class="col-md-12">
       <div class="col-md-6">
         <div class="form-group">
           <label>Division<span style="color:red;"></span></label>
@@ -237,6 +237,8 @@ $lang_ses = $this->session->userdata("site_lang");
           echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
           ?></p>
         </div>
+        </div>
+      <div class="col-md-6">
         <div class="form-group">
           <label>District<span style="color:red;"></span></label>
 
@@ -244,6 +246,10 @@ $lang_ses = $this->session->userdata("site_lang");
             <option value="">Select District</option></p>
           </select>
         </div>
+        </div>
+        </div>
+<div class="col-md-12">
+   <div class="col-md-6">
         <div class="form-group">
 
           <label>Bangladesh Agroecological Zone  <span style="color:red;"></span></label><br>
@@ -259,7 +265,9 @@ $lang_ses = $this->session->userdata("site_lang");
           $AEZ_NAME = set_value('AEZ_NAME');
           echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
           ?></p>
-
+          </div>
+          </div>
+         <div class="col-md-6">
           <label>FAO Biomes   <span style="color:red;"></span></label><br>
 
           <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
@@ -273,8 +281,11 @@ $lang_ses = $this->session->userdata("site_lang");
           $FAOBiomes = set_value('FAOBiomes');
           echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes..." ');
           ?></p>
+          </div>
+    </div>
 
-
+    <div class="col-md-12">
+       <div class="col-md-6">
           <label>BFI Zone <span style="color:red;"></span></label><br>
 
           <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
@@ -292,8 +303,8 @@ $lang_ses = $this->session->userdata("site_lang");
           <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
         </div>
       </div>
-
     </div>
+
     <div id="menu3" class="tab-pane fade">
       <p> Search allometric equations by author, year, and reference.
         Example searches
