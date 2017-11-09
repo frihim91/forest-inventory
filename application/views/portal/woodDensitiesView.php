@@ -114,11 +114,8 @@
             <p> Search Wood Density by keyword. 
                This searches accross several text fields. 
                <br>
-               Example searches: <a href="#">Leguminosae</a>,
-               <a href="#">Leguminosae</a>,
-               <a href="#">Pongamia</a>, 
-               <a href="#">Pongamia pinnata</a>,
-               <a href="#">Bangladesh</a>
+               Example searches: Leguminosae,Leguminosae,Pongamia,Pongamia pinnata,
+               Bangladesh
             </p>
             <p>
             </p>
@@ -198,10 +195,7 @@
             <p> Search allometric equations by family, genus or species.
                Example searches
                <br>
-               Example searches: <a href="#">Genus</a>,
-               <a href="#">Meliaceae</a>,
-               <a href="#">Xylocarpus</a>, 
-               <a href="#">moluccensis</a>,
+               Example searches: Genus,Meliaceae,Xylocarpus,moluccensis,
             </p>
            
                <div class="col-md-6">
@@ -253,9 +247,7 @@
          <div id="menu2" class="tab-pane fade">
             <p> Search allometric equations by tree location and biome.Example searches
                <br>
-               Example searches: <a href="#">Biome (FAO):</a>,
-               <a href="#">Tropical moist forest</a>,
-               <a href="#">Country: Bangladesh</a>, 
+               Example searches:Biome (FAO):,Tropical moist forest,Country: Bangladesh
             </p>
            
                <div class="col-md-6">
@@ -283,10 +275,10 @@
                      <option value="">Select District</option></p>
                   </select>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                      <h3>Ecological Zone</h3>
                      <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
-                    <!--  <input type="text" class="form-control input-sm" name ="EcoZones"  class ="fao_biome" maxlength="64" placeholder="FAO Global Ecological Zone" /> -->
+                   
                      <p><?php
                      $EcoZoness = $this->Forestdata_model->get_all_ecological_zones();
                      $options = array('' => '--Select Ecological Zone--');
@@ -298,7 +290,7 @@
                      ?></p>
                      <br>
                      
-                  </div>
+                  </div> -->
                </div>
        
          </div>
@@ -306,10 +298,7 @@
             <p> Search allometric equations by author, year, and reference.
                Example searches
                <br>
-               Example searches: <a href="#"> Author: Sattar, MA /a>,
-               <a href="#">Reference: Sattar MA 1981</a>,
-               <a href="#">Sattar, MA</a>, 
-               <a href="#"> Year: 1981</a>, 
+               Example searches: Author: Sattar, MA ,Reference: Sattar MA 1981,Sattar, MA,Year: 1981
             </p>
           
                <div class="col-md-6">
@@ -448,7 +437,9 @@
                </div>
                <div class="panel-body">
                <dl class="dl-horizontal">
-                  <dt style="font-size:15px;"><small>Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_green;?></small></dd> 
+                  <dt style="font-size:15px;"><small>Green Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_green;?></small></dd> 
+                  <dt style="font-size:15px;"><small>Airdrie Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_airdry;?></small></dd> 
+                  <dt style="font-size:15px;"><small>Ovendry Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_ovendry;?></small></dd> 
                   <dt style="font-size:15px;"><small>Reference</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Author;?>.<?php echo $row->Reference;?></small></dd> 
                   <dt style="font-size:15px;"><small>Reference Year</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Year;?></small></dd> 
                   <dt style="font-size:15px;"><small>Family</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Family;?></small></dd>

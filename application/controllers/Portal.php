@@ -38,12 +38,16 @@ class Portal extends CI_Controller
       $returnArray=array();
       switch ($attr) {
         case "ID_AE":
-        $returnArray[]='Allometric Equation';
+        $returnArray[]='Allometric Equation No';
         $returnArray[]='a.';
         break;
         case "Family":
         $returnArray[]='Family';
         $returnArray[]='f.';
+        break;
+        case "Equation":
+        $returnArray[]='Allometric Equation';
+        $returnArray[]='a.';
         break;
         case "Genus":
         $returnArray[]='Genus';
@@ -246,7 +250,7 @@ class Portal extends CI_Controller
         $returnArray[]='dis.';
         break;
         case "FAOBiomes":
-        $returnArray[]='FAO Global Ecological Zone';
+        $returnArray[]='FAO Biomes';
         $returnArray[]='b.';
         break;
         case "Reference":
@@ -3401,7 +3405,7 @@ class Portal extends CI_Controller
 
         $config["total_rows"] = $total_woodDensities;
 
-        $total_woodDensities=$this->db->query("SELECT m.*,s.Species,f.Family,wd.Density_green,wd.Latitude,wd.Longitude,r.Reference,r.Year FROM (SELECT ID_WD,ID_Species FROM wd w) m
+        $total_woodDensities=$this->db->query("SELECT m.*,s.Species,f.Family,wd.Density_green,wd.Latitude,wd.Longitude,r.Reference,r.Year,r.Author FROM (SELECT ID_WD,ID_Species FROM wd w) m
         LEFT JOIN wd  ON m.ID_WD=wd.ID_WD
         LEFT JOIN reference r ON wd.ID_Reference = r.ID_Reference
         LEFT JOIN species s ON m.ID_Species=s.ID_Species

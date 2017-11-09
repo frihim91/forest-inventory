@@ -55,8 +55,19 @@
          
             <table class="table">
                <tr>
-                  <th style="width:210px"> Density (g/cm3): </th>
+                  <th style="width:210px">Green Density (g/cm3): </th>
                   <td>  <?php echo $row->Density_green;?>
+                  </td>
+               </tr>
+
+               <tr>
+                  <th style="width:210px">Airdrie Density (g/cm3): </th>
+                  <td>  <?php echo $row->Density_airdry;?>
+                  </td>
+               </tr>
+               <tr>
+                  <th style="width:210px">Ovendry Density (g/cm3): </th>
+                  <td>  <?php echo $row->Density_ovendry;?>
                   </td>
                </tr>
                <tr>
@@ -110,8 +121,17 @@
                   <td><?php echo $row->FSP;?></td>
                </tr>
                <tr>
-                  <th style="width:210px"> Methodology: </th>
+                  <th style="width:210px"> Methodology Green: </th>
                   <td><?php echo $row->Methodology_Green;?></td>
+               </tr>
+
+               <tr>
+                  <th style="width:210px">Methodology Airdrie: </th>
+                  <td><?php echo $row->Methodology_Airdry;?></td>
+               </tr>
+                 <tr>
+                  <th style="width:210px">Methodology Ovendry: </th>
+                  <td><?php echo $row->Methodology_Ovendry;?></td>
                </tr>
                <tr>
                   <th style="width:210px"> Bark: </th>
@@ -119,7 +139,7 @@
                </tr>
                <tr>
                   <th style="width:210px"> Moisture Content Density: </th>
-                  <td><?php echo $row->Methodology_Ovendry;?></td>
+                  <td><?php echo $row->MC_Density;?></td>
                </tr>
                <tr>
                   <th style="width:210px"> Data origin: </th>

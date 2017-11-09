@@ -138,20 +138,21 @@ $lang_ses = $this->session->userdata("site_lang");
     <p> Search allometric equations by keyword.
       This searches accross several text fields.
       <br>
-      Example searches: <a href="#">Acanthaceae</a>,
-      <a href="#">Myrsinaceae</a>,
-      <a href="#">Aegiceras</a>,
-      <a href="#">Aegiceras corniculatum</a>,
-      <a href="#">Tropical moist forest</a>
+      Example searches:Acanthaceae, Myrsinaceae,Aegiceras,Aegiceras corniculatum,Tropical moist forest
     </p>
     <p>
     </p>
     <!-- <form action="<?php echo site_url('data/search_allometricequation_key');?>" method = "post"> -->
     <form action="<?php echo site_url('portal/searchAllometricEquationAll');?>" method = "get">
       <div class="col-md-6">
-        <div class="form-group">
-          <label>Allometric Equation<span style="color:red;"></span></label>
+      <!--   <div class="form-group">
+          <label>Allometric Equation No<span style="color:red;"></span></label>
           <input type="text" class="form-control input-sm f" name ="ID_AE" value = "<?php echo (isset($ID_AE))?$ID_AE:'';?>"  class ="ID_AE" maxlength="64" placeholder="Allometric Equation" />
+        </div> -->
+
+        <div class="form-group">
+          <label>Allometric Equation <span style="color:red;"></span></label>
+          <input type="text" class="form-control input-sm" name ="Equation" value = "<?php echo (isset($Equation))?$Equation:'';?>" class ="Equation" maxlength="200" placeholder="Allometric Equation " />
         </div>
         <div class="form-group">
           <label>Keyword<span style="color:red;">*</span></label>
@@ -165,10 +166,7 @@ $lang_ses = $this->session->userdata("site_lang");
       <p> Search allometric equations by family, genus or species.
         Example searches
         <br>
-        Example searches: <a href="#">Genus</a>,
-        <a href="#">Myrsinaceae</a>,
-        <a href="#">Aegiceras</a>,
-        <a href="#">Aegiceras corniculatum</a>,
+        Example searches:Genus,Myrsinaceae,Aegiceras,Aegiceras corniculatum
       </p>
 
       <div class="col-md-6">
@@ -222,9 +220,7 @@ $lang_ses = $this->session->userdata("site_lang");
     <div id="menu2" class="tab-pane fade">
       <p> Search allometric equations by tree location and biome.Example searches
         <br>
-        Example searches: <a href="#">Biome (FAO):</a>,
-        <a href="#">Tropical moist forest</a>,
-        <a href="#">Country: Bangladesh</a>,
+        Example searches:Biome (FAO):,Tropical moist forest,Country: Bangladesh
       </p>
 
       <div class="col-md-6">
@@ -302,10 +298,7 @@ $lang_ses = $this->session->userdata("site_lang");
       <p> Search allometric equations by author, year, and reference.
         Example searches
         <br>
-        Example searches: <a href="#"> Author: Mahmood, H</a>,
-        <a href="#">Reference:Tree volume tables for Baen </a>,
-        <a href="#"> Latif, M.A</a>,
-        <a href="#"> Year: 2004</a>,
+        Example searches:Author: Mahmood, H,Reference:Tree volume tables for Baen,Latif, M.A,Year: 2004
       </p>
       <!--  <form action="<?php echo site_url('portal/search_allometricequation_ref');?>" method = "post"> -->
       <div class="col-md-6">

@@ -112,11 +112,7 @@
             <p> Search allometric equations by keyword. 
                This searches accross several text fields. 
                <br>
-               Example searches: <a href="#">Euphorbiaceae</a>,
-               <a href="#">Euphorbiaceae</a>,
-               <a href="#">Excoecaria </a>, 
-               <a href="#">Excoecaria agallocha</a>,
-               <a href="#">Tropical moist forest</a>
+               Example searches:Euphorbiaceae,Euphorbiaceae,Excoecaria,Excoecaria agallocha,Tropical moist forest
             </p>
             <p>
             </p>
@@ -151,10 +147,7 @@
             <p> Search allometric equations by family, genus or species.
                Example searches
                <br>
-               Example searches: <a href="#">Genus</a>,
-               <a href="#">Euphorbiaceae</a>,
-               <a href="#">Excoecaria</a>, 
-               <a href="#">Excoecaria agallocha</a>,
+               Example searches:Genus,Euphorbiaceae,Excoecaria,Excoecaria agallocha,
             </p>
       
                <div class="col-md-6">
@@ -205,9 +198,7 @@
          <div id="menu2" class="tab-pane fade">
             <p> Search allometric equations by tree location and biome.Example searches
                <br>
-               Example searches: <a href="#">Biome (FAO):</a>,
-               <a href="#">Tropical dry forest</a>,
-               <a href="#">Country: Benin</a>, 
+               Example searches:Biome (FAO):,Tropical dry forest,Country: Benin
             </p>
            
                <div class="col-md-6">
@@ -233,13 +224,27 @@
                      <option value="">Select District</option>
                   </select>  </p>
                   </div>
-                  <div class="form-group">
-                     <h3>Ecological Zone</h3>
-                     <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
-                      <p> <input type="text" class="form-control input-sm" name ="FAOBiomes" value = "<?php echo (isset($FAOBiomes))?$FAOBiomes:'';?>"  class ="fao_biome"  style="width:560px;"  maxlength="64" placeholder="FAO Global Ecological Zone" />  </p>
-                     <br>
-                    <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
-                  </div>
+        <div class="form-group">
+
+
+          <label>FAO Biomes   <span style="color:red;"></span></label><br>
+
+          <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
+
+          <p><?php
+          $FAOBiomess = $this->Forestdata_model->get_all_faobiomes();
+          $options = array('' => '--Select FAO Biomes --');
+          foreach ($FAOBiomess as $FAOBiomes) {
+            $options["$FAOBiomes->FAOBiomes"] = $FAOBiomes->FAOBiomes;
+          }
+          $FAOBiomes = set_value('FAOBiomes');
+          echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes..." ');
+          ?></p>
+
+
+          <br><br>
+          <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
+        </div>
                </div>
            
          </div>
@@ -247,10 +252,8 @@
             <p> Search allometric equations by author, year, and reference.
                Example searches
                <br>
-               Example searches: <a href="#"> Author: Khan, M.N.I. </a>,
-               <a href="#">Reference:Allometric relationships</a>,
-               <a href="#">Faruque, O.</a>, 
-               <a href="#">Year: 2010</a>, 
+               Example searches:  Author: Khan, M.N.I. ,Reference:Allometric relationships,Faruque, O., 
+              Year: 2010
             </p>
            
                <div class="col-md-6">

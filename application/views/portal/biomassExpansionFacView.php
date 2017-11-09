@@ -108,11 +108,7 @@
             <p> Search Emission factors equations by keyword. 
                This searches accross several text fields. 
                <br>
-               Example searches: <a href="#">Acacia </a>,
-               <a href="#">Mimosaceae</a>,
-               <a href="#">Acacia</a>, 
-               <a href="#">Acacia auriculiformis</a>,
-               <a href="#">Tropical dry forest</a>
+               Example searches: Acacia,Mimosaceae,Acacia,Acacia auriculiformis,ropical dry forest
             </p>
             <p>
             </p>
@@ -131,10 +127,7 @@
             <p> Search Emission factors by family, genus or species.
                Example searches
                <br>
-               Example searches: <a href="#">Genus</a>,
-               <a href="#">Gmelina</a>,
-               <a href="#">Species</a>, 
-               <a href="#">schweinfurthii</a>,
+               Example searches: Genus,Gmelina,Species,schweinfurthii
             </p>
            
                <div class="col-md-6">
@@ -186,9 +179,7 @@
          <div id="menu2" class="tab-pane fade">
             <p> Search allometric equations by tree location and biome.Example searches
                <br>
-               Example searches: <a href="#">Biome (FAO):</a>,
-               <a href="#">Tropical dry forest</a>,
-               <a href="#">Country: Bangladesh</a>, 
+               Example searches: Biome (FAO):,Tropical dry forest,Country: Bangladesh 
             </p>
            
                <div class="col-md-6">
@@ -270,10 +261,8 @@
             <p> Search allometric equations by author, year, and reference.
                Example searches
                <br>
-               Example searches: <a href="#"> Author: Ullah, MR </a>,
-               <a href="#">Reference: Ullah, M.R., 2014</a>,
-               <a href="#">Ullah, MR ,</a>, 
-               <a href="#"> Year: 2014</a>, 
+               Example searches:  Author: Ullah, MR,Reference: Ullah, M.R., 2014,Ullah, MR ,
+               Year: 2014 
             </p>
             
                <div class="col-md-6">
