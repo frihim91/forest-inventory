@@ -53,7 +53,15 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line("data"); ?><span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                        <li ><?php
+						<li><a href="<?php echo site_url('data/allometricEquationView'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a></li>
+						<li><a href="<?php echo site_url('data/rawDataView'); ?>"><?php echo $this->lang->line("raw_data"); ?></a></li>
+						<li> <a href="<?php echo site_url('data/woodDensitiesView'); ?>"><?php echo $this->lang->line("Wood_densities"); ?></a></li>
+						<li><a href="<?php echo site_url('data/biomassExpansionFacView'); ?>"><?php echo $this->lang->line("biomass_expansion_factor"); ?></a></li>
+						<li><a href="<?php echo site_url('data/dataSpecies'); ?>"><?php echo $this->lang->line("species_list"); ?></a></li>
+						
+						<?php
+						/*
+						 <li >
                            if(!$this->session->userdata('user_logged')){
                             ?><a href="<?php echo site_url('accounts/userLogin'); ?>"><?php echo $this->lang->line("allometric_equations"); ?></a>
                                 <?php 
@@ -105,9 +113,10 @@
                                 <a href="<?php echo site_url('data/speciesData'); ?>"><?php echo $this->lang->line("species_list"); ?></a>
                                   <?php 
                             }
-                            
+                            </li>  
+							*/
                            ?>
-                           </li>    
+                             
                         </ul>
                     </li>
 

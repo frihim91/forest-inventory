@@ -17,10 +17,12 @@ class Data extends CI_Controller
 
         parent::__construct();
         //echo "<pre>"; print_r($_SESSION);exit();
+		/*
         if(!isset($_SESSION['user_logged']))
         {
           redirect('/');
         }
+		*/
         $this->load->model('utilities');
         $this->load->model('setup_model');
         $this->load->model('Menu_model');
@@ -168,6 +170,8 @@ class Data extends CI_Controller
 
      public function allometricEquationView()
     {
+
+
 
         $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
          //$data['ID_1988EcoZone'] =  $this->Forestdata_model->get_all_ecological_zones();

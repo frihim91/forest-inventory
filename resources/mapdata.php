@@ -23,7 +23,7 @@ $sql = "SELECT * FROM (SELECT x.latitude y, y.longitude x, y.total_species, x.sp
        (SELECT   c.latitude, c.longitude, count(c.species) total_species
             FROM ae c
         GROUP BY c.latitude, c.longitude) y
- WHERE x.latitude = y.latitude) m,faobiomes fb WHERE m.fao_biome=fb.id_faobiomes";
+ WHERE x.latitude = y.latitude) m";
 
 /*
 * If bbox variable is set, only return records that are within the bounding box

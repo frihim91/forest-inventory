@@ -122,9 +122,7 @@ $ci->load->model('datamodel');
                                     </tbody>
                                   </table>
                                   <img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $availableData->species.'.jpg'; ?>" class="speciesImg">: </b><?php echo $availableData->description;?>
-
                                 </div>
-
                               </div>
                             </div>
                           </div>
