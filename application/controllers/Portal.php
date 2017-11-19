@@ -574,6 +574,9 @@ class Portal extends CI_Controller
             redirect('data/biomassExpansionFacView');
         }
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
         $this->template->display_portal($data);
       }
 
@@ -586,10 +589,6 @@ class Portal extends CI_Controller
       switch ($attr) {
         case "H_tree_avg":
         $returnArray[]='Average Height';
-        $returnArray[]='w.';
-        break;
-        case "Density_green":
-        $returnArray[]='Green Density';
         $returnArray[]='w.';
         break;
         case "H_tree_max":
@@ -644,10 +643,13 @@ class Portal extends CI_Controller
         $returnArray[]='Author';
         $returnArray[]='r.';
         break;
-
-        case "Year":
+       case "Year":
         $returnArray[]='Year';
         $returnArray[]='r.';
+        break;
+        case "Density_green":
+        $returnArray[]='Green Density g/cm3';
+        $returnArray[]='w.';
         break;
         default:
         $returnArray[]='';
@@ -2263,10 +2265,12 @@ class Portal extends CI_Controller
      */
 
 
- public function biomassExpansionFacViewcsv()
+ public function biomassExpansionFacViewcsv($string)
  {
- $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
 
+  if($string==1)
+  {
+    $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
@@ -2275,11 +2279,32 @@ class Portal extends CI_Controller
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-         order by e.ID_EF asc")->result_array();
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
+         where $string
+         order by e.ID_EF ASC")->result_array();
+  }
+  else 
+  {
+    $string= str_replace("abyz","=",$string);
+    $string=base64_decode($string);
+        
+    $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
+         where $string
+         order by e.ID_EF ASC")->result_array();
+  }
+
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
- header("Content-Disposition: attachment; filename=\"Biomass Expansion Factor".".csv\"");
+ header("Content-Disposition: attachment; filename=\"EmissionFactor".".csv\"");
  header("Pragma: no-cache");
  header("Expires: 0");
  $handle = fopen('php://output', 'w');
@@ -2298,12 +2323,57 @@ class Portal extends CI_Controller
                     exit;
  }
 
-    public function biomassExpansionFacViewjson()
+    public function biomassExpansionFacViewjson1()
     {
         $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomass_expansion_factor_json();
         //$data['content_view_page']      = 'portal/allometricEquationPage';
         //$this->template->display_portal($data);
     }
+
+
+
+     public function biomassExpansionFacViewjson($string)
+ {
+
+  if($string==1)
+  {
+    $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
+         where $string
+         order by e.ID_EF ASC");
+  }
+  else 
+  {
+    $string= str_replace("abyz","=",$string);
+    $string=base64_decode($string);
+        
+    $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
+         where $string
+         order by e.ID_EF ASC");
+  }
+
+ //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
+  header('Content-disposition: attachment; filename=EmissionFactor.json');
+         header('Content-type: application/json');
+     echo json_encode($biomassExpansionFacView->result()),'<br />';
+ }
 
 
 
@@ -3342,11 +3412,57 @@ class Portal extends CI_Controller
 
 
 
-    public function woodDensityViewjson()
+    public function woodDensityViewjson1()
     {
         $data['woodDensityViewjson']       = $this->Forestdata_model->get_wood_density_grid_json();
 
     }
+
+
+
+
+
+ public function woodDensityViewjson($string)
+ {
+  if($string==1)
+  {
+    $woodDensityViewjson=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
+        where $string
+        order by w.ID_WD ASC");
+  }
+  else 
+  {
+    $string= str_replace("abyz","=",$string);
+    $string=base64_decode($string);
+        
+    $woodDensityViewjson=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
+        where $string
+        order by w.ID_WD ASC");
+  }
+    header('Content-disposition: attachment; filename=Wood_Density.json');
+         header('Content-type: application/json');
+     echo json_encode($woodDensityViewjson->result()),'<br />';
+ }
 
 
 
