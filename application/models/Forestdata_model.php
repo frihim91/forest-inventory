@@ -433,12 +433,21 @@ Class Forestdata_model extends CI_Model {
             return $this->db->get()->result();
       }
 
-         public function get_all_faobiomes()
+         public function get_all_faobiomes1()
       {
             $this->db->select('faobiomes.*');
             $this->db->from('faobiomes');
             $this->db->order_by('faobiomes.ID_FAOBiomes', 'ASC');
             return $this->db->get()->result();
+      }
+
+      public function get_all_faobiomes()
+      {
+        $data=$this->db->query("SELECT f.ID_FAOBiomes,(CASE WHEN FAOBiomes = 'No Data' THEN ''
+                               WHEN FAOBiomes = 'Unknown' THEN '' 
+                               ELSE FAOBiomes END) as FAOBiomes  from faobiomes f 
+                               order by f.ID_FAOBiomes ASC")->result();
+         return $data;
       }
 
           public function get_all_ecological_zones()
@@ -450,7 +459,7 @@ Class Forestdata_model extends CI_Model {
       }
 
 
-           public function get_all_agroecological_zones()
+           public function get_all_agroecological_zones1()
       {
             $this->db->select('bd_aez1988.*');
             $this->db->from('bd_aez1988');
@@ -458,13 +467,29 @@ Class Forestdata_model extends CI_Model {
             return $this->db->get()->result();
       }
 
+        public function get_all_agroecological_zones()
+      {
+        $data=$this->db->query("SELECT a.MAJOR_AEZ,(CASE WHEN AEZ_NAME = 'No Data' THEN ''
+                               ELSE AEZ_NAME END) as AEZ_NAME  from bd_aez1988 a 
+                               order by a.MAJOR_AEZ ASC")->result();
+         return $data;
+      }
 
-           public function get_all_zones()
+
+           public function get_all_zones1()
       {
             $this->db->select('zones.*');
             $this->db->from('zones');
             $this->db->order_by('zones.ID_Zones', 'ASC');
             return $this->db->get()->result();
+      }
+
+       public function get_all_zones()
+      {
+        $data=$this->db->query("SELECT z.ID_Zones,(CASE WHEN Zones = 'Unknown' THEN ''
+                               ELSE Zones END) as Zones  from zones z 
+                               order by z.ID_Zones ASC")->result();
+         return $data;
       }
 
 

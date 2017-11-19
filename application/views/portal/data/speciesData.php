@@ -95,7 +95,7 @@ $ci->load->model('datamodel');
                                     <thead>
                                       <tr>
                                         <th colspan=""><center> Types of Data</center></th>
-                                        <th colspan=""><center> Value</center></th>
+                                        <th colspan=""><center> Name of the Value</center></th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -115,13 +115,13 @@ $ci->load->model('datamodel');
                                         <th><?php echo $rdData[0]; ?></th>
                                         <th><?php echo $rdData[1]; ?></th>
                                       </tr>
-                                      <tr>
+                                   <!--    <tr>
                                         <th><?php echo $localNameData[0]; ?></th>
                                         <th><?php echo $localNameData[1]; ?></th>
-                                      </tr>
+                                      </tr> -->
                                     </tbody>
                                   </table>
-                                  <img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $availableData->species.'.jpg'; ?>" class="speciesImg">: </b><?php echo $availableData->description;?>
+                                  <p style="text-align: justify;"><img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $availableData->species.'.jpg'; ?>" class="speciesImg">: </b><?php echo $availableData->description;?><br><b><?php echo $localNameData[0]; ?> : <?php echo $localNameData[1]; ?></b></p>
                                 </div>
                               </div>
                             </div>

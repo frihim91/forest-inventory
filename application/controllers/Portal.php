@@ -211,6 +211,12 @@ class Portal extends CI_Controller
             redirect('data/allometricEquationView');
         }
         $data['content_view_page']      = 'portal/allometricEquationPage';
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+         //$data["searchType"]=2;
+         //$data["searchType"]=3;
+         //$data["searchType"]=4;
         $this->template->display_portal($data);
       }
 
@@ -227,6 +233,10 @@ class Portal extends CI_Controller
         break;
         case "Volume_m3":
         $returnArray[]='Volume (m3)';
+        $returnArray[]='r.';
+        break;
+        case "DBH_cm":
+        $returnArray[]='Tree Diameter (DBH_cm)';
         $returnArray[]='r.';
         break;
         case "Family":
@@ -380,6 +390,9 @@ class Portal extends CI_Controller
             redirect('data/rawDataView');
         }
         $data['content_view_page']      = 'portal/rawDataView';
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
         $this->template->display_portal($data);
       }
 
@@ -575,6 +588,10 @@ class Portal extends CI_Controller
         $returnArray[]='Average Height';
         $returnArray[]='w.';
         break;
+        case "Density_green":
+        $returnArray[]='Green Density';
+        $returnArray[]='w.';
+        break;
         case "H_tree_max":
         $returnArray[]='Maximum Height';
         $returnArray[]='w.';
@@ -755,6 +772,9 @@ class Portal extends CI_Controller
             redirect('data/woodDensitiesView');
         }
         $data['content_view_page']      = 'portal/woodDensitiesView';
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
         $this->template->display_portal($data);
       }
 
@@ -2040,12 +2060,54 @@ class Portal extends CI_Controller
      * @return Allometric Equation Menu page
      */
 
-    public function allometricEquationViewjson()
+    public function allometricEquationViewjson1()
     {
         $data['allometricEquationViewJson'] = $this->Forestdata_model->get_allometric_equation_json();
         //$data['content_view_page']      = 'portal/allometricEquationPage';
         //$this->template->display_portal($data);
     }
+
+     public function allometricEquationViewjson($string)
+ {
+  if($string==1)
+  {
+    $allometricEquationViewJson=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
+          LEFT JOIN species s ON a.Species=s.ID_Species
+          LEFT JOIN family f ON a.Family=f.ID_Family
+          LEFT JOIN genus g ON a.Genus=g.ID_Genus
+          LEFT JOIN reference r ON a.Reference=r.ID_Reference
+          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+          LEFT JOIN division d ON a.Division=d.ID_Division
+          LEFT JOIN district d2 ON a.District =d2.ID_District
+          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
+          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
+         order by a.ID_AE asc");
+  }
+  else 
+  {
+    $string= str_replace("abyz","=",$string);
+    $string=base64_decode($string);
+        
+    $allometricEquationViewJson=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
+          LEFT JOIN species s ON a.Species=s.ID_Species
+          LEFT JOIN family f ON a.Family=f.ID_Family
+          LEFT JOIN genus g ON a.Genus=g.ID_Genus
+          LEFT JOIN reference r ON a.Reference=r.ID_Reference
+          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+          LEFT JOIN division d ON a.Division=d.ID_Division
+          LEFT JOIN district d2 ON a.District =d2.ID_District
+          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
+          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
+         where $string
+         order by a.ID_AE asc");
+  }
+
+ 
+   header('Content-disposition: attachment; filename=Allometric_Equation.json');
+         header('Content-type: application/json');
+     echo json_encode($allometricEquationViewJson->result()),'<br />';
+ }
+
 
 
           /*
@@ -2056,7 +2118,71 @@ class Portal extends CI_Controller
      */
 
 
- public function allometricEquationViewcsv()
+ public function allometricEquationViewcsv($string)
+ {
+  if($string==1)
+  {
+    $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
+          LEFT JOIN species s ON a.Species=s.ID_Species
+          LEFT JOIN family f ON a.Family=f.ID_Family
+          LEFT JOIN genus g ON a.Genus=g.ID_Genus
+          LEFT JOIN reference r ON a.Reference=r.ID_Reference
+          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+          LEFT JOIN division d ON a.Division=d.ID_Division
+          LEFT JOIN district d2 ON a.District =d2.ID_District
+          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
+          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
+         order by a.ID_AE asc")->result_array();
+  }
+  else 
+  {
+    $string= str_replace("abyz","=",$string);
+    $string=base64_decode($string);
+        
+    $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
+          LEFT JOIN species s ON a.Species=s.ID_Species
+          LEFT JOIN family f ON a.Family=f.ID_Family
+          LEFT JOIN genus g ON a.Genus=g.ID_Genus
+          LEFT JOIN reference r ON a.Reference=r.ID_Reference
+          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+          LEFT JOIN division d ON a.Division=d.ID_Division
+          LEFT JOIN district d2 ON a.District =d2.ID_District
+          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
+          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
+         where $string
+         order by a.ID_AE asc")->result_array();
+  }
+
+ 
+ //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
+ header("Content-type: application/csv");
+ header("Content-Disposition: attachment; filename=\"Allometric Equation".".csv\"");
+ header("Pragma: no-cache");
+ header("Expires: 0");
+ $handle = fopen('php://output', 'w');
+ fputcsv($handle, array('ID_AE','ID_RD', 'Population', 'Tree_type','Vegetation_type','Country','Division','District','Upazila','Union'
+  ,'location_notes','Latitude','Longitude','BFI_zone','FAO_biome','WWF_Eco_zone','X','Unit_X','Z'
+  ,'Unit_Z','W','Unit_W','U ','Unit_U',' V','Unit_V',' Mean_X',' Min_X',' Max_X',' Mean_Z','Min_Z','Max_Z','Mean_W','Min_W','Max_W','Output'
+  ,'Output_TR','Unit_Y','Min_age','Max_age',' Av_age','B','Bd','Bg','Bt',' L','Rb','Rf','Rm','S','T','F','Family','Genus','Species','Subspecies','Species_local_name_latin'
+  ,'Species_local_name_iso','Equation','Sample_size','Top_dob','Top_girth_over_bark',' Stump_height','Reference','Label','R2','R2_Adjusted','Corrected_for_bias',' MSE','RMSE'
+  ,'SEY','SEE','AIC','FI','Bias_correction',' Ratio_equation','Segmented_equation','Contributor','Operator','Remark','Contact','  Verified'));
+                    $i = 1;
+                    foreach ($allometricEquationViewcsv as $data) {
+                        fputcsv($handle, array($data["ID_AE"], $data["ID_RD"], $data["Population"], $data["Tree_type"], $data["Vegetation_type"], $data["Country"], $data["Division"]
+                          , $data["District"], $data["Upazila"], $data["Union"], $data["location_notes"], $data["Latitude"], $data["Longitude"], $data["BFI_zone"], $data["FAO_biome"]
+                          , $data["WWF_Eco_zone"], $data["X"], $data["Unit_X"], $data["Z"], $data["Unit_Z"], $data["W"], $data["Unit_W"], $data["U"],
+                           $data["Unit_U"], $data["V"], $data["Unit_V"], $data["Mean_X"],$data["Min_X"],$data["Max_X"],$data["Mean_Z"],$data["Min_Z"],$data["Max_Z"],$data["Mean_W"],$data["Min_W"]
+                          ,$data["Max_W"],$data["Output"],$data["Output_TR"],$data["Unit_Y"],$data["Min_age"],$data["Max_age"],$data["Av_age"],$data["B"],$data["Bd"],$data["Bg"],$data["Bt"],$data["L"],$data["Rb"]
+                          ,$data["Rf"],$data["S"],$data["T"],$data["F"],$data["Family"],$data["Genus"],$data["Species"],$data["Subspecies"],$data["Species_local_name_latin"],$data["Species_local_name_iso"],$data["Equation"],$data["Sample_size"],$data["Top_dob"],$data["Top_girth_over_bark"],$data["Stump_height"]
+                          ,$data["Reference"],$data["Label"],$data["R2"],$data["R2_Adjusted"],$data["Corrected_for_bias"],$data["MSE"],$data["RMSE"],$data["SEY"],$data["SEE"],$data["AIC"] ,$data["FI"],$data["Bias_correction"],$data["Ratio_equation"],$data["Segmented_equation"],$data["Contributor"],$data["Operator"],$data["Remark"],$data["Contact"],$data["Verified"]));
+                        $i++;
+                    }
+                        fclose($handle);
+                    exit;
+ }
+
+
+  public function allometricEquationViewcsv1()
  {
  $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
@@ -3090,11 +3216,48 @@ class Portal extends CI_Controller
 
 
 
-    public function rawDataViewjson()
+    public function rawDataViewjson1()
     {
         $data['rawDataViewjson']       = $this->Forestdata_model->get_raw_data_grid_json();
 
     }
+
+
+     public function rawDataViewjson($string)
+ {
+
+  if($string==1)
+  {
+    $rawDataViewjson=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where $string order by r.ID ASC");
+  }
+  else 
+  {
+    $string= str_replace("abyz","=",$string);
+    $string=base64_decode($string);
+        
+    $rawDataViewjson=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where $string order by r.ID ASC");
+  }
+
+ header('Content-disposition: attachment; filename=Raw_Data.json');
+         header('Content-type: application/json');
+     echo json_encode($rawDataViewjson->result()),'<br />';
+ }
 
 
 
@@ -3106,9 +3269,12 @@ class Portal extends CI_Controller
      */
 
 
- public function rawDataViewcsv()
+ public function rawDataViewcsv($string)
  {
- $rawDataViewcsv=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+
+  if($string==1)
+  {
+    $rawDataViewcsv=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
          LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
@@ -3116,7 +3282,25 @@ class Portal extends CI_Controller
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         order by r.ID asc")->result_array();
+         where $string order by r.ID ASC")->result_array();
+  }
+  else 
+  {
+    $string= str_replace("abyz","=",$string);
+    $string=base64_decode($string);
+        
+    $rawDataViewcsv=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where $string order by r.ID ASC")->result_array();
+  }
+
+
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
  header("Content-Disposition: attachment; filename=\"Raw Data".".csv\"");
@@ -3175,20 +3359,45 @@ class Portal extends CI_Controller
      */
 
 
- public function woodDensityViewcsv()
+
+ public function woodDensityViewcsv($string)
  {
- $woodDensityViewcsv=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
-         LEFT JOIN species s ON w.ID_species=s.ID_Species
-         LEFT JOIN family f ON w.ID_family=f.ID_Family
-         LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
-         LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
-         LEFT JOIN location l ON w.ID_Location=l.ID_Location
-         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON l.ID_Division=d.ID_Division
-         LEFT JOIN district dis ON l.ID_District =dis.ID_District
-         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
-         order by w.ID_WD asc")->result_array();
+  if($string==1)
+  {
+    $woodDensityViewcsv=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
+        where $string
+        order by w.ID_WD ASC")->result_array();
+  }
+  else 
+  {
+    $string= str_replace("abyz","=",$string);
+    $string=base64_decode($string);
+        
+    $woodDensityViewcsv=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
+        where $string
+        order by w.ID_WD ASC")->result_array();
+  }
+
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
  header("Content-Disposition: attachment; filename=\"Wood Densities".".csv\"");

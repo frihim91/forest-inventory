@@ -406,9 +406,15 @@
                <span class="glyphicon glyphicon-download"></span> Export Results <span class="caret"></span>
                </button>
                <ul class="dropdown-menu" role="menu">
+                          <?php 
+                           if(!isset($string))
+                           {
+                           $string=1;
+                           }
+                           ?>
                   <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-                   <li><a href="<?php echo site_url('Portal/woodDensityViewcsv/'); ?>" id="export-json">Download CSV</a></li>
-                  <li><a href="<?php echo site_url('Portal/woodDensityViewjson/'); ?>" id="export-json">Download JSON</a></li>
+                   <li><a href="<?php echo site_url('Portal/woodDensityViewcsv/'.$string); ?>" id="export-json">Download CSV</a></li>
+                  <li><a href="<?php echo site_url('Portal/woodDensityViewjson/'.$string); ?>" id="export-json">Download JSON</a></li>
                   <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
                </ul>
             </div>

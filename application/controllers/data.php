@@ -45,7 +45,7 @@ class Data extends CI_Controller
      * @param  none
      * @return search string
      */
-    private function searchAttributeString($searchFields)
+     private function searchAttributeString($searchFields)
     {
         $n=count($searchFields);
         $string='';
@@ -172,7 +172,7 @@ class Data extends CI_Controller
     {
 
 
-
+        //$string=$this->searchAttributeString($validSearchKey);
         $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
          //$data['ID_1988EcoZone'] =  $this->Forestdata_model->get_all_ecological_zones();
         $data['EcoZones'] = $this->Forestdata_model->get_all_ecological_zones();
@@ -180,6 +180,7 @@ class Data extends CI_Controller
         //print_r($data['Zones']);exit;
         $data['Division'] = $this->Forestdata_model->get_all_division();
         $data['content_view_page']      = 'portal/allometricEquationPage';
+
         $this->template->display_portal($data);
     }
 

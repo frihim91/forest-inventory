@@ -163,6 +163,7 @@ $lang_ses = $this->session->userdata("site_lang");
 
     </div>
     <div id="menu1" class="tab-pane fade">
+
       <p> Search allometric equations by family, genus or species.
         Example searches
         <br>
@@ -419,9 +420,15 @@ $lang_ses = $this->session->userdata("site_lang");
             <span class="glyphicon glyphicon-download"></span> Export Results <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
+          <?php 
+            if(!isset($string))
+            {
+              $string=1;
+            }
+          ?>
             <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-            <li><a href="<?php echo site_url('Portal/allometricEquationViewcsv/'); ?>" id="export-json">Download CSV</a></li>
-            <li><a href="<?php echo site_url('Portal/allometricEquationViewjson/'); ?>" id="export-json">Download JSON</a></li>
+            <li><a href="<?php echo site_url('Portal/allometricEquationViewcsv/'.$string); ?>">Download CSV</a></li>
+            <li><a href="<?php echo site_url('Portal/allometricEquationViewjson/'.$string); ?>" id="export-json">Download JSON</a></li>
             <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
           </ul>
         </div>
