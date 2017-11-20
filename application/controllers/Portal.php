@@ -1936,7 +1936,7 @@ class Portal extends CI_Controller
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
          where $string
          order by a.ID_AE desc
           ")->num_rows();
@@ -2627,7 +2627,7 @@ class Portal extends CI_Controller
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
         // ")->result();
-         $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor_species($specis_id,$limit,$page);
+        $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor_species($specis_id,$limit,$page);
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);

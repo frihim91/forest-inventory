@@ -347,22 +347,27 @@ $lang_ses = $this->session->userdata("site_lang");
 
       <h4>Result count: <span id="summary-results-total">
 
-        <?php
-        if(isset($allometricEquationView_count)){
-          ?>
-          <?php echo count($allometricEquationView_count); ?>
+   
+
+                       <?php
+                           if(isset($allometricEquationView_count))
+                           {
+                         
+                            echo count($allometricEquationView_count); 
+                            }
+                            else if(isset($allometricEquationDatagrid))
+                            {
+                              echo count($allometricEquationDatagrid);
+                            }
+                            else 
+                            { 
+                             echo $this->db->count_all_results('ae');
 
 
-          <?php
-        }else{ ?>
-          <?php echo $this->db->count_all_results('ae');//COUNT($allometricEquationView_count); ?>
-
-
-
-          <?php
-        }
-
-        ?>
+                    
+                            }
+                            
+                           ?>
 
       </span> </h4>
       <br><br>

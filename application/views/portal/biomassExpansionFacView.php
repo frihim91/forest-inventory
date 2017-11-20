@@ -308,18 +308,21 @@
      <h4>Result count: <span id="summary-results-total">
     
        <?php
-                           if(isset($biomassExpansionFacView_count)){
-                            ?>
-                            <?php echo count($biomassExpansionFacView_count); ?>
-                            
+                           if(isset($biomassExpansionFacView_count))
+                           {
+                         
+                            echo count($biomassExpansionFacView_count); 
+                            }
+                            else if(isset($biomassExpansionFacView))
+                            {
+                              echo count($biomassExpansionFacView);
+                            }
+                            else 
+                            { 
+                             echo $this->db->count_all_results('ef');
 
-                             <?php 
-                            }else{ ?>
-                             <?php echo $this->db->count_all_results('ef');?>
 
-
-                           
-                                  <?php 
+                    
                             }
                             
                            ?>

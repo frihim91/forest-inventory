@@ -287,19 +287,23 @@
      
      <h4>Result count: <span id="summary-results-total">
     
-       <?php
-                           if(isset($rawDataView_count)){
-                            ?>
-                            <?php echo count($rawDataView_count); ?>
-                            
+   
+                          <?php
+                           if(isset($rawDataView_count))
+                           {
+                         
+                            echo count($rawDataView_count); 
+                            }
+                            else if(isset($rawDataView))
+                            {
+                              echo count($rawDataView);
+                            }
+                            else 
+                            { 
+                             echo $this->db->count_all_results('rd');
 
-                             <?php 
-                            }else{ ?>
-                             <?php echo $this->db->count_all_results('rd');?>
 
-
-                           
-                                  <?php 
+                    
                             }
                             
                            ?>

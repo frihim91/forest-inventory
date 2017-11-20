@@ -238,7 +238,7 @@ Class Forestdata_model extends CI_Model {
 
 	public function get_allometric_equation_details($ID_AE)
 	{
-		$data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+		$data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,e.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
          LEFT JOIN genus g ON a.Genus=g.ID_Genus
@@ -247,7 +247,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN division d ON a.Division=d.ID_Division
          LEFT JOIN district dis ON a.District =dis.ID_District
          LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
+         LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
          where a.ID_AE=$ID_AE
 		     order by a.ID_AE desc")->result();
 		 return $data;
@@ -589,7 +589,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+          LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
          where e.Species=$specis_id
          GROUP BY e.ID_EF order by e.ID_EF desc LIMIT $limit OFFSET $page
     ")->result();
@@ -602,7 +602,6 @@ Class Forestdata_model extends CI_Model {
     public function get_biomas_expension_factor_details($ID)
   {
     $data=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.*,ld.* from ef e
-
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
@@ -612,8 +611,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN division d ON e.Division=d.ID_Division
          LEFT JOIN district dis ON e.District =dis.ID_District
          LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
-
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
          where e.ID_EF=$ID
          order by e.ID_EF desc")->result();
      return $data;

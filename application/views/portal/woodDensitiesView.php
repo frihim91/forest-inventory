@@ -331,20 +331,25 @@
     <div class="col-lg-6">
      
      <h4>Result count: <span id="summary-results-total">
-    
-       <?php
-                           if(isset($woodDensitiesView_count)){
-                            ?>
-                            <?php echo count($woodDensitiesView_count); ?>
-                            
-
-                             <?php 
-                            }else{ ?>
-                             <?php echo $this->db->count_all_results('wd');?>
 
 
-                           
-                                  <?php 
+
+                           <?php
+                           if(isset($woodDensitiesView_count))
+                           {
+                         
+                            echo count($woodDensitiesView_count); 
+                            }
+                            else if(isset($woodDensitiesView))
+                            {
+                              echo count($woodDensitiesView);
+                            }
+                            else 
+                            { 
+                             echo $this->db->count_all_results('wd');
+
+
+                    
                             }
                             
                            ?>
@@ -444,7 +449,7 @@
                <div class="panel-body">
                <dl class="dl-horizontal">
                   <dt style="font-size:15px;"><small>Green Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_green;?></small></dd> 
-                  <dt style="font-size:15px;"><small>Airdrie Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_airdry;?></small></dd> 
+                  <dt style="font-size:15px;"><small>Airdry Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_airdry;?></small></dd> 
                   <dt style="font-size:15px;"><small>Ovendry Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_ovendry;?></small></dd> 
                   <dt style="font-size:15px;"><small>Reference</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Author;?>.<?php echo $row->Reference;?></small></dd> 
                   <dt style="font-size:15px;"><small>Reference Year</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Year;?></small></dd> 

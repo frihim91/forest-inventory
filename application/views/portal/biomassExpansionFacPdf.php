@@ -215,9 +215,9 @@
                         </tr>
 
                          <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Bangladesh Ecological Zones : </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  Bangladesh Agroecological Zone : </th>
                            <td class="pdf-record-td">
-                              <?php echo $row->EcoZones;?>
+                              <?php echo $row->AEZ_NAME;?>
                            </td>
                         </tr>
                        <!--  <tr>
