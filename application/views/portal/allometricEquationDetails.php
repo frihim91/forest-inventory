@@ -251,6 +251,19 @@ $lang_ses = $this->session->userdata("site_lang");
                     </td>
                     <td style="width:60%">
                         <table>
+                         <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone: </th>
+                           <td class="pdf-record-td">
+                              <?php echo $row->FAOBiomes;?>
+                           </td>
+                        </tr>
+
+                          <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> BFI Zone: </th>
+                           <td class="pdf-record-td">
+                              <?php echo $row->Zones;?>
+                           </td>
+                        </tr>
                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Bangladesh Agroecological Zone:  </th><td class="pdf-record-td">
                            <?php echo $row->AEZ_NAME;?>
                            

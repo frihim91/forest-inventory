@@ -299,6 +299,10 @@
                               <?php echo $row->FAOBiomes;?>
                            </td>
                         </tr>
+                                                 <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">BFI Zone: </th>
+                           <td  class="pdf-record-td"> <?php echo $row->Zones;?> </td>
+                        </tr>
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th>
                            <td  class="pdf-record-td"> <?php echo $row->Ecoregion_Udvardy;?> </td>

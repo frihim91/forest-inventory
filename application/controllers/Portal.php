@@ -37,17 +37,9 @@ class Portal extends CI_Controller
     {
       $returnArray=array();
       switch ($attr) {
-        case "ID_AE":
-        $returnArray[]='Allometric Equation No';
-        $returnArray[]='a.';
-        break;
         case "Family":
         $returnArray[]='Family';
         $returnArray[]='f.';
-        break;
-        case "Equation":
-        $returnArray[]='Allometric Equation';
-        $returnArray[]='a.';
         break;
         case "Genus":
         $returnArray[]='Genus';
@@ -56,6 +48,10 @@ class Portal extends CI_Controller
         case "Species":
         $returnArray[]='Species';
         $returnArray[]='s.';
+        break;
+        case "Equation":
+        $returnArray[]='Allometric Equation';
+        $returnArray[]='a.';
         break;
         case "Division":
         $returnArray[]='Division';
@@ -66,16 +62,16 @@ class Portal extends CI_Controller
         $returnArray[]='d2.';
         break;
         case "FAOBiomes":
-        $returnArray[]='FAO Biomes';
+        $returnArray[]='Biomass';
         $returnArray[]='b.';
         break;
-         case "AEZ_NAMES":
-        $returnArray[]='Bangladesh Agroecological Zone ';
+        case "AEZ_NAME":
+        $returnArray[]='Bangladesh Agroecological Zone';
         $returnArray[]='e.';
         break;
-        case "EcoZones":
-        $returnArray[]='Ecological zones';
-        $returnArray[]='e.';
+        case "Zones":
+        $returnArray[]='BFI Zone';
+        $returnArray[]='z.';
         break;
         case "Reference":
         $returnArray[]='Reference';
@@ -84,10 +80,6 @@ class Portal extends CI_Controller
         case "Author":
         $returnArray[]='Author';
         $returnArray[]='r.';
-        break;
-        case "Zones":
-        $returnArray[]='Zones';
-        $returnArray[]='z.';
         break;
         case "Year":
         $returnArray[]='Year';
@@ -402,14 +394,7 @@ class Portal extends CI_Controller
     {
       $returnArray=array();
       switch ($attr) {
-        case "Zones":
-        $returnArray[]='Bangladesh Zone';
-        $returnArray[]='zon.';
-        break;
-        case "EcoZones":
-        $returnArray[]='Bangladesh Ecological Zones';
-        $returnArray[]='eco.';
-        break;
+      
         case "Family":
         $returnArray[]='Family';
         $returnArray[]='f.';
@@ -434,9 +419,13 @@ class Portal extends CI_Controller
         $returnArray[]='FAO Global Ecological Zone';
         $returnArray[]='b.';
         break;
-        case "FAOBiomes":
-        $returnArray[]='FAO Biomes';
-        $returnArray[]='b.';
+        case "AEZ_NAME":
+        $returnArray[]='Bangladesh Agroecological Zone';
+        $returnArray[]='eco.';
+        break;
+        case "Zones":
+        $returnArray[]='BFI Zone';
+        $returnArray[]='zon.';
         break;
         case "Reference":
         $returnArray[]='Reference';
@@ -446,7 +435,6 @@ class Portal extends CI_Controller
         $returnArray[]='Author';
         $returnArray[]='r.';
         break;
-
         case "Year":
         $returnArray[]='Year';
         $returnArray[]='r.';
@@ -586,13 +574,42 @@ class Portal extends CI_Controller
       private function getDtByAttrWd($attr)
     {
       $returnArray=array();
-      switch ($attr) {
+       switch ($attr) {
+        case "Family":
+        $returnArray[]='Family';
+        $returnArray[]='f.';
+        break;
+        case "Genus":
+        $returnArray[]='Genus';
+        $returnArray[]='g.';
+        break;
+        case "Species":
+        $returnArray[]='Species';
+        $returnArray[]='s.';
+        break;
+     
+        case "Division":
+        $returnArray[]='Division';
+        $returnArray[]='d.';
+        break;
+        case "District":
+        $returnArray[]='District';
+        $returnArray[]='dis.';
+        break;
+        case "Zones":
+        $returnArray[]='BFI Zone';
+        $returnArray[]='zon.';
+        break;
         case "H_tree_avg":
         $returnArray[]='Average Height';
         $returnArray[]='w.';
         break;
         case "H_tree_max":
         $returnArray[]='Maximum Height';
+        $returnArray[]='w.';
+        break;
+         case "H_tree_min":
+        $returnArray[]='Minimum Height';
         $returnArray[]='w.';
         break;
         case "DBH_tree_avg":
@@ -607,33 +624,9 @@ class Portal extends CI_Controller
         $returnArray[]='Maximum DBH';
         $returnArray[]='w.';
         break;
-        case "EcoZones":
-        $returnArray[]='FAO Global Ecological Zone';
-        $returnArray[]='eco.';
-        break;
-        case "Family":
-        $returnArray[]='Family';
-        $returnArray[]='f.';
-        break;
-        case "Genus":
-        $returnArray[]='Genus';
-        $returnArray[]='g.';
-        break;
-        case "Species":
-        $returnArray[]='Species';
-        $returnArray[]='s.';
-        break;
-        case "Division":
-        $returnArray[]='Division';
-        $returnArray[]='d.';
-        break;
-        case "District":
-        $returnArray[]='District';
-        $returnArray[]='dis.';
-        break;
         case "FAOBiomes":
-        $returnArray[]='Minimum Height';
-        $returnArray[]='w.';
+        $returnArray[]='Biomass';
+        $returnArray[]='b.';
         break;
         case "Reference":
         $returnArray[]='Reference';
@@ -643,13 +636,9 @@ class Portal extends CI_Controller
         $returnArray[]='Author';
         $returnArray[]='r.';
         break;
-       case "Year":
+        case "Year":
         $returnArray[]='Year';
         $returnArray[]='r.';
-        break;
-        case "Density_green":
-        $returnArray[]='Green Density g/cm3';
-        $returnArray[]='w.';
         break;
         default:
         $returnArray[]='';
