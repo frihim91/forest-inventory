@@ -1283,6 +1283,141 @@ class Portal extends CI_Controller
 
 
 
+        private function getDtByAttrSd($attr)
+    {
+      $returnArray=array();
+      switch ($attr) {
+        case "Title":
+        $returnArray[]='Title';
+        $returnArray[]='r.';
+        break;
+        case "Author":
+        $returnArray[]='Author';
+        $returnArray[]='r.';
+        break;
+        case "Keywords":
+        $returnArray[]='Keywords';
+        $returnArray[]='r.';
+        break;
+        case "Year":
+        $returnArray[]='Year';
+        $returnArray[]='r.';
+        break;
+       
+        default:
+        $returnArray[]='';
+        $returnArray[]='';
+      }
+      return $returnArray;
+    }
+
+    public function searchSearchdocumentAll()
+    {
+      //  $r=$this->getDtByAttrAe('Author');
+      //$this->pr($_GET);
+      if(!empty($_GET)){
+        $searchFieldArray=$_GET;
+        if(!isset($searchFieldArray['keyword']))
+        {
+            $searchFieldArray['keyword']='';
+        }
+        if($searchFieldArray['keyword']!='')
+        {
+            foreach($searchFieldArray as $key=>$value)
+            {
+              if($key!='keyword')
+              {
+                $r=$this->getDtByAttrAe($key);
+                $validSearchKey[$r[1].$key]=$searchFieldArray['keyword'];
+                $fieldName[]=$r[0];
+                $filedNameValue[$r[0].'/'.$key]=$searchFieldArray['keyword'];
+              }
+            }
+        }
+        else
+        {
+          foreach($searchFieldArray as $key=>$value)
+          {
+            if($value!='')
+            {
+              $r=$this->getDtByAttrSd($key);
+              $validSearchKey[$r[1].$key]=$value;
+              $fieldName[]=$r[0];
+              $filedNameValue[$r[0].'/'.$key]=$value;
+            }
+          }
+        }
+      //  $this->pr($filedNameValue);
+        if(!isset($filedNameValue))
+        {
+          redirect('portal/viewLibraryPage');
+        }
+        else
+        {
+          $data['fieldNameValue']=$filedNameValue;
+        }
+
+        $string=$this->searchAttributeString($validSearchKey);
+
+        $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
+         $data['reference'] = $this->db->query("SELECT r.* from reference r
+         where $string order by r.Title desc 
+
+         ")->result();
+         $data['reference_count'] = $this->db->query("SELECT r.* from reference r
+         where $string order by r.Title desc
+        ")->result();
+         // $data["links"]                  = $this->pagination->create_links();
+
+          if($searchFieldArray['keyword']!='')
+          {
+            $subUrl='';
+            $i=0;
+            $n=count($searchFieldArray);
+            foreach($searchFieldArray as $row=> $val)
+            {
+              if($i<$n-1)
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'].'&';
+              }
+              else
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'];
+              }
+              $i++;
+
+            }
+          $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+          $pieces = explode("?", $url);
+          $urlTail=$pieces[1];
+          $url=str_ireplace($urlTail,$subUrl,$url);
+          $keyWord=$searchFieldArray['keyword'];
+          $removeString="keyword=$keyWord&";
+          $data['actualUrl']=str_replace($removeString,'',$url);
+          }
+          else
+          {
+            $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $data['actualUrl']=$url;
+          }
+        }
+        else
+        {
+            redirect('portal/viewLibraryPage');
+        }
+        $data['content_view_page']      = 'portal/viewLibraryPage';
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+         //$data["searchType"]=2;
+         //$data["searchType"]=3;
+         //$data["searchType"]=4;
+        $this->template->display_portal($data);
+      }
+
+
+
+
 
 
 
@@ -5193,46 +5328,46 @@ class Portal extends CI_Controller
         else
         {
         $id=$userSession['USER_ID'];
-        $this->load->library('pagination');
-        $config             = array();
-        $config["base_url"] = base_url() . "index.php/portal/viewLibraryPage";
-        $total_ef           = $this->db->count_all("reference");
+        // $this->load->library('pagination');
+        // $config             = array();
+        // $config["base_url"] = base_url() . "index.php/portal/viewLibraryPage";
+        // $total_ef           = $this->db->count_all("reference");
 
-        $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = $total_ef;
 
 
-        // $config["total_rows"] = 800;
+        // // $config["total_rows"] = 800;
 
-        $config["per_page"]        = 10;
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $limit                     = $config["per_page"];
-        $config["uri_segment"] = 3;
-        //pagination style start
-        $config['full_tag_open']   = '<ul class="pagination">';
-        $config['full_tag_close']  = '</ul>';
-        $config['prev_link']       = '&lt;';
-        $config['prev_tag_open']   = '<li>';
-        $config['prev_tag_close']  = '</li>';
-        $config['next_link']       = '&gt;';
-        $config['next_tag_open']   = '<li>';
-        $config['next_tag_close']  = '</li>';
-        $config['cur_tag_open']    = '<li class="current"><a href="#">';
-        $config['cur_tag_close']   = '</a></li>';
-        $config['num_tag_open']    = '<li>';
-        $config['num_tag_close']   = '</li>';
-        $config['first_tag_open']  = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['last_tag_open']   = '<li>';
-        $config['last_tag_close']  = '</li>';
-        $config['first_link']      = 'First';
-        $config['last_link']       = 'Last';
-        //pagination style end
-        $this->pagination->initialize($config);
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data['reference']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc LIMIT $limit OFFSET $page")->result();
+        // $config["per_page"]        = 10;
+        // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        // $limit                     = $config["per_page"];
+        // $config["uri_segment"] = 3;
+        // //pagination style start
+        // $config['full_tag_open']   = '<ul class="pagination">';
+        // $config['full_tag_close']  = '</ul>';
+        // $config['prev_link']       = '&lt;';
+        // $config['prev_tag_open']   = '<li>';
+        // $config['prev_tag_close']  = '</li>';
+        // $config['next_link']       = '&gt;';
+        // $config['next_tag_open']   = '<li>';
+        // $config['next_tag_close']  = '</li>';
+        // $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        // $config['cur_tag_close']   = '</a></li>';
+        // $config['num_tag_open']    = '<li>';
+        // $config['num_tag_close']   = '</li>';
+        // $config['first_tag_open']  = '<li>';
+        // $config['first_tag_close'] = '</li>';
+        // $config['last_tag_open']   = '<li>';
+        // $config['last_tag_close']  = '</li>';
+        // $config['first_link']      = 'First';
+        // $config['last_link']       = 'Last';
+        // //pagination style end
+        // $this->pagination->initialize($config);
+        // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data['reference']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
         $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
 
-        $data["links"]                  = $this->pagination->create_links();
+        //$data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
     }

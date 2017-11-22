@@ -1,3 +1,9 @@
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>asset/datatable/dataTables.bootstrap.css">
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/jqueryDataTable.min.js">
+</script>
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/dataTableBootstrap.min.js">
+</script>
 <style type="text/css">
    .page_content{
    padding: 15px;
@@ -30,6 +36,7 @@
    color: white;
    }
 </style>
+
 <script type="text/javascript">
    $(document).on('keypress', '#title', function () {
    
@@ -75,6 +82,7 @@
    
    
 </script>
+
 <?php
    $lang_ses = $this->session->userdata("site_lang");
    ?>
@@ -106,7 +114,9 @@
                <a href="#">Author: Barua, S. and S. Haque </a>,
                <a href="#"> Keyword: Barua </a>,
             </p>
-            <form action="<?php echo site_url('portal/search_document');?>" method = "post">
+          <!--   <form action="<?php echo site_url('portal/search_document');?>" method = "post"> -->
+    
+             <form action="<?php echo site_url('portal/searchSearchdocumentAll');?>" method = "get">
                <div class="col-md-3">
                   <div class="form-group">
                      <label>Title <span style="color:red;"></span></label>
@@ -145,24 +155,78 @@
          <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
             <div class="col-lg-6">
                <h4>Result count: <span id="summary-results-total">
-                  <?php echo $this->db->count_all_results('reference');?>
+                    <?php
+                           if(isset($reference_count))
+                           {
+                         
+                            echo count($reference_count); 
+                            }
+                            else if(isset($reference))
+                            {
+                              echo count($reference);
+                            }
+                            else 
+                            { 
+                             echo $this->db->count_all_results('reference');
+
+
+                    
+                            }
+                            
+                           ?>
                   </span> 
                </h4>
                <br><br>
             </div>
             <div class="col-lg-6">
                <h4> Search criteria</h4>
-               <p> No criteria - All results are shown</p>
+               <p> <?php
+        // echo "<pre>";
+        // print_r($fieldNameValue);
+                           if(!empty($fieldNameValue)){
+                              $n=count($fieldNameValue);
+                             $i=0;
+                             foreach($fieldNameValue as $key=>$value)
+                             {
+                                $pieces = explode("/", $key);
+                                $fieldName= $pieces[0]; // piece1
+                                $keyWord= $pieces[1]; // piece2
+                                if($i<$n-1)
+                                {
+                                  $substitute="$keyWord=$value&";
+                                }
+                                else {
+                                  $substitute="$keyWord=$value";
+                                }
+                                $sub=str_replace(' ','+',$substitute);
+                                //echo $actualUrl;
+                                $newUrl=str_replace($sub,'',$actualUrl);
+                            // $url=str_replace('','',$actualUrl);
+                                $i++;
+                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+                             }
+
+                            }
+                            else{
+                              echo "No criteria - All results are shown";
+                            }
+                           ?></p>
             </div>
          </div>
-         <div class="">
-            <h4>Library</h4>
+         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                  <td><center>Library</center></td>
+                </tr>
+              </thead>
             <?php
                $pdf_values=".pdf";
                foreach($reference as $row)
                  
                {
                  ?>
+                 <tr>
+                   <td>
             <h4><?php echo $row->Title;?></h4>
             <?php
                            if (empty($row->Journal)) {
@@ -177,30 +241,28 @@
                             }
                             
                            ?>
+                            </td>
+                    </tr>
               
          
             <?php
                }?>
-            <p><?php echo $links; ?></p>
-            <!-- <h4>Scientific articles</h4>
-               <p>Here you can find links to articles providing information about GlobAllomeTree and associated tools.</p>
-               <p><a href=""> <?php
-                  $i=1;
-                  foreach ($reference_author as  $row){
-                  if($i==1){
-                  echo "$row->Author";
-                  }else{
-                  echo ",$row->Author";
-                  }
-                  $i++;
-                  }
-                      
-                  ?>
-                  </a>
-               
-                  iForest (early view) - doi: 10.3832/ifor0901-006
-               <p> -->
-         </div>
+         <!--    <p><?php echo $links; ?></p> -->
+     
+         </table>
+
+           <script>
+                $(document).ready(function() {
+                  $('#example').dataTable( {
+                    "searching": false,
+                    "bLengthChange": false,
+                    "pageLength": 20,
+                    "bSort" : false
+                    
+
+                  } );
+                } );
+                </script>
       </div>
    </div>
 </div>
