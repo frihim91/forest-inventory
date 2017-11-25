@@ -444,8 +444,8 @@ Class Forestdata_model extends CI_Model {
       public function get_all_faobiomes()
       {
         $data=$this->db->query("SELECT f.ID_FAOBiomes,(CASE WHEN FAOBiomes = 'No Data' THEN ''
-                               WHEN FAOBiomes = 'Unknown' THEN '' 
-                               ELSE FAOBiomes END) as FAOBiomes  from faobiomes f 
+                               WHEN FAOBiomes = 'Unknown' THEN ''
+                               ELSE FAOBiomes END) as FAOBiomes  from faobiomes f
                                order by f.ID_FAOBiomes ASC")->result();
          return $data;
       }
@@ -470,7 +470,7 @@ Class Forestdata_model extends CI_Model {
         public function get_all_agroecological_zones()
       {
         $data=$this->db->query("SELECT a.MAJOR_AEZ,(CASE WHEN AEZ_NAME = 'No Data' THEN ''
-                               ELSE AEZ_NAME END) as AEZ_NAME  from bd_aez1988 a 
+                               ELSE AEZ_NAME END) as AEZ_NAME  from bd_aez1988 a
                                order by a.MAJOR_AEZ ASC")->result();
          return $data;
       }
@@ -487,7 +487,7 @@ Class Forestdata_model extends CI_Model {
        public function get_all_zones()
       {
         $data=$this->db->query("SELECT z.ID_Zones,(CASE WHEN Zones = 'Unknown' THEN ''
-                               ELSE Zones END) as Zones  from zones z 
+                               ELSE Zones END) as Zones  from zones z
                                order by z.ID_Zones ASC")->result();
          return $data;
       }
@@ -520,7 +520,7 @@ Class Forestdata_model extends CI_Model {
     $data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus   
+         LEFT JOIN genus g ON a.Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
          LEFT JOIN division d ON a.Division=d.ID_Division
@@ -840,6 +840,51 @@ Class Forestdata_model extends CI_Model {
           $data=$this->db->query("SELECT * FROM purpose p ORDER BY p. PURPOSE_ID ASC")->result();
           return $data;
        }
+			 public function get_allometric_ajax($input,$str)
+			 {
+
+				if($str!='0')
+				{
+					$string= str_replace("abyz","=",$str);
+           $strs=base64_decode($string);
+					$string="where $strs";
+				}
+				else if($str=='0')
+				{
+					$string="";
+				}
+
+				$limit=$input['length'];
+      	$start=$input['start'];
+				 $data=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
+				 LEFT JOIN species s ON a.Species=s.ID_Species
+				 LEFT JOIN family f ON a.Family=f.ID_Family
+				 LEFT JOIN genus g ON a.Genus=g.ID_Genus
+				 LEFT JOIN reference r ON a.Reference=r.ID_Reference
+				 LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+				 LEFT JOIN division d ON a.Division=d.ID_Division
+				 LEFT JOIN district d2 ON a.District =d2.ID_District
+				 LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
+				 LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
+				  $string
+
+							limit $limit offset  $start
+		         ")->result();
+				$totalArray=$this->db->query("SELECT ID_AE FROM ae a
+				LEFT JOIN species s ON a.Species=s.ID_Species
+				LEFT JOIN family f ON a.Family=f.ID_Family
+				LEFT JOIN genus g ON a.Genus=g.ID_Genus
+				LEFT JOIN reference r ON a.Reference=r.ID_Reference
+				LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
+				LEFT JOIN division d ON a.Division=d.ID_Division
+				LEFT JOIN district d2 ON a.District =d2.ID_District
+				LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
+				LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
+				 $string")->result();
+						//$totalArray=$this->db->query("SELECT COUNT(*) TOTAL FROM ae")->row();
+						$total =count($totalArray);
+		      return array('data' => $data, 'total' => $total, 'filtered' => $total);
+			 }
 
 
 

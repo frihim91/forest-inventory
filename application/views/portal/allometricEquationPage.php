@@ -1,13 +1,10 @@
-<?php 
-  // echo "<pre>";
-  // print_r($allometricEquationView);
-  // exit;
-?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>asset/datatable/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/jqueryDataTable.min.js">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js">
+
 </script>
-<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/dataTableBootstrap.min.js">
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js">
+
 </script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <style type="text/css">
 .page_content{
   padding: 15px;
@@ -347,26 +344,26 @@ $lang_ses = $this->session->userdata("site_lang");
 
       <h4>Result count: <span id="summary-results-total">
 
-   
+
 
                        <?php
                            if(isset($allometricEquationView_count))
                            {
-                         
-                            echo count($allometricEquationView_count); 
+
+                            echo count($allometricEquationView_count);
                             }
                             else if(isset($allometricEquationDatagrid))
                             {
                               echo count($allometricEquationDatagrid);
                             }
-                            else 
-                            { 
+                            else
+                            {
                              echo $this->db->count_all_results('ae');
 
 
-                    
+
                             }
-                            
+
                            ?>
 
       </span> </h4>
@@ -425,7 +422,7 @@ $lang_ses = $this->session->userdata("site_lang");
             <span class="glyphicon glyphicon-download"></span> Export Results <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-          <?php 
+          <?php
             if(!isset($string))
             {
               $string=1;
@@ -440,221 +437,103 @@ $lang_ses = $this->session->userdata("site_lang");
         <form>
         </div>
       </ul>
+      <?php
+      //echo $strs;
+      //echo $result = mcrypt_ecb (MCRYPT_3DES, 'test', $string, MCRYPT_ENCRYPT);
+
+
+          //echo $string=base64_decode($string);
+        if(isset($strs))
+        {
+          $str=$string;
+        }
+        else
+        {
+          $str=0;
+        }
+
+      ?>
       <div class="tab-content">
 
         <div id="results-list" class="tab-pane fade in active ">
           <div id="paginationClass">
+<table class="table table-striped table-bordered table-hover datatable table-sm common_table" data-source="<?php echo site_url('data/allometricEqnAjaxData/'.$str); ?>" id="">
+       <thead>
+       <tr>
 
-            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <td><center>List Of Allometric Equations</center></td>
-                </tr>
-              </thead>
-              <?php
-              foreach($allometricEquationView as $row)
-              {
-                ?>
-                <tr>
-                  <td>
-                    <div class="panel panel-default">
+           <th><center>Allometric Equation Data</center></th>
 
-                      <div class="panel-heading">Allometric Equation <?php echo $row->ID_AE; ?>
-                        <a href="<?php echo site_url('Portal/allometricEquationDetails/'.$row->ID_AE); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
-                      </div>
-                      <div class="panel-body">
-                        <dl class="dl-horizontal">
-                          <dt style="font-size:15px;"><small>Equation</small></dt> <dd style="font-size:15px;"><code><?php echo $row->Equation;?></code></dd>
-                          <dt style="font-size:15px;"><small>Output</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Output;?></small></dd>
-                          <dt style="font-size:15px;"><small>Reference</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Author;?>.<?php echo $row->Reference;?></small></dd>
-                          <dt style="font-size:15px;"><small>Reference Year</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Year;?></small></dd>
-                          <dt style="font-size:15px;"><small>Biomass</small></dt> <dd style="font-size:15px;"><small><?php echo $row->FAOBiomes;?></small></dd>
-                          <dt style="font-size:15px;"><small>Family</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Family;?></small></dd>
-                          <dt style="font-size:15px;"><small>Species</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Species;?></small></dd>
-                          <dt style="font-size:15px;"><small>Locations</small></dt> <dd style="font-size:15px;"><small><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</small></dd>
-                          <!--  <p style="padding-left:3px;"><b>Equation: <code style="color:#c7254e;font-size: 14px;"><?php echo $row->Equation;?></code></b></p>
-                          <p style="padding-left:3px;"><b>Output: </b><?php echo $row->Output;?></p>
-                          <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
-                          <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
-                          <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
-                          <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
-                          <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
-                          <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p> -->
-                          <dl>
-                          </div>
+       </tr>
+       </thead>
+       <tbody>
+       </tbody>
+   </table>
 
-                        </div>
-                      </td>
-                    </tr>
+ </div>
+         </div>
 
-                    <?php
-                  }?>
-                </table>
-                <script>
-                $(document).ready(function() {
-                  $('#example').dataTable( {
-                    "searching": false,
-                    "bLengthChange": false,
-                    "pageLength": 20,
-                    "bSort" : false
-                    
+         <div id="results-map" class="tab-pane fade">
+           <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
+           <script src="<?php echo base_url(); ?>resources/js/leaflet/leaflet.js"></script>
+           <style type="text/css">
+           #map{ height: 100% }
+           </style>
+         </div>
+       </div>
+     </div>
+   </div>
 
-                  } );
-                } );
-                </script>
-
-              </div>
-            </div>
-
-            <div id="results-map" class="tab-pane fade">
-              <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
-              <script src="<?php echo base_url(); ?>resources/js/leaflet/leaflet.js"></script>
-              <style type="text/css">
-              #map{ height: 100% }
-              </style>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row mapBlock" style="display:none">
-        <div class="col-md-12" style="height:500px!important;width:100%">
-          <div id="map"></div>
-          <script>
-          // initialize the map
+   <div class="row mapBlock" style="display:none">
+     <div class="col-md-12" style="height:500px!important;width:100%">
+       <div id="map"></div>
+       <script>
+       // initialize the map
 
 
-          </script>
-        </div>
-      </div>
-      <script type="text/javascript">
-      $(document).on('keypress', '#Genus', function () {
+       </script>
+     </div>
+   </div>
+   <script type="text/javascript">
+   $(document).ready(function(){
+var pmId=$("input.pmId").val();
+if(pmId>0)
+{
+  var urlTail='?section='+pmId;
+}
+else
+{
+  var urlTail='';
+}
+  var source_data  = $('.common_table').data('source')+urlTail;
 
-        var pattern = /[0-9]+/g;
-        var id = $(this).attr('id').match(pattern);
-        $(this).autocomplete({
-          source: "<?php echo site_url('Portal/get_genus'); ?>",
-          select: function (event, ui) {
-            $("#Genus" + id).val(ui.item.id);
-          }
-        });
-      });
+  // begin second table
+  oTable2 = $('.common_table').dataTable({
+      "processing": true,
+      "serverSide": true,
+      "searching": false,
+      "searchable": false,
+      "pagingType": "full_numbers",
+      'pageLength': 10,
+      "aLengthMenu": [
+          [10, 20,50],
+          [10, 20,50], // change per page values here
+      ],
+      // Load data for the table's content from an Ajax source
+      "ajax": {
 
-      $(document).on('keypress', '#Family', function () {
-
-        var pattern = /[0-9]+/g;
-        var id = $(this).attr('id').match(pattern);
-        $(this).autocomplete({
-          source: "<?php echo site_url('Portal/get_family'); ?>",
-          select: function (event, ui) {
-            $("#Genus" + id).val(ui.item.id);
-          }
-        });
-      });
-      $(document).on('keypress', '#Species', function () {
-
-        var pattern = /[0-9]+/g;
-        var id = $(this).attr('id').match(pattern);
-        $(this).autocomplete({
-          source: "<?php echo site_url('Portal/get_species'); ?>",
-          select: function (event, ui) {
-            $("#Species" + id).val(ui.item.id);
-          }
-        });
-      });
-
-      $(document).on('keypress', '#District', function () {
-
-        var pattern = /[0-9]+/g;
-        var id = $(this).attr('id').match(pattern);
-        $(this).autocomplete({
-          source: "<?php echo site_url('Portal/get_district'); ?>",
-          select: function (event, ui) {
-            $("#District" + id).val(ui.item.id);
-          }
-        });
-      });
-
-      $(document).on('click', '.btn_remove_class', function () {
-        var id = $(this).attr('id');
-        alert(id);
-        $('.'+id).remove();
-        $(this).remove();
-      });
-
-
-      $(document).on('keypress', '#division', function () {
-
-        var pattern = /[0-9]+/g;
-        var id = $(this).attr('id').match(pattern);
-        $(this).autocomplete({
-          source: "<?php echo site_url('Portal/get_division'); ?>",
-          select: function (event, ui) {
-            $("#division" + id).val(ui.item.id);
-          }
-        });
-      });
-
-
-      $(document).on('keypress', '#ecoZones', function () {
-
-        var pattern = /[0-9]+/g;
-        var id = $(this).attr('id').match(pattern);
-        $(this).autocomplete({
-          source: "<?php echo site_url('Portal/get_ecological_zones'); ?>",
-          select: function (event, ui) {
-            $("#ecoZones" + id).val(ui.item.id);
-          }
-        });
-      });
-
-      $(document).on('keypress', '#reference', function () {
-
-        var pattern = /[0-9]+/g;
-        var id = $(this).attr('id').match(pattern);
-        $(this).autocomplete({
-          source: "<?php echo site_url('Portal/get_reference'); ?>",
-          select: function (event, ui) {
-            $("#reference" + id).val(ui.item.id);
-          }
-        });
-      });
-
-
-      $(document).on('keypress', '#author', function () {
-
-        var pattern = /[0-9]+/g;
-        var id = $(this).attr('id').match(pattern);
-        $(this).autocomplete({
-          source: "<?php echo site_url('Portal/get_author'); ?>",
-          select: function (event, ui) {
-            $("#author" + id).val(ui.item.id);
-          }
-        });
-      });
-
-
-      $(document).on('keypress', '#year', function () {
-
-        var pattern = /[0-9]+/g;
-        var id = $(this).attr('id').match(pattern);
-        $(this).autocomplete({
-          source: "<?php echo site_url('Portal/get_year'); ?>",
-          select: function (event, ui) {
-            $("#year" + id).val(ui.item.id);
-          }
-        });
-      });
-
-
-
-      </script>
-      <script type="text/javascript">
-      $('#tabs a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');})
-        </script>
-        <script type="text/javascript">
+          //"type": "GET",
+          "url": source_data,
+      },
+      //Set column definition initialisation properties.
+      "columnDefs": [
+          {"targets": [0],"orderable": false},
+          {"targets": [ -1 ], "orderable": false},
+          {"targets": [ -1 ], "orderable": false}
+      ]
+  });
+});
+   </script>
+   <script type="text/javascript">
         $(document).ready(function(){
           $("a.results-map").click(function(){
             $("div.mapBlock").show();
@@ -682,126 +561,276 @@ $lang_ses = $this->session->userdata("site_lang");
         $("a.resultList").click(function(){
           $("div.mapBlock").hide();
         });
-
-
-
-
         </script>
-
-
         <script type="text/javascript">
-        $(document).on("click", "input.searchButton", function () {
-          var sp=$('input.s').val();
-          var ge=$('input.g').val();
-          var fa=$('input.f').val();
+             $(document).on('keypress', '#Genus', function () {
 
-          if(sp!='')
-          {
-            var Url='{{url("/view_Demand_Filter/")}}'+'/'+sp;
-          }
-          if(ge!='')
-          {
-            var Url='{{url("$roleName/view_Demand_Filter/")}}'+'/'+ge;
-          }
-          if(fa!='')
-          {
-            var Url='{{url("$roleName/view_Demand_Filter/")}}'+'/'+fa;
-          }
-          // $.ajax({
-          //     type: "GET",
-          //     url: destination,
-          //     success: function (data) {
-          //          $("div.dmndTbl").html(data);
-          //     }
-          //  });
-          alert(Url);
-        });
-        <<<<<<< HEAD
+               var pattern = /[0-9]+/g;
+               var id = $(this).attr('id').match(pattern);
+               $(this).autocomplete({
+                 source: "<?php echo site_url('Portal/get_genus'); ?>",
+                 select: function (event, ui) {
+                   $("#Genus" + id).val(ui.item.id);
+                 }
+               });
+             });
 
-        </script>
-        <script>
-        // Setting default configuration here or you can set through configuration object as seen below
-        $.fn.select2.defaults = $.extend($.fn.select2.defaults, {
-          allowClear: true, // Adds X image to clear select
-          closeOnSelect: true, // Only applies to multiple selects. Closes the select upon selection.
-          placeholder: 'Select...',
-          minimumResultsForSearch: 15 // Removes search when there are 15 or fewer options
-        });
+             $(document).on('keypress', '#Family', function () {
 
-        $(document).ready(
+               var pattern = /[0-9]+/g;
+               var id = $(this).attr('id').match(pattern);
+               $(this).autocomplete({
+                 source: "<?php echo site_url('Portal/get_family'); ?>",
+                 select: function (event, ui) {
+                   $("#Genus" + id).val(ui.item.id);
+                 }
+               });
+             });
+             $(document).on('keypress', '#Species', function () {
 
-          function () {
+               var pattern = /[0-9]+/g;
+               var id = $(this).attr('id').match(pattern);
+               $(this).autocomplete({
+                 source: "<?php echo site_url('Portal/get_species'); ?>",
+                 select: function (event, ui) {
+                   $("#Species" + id).val(ui.item.id);
+                 }
+               });
+             });
 
-            // Single select example if using params obj or configuration seen above
-            var configParamsObj = {
-              placeholder: 'Select an option...', // Place holder text to place in the select
-              minimumResultsForSearch: 3 // Overrides default of 15 set above
-            };
-            $(".singleSelectExample").select2(configParamsObj);
-          });
-          </script>
+             $(document).on('keypress', '#District', function () {
 
-          <script type="text/javascript">
-          $(document).ready(function() {
-            $('#ID_Division').change(function() {
-              var Division = $(this).val();
-              //var ID_Division = $(this).val();
-              //alert(Division);
-              var url = '<?php echo site_url('Portal/ajax_get_division') ?>';
-              $.ajax({
-                type: "POST",
-                url: url,
-                data: {Division:Division},
-                dataType: 'html',
-                success: function(data) {
-                  $('#ID_District').html(data);
-                }
-              });
-            });
-          });
+               var pattern = /[0-9]+/g;
+               var id = $(this).attr('id').match(pattern);
+               $(this).autocomplete({
+                 source: "<?php echo site_url('Portal/get_district'); ?>",
+                 select: function (event, ui) {
+                   $("#District" + id).val(ui.item.id);
+                 }
+               });
+             });
+
+             $(document).on('click', '.btn_remove_class', function () {
+               var id = $(this).attr('id');
+               alert(id);
+               $('.'+id).remove();
+               $(this).remove();
+             });
 
 
-          $(document).ready(function() {
-            $('#ID_District').change(function() {
-              var District = $(this).val();
-              //alert(District);
-              var url = '<?php echo site_url('Portal/up_thana_by_dis_id') ?>';
-              $.ajax({
-                type: "POST",
-                url: url,
-                data: {District:District},
-                dataType: 'html',
-                success: function(data) {
-                  $('#THANA_ID').html(data);
-                }
-              });
-            });
-          });
+             $(document).on('keypress', '#division', function () {
+
+               var pattern = /[0-9]+/g;
+               var id = $(this).attr('id').match(pattern);
+               $(this).autocomplete({
+                 source: "<?php echo site_url('Portal/get_division'); ?>",
+                 select: function (event, ui) {
+                   $("#division" + id).val(ui.item.id);
+                 }
+               });
+             });
 
 
-          $(document).ready(function() {
-            $('#THANA_ID').change(function() {
-              var THANAME = $(this).val();
-              //alert(District);
-              var url = '<?php echo site_url('Portal/up_union_by_dis_id') ?>';
-              $.ajax({
-                type: "POST",
-                url: url,
-                data: {THANAME:THANAME},
-                dataType: 'html',
-                success: function(data) {
-                  $('#union_id').html(data);
-                }
-              });
-            });
-          });
+             $(document).on('keypress', '#ecoZones', function () {
+
+               var pattern = /[0-9]+/g;
+               var id = $(this).attr('id').match(pattern);
+               $(this).autocomplete({
+                 source: "<?php echo site_url('Portal/get_ecological_zones'); ?>",
+                 select: function (event, ui) {
+                   $("#ecoZones" + id).val(ui.item.id);
+                 }
+               });
+             });
+
+             $(document).on('keypress', '#reference', function () {
+
+               var pattern = /[0-9]+/g;
+               var id = $(this).attr('id').match(pattern);
+               $(this).autocomplete({
+                 source: "<?php echo site_url('Portal/get_reference'); ?>",
+                 select: function (event, ui) {
+                   $("#reference" + id).val(ui.item.id);
+                 }
+               });
+             });
+
+
+             $(document).on('keypress', '#author', function () {
+
+               var pattern = /[0-9]+/g;
+               var id = $(this).attr('id').match(pattern);
+               $(this).autocomplete({
+                 source: "<?php echo site_url('Portal/get_author'); ?>",
+                 select: function (event, ui) {
+                   $("#author" + id).val(ui.item.id);
+                 }
+               });
+             });
+
+
+             $(document).on('keypress', '#year', function () {
+
+               var pattern = /[0-9]+/g;
+               var id = $(this).attr('id').match(pattern);
+               $(this).autocomplete({
+                 source: "<?php echo site_url('Portal/get_year'); ?>",
+                 select: function (event, ui) {
+                   $("#year" + id).val(ui.item.id);
+                 }
+               });
+             });
+
+
+
+             </script>
+             <script type="text/javascript">
+             $('#tabs a').click(function (e) {
+               e.preventDefault();
+               $(this).tab('show');})
+               </script>
+               <script type="text/javascript">
+               $(document).ready(function(){
+                 $("a.results-map").click(function(){
+                   $("div.mapBlock").show();
+                   var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
+                   var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+                   map.addLayer(osm);
+
+
+                   $.getJSON("<?php echo base_url(); ?>resources/mapdata.php",function(data){
+                     var ratIcon = L.icon({
+                       iconUrl: '<?php echo base_url(); ?>resources/final.png',
+                       iconSize: [19,30]
+                     });
+                     L.geoJson(data,{
+                       pointToLayer: function(feature,latlng){
+                         var marker = L.marker(latlng,{icon: ratIcon});
+                         marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.output);
+                         return marker;
+                       }
+                     }).addTo(map);
+                   });
+
+                 });
+               });
+               $("a.resultList").click(function(){
+                 $("div.mapBlock").hide();
+               });
 
 
 
 
-          </script>
+               </script>
 
-          <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-          <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
-          <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
-          <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>
+
+               <script type="text/javascript">
+               $(document).on("click", "input.searchButton", function () {
+                 var sp=$('input.s').val();
+                 var ge=$('input.g').val();
+                 var fa=$('input.f').val();
+
+                 if(sp!='')
+                 {
+                   var Url='{{url("/view_Demand_Filter/")}}'+'/'+sp;
+                 }
+                 if(ge!='')
+                 {
+                   var Url='{{url("$roleName/view_Demand_Filter/")}}'+'/'+ge;
+                 }
+                 if(fa!='')
+                 {
+                   var Url='{{url("$roleName/view_Demand_Filter/")}}'+'/'+fa;
+                 }
+                 // $.ajax({
+                 //     type: "GET",
+                 //     url: destination,
+                 //     success: function (data) {
+                 //          $("div.dmndTbl").html(data);
+                 //     }
+                 //  });
+                // alert(Url);
+               });
+
+
+               </script>
+               <script>
+               // Setting default configuration here or you can set through configuration object as seen below
+               $.fn.select2.defaults = $.extend($.fn.select2.defaults, {
+                 allowClear: true, // Adds X image to clear select
+                 closeOnSelect: true, // Only applies to multiple selects. Closes the select upon selection.
+                 placeholder: 'Select...',
+                 minimumResultsForSearch: 15 // Removes search when there are 15 or fewer options
+               });
+
+               $(document).ready(
+
+                 function () {
+
+                   // Single select example if using params obj or configuration seen above
+                   var configParamsObj = {
+                     placeholder: 'Select an option...', // Place holder text to place in the select
+                     minimumResultsForSearch: 3 // Overrides default of 15 set above
+                   };
+                   $(".singleSelectExample").select2(configParamsObj);
+                 });
+                 </script>
+
+                 <script type="text/javascript">
+                 $(document).ready(function() {
+                   $('#ID_Division').change(function() {
+                     var Division = $(this).val();
+                     //var ID_Division = $(this).val();
+                     //alert(Division);
+                     var url = '<?php echo site_url('Portal/ajax_get_division') ?>';
+                     $.ajax({
+                       type: "POST",
+                       url: url,
+                       data: {Division:Division},
+                       dataType: 'html',
+                       success: function(data) {
+                         $('#ID_District').html(data);
+                       }
+                     });
+                   });
+                 });
+
+
+                 $(document).ready(function() {
+                   $('#ID_District').change(function() {
+                     var District = $(this).val();
+                     //alert(District);
+                     var url = '<?php echo site_url('Portal/up_thana_by_dis_id') ?>';
+                     $.ajax({
+                       type: "POST",
+                       url: url,
+                       data: {District:District},
+                       dataType: 'html',
+                       success: function(data) {
+                         $('#THANA_ID').html(data);
+                       }
+                     });
+                   });
+                 });
+
+
+                 $(document).ready(function() {
+                   $('#THANA_ID').change(function() {
+                     var THANAME = $(this).val();
+                     //alert(District);
+                     var url = '<?php echo site_url('Portal/up_union_by_dis_id') ?>';
+                     $.ajax({
+                       type: "POST",
+                       url: url,
+                       data: {THANAME:THANAME},
+                       dataType: 'html',
+                       success: function(data) {
+                         $('#union_id').html(data);
+                       }
+                     });
+                   });
+                 });
+                 </script>
+                 <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
+<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>

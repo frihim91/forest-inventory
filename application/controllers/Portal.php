@@ -203,9 +203,11 @@ class Portal extends CI_Controller
             redirect('data/allometricEquationView');
         }
         $data['content_view_page']      = 'portal/allometricEquationPage';
+        $str=$string;
         $string=base64_encode($string);
         $string= str_replace("=","abyz",$string);
         $data['string']=$string;
+        $data['strs']=$string;
          //$data["searchType"]=2;
          //$data["searchType"]=3;
          //$data["searchType"]=4;
@@ -394,7 +396,7 @@ class Portal extends CI_Controller
     {
       $returnArray=array();
       switch ($attr) {
-      
+
         case "Family":
         $returnArray[]='Family';
         $returnArray[]='f.';
@@ -587,7 +589,7 @@ class Portal extends CI_Controller
         $returnArray[]='Species';
         $returnArray[]='s.';
         break;
-     
+
         case "Division":
         $returnArray[]='Division';
         $returnArray[]='d.';
@@ -1303,7 +1305,7 @@ class Portal extends CI_Controller
         $returnArray[]='Year';
         $returnArray[]='r.';
         break;
-       
+
         default:
         $returnArray[]='';
         $returnArray[]='';
@@ -1361,7 +1363,7 @@ class Portal extends CI_Controller
 
         $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
          $data['reference'] = $this->db->query("SELECT r.* from reference r
-         where $string order by r.Title desc 
+         where $string order by r.Title desc
 
          ")->result();
          $data['reference_count'] = $this->db->query("SELECT r.* from reference r
@@ -2209,11 +2211,11 @@ class Portal extends CI_Controller
           LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
          order by a.ID_AE asc");
   }
-  else 
+  else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
-        
+
     $allometricEquationViewJson=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
           LEFT JOIN species s ON a.Species=s.ID_Species
           LEFT JOIN family f ON a.Family=f.ID_Family
@@ -2228,7 +2230,7 @@ class Portal extends CI_Controller
          order by a.ID_AE asc");
   }
 
- 
+
    header('Content-disposition: attachment; filename=Allometric_Equation.json');
          header('Content-type: application/json');
      echo json_encode($allometricEquationViewJson->result()),'<br />';
@@ -2260,11 +2262,11 @@ class Portal extends CI_Controller
           LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
          order by a.ID_AE asc")->result_array();
   }
-  else 
+  else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
-        
+
     $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
           LEFT JOIN species s ON a.Species=s.ID_Species
           LEFT JOIN family f ON a.Family=f.ID_Family
@@ -2279,7 +2281,7 @@ class Portal extends CI_Controller
          order by a.ID_AE asc")->result_array();
   }
 
- 
+
  //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
  header("Content-type: application/csv");
  header("Content-Disposition: attachment; filename=\"Allometric Equation".".csv\"");
@@ -2407,11 +2409,11 @@ class Portal extends CI_Controller
          where $string
          order by e.ID_EF ASC")->result_array();
   }
-  else 
+  else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
-        
+
     $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
@@ -2474,11 +2476,11 @@ class Portal extends CI_Controller
          where $string
          order by e.ID_EF ASC");
   }
-  else 
+  else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
-        
+
     $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
@@ -3432,11 +3434,11 @@ class Portal extends CI_Controller
          LEFT JOIN district dis ON r.District =dis.ID_District
          where $string order by r.ID ASC");
   }
-  else 
+  else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
-        
+
     $rawDataViewjson=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
@@ -3478,11 +3480,11 @@ class Portal extends CI_Controller
          LEFT JOIN district dis ON r.District =dis.ID_District
          where $string order by r.ID ASC")->result_array();
   }
-  else 
+  else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
-        
+
     $rawDataViewcsv=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
          LEFT JOIN family f ON r.Family_ID=f.ID_Family
@@ -3564,11 +3566,11 @@ class Portal extends CI_Controller
         where $string
         order by w.ID_WD ASC");
   }
-  else 
+  else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
-        
+
     $woodDensityViewjson=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
@@ -3618,11 +3620,11 @@ class Portal extends CI_Controller
         where $string
         order by w.ID_WD ASC")->result_array();
   }
-  else 
+  else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
-        
+
     $woodDensityViewcsv=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
         LEFT JOIN species s ON w.ID_Species=s.ID_Species
         LEFT JOIN family f ON w.ID_Family=f.ID_Family
