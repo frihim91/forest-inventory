@@ -1,7 +1,7 @@
     <!DOCTYPE html>
     <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
-        <title>.: BFI || Bangladesh Forest Inventory:.</title>
+        <title>.: Biomass calculation || Biomass calculation:.</title>
         <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/favIcon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="description" content=" Food and Agriculture Organization of the United Nations"/>
@@ -45,13 +45,13 @@
                         <div class="col-xs-6 col-sm-4">
                             <a href="<?php echo site_url(); ?>" title="Home" rel="home">
 
-                               <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png')?>" alt="logo"/>
+                               <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/govt_logo.png')?>" alt="logo"/>
                            </a>
                            <?php echo $this->session->flashdata('error'); ?>
                        </div>
-                       <div class="col-xs-6 col-sm-4" style="text-align:center;">
+                       <div class="col-xs-6 col-sm-4" style="text-align:right;">
                         
-                         <!-- <a href="<?php echo site_url(); ?>" ><img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png')?>" alt="logo"/></a> -->
+                      <a href="<?php echo site_url(); ?>" ><img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png')?>" alt="logo"/></a> 
                      </div>
                      <div class="col-xs-6 col-sm-4">
 

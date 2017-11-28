@@ -696,7 +696,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
          where r.Species_ID=$specis_id
-         group by r.ID order by r.ID desc LIMIT $limit OFFSET $page
+         order by r.ID desc LIMIT $limit OFFSET $page
     ")->result();
      return $data;
   }
@@ -846,7 +846,7 @@ Class Forestdata_model extends CI_Model {
 				if($str!='0')
 				{
 					$string= str_replace("abyz","=",$str);
-           $strs=base64_decode($string);
+          $strs=base64_decode($string);
 					$string="where $strs";
 				}
 				else if($str=='0')
@@ -885,6 +885,204 @@ Class Forestdata_model extends CI_Model {
 						$total =count($totalArray);
 		      return array('data' => $data, 'total' => $total, 'filtered' => $total);
 			 }
+
+
+
+
+
+
+
+    public function get_rawdata_ajax($input,$str)
+       {
+
+        if($str!='0')
+        {
+          $string= str_replace("abyz","=",$str);
+           $strs=base64_decode($string);
+          $string="where $strs";
+        }
+        else if($str=='0')
+        {
+          $string="";
+        }
+
+
+        $limit=$input['length'];
+        $start=$input['start'];
+         $data=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+          $string limit $limit offset  $start
+             ")->result();
+        $totalArray=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         $string")->result();
+            //$totalArray=$this->db->query("SELECT COUNT(*) TOTAL FROM ae")->row();
+            $total =count($totalArray);
+          return array('data' => $data, 'total' => $total, 'filtered' => $total);
+       }
+
+
+
+       public function get_wd_ajax($input,$str)
+       {
+
+        if($str!='0')
+        {
+          $string= str_replace("abyz","=",$str);
+           $strs=base64_decode($string);
+          $string="where $strs";
+        }
+        else if($str=='0')
+        {
+          $string="";
+        }
+
+        $limit=$input['length'];
+        $start=$input['start'];
+         $data=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
+        $string limit $limit offset  $start
+             ")->result();
+        $totalArray=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
+        $string")->result();
+            //$totalArray=$this->db->query("SELECT COUNT(*) TOTAL FROM ae")->row();
+            $total =count($totalArray);
+          return array('data' => $data, 'total' => $total, 'filtered' => $total);
+       }
+
+
+
+
+             public function get_wd_species_ajax($input,$str,$specis_id)
+       {
+
+        if($str!='0')
+        {
+          $string= str_replace("abyz","=",$str);
+           $strs=base64_decode($string);
+          $string="where $strs";
+        }
+        else if($str=='0')
+        {
+          $string="";
+        }
+        $data['ID_Species'] = $specis_id;
+        $limit=$input['length'];
+        $start=$input['start'];
+         $data=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
+        
+        $string limit $limit offset  $start where w.ID_Species=$specis_id
+             ")->result();
+        $totalArray=$this->db->query("SELECT w.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* ,l.* from wd w
+        LEFT JOIN species s ON w.ID_Species=s.ID_Species
+        LEFT JOIN family f ON w.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON w.ID_genus=g.ID_Genus
+        LEFT JOIN reference r ON w.ID_reference=r.ID_Reference
+        LEFT JOIN location l ON w.ID_Location=l.ID_Location
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN ecological_zones eco ON l.ID_1988EcoZones =eco.ID_1988EcoZones
+
+        $string  where w.ID_Species=$specis_id")->result();
+            //$totalArray=$this->db->query("SELECT COUNT(*) TOTAL FROM ae")->row();
+            $total =count($totalArray);
+          return array('data' => $data, 'total' => $total, 'filtered' => $total);
+       }
+
+
+
+
+       public function get_ef_ajax($input,$str)
+       {
+
+        if($str!='0')
+        {
+          $string= str_replace("abyz","=",$str);
+           $strs=base64_decode($string);
+          $string="where $strs";
+        }
+        else if($str=='0')
+        {
+          $string="";
+        }
+
+        $limit=$input['length'];
+        $start=$input['start'];
+         $data=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
+         $string limit $limit offset  $start
+             ")->result();
+        $totalArray=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+
+         LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
+         LEFT JOIN division d ON e.Division=d.ID_Division
+         LEFT JOIN district dis ON e.District =dis.ID_District
+         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
+        $string")->result();
+            //$totalArray=$this->db->query("SELECT COUNT(*) TOTAL FROM ae")->row();
+            $total =count($totalArray);
+          return array('data' => $data, 'total' => $total, 'filtered' => $total);
+       }
+
+
+
 
 
 

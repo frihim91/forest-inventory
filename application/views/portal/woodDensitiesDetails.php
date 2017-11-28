@@ -89,7 +89,7 @@
                </tr>
 
                <tr>
-                  <th style="width:210px">Airdrie Density (g/cm3): </th>
+                  <th style="width:210px">Airdry Density (g/cm3): </th>
                   <td>  <?php echo $row->Density_airdry;?>
                   </td>
                </tr>
@@ -286,8 +286,14 @@
                <tr>
                   <td style="width:40%">
                      <table>
+                      <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division: </th>
+                           <td  class="pdf-record-td">
+                              <?php echo $row->Division;?>
+                           </td>
+                        </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Location Name: </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> District: </th>
                            <td  class="pdf-record-td">
                               <?php echo $row->District;?>
                            </td>

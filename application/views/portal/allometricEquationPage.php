@@ -1,10 +1,6 @@
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js">
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/assets/datatable/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>resources/assets/datatable/jquery.dataTables.min.js">
 </script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js">
-
-</script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <style type="text/css">
 .page_content{
   padding: 15px;
@@ -152,7 +148,7 @@ $lang_ses = $this->session->userdata("site_lang");
           <input type="text" class="form-control input-sm" name ="Equation" value = "<?php echo (isset($Equation))?$Equation:'';?>" class ="Equation" maxlength="200" placeholder="Allometric Equation " />
         </div>
         <div class="form-group">
-          <label>Keyword<span style="color:red;">*</span></label>
+          <label>Keyword </label>
           <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>"  maxlength="64" placeholder="Keyword" /><br>
           <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
         </div>
@@ -164,7 +160,7 @@ $lang_ses = $this->session->userdata("site_lang");
       <p> Search allometric equations by family, genus or species.
         Example searches
         <br>
-        Example searches:Genus,Myrsinaceae,Aegiceras,Aegiceras corniculatum
+        Example searches:Leguminosae,Senna,Senna siamea
       </p>
 
       <div class="col-md-6">
@@ -218,7 +214,7 @@ $lang_ses = $this->session->userdata("site_lang");
     <div id="menu2" class="tab-pane fade">
       <p> Search allometric equations by tree location and biome.Example searches
         <br>
-        Example searches:Biome (FAO):,Tropical moist forest,Country: Bangladesh
+        Example searches:Biome (FAO):Tropical moist forest
       </p>
      <div class="col-md-12">
       <div class="col-md-6">
@@ -307,7 +303,7 @@ $lang_ses = $this->session->userdata("site_lang");
       <p> Search allometric equations by author, year, and reference.
         Example searches
         <br>
-        Example searches:Author: Mahmood, H,Reference:Tree volume tables for Baen,Latif, M.A,Year: 2004
+        Example searches:Author: Mahmood, H,Reference:Biomass tables for minjiri,Year: 2004
       </p>
       <!--  <form action="<?php echo site_url('portal/search_allometricequation_ref');?>" method = "post"> -->
       <div class="col-md-6">

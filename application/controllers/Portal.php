@@ -333,7 +333,7 @@ class Portal extends CI_Controller
          LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string order by r.ID ASC
+         where $string
         ")->result();
          $data['rawDataView_count'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
          LEFT JOIN species s ON r.Species_ID=s.ID_Species
@@ -384,9 +384,12 @@ class Portal extends CI_Controller
             redirect('data/rawDataView');
         }
         $data['content_view_page']      = 'portal/rawDataView';
+        $str=$string;
         $string=base64_encode($string);
         $string= str_replace("=","abyz",$string);
         $data['string']=$string;
+        $data['strs']=$string;
+        //echo $data['strs']=$string;exit();
         $this->template->display_portal($data);
       }
 
@@ -564,9 +567,11 @@ class Portal extends CI_Controller
             redirect('data/biomassExpansionFacView');
         }
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
+        $str=$string;
         $string=base64_encode($string);
         $string= str_replace("=","abyz",$string);
         $data['string']=$string;
+        $data['strs']=$string;
         $this->template->display_portal($data);
       }
 
@@ -765,9 +770,11 @@ class Portal extends CI_Controller
             redirect('data/woodDensitiesView');
         }
         $data['content_view_page']      = 'portal/woodDensitiesView';
+        $str=$string;
         $string=base64_encode($string);
         $string= str_replace("=","abyz",$string);
         $data['string']=$string;
+        $data['strs']=$string;
         $this->template->display_portal($data);
       }
 
@@ -2624,7 +2631,12 @@ class Portal extends CI_Controller
         $data['allometricEquationDatagrid'] = $this->Forestdata_model->get_allometric_equation_grid_Speciesdata($specis_id,$limit,$page);
         //print_r($data['allometricEquationDatagrid']);exit();
         $data["links"]                  = $this->pagination->create_links();
-        $data['content_view_page']      = 'portal/allometricEquation';
+        $data['content_view_page']      = 'portal/allometricEquationPage';
+        $string="a.Species=$specis_id";
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+        $data['strs']=$string;
         $this->template->display_portal($data);
     }
 
@@ -2756,6 +2768,11 @@ class Portal extends CI_Controller
         $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor_species($specis_id,$limit,$page);
         $data["links"]                  = $this->pagination->create_links();
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
+        $string="e.Species=$specis_id";
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+        $data['strs']=$string;
         $this->template->display_portal($data);
     }
 
@@ -3747,8 +3764,19 @@ class Portal extends CI_Controller
          LEFT JOIN division d ON r.Division=d.ID_Division
          LEFT JOIN district dis ON r.District =dis.ID_District
          where r.Species_ID=$specis_id
-         group by r.ID order by r.ID desc
+         order by r.ID desc
           ")->num_rows();
+
+         $data['rawDataView_count'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
+         LEFT JOIN species s ON r.Species_ID=s.ID_Species
+         LEFT JOIN family f ON r.Family_ID=f.ID_Family
+         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
+         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON r.Division=d.ID_Division
+         LEFT JOIN district dis ON r.District =dis.ID_District
+         where r.Species_ID=$specis_id
+        ")->result();
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_rawData;
@@ -3782,6 +3810,11 @@ class Portal extends CI_Controller
         $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid_species($specis_id,$limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/rawDataView';
+        $string="r.Species_ID=$specis_id";
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+        $data['strs']=$string;
         $this->template->display_portal($data);
     }
 
@@ -3900,6 +3933,11 @@ class Portal extends CI_Controller
         //print_r( $data['woodDensitiesView']);exit();
         $data["links"]             = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/woodDensitiesView';
+        $string="w.ID_Species=$specis_id";
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+        $data['strs']=$string;
         $this->template->display_portal($data);
     }
 
@@ -5392,52 +5430,52 @@ class Portal extends CI_Controller
         else
         {
         $id=$userSession['USER_ID'];
-        $this->load->library('pagination');
-        $config             = array();
-        $config["base_url"] = base_url() . "index.php/portal/viewCommunityPage";
-        $total_ef           = $this->db->count_all("community");
+        // $this->load->library('pagination');
+        // $config             = array();
+        // $config["base_url"] = base_url() . "index.php/portal/viewCommunityPage";
+        // $total_ef           = $this->db->count_all("community");
 
-        $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = $total_ef;
 
 
-        // $config["total_rows"] = 800;
+        // // $config["total_rows"] = 800;
 
-        $config["per_page"]        = 10;
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $limit                     = $config["per_page"];
-        $config["uri_segment"] = 3;
-        //pagination style start
-        $config['full_tag_open']   = '<ul class="pagination">';
-        $config['full_tag_close']  = '</ul>';
-        $config['prev_link']       = '&lt;';
-        $config['prev_tag_open']   = '<li>';
-        $config['prev_tag_close']  = '</li>';
-        $config['next_link']       = '&gt;';
-        $config['next_tag_open']   = '<li>';
-        $config['next_tag_close']  = '</li>';
-        $config['cur_tag_open']    = '<li class="current"><a href="#">';
-        $config['cur_tag_close']   = '</a></li>';
-        $config['num_tag_open']    = '<li>';
-        $config['num_tag_close']   = '</li>';
-        $config['first_tag_open']  = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['last_tag_open']   = '<li>';
-        $config['last_tag_close']  = '</li>';
-        $config['first_link']      = 'First';
-        $config['last_link']       = 'Last';
-        //pagination style end
-        $this->pagination->initialize($config);
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        // $config["per_page"]        = 10;
+        // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        // $limit                     = $config["per_page"];
+        // $config["uri_segment"] = 3;
+        // //pagination style start
+        // $config['full_tag_open']   = '<ul class="pagination">';
+        // $config['full_tag_close']  = '</ul>';
+        // $config['prev_link']       = '&lt;';
+        // $config['prev_tag_open']   = '<li>';
+        // $config['prev_tag_close']  = '</li>';
+        // $config['next_link']       = '&gt;';
+        // $config['next_tag_open']   = '<li>';
+        // $config['next_tag_close']  = '</li>';
+        // $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        // $config['cur_tag_close']   = '</a></li>';
+        // $config['num_tag_open']    = '<li>';
+        // $config['num_tag_close']   = '</li>';
+        // $config['first_tag_open']  = '<li>';
+        // $config['first_tag_close'] = '</li>';
+        // $config['last_tag_open']   = '<li>';
+        // $config['last_tag_close']  = '</li>';
+        // $config['first_link']      = 'First';
+        // $config['last_link']       = 'Last';
+        // //pagination style end
+        // $this->pagination->initialize($config);
+        // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data['community']           = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
-        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID order by c.id desc LIMIT $limit OFFSET $page")->result();
-        $data["links"]                  = $this->pagination->create_links();
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID order by c.id desc ")->result();
+        //$data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewCommunityPage';
         $this->template->display_portal($data);
     }
     }
 
 
-       public function search_community()
+       public function search_community_backup()
     {
         $title = $this->input->post('title');
 
@@ -5522,6 +5560,125 @@ class Portal extends CI_Controller
          $this->template->display_portal($data);
 
     }
+
+
+           private function getDtByAttrCommunity($attr)
+    {
+      $returnArray=array();
+      switch ($attr) {
+        case "Title":
+        $returnArray[]='title';
+        $returnArray[]='c.';
+        break;
+        default:
+        $returnArray[]='';
+        $returnArray[]='';
+      }
+      return $returnArray;
+    }
+
+        public function search_community()
+    {
+      //  $r=$this->getDtByAttrAe('Author');
+      //$this->pr($_GET);
+      if(!empty($_GET)){
+        $searchFieldArray=$_GET;
+        if(!isset($searchFieldArray['keyword']))
+        {
+            $searchFieldArray['keyword']='';
+        }
+        if($searchFieldArray['keyword']!='')
+        {
+            foreach($searchFieldArray as $key=>$value)
+            {
+              if($key!='keyword')
+              {
+                $r=$this->getDtByAttrCommunity($key);
+                $validSearchKey[$r[1].$key]=$searchFieldArray['keyword'];
+                $fieldName[]=$r[0];
+                $filedNameValue[$r[0].'/'.$key]=$searchFieldArray['keyword'];
+              }
+            }
+        }
+        else
+        {
+          foreach($searchFieldArray as $key=>$value)
+          {
+            if($value!='')
+            {
+              $r=$this->getDtByAttrCommunity($key);
+              $validSearchKey[$r[1].$key]=$value;
+              $fieldName[]=$r[0];
+              $filedNameValue[$r[0].'/'.$key]=$value;
+            }
+          }
+        }
+      //  $this->pr($filedNameValue);
+        if(!isset($filedNameValue))
+        {
+          redirect('portal/viewCommunityPage');
+        }
+        else
+        {
+          $data['fieldNameValue']=$filedNameValue;
+        }
+
+        $string=$this->searchAttributeString($validSearchKey);
+
+           $data['community'] = $this->db->query("SELECT c.title,c.id,c.user_id,v.USER_ID,v.LAST_NAME from community c
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.title desc 
+
+         ")->result();
+         $data['community_count'] = $this->db->query("SELECT c.title,c.id,c.user_id,v.USER_ID,v.LAST_NAME from community c
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.title desc
+        ")->result();
+         // $data["links"]                  = $this->pagination->create_links();
+
+          if($searchFieldArray['keyword']!='')
+          {
+            $subUrl='';
+            $i=0;
+            $n=count($searchFieldArray);
+            foreach($searchFieldArray as $row=> $val)
+            {
+              if($i<$n-1)
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'].'&';
+              }
+              else
+              {
+                $subUrl.=$row.'='.$searchFieldArray['keyword'];
+              }
+              $i++;
+
+            }
+          $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+          $pieces = explode("?", $url);
+          $urlTail=$pieces[1];
+          $url=str_ireplace($urlTail,$subUrl,$url);
+          $keyWord=$searchFieldArray['keyword'];
+          $removeString="keyword=$keyWord&";
+          $data['actualUrl']=str_replace($removeString,'',$url);
+          }
+          else
+          {
+            $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $data['actualUrl']=$url;
+          }
+        }
+        else
+        {
+            redirect('portal/viewCommunityPage');
+        }
+        $data['content_view_page']      = 'portal/viewCommunityPage';
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+         //$data["searchType"]=2;
+         //$data["searchType"]=3;
+         //$data["searchType"]=4;
+        $this->template->display_portal($data);
+      }
 
 
 

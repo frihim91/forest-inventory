@@ -1,3 +1,9 @@
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>asset/datatable/dataTables.bootstrap.css">
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/jqueryDataTable.min.js">
+</script>
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/dataTableBootstrap.min.js">
+</script>
 <style type="text/css">
    .page_content{
    padding: 15px;
@@ -118,20 +124,20 @@
 </div>
 </div>
 <div class="col-md-12 page_content">
-    <h3>Post Search</h3>
-   <div class="col-sm-12">
+   <!--  <h3>Post Search</h3>
+   <div class="col-sm-12"> -->
   
-     <ul class="nav nav-tabs">
+    <!--  <ul class="nav nav-tabs">
          <li class="active"><a data-toggle="tab" href="#home">Search</a></li>
-      </ul>
-      <div class="tab-content">
+      </ul> -->
+<!--       <div class="tab-content">
          <div id="home" class="tab-pane fade in active">
             <p> Search Documents by Title
                <br>
                Example searches: <a href="#"> Title: Chittagong university campus</a>,
               
             </p>
-            <form action="<?php echo site_url('portal/search_community');?>" method = "post">
+            <form action="<?php echo site_url('portal/search_community');?>" method = "get">
                <div class="col-md-3">
                   <div class="form-group">
                      <label>Title <span style="color:red;"></span></label>
@@ -148,26 +154,82 @@
                </div>
             </form>
          </div>
-      </div>
+      </div> -->
    
       <div class="col-sm-12 bdy_des">
-         <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
+     <!--     <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
             <div class="col-lg-6">
                <h4>Total Post: <span id="summary-results-total">
-                  <?php echo $this->db->count_all_results('community');?>
+                  <?php
+                           if(isset($community_count))
+                           {
+                         
+                            echo count($community_count); 
+                            }
+                            else if(isset($community))
+                            {
+                              echo count($community);
+                            }
+                            else 
+                            { 
+                             echo $this->db->count_all_results('community');
+
+
+                    
+                            }
+                            
+                           ?>
+                  
                   </span> 
                </h4>
                <br><br>
             </div>
             <div class="col-lg-6">
 
+
                <h4> <a href="<?php echo site_url('portal/viewAddCommunityPage'); ?>" class="btn btn-info" role="button">Add New Post</a></h4>
+               <h4> Search criteria</h4>
+               <p> <?php
+        // echo "<pre>";
+        // print_r($fieldNameValue);
+                           if(!empty($fieldNameValue)){
+                              $n=count($fieldNameValue);
+                             $i=0;
+                             foreach($fieldNameValue as $key=>$value)
+                             {
+                                $pieces = explode("/", $key);
+                                $fieldName= $pieces[0]; // piece1
+                                $keyWord= $pieces[1]; // piece2
+                                if($i<$n-1)
+                                {
+                                  $substitute="$keyWord=$value&";
+                                }
+                                else {
+                                  $substitute="$keyWord=$value";
+                                }
+                                $sub=str_replace(' ','+',$substitute);
+                                //echo $actualUrl;
+                                $newUrl=str_replace($sub,'',$actualUrl);
+                            // $url=str_replace('','',$actualUrl);
+                                $i++;
+                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+                             }
+
+                            }
+                            else{
+                              echo "No criteria - All results are shown";
+                            }
+                           ?></p>
               
             </div>
-         </div>
+         </div> -->
           
-         <div class="">
-         <h3>Post List</h3>
+          <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                  <td><center>Community Post List</center></td>
+                </tr>
+              </thead>
        
             
             <?php
@@ -176,12 +238,29 @@
                  
                {
                  ?>
+                 <tr>
+                   <td>
              <h3> <a href="<?php echo site_url('Portal/viewDetailCommunityPage/'.$row->id); ?>"><?php echo $row->title;?></a></h3>
              <span><?php echo date('l,F j,Y', strtotime($row->post_date)); ?> <?php echo $row->LAST_NAME;?></span>
-           
+            </td>
+                    </tr>
             <?php
                }?>
-            <p><?php echo $links; ?></p>
+                </table>
+
+           <script>
+                $(document).ready(function() {
+                  $('#example').dataTable( {
+                    "searching": false,
+                    "bLengthChange": false,
+                    "pageLength":10,
+                    "bSort" : false
+                    
+
+                  } );
+                } );
+                </script>
+         
           
          </div>
       </div>

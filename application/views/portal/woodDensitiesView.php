@@ -1,7 +1,5 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>asset/datatable/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/jqueryDataTable.min.js">
-</script>
-<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/dataTableBootstrap.min.js">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/assets/datatable/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>resources/assets/datatable/jquery.dataTables.min.js">
 </script>
 <style type="text/css">
    .page_content{
@@ -123,7 +121,7 @@
              <form action="<?php echo site_url('portal/searchWdAll');?>" method = "get">
                <div class="col-md-6">
                   <div class="form-group">
-                     <label>Keyword<span style="color:red;">*</span></label>
+                     <label>Keyword</label>
                      <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>" maxlength="64" placeholder="Keyword" /><br>
                     <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
@@ -131,7 +129,7 @@
           
          </div>
          <div id="menu4" class="tab-pane fade">
-            <p>Search by tree height, diameter, and volume.</p>
+            <p>Search by tree height:9.11, diameter:9.017, and volume:0.0119.</p>
            
             <div class="row">
                <h4>Height</h4>
@@ -192,10 +190,10 @@
             
          </div>
          <div id="menu1" class="tab-pane fade">
-            <p> Search allometric equations by family, genus or species.
+            <p> Search Wood Density by family, genus or species.
                Example searches
                <br>
-               Example searches: Genus,Meliaceae,Xylocarpus,moluccensis,
+               Example searches: Leguminosae,Acacia,Acacia nilotica.
             </p>
            
                <div class="col-md-6">
@@ -245,9 +243,9 @@
         
          </div>
          <div id="menu2" class="tab-pane fade">
-            <p> Search allometric equations by tree location and biome.Example searches
+            <p> Search Wood Density by tree location and biome.Example searches
                <br>
-               Example searches:Biome (FAO):,Tropical moist forest,Country: Bangladesh
+               Example searches:Biome (FAO):Tropical moist forest
             </p>
            
                <div class="col-md-6">
@@ -295,7 +293,7 @@
        
          </div>
          <div id="menu3" class="tab-pane fade">
-            <p> Search allometric equations by author, year, and reference.
+            <p> Search Wood Density by author, year, and reference.
                Example searches
                <br>
                Example searches: Author: Sattar, MA ,Reference: Sattar MA 1981,Sattar, MA,Year: 1981
@@ -426,7 +424,43 @@
             <form>
          </div>
       </ul>
+
+
+                    <?php
+      //echo $strs;
+      //echo $result = mcrypt_ecb (MCRYPT_3DES, 'test', $string, MCRYPT_ENCRYPT);
+
+
+          //echo $string=base64_decode($string);
+        if(isset($strs))
+        {
+          $str=$string;
+        }
+        else
+        {
+          $str=0;
+        }
+
+      ?>
       <div class="tab-content">
+
+        <div id="results-list" class="tab-pane fade in active ">
+          <div id="paginationClass">
+<table class="table table-striped table-bordered table-hover datatable table-sm common_table" data-source="<?php echo site_url('data/wdAjaxData/'.$str); ?>" id="">
+       <thead>
+       <tr>
+
+           <th><center> Wood Densities</center></th>
+
+       </tr>
+       </thead>
+       <tbody>
+       </tbody>
+   </table>
+
+ </div>
+         </div>
+<!--       <div class="tab-content">
          <div id="results-list" class="tab-pane fade in active">
          <div id="paginationClass_wd">
            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -456,12 +490,7 @@
                   <dt style="font-size:15px;"><small>Family</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Family;?></small></dd>
                   <dt style="font-size:15px;"><small>Species</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Species;?></small></dd>
                   <dt style="font-size:15px;"><small>Locations</small></dt> <dd style="font-size:15px;"><small>lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?></small></dd> 
-                  <!-- <p style="padding-left:3px;"><b>Density g/cm3: </b><?php echo $row->Density_green;?></p>
-                  <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
-                  <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
-                  <p style="padding-left:3px;"><b>Family: </b> <?php echo $row->Family;?></p>
-                  <p style="padding-left:3px;"><b>Species: </b> <?php echo $row->Species;?></p>
-                  <p style="padding-left:3px;"><b>Locations: </b>lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?></p> -->
+                  
 
                   <dl> 
                </div>
@@ -483,9 +512,9 @@
                   } );
                 } );
                 </script>
-            <!-- <p><?php echo $links; ?></p> -->
+           
          </div>
-         </div>
+         </div> -->
          <div id="results-map" class="tab-pane fade">
             <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
             <script src="<?php echo base_url(); ?>resources/js/leaflet/leaflet.js"></script>
@@ -508,6 +537,47 @@
         </script>
       </div>
     </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+var pmId=$("input.pmId").val();
+if(pmId>0)
+{
+  var urlTail='?section='+pmId;
+}
+else
+{
+  var urlTail='';
+}
+  var source_data  = $('.common_table').data('source')+urlTail;
+
+  // begin second table
+  oTable2 = $('.common_table').dataTable({
+      "processing": true,
+      "serverSide": true,
+      "searching": false,
+      "searchable": false,
+      "pagingType": "full_numbers",
+      'pageLength': 10,
+      "aLengthMenu": [
+          [10, 20,50],
+          [10, 20,50], // change per page values here
+      ],
+      // Load data for the table's content from an Ajax source
+      "ajax": {
+
+          //"type": "GET",
+          "url": source_data,
+      },
+      //Set column definition initialisation properties.
+      "columnDefs": [
+          {"targets": [0],"orderable": false},
+          {"targets": [ -1 ], "orderable": false},
+          {"targets": [ -1 ], "orderable": false}
+      ]
+  });
+});
+   </script>
 
             <script type="text/javascript">
      $(document).on('keypress', '#Genus', function () {

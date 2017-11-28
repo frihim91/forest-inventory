@@ -261,8 +261,14 @@ $lang_ses = $this->session->userdata("site_lang");
                <tr>
                   <td style="width:40%">
                      <table>
+                      <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division: </th>
+                           <td  class="pdf-record-td">
+                              <?php echo $row->Division;?>
+                           </td>
+                        </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Location Name: </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> District: </th>
                            <td  class="pdf-record-td">
                               <?php echo $row->District;?>
                            </td>

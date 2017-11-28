@@ -178,6 +178,79 @@ public function allometricEqnAjaxData($str)
 }
 
 
+public function rawDataAjaxData($str)
+{
+
+ 
+  $input      = $_GET;
+  $collection = $this->Forestdata_model->get_rawdata_ajax($_GET,$str);
+
+  //$output     = Setuplist :: moduleList($input, $collection);
+  $output=$this->datalist->rawDataList($input,$collection);
+  echo  json_encode($output);
+  //$this->pr($collection);
+
+  //$data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
+
+}
+
+
+public function wdAjaxData($str)
+{
+
+  $input      = $_GET;
+  $collection = $this->Forestdata_model->get_wd_ajax($_GET,$str);
+  //$output     = Setuplist :: moduleList($input, $collection);
+  $output=$this->datalist->wdDataList($input,$collection);
+  echo  json_encode($output);
+  //$this->pr($collection);
+
+  //$data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
+
+}
+
+
+
+public function efAjaxData($str)
+{
+
+  $input      = $_GET;
+  $collection = $this->Forestdata_model->get_ef_ajax($_GET,$str);
+  //$output     = Setuplist :: moduleList($input, $collection);
+  $output=$this->datalist->efDataList($input,$collection);
+  echo  json_encode($output);
+  //$this->pr($collection);
+
+  //$data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
+
+}
+
+
+public function wdAjaxDataSpecies($str,$specis_id)
+{
+
+   $input      = $_GET;
+   // $total_woodDensities=$this->db->query("SELECT m.*,s.Species,f.Family,wd.Density_green,wd.Latitude,wd.Longitude,r.Reference,r.Year,r.Author FROM (SELECT ID_WD,ID_Species FROM wd w) m
+   //      LEFT JOIN wd  ON m.ID_WD=wd.ID_WD
+   //      LEFT JOIN reference r ON wd.ID_Reference = r.ID_Reference
+   //      LEFT JOIN species s ON m.ID_Species=s.ID_Species
+   //      left join family f ON wd.ID_family=f.ID_Family
+   //      where wd.ID_species=$specis_id
+   //      order by wd.ID_WD desc
+   //        ")->num_rows();
+  $data['ID_Species'] = $specis_id;
+  $collection = $this->Forestdata_model->get_wd_species_ajax($_GET,$str,$specis_id);
+  //$output     = Setuplist :: moduleList($input, $collection);
+  $output=$this->datalist->wdDataList($input,$collection);
+  echo  json_encode($output);
+  //$this->pr($collection);
+
+  //$data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
+
+}
+
+
+
 
 
 

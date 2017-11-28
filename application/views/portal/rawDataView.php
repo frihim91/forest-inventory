@@ -1,7 +1,5 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>asset/datatable/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/jqueryDataTable.min.js">
-</script>
-<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>asset/datatable/dataTableBootstrap.min.js">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/assets/datatable/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>resources/assets/datatable/jquery.dataTables.min.js">
 </script>
 <style type="text/css">
    .page_content{
@@ -109,7 +107,7 @@
          <div id="home" class="tab-pane fade 
             <?php if(!isset($searchType)){ echo 'in active'; } ?>
             ">
-            <p> Search allometric equations by keyword. 
+            <p> Search Raw Data by keyword. 
                This searches accross several text fields. 
                <br>
                Example searches:Euphorbiaceae,Euphorbiaceae,Excoecaria,Excoecaria agallocha,Tropical moist forest
@@ -119,15 +117,15 @@
             <form action="<?php echo site_url('portal/searchRawEquationAll');?>" method = "get">
                <div class="col-md-6">
                   <div class="form-group">
-                     <label>Keyword<span style="color:red;">*</span></label>
-                     <input type="text" class="form-control input-sm" name = "keyword" value ="<?php echo (isset($keyword))?$keyword:'';?>" class ="keyword" maxlength="64" placeholder="Keyword" /><br>
+                     <label>Keyword</label>
+                      <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>"  maxlength="64" placeholder="Keyword" /><br>
                      <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
             
          </div>
          <div id="menu4" class="tab-pane fade">
-            <p>Search by tree height and volume.</p>
+            <p>Search by tree height:9.01, and volume:0.0104.</p>
          
                <div class="col-md-6">
                   <div class="form-group">
@@ -144,10 +142,10 @@
             
          </div>
          <div id="menu1" class="tab-pane fade">
-            <p> Search allometric equations by family, genus or species.
+            <p> Search Raw Data by family, genus or species.
                Example searches
                <br>
-               Example searches:Genus,Euphorbiaceae,Excoecaria,Excoecaria agallocha,
+               Example searches:Fabaceae,Dalbergia,Dalbergia sissoo.
             </p>
       
                <div class="col-md-6">
@@ -196,9 +194,9 @@
          
          </div>
          <div id="menu2" class="tab-pane fade">
-            <p> Search allometric equations by tree location and biome.Example searches
+            <p> Search Raw Data by tree location and biome.Example searches
                <br>
-               Example searches:Biome (FAO):,Tropical dry forest,Country: Benin
+               Example searches:Biome (FAO):Tropical dry forest
             </p>
            
                <div class="col-md-6">
@@ -249,10 +247,10 @@
            
          </div>
          <div id="menu3" class="tab-pane fade">
-            <p> Search allometric equations by author, year, and reference.
+            <p> Search Raw Data by author, year, and reference.
                Example searches
                <br>
-               Example searches:  Author: Khan, M.N.I. ,Reference:Allometric relationships,Faruque, O., 
+               Example searches:  Author: Khan, M.N.I. ,Reference:Allometric relationships for predicting, 
               Year: 2010
             </p>
            
@@ -381,69 +379,41 @@
                     <form>
                 </div>
       </ul>
+
+
+               <?php
+      //echo $strs;
+      //echo $result = mcrypt_ecb (MCRYPT_3DES, 'test', $string, MCRYPT_ENCRYPT);
+
+
+          //echo $string=base64_decode($string);
+        if(isset($strs))
+        {
+          $str=$string;
+        }
+        else
+        {
+          $str=0;
+        }
+
+      ?>
       <div class="tab-content">
-         <div id="results-list" class="tab-pane fade in active">
-           <div id="paginationClass_raw">
-              <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-           <thead>
-                <tr>
-                  <td><center>List Of Raw Data</center></td>
-                </tr>
-              </thead>
-            <?php 
-               foreach($rawDataView as $row)
-               {
-               ?>
-                 <tr>
-                  <td>
 
-            <div class="panel panel-default">
-               <div class="panel-heading">Raw Data <?php echo $row->ID; ?>
-                  <a href="<?php echo site_url('Portal/rawDataDetails/'.$row->ID); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
-               </div>
-               <div class="panel-body">
-                <dl class="dl-horizontal">
-                  <dt style="font-size:15px;"><small>Tree Height (H_m)</small></dt> <dd style="font-size:15px;"><small><?php echo $row->H_m;?></small></dd> 
-                  <dt style="font-size:15px;"><small>Tree Diameter (DBH_cm)</small></dt> <dd style="font-size:15px;"><small><?php echo $row->DBH_cm;?></small></dd>
-                  <dt style="font-size:15px;"><small>Total Volume</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Volume_m3;?></small></dd>
-                  <dt style="font-size:15px;"><small>Reference</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Author;?>.<?php echo $row->Reference;?></small></dd>
-                  <dt style="font-size:15px;"><small>Reference Year</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Year;?></small></dd>  
-                  <dt style="font-size:15px;"><small>Biomass</small></dt> <dd style="font-size:15px;"><small><?php echo $row->FAOBiomes;?></small></dd> 
-                  <dt style="font-size:15px;"><small>Family</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Family;?></small></dd> 
-                  <dt style="font-size:15px;"><small>Species</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Species;?></small></dd>
-                  <dt style="font-size:15px;"><small>Locations</small></dt> <dd style="font-size:15px;"><small><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</small></dd> 
-                  <!-- <p style="padding-left:3px;"><b>Tree Height (H_m): </b><?php echo $row->H_m;?></p>
-                  <p style="padding-left:3px;"><b>Tree Diameter (DBH_cm): </b><?php echo $row->DBH_cm;?></p>
-                  <p style="padding-left:3px;"><b>Total Volume (Volume_m3): </b><?php echo $row->Volume_m3;?></p>
-                  <p style="padding-left:3px;"><b>Reference: </b><?php echo $row->Reference;?></p>
-                  <p style="padding-left:3px;"><b>Reference Year: </b><?php echo $row->Year;?></p>
-                  <p style="padding-left:3px;"><b>Biomass: </b><?php echo $row->FAOBiomes;?></p>
-                  <p style="padding-left:3px;"><b>Family: </b><?php echo $row->Family;?></p>
-                  <p style="padding-left:3px;"><b>Species: </b><?php echo $row->Species;?></p>
-                  <p style="padding-left:3px;"><b>Locations: </b><?php echo $row->District;?> (lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?>)</p> -->
+        <div id="results-list" class="tab-pane fade in active ">
+          <div id="paginationClass">
+<table class="table table-striped table-bordered table-hover datatable table-sm common_table" data-source="<?php echo site_url('data/rawDataAjaxData/'.$str); ?>" id="">
+       <thead>
+       <tr>
 
-                   <dl> 
-               </div>
-            </div>
-             </td>
-                    </tr>
+           <th><center>Raw Data</center></th>
 
-                    <?php
-                  }?>
-                </table>
-                <script>
-                $(document).ready(function() {
-                  $('#example').dataTable( {
-                    "searching": false,
-                    "bLengthChange": false,
-                    "pageLength": 20,
-                    "bSort" : false
+       </tr>
+       </thead>
+       <tbody>
+       </tbody>
+   </table>
 
-                  } );
-                } );
-                </script>
-          <!--   <p><?php echo $links; ?></p> -->
-         </div>
+ </div>
          </div>
         <div id="results-map" class="tab-pane fade">
             <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
@@ -467,6 +437,47 @@
         </script>
       </div>
     </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+var pmId=$("input.pmId").val();
+if(pmId>0)
+{
+  var urlTail='?section='+pmId;
+}
+else
+{
+  var urlTail='';
+}
+  var source_data  = $('.common_table').data('source')+urlTail;
+
+  // begin second table
+  oTable2 = $('.common_table').dataTable({
+      "processing": true,
+      "serverSide": true,
+      "searching": false,
+      "searchable": false,
+      "pagingType": "full_numbers",
+      'pageLength': 10,
+      "aLengthMenu": [
+          [10, 20,50],
+          [10, 20,50], // change per page values here
+      ],
+      // Load data for the table's content from an Ajax source
+      "ajax": {
+
+          //"type": "GET",
+          "url": source_data,
+      },
+      //Set column definition initialisation properties.
+      "columnDefs": [
+          {"targets": [0],"orderable": false},
+          {"targets": [ -1 ], "orderable": false},
+          {"targets": [ -1 ], "orderable": false}
+      ]
+  });
+});
+   </script>
 
         <script type="text/javascript">
      $(document).on('keypress', '#Genus', function () {
