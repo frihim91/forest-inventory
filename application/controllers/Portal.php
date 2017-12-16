@@ -5360,14 +5360,14 @@ class Portal extends CI_Controller
 
     public function viewLibraryPage()
     {
-        $userSession=$this->session->userdata("user_logged");
-        if(empty($userSession))
-        {
-            redirect('accounts/userLogin');
-        }
-        else
-        {
-        $id=$userSession['USER_ID'];
+        // $userSession=$this->session->userdata("user_logged");
+        // if(empty($userSession))
+        // {
+        //     redirect('accounts/userLogin');
+        // }
+        // else
+        // {
+        //$id=$userSession['USER_ID'];
         // $this->load->library('pagination');
         // $config             = array();
         // $config["base_url"] = base_url() . "index.php/portal/viewLibraryPage";
@@ -5410,7 +5410,7 @@ class Portal extends CI_Controller
         //$data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
-    }
+   // }
 }
 
 

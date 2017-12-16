@@ -86,9 +86,7 @@ $ci->load->model('datamodel');
                             <h4 class="panel-title">
                               <a data-toggle="collapse" data-parent="#accordion<?php echo $i;?>" href="#my<?php echo $i.$j; ?>">
                                 <?php echo $species_list->Species;  ?><br><?php echo $localNameData[0]; ?> : <?php echo $localNameData[1]; ?></a>
-                                
                               </h4>
-
                             </div>
                             <div id="my<?php echo $i.$j; ?>" class="panel-collapse collapse">
                               <div class="panel-body">

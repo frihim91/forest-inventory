@@ -131,7 +131,7 @@ $lang_ses = $this->session->userdata("site_lang");
     <p> Search allometric equations by keyword.
       This searches accross several text fields.
       <br>
-      Example searches:Acanthaceae, Myrsinaceae,Aegiceras,Aegiceras corniculatum,Tropical moist forest
+      Example searches:Y = -1.5851 + 2.4855 * Log (X)
     </p>
     <p>
     </p>
@@ -405,6 +405,7 @@ $lang_ses = $this->session->userdata("site_lang");
     </div>
 
   </div>
+   
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" class="resultList" href="#results-list"><span class="glyphicon glyphicon-list"></span> Results List</a></li>
     <li><a data-toggle="tab" class="results-map" href="#results-map"><span class="glyphicon glyphicon-globe"></span> Map View</a></li>
@@ -433,6 +434,7 @@ $lang_ses = $this->session->userdata("site_lang");
         <form>
         </div>
       </ul>
+     
       <?php
       //echo $strs;
       //echo $result = mcrypt_ecb (MCRYPT_3DES, 'test', $string, MCRYPT_ENCRYPT);

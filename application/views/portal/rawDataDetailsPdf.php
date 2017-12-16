@@ -260,8 +260,8 @@ $lang_ses = $this->session->userdata("site_lang");
                  <table class="table">
                <tr>
                   <td style="width:40%">
-                     <table>
-                      <tr>
+                    <table>
+                       <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division: </th>
                            <td  class="pdf-record-td">
                               <?php echo $row->Division;?>
@@ -274,17 +274,14 @@ $lang_ses = $this->session->userdata("site_lang");
                            </td>
                         </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th>
-                           <td  class="pdf-record-td">  </td>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Upazilla: </th>
+                           <td  class="pdf-record-td"> <?php echo $row->THANAME;?> </td>
                         </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th>
-                           <td  class="pdf-record-td">  </td>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Union: </th>
+                           <td  class="pdf-record-td"><?php echo $row->UNINAME;?></td>
                         </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th>
-                           <td  class="pdf-record-td">  </td>
-                        </tr>
+                    
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
                            <td  class="pdf-record-td"> 
@@ -300,32 +297,31 @@ $lang_ses = $this->session->userdata("site_lang");
                      </table>
                   </td>
                   <td style="width:60%">
-                     <table>
+                 <table>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone: </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  FAO Biome: </th>
                            <td class="pdf-record-td">
                               <?php echo $row->FAOBiomes;?>
                            </td>
                         </tr>
-                      
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th>
-                           <td  class="pdf-record-td">  <?php echo $row->Ecoregion_Udvardy;?> </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> WWF Terrestrial Ecoregion: </th>
-                           <td class="pdf-record-td"><?php echo $row->Ecoregion_WWF;?>  </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division Bailey: </th>
-                           <td class="pdf-record-td"><?php echo $row->Division_Bailey;?>  </td>
-                        </tr>
-                        <tr>
-                           <th class="pdf-record-th"> Holdridge Life Zone:</th>
-                           <td  class="pdf-record-td"> 
-                              <?php echo $row->Zone_Holdridge;?>
+                             <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  BFI Zone: </th>
+                           <td class="pdf-record-td">
+                            
                            </td>
                         </tr>
+                             <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  Bangladesh Agroecological Zone: </th>
+                           <td class="pdf-record-td">
+                             
+                           </td>
+                        </tr>
+
+                        
+                    
+                      
+                       
+                       
                      </table>
                   </td>
                </tr>

@@ -74,7 +74,7 @@ class Datalist {
                       </div>
                <div class='panel-body'>
                 <dl class='dl-horizontal'>
-                  <dt style='font-size:15px'><small>Tree Height (cm)</small></dt> <dd style='font-size:15px'><small> $item->H_m</small></dd> 
+                  <dt style='font-size:15px'><small>Tree Height (m)</small></dt> <dd style='font-size:15px'><small> $item->H_m</small></dd> 
                   <dt style='font-size:15px'><small>Tree Diameter (cm)</small></dt> <dd style='font-size:15px'><small>$item->DBH_cm</small></dd>
                   <dt style='font-size:15px'><small>Total Volume</small></dt> <dd style='font-size:15px'><small>$item->Volume_m3</small></dd>
                   <dt style='font-size:15px'><small>Reference</small></dt> <dd style='font-size:15px'><small> $item->Author.$item->Reference</small></dd>

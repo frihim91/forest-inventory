@@ -136,13 +136,13 @@
                <div class="col-md-3">
                   <div class="form-group">
                      <label>Average Height <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="H_tree_avg"   class ="h_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
+                     <input type="text" class="form-control input-sm" name ="H_tree_avg"   class ="h_tree_avg" maxlength="64" placeholder="Average Height (m)" />
                   </div>
                   </div>
                   <div class="col-md-3">
                   <div class="form-group">
                      <label>Minimum Height<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="H_tree_min"   class ="h_tree_min" maxlength="64" placeholder="Volume (m3)" />
+                     <input type="text" class="form-control input-sm" name ="H_tree_min"   class ="h_tree_min" maxlength="64" placeholder="Minimum Height (m)" />
                      
                   </div>
                </div>
@@ -150,7 +150,7 @@
                  <div class="col-md-3">
                   <div class="form-group">
                      <label>Maximum Height<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="H_tree_max" maxlength="64"  class ="h_tree_max" placeholder="Volume (m3)" />
+                     <input type="text" class="form-control input-sm" name ="H_tree_max" maxlength="64"  class ="h_tree_max" placeholder="Maximum Height (m)" />
                      
                   </div>
                </div>
@@ -163,20 +163,20 @@
                <div class="col-md-3">
                   <div class="form-group">
                      <label>Average DBH <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="DBH_tree_avg"  class ="dbh_tree_avg" maxlength="64" placeholder="Tree Height (m)" />
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_avg"  class ="dbh_tree_avg" maxlength="64" placeholder="Average DBH (cm)" />
                   </div>
                   </div>
                   <div class="col-md-3">
                   <div class="form-group">
                      <label>Minimum DBH<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="DBH_tree_min" maxlength="64"  class ="dbh_tree_min" placeholder="Volume (m3)" />
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_min" maxlength="64"  class ="dbh_tree_min" placeholder="Minimum DBH (cm)" />
                      
                   </div>
                </div>
                  <div class="col-md-3">
                   <div class="form-group">
                      <label>Maximum DBH<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="DBH_tree_max" maxlength="64"  class ="dbh_tree_max" placeholder="Volume (m3)" />
+                     <input type="text" class="form-control input-sm" name ="DBH_tree_max" maxlength="64"  class ="dbh_tree_max" placeholder="Maximum DBH (cm)" />
                      
                   </div>
                </div>
@@ -296,7 +296,7 @@
             <p> Search Wood Density by author, year, and reference.
                Example searches
                <br>
-               Example searches: Author: Sattar, MA ,Reference: Sattar MA 1981,Sattar, MA,Year: 1981
+               Example searches: Author: Sattar, MA ,Reference:Carbon stock in the Sundarbans,Year: 1994
             </p>
           
                <div class="col-md-6">

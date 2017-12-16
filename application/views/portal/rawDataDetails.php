@@ -68,7 +68,7 @@
                ?>
             <ul class="dropdown-menu" role="menu">
                <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-               <li><a href="<?php echo site_url('Portal/rawDataDetailsPdf/'.$row->ID); ?>" id="export-json">Download PDF</a></li>
+               <li><a href="<?php echo site_url('Portal/rawDataDetailsPdf/'.$row->ids); ?>" id="export-json">Download PDF</a></li>
                <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
             </ul>
             <?php 
@@ -274,17 +274,14 @@
                            </td>
                         </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th>
-                           <td  class="pdf-record-td">  </td>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Upazilla: </th>
+                           <td  class="pdf-record-td"> <?php echo $row->THANAME;?> </td>
                         </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th>
-                           <td  class="pdf-record-td">  </td>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Union: </th>
+                           <td  class="pdf-record-td"><?php echo $row->UNINAME;?></td>
                         </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th>
-                           <td  class="pdf-record-td">  </td>
-                        </tr>
+                    
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
                            <td  class="pdf-record-td"> 
@@ -302,31 +299,29 @@
                   <td style="width:60%">
                      <table>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone: </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  FAO Biome: </th>
                            <td class="pdf-record-td">
                               <?php echo $row->FAOBiomes;?>
                            </td>
                         </tr>
-
-                        
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th>
-                           <td  class="pdf-record-td">  <?php echo $row->Ecoregion_Udvardy;?> </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> WWF Terrestrial Ecoregion: </th>
-                           <td class="pdf-record-td"><?php echo $row->Ecoregion_WWF;?>  </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division Bailey: </th>
-                           <td class="pdf-record-td"><?php echo $row->Division_Bailey;?>  </td>
-                        </tr>
-                        <tr>
-                           <th class="pdf-record-th"> Holdridge Life Zone:</th>
-                           <td  class="pdf-record-td"> 
-                              <?php echo $row->Zone_Holdridge;?>
+                             <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  BFI Zone: </th>
+                           <td class="pdf-record-td">
+                            
                            </td>
                         </tr>
+                             <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  Bangladesh Agroecological Zone: </th>
+                           <td class="pdf-record-td">
+                             
+                           </td>
+                        </tr>
+
+                        
+                    
+                      
+                       
+                       
                      </table>
                   </td>
                </tr>

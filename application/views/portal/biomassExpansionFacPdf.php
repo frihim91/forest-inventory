@@ -165,7 +165,7 @@
       <table class="table">
                <tr>
                   <td style="width:40%">
-                     <table>
+                            <table>
                        
                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division: </th><td  class="pdf-record-td"> <?php echo $row->Division;?> </td></tr>
                             <tr>
@@ -174,17 +174,14 @@
                            </td>
                         </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th>
-                           <td  class="pdf-record-td">None  </td>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Upazilla: </th>
+                           <td  class="pdf-record-td"><?php echo $row->THANAME;?>  </td>
                         </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th>
-                           <td  class="pdf-record-td"> Bangladesh </td>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Union: </th>
+                           <td  class="pdf-record-td"> <?php echo $row->UNINAME;?> </td>
                         </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th>
-                           <td  class="pdf-record-td">None</td>
-                        </tr>
+
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
                            <td class="pdf-record-td"> 
@@ -200,23 +197,23 @@
                      </table>
                   </td>
                   <td style="width:60%">
-                     <table>
+                <table>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone: </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Biome: </th>
                            <td class="pdf-record-td">
                               <?php echo $row->FAOBiomes;?>
                            </td>
                         </tr>
 
                           <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> BFI Zone: </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">BFI Zone: </th>
                            <td class="pdf-record-td">
                               <?php echo $row->Zones;?>
                            </td>
                         </tr>
 
                          <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  Bangladesh Agroecological Zone : </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Bangladesh Agroecological Zone  : </th>
                            <td class="pdf-record-td">
                               <?php echo $row->AEZ_NAME;?>
                            </td>

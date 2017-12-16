@@ -299,17 +299,14 @@
                            </td>
                         </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th>
-                           <td  class="pdf-record-td"> <?php echo $row->Region;?> </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th>
-                           <td  class="pdf-record-td"> Bangladesh </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Upazilla: </th>
                            <td  class="pdf-record-td">  </td>
                         </tr>
+                        <tr>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Unior: </th>
+                           <td  class="pdf-record-td">  </td>
+                        </tr>
+                    
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
                            <td  class="pdf-record-td"> 
@@ -327,7 +324,7 @@
                   <td style="width:60%">
                      <table>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone: </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Biome: </th>
                            <td class="pdf-record-td">
                               <?php echo $row->FAOBiomes;?>
                            </td>
@@ -336,24 +333,12 @@
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th">BFI Zone: </th>
                            <td  class="pdf-record-td"> <?php echo $row->Zones;?> </td>
                         </tr>
+                      
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th>
-                           <td  class="pdf-record-td"> <?php echo $row->Ecoregion_Udvardy;?> </td>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Bangladesh Agroecological Zone: </th>
+                           <td class="pdf-record-td">  </td>
                         </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> WWF Terrestrial Ecoregion: </th>
-                           <td class="pdf-record-td"> <?php echo $row->Ecoregion_WWF;?> </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division Bailey: </th>
-                           <td class="pdf-record-td"><?php echo $row->Division_Bailey;?>  </td>
-                        </tr>
-                        <tr>
-                           <th class="pdf-record-th"> Holdridge Life Zone:</th>
-                           <td  class="pdf-record-td"> 
-                              <?php echo $row->Zone_Holdridge;?>
-                           </td>
-                        </tr>
+                       
                      </table>
                   </td>
                </tr>

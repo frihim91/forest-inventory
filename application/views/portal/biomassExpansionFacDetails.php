@@ -199,17 +199,14 @@
                            </td>
                         </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Region/Province: </th>
-                           <td  class="pdf-record-td">None  </td>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Upazilla: </th>
+                           <td  class="pdf-record-td"><?php echo $row->THANAME;?>  </td>
                         </tr>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Country: </th>
-                           <td  class="pdf-record-td"> Bangladesh </td>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Union: </th>
+                           <td  class="pdf-record-td"> <?php echo $row->UNINAME;?> </td>
                         </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Continent: </th>
-                           <td  class="pdf-record-td">None</td>
-                        </tr>
+
                         <tr>
                            <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
                            <td class="pdf-record-td"> 
@@ -227,7 +224,7 @@
                   <td style="width:60%">
                      <table>
                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Global Ecological Zone: </th>
+                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Biome: </th>
                            <td class="pdf-record-td">
                               <?php echo $row->FAOBiomes;?>
                            </td>

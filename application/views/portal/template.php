@@ -28,7 +28,42 @@
         <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/plugins/select2/select2.full.min.js"></script>
          
 
+        <style type="text/css">
+            .left-lgo{
+                margin-top:10px;
+                display: block;
+                margin-bottom: 10px;
+            }
+            .left-lgo>img{
+                width: 80px;
+            }
+            .right-lgo{
+                display: block;
+            }
+            .right-lgo>img{
+                width: 65px;
+                margin-bottom: 5px;
+                margin-top: 10px;
+            }
 
+            .header_top_style {
+                background-color: #C5E0B4;
+            }
+
+            .logRes>a{
+                color: green;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 900;
+                border:1px solid green;
+            }
+            .logRes>a:hover{
+                border:1px solid green;
+                color: green;
+                text-decoration: none;
+            }
+
+        </style>
 
 
     </head>
@@ -37,25 +72,23 @@
         <!-- /responsive_navigation -->
         <div class="container">
             <div class="row">
-			
+            
 
               <header class="site-header header_top_style">
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-6 col-sm-4">
-                            <a href="<?php echo site_url(); ?>" title="Home" rel="home">
+                            <a href="<?php echo site_url(); ?>" title="Home" rel="home" class="left-lgo">
 
-                               <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/govt_logo.png')?>" alt="logo"/>
+                               <img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/pmo.png')?>" alt="logo"/>
                            </a>
                            <?php echo $this->session->flashdata('error'); ?>
                        </div>
-                       <div class="col-xs-6 col-sm-4" style="text-align:right;">
-                        
-                      <a href="<?php echo site_url(); ?>" ><img width="70" src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png')?>" alt="logo"/></a> 
-                     </div>
+                       
                      <div class="col-xs-6 col-sm-4">
+                        <h1 style="color:green" align="center">Biomass Calculation</h1>
 
-                       <p align="right">
+                       <p align="center" class="logRes">
                           <!--  <a title="English" href="<?php echo site_url('langSwitch/switchLanguage/english'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/flag_eng.gif')?>" alt="flag"/></a>
 
                            <a title="Bangla" href="<?php echo site_url('langSwitch/switchLanguage/bangla'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/bangla.gif')?>" alt="flag"/></a> -->
@@ -64,11 +97,11 @@
                           //echo '<pre>';print_r($session_info);exit;
                            ?>
                         <?php
-						
+                        
                            if(!$this->session->userdata('user_logged')){
                             ?>
-                             <a href="<?php echo site_url("accounts/userLogin"); ?>"  class="btn btn-link" style="color: green;text-decoration: underline;font-size: 14px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("login"); ?></a>
-                             <a href="<?php echo site_url('accounts/userRegistration')?>"  class="btn btn-link" style="color: green;text-decoration: underline;font-size: 14px;font-weight: 900;font-style: italic;"><?php echo $this->lang->line("register"); ?></a>
+                             <a href="<?php echo site_url("accounts/userLogin"); ?>"  class="btn btn-link" ><?php echo $this->lang->line("login"); ?></a>
+                             <a href="<?php echo site_url('accounts/userRegistration')?>"  class="btn btn-link" ><?php echo $this->lang->line("register"); ?></a>
 
                              <?php 
                             }else{ ?>
@@ -80,13 +113,17 @@
                            
                            
                            </p>
-                           <form action="<?php echo site_url('portal/search_keyword');?>" method = "post">
+                           <!-- <form action="<?php echo site_url('portal/search_keyword');?>" method = "post">
                              <p><input type="text" class="form-control input-sm" name = "keyword" maxlength="64" placeholder="<?php echo $this->lang->line("search"); ?>" />
                              </p>
-                         </form>
+                         </form> -->
 
 
                          <!--     <button type="submit" class="btn btn-primary btn-sm">Search</button> -->
+                     </div>
+                     <div class="col-xs-6 col-sm-4" style="text-align:right;">
+                        
+                      <a href="<?php echo site_url(); ?>"  class="right-lgo"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/logo.png')?>" alt="logo"/></a> 
                      </div>
                  </div>
              </div>
