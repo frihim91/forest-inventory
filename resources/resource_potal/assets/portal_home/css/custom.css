@@ -1,0 +1,27 @@
+.dta0{
+	 font-size: 12px;
+}
+
+.dta1{
+ 	font-size: 12px;
+}
+
+.dta2{
+ 	font-size: 12px;
+}
+
+.dta3{
+ 	font-size: 12px;
+}
+.dta4{
+ 	font-size: 12px;
+}
+
+.dtaz>h4>span {
+    position: absolute;
+    left: 65px;
+    top: 22px;
+    font-size: 18px;
+    background-size: 200px 50px;
+    
+}

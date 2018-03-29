@@ -825,7 +825,7 @@ class Portal extends CI_Controller
             where t.CAT_ID=4")->result();
         $data['sliders']        = $this->db->query("SELECT * FROM home_page_slider")->result();
          $data['gallery']           = $this->db->query("SELECT * FROM home_page_gallery")->result();
-        $this->template->display_portal($data);
+        $this->template->display_portal_home($data);
     }
 
 
@@ -942,8 +942,8 @@ class Portal extends CI_Controller
             //exit;
             $config['upload_path']   = 'resources/images/home_page_slider';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            $config['max_width'] = '887';
-            $config['max_height'] = '335';
+            $config['max_width'] = '1600';
+            $config['max_height'] = '900';
             $config['file_name']     = $_FILES['main_image']['name'];
 
             //Load upload library and initialize configuration
@@ -984,8 +984,8 @@ class Portal extends CI_Controller
               $descript = $this->input->post('descript');
               $config['upload_path']   = 'resources/images/home_page_slider/';
               $config['allowed_types'] = 'jpg|jpeg|png|gif';
-              $config['max_width'] = '887';
-              $config['max_height'] = '335';
+              $config['max_width'] = '1600';
+              $config['max_height'] = '900';
               $config['file_name']     = $_FILES['main_image']['name'];
 
               //Load upload library and initialize configuration

@@ -1,4 +1,4 @@
-<div class="copy">&copy; <a href="#"> <span style="color: blue;">Biomass calculation</span></a> - All Rights Reserved.
+<div class="copy">&copy; <a href="#"> <span style="color: blue;">Allometry & Emission Factor Database</span></a> - All Rights Reserved.
     <span style="float:right;margin-right: 20px">Design &amp; Developed By 
         <a target="_blank" href="http://atilimited.net/">
             <img width="50px;" src="<?php echo base_url(); ?>resources/images/ati_logo.jpg" alt="ATI Logo" />

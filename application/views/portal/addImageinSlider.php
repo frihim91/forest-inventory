@@ -88,7 +88,7 @@
                <div class="col-md-12">
                   <label for="firstname">Image</label> 
                <input type="file" name="main_image" id="file"  required="required" class="form-control">
-                <p style="color:red;font-size:16px;padding-top:10px;">(Maximum Image size:887*335)</p>
+                <p style="color:red;font-size:16px;padding-top:10px;">(Maximum Image size:1600*900)</p>
                </div>
             </div>
             <div class="col-md-4 help">
@@ -140,7 +140,7 @@ $("#file").change(function(e) {
             alert("Image Is So Small.Minimum Size is Height:400 Width:250");
             $("#file").val("");
            }
-           else if(widthImg>887 && heightImg>335)
+           else if(widthImg>1600 && heightImg>900)
            {
             alert("Image Is So Large.Maximum Size is Height:887 Width:335");
             $("#file").val("");

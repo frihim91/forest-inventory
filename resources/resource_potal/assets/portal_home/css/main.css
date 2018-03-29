@@ -1,0 +1,255 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #111;
+}
+section, div, main{
+    position: relative;
+    display: block;
+}
+.header{
+    background: url(../img/header-top.jpg) center center no-repeat;
+    background-size: cover !important;
+    min-height: 360px;
+    position: relative;
+}
+.header>.lgo-area{
+    background-color: rgba(57,108,21,0.6) ;
+}
+.header-bg{}
+.header-bg img {
+    width: 80px;
+    height: auto;
+}
+.header-bg .lg2>img{
+    float: right;
+    width: 68px;
+}
+.header-bg h1{
+    color: #fff;
+    margin-bottom: 0px;
+    margin-top: 38px;
+    text-align: center;
+}
+
+.fao-menu{
+    background-color: #396C15;
+    background-image: none;
+    border-radius:0px;
+    border: 0px;
+    margin: 0px;
+}
+.main-menu{
+    background-color: #8DB471;
+    padding: 10px 0px 20px 0px;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 15px;
+}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #2D590D;
+}
+
+@media (min-width: 768px){
+    #navbar{
+        padding: 0px;
+    }
+}
+
+
+
+
+
+
+
+main{
+    background-color: #CCE5B9;
+}
+.home-bg{
+    background: url(../img/bg.jpg) center center no-repeat;
+    background-size: cover !important;
+    min-height: 550px;
+    position: relative;
+}
+.content{
+    background-color: rgba(255,255,255, 0.4);
+    padding: 15px 20px 40px 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.content>h2{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.content>p{}
+
+
+
+/*=========Media===========*/
+.media{
+    border:1px solid #396C15;
+    margin-top: 20px !important;
+    margin-bottom: 40px;
+}
+.data-source{
+    margin-top: 20px !important;
+    background-color: rgba(255,255,255, 0.3);
+    padding-bottom: 10px;
+    margin-bottom: 60px;
+}
+.media>h3, .data-source>h3{
+    background-color: #396C15;
+    color: #fff;
+    padding: 11px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.data-source>h3{
+    margin-bottom: 40px;
+}
+.media>h3>img, .data-source>h3>img{
+    width:30px;
+    margin-left: 3px;
+    margin-right: 15px;
+}
+
+.media p{
+   text-align: center;
+    font-weight: 600;
+    background-color: #B2D497;
+    margin-bottom: 15px;
+    padding: 5px 0px;
+    margin-top: 0px;
+}
+.dta{
+    position: relative;
+}
+.dta>h4:before{
+    background-image: url('../img/icon.png') ;
+    background-repeat: no-repeat;
+    background-size: 260px 55px;
+    display: inline-block;
+    width: 260px;
+    height: 55px;
+    content: "";
+    margin-left: 15px;
+}
+.dta>h4>span{
+    position: absolute;
+    left: 60px;
+    top: 22px;
+    font-size: 25px;
+}
+
+.dta p{
+    padding-left: 60px;
+    margin-bottom: 20px;
+}
+
+footer{
+    position: absolute;
+    background-color: rgba(96, 125, 74, 0.9);
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    padding-top: 15px;
+}
+.fot-menu>ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.fot-menu>ul>li{
+    display: inline-block;
+    margin-right: 20px;
+}
+.fot-menu>ul>li:after{
+    display: inline-block;
+    width: 2px;
+    height: 15px;
+    background-color: #fff;
+    content: "";
+    margin-left: 15px;
+    margin-bottom: -2px;
+}
+.fot-menu>ul>li:last-child:after{
+    content: none;
+}
+
+
+.fot-menu>ul>li>a{
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.copy{
+    color: rgba(255,255,255, 0.7);
+    margin-top: 25px;
+    text-align: right;
+}
+
+
+/*============Home Slider===============*/
+
+/*jssor slider loading skin spin css*/
+.jssorl-009-spin img {
+    animation-name: jssorl-009-spin;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes jssorl-009-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/*jssor slider bullet skin 051 css*/
+.jssorb051 .i {position:absolute;cursor:pointer;}
+.jssorb051 .i .b {fill:#fff;fill-opacity:0.5;}
+.jssorb051 .i:hover .b {fill-opacity:.7;}
+.jssorb051 .iav .b {fill-opacity: 1;}
+.jssorb051 .i.idn {opacity:.3;}
+
+/*jssor slider arrow skin 051 css*/
+.jssora051 {display:block;position:absolute;cursor:pointer;}
+.jssora051 .a {fill:none;stroke:#fff;stroke-width:360;stroke-miterlimit:10;}
+.jssora051:hover {opacity:.8;}
+.jssora051.jssora051dn {opacity:.5;}
+.jssora051.jssora051ds {opacity:.3;pointer-events:none;}
+
+#jssor_1{
+    width:100% !important;
+}
+#jssor_1>div{
+    width:100% !important;
+}
+#jssor_1>div>div{
+     width:100% !important;
+ }
+#jssor_1>div>div>div{
+      width:100% !important;
+  }
+/*===========Photo Gallery============*/
+
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
     <!DOCTYPE html>
     <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
-        <title>.: Biomass calculation || Biomass calculation:.</title>
+        <title>.: Allometry & Emission Factor Database || Allometry & Emission Factor Database:.</title>
         <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/favIcon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="description" content=" Food and Agriculture Organization of the United Nations"/>

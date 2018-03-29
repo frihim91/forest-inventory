@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><b>Biomass calculation</b></a>
+        <a class="navbar-brand" href="#"><b>Allometry & Emission Factor Database</b></a>
 
     </div>
     <?php
