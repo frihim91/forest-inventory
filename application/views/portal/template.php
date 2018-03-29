@@ -86,7 +86,7 @@
                        </div>
                        
                      <div class="col-xs-6 col-sm-4">
-                        <h1 style="color:green" align="center">Biomass Calculation</h1>
+                        <h3 style="color:green" align="center">Allometry & Emission Factor Database</h2>
 
                        <p align="center" class="logRes">
                           <!--  <a title="English" href="<?php echo site_url('langSwitch/switchLanguage/english'); ?>"><img src="<?php echo base_url('resources/resource_potal/assets/portal/images/flag_eng.gif')?>" alt="flag"/></a>
