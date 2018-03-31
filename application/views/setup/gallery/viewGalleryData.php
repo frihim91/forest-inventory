@@ -55,6 +55,9 @@
                                 <td><img class="slider_img" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"/></td>
                              
                                 <td>
+                                <a class="label btn-danger btn-xs " href="<?php echo site_url("dashboard/Website/updateGalleryData/" . $galleries->ID); ?>">
+                              <i class="glyphicon glyphicon-edit"></i>
+                              </a>&nbsp;
                                   
 
                                    <a class="label btn-danger btn-xs deleteUrl" href="<?php echo site_url('dashboard/Website/deleteImageGallery/'.$galleries->ID)?>">

@@ -934,6 +934,60 @@ class Website extends CI_Controller
             $this->template->display($data);
         }
     }
+
+
+
+
+      public function editGallerySlider()
+      {
+              $gallery_id = $this->uri->segment(4);
+              $title    = $this->input->post('title');
+              $descript = $this->input->post('descript');
+              $config['upload_path']   = 'resources/images/home_page_gallery/';
+              $config['allowed_types'] = 'jpg|jpeg|png|gif';
+              //$config['max_width'] = '1600';
+              //$config['max_height'] = '900';
+              $config['file_name']     = $_FILES['main_image']['name'];
+
+              //Load upload library and initialize configuration
+              $this->load->library('upload', $config);
+              $this->upload->initialize($config);
+
+              if ($this->upload->do_upload('main_image')) {
+                  $uploadData = $this->upload->data();
+                  $picture    = $uploadData['file_name'];
+                     $data = array(
+                  'GALLERY_TITLE' => $title,
+                  'GALLERY_DESC' => $descript,
+                  'IMAGE_PATH' => $picture
+              );
+
+              } else {
+                     $data = array(
+                  'GALLERY_TITLE' => $title,
+                  'GALLERY_DESC' => $descript
+
+              );
+
+              }
+
+
+              //$data['IMAGE_PATH'] = 'asdasdsad';
+
+              //$this->utilities->insertData($data, 'home_page_slider');
+               if($this->db->update('home_page_gallery', $data, array('ID' => $gallery_id)))
+               {
+              $this->session->set_flashdata('Success', 'New Gallery Updated Successfully.');
+              redirect('dashboard/Website/viewGalleryData');
+            }
+
+
+          else {
+              $data['content_view_page'] = 'setup/gallery/editGalleryData';
+              $this->template->display($data);
+          }
+      }
+
     
      /*
      * @methodName upload_file_page()
@@ -994,6 +1048,49 @@ class Website extends CI_Controller
             echo stripslashes(json_encode($json));
         }
     }
+
+
+
+   /*
+     * @methodName updateGalleryData()
+     * @access public
+     * @param  $id
+     * @return edit Gallery 
+     */
+    
+
+      public function updateGalleryData($ID)
+    {
+        $data['ID']          = $ID;
+        $data['images'] = $this->db->query("SELECT * FROM home_page_gallery WHERE ID=$ID")->result();
+        $data['edit_gallery']           = $this->db->query("SELECT * FROM home_page_gallery WHERE home_page_gallery.ID=$ID")->row();
+        $data['content_view_page'] = 'setup/gallery/editGalleryData';
+        $this->template->display($data);
+    }
+
+
+     /*
+     * @methodName delete_edit_gallery_images()
+     * @access public
+     * @param  $id
+     * @return delete edit Gallery Image
+     */
+
+
+    function delete_edit_gallery_images()
+    {
+        $ID    = $this->input->post("ID");
+        //echo $ID;exit();
+        $query = $this->db->query("UPDATE home_page_gallery SET IMAGE_PATH = NULL WHERE ID=$ID");
+
+        if ($query) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+
     
     
     
