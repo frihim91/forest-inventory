@@ -422,6 +422,7 @@
             <style type="text/css">
                #map{ height: 100% }
             </style>
+            </div>
             
       </div>
    </div>
@@ -762,5 +763,5 @@ $("a.resultList").click(function(){
 
 <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
-<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>
+    <!--<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>-->
 

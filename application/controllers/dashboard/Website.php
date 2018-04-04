@@ -40,7 +40,7 @@ class Website extends CI_Controller
         $this->load->model('utilities');
         $this->load->model('Menu_model');
         $this->load->library('upload');
-        $this->load->library('Csvimport');
+        $this->load->library('csvimport');
         $this->load->helper(array(
             'html',
             

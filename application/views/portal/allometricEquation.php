@@ -33,8 +33,8 @@
    }
 </style>
 <?php
-   $lang_ses = $this->session->userdata("site_lang");
-   ?>
+$lang_ses = $this->session->userdata("site_lang");
+?>
 <div class="col-sm-12 breadcump img-responsive">
    <div class="row">
       <div class="breadcump-wrapper">

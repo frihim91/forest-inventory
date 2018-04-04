@@ -122,7 +122,7 @@
       </div>
    </div>
 </div>
-</div>
+
 <div class="col-md-12 page_content">
    <!--  <h3>Post Search</h3>
    <div class="col-sm-12"> -->

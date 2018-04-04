@@ -92,7 +92,7 @@
       </div>
    </div>
 </div>
-</div>
+
 <div class="col-md-12 page_content">
    <h3>Documents Search</h3>
    <div class="col-sm-12">

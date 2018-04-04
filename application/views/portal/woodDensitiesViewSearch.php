@@ -438,6 +438,7 @@
             <style type="text/css">
                #map{ height: 100% }
             </style>
+            </div>
       
       </div>
    </div>

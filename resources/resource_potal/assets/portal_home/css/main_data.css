@@ -16,7 +16,7 @@ section, div, main{
 .header{
     background: url(../img/header-top.jpg) center center no-repeat;
     background-size: cover !important;
-    min-height: 360px;
+   /* min-height: 360px;*/
     position: relative;
 }
 .header>.lgo-area{
