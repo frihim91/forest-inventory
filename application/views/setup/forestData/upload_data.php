@@ -57,35 +57,31 @@
                                          <label for="firstname">Table Name</label>
                                             <select name="table_name" id="table_name">
                                             <option value="">--Select--</option>
-                                            <option value="bamboo">bamboo</option>
-                                            <option value="cwd">cwd</option>
-                                            <option value="fwd">fwd</option>
-                                            <option value="lf">lf</option>
-                                            <option value="lf_object">lf_object</option>
-                                            <option value="lf_photos">lf_photos</option>
-                                            <option value="lf_subp_prop">lf_subp_prop</option>
-                                            <option value="plots">plots</option>
-                                            <option value="sapling">sapling</option>
-                                            <option value="seedling">seedling</option>
-                                            <option value="subplot">subplot</option>
-                                            <option value="tree">tree</option>
-                                            <option value="wo">wo</option>
-                                            <option value="family">family</option>
-                                            <option value="genus">genus</option>
-                                            <option value="species">species</option>
-                                            <option value="reference">reference</option>
+                                            <option value="ae">ae</option>
                                             <option value="agerange">agerange</option>
-                                            <option value="volumerange">volumerange</option>
-                                            <option value="location">location</option>
-                                            <option value="zones">zones</option>
-                                            <option value="1988ecozones">1988ecozones</option>
-                                            <option value="faobiomes">faobiomes</option>
                                             <option value="basalrange">basalrange</option>
-                                            <option value="heightrange">heightrange</option>
-                                            <option value="landcover">landcover</option>
+                                            <option value="bd_aez1988">bd_aez1988</option>
+                                            <option value="botanical_descriptions">botanical_descriptions</option>
+                                            <option value="district">district</option>
+                                            <option value="division">division</option>
                                             <option value="ef">ef</option>
                                             <option value="ef_ipcc">ef_ipcc</option>
+                                            <option value="family">family</option>
+                                            <option value="faobiomes">faobiomes</option>
+                                            <option value="genus">genus</option>
+                                            <option value="heightrange">heightrange</option>
+                                            <option value="landcover">landcover</option>
+                                            <option value="location">location</option>
+                                            <option value="location_info">location_info</option>
+                                            <option value="rd">rd</option>
+                                            <option value="reference">reference</option>
+                                            <option value="species">species</option>
+                                            <option value="union">union</option>
+                                            <option value="upazilla">upazilla</option>
+                                            <option value="volumerange">volumerange</option>
                                             <option value="wd">wd</option>
+                                            <option value="zones">zones</option>
+                                         
                                          </select>
                                         </div>
                                     </div>

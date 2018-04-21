@@ -102,7 +102,7 @@
                            </span>
                        <?php }?> 
                <input type="file" name="main_image" id="file" class="form-control">
-                <p style="color:red;font-size:16px;padding-top:10px;">(Maximum Image size:887*335)</p>
+                <p style="color:red;font-size:16px;padding-top:10px;">(Maximum Image size:720*380)</p>
 
                </div>
             </div>

@@ -1,7 +1,7 @@
     <!DOCTYPE html>
     <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
-        <title>.: Allometry & Emission Factor Database || Allometry & Emission Factor Database:.</title>
+        <title>.: National Emission Factor || National Emission Factor:.</title>
         <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/favIcon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="description" content=" Food and Agriculture Organization of the United Nations"/>
@@ -64,7 +64,7 @@
                             <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/gov-logo.png')?>" class="img-responsive"/>
                         </div>
                         <div class="col-sm-8">
-                            <h1>Allometry &amp; Emission Factor Database</h1>
+                            <h1>National Emission Factor</h1>
                         </div>
                         <div class="col-sm-2 lg2">
                             <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/forest-logo.png')?>" class="img-responsive"/></div>

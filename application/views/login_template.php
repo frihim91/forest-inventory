@@ -14,7 +14,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/favIcon.png">
 
     
-     <title>.: Allometry & Emission Factor Database || Allometry & Emission Factor Database:. Login Panel</title>
+     <title>.: National Emission Factor || National Emission Factor:. Login Panel</title>
 
         <!--[if lt IE 9]><link rel="stylesheet" href="<?php echo base_url(); ?>resources/shared/components/library/bootstrap/css/bootstrap.min.css" /><![endif]-->
         <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/less/pages/serveStyles_62.css" />

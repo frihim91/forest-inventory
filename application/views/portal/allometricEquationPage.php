@@ -144,10 +144,10 @@ $lang_ses = $this->session->userdata("site_lang");
           <input type="text" class="form-control input-sm f" name ="ID_AE" value = "<?php echo (isset($ID_AE))?$ID_AE:'';?>"  class ="ID_AE" maxlength="64" placeholder="Allometric Equation" />
         </div> -->
 
-        <div class="form-group">
+      <!--   <div class="form-group">
           <label>Allometric Equation <span style="color:red;"></span></label>
           <input type="text" class="form-control input-sm" name ="Equation" value = "<?php echo (isset($Equation))?$Equation:'';?>" class ="Equation" maxlength="200" placeholder="Allometric Equation " />
-        </div>
+        </div> -->
         <div class="form-group">
           <label>Keyword </label>
           <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>"  maxlength="64" placeholder="Keyword" /><br>
