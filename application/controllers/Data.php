@@ -260,8 +260,6 @@ public function allometricEquationView()
 
   //$string=$this->searchAttributeString($validSearchKey);
   $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
-  //$data['ID_1988EcoZone'] =  $this->Forestdata_model->get_all_ecological_zones();
-  $data['EcoZones'] = $this->Forestdata_model->get_all_ecological_zones();
   $data['Zones'] = $this->Forestdata_model->get_all_zones();
   //print_r($data['Zones']);exit;
   $data['Division'] = $this->Forestdata_model->get_all_division();

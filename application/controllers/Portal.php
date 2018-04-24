@@ -33,6 +33,36 @@ class Portal extends CI_Controller
         $this->load->helper('url');
         $this->load->library("pagination");
     }
+
+
+    /*
+* @methodName searchAttributeString()
+* @access private
+* @param  none
+* @return search string
+*/
+private function searchAttributeString($searchFields)
+{
+  $n=count($searchFields);
+  $string='';
+  $i=0;
+  foreach ($searchFields as $key => $value) {
+    if(!empty($value))
+    {
+      if($i==0)
+      {
+        $string=$string.$key." like '%$value%'";
+      }
+      else
+      {
+        $string=$string.' OR '.$key." like '%$value%'";
+      }
+      $i++;
+    }
+
+  }
+  return $string;
+}
     private function getDtByAttrAe($attr)
     {
       $returnArray=array();
@@ -53,13 +83,13 @@ class Portal extends CI_Controller
         $returnArray[]='Allometric Equation';
         $returnArray[]='a.';
         break;
-        case "Division":
+        case "ID_Division":
         $returnArray[]='Division';
         $returnArray[]='d.';
         break;
         case "District":
         $returnArray[]='District';
-        $returnArray[]='d2.';
+        $returnArray[]='dis.';
         break;
         case "FAOBiomes":
         $returnArray[]='Biomass';
@@ -67,23 +97,23 @@ class Portal extends CI_Controller
         break;
         case "AEZ_NAME":
         $returnArray[]='Bangladesh Agroecological Zone';
-        $returnArray[]='e.';
+        $returnArray[]='eco.';
         break;
         case "Zones":
         $returnArray[]='BFI Zone';
-        $returnArray[]='z.';
+        $returnArray[]='zon.';
         break;
         case "Reference":
         $returnArray[]='Reference';
-        $returnArray[]='r.';
+        $returnArray[]='ref.';
         break;
         case "Author":
         $returnArray[]='Author';
-        $returnArray[]='r.';
+        $returnArray[]='ref.';
         break;
         case "Year":
         $returnArray[]='Year';
-        $returnArray[]='r.';
+        $returnArray[]='ref.';
         break;
         default:
         $returnArray[]='';
@@ -139,30 +169,38 @@ class Portal extends CI_Controller
         }
 
         $string=$this->searchAttributeString($validSearchKey);
+        //echo $string;
+       // exit;
 
-        $k=$data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
-          LEFT JOIN species s ON a.Species=s.ID_Species
-          LEFT JOIN family f ON a.Family=f.ID_Family
-          LEFT JOIN genus g ON a.Genus=g.ID_Genus
-          LEFT JOIN reference r ON a.Reference=r.ID_Reference
-          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
-          LEFT JOIN division d ON a.Division=d.ID_Division
-          LEFT JOIN district d2 ON a.District =d2.ID_District
-          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
-          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
-          where $string
+        $k=$data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON a.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where $string GROUP BY a.ID_AE
+         order by a.ID_AE ASC
           ")->result();
-          $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
-          LEFT JOIN species s ON a.Species=s.ID_Species
-          LEFT JOIN family f ON a.Family=f.ID_Family
-          LEFT JOIN genus g ON a.Genus=g.ID_Genus
-          LEFT JOIN reference r ON a.Reference=r.ID_Reference
-          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
-          LEFT JOIN division d ON a.Division=d.ID_Division
-          LEFT JOIN district d2 ON a.District =d2.ID_District
-          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
-          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
-          where $string
+          $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON a.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where $string GROUP BY a.ID_AE
+         order by a.ID_AE ASC
         ")->result();
          // $data["links"]                  = $this->pagination->create_links();
 
@@ -829,34 +867,6 @@ class Portal extends CI_Controller
     }
 
 
-        /*
-     * @methodName searchAttributeString()
-     * @access private
-     * @param  none
-     * @return search string
-     */
-    private function searchAttributeString($searchFields)
-    {
-        $n=count($searchFields);
-        $string='';
-        $i=0;
-        foreach ($searchFields as $key => $value) {
-            if(!empty($value))
-            {
-                if($i==0)
-                {
-                    $string=$string.$key." like '%$value%'";
-                }
-                else
-                {
-                    $string=$string.' OR '.$key." like '%$value%'";
-                }
-                $i++;
-            }
-
-        }
-            return $string;
-    }
 
     public function adasdds($TITLE_ID)
     {
@@ -1968,11 +1978,11 @@ class Portal extends CI_Controller
 
      function ajax_get_division() {
         //$ID_Division = $_POST['Division'];
-         $Division = $this->input->post('Division');
+         $ID_Division = $this->input->post('ID_Division');
          //$divi             = explode(",", $Division);
         // $second_value_divi   = $divi[1];
 
-        $query = $this->utilities->findAllByAttribute('district', array("DIVISION" => $Division));
+       $query = $this->utilities->findAllByAttribute('district', array("DIVISION" => $ID_Division));
         $returnVal = '<option value = "">Select one</option>';
         if (!empty($query)) {
             foreach ($query as $row) {

@@ -30,7 +30,7 @@ class Datalist {
                           <dt style='font-size:15px'><small>Biomass</small></dt> <dd style='font-size:15px'><small> $item->FAOBiomes</small></dd>
                           <dt style='font-size:15px'><small>Family</small></dt> <dd style='font-size:15px'><small> $item->Family</small></dd>
                           <dt style='font-size:15px'><small>Species</small></dt> <dd style='font-size:15px'><small> $item->Species</small></dd>
-                          <dt style='font-size:15px'><small>Locations</small></dt> <dd style='font-size:15px'><small> $item->District (lat  $item->Latitude,lon  $item->Longitude)</small></dd>
+                          <dt style='font-size:15px'><small>Locations</small></dt> <dd style='font-size:15px'><small> $item->location_name </small></dd>
                           <!--  <p style='padding-left:3px'><b>Equation: <code style='color:#c7254efont-size: 14px'> $item->Equation</code></b></p>
                           <p style='padding-left:3px'><b>Output: </b> $item->Output</p>
                           <p style='padding-left:3px'><b>Reference: </b> $item->Reference</p>
@@ -38,7 +38,7 @@ class Datalist {
                           <p style='padding-left:3px'><b>Biomass: </b> $item->FAOBiomes</p>
                           <p style='padding-left:3px'><b>Family: </b> $item->Family</p>
                           <p style='padding-left:3px'><b>Species: </b>  $item->Species</p>
-                          <p style='padding-left:3px'><b>Locations: </b> $item->District (lat  $item->Latitude,lon  $item->Longitude)</p> -->
+                          <p style='padding-left:3px'><b>Locations: </b> $item->location_name </p> -->
                           <dl>
                           </div>
 
