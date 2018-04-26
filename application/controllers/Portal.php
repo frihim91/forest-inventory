@@ -169,8 +169,7 @@ private function searchAttributeString($searchFields)
         }
 
         $string=$this->searchAttributeString($validSearchKey);
-        //echo $string;
-       // exit;
+       
 
         $k=$data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
@@ -2216,39 +2215,45 @@ private function searchAttributeString($searchFields)
  {
   if($string==1)
   {
-    $allometricEquationViewJson=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
-          LEFT JOIN species s ON a.Species=s.ID_Species
-          LEFT JOIN family f ON a.Family=f.ID_Family
-          LEFT JOIN genus g ON a.Genus=g.ID_Genus
-          LEFT JOIN reference r ON a.Reference=r.ID_Reference
-          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
-          LEFT JOIN division d ON a.Division=d.ID_Division
-          LEFT JOIN district d2 ON a.District =d2.ID_District
-          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
-          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
-         order by a.ID_AE asc");
+    $allometricEquationViewJson=$this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON a.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         GROUP BY a.ID_AE
+         order by a.ID_AE ASC");
   }
   else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
 
-    $allometricEquationViewJson=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
-          LEFT JOIN species s ON a.Species=s.ID_Species
-          LEFT JOIN family f ON a.Family=f.ID_Family
-          LEFT JOIN genus g ON a.Genus=g.ID_Genus
-          LEFT JOIN reference r ON a.Reference=r.ID_Reference
-          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
-          LEFT JOIN division d ON a.Division=d.ID_Division
-          LEFT JOIN district d2 ON a.District =d2.ID_District
-          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
-          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
+    $allometricEquationViewJson=$this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON a.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
          where $string
-         order by a.ID_AE asc");
+         GROUP BY a.ID_AE
+         order by a.ID_AE ASC");
   }
 
 
-   header('Content-disposition: attachment; filename=Allometric_Equation.json');
+      header('Content-disposition: attachment; filename=Allometric_Equation.json');
          header('Content-type: application/json');
      echo json_encode($allometricEquationViewJson->result()),'<br />';
  }
@@ -2267,35 +2272,41 @@ private function searchAttributeString($searchFields)
  {
   if($string==1)
   {
-    $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
-          LEFT JOIN species s ON a.Species=s.ID_Species
-          LEFT JOIN family f ON a.Family=f.ID_Family
-          LEFT JOIN genus g ON a.Genus=g.ID_Genus
-          LEFT JOIN reference r ON a.Reference=r.ID_Reference
-          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
-          LEFT JOIN division d ON a.Division=d.ID_Division
-          LEFT JOIN district d2 ON a.District =d2.ID_District
-          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
-          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
-         order by a.ID_AE asc")->result_array();
+    $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON a.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         GROUP BY a.ID_AE
+         order by a.ID_AE ASC")->result_array();
   }
   else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
 
-    $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,d2.*,s.*,r.*,f.*,g.*,e.*,z.* from ae a
-          LEFT JOIN species s ON a.Species=s.ID_Species
-          LEFT JOIN family f ON a.Family=f.ID_Family
-          LEFT JOIN genus g ON a.Genus=g.ID_Genus
-          LEFT JOIN reference r ON a.Reference=r.ID_Reference
-          LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
-          LEFT JOIN division d ON a.Division=d.ID_Division
-          LEFT JOIN district d2 ON a.District =d2.ID_District
-          LEFT JOIN zones z ON a.BFI_zone =z.ID_Zones
-          LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
+    $allometricEquationViewcsv=$this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         LEFT JOIN species s ON a.Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON a.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
          where $string
-         order by a.ID_AE asc")->result_array();
+         GROUP BY a.ID_AE
+         order by a.ID_AE ASC")->result_array();
   }
 
 
@@ -2305,21 +2316,17 @@ private function searchAttributeString($searchFields)
  header("Pragma: no-cache");
  header("Expires: 0");
  $handle = fopen('php://output', 'w');
- fputcsv($handle, array('ID_AE','ID_RD', 'Population', 'Tree_type','Vegetation_type','Country','Division','District','Upazila','Union'
-  ,'location_notes','Latitude','Longitude','BFI_zone','FAO_biome','WWF_Eco_zone','X','Unit_X','Z'
+ fputcsv($handle, array('ID_AE','ID_RD', 'Population', 'Tree_type','Vegetation_type','location_group','X','Unit_X','Z'
   ,'Unit_Z','W','Unit_W','U ','Unit_U',' V','Unit_V',' Mean_X',' Min_X',' Max_X',' Mean_Z','Min_Z','Max_Z','Mean_W','Min_W','Max_W','Output'
-  ,'Output_TR','Unit_Y','Min_age','Max_age',' Av_age','B','Bd','Bg','Bt',' L','Rb','Rf','Rm','S','T','F','Family','Genus','Species','Subspecies','Species_local_name_latin'
-  ,'Species_local_name_iso','Equation','Sample_size','Top_dob','Top_girth_over_bark',' Stump_height','Reference','Label','R2','R2_Adjusted','Corrected_for_bias',' MSE','RMSE'
-  ,'SEY','SEE','AIC','FI','Bias_correction',' Ratio_equation','Segmented_equation','Contributor','Operator','Remark','Contact','  Verified'));
+  ,'Output_TR','Unit_Y','Min_age','Max_age',' Av_age','B','Bd','Bg','Bt',' L','Rb','Rf','Rm','S','T','F','Species','Equation','Equation_VarNames','Sample_size','Top_dob','Top_girth_over_bark',' Stump_height','Reference','R2','R2_Adjusted','Corrected_for_bias',' MSE','RMSE'
+  ,'SEY','SEE','AIC','FI','Bias_correction',' Ratio_equation','Segmented_equation','Contributor','Remark','Verified'));
                     $i = 1;
                     foreach ($allometricEquationViewcsv as $data) {
-                        fputcsv($handle, array($data["ID_AE"], $data["ID_RD"], $data["Population"], $data["Tree_type"], $data["Vegetation_type"], $data["Country"], $data["Division"]
-                          , $data["District"], $data["Upazila"], $data["Union"], $data["location_notes"], $data["Latitude"], $data["Longitude"], $data["BFI_zone"], $data["FAO_biome"]
-                          , $data["WWF_Eco_zone"], $data["X"], $data["Unit_X"], $data["Z"], $data["Unit_Z"], $data["W"], $data["Unit_W"], $data["U"],
+                        fputcsv($handle, array($data["ID_AE"], $data["ID_RD"], $data["Population"], $data["Tree_type"], $data["Vegetation_type"], $data["X"], $data["Unit_X"], $data["Z"], $data["Unit_Z"], $data["W"], $data["Unit_W"], $data["U"],
                            $data["Unit_U"], $data["V"], $data["Unit_V"], $data["Mean_X"],$data["Min_X"],$data["Max_X"],$data["Mean_Z"],$data["Min_Z"],$data["Max_Z"],$data["Mean_W"],$data["Min_W"]
                           ,$data["Max_W"],$data["Output"],$data["Output_TR"],$data["Unit_Y"],$data["Min_age"],$data["Max_age"],$data["Av_age"],$data["B"],$data["Bd"],$data["Bg"],$data["Bt"],$data["L"],$data["Rb"]
-                          ,$data["Rf"],$data["S"],$data["T"],$data["F"],$data["Family"],$data["Genus"],$data["Species"],$data["Subspecies"],$data["Species_local_name_latin"],$data["Species_local_name_iso"],$data["Equation"],$data["Sample_size"],$data["Top_dob"],$data["Top_girth_over_bark"],$data["Stump_height"]
-                          ,$data["Reference"],$data["Label"],$data["R2"],$data["R2_Adjusted"],$data["Corrected_for_bias"],$data["MSE"],$data["RMSE"],$data["SEY"],$data["SEE"],$data["AIC"] ,$data["FI"],$data["Bias_correction"],$data["Ratio_equation"],$data["Segmented_equation"],$data["Contributor"],$data["Operator"],$data["Remark"],$data["Contact"],$data["Verified"]));
+                          ,$data["Rf"],$data["S"],$data["T"],$data["F"],$data["Species"],$data["Equation"],$data["Equation_VarNames"],$data["Sample_size"],$data["Top_dob"],$data["Top_girth_over_bark"],$data["Stump_height"]
+                          ,$data["Reference"],$data["R2"],$data["R2_Adjusted"],$data["Corrected_for_bias"],$data["MSE"],$data["RMSE"],$data["SEY"],$data["SEE"],$data["AIC"] ,$data["FI"],$data["Bias_correction"],$data["Ratio_equation"],$data["Segmented_equation"],$data["Contributor"],$data["Remark"],$data["Verified"]));
                         $i++;
                     }
                         fclose($handle);
@@ -3387,6 +3394,7 @@ private function searchAttributeString($searchFields)
     public function allometricEquationDetails($ID_AE)
     {
         $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_AE);
+        $data['location'] = $this->Forestdata_model->get_allometric_equation_details_loc($ID_AE);
         $data['content_view_page']         = 'portal/allometricEquationDetails';
         $this->template->display_portal($data);
     }
@@ -3403,6 +3411,7 @@ private function searchAttributeString($searchFields)
      public function allometricEquationDetailsPdf($ID_AE)
      {
         $data['allometricEquationDetails'] = $this->Forestdata_model->get_allometric_equation_details($ID_AE);
+        $data['location'] = $this->Forestdata_model->get_allometric_equation_details_loc($ID_AE);
         include('mpdf/mpdf.php');
         $mpdf = new mPDF('utf-8', 'A4', '', '', 20, 20, 25, 47, 10, 10);
         $mpdf->SetTitle('Allometric Equation Details');
@@ -5246,12 +5255,6 @@ private function searchAttributeString($searchFields)
 
 
 
-
-
-
-
-
-
     /*
      * @methodName rawDataDetails()
      * @access public
@@ -5387,7 +5390,7 @@ private function searchAttributeString($searchFields)
         echo "<pre>";
         print_r($data);
     }
-    public function viewCommunityPage()
+    public function viewCommunityPage_backup()
     {
         $userSession=$this->session->userdata("user_logged");
         if(empty($userSession))
@@ -5397,49 +5400,26 @@ private function searchAttributeString($searchFields)
         else
         {
         $id=$userSession['USER_ID'];
-        // $this->load->library('pagination');
-        // $config             = array();
-        // $config["base_url"] = base_url() . "index.php/portal/viewCommunityPage";
-        // $total_ef           = $this->db->count_all("community");
-
-        // $config["total_rows"] = $total_ef;
-
-
-        // // $config["total_rows"] = 800;
-
-        // $config["per_page"]        = 10;
-        // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        // $limit                     = $config["per_page"];
-        // $config["uri_segment"] = 3;
-        // //pagination style start
-        // $config['full_tag_open']   = '<ul class="pagination">';
-        // $config['full_tag_close']  = '</ul>';
-        // $config['prev_link']       = '&lt;';
-        // $config['prev_tag_open']   = '<li>';
-        // $config['prev_tag_close']  = '</li>';
-        // $config['next_link']       = '&gt;';
-        // $config['next_tag_open']   = '<li>';
-        // $config['next_tag_close']  = '</li>';
-        // $config['cur_tag_open']    = '<li class="current"><a href="#">';
-        // $config['cur_tag_close']   = '</a></li>';
-        // $config['num_tag_open']    = '<li>';
-        // $config['num_tag_close']   = '</li>';
-        // $config['first_tag_open']  = '<li>';
-        // $config['first_tag_close'] = '</li>';
-        // $config['last_tag_open']   = '<li>';
-        // $config['last_tag_close']  = '</li>';
-        // $config['first_link']      = 'First';
-        // $config['last_link']       = 'Last';
-        // //pagination style end
-        // $this->pagination->initialize($config);
-        // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        $data['community']           = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
+         $data['community']           = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
         LEFT JOIN visitor_info v ON c.user_id=v.USER_ID order by c.id desc ")->result();
         //$data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewCommunityPage';
         $this->template->display_portal($data);
     }
     }
+
+
+     public function viewCommunityPage()
+    {
+      
+        $data['community']           = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID order by c.id desc ")->result();
+        //$data["links"]                  = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/viewCommunityPage';
+        $this->template->display_portal($data);
+  
+    }
+
 
 
        public function search_community_backup()
@@ -5661,7 +5641,7 @@ private function searchAttributeString($searchFields)
      public function viewDetailCommunityPage($id)
     {
         $data['viewDetailCommunityPage'] = $this->Forestdata_model->get_community_details($id);
-        $m=$data['community_comment']       = $this->db->query("select cc.*,vi.LAST_NAME from community_comment cc
+        $m=$data['community_comment']       = $this->db->query("select cc.*,vi.LAST_NAME ,vi.PROFILE_IMG from community_comment cc
         left join visitor_info vi on cc.user_id=vi.USER_ID
         where community_id=$id")->result();
 

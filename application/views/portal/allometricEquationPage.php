@@ -19,7 +19,7 @@
     height: 103px;
   }
   .breadcump-wrapper{
-    background-color: #000000 !important;
+    /*  background-color: #000000 !important;*/
     opacity: 0.7;
     width: 100%;
     height:100%;
@@ -229,7 +229,7 @@ $lang_ses = $this->session->userdata("site_lang");
                       $options["$ID_Division->ID_Division"] = $ID_Division->Division;
                     }
                     $ID_Division = set_value('ID_Division');
-                    echo form_dropdown('ID_Division', $options, $ID_Division, 'id="ID_Division" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                    echo form_dropdown('ID_Division', $options, $ID_Division, 'id="ID_Division" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                     ?></p>
                   </div>
                 </div>
@@ -237,7 +237,7 @@ $lang_ses = $this->session->userdata("site_lang");
                   <div class="form-group">
                     <label>District<span style="color:red;"></span></label>
 
-                    <p><select class="form-control singleSelectExample" id="ID_District" style="width:560px;"  name="District">
+                    <p><select class="form-control singleSelectExample" id="ID_District" style="width:460px;"  name="District">
                       <option value="">Select District</option></p>
                     </select>
                   </div>
@@ -258,7 +258,7 @@ $lang_ses = $this->session->userdata("site_lang");
                       $options["$AEZ_NAME->AEZ_NAME"] = $AEZ_NAME->AEZ_NAME;
                     }
                     $AEZ_NAME = set_value('AEZ_NAME');
-                    echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
+                    echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
                     ?></p>
                   </div>
                 </div>
@@ -274,7 +274,7 @@ $lang_ses = $this->session->userdata("site_lang");
                       $options["$FAOBiomes->FAOBiomes"] = $FAOBiomes->FAOBiomes;
                     }
                     $FAOBiomes = set_value('FAOBiomes');
-                    echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes..." ');
+                    echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes..." ');
                     ?></p>
                   </div>
                 </div>
@@ -292,7 +292,7 @@ $lang_ses = $this->session->userdata("site_lang");
                       $options["$Zones->Zones"] = $Zones->Zones;
                     }
                     $Zones = set_value('Zones');
-                    echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
+                    echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
                     ?></p>
                     <br><br>
                     <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
@@ -372,16 +372,23 @@ $lang_ses = $this->session->userdata("site_lang");
 
           <h4> Search criteria</h4>
           <p>  <?php
-      // echo "<pre>";
-      // print_r($fieldNameValue);
-            if(!empty($fieldNameValue)){
+          $keyWord='';
+          if(isset($_GET['keyword']))
+          {
+             $keyWord=$_GET['keyword'];
+          }
+         
+          if($keyWord=='')
+          {
+             if(!empty($fieldNameValue)){
               $n=count($fieldNameValue);
               $i=0;
               foreach($fieldNameValue as $key=>$value)
               {
-                $pieces = explode("/", $key);
+          $pieces = explode("/", $key);
           $fieldName= $pieces[0]; // piece1
-          $keyWord= $pieces[1]; // piece2
+          $keyWord= $pieces[1]; 
+          //echo $fieldName;exit;// piece2
           if($i<$n-1)
           {
             $substitute="$keyWord=$value&";
@@ -396,11 +403,22 @@ $lang_ses = $this->session->userdata("site_lang");
           $i++;
           echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
         }
-
-      }
-      else{
+          }
+          else{
         echo "No criteria - All results are shown";
       }
+    //   echo "<pre>";
+    // print_r($fieldNameValue);exit();
+           
+
+      }
+      else 
+      {
+
+        $url=site_url('data/allometricEquationView');
+        echo "Keyword: $keyWord <a href='$url'>Remove Filter</a>";
+      }
+      
       ?></p>
 
     </div>
@@ -477,18 +495,18 @@ $lang_ses = $this->session->userdata("site_lang");
          <style type="text/css">
            #map{ height: 100% }
          </style>
-         </div>
        </div>
      </div>
    </div>
  </div>
+</div>
 
- <div class="row mapBlock" style="display:none">
-   <div class="col-md-12" style="height:500px!important;width:100%">
-     <div id="map">
-       
-     </div>
-     <script>
+<div class="row mapBlock" style="display:none">
+ <div class="col-md-12" style="height:500px!important;width:100%">
+   <div id="map">
+
+   </div>
+   <script>
        // initialize the map
 
 
@@ -835,7 +853,7 @@ $lang_ses = $this->session->userdata("site_lang");
                    });
                });
              </script>
-            <!--<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>-->
+             <!--<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>-->
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
-           
+

@@ -220,40 +220,62 @@ Class Forestdata_model extends CI_Model {
 	public function get_allometric_equation_details_backup_for_emission_factor_view_details($ID_Species)
 	{
 		$data=$this->db->query("SELECT ip.*, e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef_ipcc ip
-         LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
+     LEFT JOIN ef e ON ip.ID_EF_IPCC=e.ID_EF_IPCC
 		 LEFT JOIN species s ON e.Species=s.ID_Species
 		 LEFT JOIN family f ON s.ID_Family=f.ID_Family
 		 LEFT JOIN genus g ON f.ID_Family=g.ID_Family
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
+     LEFT JOIN reference r ON e.Reference=r.ID_Reference
 		 LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
 		 LEFT JOIN division d ON e.Division=d.ID_Division
 		 LEFT JOIN district dis ON e.District =dis.ID_District
 		 LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
+    LEFT JOIN ecological_zones eco ON e.WWF_Eco_zone =eco.ID_1988EcoZones
 		 where e.Species=$ID_Species
 		 GROUP BY e.Species")->result();
 		 return $data;
 	}
 
+         
+
 
 	public function get_allometric_equation_details($ID_AE)
 	{
-		$data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,u.*,un.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,e.*,zon.* from ae a
+		$data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,u.*,un.*,ci.Contributor_name,sl.local_name,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
-         LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus
+         LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON a.Division=d.ID_Division
-         LEFT JOIN district dis ON a.District =dis.ID_District
-         LEFT JOIN upazilla u ON a.Upazila =u.UPZ_CODE_1
-         LEFT JOIN `union` un ON a.Union =un.ID
-         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 e ON a.WWF_Eco_zone =e.MAJOR_AEZ
+         LEFT JOIN group_location lg ON a.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
+         LEFT JOIN `union` un ON l.Union =un.ID
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         LEFT JOIN contributor_info ci ON a.Contributor =ci.Contributor_ID
          where a.ID_AE=$ID_AE
-		     order by a.ID_AE desc")->result();
+		     GROUP BY a.ID_AE
+         order by a.ID_AE desc")->result();
 		 return $data;
 	}
+
+
+  public function get_allometric_equation_details_loc($ID_AE)
+  {
+    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,g.UNINAME FROM ae a
+                      LEFT JOIN group_location b on a.location_group=b.group_id
+                      LEFT JOIN location c ON b.location_id=c.ID_Location
+                      LEFT JOIN district d ON c.ID_District=d.ID_District
+                      LEFT JOIN division e ON c.ID_Division=e.ID_Division
+                      LEFT JOIN upazilla f ON c.Upzila =f.UPZ_CODE_1
+                      LEFT JOIN `union` g ON c.Union =g.ID
+                      where ID_AE=$ID_AE
+                      order by a.ID_AE desc")->result();
+     return $data;
+  }
   public function get_community_details($id)
   {
     $data=$this->db->query("SELECT c.id,c.user_id,c.description,c.title,v.USER_ID,v.LAST_NAME,cc.* from community c

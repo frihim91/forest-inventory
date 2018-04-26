@@ -22,7 +22,7 @@
    height: 103px;
    }
    .breadcump-wrapper{
-   background-color: #000000 !important;
+ /*  background-color: #000000 !important;*/
    opacity: 0.7;
    width: 100%;
    height:100%;

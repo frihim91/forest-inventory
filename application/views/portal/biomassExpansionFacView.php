@@ -19,7 +19,7 @@
    height: 103px;
    }
    .breadcump-wrapper{
-   background-color: #000000 !important;
+   /*background-color: #000000 !important;*/
    opacity: 0.7;
    width: 100%;
    height:100%;
@@ -193,7 +193,7 @@
                      $options["$ID_Division->Division"] = $ID_Division->Division;
                      }
                      $ID_Division = set_value('Division');
-                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                      ?></p>   
                      </div>
                   </div>
@@ -202,7 +202,7 @@
                    
                      <label>District<span style="color:red;"></span></label>
                    <!--   <input type="text" class="form-control input-sm" name ="District" value = "<?php echo (isset($District))?$District:'';?>"  class ="District" maxlength="64" placeholder="District" /> -->
-                    <p><select class="form-control singleSelectExample" id="ID_District" style="width:560px;"  name="District">
+                    <p><select class="form-control singleSelectExample" id="ID_District" style="width:460px;"  name="District">
                      <option value="">Select District</option></p>
                   </select>
                   </div>
@@ -223,7 +223,7 @@
                           $options["$AEZ_NAME->AEZ_NAME"] = $AEZ_NAME->AEZ_NAME;
                         }
                         $AEZ_NAME = set_value('AEZ_NAME');
-                        echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
+                        echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
                         ?></p>
                            </div>
                          </div>
@@ -240,7 +240,7 @@
                      $options["$FAOBiomes->FAOBiomes"] = $FAOBiomes->FAOBiomes;
                      }
                      $FAOBiomes = set_value('FAOBiomes');
-                     echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes ..." ');
+                     echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes ..." ');
                      ?></p>
                       </div>
                    </div>
@@ -254,7 +254,7 @@
                      $options["$Zones->Zones"] = $Zones->Zones;
                      }
                      $Zones = set_value('Zones');
-                     echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
+                     echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
                      ?></p>
                      <!-- <input type="text" class="form-control input-sm" name ="Zones" class ="Zones" value = "<?php echo (isset($Zones))?$Zones:'';?>" maxlength="64" placeholder="Bangladesh Zone" /> -->
 

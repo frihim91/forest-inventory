@@ -14,7 +14,7 @@
         <link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/portal.css" rel="stylesheet">
         <!-- end portal.css -->
         <link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/megamenu/yamm.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/megamenu/demo.css" rel="stylesheet">
+      <!--   <link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/megamenu/demo.css" rel="stylesheet"> -->
 
         <link href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/css/font-awesome.min.css" rel="stylesheet" media="screen"/>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -30,6 +30,7 @@
         <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/plugins/select2/select2.full.min.js"></script>
 
         <link rel="stylesheet" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/css/main_data.css">
+      </head>
 
         <style type="text/css">
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
@@ -54,9 +55,9 @@
 
      
 
-    </head>
+ 
     <body>
-             <header class="header">
+        <header class="header">
             <div class="lgo-area">
                 <div class="container">
                     <div class="row header-bg">
@@ -79,7 +80,7 @@
             <div class="container home-bg">
             <?php echo $_content; ?>
                 
-        </div><br><br><br>
+            </div><br><br><br>
 
 
          <footer class="footer">

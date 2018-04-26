@@ -67,7 +67,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="content" style="height: 300px; overflow-y: scroll;">
-                        <h2><?php echo $post_cat->TITLE_NAME;?></h2>
+                        <h3 style="text-align: center;"><?php echo $post_cat->TITLE_NAME;?></h3>
                         <p style="text-align:justify;"><?php echo $post_description->BODY_DESC;?></p>
                         <!-- <p style="text-align: justify;"><?php echo substr($post_description->BODY_DESC,0,710);?><a href="<?php echo site_url('Portal/post_details/'.$post_cat->TITLE_ID.'/'.$post_cat->PG_URI); ?>" class="btn btn-more pull-right"><?php echo $this->lang->line("view_details"); ?></a> </p> -->
                     </div>
