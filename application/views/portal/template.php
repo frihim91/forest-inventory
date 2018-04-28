@@ -161,6 +161,9 @@ $(window).bind("orientationchange", ScaleSlider);
         left: -580px!important;
     }
 
+    
+
+
    /* #jssor_1{
         width:100% ;
     }
@@ -169,7 +172,7 @@ $(window).bind("orientationchange", ScaleSlider);
 
 
 #jssor_1{
-    width:100% !important;
+    width:1150px !important;
 }
 #jssor_1>div{
     width:100% !important;
