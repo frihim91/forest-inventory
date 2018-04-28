@@ -19,7 +19,7 @@
    height: 103px;
    }
    .breadcump-wrapper{
-   background-color: #000000 !important;
+/*   background-color: #000000 !important;*/
    opacity: 0.7;
    width: 100%;
    height:100%;
@@ -261,7 +261,7 @@
                      $options["$ID_Division->Division"] = $ID_Division->Division;
                      }
                      $ID_Division = set_value('Division');
-                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                      ?></p>
 
                   </div>
@@ -269,7 +269,7 @@
                      
                      <label>District<span style="color:red;"></span></label>
                     <!--  <input type="text" class="form-control input-sm" name ="District"  class ="District" maxlength="64" placeholder="District" /> -->
-                   <p> <select class="form-control singleSelectExample" id="ID_District" style="width:560px;"  name="District">
+                   <p> <select class="form-control singleSelectExample" id="ID_District" style="width:460px;"  name="District">
                      <option value="">Select District</option></p>
                   </select>
                   </div>
@@ -284,7 +284,7 @@
                      $options["$EcoZones->EcoZones"] = $EcoZones->EcoZones;
                      }
                      $EcoZones = set_value('EcoZones');
-                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
+                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
                      ?></p>
                      <br>
                      

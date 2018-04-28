@@ -89,8 +89,48 @@
     /*#endregion responsive code end*/
 };
 </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+
+           var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+
+//responsive code begin
+//you can remove responsive code if you don't want the slider scales while window resizes
+function ScaleSlider() {
+    var bodyWidth = document.body.clientWidth;
+    if (bodyWidth)
+        jssor_slider1.$ScaleWidth(Math.min(bodyWidth, 1920));
+    else
+        window.setTimeout(ScaleSlider, 30);
+}
+ScaleSlider();
+
+$(window).bind("load", ScaleSlider);
+$(window).bind("resize", ScaleSlider);
+$(window).bind("orientationchange", ScaleSlider);
+//responsive code end
+also, you can scale the slider to width of parent element,
+
+var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+
+//responsive code begin
+//you can remove responsive code if you don't want the slider scales while window resizes
+function ScaleSlider() {
+    var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+    if (parentWidth)
+        jssor_slider1.$ScaleWidth(Math.min(parentWidth, 1920));
+    else
+        window.setTimeout(ScaleSlider, 30);
+}
+ScaleSlider();
+
+$(window).bind("load", ScaleSlider);
+$(window).bind("resize", ScaleSlider);
+$(window).bind("orientationchange", ScaleSlider);
+        });
+    </script>
 <style>
-    /*jssor slider loading skin spin css*/
+ 
 
     .jssorl-009-spin img {
         animation-name: jssorl-009-spin;
@@ -117,10 +157,32 @@
     .jssora051:hover {opacity:.8;}
     .jssora051.jssora051dn {opacity:.5;}
     .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
+    .jssorb051{
+        left: -580px!important;
+    }
 
-    #jssor_1{
+    
+
+
+   /* #jssor_1{
         width:100% ;
     }
+*/
+
+
+
+#jssor_1{
+    width:1150px !important;
+}
+#jssor_1>div{
+    width:100% !important;
+}
+#jssor_1>div>div{
+     width:100% !important;
+ }
+#jssor_1>div>div>div{
+      width:100% !important;
+  }
 
 
     /*jssor slider arrow skin 093 css*/

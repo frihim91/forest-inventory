@@ -67,7 +67,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="content" style="height: 300px; overflow-y: scroll;">
-                        <h2><?php echo $post_cat->TITLE_NAME;?></h2>
+                        <h3 style="text-align: center;"><?php echo $post_cat->TITLE_NAME;?></h3>
                         <p style="text-align:justify;"><?php echo $post_description->BODY_DESC;?></p>
                         <!-- <p style="text-align: justify;"><?php echo substr($post_description->BODY_DESC,0,710);?><a href="<?php echo site_url('Portal/post_details/'.$post_cat->TITLE_ID.'/'.$post_cat->PG_URI); ?>" class="btn btn-more pull-right"><?php echo $this->lang->line("view_details"); ?></a> </p> -->
                     </div>
@@ -76,13 +76,13 @@
         </div>
     </section>
 
-
+ 
 
     <section class="slider">
 
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
+            
                     <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:380px;overflow:hidden;visibility:hidden;">
                         <!-- Loading Screen -->
                         <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
@@ -92,7 +92,7 @@
 
                            <?php foreach($sliders as $slider){?>
                            <div data-p="137.50">
-                            <img data-u="image" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" />
+                            <img data-u="image" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" class="img-responsive"/>
                             <div class="caption" align="center" style="background-color: rgba(0, 0, 0, 0.6);width:750px; height:50px;position:absolute;bottom:0px;right:0px">
                               <p  style="color:white;font-size:20px;" align="center"><b><?php echo $slider->IMAGE_TITLE;?></b></p>
                           </div>
@@ -121,7 +121,7 @@
                                                 </svg> -->
                                             </div>
                                         </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </section>
