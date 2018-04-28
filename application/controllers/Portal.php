@@ -83,7 +83,7 @@ private function searchAttributeString($searchFields)
         $returnArray[]='Allometric Equation';
         $returnArray[]='a.';
         break;
-        case "ID_Division":
+        case "Division":
         $returnArray[]='Division';
         $returnArray[]='d.';
         break;
@@ -1977,11 +1977,10 @@ private function searchAttributeString($searchFields)
 
      function ajax_get_division() {
         //$ID_Division = $_POST['Division'];
-         $ID_Division = $this->input->post('ID_Division');
-         //$divi             = explode(",", $Division);
-        // $second_value_divi   = $divi[1];
-
-       $query = $this->utilities->findAllByAttribute('district', array("DIVISION" => $ID_Division));
+         $ID_Division = $this->input->post('Division');
+         $query = $this->db->query("SELECT a.ID_District,a.District FROM District a,division b
+         WHERE a.DIVISION=b.ID_Division AND b.DIVISION='$ID_Division'")->result();
+         // $query = $this->utilities->findAllByAttribute('district', array("DIVISION" => $ID_Division));
         $returnVal = '<option value = "">Select one</option>';
         if (!empty($query)) {
             foreach ($query as $row) {

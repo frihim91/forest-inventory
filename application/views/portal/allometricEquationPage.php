@@ -226,10 +226,10 @@ $lang_ses = $this->session->userdata("site_lang");
                     $ID_Divisions = $this->Forestdata_model->get_all_division();
                     $options = array('' => '--Select Division--');
                     foreach ($ID_Divisions as $ID_Division) {
-                      $options["$ID_Division->ID_Division"] = $ID_Division->Division;
+                      $options["$ID_Division->Division"] = $ID_Division->Division;
                     }
-                    $ID_Division = set_value('ID_Division');
-                    echo form_dropdown('ID_Division', $options, $ID_Division, 'id="ID_Division" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                    $ID_Division = set_value('Division');
+                    echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                     ?></p>
                   </div>
                 </div>
@@ -499,9 +499,7 @@ $lang_ses = $this->session->userdata("site_lang");
      </div>
    </div>
  </div>
-</div>
-
-<div class="row mapBlock" style="display:none">
+ <div class="row mapBlock" style="display:none">
  <div class="col-md-12" style="height:500px!important;width:100%">
    <div id="map">
 
@@ -513,6 +511,9 @@ $lang_ses = $this->session->userdata("site_lang");
      </script>
    </div>
  </div>
+
+</div>
+
 
 
  <script type="text/javascript">
@@ -801,14 +802,14 @@ $lang_ses = $this->session->userdata("site_lang");
              <script type="text/javascript">
                $(document).ready(function() {
                  $('#ID_Division').change(function() {
-                   var ID_Division = $(this).val();
+                   var Division = $(this).val();
                      //var ID_Division = $(this).val();
                      //alert(ID_Division);
                      var url = '<?php echo site_url('Portal/ajax_get_division') ?>';
                      $.ajax({
                        type: "POST",
                        url: url,
-                       data: {ID_Division:ID_Division},
+                       data: {Division:Division},
                        dataType: 'html',
                        success: function(data) {
                          $('#ID_District').html(data);
