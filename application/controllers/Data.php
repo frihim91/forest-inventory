@@ -112,57 +112,6 @@ public function dataSpecies()
   $data['content_view_page'] = 'portal/data/speciesData';
   $this->template->display_portal($data);
 }
-
-
-
-public function allometricEquationViewtrr()
-{
-
-  $this->load->library('pagination');
-  $config             = array();
-  $config["base_url"] = base_url() .  "index.php/data/allometricEquationView";
-  $total_ef           = $this->db->count_all("ae");
-
-  $config["total_rows"] = $total_ef;
-  // $config["total_rows"] = 800;
-
-  $config["per_page"]        = 5;
-  $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-  $limit                     = $config["per_page"];
-  $config["uri_segment"] = 3;
-  //$config["num_links"] = round($total_ef );
-  //pagination style start
-  $config['full_tag_open']   = '<ul class="pagination">';
-  $config['full_tag_close']  = '</ul>';
-  $config['prev_link']       = '&lt;';
-  $config['prev_tag_open']   = '<li>';
-  $config['prev_tag_close']  = '</li>';
-  $config['next_link']       = '&gt;';
-  $config['next_tag_open']   = '<li>';
-  $config['next_tag_close']  = '</li>';
-  $config['cur_tag_open']    = '<li class="current"><a href="#">';
-  $config['cur_tag_close']   = '</a></li>';
-  $config['num_tag_open']    = '<li>';
-  $config['num_tag_close']   = '</li>';
-  $config['first_tag_open']  = '<li>';
-  $config['first_tag_close'] = '</li>';
-  $config['last_tag_open']   = '<li>';
-  $config['last_tag_close']  = '</li>';
-  $config['first_link']      = 'First';
-  $config['last_link']       = 'Last';
-  // //pagination style end
-  $this->pagination->initialize($config);
-  $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid($limit,$page);
-  //$data['ID_1988EcoZone'] =  $this->Forestdata_model->get_all_ecological_zones();
-  $data['EcoZones'] = $this->Forestdata_model->get_all_ecological_zones();
-  $data['Zones'] = $this->Forestdata_model->get_all_zones();
-  //print_r($data['Zones']);exit;
-  $data['Division'] = $this->Forestdata_model->get_all_division();
-
-  $data['links'] = $this->pagination->create_links();
-  $data['content_view_page']      = 'portal/allometricEquationPage';
-  $this->template->display_portal($data);
-}
 public function allometricEqnAjaxData($str)
 {
 
@@ -171,17 +120,11 @@ public function allometricEqnAjaxData($str)
   //$output     = Setuplist :: moduleList($input, $collection);
   $output=$this->datalist->allometricEquationList($input,$collection);
   echo  json_encode($output);
-  //$this->pr($collection);
-
-  //$data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
-
 }
-
-
 public function rawDataAjaxData($str)
 {
 
- 
+
   $input      = $_GET;
   $collection = $this->Forestdata_model->get_rawdata_ajax($_GET,$str);
 
@@ -229,15 +172,15 @@ public function efAjaxData($str)
 public function wdAjaxDataSpecies($str,$specis_id)
 {
 
-   $input      = $_GET;
-   // $total_woodDensities=$this->db->query("SELECT m.*,s.Species,f.Family,wd.Density_green,wd.Latitude,wd.Longitude,r.Reference,r.Year,r.Author FROM (SELECT ID_WD,ID_Species FROM wd w) m
-   //      LEFT JOIN wd  ON m.ID_WD=wd.ID_WD
-   //      LEFT JOIN reference r ON wd.ID_Reference = r.ID_Reference
-   //      LEFT JOIN species s ON m.ID_Species=s.ID_Species
-   //      left join family f ON wd.ID_family=f.ID_Family
-   //      where wd.ID_species=$specis_id
-   //      order by wd.ID_WD desc
-   //        ")->num_rows();
+  $input      = $_GET;
+  // $total_woodDensities=$this->db->query("SELECT m.*,s.Species,f.Family,wd.Density_green,wd.Latitude,wd.Longitude,r.Reference,r.Year,r.Author FROM (SELECT ID_WD,ID_Species FROM wd w) m
+  //      LEFT JOIN wd  ON m.ID_WD=wd.ID_WD
+  //      LEFT JOIN reference r ON wd.ID_Reference = r.ID_Reference
+  //      LEFT JOIN species s ON m.ID_Species=s.ID_Species
+  //      left join family f ON wd.ID_family=f.ID_Family
+  //      where wd.ID_species=$specis_id
+  //      order by wd.ID_WD desc
+  //        ")->num_rows();
   $data['ID_Species'] = $specis_id;
   $collection = $this->Forestdata_model->get_wd_species_ajax($_GET,$str,$specis_id);
   //$output     = Setuplist :: moduleList($input, $collection);
@@ -254,19 +197,7 @@ public function wdAjaxDataSpecies($str,$specis_id)
 
 
 
-public function allometricEquationView()
-{
 
-
-  //$string=$this->searchAttributeString($validSearchKey);
-  $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
-  $data['Zones'] = $this->Forestdata_model->get_all_zones();
-  //print_r($data['Zones']);exit;
-  $data['Division'] = $this->Forestdata_model->get_all_division();
-  $data['content_view_page']      = 'portal/allometricEquationPage';
-
-  $this->template->display_portal($data);
-}
 
 
 
@@ -636,26 +567,90 @@ public function search_allometricequation_key()
         $data['content_view_page'] = 'portal/woodDensitiesView';
         $this->template->display_portal($data);
       }
+      public function allometricEquationViewtrr()
+      {
+        $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid($limit,$page);
+        //$data['ID_1988EcoZone'] =  $this->Forestdata_model->get_all_ecological_zones();
+        $data['EcoZones'] = $this->Forestdata_model->get_all_ecological_zones();
+        $data['Zones'] = $this->Forestdata_model->get_all_zones();
+        //print_r($data['Zones']);exit;
+        $data['Division'] = $this->Forestdata_model->get_all_division();
+        $data['links'] = $this->pagination->create_links();
 
+        $data['content_view_page']      = 'portal/allometricEquationPage';
+        $this->template->display_portal($data);
+      }
+      public function allometricEquationView()
+      {
+        //$string=$this->searchAttributeString($validSearchKey);
+        $data['allometricEquationView'] = $this->Forestdata_model->get_allometric_equation_grid();
+        $data['Zones'] = $this->Forestdata_model->get_all_zones();
+        //print_r($data['Zones']);exit;
+        $data['Division'] = $this->Forestdata_model->get_all_division();
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(c.output)) OUTPUT,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        fnc_ae_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        LEFT JOIN ae c ON b.group_id=c.location_group
+        LEFT JOIN species d ON c.Species=d.ID_Species
+        LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        WHERE c.ID_AE IS NOT NULL
+        GROUP BY LatDD,LongDD";
+      echo   $jsonQueryEncode=base64_encode($jsonQuery);
+      exit;
 
+        $data['jsonQuery']=$jsonQueryEncode;
+        // echo json_encode($data['jsonData']);
+        // $this->pr($data['jsonData']);
 
+        $data['content_view_page']      = 'portal/allometricEquationPage';
 
+        $this->template->display_portal($data);
+      }
 
+      public function getAllometricEqnJsonData($query)
+      {
+        $query1=base64_decode($query);
+        $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db_v2','maruf','maruf');
+        $sql =$query1;
+        if (isset($_GET['bbox']) || isset($_POST['bbox'])) {
+          $bbox = explode(',', $_GET['bbox']);
+          $sql = $sql . ' WHERE x <= ' . $bbox[2] . ' AND x >= ' . $bbox[0] . ' AND y <= ' . $bbox[3] . ' AND y >= ' . $bbox[1];
+        }
+        $rs = $conn->query($sql);
+        if (!$rs) {
+          echo 'An SQL error occured.\n';
+          exit;
+        }
+        $geojson = array(
+          'type'      => 'FeatureCollection',
+          'features'  => array()
+        );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        # Loop through rows to build feature arrays
+        while ($row = $rs->fetch(PDO::FETCH_ASSOC)) {
+          $properties = $row;
+          # Remove x and y fields from properties (optional)
+          unset($properties['x']);
+          unset($properties['y']);
+          $feature = array(
+            'type' => 'Feature',
+            'geometry' => array(
+              'type' => 'Point',
+              'coordinates' => array(
+                $row['x'],
+                $row['y']
+              )
+            ),
+            'properties' => $properties
+          );
+          # Add feature arrays to feature collection array
+          array_push($geojson['features'], $feature);
+        }
+      //  return $geojson;
+        header('Content-type: application/json');
+        echo json_encode($geojson, JSON_NUMERIC_CHECK);
+        $conn = NULL;
+        //return $returnJson;
+      }
 
     }

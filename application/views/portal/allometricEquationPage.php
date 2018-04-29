@@ -377,7 +377,7 @@ $lang_ses = $this->session->userdata("site_lang");
           {
              $keyWord=$_GET['keyword'];
           }
-         
+
           if($keyWord=='')
           {
              if(!empty($fieldNameValue)){
@@ -387,7 +387,7 @@ $lang_ses = $this->session->userdata("site_lang");
               {
           $pieces = explode("/", $key);
           $fieldName= $pieces[0]; // piece1
-          $keyWord= $pieces[1]; 
+          $keyWord= $pieces[1];
           //echo $fieldName;exit;// piece2
           if($i<$n-1)
           {
@@ -409,16 +409,16 @@ $lang_ses = $this->session->userdata("site_lang");
       }
     //   echo "<pre>";
     // print_r($fieldNameValue);exit();
-           
+
 
       }
-      else 
+      else
       {
 
         $url=site_url('data/allometricEquationView');
         echo "Keyword: $keyWord <a href='$url'>Remove Filter</a>";
       }
-      
+
       ?></p>
 
     </div>
@@ -556,6 +556,9 @@ $lang_ses = $this->session->userdata("site_lang");
     });
 });
  </script>
+ <?php
+  $jsonQuery=str_replace("==","",$jsonQuery);
+ ?>
  <script type="text/javascript">
   $(document).ready(function(){
     $("a.results-map").click(function(){
@@ -565,7 +568,8 @@ $lang_ses = $this->session->userdata("site_lang");
       map.addLayer(osm);
 
 
-      $.getJSON("<?php echo base_url(); ?>resources/mapdata.php",function(data){
+      $.getJSON("<?php echo site_url(); ?>/data/getAllometricEqnJsonData/<?php echo $jsonQuery; ?>",function(data){
+
         var ratIcon = L.icon({
           iconUrl: '<?php echo base_url(); ?>resources/final.png',
           iconSize: [19,30]
@@ -573,7 +577,7 @@ $lang_ses = $this->session->userdata("site_lang");
         L.geoJson(data,{
           pointToLayer: function(feature,latlng){
             var marker = L.marker(latlng,{icon: ratIcon});
-            marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.output);
+            marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.fao_biome+'<h5>Output </h5>'+feature.properties.OUTPUT);
             return marker;
           }
         }).addTo(map);
@@ -713,30 +717,30 @@ $lang_ses = $this->session->userdata("site_lang");
    $(this).tab('show');})
 </script>
 <script type="text/javascript">
- $(document).ready(function(){
-   $("a.results-map").click(function(){
-     $("div.mapBlock").show();
-     var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
-     var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-     map.addLayer(osm);
-
-
-     $.getJSON("<?php echo base_url(); ?>resources/mapdata.php",function(data){
-       var ratIcon = L.icon({
-         iconUrl: '<?php echo base_url(); ?>resources/final.png',
-         iconSize: [19,30]
-       });
-       L.geoJson(data,{
-         pointToLayer: function(feature,latlng){
-           var marker = L.marker(latlng,{icon: ratIcon});
-           marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.output);
-           return marker;
-         }
-       }).addTo(map);
-     });
-
-   });
- });
+ // $(document).ready(function(){
+ //   $("a.results-map").click(function(){
+ //     $("div.mapBlock").show();
+ //     var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
+ //     var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+ //     map.addLayer(osm);
+ //
+ //
+ //     $.getJSON("<?php echo base_url(); ?>resources/mapdata.php",function(data){
+ //       var ratIcon = L.icon({
+ //         iconUrl: '<?php echo base_url(); ?>resources/final.png',
+ //         iconSize: [19,30]
+ //       });
+ //       L.geoJson(data,{
+ //         pointToLayer: function(feature,latlng){
+ //           var marker = L.marker(latlng,{icon: ratIcon});
+ //           marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.output);
+ //           return marker;
+ //         }
+ //       }).addTo(map);
+ //     });
+ //
+ //   });
+ // });
  $("a.resultList").click(function(){
    $("div.mapBlock").hide();
  });
@@ -857,4 +861,3 @@ $lang_ses = $this->session->userdata("site_lang");
              <!--<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>-->
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
-

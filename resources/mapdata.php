@@ -24,7 +24,7 @@ $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db_v2','maruf','maruf');
 //             FROM ae c
 //         GROUP BY c.latitude, c.longitude) y
 //  WHERE x.latitude = y.latitude) m";
-$sql = "SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+$sql = "SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(c.output)) OUTPUT,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
 fnc_ae_species_data(a.LatDD,a.LongDD) species_desc FROM location a
 LEFT JOIN group_location b ON a.ID_Location=b.location_id
 LEFT JOIN ae c ON b.group_id=c.location_group
