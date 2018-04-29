@@ -598,6 +598,8 @@ public function search_allometricequation_key()
       $jsonQueryEncode=base64_encode($jsonQuery);
 
 
+
+
         $data['jsonQuery']=$jsonQueryEncode;
         // echo json_encode($data['jsonData']);
         // $this->pr($data['jsonData']);
