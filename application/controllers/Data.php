@@ -595,8 +595,8 @@ public function search_allometricequation_key()
         LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
         WHERE c.ID_AE IS NOT NULL
         GROUP BY LatDD,LongDD";
-      echo   $jsonQueryEncode=base64_encode($jsonQuery);
-      exit;
+      $jsonQueryEncode=base64_encode($jsonQuery);
+
 
         $data['jsonQuery']=$jsonQueryEncode;
         // echo json_encode($data['jsonData']);
