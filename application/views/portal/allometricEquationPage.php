@@ -557,7 +557,7 @@ $lang_ses = $this->session->userdata("site_lang");
 });
  </script>
  <?php
-  $jsonQuery=str_replace("==","",$jsonQuery);
+  $jsonQuery=str_replace("=","",$jsonQuery);
  ?>
  <script type="text/javascript">
   $(document).ready(function(){
