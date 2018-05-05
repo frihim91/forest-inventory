@@ -269,53 +269,7 @@ private function searchAttributeString($searchFields)
       }
 
 
-       public function getAllometricEqnJsonData($query)
-      {
-        $query1=base64_decode($query);
-        $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db_v2','maruf','maruf');
-        $sql =$query1;
-        if (isset($_GET['bbox']) || isset($_POST['bbox'])) {
-          $bbox = explode(',', $_GET['bbox']);
-          $sql = $sql . ' WHERE x <= ' . $bbox[2] . ' AND x >= ' . $bbox[0] . ' AND y <= ' . $bbox[3] . ' AND y >= ' . $bbox[1];
-        }
-        $rs = $conn->query($sql);
-        if (!$rs) {
-          echo 'An SQL error occured.\n';
-          exit;
-        }
-        $geojson = array(
-          'type'      => 'FeatureCollection',
-          'features'  => array()
-        );
-
-        # Loop through rows to build feature arrays
-        while ($row = $rs->fetch(PDO::FETCH_ASSOC)) {
-          $properties = $row;
-          # Remove x and y fields from properties (optional)
-          unset($properties['x']);
-          unset($properties['y']);
-          $feature = array(
-            'type' => 'Feature',
-            'geometry' => array(
-              'type' => 'Point',
-              'coordinates' => array(
-                $row['x'],
-                $row['y']
-              )
-            ),
-            'properties' => $properties
-          );
-          # Add feature arrays to feature collection array
-          array_push($geojson['features'], $feature);
-        }
-      //  return $geojson;
-        header('Content-type: application/json');
-        echo json_encode($geojson, JSON_NUMERIC_CHECK);
-        $conn = NULL;
-        //return $returnJson;
-      }
-
-
+    
 
 
      private function getDtByAttrRaw($attr)
@@ -426,25 +380,37 @@ private function searchAttributeString($searchFields)
 
         $string=$this->searchAttributeString($validSearchKey);
 
-        $k=$data['rawDataView'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
-         LEFT JOIN species s ON r.Species_ID=s.ID_Species
-         LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+        $k=$data['rawDataView'] = $this->db->query("SELECT r.ID,r.H_m,r.DBH_cm,r.Volume_m3,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus from rd r
+         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON r.Division=d.ID_Division
-         LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string
+         LEFT JOIN group_location lg ON r.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where $string  GROUP BY r.ID
+         order by r.ID ASC
         ")->result();
-         $data['rawDataView_count'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
-         LEFT JOIN species s ON r.Species_ID=s.ID_Species
-         LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+         $data['rawDataView_count'] = $this->db->query("SELECT r.ID,r.H_m,r.DBH_cm,r.Volume_m3,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus from rd r
+         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON r.Division=d.ID_Division
-         LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string
+         LEFT JOIN group_location lg ON r.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where $string  GROUP BY r.ID
+         order by r.ID ASC
         ")->result();
          // $data["links"]                  = $this->pagination->create_links();
 
@@ -484,6 +450,20 @@ private function searchAttributeString($searchFields)
         {
             redirect('data/rawDataView');
         }
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        LEFT JOIN rd r ON b.group_id=r.location_group
+        LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+        LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+        LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        WHERE r.ID IS NOT NULL
+        and $string
+        GROUP BY LatDD,LongDD";
+        //echo $jsonQuery;
+        //exit;
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page']      = 'portal/rawDataView';
         $str=$string;
         $string=base64_encode($string);
@@ -492,6 +472,54 @@ private function searchAttributeString($searchFields)
         $data['strs']=$string;
         //echo $data['strs']=$string;exit();
         $this->template->display_portal($data);
+      }
+
+
+      public function getMapJsonData($query)
+      {
+        $query1=base64_decode($query);
+        
+        $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db_v2','maruf','maruf');
+        $sql =$query1;
+        if (isset($_GET['bbox']) || isset($_POST['bbox'])) {
+          $bbox = explode(',', $_GET['bbox']);
+          $sql = $sql . ' WHERE x <= ' . $bbox[2] . ' AND x >= ' . $bbox[0] . ' AND y <= ' . $bbox[3] . ' AND y >= ' . $bbox[1];
+        }
+        $rs = $conn->query($sql);
+        if (!$rs) {
+          echo 'An SQL error occured.\n';
+          exit;
+        }
+        $geojson = array(
+          'type'      => 'FeatureCollection',
+          'features'  => array()
+        );
+
+        # Loop through rows to build feature arrays
+        while ($row = $rs->fetch(PDO::FETCH_ASSOC)) {
+          $properties = $row;
+          # Remove x and y fields from properties (optional)
+          unset($properties['x']);
+          unset($properties['y']);
+          $feature = array(
+            'type' => 'Feature',
+            'geometry' => array(
+              'type' => 'Point',
+              'coordinates' => array(
+                $row['x'],
+                $row['y']
+              )
+            ),
+            'properties' => $properties
+          );
+          # Add feature arrays to feature collection array
+          array_push($geojson['features'], $feature);
+        }
+      //  return $geojson;
+        header('Content-type: application/json');
+        echo json_encode($geojson, JSON_NUMERIC_CHECK);
+        $conn = NULL;
+        //return $returnJson;
       }
 
 

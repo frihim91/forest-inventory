@@ -316,36 +316,54 @@
       <h4> Search criteria</h4>
       
         <p>  <?php
-        // echo "<pre>";
-        // print_r($fieldNameValue);
-                           if(!empty($fieldNameValue)){
-                              $n=count($fieldNameValue);
-                             $i=0;
-                             foreach($fieldNameValue as $key=>$value)
-                             {
-                                $pieces = explode("/", $key);
-                                $fieldName= $pieces[0]; // piece1
-                                $keyWord= $pieces[1]; // piece2
-                                if($i<$n-1)
-                                {
-                                  $substitute="$keyWord=$value&";
-                                }
-                                else {
-                                  $substitute="$keyWord=$value";
-                                }
-                                $sub=str_replace(' ','+',$substitute);
-                                //echo $actualUrl;
-                             $newUrl=str_replace($sub,'',$actualUrl);
-                            // $url=str_replace('','',$actualUrl);
-                                $i++;
-                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
-                             }
+          $keyWord='';
+          if(isset($_GET['keyword']))
+          {
+             $keyWord=$_GET['keyword'];
+          }
+         
+          if($keyWord=='')
+          {
+             if(!empty($fieldNameValue)){
+              $n=count($fieldNameValue);
+              $i=0;
+              foreach($fieldNameValue as $key=>$value)
+              {
+          $pieces = explode("/", $key);
+          $fieldName= $pieces[0]; // piece1
+          $keyWord= $pieces[1]; 
+          //echo $fieldName;exit;// piece2
+          if($i<$n-1)
+          {
+            $substitute="$keyWord=$value&";
+          }
+          else {
+            $substitute="$keyWord=$value";
+          }
+          $sub=str_replace(' ','+',$substitute);
+          //echo $actualUrl;
+          $newUrl=str_replace($sub,'',$actualUrl);
+          // $url=str_replace('','',$actualUrl);
+          $i++;
+          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+        }
+          }
+          else{
+        echo "No criteria - All results are shown";
+      }
+    //   echo "<pre>";
+    // print_r($fieldNameValue);exit();
+           
 
-                            }
-                            else{
-                              echo "No criteria - All results are shown";
-                            }
-                           ?></p>
+      }
+      else 
+      {
+
+        $url=site_url('data/rawDataView');
+        echo "Keyword: $keyWord <a href='$url'>Remove Filter</a>";
+      }
+      
+      ?></p>
       
     </div>
 
@@ -741,7 +759,7 @@ function () {
       var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
       var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
       map.addLayer(osm);
-      $.getJSON("<?php echo site_url(); ?>/data/getRawDataEqnJsonData/<?php echo $jsonQuery; ?>",function(data){
+      $.getJSON("<?php echo site_url(); ?>/data/getMapJsonData/<?php echo $jsonQuery; ?>",function(data){
         var ratIcon = L.icon({
           iconUrl: '<?php echo base_url(); ?>resources/final.png',
           iconSize: [19,30]

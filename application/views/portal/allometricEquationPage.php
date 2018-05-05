@@ -567,7 +567,7 @@ $lang_ses = $this->session->userdata("site_lang");
       var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
       var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
       map.addLayer(osm);
-      $.getJSON("<?php echo site_url(); ?>/data/getAllometricEqnJsonData/<?php echo $jsonQuery; ?>",function(data){
+      $.getJSON("<?php echo site_url(); ?>/data/getMapJsonData/<?php echo $jsonQuery; ?>",function(data){
         var ratIcon = L.icon({
           iconUrl: '<?php echo base_url(); ?>resources/final.png',
           iconSize: [19,30]
