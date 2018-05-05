@@ -170,8 +170,7 @@ private function searchAttributeString($searchFields)
 
         $string=$this->searchAttributeString($validSearchKey);
        
-
-        $k=$data['allometricEquationView'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+        $k=$data['allometricEquationView'] = $this->db->query("SELECT a.Equation,a.Output,ref.Author,ref.Reference,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
@@ -186,7 +185,7 @@ private function searchAttributeString($searchFields)
          where $string GROUP BY a.ID_AE
          order by a.ID_AE ASC
           ")->result();
-          $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+        $data['allometricEquationView_count'] = $this->db->query("SELECT a.*,b.*,d.*,dis.*,lg.*,l.*,GROUP_CONCAT(lg.location_id),s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
@@ -201,6 +200,7 @@ private function searchAttributeString($searchFields)
          where $string GROUP BY a.ID_AE
          order by a.ID_AE ASC
         ")->result();
+       
          // $data["links"]                  = $this->pagination->create_links();
 
           if($searchFieldArray['keyword']!='')
@@ -239,6 +239,23 @@ private function searchAttributeString($searchFields)
         {
             redirect('data/allometricEquationView');
         }
+        $jsonQuery="SELECT l.latDD y,l.longDD x,GROUP_CONCAT(DISTINCT(a.output)) OUTPUT,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        fnc_ae_species_data(l.LatDD,l.LongDD) species_desc FROM location l
+        LEFT JOIN group_location lg ON l.ID_Location=lg.location_id
+        LEFT JOIN ae a ON lg.group_id=a.location_group
+        LEFT JOIN species s ON a.Species=s.ID_Species
+        LEFT JOIN family f ON s.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+        LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        WHERE a.ID_AE IS NOT NULL and $string
+        GROUP BY LatDD,LongDD";
+        //echo $jsonQuery;
+        //exit;
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page']      = 'portal/allometricEquationPage';
         $str=$string;
         $string=base64_encode($string);
@@ -249,6 +266,53 @@ private function searchAttributeString($searchFields)
          //$data["searchType"]=3;
          //$data["searchType"]=4;
         $this->template->display_portal($data);
+      }
+
+
+       public function getAllometricEqnJsonData($query)
+      {
+        $query1=base64_decode($query);
+        $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db_v2','maruf','maruf');
+        $sql =$query1;
+        if (isset($_GET['bbox']) || isset($_POST['bbox'])) {
+          $bbox = explode(',', $_GET['bbox']);
+          $sql = $sql . ' WHERE x <= ' . $bbox[2] . ' AND x >= ' . $bbox[0] . ' AND y <= ' . $bbox[3] . ' AND y >= ' . $bbox[1];
+        }
+        $rs = $conn->query($sql);
+        if (!$rs) {
+          echo 'An SQL error occured.\n';
+          exit;
+        }
+        $geojson = array(
+          'type'      => 'FeatureCollection',
+          'features'  => array()
+        );
+
+        # Loop through rows to build feature arrays
+        while ($row = $rs->fetch(PDO::FETCH_ASSOC)) {
+          $properties = $row;
+          # Remove x and y fields from properties (optional)
+          unset($properties['x']);
+          unset($properties['y']);
+          $feature = array(
+            'type' => 'Feature',
+            'geometry' => array(
+              'type' => 'Point',
+              'coordinates' => array(
+                $row['x'],
+                $row['y']
+              )
+            ),
+            'properties' => $properties
+          );
+          # Add feature arrays to feature collection array
+          array_push($geojson['features'], $feature);
+        }
+      //  return $geojson;
+        header('Content-type: application/json');
+        echo json_encode($geojson, JSON_NUMERIC_CHECK);
+        $conn = NULL;
+        //return $returnJson;
       }
 
 
@@ -3459,30 +3523,48 @@ private function searchAttributeString($searchFields)
 
   if($string==1)
   {
-    $rawDataViewjson=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
-         LEFT JOIN species s ON r.Species_ID=s.ID_Species
-         LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+    $rawDataViewjson=$this->db->query("SELECT r.*,u.THANAME,un.UNINAME,ci.Contributor_name,sl.local_name,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus,zon.Zones,eco.AEZ_NAME from rd r
+         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+         LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON r.Division=d.ID_Division
-         LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string order by r.ID ASC");
+         LEFT JOIN group_location lg ON r.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
+         LEFT JOIN `union` un ON l.Union =un.ID
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         LEFT JOIN contributor_info ci ON r.Contributor =ci.Contributor_ID
+         where $string  GROUP BY r.ID order by r.ID asc");
   }
   else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
 
-    $rawDataViewjson=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
-         LEFT JOIN species s ON r.Species_ID=s.ID_Species
-         LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+    $rawDataViewjson=$this->db->query("SELECT r.*,u.THANAME,un.UNINAME,ci.Contributor_name,sl.local_name,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus,zon.Zones,eco.AEZ_NAME from rd r
+         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+         LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON r.Division=d.ID_Division
-         LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string order by r.ID ASC");
+         LEFT JOIN group_location lg ON r.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
+         LEFT JOIN `union` un ON l.Union =un.ID
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         LEFT JOIN contributor_info ci ON r.Contributor =ci.Contributor_ID
+         where $string  GROUP BY r.ID order by r.ID asc");
   }
 
  header('Content-disposition: attachment; filename=Raw_Data.json');
@@ -3505,30 +3587,48 @@ private function searchAttributeString($searchFields)
 
   if($string==1)
   {
-    $rawDataViewcsv=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
-         LEFT JOIN species s ON r.Species_ID=s.ID_Species
-         LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+    $rawDataViewcsv=$this->db->query("SELECT r.*,u.THANAME,un.UNINAME,ci.Contributor_name,sl.local_name,l.*,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus,zon.Zones,eco.AEZ_NAME from rd r
+         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+         LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON r.Division=d.ID_Division
-         LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string order by r.ID ASC")->result_array();
+         LEFT JOIN group_location lg ON r.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
+         LEFT JOIN `union` un ON l.Union =un.ID
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         LEFT JOIN contributor_info ci ON r.Contributor =ci.Contributor_ID
+         where $string  GROUP BY r.ID order by r.ID asc")->result_array();
   }
   else
   {
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
 
-    $rawDataViewcsv=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
-         LEFT JOIN species s ON r.Species_ID=s.ID_Species
-         LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+    $rawDataViewcsv=$this->db->query("SELECT r.*,u.THANAME,un.UNINAME,ci.Contributor_name,sl.local_name,l.*,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus,zon.Zones,eco.AEZ_NAME from rd r
+         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+         LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON r.Division=d.ID_Division
-         LEFT JOIN district dis ON r.District =dis.ID_District
-         where $string order by r.ID ASC")->result_array();
+         LEFT JOIN group_location lg ON r.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
+         LEFT JOIN `union` un ON l.Union =un.ID
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         LEFT JOIN contributor_info ci ON r.Contributor =ci.Contributor_ID
+         where $string GROUP BY r.ID order by r.ID asc")->result_array();
   }
 
 
@@ -3538,21 +3638,21 @@ private function searchAttributeString($searchFields)
  header("Pragma: no-cache");
  header("Expires: 0");
  $handle = fopen('php://output', 'w');
- fputcsv($handle, array('ID','ID_RD', 'ID_tree', 'Tree_type','Vegetation_type','Division','District','Upazila','Union','Latitude'
-  ,'Longitude','Zone_FAO',' ID_FAO_Biomes','Ecoregion_Udvardy','Ecoregion_WWF','Division_Bailey','Zone_Holdridge',' Bioecological_zones_Bangladesh_IUCN ','Family_ID'
-  ,'Genus_ID','Species_ID','Subspecies','DBH_cm','H_m','Collar_girth','CD_m',' Veg_Component','B','Bd','Bg','Bt',' L','Rb','Rf','Rm','S','T','F','F_Bole_kg','F_Branch_kg','F_Foliage_kg','F_Foliage_and_twigs_kg','F_Bark_kg'
-  ,'F_Fruit_kg','F_Stump_kg','F_Buttress_kg','F_Roots_kg','Volume_m3','Volume_bole_m3','WD_AVG_gcm3','D_Bole_kg','D_Branch_kg','D_Foliage_g','  D_Foliage_kg',' D_Branch_g',' Field61'
-  ,'D_Bark_g','D_Bark_kg',' D_Stem_with_Bark_g','D_Stem_without_Bark_g',' D_Stem_without_Bark_kg',' D_Stump_kg',' D_Buttress_kg','D_Roots_kg',' ABG_g','ABG_kg',' BGB_kg','ID_Reference','Contributor',' Operator','Remark'
-  ,'Contact'));
+ fputcsv($handle, array('ID','ID_RD', 'Tree_type','Vegetation_type','Division','District','THANAME','UNINAME','LatDD'
+  ,'LongDD',' FAOBiomes','Ecoregion_Udvardy','Ecoregion_WWF','Division_Bailey','Zone_Holdridge',' Bioecological_zones_Bangladesh_IUCN ','Family'
+  ,'Genus','Species','DBH_cm','H_m','Collar_girth','CD_m',' Veg_Component','B','Bd','Bg','Bt',' L','Rb','Rf','Rm','S','T','F','F_Bole_kg','F_Branch_kg','F_Foliage_kg','F_Foliage_and_twigs_kg','F_Bark_kg'
+  ,'F_Fruit_kg','F_Stump_kg','F_Buttress_kg','F_Roots_kg','Volume_m3','Volume_bole_m3','WD_AVG_gcm3','D_Bole_kg','D_Branch_kg','D_Foliage_g','  D_Foliage_kg',' D_Branch_g'
+  ,'D_Bark_g','D_Bark_kg',' D_Stem_with_Bark_g','D_Stem_without_Bark_g',' D_Stem_without_Bark_kg',' D_Stump_kg',' D_Buttress_kg','D_Roots_kg',' ABG_g','ABG_kg',' BGB_kg','Reference','Contributor_name','Remark'
+  ));
                     $i = 1;
                     foreach ($rawDataViewcsv as $data) {
-                        fputcsv($handle, array($data["ID"], $data["ID_RD"], $data["ID_tree"], $data["Tree_type"], $data["Vegetation_type"], $data["Division"], $data["District"]
-                          , $data["Upazila"], $data["Union"], $data["Latitude"], $data["Longitude"], $data["Zone_FAO"], $data["ID_FAO_Biomes"], $data["Ecoregion_Udvardy"], $data["Ecoregion_WWF"]
-                          , $data["Division_Bailey"], $data["Zone_Holdridge"], $data["Bioecological_zones_Bangladesh_IUCN"], $data["Family_ID"], $data["Genus_ID"], $data["Species_ID"], $data["Subspecies"], $data["DBH_cm"],
+                        fputcsv($handle, array($data["ID"], $data["ID_RD"], $data["Tree_type"], $data["Vegetation_type"], $data["Division"], $data["District"]
+                          , $data["THANAME"], $data["UNINAME"], $data["LatDD"], $data["LongDD"], $data["FAOBiomes"], $data["Ecoregion_Udvardy"], $data["Ecoregion_WWF"]
+                          , $data["Division_Bailey"], $data["Zone_Holdridge"], $data["Bioecological_zones_Bangladesh_IUCN"], $data["Family"], $data["Genus"], $data["Species"], $data["DBH_cm"],
                           $data["H_m"], $data["Collar_girth"], $data["CD_m"], $data["Veg_Component"],$data["B"],$data["Bd"],$data["Bg"],$data["Bt"],$data["L"],$data["Rb"]
                           ,$data["Rf"],$data["S"],$data["T"],$data["F"],$data["F_Bole_kg"],$data["F_Branch_kg"],$data["F_Foliage_kg"],$data["F_Foliage_and_twigs_kg"],$data["F_Bark_kg"],$data["F_Fruit_kg"],$data["F_Stump_kg"],$data["F_Buttress_kg"],$data["F_Roots_kg"],$data["Volume_m3"],$data["Volume_bole_m3"]
-                          ,$data["WD_AVG_gcm3"],$data["D_Bole_kg"],$data["D_Branch_kg"],$data["D_Foliage_g"],$data["D_Foliage_kg"],$data["D_Branch_g"],$data["Field61"],$data["D_Bark_g"],$data["D_Bark_kg"],$data["D_Stem_with_Bark_g"] ,$data["D_Stem_without_Bark_g"],$data["D_Stem_without_Bark_kg"],$data["D_Stump_kg"],$data["D_Buttress_kg"],$data["D_Roots_kg"],$data["ABG_g"],$data["ABG_kg"],$data["BGB_kg"],$data["ID_Reference"],
-                          $data["Contributor"],$data["Operator"],$data["Remark"] ,$data["Contact"]));
+                          ,$data["WD_AVG_gcm3"],$data["D_Bole_kg"],$data["D_Branch_kg"],$data["D_Foliage_g"],$data["D_Foliage_kg"],$data["D_Branch_g"],$data["D_Bark_g"],$data["D_Bark_kg"],$data["D_Stem_with_Bark_g"] ,$data["D_Stem_without_Bark_g"],$data["D_Stem_without_Bark_kg"],$data["D_Stump_kg"],$data["D_Buttress_kg"],$data["D_Roots_kg"],$data["ABG_g"],$data["ABG_kg"],$data["BGB_kg"],$data["Reference"],
+                          $data["Contributor_name"],$data["Remark"] ));
                         $i++;
                     }
                         fclose($handle);
@@ -5264,6 +5364,7 @@ private function searchAttributeString($searchFields)
     public function rawDataDetails($ID)
     {
         $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID);
+        $data['location'] = $this->Forestdata_model->get_row_data_equation_details_loc($ID);
         $data['content_view_page'] = 'portal/rawDataDetails';
         $this->template->display_portal($data);
     }
@@ -5297,6 +5398,7 @@ private function searchAttributeString($searchFields)
      public function rawDataDetailsPdf($ID)
      {
         $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID);
+        $data['location'] = $this->Forestdata_model->get_row_data_equation_details_loc($ID);
         include('mpdf/mpdf.php');
         $mpdf = new mPDF('utf-8', 'A4', '', '', 20, 20, 25, 47, 10, 10);
         $mpdf->SetTitle('Raw Data Details');

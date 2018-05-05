@@ -52,10 +52,10 @@ $lang_ses = $this->session->userdata("site_lang");
   
   <h3 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Record Details</h3>
   
-  <div class="row">     
-    <div class="col-md-12">
-         <br>
-             <table class="table">
+   <div class="row">
+         <div class="col-md-12">
+            <br>
+            <table class="table">
                <tr>
                   <th style="width:210px"> DBH (cm): </th>
                   <td> <b> <?php echo $row->DBH_cm;?>
@@ -149,42 +149,39 @@ $lang_ses = $this->session->userdata("site_lang");
                   <th style="width:210px"> Remark: </th>
                   <td><?php echo $row->Remark;?></td>
                </tr>
-               <tr>
+             <!--   <tr>
                   <th style="width:210px"> Contact: </th>
                   <td><?php echo $row->Contact;?></td>
+               </tr> -->
+            </table>
+         </div>
+      </div>
+
+
+    <div class="row">
+         <div class="col-md-12">
+            <br>
+            <h3 class="section-header">Components</h3>
+            <table class="table" >
+               <tr>
+                  <th style="width:210px"> Components: </th>
+                  <td >
+                     <strong><em>
+                     </em></strong>
+                  </td>
                </tr>
             </table>
-
-    </div>
-</div>
-
-
-<div class="row">    
-    <div class="col-md-12">
-        <br>
-        <h3 class="section-header">Components</h3>
-        <table class="table" >
-            <tr>
-                <th style="width:210px"> Components: </th>
-                <td >
-                    <strong><em>
-                     
-                   </em></strong>
-                </td>
-            </tr>
-        </table> 
-      
-        <br><br>
-    </div>
-</div>
+            <br><br>
+         </div>
+      </div>
 
 
 
-<div class="row">     
-    <div class="col-md-12">
-        <br>
-        <h3 class="section-header">Idendification</h3>       
-       <table class="table">
+ <div class="row">
+         <div class="col-md-12">
+            <br>
+            <h3 class="section-header">Idendification</h3>
+            <table class="table">
                <tr>
                   <th> Tree type: </th>
                   <td><?php echo $row->Tree_type;?></td>
@@ -194,24 +191,19 @@ $lang_ses = $this->session->userdata("site_lang");
                   <td> <?php echo $row->Vegetation_type;?></td>
                </tr>
             </table>
-    </div>
-</div>
+         </div>
+      </div>
 
-    <div class="row">     
-    <div class="col-md-12">
-        <br>
-        <h3 class="section-header">
-            Taxonomy
-             
-            <span style="color:#999;font-size:11px;font-weight:normal;">
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                
-            </span>
-            
-        </h3>
-        
-            
-                        <table class="table">
+      <div class="row">
+         <div class="col-md-12">
+            <br>
+            <h3 class="section-header">
+               Taxonomy
+               <span style="color:#999;font-size:11px;font-weight:normal;">
+               &nbsp;&nbsp;&nbsp;&nbsp;
+               </span>
+            </h3>
+            <table class="table">
                <tr>
                   <th>Family:</th>
                   <th>Genus:</th>
@@ -221,129 +213,94 @@ $lang_ses = $this->session->userdata("site_lang");
                   <th>Local Names:</th>
                </tr>
                <tr>
-               <td>
+               <td align="center">
                   <?php echo $row->Family;?>
                </td>
-               <td>
+               <td align="center">
                   <?php echo $row->Genus;?>
                </td>
-               <td>
+               <td align="center">
                   <?php echo $row->Species;?>
                </td>
-               <td><?php echo $row->Subspecies;?></td>
+               <td align="center">NA</td>
                <td >None</td>
-               <td>
+               <td align="center"><?php echo $row->local_name;?>
                </td>
                </tr>
             </table>
-            
-        
-  </div>
-</div>
-
-    <div class="row">     
-    <div class="col-md-12">    
-        <br>
-        <h3 class="section-header">
-            Locations
-
-            
-            <span style="color:#999;font-size:11px;font-weight:normal;">
-                &nbsp;&nbsp;&nbsp;&nbsp;
-            </span>
-            
-
-            </h3>
-            
-           
-            
-                 <table class="table">
-               <tr>
-                  <td style="width:40%">
-                    <table>
-                       <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division: </th>
-                           <td  class="pdf-record-td">
-                              <?php echo $row->Division;?>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> District: </th>
-                           <td  class="pdf-record-td">
-                              <?php echo $row->District;?>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Upazilla: </th>
-                           <td  class="pdf-record-td"> <?php echo $row->THANAME;?> </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Union: </th>
-                           <td  class="pdf-record-td"><?php echo $row->UNINAME;?></td>
-                        </tr>
-                    
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
-                           <td  class="pdf-record-td"> 
-                              <?php echo $row->Latitude;?>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Longitude: </th>
-                           <td  class="pdf-record-td">
-                              <?php echo $row->Longitude;?>
-                           </td>
-                        </tr>
-                     </table>
-                  </td>
-                  <td style="width:60%">
-                 <table>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  FAO Biome: </th>
-                           <td class="pdf-record-td">
-                              <?php echo $row->FAOBiomes;?>
-                           </td>
-                        </tr>
-                             <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  BFI Zone: </th>
-                           <td class="pdf-record-td">
-                            
-                           </td>
-                        </tr>
-                             <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  Bangladesh Agroecological Zone: </th>
-                           <td class="pdf-record-td">
-                             
-                           </td>
-                        </tr>
-
-                        
-                    
-                      
-                       
-                       
-                     </table>
-                  </td>
-               </tr>
-            </table>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-12">
             <br>
-            
-         
-            
-        
-        
-            <div id="point_map_canvas"></div>
-        
-       
-  </div>
-</div>
+            <h3 class="section-header">
+               Locations
+               <span style="color:#999;font-size:11px;font-weight:normal;">
+               &nbsp;&nbsp;&nbsp;&nbsp;
+               </span>
+            </h3>
+               <table class="table">
+      <thead>
+        <tr>
+         <?php 
+         foreach($rawDataDetails as $row)
+         {
+           ?>
+           <th>FAO Biome:</th>
+           <td><?php echo $row->FAOBiomes;?></td>
+           <th>BFI Zone:</th>
+           <td><?php echo $row->Zones;?></td>
+           <th>Bangladesh Agroecological Zone:</th>
+           <td><?php echo $row->AEZ_NAME;?></td>
 
-    <div class="row">     
-    <div class="col-md-12">
-        <br>
-        <h3 class="section-header">Reference</h3>
-         
-          <table class="table">
+
+         </tr>
+         <?php 
+       }?>
+       <br>
+       <tr class="bg-success">
+        <th>Division</th>
+        <th>District</th>
+        <th>Upazila</th>
+        <th>Union</th>
+        <th>Latitute</th>
+        <th>Longitute</th>
+      </tr>
+    </thead>
+    <tbody>
+
+     <?php
+     $i = 1;
+     foreach ($location as $row) {
+       ?>
+       <tr>
+        <td align="center"><?php echo $row->Division;?></td>
+        <td align="center"><?php echo $row->District;?></td>
+        <td align="center"><?php echo $row->THANAME;?></td>
+        <td align="center"><?php echo $row->UNINAME;?></td>
+        <td align="center"><?php echo $row->LatDD;?></td>
+        <td align="center"><?php echo $row->LongDD;?></td>
+      </tr>
+      <?php
+      $i++;
+    }
+    ?>
+  </tbody>
+
+</table>
+            <br>
+            <div id="point_map_canvas"></div>
+         </div>
+      </div>
+<?php 
+foreach($rawDataDetails as $row)
+{
+ ?>
+      <div class="row">
+         <div class="col-md-12">
+            <br>
+            <h3 class="section-header">Reference</h3>
+            <table class="table">
                <tr>
                   <th> Reference: </th>
                   <td> 
@@ -363,50 +320,36 @@ $lang_ses = $this->session->userdata("site_lang");
                   </td>
                </tr>
             </table>
-        
-    </div>
-</div>
-
-    <div class="row">     
-    <div class="col-md-12">
-        <br>
-        <h3 class="section-header">Contributor</h3>
-        
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-12">
+            <br>
+            <h3 class="section-header">Contributor</h3>
             <table class="table">
                <tr>
                   <th style="width:210px">Contributor:</th>
-                  <td><?php echo $row->Contributor;?></td>
+                  <td><?php echo $row->Contributor_name;?></td>
                </tr>
             </table>
-            
-        
-  </div>
-</div>
-
-    <div class="row">     
-    <div class="col-md-12">
-        <br>
-        <h3 class="section-header">Dataset</h3>
-
-         
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-12">
+            <br>
+            <h3 class="section-header">Dataset</h3>
             <table class="table">
-                <tr><th style="width:210px">Dataset:</th><td> RD</td></tr>
+               <tr>
+                  <th style="width:210px">Dataset:</th>
+                  <td>RD </td>
+               </tr>
+                 <?php 
+             }?>
+
             </table>
-        
-    </div>
+         </div>
+      </div>
+   </div>
+</div>
 </div>
 
-    
-
-  </div>
-
-
-
-
-
-   
-    
-  </div>
-
-
-  </div>

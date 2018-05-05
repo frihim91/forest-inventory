@@ -73,7 +73,7 @@ $lang_ses = $this->session->userdata("site_lang");
 
 
            <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-           <li><a href="<?php echo site_url('Portal/allometricEquationDetailsPdf/'.$row->ID_AE); ?>" id="export-json">Download PDF</a></li>
+           <li><a href="<?php echo site_url('Portal/allometricEquationDetailsPdf/'.$row->ID_AE); ?>" target="_blank" id="export-json">Download PDF</a></li>
            <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
          </ul>
          <?php 
@@ -182,8 +182,8 @@ $lang_ses = $this->session->userdata("site_lang");
          
        </td>
        <td > NA</td>
-       <td ><?php echo $row->local_name;?></td>
-       <td >
+       <td >None</td>
+       <td ><?php echo $row->local_name;?>
        </td>
      </tr>
      

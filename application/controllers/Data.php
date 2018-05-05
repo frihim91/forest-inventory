@@ -595,15 +595,10 @@ public function search_allometricequation_key()
         LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
         WHERE c.ID_AE IS NOT NULL
         GROUP BY LatDD,LongDD";
-      $jsonQueryEncode=base64_encode($jsonQuery);
-
-
-
-
+        $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
         // echo json_encode($data['jsonData']);
         // $this->pr($data['jsonData']);
-
         $data['content_view_page']      = 'portal/allometricEquationPage';
 
         $this->template->display_portal($data);
@@ -612,6 +607,7 @@ public function search_allometricequation_key()
       public function getAllometricEqnJsonData($query)
       {
         $query1=base64_decode($query);
+        
         $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db_v2','maruf','maruf');
         $sql =$query1;
         if (isset($_GET['bbox']) || isset($_POST['bbox'])) {

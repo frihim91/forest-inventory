@@ -377,7 +377,7 @@ $lang_ses = $this->session->userdata("site_lang");
           {
              $keyWord=$_GET['keyword'];
           }
-
+         
           if($keyWord=='')
           {
              if(!empty($fieldNameValue)){
@@ -387,7 +387,7 @@ $lang_ses = $this->session->userdata("site_lang");
               {
           $pieces = explode("/", $key);
           $fieldName= $pieces[0]; // piece1
-          $keyWord= $pieces[1];
+          $keyWord= $pieces[1]; 
           //echo $fieldName;exit;// piece2
           if($i<$n-1)
           {
@@ -409,23 +409,23 @@ $lang_ses = $this->session->userdata("site_lang");
       }
     //   echo "<pre>";
     // print_r($fieldNameValue);exit();
-
+           
 
       }
-      else
+      else 
       {
 
         $url=site_url('data/allometricEquationView');
         echo "Keyword: $keyWord <a href='$url'>Remove Filter</a>";
       }
-
+      
       ?></p>
 
     </div>
 
   </div>
 
-  <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" class="resultList" href="#results-list"><span class="glyphicon glyphicon-list"></span> Results List</a></li>
     <li><a data-toggle="tab" class="results-map" href="#results-map"><span class="glyphicon glyphicon-globe"></span> Map View</a></li>
     <div style="float:right;">
@@ -495,24 +495,25 @@ $lang_ses = $this->session->userdata("site_lang");
          <style type="text/css">
            #map{ height: 100% }
          </style>
+         </div>
        </div>
+  <div class="row mapBlock" style="display:none">
+   <div class="col-md-12" style="height:500px!important;width:100%">
+     <div id="map">
+       
      </div>
-   </div>
- </div>
- <div class="row mapBlock" style="display:none">
- <div class="col-md-12" style="height:500px!important;width:100%">
-   <div id="map">
-
-   </div>
-   <script>
+     <script>
        // initialize the map
 
 
      </script>
    </div>
+  </div>
+ </div>
+     </div>
+   </div>
  </div>
 
-</div>
 
 
 
@@ -556,7 +557,7 @@ $lang_ses = $this->session->userdata("site_lang");
     });
 });
  </script>
- <?php
+<?php
   $jsonQuery=str_replace("=","",$jsonQuery);
  ?>
  <script type="text/javascript">
@@ -566,10 +567,7 @@ $lang_ses = $this->session->userdata("site_lang");
       var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
       var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
       map.addLayer(osm);
-
-
       $.getJSON("<?php echo site_url(); ?>/data/getAllometricEqnJsonData/<?php echo $jsonQuery; ?>",function(data){
-
         var ratIcon = L.icon({
           iconUrl: '<?php echo base_url(); ?>resources/final.png',
           iconSize: [19,30]
@@ -582,7 +580,6 @@ $lang_ses = $this->session->userdata("site_lang");
           }
         }).addTo(map);
       });
-
     });
   });
   $("a.resultList").click(function(){
@@ -717,30 +714,30 @@ $lang_ses = $this->session->userdata("site_lang");
    $(this).tab('show');})
 </script>
 <script type="text/javascript">
- // $(document).ready(function(){
- //   $("a.results-map").click(function(){
- //     $("div.mapBlock").show();
- //     var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
- //     var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
- //     map.addLayer(osm);
- //
- //
- //     $.getJSON("<?php echo base_url(); ?>resources/mapdata.php",function(data){
- //       var ratIcon = L.icon({
- //         iconUrl: '<?php echo base_url(); ?>resources/final.png',
- //         iconSize: [19,30]
- //       });
- //       L.geoJson(data,{
- //         pointToLayer: function(feature,latlng){
- //           var marker = L.marker(latlng,{icon: ratIcon});
- //           marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.output);
- //           return marker;
- //         }
- //       }).addTo(map);
- //     });
- //
- //   });
- // });
+ $(document).ready(function(){
+   $("a.results-map").click(function(){
+     $("div.mapBlock").show();
+     var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
+     var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+     map.addLayer(osm);
+
+
+     $.getJSON("<?php echo base_url(); ?>resources/mapdata.php",function(data){
+       var ratIcon = L.icon({
+         iconUrl: '<?php echo base_url(); ?>resources/final.png',
+         iconSize: [19,30]
+       });
+       L.geoJson(data,{
+         pointToLayer: function(feature,latlng){
+           var marker = L.marker(latlng,{icon: ratIcon});
+           marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.output);
+           return marker;
+         }
+       }).addTo(map);
+     });
+
+   });
+ });
  $("a.resultList").click(function(){
    $("div.mapBlock").hide();
  });
@@ -861,3 +858,4 @@ $lang_ses = $this->session->userdata("site_lang");
              <!--<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>-->
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
+

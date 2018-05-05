@@ -139,24 +139,24 @@ foreach($allometricEquationDetails as $row)
           <th>Local Names:</th>
         </tr>
         <tr>
-          <td >
+          <td align="center">
            
            <?php echo $row->Family;?>
          </td>
-         <td>
+         <td align="center">
            
            <?php echo $row->Genus;?>
            
          </td>
-         <td>
+         <td align="center">
            
            <?php echo $row->Species;?>
            
            
          </td>
-         <td > <?php echo $row->Subspecies;?></td>
+         <td align="center">NA</td>
          <td >None</td>
-         <td >
+         <td ><?php echo $row->local_name;?>
          </td>
        </tr>
        
@@ -217,12 +217,12 @@ foreach($allometricEquationDetails as $row)
      foreach ($location as $row) {
        ?>
        <tr>
-        <td ><?php echo $row->Division;?></td>
-        <td><?php echo $row->District;?></td>
-        <td><?php echo $row->THANAME;?></td>
-        <td ><?php echo $row->UNINAME;?></td>
-        <td><?php echo $row->LatDD;?></td>
-        <td><?php echo $row->LongDD;?></td>
+        <td align="center"><?php echo $row->Division;?></td>
+        <td align="center"><?php echo $row->District;?></td>
+        <td align="center"><?php echo $row->THANAME;?></td>
+        <td align="center"><?php echo $row->UNINAME;?></td>
+        <td align="center"><?php echo $row->LatDD;?></td>
+        <td align="center"><?php echo $row->LongDD;?></td>
       </tr>
       <?php
       $i++;

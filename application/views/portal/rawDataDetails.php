@@ -68,7 +68,7 @@
                ?>
             <ul class="dropdown-menu" role="menu">
                <!--  <li><a href="#" id="export-txt">Download TXT (Tab Delimited UTF-16)</a></li> -->
-               <li><a href="<?php echo site_url('Portal/rawDataDetailsPdf/'.$row->ids); ?>" id="export-json">Download PDF</a></li>
+               <li><a href="<?php echo site_url('Portal/rawDataDetailsPdf/'.$row->ID); ?>" target="_blank" id="export-json">Download PDF</a></li>
                <!-- <li><a href="#" id="export-xml">Download XML</a></li> -->
             </ul>
             <?php 
@@ -174,10 +174,10 @@
                   <th style="width:210px"> Remark: </th>
                   <td><?php echo $row->Remark;?></td>
                </tr>
-               <tr>
+             <!--   <tr>
                   <th style="width:210px"> Contact: </th>
                   <td><?php echo $row->Contact;?></td>
-               </tr>
+               </tr> -->
             </table>
          </div>
       </div>
@@ -240,9 +240,9 @@
                <td>
                   <?php echo $row->Species;?>
                </td>
-               <td><?php echo $row->Subspecies;?></td>
+               <td>N</td>
                <td >None</td>
-               <td>
+               <td><?php echo $row->local_name;?>
                </td>
                </tr>
             </table>
@@ -257,79 +257,63 @@
                &nbsp;&nbsp;&nbsp;&nbsp;
                </span>
             </h3>
-            <table class="table">
-               <tr>
-                  <td style="width:40%">
-                     <table>
-                       <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division: </th>
-                           <td  class="pdf-record-td">
-                              <?php echo $row->Division;?>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> District: </th>
-                           <td  class="pdf-record-td">
-                              <?php echo $row->District;?>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Upazilla: </th>
-                           <td  class="pdf-record-td"> <?php echo $row->THANAME;?> </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Union: </th>
-                           <td  class="pdf-record-td"><?php echo $row->UNINAME;?></td>
-                        </tr>
-                    
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
-                           <td  class="pdf-record-td"> 
-                              <?php echo $row->Latitude;?>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Longitude: </th>
-                           <td  class="pdf-record-td">
-                              <?php echo $row->Longitude;?>
-                           </td>
-                        </tr>
-                     </table>
-                  </td>
-                  <td style="width:60%">
-                     <table>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  FAO Biome: </th>
-                           <td class="pdf-record-td">
-                              <?php echo $row->FAOBiomes;?>
-                           </td>
-                        </tr>
-                             <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  BFI Zone: </th>
-                           <td class="pdf-record-td">
-                            
-                           </td>
-                        </tr>
-                             <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">  Bangladesh Agroecological Zone: </th>
-                           <td class="pdf-record-td">
-                             
-                           </td>
-                        </tr>
+               <table class="table">
+      <thead>
+        <tr>
+         <?php 
+         foreach($rawDataDetails as $row)
+         {
+           ?>
+           <th>FAO Biome:</th>
+           <td><?php echo $row->FAOBiomes;?></td>
+           <th>BFI Zone:</th>
+           <td><?php echo $row->Zones;?></td>
+           <th>Bangladesh Agroecological Zone:</th>
+           <td><?php echo $row->AEZ_NAME;?></td>
 
-                        
-                    
-                      
-                       
-                       
-                     </table>
-                  </td>
-               </tr>
-            </table>
+
+         </tr>
+         <?php 
+       }?>
+       <br>
+       <tr class="bg-success">
+        <th>Division</th>
+        <th>District</th>
+        <th>Upazila</th>
+        <th>Union</th>
+        <th>Latitute</th>
+        <th>Longitute</th>
+      </tr>
+    </thead>
+    <tbody>
+
+     <?php
+     $i = 1;
+     foreach ($location as $row) {
+       ?>
+       <tr>
+        <td ><?php echo $row->Division;?></td>
+        <td><?php echo $row->District;?></td>
+        <td><?php echo $row->THANAME;?></td>
+        <td ><?php echo $row->UNINAME;?></td>
+        <td><?php echo $row->LatDD;?></td>
+        <td><?php echo $row->LongDD;?></td>
+      </tr>
+      <?php
+      $i++;
+    }
+    ?>
+  </tbody>
+
+</table>
             <br>
             <div id="point_map_canvas"></div>
          </div>
       </div>
+<?php 
+foreach($rawDataDetails as $row)
+{
+ ?>
       <div class="row">
          <div class="col-md-12">
             <br>
@@ -363,7 +347,7 @@
             <table class="table">
                <tr>
                   <th style="width:210px">Contributor:</th>
-                  <td><?php echo $row->Contributor;?></td>
+                  <td><?php echo $row->Contributor_name;?></td>
                </tr>
             </table>
          </div>
@@ -377,6 +361,9 @@
                   <th style="width:210px">Dataset:</th>
                   <td>RD </td>
                </tr>
+                 <?php 
+             }?>
+
             </table>
          </div>
       </div>

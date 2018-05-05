@@ -425,10 +425,7 @@
             </div>
             
       </div>
-   </div>
-</div>
-</div>
-<div class="row mapBlock" style="display:none">
+      <div class="row mapBlock" style="display:none">
       <div class="col-md-12" style="height:500px!important;width:100%">
         <div id="map"></div>
         <script>
@@ -438,6 +435,10 @@
         </script>
       </div>
     </div>
+   </div>
+</div>
+</div>
+
 
 <script type="text/javascript">
 $(document).ready(function(){
