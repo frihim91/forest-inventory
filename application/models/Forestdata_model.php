@@ -716,7 +716,7 @@ Class Forestdata_model extends CI_Model {
 	 public function get_raw_data_grid()
 	{
 		$data=$this->db->query("SELECT r.ID,r.H_m,r.DBH_cm,r.Volume_m3,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus from rd r
-         LEFT JOIN species_group sr ON r.Speciesgroup_ID=r.Speciesgroup_ID
+         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
          LEFT JOIN species s ON sr.ID_Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus

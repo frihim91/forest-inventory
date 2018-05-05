@@ -240,7 +240,7 @@
                <td>
                   <?php echo $row->Species;?>
                </td>
-               <td>N</td>
+               <td>NA</td>
                <td >None</td>
                <td><?php echo $row->local_name;?>
                </td>

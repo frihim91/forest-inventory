@@ -729,37 +729,36 @@ function () {
    
    
 </script>
-<script type="text/javascript">
-$(document).ready(function(){
-  $("a.results-map").click(function(){
-   //alert("find");
-    $("div.mapBlock").show();
-    var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
-    var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-    map.addLayer(osm);
 
 
-    $.getJSON("<?php echo base_url(); ?>resources/mapRawdata.php",function(data){
-      var ratIcon = L.icon({
-        iconUrl: '<?php echo base_url(); ?>resources/final.png',
-        iconSize: [19,30]
+<?php
+  $jsonQuery=str_replace("=","",$jsonQuery);
+ ?>
+ <script type="text/javascript">
+  $(document).ready(function(){
+    $("a.results-map").click(function(){
+      $("div.mapBlock").show();
+      var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
+      var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+      map.addLayer(osm);
+      $.getJSON("<?php echo site_url(); ?>/data/getRawDataEqnJsonData/<?php echo $jsonQuery; ?>",function(data){
+        var ratIcon = L.icon({
+          iconUrl: '<?php echo base_url(); ?>resources/final.png',
+          iconSize: [19,30]
+        });
+        L.geoJson(data,{
+          pointToLayer: function(feature,latlng){
+            var marker = L.marker(latlng,{icon: ratIcon});
+            marker.bindPopup('<h4><b>Raw Data : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.fao_biome);
+            return marker;
+          }
+        }).addTo(map);
       });
-      L.geoJson(data,{
-        pointToLayer: function(feature,latlng){
-          var marker = L.marker(latlng,{icon: ratIcon});
-
-           marker.bindPopup('<h4><b>Raw Data : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes);
-
-          return marker;
-        }
-      }).addTo(map);
     });
-
   });
-});
-$("a.resultList").click(function(){
-  $("div.mapBlock").hide();
-});
+  $("a.resultList").click(function(){
+    $("div.mapBlock").hide();
+  });
 </script>
 
 <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
