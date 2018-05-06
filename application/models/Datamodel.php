@@ -16,7 +16,7 @@ Class Datamodel extends CI_Model {
     $result=$this->db->query("SELECT s.ID_Species,(SELECT COUNT(*) FROM ae where species=s.ID_species ) TOTAL_AE,
                               (SELECT COUNT(*) FROM ef WHERE species=s.ID_Species) TOTAL_EF,
                               (SELECT COUNT(*) FROM rd as rd LEFT JOIN species_group sr ON rd.Speciesgroup_ID=sr.Speciesgroup_ID
-                              LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE sr.ID_Species=s.ID_Species) TOTAL_RD,
+                              LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE sr.ID_Species=$speciesId) TOTAL_RD,
                               (SELECT COUNT(*) FROM wd WHERE ID_species=s.ID_Species) TOTAL_WD,
                               bd.description,s.Species,sl.local_name,si.image_name
                               FROM species s

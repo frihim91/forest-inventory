@@ -3946,17 +3946,7 @@ private function searchAttributeString($searchFields)
          where s.ID_Species=$specis_id GROUP BY r.ID
          order by r.ID desc
         ")->result();
-        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
-        fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
-        LEFT JOIN group_location b ON a.ID_Location=b.location_id
-        LEFT JOIN rd r ON b.group_id=r.location_group
-        LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
-        LEFT JOIN species s ON sr.ID_Species=s.ID_Species
-        LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
-        WHERE r.ID IS NOT NULL
-        GROUP BY LatDD,LongDD";
-        $jsonQueryEncode=base64_encode($jsonQuery);
-        $data['jsonQuery']=$jsonQueryEncode;
+        
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_rawData;
@@ -3987,14 +3977,25 @@ private function searchAttributeString($searchFields)
         //pagination style end
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        LEFT JOIN rd r ON b.group_id=r.location_group
+        LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+        LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+        LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        WHERE r.ID IS NOT NULL
+        GROUP BY LatDD,LongDD";
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
         $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid_species($specis_id,$limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/rawDataView';
-        // $string="r.Species_ID=$specis_id";
-        // $string=base64_encode($string);
-        // $string= str_replace("=","abyz",$string);
-        // $data['string']=$string;
-        // $data['strs']=$string;
+        $string="s.ID_Species=$specis_id";
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+        $data['strs']=$string;
         $this->template->display_portal($data);
     }
 
