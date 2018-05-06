@@ -246,16 +246,16 @@ return $imgFullName;
                                     </b>
                                  <p style="text-align: justify;width:550px;background-color:#f5f5f5 ;">
                                     <?php 
-                                       $botanical_description = $this->Forestdata_model->get_botanical_description($speciesIds->ID_Species);
+                                       $get_species_image = $this->Forestdata_model->get_species_image($speciesIds->ID_Species);
                                        ?> 
-                                    <?php foreach ($botanical_description as $row) : ?>
-                                    <?php if($botanical_description !='') { ?>
+                                    <?php foreach ($get_species_image as $row) : ?>
+                                    <?php if($get_species_image !='') { ?>
                                     <b> 
                                     <img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $row->species.'.jpg'; ?>" class="speciesImg">: </b><?php echo $row->description;?>
                                     <br>
-                                    <?php if($row->name_bangla!='') { ?>
+                                    <?php if($row->local_name!='') { ?>
                                    
-                                    <b>Local Name: <?php echo $row->name_bangla;?></b>
+                                    <b>Local Name: <?php echo $row->local_name;?></b>
                                     <?php  break; ?>
                                     <?php } else { ?>
                                         <b>Local Name: No Data</b>

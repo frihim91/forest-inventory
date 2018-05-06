@@ -99,9 +99,10 @@ private function pr($data)
 public function dataSpecies()
 {
   $n=$data['family_details']    = $this->db->query("select f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
-  FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT,(SELECT count(ID) FROM rd as rd WHERE rd.Family_ID=f.ID_Family)
-  as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae WHERE ae.Family=f.ID_Family)
-  as AECOUNT,(SELECT count(ID_WD) FROM wd as wd WHERE wd.ID_family=f.ID_Family)
+  FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT,(SELECT count(rd.ID) FROM rd as rd LEFT JOIN species_group sr ON rd.Speciesgroup_ID=sr.Speciesgroup_ID
+  LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
+  as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae  LEFT JOIN species s ON ae.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
+  as AECOUNT,(SELECT count(ID_WD) FROM wd as wd LEFT JOIN species s ON wd.ID_species=s.ID_Species  WHERE s.ID_family=f.ID_Family)
   as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
   from family as f ORDER BY f.Family
   ")->result();

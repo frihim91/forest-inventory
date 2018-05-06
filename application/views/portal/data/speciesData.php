@@ -79,7 +79,7 @@ $ci->load->model('datamodel');
                         $efData=noDataReturn($species_list->ID_Species,$availableData->TOTAL_EF,'Emission Factors (EF)',$efUrl);
                         $wdData=noDataReturn($species_list->ID_Species,$availableData->TOTAL_WD,'Wood Density (WD)',$wdUrl);
                         $rdData=noDataReturn($species_list->ID_Species,$availableData->TOTAL_RD,'Raw Data (RD)',$rdUrl);
-                        $localNameData=noDataReturn($species_list->ID_Species,$availableData->name_bangla,'Local Name','None');
+                        $localNameData=noDataReturn($species_list->ID_Species,$availableData->local_name,'Local Name','None');
                         ?>
                         <div class="panel panel-warning">
                           <div class="panel-heading">
@@ -123,7 +123,17 @@ $ci->load->model('datamodel');
                                       </tr> -->
                                     </tbody>
                                   </table>
-                                  <p style="text-align: justify;"><img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $availableData->species.'.jpg'; ?>" class="speciesImg"> </b><?php echo $availableData->description;?></p>
+                                   
+                                    
+                                    <?php if($availableData->image_name!='') { ?>
+                                   
+                                     <p style="text-align: justify;"><img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $availableData->image_name; ?>" class="speciesImg"> </b><?php echo $availableData->description;?></p>
+                                   
+                                    <?php } else { ?>
+                                        
+                                    <?php  } ?>
+                                   
+                                 
                                 </div>
                               </div>
                             </div>

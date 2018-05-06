@@ -560,17 +560,19 @@ Class Forestdata_model extends CI_Model {
 
      public function get_allometric_equation_grid_Speciesdata($specis_id,$limit,$page)
   {
-    $data=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+    $data=$this->db->query("SELECT a.Equation,a.Output,ref.Author,ref.Reference,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
-         LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON a.Division=d.ID_Division
-         LEFT JOIN district dis ON a.District =dis.ID_District
-         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where a.Species=$specis_id
+         LEFT JOIN group_location lg ON a.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where a.Species=$specis_id GROUP BY a.ID_AE
          order by a.ID_AE desc LIMIT  $limit OFFSET $page")->result();
 
     //print($this->db->last_query());exit;
@@ -738,15 +740,20 @@ Class Forestdata_model extends CI_Model {
 
    public function get_raw_data_grid_species($specis_id,$limit,$page)
   {
-    $data=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
-         LEFT JOIN species s ON r.Species_ID=s.ID_Species
-         LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family
+    $data=$this->db->query("SELECT r.ID,r.H_m,r.DBH_cm,r.Volume_m3,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus from rd r
+         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON r.Division=d.ID_Division
-         LEFT JOIN district dis ON r.District =dis.ID_District
-         where r.Species_ID=$specis_id
+         LEFT JOIN group_location lg ON r.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where s.ID_Species=$specis_id GROUP BY r.ID
          order by r.ID desc LIMIT $limit OFFSET $page
     ")->result();
      return $data;
@@ -878,11 +885,12 @@ Class Forestdata_model extends CI_Model {
 
 
 
-    public function get_botanical_description($specis_id)
+    public function get_species_image($specis_id)
    {
-    $data=$this->db->query("SELECT bd.*,s.* from botanical_descriptions bd
-         LEFT JOIN species s ON bd.species_id=s.ID_Species
-         WHERE bd.species_id=$specis_id ")->result();
+    $data=$this->db->query("SELECT bd.*,s.* from species_image bd
+         LEFT JOIN species s ON bd.Species_ID=s.ID_Species
+         LEFT JOIN species_localname sl ON bd.botanical_id=sl.botanical_id
+         WHERE bd.Species_ID=$specis_id ")->result();
      return $data;
     }
 

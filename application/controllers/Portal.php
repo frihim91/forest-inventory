@@ -2692,17 +2692,19 @@ private function searchAttributeString($searchFields)
         $config             = array();
         $config["base_url"] = base_url() .  "index.php/portal/allometricEquationViewSpeciesData/".$specis_id;
 
-         $total_ae=$this->db->query("SELECT a.*,b.*,d.*,dis.*,s.ID_Species,s.Species,s.ID_Genus,s.ID_Family,ref.*,f.*,g.*,eco.*,zon.* from ae a
+         $total_ae=$this->db->query("SELECT a.Equation,a.Output,ref.Author,ref.Reference,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
-         LEFT JOIN family f ON a.Family=f.ID_Family
-         LEFT JOIN genus g ON a.Genus=g.ID_Genus
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON a.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON a.Division=d.ID_Division
-         LEFT JOIN district dis ON a.District =dis.ID_District
-         LEFT JOIN zones zon ON a.BFI_zone =zon.ID_Zones
-         LEFT JOIN ecological_zones eco ON a.WWF_Eco_zone =eco.ID_1988EcoZones
-         where a.Species=$specis_id
+         LEFT JOIN group_location lg ON a.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where a.Species=$specis_id GROUP BY a.ID_AE
          order by a.ID_AE
           ")->num_rows();
         // print_r($this->db->last_query());exit;
@@ -2736,6 +2738,16 @@ private function searchAttributeString($searchFields)
         $config['last_link']       = 'Last';
         // //pagination style end
         $this->pagination->initialize($config);
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(c.output)) OUTPUT,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        fnc_ae_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        LEFT JOIN ae c ON b.group_id=c.location_group
+        LEFT JOIN species d ON c.Species=d.ID_Species
+        LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        WHERE c.ID_AE IS NOT NULL
+        GROUP BY LatDD,LongDD";
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
         $data['allometricEquationDatagrid'] = $this->Forestdata_model->get_allometric_equation_grid_Speciesdata($specis_id,$limit,$page);
         //print_r($data['allometricEquationDatagrid']);exit();
         $data["links"]                  = $this->pagination->create_links();
@@ -3901,28 +3913,50 @@ private function searchAttributeString($searchFields)
         $total_rawData      = $this->db->count_all("rd");
 
         $config["total_rows"] = $total_rawData;
-        $total_rawData=$this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
-         LEFT JOIN species s ON r.Species_ID=s.ID_Species
-         LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Family
+        $total_rawData=$this->db->query("SELECT r.ID,r.H_m,r.DBH_cm,r.Volume_m3,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus from rd r
+         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON r.Division=d.ID_Division
-         LEFT JOIN district dis ON r.District =dis.ID_District
-         where r.Species_ID=$specis_id
+         LEFT JOIN group_location lg ON r.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where s.ID_Species=$specis_id GROUP BY r.ID
          order by r.ID desc
           ")->num_rows();
 
-         $data['rawDataView_count'] = $this->db->query("SELECT r.*,b.*,d.*,dis.*,s.*,ref.*,f.*,g.* from rd r
-         LEFT JOIN species s ON r.Species_ID=s.ID_Species
-         LEFT JOIN family f ON r.Family_ID=f.ID_Family
-         LEFT JOIN genus g ON r.Genus_ID=g.ID_Genus
+         $data['rawDataView_count'] = $this->db->query("SELECT r.ID,r.H_m,r.DBH_cm,r.Volume_m3,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus from rd r
+         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+         LEFT JOIN family f ON s.ID_Family=f.ID_Family
+         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
          LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-         LEFT JOIN faobiomes b ON r.ID_FAO_Biomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON r.Division=d.ID_Division
-         LEFT JOIN district dis ON r.District =dis.ID_District
-         where r.Species_ID=$specis_id
+         LEFT JOIN group_location lg ON r.location_group=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where s.ID_Species=$specis_id GROUP BY r.ID
+         order by r.ID desc
         ")->result();
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        LEFT JOIN rd r ON b.group_id=r.location_group
+        LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+        LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+        LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        WHERE r.ID IS NOT NULL
+        GROUP BY LatDD,LongDD";
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_rawData;
@@ -3956,11 +3990,11 @@ private function searchAttributeString($searchFields)
         $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid_species($specis_id,$limit,$page);
         $data["links"]             = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/rawDataView';
-        $string="r.Species_ID=$specis_id";
-        $string=base64_encode($string);
-        $string= str_replace("=","abyz",$string);
-        $data['string']=$string;
-        $data['strs']=$string;
+        // $string="r.Species_ID=$specis_id";
+        // $string=base64_encode($string);
+        // $string= str_replace("=","abyz",$string);
+        // $data['string']=$string;
+        // $data['strs']=$string;
         $this->template->display_portal($data);
     }
 
