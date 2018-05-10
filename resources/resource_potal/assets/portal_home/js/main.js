@@ -17,7 +17,7 @@ jssor_1_slider_init = function() {
 
     /*#region responsive code begin*/
 
-    var MAX_WIDTH = 1150;
+    var MAX_WIDTH = 1200;
 
     function ScaleSlider() {
         var containerElement = jssor_1_slider.$Elmt.parentNode;
@@ -95,7 +95,7 @@ jssor_1_slider_init = function() {
 
     /*#region responsive code begin*/
 
-    var MAX_WIDTH = 960;
+    var MAX_WIDTH = 1200;
 
     function ScaleSlider() {
         var containerElement = jssor_1_slider.$Elmt.parentNode;

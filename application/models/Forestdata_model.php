@@ -252,7 +252,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN division d ON l.ID_Division=d.ID_Division
          LEFT JOIN district dis ON l.ID_District =dis.ID_District
          LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-         LEFT JOIN `union` un ON l.Union =un.ID
+         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
          LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
          LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
          LEFT JOIN contributor_info ci ON a.Contributor =ci.Contributor_ID
@@ -271,13 +271,28 @@ Class Forestdata_model extends CI_Model {
                       LEFT JOIN district d ON c.ID_District=d.ID_District
                       LEFT JOIN division e ON c.ID_Division=e.ID_Division
                       LEFT JOIN upazilla f ON c.Upzila =f.UPZ_CODE_1
-                      LEFT JOIN `union` g ON c.Union =g.ID
+                      LEFT JOIN `union` g ON c.Union =g.UNI_CODE_1
                       where ID_AE=$ID_AE
                       order by a.ID_AE desc")->result();
      return $data;
   }
 
-    public function get_row_data_equation_details_loc($ID)
+
+    public function get_emission_factor_details_loc($ID)
+  {
+    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,g.UNINAME FROM ef emf
+                      LEFT JOIN group_location b on emf.group_location=b.group_id
+                      LEFT JOIN location c ON b.location_id=c.ID_Location
+                      LEFT JOIN district d ON c.ID_District=d.ID_District
+                      LEFT JOIN division e ON c.ID_Division=e.ID_Division
+                      LEFT JOIN upazilla f ON c.Upzila =f.UPZ_CODE_1
+                      LEFT JOIN `union` g ON c.Union =g.UNI_CODE_1
+                      where emf.ID_EF=$ID
+                      order by emf.ID_EF desc")->result();
+     return $data;
+  }
+
+    public function get_raw_data_equation_details_loc($ID)
   {
     $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,g.UNINAME FROM rd r
                       LEFT JOIN group_location b on r.location_group=b.group_id
@@ -285,7 +300,7 @@ Class Forestdata_model extends CI_Model {
                       LEFT JOIN district d ON c.ID_District=d.ID_District
                       LEFT JOIN division e ON c.ID_Division=e.ID_Division
                       LEFT JOIN upazilla f ON c.Upzila =f.UPZ_CODE_1
-                      LEFT JOIN `union` g ON c.Union =g.ID
+                      LEFT JOIN `union` g ON c.Union =g.UNI_CODE_1
                       where r.ID=$ID
                       order by r.ID desc")->result();
      return $data;
@@ -346,7 +361,7 @@ Class Forestdata_model extends CI_Model {
          LEFT JOIN division d ON l.ID_Division=d.ID_Division
          LEFT JOIN district dis ON l.ID_District =dis.ID_District
          LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-         LEFT JOIN `union` un ON l.Union =un.ID
+         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
          LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
          LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
          LEFT JOIN contributor_info ci ON r.Contributor =ci.Contributor_ID
@@ -601,23 +616,24 @@ Class Forestdata_model extends CI_Model {
 
 
 
-     public function get_biomas_expension_factor()
-  {
-    $data=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-
+   public function get_biomas_expension_factor()
+   {
+    $data=$this->db->query("SELECT e.EmissionFactor,e.Unit,e.Value,ref.Author,ref.Reference,ref.Year,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
-         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON e.Division=d.ID_Division
-         LEFT JOIN district dis ON e.District =dis.ID_District
-         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-         order by e.ID_EF ASC
-    ")->result();
-     return $data;
-  }
+         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON e.group_location=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         GROUP BY e.ID_EF
+         order by e.ID_EF ASC")->result();
+         return $data;
+   }
 
 
 
@@ -646,20 +662,24 @@ Class Forestdata_model extends CI_Model {
 
     public function get_biomas_expension_factor_details($ID)
   {
-    $data=$this->db->query("SELECT  e.*,eco.*,u.*,un.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.*,ld.* from ef e
+    $data=$this->db->query("SELECT e.*,lc.LandCover,ref.*,eco.*,sl.local_name,ci.Contributor_name,u.THANAME,un.UNINAME,d.Division,dis.District,l.*,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,zon.Zones from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
-         LEFT JOIN landcover ld ON e.ID_LandCover=ld.ID_LandCover
-         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON e.Division=d.ID_Division
-         LEFT JOIN district dis ON e.District =dis.ID_District
-         LEFT JOIN upazilla u ON e.Upazila =u.UPZ_CODE_1
-         LEFT JOIN `union` un ON e.Union =un.ID
-         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-         where e.ID_EF=$ID
+         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON e.group_location=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
+         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         LEFT JOIN landcover lc ON e.ID_LandCover =lc.ID_LandCover
+         LEFT JOIN contributor_info ci ON e.Contributor =ci.Contributor_ID
+         where e.ID_EF=$ID GROUP BY e.ID_EF
          order by e.ID_EF desc")->result();
      return $data;
   }
@@ -1125,31 +1145,33 @@ Class Forestdata_model extends CI_Model {
 
         $limit=$input['length'];
         $start=$input['start'];
-         $data=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-
+        $data=$this->db->query("SELECT e.ID_EF, e.EmissionFactor,e.Unit,e.Value,ref.Author,ref.Reference,ref.Year,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
-         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON e.Division=d.ID_Division
-         LEFT JOIN district dis ON e.District =dis.ID_District
-         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-         $string limit $limit offset  $start
+         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON e.group_location=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         $string  GROUP BY e.ID_EF order by e.ID_EF ASC limit $limit offset  $start
              ")->result();
-        $totalArray=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
-
+        $totalArray=$this->db->query("SELECT e.ID_EF,e.EmissionFactor,e.Unit,e.Value,ref.Author,ref.Reference,ref.Year,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
-         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON e.Division=d.ID_Division
-         LEFT JOIN district dis ON e.District =dis.ID_District
-         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-        $string")->result();
+         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON e.group_location=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+        $string  GROUP BY e.ID_EF order by e.ID_EF")->result();
             //$totalArray=$this->db->query("SELECT COUNT(*) TOTAL FROM ae")->row();
             $total =count($totalArray);
           return array('data' => $data, 'total' => $total, 'filtered' => $total);

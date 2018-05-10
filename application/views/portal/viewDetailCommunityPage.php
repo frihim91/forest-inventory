@@ -274,7 +274,7 @@ $lang_ses = $this->session->userdata("site_lang");
 
    <?php 
  }else{ ?>
- <p>Please <a href="<?php echo site_url("accounts/userLogin"); ?>"><span style="color: red;">login</span></a> or <a href="<?php echo site_url('accounts/userRegistration')?>" ><span style="color: red;">Registration</span></a> for Comment</p>
+ <p>Please <a href="<?php echo site_url("accounts/userLogin"); ?>"><span style="color: red;">Login</span></a> or <a href="<?php echo site_url('accounts/userRegistration')?>" ><span style="color: red;">Registration</span></a> for Comment</p>
  <?php 
 }
 

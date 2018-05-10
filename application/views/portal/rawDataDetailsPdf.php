@@ -224,7 +224,14 @@ $lang_ses = $this->session->userdata("site_lang");
                </td>
                <td align="center">NA</td>
                <td >None</td>
-               <td align="center"><?php echo $row->local_name;?>
+               <td align="center"><?php if($row->local_name!='') { ?>
+                                   
+               <?php echo $row->local_name;?>
+                                   
+                <?php } else { ?>
+                <p>NA</p>
+                                        
+               <?php  } ?>
                </td>
                </tr>
             </table>

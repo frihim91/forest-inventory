@@ -242,7 +242,14 @@
                </td>
                <td>NA</td>
                <td >None</td>
-               <td><?php echo $row->local_name;?>
+               <td><?php if($row->local_name!='') { ?>
+                                   
+                <?php echo $row->local_name;?>
+                                   
+                <?php } else { ?>
+                <p>NA</p>
+                                        
+               <?php  } ?>
                </td>
                </tr>
             </table>
@@ -257,7 +264,7 @@
                &nbsp;&nbsp;&nbsp;&nbsp;
                </span>
             </h3>
-               <table class="table">
+    <table class="table">
       <thead>
         <tr>
          <?php 

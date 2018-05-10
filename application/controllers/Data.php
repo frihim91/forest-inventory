@@ -534,6 +534,16 @@ public function search_allometricequation_key()
 
 
         $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor();
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        fnc_ef_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        LEFT JOIN ef c ON b.group_id=c.group_location
+        LEFT JOIN species d ON c.Species=d.ID_Species
+        LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        WHERE c.ID_EF IS NOT NULL
+        GROUP BY LatDD,LongDD";
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $this->template->display_portal($data);
       }

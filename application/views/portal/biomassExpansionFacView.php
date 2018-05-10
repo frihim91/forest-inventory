@@ -334,37 +334,55 @@
       
       <h4> Search criteria</h4>
       
-        <p> <?php
-        // echo "<pre>";
-        // print_r($fieldNameValue);
-                           if(!empty($fieldNameValue)){
-                              $n=count($fieldNameValue);
-                             $i=0;
-                             foreach($fieldNameValue as $key=>$value)
-                             {
-                                $pieces = explode("/", $key);
-                                $fieldName= $pieces[0]; // piece1
-                                $keyWord= $pieces[1]; // piece2
-                                if($i<$n-1)
-                                {
-                                  $substitute="$keyWord=$value&";
-                                }
-                                else {
-                                  $substitute="$keyWord=$value";
-                                }
-                                $sub=str_replace(' ','+',$substitute);
-                                //echo $actualUrl;
-                                $newUrl=str_replace($sub,'',$actualUrl);
-                            // $url=str_replace('','',$actualUrl);
-                                $i++;
-                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
-                             }
+        <p>  <?php
+          $keyWord='';
+          if(isset($_GET['keyword']))
+          {
+             $keyWord=$_GET['keyword'];
+          }
+         
+          if($keyWord=='')
+          {
+             if(!empty($fieldNameValue)){
+              $n=count($fieldNameValue);
+              $i=0;
+              foreach($fieldNameValue as $key=>$value)
+              {
+          $pieces = explode("/", $key);
+          $fieldName= $pieces[0]; // piece1
+          $keyWord= $pieces[1]; 
+          //echo $fieldName;exit;// piece2
+          if($i<$n-1)
+          {
+            $substitute="$keyWord=$value&";
+          }
+          else {
+            $substitute="$keyWord=$value";
+          }
+          $sub=str_replace(' ','+',$substitute);
+          //echo $actualUrl;
+          $newUrl=str_replace($sub,'',$actualUrl);
+          // $url=str_replace('','',$actualUrl);
+          $i++;
+          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+        }
+          }
+          else{
+        echo "No criteria - All results are shown";
+      }
+    //   echo "<pre>";
+    // print_r($fieldNameValue);exit();
+           
 
-                            }
-                            else{
-                              echo "No criteria - All results are shown";
-                            }
-                           ?></p>
+      }
+      else 
+      {
+
+        $url=site_url('data/biomassExpansionFacView');
+        echo "Keyword: $keyWord <a href='$url'>Remove Filter</a>";
+      }
+      
+      ?></p>
       
     </div>
 
@@ -497,11 +515,8 @@
             </div>
     
      </div>
-   </div>
- </div>
-</div>
- <div class="row mapBlock" style="display:none">
-      <div class="col-md-12" style="height:500px!important;width:100%">
+      <div class="row mapBlock" style="display:none">
+    <div class="col-md-12" style="height:500px!important;width:100%">
         <div id="map"></div>
         <script>
         // initialize the map
@@ -510,6 +525,11 @@
         </script>
       </div>
     </div>
+    </div>
+   </div>
+ </div>
+</div>
+
     <script type="text/javascript">
 $(document).ready(function(){
 var pmId=$("input.pmId").val();
@@ -734,6 +754,9 @@ function () {
    
    
 </script>
+<?php
+  $jsonQuery=str_replace("=","",$jsonQuery);
+ ?>
 <script type="text/javascript">
 $(document).ready(function(){
   $("a.results-map").click(function(){
@@ -743,7 +766,7 @@ $(document).ready(function(){
     map.addLayer(osm);
 
 
-    $.getJSON("<?php echo base_url(); ?>resources/mapEfdata.php",function(data){
+    $.getJSON("<?php echo site_url(); ?>/data/getMapJsonData/<?php echo $jsonQuery; ?>",function(data){
       var ratIcon = L.icon({
         iconUrl: '<?php echo base_url(); ?>resources/final.png',
         iconSize: [19,30]
@@ -752,7 +775,7 @@ $(document).ready(function(){
         pointToLayer: function(feature,latlng){
           var marker = L.marker(latlng,{icon: ratIcon});
 
-          marker.bindPopup('<h4><b>Emission Factors : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes);
+          marker.bindPopup('<h4><b>Emission Factors : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.fao_biome);
 
           return marker;
         }

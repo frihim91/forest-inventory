@@ -250,9 +250,11 @@ private function searchAttributeString($searchFields)
         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
         LEFT JOIN division d ON l.ID_Division=d.ID_Division
         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
         WHERE a.ID_AE IS NOT NULL and $string
         GROUP BY LatDD,LongDD";
-        //echo $jsonQuery;
+       // echo $jsonQuery;
         //exit;
         $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
@@ -563,15 +565,15 @@ private function searchAttributeString($searchFields)
         break;
         case "Reference":
         $returnArray[]='Reference';
-        $returnArray[]='r.';
+        $returnArray[]='ref.';
         break;
         case "Author":
         $returnArray[]='Author';
-        $returnArray[]='r.';
+        $returnArray[]='ref.';
         break;
         case "Year":
         $returnArray[]='Year';
-        $returnArray[]='r.';
+        $returnArray[]='ref.';
         break;
         default:
         $returnArray[]='';
@@ -628,34 +630,36 @@ private function searchAttributeString($searchFields)
 
         $string=$this->searchAttributeString($validSearchKey);
 
-        $k=$data['biomassExpansionFacView'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+        $k=$data['biomassExpansionFacView'] = $this->db->query("SELECT e.EmissionFactor,e.Unit,e.Value,ref.Author,ref.Reference,ref.Year,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
-         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON e.Division=d.ID_Division
-         LEFT JOIN district dis ON e.District =dis.ID_District
-         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-
-         where $string
+         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON e.group_location=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where $string GROUP BY e.ID_EF
          order by e.ID_EF ASC
         ")->result();
 
-         $data['biomassExpansionFacView_count'] = $this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+         $data['biomassExpansionFacView_count'] = $this->db->query("SELECT e.EmissionFactor,e.Unit,e.Value,ref.Author,ref.Reference,ref.Year,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
-         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON e.Division=d.ID_Division
-         LEFT JOIN district dis ON e.District =dis.ID_District
-         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-         where $string
+         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON e.group_location=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         where $string GROUP BY e.ID_EF
          order by e.ID_EF ASC
-
         ")->result();
          // $data["links"]                  = $this->pagination->create_links();
 
@@ -695,6 +699,27 @@ private function searchAttributeString($searchFields)
         {
             redirect('data/biomassExpansionFacView');
         }
+
+        $jsonQuery="SELECT l.latDD y,l.longDD x,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        fnc_ef_species_data(l.LatDD,l.LongDD) species_desc FROM location l
+        LEFT JOIN group_location lg ON l.ID_Location=lg.location_id
+        LEFT JOIN ef e ON lg.group_id=e.group_location
+        LEFT JOIN species s ON e.Species=s.ID_Species
+        LEFT JOIN family f ON s.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+        LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+        WHERE e.ID_EF IS NOT NULL and $string
+        GROUP BY LatDD,LongDD
+        ";
+       // echo $jsonQuery;
+        //exit;
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';
         $str=$string;
         $string=base64_encode($string);
@@ -2511,17 +2536,24 @@ private function searchAttributeString($searchFields)
 
   if($string==1)
   {
-    $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+    $biomassExpansionFacView=$this->db->query("SELECT e.*,lc.LandCover,ref.*,eco.*,sl.local_name,ci.Contributor_name,u.THANAME,un.UNINAME,d.Division,dis.District,l.*,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,zon.Zones from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
-         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON e.Division=d.ID_Division
-         LEFT JOIN district dis ON e.District =dis.ID_District
-         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-         where $string
+         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON e.group_location=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
+         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         LEFT JOIN landcover lc ON e.ID_LandCover =lc.ID_LandCover
+         LEFT JOIN contributor_info ci ON e.Contributor =ci.Contributor_ID
+         where $string GROUP BY e.ID_EF
          order by e.ID_EF ASC")->result_array();
   }
   else
@@ -2529,17 +2561,24 @@ private function searchAttributeString($searchFields)
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
 
-    $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+    $biomassExpansionFacView=$this->db->query("SELECT e.*,lc.LandCover,ref.*,eco.*,sl.local_name,ci.Contributor_name,u.THANAME,un.UNINAME,d.Division,dis.District,l.*,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,zon.Zones from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
-         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON e.Division=d.ID_Division
-         LEFT JOIN district dis ON e.District =dis.ID_District
-         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-         where $string
+         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON e.group_location=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
+         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         LEFT JOIN landcover lc ON e.ID_LandCover =lc.ID_LandCover
+         LEFT JOIN contributor_info ci ON e.Contributor =ci.Contributor_ID
+         where $string GROUP BY e.ID_EF
          order by e.ID_EF ASC")->result_array();
   }
 
@@ -2549,15 +2588,14 @@ private function searchAttributeString($searchFields)
  header("Pragma: no-cache");
  header("Expires: 0");
  $handle = fopen('php://output', 'w');
- fputcsv($handle, array('ID_EF',' ID_LandCover', 'Species', 'AgeRange','ID_AgeRange','HeightRange','ID_HeightRange','VolumeRange',' ID_VolumeRange','BasalRange'
-  ,'ID_BasalArea','Value','Unit','ID_EF_IPCC','Reference','Lower_Confidence_Limit','Upper_Confidence_Limit ','Type_of_Parameter','latitude  '
-  ,'longitude  ','Country  ','Division  ',' District  ',' Upazila',' Union',' FAO_biome',' WWF_Eco_zone',' BFI_zone'));
+ fputcsv($handle, array('ID_EF',' EmissionFactor', 'ID_LandCover', 'Species','Age_yr','Height_m','Volume_m3_ha','Basal_m2_ha',' Value','Unit'
+  ,'ID_EF_IPCC','Reference','Lower_Confidence_Limit','Upper_Confidence_Limit','Type_of_Parameter','group_location','Contributor ','Division  ',' District  ',' THANAME',' UNINAME',' FAOBiomes',' Family',' Genus',' Species',' Zones'));
                     $i = 1;
                     foreach ($biomassExpansionFacView as $data) {
-                        fputcsv($handle, array($data["ID_EF"], $data["ID_LandCover"], $data["Species"], $data["AgeRange"], $data["ID_AgeRange"], $data["HeightRange"], $data["ID_HeightRange"]
-                          , $data["VolumeRange"], $data["ID_VolumeRange"], $data["BasalRange"], $data["ID_BasalArea"], $data["Value"], $data["Unit"], $data["ID_EF_IPCC"], $data["Reference"]
-                          , $data["Lower_Confidence_Limit"], $data["Upper_Confidence_Limit"], $data["Type_of_Parameter"], $data["latitude"], $data["longitude"], $data["Country"], $data["Division"], $data["District"],
-                          $data["Upazila"], $data["Union"], $data["FAO_biome"], $data["WWF_Eco_zone"], $data["BFI_zone"]));
+                        fputcsv($handle, array($data["ID_EF"], $data["EmissionFactor"], $data["ID_LandCover"], $data["Species"], $data["Age_yr"], $data["Height_m"], $data["Volume_m3_ha"]
+                          , $data["Basal_m2_ha"], $data["Value"], $data["Unit"], $data["ID_EF_IPCC"], $data["Reference"], $data["Lower_Confidence_Limit"], $data["Upper_Confidence_Limit"], $data["Type_of_Parameter"]
+                          , $data["group_location"], $data["Contributor"], $data["Division"], $data["District"], $data["THANAME"], $data["UNINAME"], $data["FAOBiomes"], $data["Family"],
+                          $data["Genus"], $data["Genus"], $data["Species"], $data["Zones"]));
                         $i++;
                     }
                         fclose($handle);
@@ -2578,17 +2616,24 @@ private function searchAttributeString($searchFields)
 
   if($string==1)
   {
-    $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+    $biomassExpansionFacView=$this->db->query("SELECT e.*,lc.LandCover,ref.*,eco.*,sl.local_name,ci.Contributor_name,u.THANAME,un.UNINAME,d.Division,dis.District,l.*,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,zon.Zones from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
-         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON e.Division=d.ID_Division
-         LEFT JOIN district dis ON e.District =dis.ID_District
-         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-         where $string
+         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON e.group_location=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
+         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         LEFT JOIN landcover lc ON e.ID_LandCover =lc.ID_LandCover
+         LEFT JOIN contributor_info ci ON e.Contributor =ci.Contributor_ID
+         where $string GROUP BY e.ID_EF
          order by e.ID_EF ASC");
   }
   else
@@ -2596,17 +2641,24 @@ private function searchAttributeString($searchFields)
     $string= str_replace("abyz","=",$string);
     $string=base64_decode($string);
 
-    $biomassExpansionFacView=$this->db->query("SELECT  e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef e
+    $biomassExpansionFacView=$this->db->query("SELECT e.*,lc.LandCover,ref.*,eco.*,sl.local_name,ci.Contributor_name,u.THANAME,un.UNINAME,d.Division,dis.District,l.*,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,zon.Zones from ef e
          LEFT JOIN species s ON e.Species=s.ID_Species
+         LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference r ON e.Reference=r.ID_Reference
-         LEFT JOIN faobiomes b ON e.FAO_biome=b.ID_FAOBiomes
-         LEFT JOIN division d ON e.Division=d.ID_Division
-         LEFT JOIN district dis ON e.District =dis.ID_District
-         LEFT JOIN zones zon ON e.BFI_zone =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON e.WWF_Eco_zone =eco.MAJOR_AEZ
-         where $string
+         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+         LEFT JOIN group_location lg ON e.group_location=lg.group_id
+         LEFT JOIN location l ON lg.location_id=l.ID_Location
+         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+         LEFT JOIN division d ON l.ID_Division=d.ID_Division
+         LEFT JOIN district dis ON l.ID_District =dis.ID_District
+         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
+         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
+         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+         LEFT JOIN landcover lc ON e.ID_LandCover =lc.ID_LandCover
+         LEFT JOIN contributor_info ci ON e.Contributor =ci.Contributor_ID
+         where $string GROUP BY e.ID_EF
          order by e.ID_EF ASC");
   }
 
@@ -3481,6 +3533,7 @@ private function searchAttributeString($searchFields)
     public function biomassExpansionFacDetails($ID)
     {
         $data['biomassExpansionFacDetails'] = $this->Forestdata_model->get_biomas_expension_factor_details($ID);
+        $data['location'] = $this->Forestdata_model->get_emission_factor_details_loc($ID);
         $data['content_view_page']         = 'portal/biomassExpansionFacDetails';
         $this->template->display_portal($data);
     }
@@ -5427,7 +5480,7 @@ private function searchAttributeString($searchFields)
     public function rawDataDetails($ID)
     {
         $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID);
-        $data['location'] = $this->Forestdata_model->get_row_data_equation_details_loc($ID);
+        $data['location'] = $this->Forestdata_model->get_raw_data_equation_details_loc($ID);
         $data['content_view_page'] = 'portal/rawDataDetails';
         $this->template->display_portal($data);
     }
@@ -5461,7 +5514,7 @@ private function searchAttributeString($searchFields)
      public function rawDataDetailsPdf($ID)
      {
         $data['rawDataDetails']    = $this->Forestdata_model->get_raw_data_details($ID);
-        $data['location'] = $this->Forestdata_model->get_row_data_equation_details_loc($ID);
+        $data['location'] = $this->Forestdata_model->get_raw_data_equation_details_loc($ID);
         include('mpdf/mpdf.php');
         $mpdf = new mPDF('utf-8', 'A4', '', '', 20, 20, 25, 47, 10, 10);
         $mpdf->SetTitle('Raw Data Details');
@@ -5503,7 +5556,8 @@ private function searchAttributeString($searchFields)
 
      public function biomassExpansionFacPdf($ID)
      {
-         $data['biomassExpansionFacDetails'] = $this->Forestdata_model->get_biomas_expension_factor_details($ID);
+        $data['biomassExpansionFacDetails'] = $this->Forestdata_model->get_biomas_expension_factor_details($ID);
+        $data['location'] = $this->Forestdata_model->get_emission_factor_details_loc($ID);
         include('mpdf/mpdf.php');
         $mpdf = new mPDF('utf-8', 'A4', '', '', 20, 20, 25, 47, 10, 10);
         $mpdf->SetTitle('Biomass Expension Factor PDF');

@@ -156,7 +156,14 @@ foreach($allometricEquationDetails as $row)
          </td>
          <td align="center">NA</td>
          <td >None</td>
-         <td ><?php echo $row->local_name;?>
+         <td ><?php if($row->local_name!='') { ?>
+                                   
+              <?php echo $row->local_name;?>
+                                   
+                <?php } else { ?>
+                <p>NA</p>
+                                        
+          <?php  } ?>
          </td>
        </tr>
        

@@ -222,7 +222,7 @@ $(window).bind("orientationchange", ScaleSlider);
                                 <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/gov-logo.png')?>" class="img-responsive"/>
                             </div>
                             <div class="col-sm-8">
-                                <h1>National Emission Factor</h1>
+                                 <h1 style="font-family:Century;font-weight:bold;font-size:36px;">National Emission Factor</h1>
                             </div>
                             <div class="col-sm-2 lg2">
                                 <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/forest-logo.png')?>" class="img-responsive"/></div>

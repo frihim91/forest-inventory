@@ -110,19 +110,19 @@
                </tr>
                <tr>
                   <th>Age Range: </th>
-                  <td><?php echo $row->AgeRange;?></td>
+                  <td><?php echo $row->Age_yr;?></td>
                </tr>
                <tr>
                   <th>Height Range: </th>
-                  <td><?php echo $row->HeightRange;?></td>
+                  <td><?php echo $row->Height_m;?></td>
                </tr>
                <tr>
                   <th>Volume Range: </th>
-                  <td><?php echo $row->VolumeRange;?></td>
+                  <td><?php echo $row->Volume_m3_ha;?></td>
                </tr>
                 <tr>
                   <th>Basal Area: </th>
-                  <td><?php echo $row->BasalRange;?></td>
+                  <td><?php echo $row->Basal_m2_ha;?></td>
                </tr>
             </table>
          </div>
@@ -170,9 +170,16 @@
                <td>
                   <?php echo $row->Species;?>
                </td>
+               <td >NA</td>
                <td >None</td>
-               <td >None</td>
-               <td >
+               <td><?php if($row->local_name!='') { ?>
+                                   
+                <?php echo $row->local_name;?>
+                                   
+                <?php } else { ?>
+                <p>NA</p>
+                                        
+               <?php  } ?>
                </td>
                </tr>
             </table>
@@ -187,88 +194,63 @@
                &nbsp;&nbsp;&nbsp;&nbsp;
                </span>
             </h3>
-            <table class="table">
-               <tr>
-                  <td style="width:40%">
-                     <table>
-                       
-                           <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division: </th><td  class="pdf-record-td"> <?php echo $row->Division;?> </td></tr>
-                            <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> District: </th>
-                           <td  class="pdf-record-td"><?php echo $row->District;?>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Upazilla: </th>
-                           <td  class="pdf-record-td"><?php echo $row->THANAME;?>  </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Union: </th>
-                           <td  class="pdf-record-td"> <?php echo $row->UNINAME;?> </td>
-                        </tr>
+           <table class="table">
+      <thead>
+        <tr>
+         <?php 
+         foreach($biomassExpansionFacDetails as $row)
+         {
+           ?>
+           <th>FAO Biome:</th>
+           <td><?php echo $row->FAOBiomes;?></td>
+           <th>BFI Zone:</th>
+           <td><?php echo $row->Zones;?></td>
+           <th>Bangladesh Agroecological Zone:</th>
+           <td><?php echo $row->AEZ_NAME;?></td>
 
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th>
-                           <td class="pdf-record-td"> 
-                              <?php echo $row->latitude;?>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Longitude: </th>
-                           <td  class="pdf-record-td">
-                              <?php echo $row->longitude;?>
-                           </td>
-                        </tr>
-                     </table>
-                  </td>
-                  <td style="width:60%">
-                     <table>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> FAO Biome: </th>
-                           <td class="pdf-record-td">
-                              <?php echo $row->FAOBiomes;?>
-                           </td>
-                        </tr>
 
-                          <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th">BFI Zone: </th>
-                           <td class="pdf-record-td">
-                              <?php echo $row->Zones;?>
-                           </td>
-                        </tr>
+         </tr>
+         <?php 
+       }?>
+       <br>
+       <tr class="bg-success">
+        <th>Division</th>
+        <th>District</th>
+        <th>Upazila</th>
+        <th>Union</th>
+        <th>Latitute</th>
+        <th>Longitute</th>
+      </tr>
+    </thead>
+    <tbody>
 
-                         <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Bangladesh Agroecological Zone  : </th>
-                           <td class="pdf-record-td">
-                              <?php echo $row->AEZ_NAME;?>
-                           </td>
-                        </tr>
-                       <!--  <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Udvardy Ecoregion: </th>
-                           <td  class="pdf-record-td"> <?php echo $row->Ecoregion_Udvardy;?> </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> WWF Terrestrial Ecoregion: </th>
-                           <td class="pdf-record-td"><?php echo $row->Ecoregion_WWF;?>  </td>
-                        </tr>
-                        <tr>
-                           <th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Division Bailey: </th>
-                           <td class="pdf-record-td"><?php echo $row->Division_Bailey;?>  </td>
-                        </tr>
-                        <tr>
-                           <th class="pdf-record-th"> Holdridge Life Zone:</th>
-                           <td  class="pdf-record-td"> 
-                              <?php echo $row->Zone_Holdridge;?>
-                           </td>
-                        </tr> -->
-                     </table>
-                  </td>
-               </tr>
-            </table>
+     <?php
+     $i = 1;
+     foreach ($location as $row) {
+       ?>
+       <tr>
+        <td ><?php echo $row->Division;?></td>
+        <td><?php echo $row->District;?></td>
+        <td><?php echo $row->THANAME;?></td>
+        <td ><?php echo $row->UNINAME;?></td>
+        <td><?php echo $row->LatDD;?></td>
+        <td><?php echo $row->LongDD;?></td>
+      </tr>
+      <?php
+      $i++;
+    }
+    ?>
+  </tbody>
+
+</table>
             <br>
             <div id="point_map_canvas"></div>
          </div>
       </div>
+<?php 
+foreach($biomassExpansionFacDetails as $row)
+{
+ ?>
       <div class="row">
          <div class="col-md-12">
             <br>
@@ -302,7 +284,7 @@
             <table class="table">
                <tr>
                   <th style="width:210px">Contributor:</th>
-                  <td>None</td>
+                  <td><?php echo $row->Contributor_name;?></td>
                </tr>
             </table>
          </div>
@@ -316,6 +298,9 @@
                   <th style="width:210px">Dataset:</th>
                   <td>EF </td>
                </tr>
+                 <?php 
+             }?>
+
             </table>
          </div>
       </div>
