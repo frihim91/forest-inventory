@@ -371,7 +371,7 @@ $lang_ses = $this->session->userdata("site_lang");
          <div class="col-lg-6">
 
           <h4> Search criteria</h4>
-          <p>  <?php
+          <p><?php
           $keyWord='';
           if(isset($_GET['keyword']))
           {

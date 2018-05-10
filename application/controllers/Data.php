@@ -593,6 +593,16 @@ public function search_allometricequation_key()
 
 
         $data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid();
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        fnc_wd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        LEFT JOIN wd w ON b.group_id=w.location_group
+        LEFT JOIN species d ON w.ID_species=d.ID_Species
+        LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        WHERE w.ID_WD IS NOT NULL
+        GROUP BY LatDD,LongDD";
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page'] = 'portal/woodDensitiesView';
         $this->template->display_portal($data);
       }

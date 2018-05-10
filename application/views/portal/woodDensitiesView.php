@@ -2,46 +2,67 @@
 <script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>resources/assets/datatable/jquery.dataTables.min.js">
 </script>
 <style type="text/css">
-   .page_content{
-   padding: 15px;
-   background-color: white;
-   margin-top: 15px;
-   }
-   .page_des_big_image{
-   width: 100%;
-   height: 300px;
-   }
-   .bdy_des{
-   margin-top: 25px;
-   }
-   .breadcump{
-   background-image: url("<?php echo base_url("resources/images/breadcump_image.jpg")?>");
-   height: 103px;
-   }
-   .breadcump-wrapper{
-/*   background-color: #000000 !important;*/
-   opacity: 0.7;
-   width: 100%;
-   height:100%;
-   }
-   .wrapper{
-   padding:30px !important;
-   color: #FFFFFF;
-   font-weight: bold;
-   }
-   .breadcump_row a{
-   color: white;
-   }
-    #easyPaginate {width:800px;}
-#easyPaginate img {display:block;margin-bottom:10px;}
-.easyPaginateNav a {padding:5px;}
-.easyPaginateNav a.current {font-weight:bold;text-decoration:underline;}
+  .page_content{
+    padding: 15px;
+    background-color: white;
+    margin-top: 15px;
+  }
+  .page_des_big_image{
+    width: 100%;
+    height: 300px;
+  }
+  .bdy_des{
+    margin-top: 25px;
+  }
+  .breadcump{
+    background-image: url("<?php echo base_url("resources/images/breadcump_image.jpg")?>");
+    height: 103px;
+  }
+  .breadcump-wrapper{
+    /*  background-color: #000000 !important;*/
+    opacity: 0.7;
+    width: 100%;
+    height:100%;
+  }
+  .wrapper{
+    padding:30px !important;
+    color: #FFFFFF;
+    font-weight: bold;
+  }
+  .breadcump_row a{
+    color: white;
+  }
+  #search-submit-holder, #tree-equation-footer {
+    height: 45px;
+    padding: 5px;
+    background-color: #f4f4f4;
+    border-top: 1px solid #d9d9d9;
+    border-radius: 0px 0px 4px 4px;
+  }
+  #easyPaginate {width:800px;}
+  #easyPaginate img {display:block;margin-bottom:10px;}
+  .easyPaginateNav a {padding:5px;}
+  .easyPaginateNav a.current {font-weight:bold;text-decoration:underline;}
+
 </style>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 <link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/pagination/jquery.snippet.min.css" rel="stylesheet" media="screen"/>
+<!-- <link href="<?php echo base_url(); ?>resources/resource_potal/assets/css/pagination/styles.css" rel="stylesheet" media="screen"/> -->
+
+<script type="text/javascript">
+  $('.selectpicker').selectpicker({
+  // style: 'btn-info',
+  size: 4
+});
+
+</script>
 <?php
-   $lang_ses = $this->session->userdata("site_lang");
-   ?>
+ $lang_ses = $this->session->userdata("site_lang");
+ ?>
 <div class="col-sm-12 breadcump img-responsive">
    <div class="row">
       <div class="breadcump-wrapper">
@@ -273,22 +294,7 @@
                      <option value="">Select District</option></p>
                   </select>
                   </div>
-                  <!-- <div class="form-group">
-                     <h3>Ecological Zone</h3>
-                     <label>FAO Global Ecological Zone <span style="color:red;"></span></label>
-                   
-                     <p><?php
-                     $EcoZoness = $this->Forestdata_model->get_all_ecological_zones();
-                     $options = array('' => '--Select Ecological Zone--');
-                     foreach ($EcoZoness as $EcoZones) {
-                     $options["$EcoZones->EcoZones"] = $EcoZones->EcoZones;
-                     }
-                     $EcoZones = set_value('EcoZones');
-                     echo form_dropdown('EcoZones', $options, $EcoZones, 'id="EcoZones" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  Ecological Zone..." ');
-                     ?></p>
-                     <br>
-                     
-                  </div> -->
+                  
                </div>
        
          </div>
@@ -361,37 +367,55 @@
       
       <h4> Search criteria</h4>
       
-        <p> <?php
-        // echo "<pre>";
-        // print_r($fieldNameValue);
-                           if(!empty($fieldNameValue)){
-                              $n=count($fieldNameValue);
-                             $i=0;
-                             foreach($fieldNameValue as $key=>$value)
-                             {
-                                $pieces = explode("/", $key);
-                                $fieldName= $pieces[0]; // piece1
-                                $keyWord= $pieces[1]; // piece2
-                                if($i<$n-1)
-                                {
-                                  $substitute="$keyWord=$value&";
-                                }
-                                else {
-                                  $substitute="$keyWord=$value";
-                                }
-                                $sub=str_replace(' ','+',$substitute);
-                                //echo $actualUrl;
-                                $newUrl=str_replace($sub,'',$actualUrl);
-                            // $url=str_replace('','',$actualUrl);
-                                $i++;
-                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
-                             }
+        <p><?php
+          $keyWord='';
+          if(isset($_GET['keyword']))
+          {
+             $keyWord=$_GET['keyword'];
+          }
+         
+          if($keyWord=='')
+          {
+             if(!empty($fieldNameValue)){
+              $n=count($fieldNameValue);
+              $i=0;
+              foreach($fieldNameValue as $key=>$value)
+              {
+          $pieces = explode("/", $key);
+          $fieldName= $pieces[0]; // piece1
+          $keyWord= $pieces[1]; 
+          //echo $fieldName;exit;// piece2
+          if($i<$n-1)
+          {
+            $substitute="$keyWord=$value&";
+          }
+          else {
+            $substitute="$keyWord=$value";
+          }
+          $sub=str_replace(' ','+',$substitute);
+          //echo $actualUrl;
+          $newUrl=str_replace($sub,'',$actualUrl);
+          // $url=str_replace('','',$actualUrl);
+          $i++;
+          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+        }
+          }
+          else{
+        echo "No criteria - All results are shown";
+      }
+    //   echo "<pre>";
+    // print_r($fieldNameValue);exit();
+           
 
-                            }
-                            else{
-                              echo "No criteria - All results are shown";
-                            }
-                           ?></p>
+      }
+      else 
+      {
+
+        $url=site_url('data/woodDensitiesView');
+        echo "Keyword: $keyWord <a href='$url'>Remove Filter</a>";
+      }
+      
+      ?></p>
       
     </div>
 
@@ -460,61 +484,7 @@
 
  </div>
          </div>
-<!--       <div class="tab-content">
-         <div id="results-list" class="tab-pane fade in active">
-         <div id="paginationClass_wd">
-           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <td><center>List Of Wood Densities</center></td>
-                </tr>
-              </thead>
-            <?php 
-               foreach($woodDensitiesView as $row)
-               {
 
-                ?>
-                  <tr>
-                  <td>
-            <div class="panel panel-default">
-               <div class="panel-heading">Wood Densities <?php echo $row->ID_WD; ?>
-                  <a href="<?php echo site_url('Portal/woodDensitiesDetails/'.$row->ID_WD); ?>" class="btn btn-default pull-right btn-xs">Detailed information<span class="glyphicon glyphicon-chevron-right"></span></a>
-               </div>
-               <div class="panel-body">
-               <dl class="dl-horizontal">
-                  <dt style="font-size:15px;"><small>Green Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_green;?></small></dd> 
-                  <dt style="font-size:15px;"><small>Airdry Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_airdry;?></small></dd> 
-                  <dt style="font-size:15px;"><small>Ovendry Density g/cm3</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Density_ovendry;?></small></dd> 
-                  <dt style="font-size:15px;"><small>Reference</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Author;?>.<?php echo $row->Reference;?></small></dd> 
-                  <dt style="font-size:15px;"><small>Reference Year</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Year;?></small></dd> 
-                  <dt style="font-size:15px;"><small>Family</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Family;?></small></dd>
-                  <dt style="font-size:15px;"><small>Species</small></dt> <dd style="font-size:15px;"><small><?php echo $row->Species;?></small></dd>
-                  <dt style="font-size:15px;"><small>Locations</small></dt> <dd style="font-size:15px;"><small>lat <?php echo $row->Latitude;?>,lon <?php echo $row->Longitude;?></small></dd> 
-                  
-
-                  <dl> 
-               </div>
-            </div>
-                  </td>
-                    </tr>
-
-                    <?php
-                  }?>
-                </table>
-                <script>
-                $(document).ready(function() {
-                  $('#example').dataTable( {
-                    "searching": false,
-                    "bLengthChange": false,
-                    "pageLength": 20,
-                     "bSort" : false
-
-                  } );
-                } );
-                </script>
-           
-         </div>
-         </div> -->
          <div id="results-map" class="tab-pane fade">
             <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
             <script src="<?php echo base_url(); ?>resources/js/leaflet/leaflet.js"></script>
@@ -524,11 +494,7 @@
             </div>
       
       </div>
-   </div>
-</div>
-</div>
-
-<div class="row mapBlock" style="display:none">
+      <div class="row mapBlock" style="display:none">
       <div class="col-md-12" style="height:500px!important;width:100%">
         <div id="map"></div>
         <script>
@@ -538,6 +504,12 @@
         </script>
       </div>
     </div>
+    </div>
+   </div>
+</div>
+</div>
+
+
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -856,6 +828,9 @@ function () {
        });
    });
 </script>
+<?php
+ $jsonQuery=str_replace("=","",$jsonQuery);
+ ?>
 <script type="text/javascript">
 $(document).ready(function(){
   $("a.results-map").click(function(){
@@ -866,7 +841,7 @@ $(document).ready(function(){
     map.addLayer(osm);
 
 
-    $.getJSON("<?php echo base_url(); ?>resources/mapWddata.php",function(data){
+     $.getJSON("<?php echo site_url(); ?>/data/getMapJsonData/<?php echo $jsonQuery; ?>",function(data){
       var ratIcon = L.icon({
         iconUrl: '<?php echo base_url(); ?>resources/final.png',
         iconSize: [19,30]
@@ -875,7 +850,7 @@ $(document).ready(function(){
         pointToLayer: function(feature,latlng){
           var marker = L.marker(latlng,{icon: ratIcon});
 
-          marker.bindPopup('<b>Wood Densities: </b>'+feature.properties.ID_WD);
+          marker.bindPopup('<b>Wood Densities: </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.fao_biome);
 
           return marker;
         }
@@ -888,9 +863,7 @@ $("a.resultList").click(function(){
   $("div.mapBlock").hide();
 });
 </script>
-<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
-<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
-    <!--<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>-->
-
-
+            <!--<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>-->
+             <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
+             <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
 
