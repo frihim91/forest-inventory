@@ -119,7 +119,7 @@
 
               <div class="col-md-12"> 
                   <label>Is Feature Image ?</label><br>
-                  <?php echo form_checkbox('IS_FEAT','Y'); ?>
+                  <?php echo form_checkbox('IS_FEAT','Y',$edit_gallery->IS_FEAT == "Y"); ?>
               </div>
           </div>
           <div class="col-md-4 help">

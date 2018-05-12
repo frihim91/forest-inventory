@@ -177,14 +177,15 @@ var count = 0;
                                                            <div class="col-sm-12 fullWidth ">
                                                                  
 
-                                                                 <?php if($feature_image->IS_FEAT == "Y"){
+                                                                 <?php if(!empty($feature_image)){
                                                                   
                                                                   ?>
                                                                  
                                                                     <img  width ="100%" class="img-responsive" src="<?php echo base_url('resources/images/home_page_gallery/'.$feature_image->IMAGE_PATH); ?>"  />
                                                                   
-                                                                  <?php } ?>
-                                                                  
+                                                                  <?php } else {?>
+                                                              <img width ="100%" class="img-responsive" src="<?php echo base_url(); ?>asset/forest_demo.jpg" alt="User Photo"/>
+                                                              <?php } ?>
                                                          
                                                          </div>
 
