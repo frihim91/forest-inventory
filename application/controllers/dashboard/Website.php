@@ -887,11 +887,18 @@ class Website extends CI_Controller
         $data['content_view_page'] = 'setup/gallery/viewGalleryData';
         $this->template->display($data);
     }
+    private function pr($data)
+    {
+        echo "<pre>";
+        print_r($data);
+        exit;
+    }
     
     
     public function addImageinGallery()
     {
         if (isset($_POST['title'])) {
+           // $this->pr($_POST);
             
             //$titles = count($this->input->post('title'));
             $title    = $this->input->post('title');
@@ -915,6 +922,10 @@ class Website extends CI_Controller
             } else {
                 $picture = '';
             }
+            $updData=array(
+                'IS_FEAT'=>'N'
+                );
+        $this->db->update('home_page_gallery', $updData);
             
             $data = array(
                 'GALLERY_TITLE' => $title,
@@ -957,7 +968,11 @@ class Website extends CI_Controller
               if ($this->upload->do_upload('main_image')) {
                   $uploadData = $this->upload->data();
                   $picture    = $uploadData['file_name'];
-                     $data = array(
+                $updData=array(
+                'IS_FEAT'=>'N'
+                );
+                $this->db->update('home_page_gallery', $updData);
+                   $data = array(
                   'GALLERY_TITLE' => $title,
                   'GALLERY_DESC' => $descript,
                   'IS_FEAT' => (isset($_POST['IS_FEAT'])) ? 'Y' : 'N',

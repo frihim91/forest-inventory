@@ -994,6 +994,8 @@ private function searchAttributeString($searchFields)
             where t.CAT_ID=4")->result();
          $data['sliders']        = $this->db->query("SELECT * FROM home_page_slider")->result();
          $data['gallery']           = $this->db->query("SELECT * FROM home_page_gallery")->result();
+         $data['feature_image'] = $this->db->query("SELECT * FROM home_page_gallery f
+         WHERE f.IS_FEAT= 'Y'")->row();
 
         $this->template->display_portal_home($data);
     }

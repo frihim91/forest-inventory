@@ -175,16 +175,16 @@ var count = 0;
                                                     <div class="panel-body">
                                                        <div class="row">
                                                            <div class="col-sm-12 fullWidth ">
-                                                                 <?php foreach($gallery as $galleries){?>
+                                                                 
 
-                                                                 <?php if($galleries->IS_FEAT == "Y"){
+                                                                 <?php if($feature_image->IS_FEAT == "Y"){
                                                                   
                                                                   ?>
                                                                  
-                                                                    <img  width ="100%" class="img-responsive" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"  />
+                                                                    <img  width ="100%" class="img-responsive" src="<?php echo base_url('resources/images/home_page_gallery/'.$feature_image->IMAGE_PATH); ?>"  />
                                                                   
                                                                   <?php } ?>
-                                                                    <?php } ?>
+                                                                  
                                                          
                                                          </div>
 
