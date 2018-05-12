@@ -96,9 +96,9 @@ private function pr($data)
   print_r($data);
   exit;
 }
-public function dataSpecies()
+public function dataSpecies_backup()
 {
-  $n=$data['family_details']    = $this->db->query("select f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
+  $n=$data['family_details']    = $this->db->query("SELECT f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
   FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT,(SELECT count(rd.ID) FROM rd as rd LEFT JOIN species_group sr ON rd.Speciesgroup_ID=sr.Speciesgroup_ID
   LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
   as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae  LEFT JOIN species s ON ae.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
@@ -111,6 +111,82 @@ public function dataSpecies()
   ")->row();
   //  $this->pr($k);
   $data['content_view_page'] = 'portal/data/speciesData';
+  $this->template->display_portal($data);
+}
+
+public function dataSpecies()
+{
+  $this->load->library('pagination');
+  $config             = array();
+  $config["base_url"] = base_url() .  "index.php/data/dataSpecies";
+  $total_ef=$this->db->query("SELECT f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
+    FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT,(SELECT count(rd.ID) FROM rd as rd LEFT JOIN species_group sr ON rd.Speciesgroup_ID=sr.Speciesgroup_ID
+    LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
+  as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae  LEFT JOIN species s ON ae.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
+  as AECOUNT,(SELECT count(ID_WD) FROM wd as wd LEFT JOIN species s ON wd.ID_species=s.ID_Species  WHERE s.ID_family=f.ID_Family)
+  as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
+  from family as f ORDER BY f.Family
+  ")->num_rows();
+        // print_r($this->db->last_query());exit;
+        // echo $total_ae;exit;
+
+
+  $config["total_rows"] = $total_ef;
+        // $config["total_rows"] = 800;
+
+  $config["per_page"]        = 10;
+        //$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+  $limit                     = $config["per_page"] = 10;
+  $config["uri_segment"] = 3;
+        //$config["num_links"] = round($total_ef );
+        //pagination style start
+  $config['full_tag_open']   = '<ul class="pagination">';
+  $config['full_tag_close']  = '</ul>';
+  $config['prev_link']       = '&lt;';
+  $config['prev_tag_open']   = '<li>';
+  $config['prev_tag_close']  = '</li>';
+  $config['next_link']       = '&gt;';
+  $config['next_tag_open']   = '<li>';
+  $config['next_tag_close']  = '</li>';
+  $config['cur_tag_open']    = '<li class="current"><a href="#">';
+  $config['cur_tag_close']   = '</a></li>';
+  $config['num_tag_open']    = '<li>';
+  $config['num_tag_close']   = '</li>';
+  $config['first_tag_open']  = '<li>';
+  $config['first_tag_close'] = '</li>';
+  $config['last_tag_open']   = '<li>';
+  $config['last_tag_close']  = '</li>';
+  $config['first_link']      = 'First';
+  $config['last_link']       = 'Last';
+        // //pagination style end
+  $this->pagination->initialize($config);
+  $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        // ")->result();
+        // $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor($limit,$page);
+  $data['family_details'] = $this->db->query("SELECT f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
+    FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT,(SELECT count(rd.ID) FROM rd as rd LEFT JOIN species_group sr ON rd.Speciesgroup_ID=sr.Speciesgroup_ID
+    LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
+  as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae  LEFT JOIN species s ON ae.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
+  as AECOUNT,(SELECT count(ID_WD) FROM wd as wd LEFT JOIN species s ON wd.ID_species=s.ID_Species  WHERE s.ID_family=f.ID_Family)
+  as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
+  from family as f ORDER BY f.Family LIMIT $limit OFFSET $page
+  ")->result();
+
+  $data['family_details_count'] = $this->db->query("SELECT f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
+    FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT,(SELECT count(rd.ID) FROM rd as rd LEFT JOIN species_group sr ON rd.Speciesgroup_ID=sr.Speciesgroup_ID
+    LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
+  as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae  LEFT JOIN species s ON ae.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
+  as AECOUNT,(SELECT count(ID_WD) FROM wd as wd LEFT JOIN species s ON wd.ID_species=s.ID_Species  WHERE s.ID_family=f.ID_Family)
+  as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
+  from family as f ORDER BY f.Family
+
+  ")->result();
+  $k= $data['total_genus_species']    = $this->db->query("select count(*) total_family,(select count(*)  from species) total_species,(select count(*)  from genus) total_genus from family
+    ")->row();
+  $data["links"]                  = $this->pagination->create_links();
+
+  $data['content_view_page']      = 'portal/data/speciesData';
   $this->template->display_portal($data);
 }
 public function allometricEqnAjaxData($str)

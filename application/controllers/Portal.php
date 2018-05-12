@@ -5662,8 +5662,6 @@ private function searchAttributeString($searchFields)
         
         $data['reference']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
         $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
-
-      
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
   

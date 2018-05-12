@@ -152,6 +152,7 @@ $ci->load->model('datamodel');
                   }
 
                   ?>
+                  <p><?php echo $links; ?></p>
 
                 </div>
               </div>
