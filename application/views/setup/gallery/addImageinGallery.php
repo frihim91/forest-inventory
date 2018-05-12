@@ -96,6 +96,23 @@
             </div>
          </div>
       </div>
+
+       <div class="row">
+                        <div class="form-group"> 
+                            <div class="col-md-8">
+                                
+                                <div class="col-md-12"> 
+                                <label>Is Feature Image ?</label><br>
+                                    <?php echo form_checkbox('IS_FEAT','N', false); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-4 help">
+                                <strong><span  class="help-head">Help: </span>Is Active ?</strong>
+                                <hr>
+                                <p class="muted">If Feature Image checked checkbox, else uncheck .</p>
+                            </div>  
+                        </div>
+                    </div>
      
       <div class="separator"></div>
       <center>

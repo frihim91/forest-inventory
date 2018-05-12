@@ -15,6 +15,7 @@
   }
   .sideDiv{
       padding: 0px!important;
+      margin-top: 5px;
   }
   img.thumbImg{
     margin-bottom: 2px!important;
@@ -26,17 +27,6 @@
 }
 </style>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-<script type="text/javascript">
-// $(document).ready(function(){
-//     $("#hide").click(function(){
-//         $("video").hide();
-//     });
-//     $("#show").click(function(){
-//         $("video").show();
-//     });
-// });
-// </script>
 <style type="text/css">
 
     .clickable{
@@ -101,28 +91,7 @@ var count = 0;
         });
     });
 </script>
-<script type="text/javascript">
-//    $(document).ready(function() {
-//     $('.clickable_gallery').click(function() {
-//
-//        $('#gallery_slider_thumbail').toggle("fade");
-//
-//            //$("div.gallery_slider_large").hide();
-//        });
-// });
 
-</script>
-
-<script>
-// $(document).ready(function(){
-//     $(".clickable_gallery").click(function(){
-//         $("div.gallery_slider_large").hide();
-//     });
-//     $(".clickable_gallery").click(function(){
-//         $("div.gallery_slider_thumbail").show();
-//     });
-// });
-// </script>
 <div class="row">
     <section class="">
         <div class="container">
@@ -204,22 +173,19 @@ var count = 0;
                                                     </div>
 
                                                     <div class="panel-body">
-
                                                        <div class="row">
                                                            <div class="col-sm-12 fullWidth ">
-                                                           <?php
-                                                           $i = 0;
-                                                           foreach($gallery as $galleries)
-                                                            if ($i == 3) { break; }
-                                                            {?>
+                                                                 <?php foreach($gallery as $galleries){?>
 
-
-                                                                <img  width ="100%" class="img-responsive" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"  />
-
-                                                                <?php
-                                                                $i++;
-                                                                } ?>
-                                                            <!--  <img width ="240px" src="<?php echo base_url('resources/images/home_page_gallery/1.jpg'); ?>" /> -->
+                                                                 <?php if($galleries->IS_FEAT == "Y"){
+                                                                  
+                                                                  ?>
+                                                                 
+                                                                    <img  width ="100%" class="img-responsive" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"  />
+                                                                  
+                                                                  <?php } ?>
+                                                                    <?php } ?>
+                                                         
                                                          </div>
 
 
@@ -236,20 +202,7 @@ var count = 0;
 
                                                     </div>
 
-                                                  <!--   <div id="gallery_slider">
-                                                     <img data-u="image" src="<?php echo base_url('resources/images/home_page_gallery/1.jpg'); ?>" />
-
-                                                    </div>
-                                                    <div class="gallery_slider_thumbail" style="display: none;">
-                                                        <?php foreach($gallery as $galleries){?>
-
-                                                          <img data-u="thumb" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>" />
-
-
-
-                                                        <?php } ?>
-
-                                                    </div> -->
+                                             
                                                 </div>
                                             </div>
 

@@ -919,6 +919,7 @@ class Website extends CI_Controller
             $data = array(
                 'GALLERY_TITLE' => $title,
                 'GALLERY_DESC' => $descript,
+                'IS_FEAT' => (isset($_POST['IS_FEAT'])) ? 'Y': 'N',
                 'IMAGE_PATH' => $picture
             );
             
@@ -959,13 +960,15 @@ class Website extends CI_Controller
                      $data = array(
                   'GALLERY_TITLE' => $title,
                   'GALLERY_DESC' => $descript,
+                  'IS_FEAT' => (isset($_POST['IS_FEAT'])) ? 'Y' : 'N',
                   'IMAGE_PATH' => $picture
               );
 
               } else {
                      $data = array(
                   'GALLERY_TITLE' => $title,
-                  'GALLERY_DESC' => $descript
+                  'GALLERY_DESC' => $descript,
+                  'IS_FEAT' => (isset($_POST['IS_FEAT'])) ? 'Y' : 'N'
 
               );
 
