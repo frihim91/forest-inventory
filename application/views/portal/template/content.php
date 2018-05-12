@@ -7,9 +7,24 @@
             x.style.display = "none";
         }
     }
-    
-</script>
 
+</script>
+<style media="screen">
+  .fullWidth,.videoDiv{
+    padding: 5px!important;
+  }
+  .sideDiv{
+      padding: 0px!important;
+  }
+  img.thumbImg{
+    margin-bottom: 2px!important;
+  }
+  .fake-link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+</style>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <script type="text/javascript">
@@ -25,7 +40,7 @@
 <style type="text/css">
 
     .clickable{
-        cursor: pointer;   
+        cursor: pointer;
     }
 
     .panel-heading span {
@@ -47,33 +62,54 @@
 
 
 
-    
+
 </style>
 
 <script type="text/javascript">
+var count = 0;
     $(document).on('click', '.panel-heading span.clickable_gallery', function(e){
-        var $this = $(this);
-        if(!$this.hasClass('panel-collapsed')) {
-            $this.parents('.panel').find('#gallery_slider_thumbail').slideUp();
-            $this.addClass('panel-collapsed');
-            $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-        } else {
-            $this.parents('.panel').find('#gallery_slider_thumbail').slideDown();
-            $this.removeClass('panel-collapsed');
-            $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+        //var $this = $(this);
+        count+= 1;
+        if(count%2==0)
+        {
+          $("div.sideDiv").hide();
+       		$("div.fullWidth").removeClass("col-md-9");
+       		$("div.fullWidth").addClass("col-md-12");
+          $(this).find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+
+        }
+        else
+        {
+          $("div.sideDiv").show();
+       		$("div.fullWidth").removeClass("col-md-12");
+       		$("div.fullWidth").addClass("col-md-9");
+          $(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
         }
     })
-    
+    $(document).on('click', 'a.fake-link', function(e){
+      var imageId=$(this).attr("imgId");
+      var destination='<?php echo site_url("portal/getImageForSlider") ?>'+'/'+imageId;
+      //alert(destination);
+        $.ajax({
+          type: "GET",
+          url: destination,
+          success: function (data) {
+            $("div.fullWidth").html(data);
+            //  $("div.ajaxLoad").fadeIn(1500);
+            //  $('div.ajaxLoader').hide();
+          }
+        });
+    });
 </script>
 <script type="text/javascript">
-   $(document).ready(function() {
-    $('.clickable_gallery').click(function() {
-
-       $('#gallery_slider_thumbail').toggle("fade");
-
-           //$("div.gallery_slider_large").hide();
-       });
-});
+//    $(document).ready(function() {
+//     $('.clickable_gallery').click(function() {
+//
+//        $('#gallery_slider_thumbail').toggle("fade");
+//
+//            //$("div.gallery_slider_large").hide();
+//        });
+// });
 
 </script>
 
@@ -95,7 +131,7 @@
                     <div class="content" style="height: 300px; overflow-y: scroll;">
                         <h3 style="text-align: center;font-family:Century;font-weight:bold;"><?php echo $post_cat->TITLE_NAME;?></h3>
                         <p style="text-align:justify;font-family:Century;font-weight:580;"><?php echo $post_description->BODY_DESC;?></p>
-                        
+
                     </div>
                 </div>
             </div>
@@ -125,8 +161,8 @@
                           </div>
                           <!--  <div class="caption" style="position: absolute; top: 0; left:0px; width:400px; height:100px;" u="caption" ><p>Caption text</p></div> -->
                       </div>
-                      <?php } ?> 
-                      
+                      <?php } ?>
+
                   </div>
                   <!-- Bullet Navigator -->
                 <!--   <div data-u="navigator" class="jssorb051" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
@@ -166,34 +202,34 @@
                                                         <h4 class="panel-title" align="center" style="font-family:Century;font-weight:bold;"><b>Photo</b></h4>
                                                         <span class="pull-right clickable_gallery"><i class="glyphicon glyphicon-chevron-up"></i></span>
                                                     </div>
-                                                    
+
                                                     <div class="panel-body">
 
                                                        <div class="row">
-                                                           <div class="col-sm-8">
-                                                           <?php 
+                                                           <div class="col-sm-12 fullWidth ">
+                                                           <?php
                                                            $i = 0;
                                                            foreach($gallery as $galleries)
                                                             if ($i == 3) { break; }
                                                             {?>
-                                                                                                                 
 
-                                                                <img  width ="240px" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"  />
-                                                                
-                                                                <?php 
+
+                                                                <img  width ="100%" class="img-responsive" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"  />
+
+                                                                <?php
                                                                 $i++;
-                                                                } ?> 
+                                                                } ?>
                                                             <!--  <img width ="240px" src="<?php echo base_url('resources/images/home_page_gallery/1.jpg'); ?>" /> -->
                                                          </div>
 
 
-                                                         <div class="col-sm-4">
+                                                         <div class="col-sm-3 sideDiv" style="display:none">
                                                              <div id="gallery_slider_thumbail">
-                                                                <?php foreach($gallery as $galleries){?>                                                    
+                                                                <?php foreach($gallery as $galleries){?>
 
-                                                                <img  width ="40px" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"  />
+                                                              <a  class="fake-link" imgId="<?php echo $galleries->ID?>">  <img  width ="40px" class="thumbImg" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"  /></a>
 
-                                                                <?php } ?> 
+                                                                <?php } ?>
                                                             </div>
                                                         </div>
 
@@ -202,17 +238,17 @@
 
                                                   <!--   <div id="gallery_slider">
                                                      <img data-u="image" src="<?php echo base_url('resources/images/home_page_gallery/1.jpg'); ?>" />
-                                                        
+
                                                     </div>
                                                     <div class="gallery_slider_thumbail" style="display: none;">
-                                                        <?php foreach($gallery as $galleries){?>                                                    
+                                                        <?php foreach($gallery as $galleries){?>
 
                                                           <img data-u="thumb" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>" />
-                                                    
 
 
-                                                        <?php } ?> 
-                                                        
+
+                                                        <?php } ?>
+
                                                     </div> -->
                                                 </div>
                                             </div>
@@ -227,10 +263,11 @@
                                                 <h4 class="panel-title" align="center" style="font-family:Century;font-weight:bold;"><b>Video</b></h4>
                                                 <!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span> -->
                                             </div>
-                                            <div class="panel-body">
-                                                <div class="embed-responsive embed-responsive-4by3">
-                                                    <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=arfancu" 
-                                                        width="320" height="318"></iframe>  
+                                            <div class="panel-body videoDiv">
+
+                                                <div class="embed-responsive embed-responsive-4by3 ">
+                                                    <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=arfancu"
+                                                        width="320" height="318"></iframe>
                                             </div></div>
                                         </div>
 

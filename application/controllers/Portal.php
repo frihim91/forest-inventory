@@ -169,7 +169,7 @@ private function searchAttributeString($searchFields)
         }
 
         $string=$this->searchAttributeString($validSearchKey);
-       
+
         $k=$data['allometricEquationView'] = $this->db->query("SELECT a.Equation,a.Output,ref.Author,ref.Reference,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
@@ -200,7 +200,7 @@ private function searchAttributeString($searchFields)
          where $string GROUP BY a.ID_AE
          order by a.ID_AE ASC
         ")->result();
-       
+
          // $data["links"]                  = $this->pagination->create_links();
 
           if($searchFieldArray['keyword']!='')
@@ -271,7 +271,7 @@ private function searchAttributeString($searchFields)
       }
 
 
-    
+
 
 
      private function getDtByAttrRaw($attr)
@@ -480,7 +480,7 @@ private function searchAttributeString($searchFields)
       public function getMapJsonData($query)
       {
         $query1=base64_decode($query);
-        
+
         $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db_v2','maruf','maruf');
         $sql =$query1;
         if (isset($_GET['bbox']) || isset($_POST['bbox'])) {
@@ -994,6 +994,7 @@ private function searchAttributeString($searchFields)
             where t.CAT_ID=4")->result();
          $data['sliders']        = $this->db->query("SELECT * FROM home_page_slider")->result();
          $data['gallery']           = $this->db->query("SELECT * FROM home_page_gallery")->result();
+
         $this->template->display_portal_home($data);
     }
 
@@ -4048,7 +4049,7 @@ private function searchAttributeString($searchFields)
          where s.ID_Species=$specis_id GROUP BY r.ID
          order by r.ID desc
         ")->result();
-        
+
         // print_r($this->db->last_query());exit;
         // echo $total_ae;exit;
         $config["total_rows"] =$total_rawData;
@@ -5659,12 +5660,12 @@ private function searchAttributeString($searchFields)
 
     public function viewLibraryPage()
     {
-        
+
         $data['reference']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
         $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
         $data['content_view_page'] = 'portal/viewLibraryPage';
         $this->template->display_portal($data);
-  
+
     }
 
 
@@ -5695,13 +5696,13 @@ private function searchAttributeString($searchFields)
 
      public function viewCommunityPage()
     {
-      
+
         $data['community']           = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
         LEFT JOIN visitor_info v ON c.user_id=v.USER_ID order by c.id desc ")->result();
         //$data["links"]                  = $this->pagination->create_links();
         $data['content_view_page'] = 'portal/viewCommunityPage';
         $this->template->display_portal($data);
-  
+
     }
 
 
@@ -5857,7 +5858,7 @@ private function searchAttributeString($searchFields)
         $string=$this->searchAttributeString($validSearchKey);
 
            $data['community'] = $this->db->query("SELECT c.title,c.id,c.user_id,v.USER_ID,v.LAST_NAME from community c
-        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.title desc 
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.title desc
 
          ")->result();
          $data['community_count'] = $this->db->query("SELECT c.title,c.id,c.user_id,v.USER_ID,v.LAST_NAME from community c
@@ -6436,29 +6437,10 @@ private function searchAttributeString($searchFields)
             echo json_encode($row_set);
         }
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      public function getImageForSlider($id)
+      {
+          $img=$this->db->query("SELECT IMAGE_PATH FROM home_page_gallery WHERE ID=$id")->row();
+        $path=base_url("resources/images/home_page_gallery/".$img->IMAGE_PATH);
+          echo "<img src='$path' class='img-responsive'>";
+      }
 }
