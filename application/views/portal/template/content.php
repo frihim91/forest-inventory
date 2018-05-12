@@ -129,13 +129,13 @@
                       
                   </div>
                   <!-- Bullet Navigator -->
-                  <div data-u="navigator" class="jssorb051" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+                <!--   <div data-u="navigator" class="jssorb051" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
                     <div data-u="prototype" class="i" style="width:16px;height:16px;">
                         <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
                             <circle class="b" cx="8000" cy="8000" r="5800"></circle>
                         </svg>
                     </div>
-                </div>
+                </div> -->
                 <!-- Arrow Navigator -->
                 <div data-u="arrowleft" class="jssora051" style="width:65px;height:65px;top:0px;left:35px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
                                                <!--  <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
@@ -225,14 +225,12 @@
                                          <div class="panel panel-success" style="margin-top: 20px;">
                                             <div class="panel-heading  panel-heading-custom">
                                                 <h4 class="panel-title" align="center" style="font-family:Century;font-weight:bold;"><b>Video</b></h4>
-                                                <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                                                <!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span> -->
                                             </div>
                                             <div class="panel-body">
                                                 <div class="embed-responsive embed-responsive-4by3">
-                                                    <iframe width="320" height="318"
-                                                    src="https://www.youtube.com/embed/HHRNqtLLLeI">
-
-                                                </iframe>
+                                                    <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=arfancu" 
+                                                        width="320" height="318"></iframe>  
                                             </div></div>
                                         </div>
 

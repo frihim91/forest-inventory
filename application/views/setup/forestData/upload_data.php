@@ -58,9 +58,9 @@
                                             <select name="table_name" id="table_name">
                                             <option value="">--Select--</option>
                                             <option value="ae">ae</option>
-                                            <option value="agerange">agerange</option>
-                                            <option value="basalrange">basalrange</option>
                                             <option value="bd_aez1988">bd_aez1988</option>
+                                            <option value="botanical_description">botanical_description</option>
+                                            <option value="contributor_info">contributor_info</option>
                                             <option value="botanical_descriptions">botanical_descriptions</option>
                                             <option value="district">district</option>
                                             <option value="division">division</option>
@@ -69,16 +69,18 @@
                                             <option value="family">family</option>
                                             <option value="faobiomes">faobiomes</option>
                                             <option value="genus">genus</option>
-                                            <option value="heightrange">heightrange</option>
+                                            <option value="group_location">group_location</option>
                                             <option value="landcover">landcover</option>
                                             <option value="location">location</option>
-                                            <option value="location_info">location_info</option>
                                             <option value="rd">rd</option>
                                             <option value="reference">reference</option>
                                             <option value="species">species</option>
+                                            <option value="species_character">species_character</option>
+                                            <option value="species_group">species_group</option>
+                                            <option value="species_image">species_image</option>
+                                            <option value="species_localname">species_localname</option>
                                             <option value="union">union</option>
                                             <option value="upazilla">upazilla</option>
-                                            <option value="volumerange">volumerange</option>
                                             <option value="wd">wd</option>
                                             <option value="zones">zones</option>
                                          

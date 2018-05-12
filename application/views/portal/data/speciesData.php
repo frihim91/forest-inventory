@@ -152,8 +152,11 @@ $ci->load->model('datamodel');
                   }
 
                   ?>
-                  <p><?php echo $links; ?></p>
 
+
+                </div>
+                <div class="col-md-12">
+                  <span class="pull-right"><?php echo $links; ?></span>
                 </div>
               </div>
             </div>
