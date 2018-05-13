@@ -97,18 +97,27 @@ class ForestData extends CI_Controller
         }
 
     }
+    private function pr($data)
+    {
+        echo "<pre>";
+        print_r($data);
+        exit;
+    }
 
 
     function uploadForestData()
     {
         if ($_POST) {
+            $dbName= $this->db->database;
             $sourcePath     = $_FILES['userfile']['tmp_name'];
             $tableName      = $this->input->post("table_name");
             $primaryKeyArray=$this->db->query("SELECT COLUMN_NAME FROM information_schema.`COLUMNS` C
                                           WHERE COLUMN_KEY='PRI' AND TABLE_NAME='$tableName'
+                                          AND TABLE_SCHEMA='$dbName'
                                           limit 1;")->row();
             $primaryKey=$primaryKeyArray->COLUMN_NAME;
-            $tableCoulmn    = $this->db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$tableName'")->result();
+            $tableCoulmn    = $this->db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE
+             TABLE_NAME = '$tableName' AND  TABLE_SCHEMA='$dbName'")->result();
             $temporary      = explode(".", $_FILES["userfile"]["name"]);
             $file_extension = end($temporary);
             $targetPath     = "resources/uploads/" . $_FILES['userfile']['name'];
@@ -137,13 +146,14 @@ class ForestData extends CI_Controller
                           $primaryKey => $csv_array[$key][$primaryKey]
                       );
                       $this->utilities->deleteRowByAttribute($tableName, $attr);
-
+                      //$this->pr($tableCoulmn);
                         $insert_data = array();
                         for ($i = 0; $i < sizeof($tableCoulmn); $i++) {
                             $col               = $tableCoulmn[$i]->COLUMN_NAME;
                             $data              = $row[$col];
                             $insert_data[$col] = $data;
                         }
+                       // $this->pr($tableCoulmn);
 
                         $this->Forestdata_model->insert_csv($insert_data, $tableName);
 

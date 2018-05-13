@@ -53,9 +53,9 @@
                                 <div class="form-group">
                                     <div class="col-md-8">
 
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                          <label for="firstname">Table Name</label>
-                                            <select name="table_name" id="table_name">
+                                            <select name="table_name" id="table_name" class="form-control">
                                             <option value="">--Select--</option>
                                             <option value="ae">ae</option>
                                             <option value="bd_aez1988">bd_aez1988</option>

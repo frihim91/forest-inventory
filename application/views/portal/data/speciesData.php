@@ -3,7 +3,7 @@
   width: 100%!important;
 }
 .speciesImg{
-  width:250px!important;
+  width:180px!important;
   height:auto!important;
   float: left!important;
   margin-right:10px!important
@@ -70,6 +70,7 @@ $ci->load->model('datamodel');
                       foreach($species as $species_list)
                       {
                         $availableData=$ci->datamodel->getAvailableData($species_list->ID_Species);
+                        $availableDataImage=$ci->datamodel->getAvailableDataImage($species_list->ID_Species);
                         $alometricUrl=site_url('Portal/allometricEquationViewSpeciesData/'.$species_list->ID_Species);
                         $efUrl=site_url('Portal/biomassExpansionFacSpeciesView/'.$species_list->ID_Species);
                         $wdUrl=site_url('Portal/woodDensitiesSpeciesView/'.$species_list->ID_Species);
@@ -123,15 +124,57 @@ $ci->load->model('datamodel');
                                       </tr> -->
                                     </tbody>
                                   </table>
+                                  <h3 style="font-family:Tahoma, Verdana, Segoe, sans-serif;" align="center">Tree Species Details </h3>
+                                   <dl class='dl-horizontal'>
+                                  <dt style='font-size:15px'><small>Family Name:</small></dt> <dd style='font-size:15px'><small> <?php echo $row->Family;?></small></dd> 
+                                  <dt style='font-size:15px'><small>Genus:</small></dt> <dd style='font-size:15px'><small> <?php echo $availableData->Genus;  ?></small></dd> 
+                                  <dt style='font-size:15px'><small>Species:</small></dt> <dd style='font-size:15px'><small><?php echo $availableData->Species;  ?></small></dd> 
+                                  <dt style='font-size:15px'><small>Author Name:</small></dt> <dd style='font-size:15px'><small> <?php echo $availableData->author;  ?></small></dd> 
+                                  <dt style='font-size:15px'><small>synonyms:</small></dt> <dd style='font-size:15px'><small><?php echo $availableData->synonyms;  ?></small></dd> 
+                                  <dt style='font-size:15px'><small>Fruits & Flowering :<br> Period</small></dt> <dd style='font-size:15px'><small> <?php echo $availableData->flowering_period;  ?></small></dd>
+                                  <dt style='font-size:15px'><small>Habitat:</small></dt> <dd style='font-size:15px'><small><?php echo $availableData->habit;  ?></small></dd> 
+                                  <dt style='font-size:15px'><small>Distribution:</small></dt> <dd style='font-size:15px'><small><?php echo $availableData->distribution;  ?></small></dd> 
+                                  <dt style='font-size:15px'><small>Uses:</small></dt> <dd style='font-size:15px'><small><?php echo $availableData->uses;  ?></small></dd>
+                                   <dt style='font-size:15px'><small>Description:</small></dt> <dd style='font-size:15px'><small> <p style="text-align: justify;"><?php echo $availableData->description;  ?></p></small></dd>
+                                   <p><b>Photographs:</b></p>
+                                   <?php foreach($availableDataImage as $availableDataImages){?>
+
+                                   <?php if($availableDataImages->image_name!='') {
+                                   //print_r($availableDataImages); ?>
+                                  
                                    
-                                    
-                                    <?php if($availableData->image_name!='') { ?>
-                                   
-                                     <p style="text-align: justify;"><img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $availableData->image_name; ?>" class="speciesImg"> </b><?php echo $availableData->description;?></p>
+                                      <div class="col-md-4"><img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $availableDataImages->image_name; ?>" class="speciesImg"> </b></div>
                                    
                                     <?php } else { ?>
                                         
-                                    <?php  } ?>
+                                    <?php  } ?> 
+
+
+                                    <?php } ?>
+
+
+                                  
+                                  <dl>
+                                   <div class="col-md-8"><h4 style="font-weight:bold;">Key character:</h4><p><b><?php echo $availableData->root_character;  ?>:</b><?php echo $availableData->character_sub1;  ?></p> </div>
+                                  <!-- <p><b>Family Name:</b> <?php echo $row->Family;?></p>
+                                  <p><b>Genus:</b>  <?php echo $availableData->Genus;  ?></p>
+                                  <p><b>Species:</b>  <?php echo $availableData->Species;  ?></p>
+                                  <p><b>Author Name:</b>  <?php echo $availableData->author;  ?></p>
+                                  <p><b>synonyms:</b>  <?php echo $availableData->synonyms;  ?></p>
+                                  <p><b>English Name:</b>  <?php echo $availableData->english_name;  ?></p>
+                                  <p style="text-align: justify;"><b>Description:</b>  <?php echo $availableData->description;  ?></p>
+                                   <p><b>Fruits & Flowering Period:</b>  <?php echo $availableData->flowering_period;  ?></p>
+                                   <p><b>Habitat:</b>  <?php echo $availableData->habit;  ?></p>
+                                   <p><b>Distribution:</b>  <?php echo $availableData->distribution;  ?></p>
+                                   <p><b>Uses:</b>  <?php echo $availableData->uses;  ?></p>
+                                   <p><b>Photographs:</b></p>
+                                   <?php if($availableData->image_name!='') { ?>
+                                   
+                                     <p style="text-align: justify;"><img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $availableData->image_name; ?>" class="speciesImg"> </b></p>
+                                   
+                                    <?php } else { ?>
+                                        
+                                    <?php  } ?> -->
                                    
                                  
                                 </div>
