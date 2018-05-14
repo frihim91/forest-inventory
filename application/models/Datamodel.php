@@ -33,9 +33,9 @@ Class Datamodel extends CI_Model {
 
    public function getAvailableDataSpeciesCharacter($speciesId)
   {
-    $result=$this->db->query("SELECT sc.* FROM species s
-                              LEFT JOIN botanical_description bd ON s.ID_Species=bd.species
-                              LEFT JOIN species_character sc ON bd.botanical_id=sc.botanical_id
+    $result=$this->db->query("SELECT sc.* FROM species_character sc
+                              LEFT JOIN botanical_description bd ON sc.botanical_id=bd.botanical_id
+                              LEFT JOIN species s ON bd.Species=s.ID_Species
                               where s.ID_Species=$speciesId")->result();
     return $result;
   }
