@@ -174,10 +174,10 @@ $ci->load->model('datamodel');
 
                                   </dl>
 
-                                  <?php if($availableDataSpeciesCharacter->root_character!=''){
+                                      <?php if(!empty($availableDataImage)){
                                                                   
                                    ?>
-                                    <p>Key character:</p>
+                                   <div class="col-md-12"> <h3>Key character:</h3></div>
                                    <?php foreach($availableDataSpeciesCharacter as $availableDataSpeciesCharacters){?>
 
                                    <?php if($availableDataSpeciesCharacters->root_character!='') {
