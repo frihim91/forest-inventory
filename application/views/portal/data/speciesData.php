@@ -1,26 +1,26 @@
 <style media="screen">
-  .panel-group{
-    width: 100%!important;
-  }
-  .speciesImg{
-    width:190px!important;
-    height:180px!important;
-    float: left!important;
-    margin-right:10px!important
-  }
+.panel-group{
+  width: 100%!important;
+}
+/*.speciesImg{
+  width:190px!important;
+  height:180px!important;
+  float: left!important;
+  margin-right:10px!important
+}*/
 
 /*.speciesImg{
   width:180px!important;
   height:auto!important;
   float: left!important;
   margin-right:10px!important
-}*/
+  }*/
 
-dl {
-  margin-top: 0;
-  margin-bottom: 1px;
-  margin-left: 10px;
-}
+  dl {
+    margin-top: 0;
+    margin-bottom: 1px;
+    margin-left: 10px;
+  }
 </style>
 <?php
 function noDataReturn($speciesId,$value,$head,$url)
@@ -171,18 +171,19 @@ function noDataReturnParam($param)
                                     <dt style='font-size:15px'><small>Distribution:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->distribution);  ?></small></dd> 
                                     <dt style='font-size:15px'><small>Uses:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->uses);  ?></small></dd>
                                     <dt style='font-size:15px'><small>Description:</small></dt> <dd style='font-size:15px'><small> <p style="text-align: justify;"><?php echo noDataReturnParam($availableData->description);  ?></p></small></dd>
-                                   
-                                    <?php if(!empty($availableDataImage)){
+                                    <div class="row">
 
-                                     ?>
-                                     <p><b>Photographs:</b></p>
-                                     <?php foreach($availableDataImage as $availableDataImages){?>
+                                      <?php if(!empty($availableDataImage)){
 
-                                     <?php if($availableDataImages->image_name!='') {
+                                       ?>
+                                       <p><b>Photographs:</b></p>
+                                       <?php foreach($availableDataImage as $availableDataImages){?>
+
+                                       <?php if($availableDataImages->image_name!='') {
                                    //print_r($availableDataImages); ?>
 
                                    
-                                   <div class="col-md-4"><img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $availableDataImages->image_name; ?>" class="speciesImg"> </b></div>
+                                   <div class="col-md-4"><img src="<?php echo base_url('asset/Tree_images_metadata')?>/<?php echo $availableDataImages->image_name; ?>" class="img-responsive"> </b></div>
                                    
                                    <?php } else { ?>
 
@@ -193,20 +194,21 @@ function noDataReturnParam($param)
                                    <?php } else {?>
 
                                    <?php } ?>
-                              
+                                 </div>
 
 
-                                 </dl>
-                                 <div class="col-md-12">
-                                 
+
+                               </dl>
+                               <div class="col-md-12">
+
 
                                  <?php if(!empty($availableDataSpeciesCharacter)){
 
                                    ?>
 
-                                    <h3>Key character:</h3>
+                                   <h3>Key character:</h3>
                                    <?php foreach($availableDataSpeciesCharacter as $availableDataSpeciesCharacters){?>
-                                  <dl class='dl-horizontal' style="margin-bottom: 1px;"><dt style='font-size:15px'><small><?php echo $availableDataSpeciesCharacters->root_character;  ?>:</small></dt><dd style='font-size:15px'><small><?php echo $availableDataSpeciesCharacters->character_sub1;  ?></small></dd></dl>
+                                   <dl class='dl-horizontal' style="margin-bottom: 1px;"><dt style='font-size:15px'><small><?php echo $availableDataSpeciesCharacters->root_character;  ?>:</small></dt><dd style='font-size:15px'><small><?php echo $availableDataSpeciesCharacters->character_sub1;  ?></small></dd></dl>
                                    
                                    <?php } ?>
                                    <?php } else {?>
@@ -214,40 +216,40 @@ function noDataReturnParam($param)
 
 
                                    <?php } ?>
-                                   </div>
-                                  
-
-
-
-
                                  </div>
+
+
+
+
+
                                </div>
                              </div>
                            </div>
-                           <?php
-                           $j++;
-                         }
-                         ?>
-                       </div>
+                         </div>
+                         <?php
+                         $j++;
+                       }
+                       ?>
                      </div>
                    </div>
-
                  </div>
-                 <?php
-                 $i++;
-               }
 
-               ?>
+               </div>
+               <?php
+               $i++;
+             }
+
+             ?>
 
 
-             </div>
-             <div class="col-md-12">
-              <span class="pull-right"><?php echo $links; ?></span>
-            </div>
+           </div>
+           <div class="col-md-12">
+            <span class="pull-right"><?php echo $links; ?></span>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 </div>
