@@ -171,6 +171,7 @@ function noDataReturnParam($param)
                                     <dt style='font-size:15px'><small>Distribution:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->distribution);  ?></small></dd> 
                                     <dt style='font-size:15px'><small>Uses:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->uses);  ?></small></dd>
                                     <dt style='font-size:15px'><small>Description:</small></dt> <dd style='font-size:15px'><small> <p style="text-align: justify;"><?php echo noDataReturnParam($availableData->description);  ?></p></small></dd>
+                                   
                                     <?php if(!empty($availableDataImage)){
 
                                      ?>
@@ -192,6 +193,7 @@ function noDataReturnParam($param)
                                    <?php } else {?>
 
                                    <?php } ?>
+                              
 
 
                                  </dl>
