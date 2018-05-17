@@ -79,7 +79,7 @@ height: 150px;
 }
 
 /* Add Animation */
-.modal-content, #caption {    
+.modal-content, #caption {
 -webkit-animation-name: zoom;
 -webkit-animation-duration: 0.6s;
 animation-name: zoom;
@@ -87,12 +87,12 @@ animation-duration: 0.6s;
 }
 
 @-webkit-keyframes zoom {
-from {-webkit-transform:scale(0)} 
+from {-webkit-transform:scale(0)}
 to {-webkit-transform:scale(1)}
 }
 
 @keyframes zoom {
-from {transform:scale(0)} 
+from {transform:scale(0)}
 to {transform:scale(1)}
 }
 
@@ -352,11 +352,22 @@ cursor: pointer;
         modal.style.display = "block";
         modalImg.src = this.src;
         captionText.innerHTML = alterText;
-    });
         var span = document.getElementsByClassName("close")[0];
 
        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() { 
+        span.onclick = function(e) {
+          var keyCode=e.keyCode;
         modal.style.display = "none";
         }
+
+
+    });
+    $(document).keyup(function(e) {
+      var keyCode=e.keyCode;
+      //alert(keyCode);
+     if (e.keyCode == 27) { // escape key maps to keycode `27`
+        modal.style.display = "none";  // <DO YOUR WORK HERE>
+    }
+    });
+
 </script>
