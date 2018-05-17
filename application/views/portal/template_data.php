@@ -77,7 +77,7 @@
         </header>
         <?php $this->load->view('portal/template/header'); ?>
         <main>
-            <div class="container home-bg">
+            <div class="container home-bg" style="background-attachment: fixed;background-repeat: center no-repeat;position: relative;">
             <?php echo $_content; ?>
                 
             </div><br><br><br>

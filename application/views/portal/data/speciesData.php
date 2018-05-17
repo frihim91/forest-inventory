@@ -69,7 +69,7 @@ function noDataReturnParam($param)
   <div class="container">
     <div class="col-md-8">
       <div class="panel panel-primary">
-        <div class="panel-heading">
+        <div class="panel-heading" style="background-color: #396C15;">
           <h4 class="panel-title">
             Species List
           </h4>
@@ -207,7 +207,7 @@ function noDataReturnParam($param)
                                    ?>
 
                                    <h3>Key character:</h3>
-                                   <?php foreach($availableDataSpeciesCharacter as $availableDataSpeciesCharacters){?>
+                                 <?php foreach($availableDataSpeciesCharacter as $availableDataSpeciesCharacters){?>
                                    <dl class='dl-horizontal' style="margin-bottom: 1px;"><dt style='font-size:15px'><small><?php echo $availableDataSpeciesCharacters->root_character;  ?>:</small></dt><dd style='font-size:15px'><small><?php echo $availableDataSpeciesCharacters->character_sub1;  ?></small></dd></dl>
                                    
                                    <?php } ?>
@@ -253,3 +253,6 @@ function noDataReturnParam($param)
 </div>
 
 </div>
+
+
+

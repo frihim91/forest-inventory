@@ -94,10 +94,14 @@ main{
 }
 .home-bg{
     background: url(../img/bg.jpg) center center no-repeat;
+/*    background: url(../img/bg.jpg) center center repeat-y;*/
     background-size: cover !important;
     min-height: 550px;
     position: relative;
+    background-attachment: fixed;
 }
+
+
 .content{
     background-color: rgba(255,255,255, 0.4);
     padding: 15px 20px 40px 20px;

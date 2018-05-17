@@ -1,96 +1,130 @@
-<script type="text/javascript">
-    function myFunction() {
-        var x = document.getElementById("video");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
 
-</script>
 <style media="screen">
-  .fullWidth,.videoDiv{
-    padding: 5px!important;
-  }
-  .sideDiv{
-      padding: 0px!important;
-      margin-top: 5px;
-  }
-  img.thumbImg{
-    margin-bottom: 2px!important;
-  }
-  .fake-link {
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
+.fullWidth,.videoDiv{
+padding: 5px!important;
 }
+.sideDiv{
+padding: 0px!important;
+margin-top: 5px;
+}
+img.thumbImg{
+margin-bottom: 2px!important;
+}
+.fake-link {
+color: blue;
+text-decoration: underline;
+cursor: pointer;
+}
+
+.clickable{
+cursor: pointer;
+}
+
+.panel-heading span {
+margin-top: -20px;
+font-size: 15px;
+}
+
+@import url('//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css');
+
+.panel-success > .panel-heading-custom {
+background: #B2D497; color: #396C15;
+}
+
+.panel-success > .panel-heading-custom-gallery {
+background: #B2D497; color: #000000;
+}
+
+#myImg {
+border-radius: 5px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+padding-top: 100px; /* Location of the box */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+margin: auto;
+display: block;
+width: 80%;
+max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+margin: auto;
+display: block;
+width: 80%;
+max-width: 700px;
+text-align: center;
+color: #ccc;
+padding: 10px 0;
+height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {    
+-webkit-animation-name: zoom;
+-webkit-animation-duration: 0.6s;
+animation-name: zoom;
+animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+from {-webkit-transform:scale(0)} 
+to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+from {transform:scale(0)} 
+to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+position: absolute;
+top: 15px;
+right: 35px;
+color: #f1f1f1;
+font-size: 40px;
+font-weight: bold;
+transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+color: #bbb;
+text-decoration: none;
+cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+.modal-content {
+    width: 100%;
+}
+}
+
+
 </style>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<style type="text/css">
-
-    .clickable{
-        cursor: pointer;
-    }
-
-    .panel-heading span {
-        margin-top: -20px;
-        font-size: 15px;
-    }
-
-    @import url('//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css');
-
-    .panel-success > .panel-heading-custom {
-        background: #B2D497; color: #396C15;
-    }
-
-    .panel-success > .panel-heading-custom-gallery {
-        background: #B2D497; color: #000000;
-    }
-
-
-
-
-
-
-</style>
-
-<script type="text/javascript">
-var count = 0;
-    $(document).on('click', '.panel-heading span.clickable_gallery', function(e){
-        //var $this = $(this);
-        count+= 1;
-        if(count%2==0)
-        {
-          $("div.sideDiv").hide();
-       		$("div.fullWidth").removeClass("col-md-9");
-       		$("div.fullWidth").addClass("col-md-12");
-          $(this).find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-
-        }
-        else
-        {
-          $("div.sideDiv").show();
-       		$("div.fullWidth").removeClass("col-md-12");
-       		$("div.fullWidth").addClass("col-md-9");
-          $(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-        }
-    })
-    $(document).on('click', 'a.fake-link', function(e){
-      var imageId=$(this).attr("imgId");
-      var destination='<?php echo site_url("portal/getImageForSlider") ?>'+'/'+imageId;
-      //alert(destination);
-        $.ajax({
-          type: "GET",
-          url: destination,
-          success: function (data) {
-            $("div.fullWidth").html(data);
-            //  $("div.ajaxLoad").fadeIn(1500);
-            //  $('div.ajaxLoader').hide();
-          }
-        });
-    });
-</script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
 <div class="row">
     <section class="">
@@ -122,8 +156,8 @@ var count = 0;
                         </div>
                         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
 
-                           <?php foreach($sliders as $slider){?>
-                           <div data-p="137.50">
+                         <?php foreach($sliders as $slider){?>
+                         <div data-p="137.50">
                             <img data-u="image" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" class="img-responsive"/>
                             <div class="caption" align="center" style="background-color: rgba(0, 0, 0, 0.6);width:750px; height:50px;position:absolute;bottom:0px;right:0px">
                               <p  style="color:white;font-size:20px;" align="center"><b><?php echo $slider->IMAGE_TITLE;?></b></p>
@@ -173,55 +207,61 @@ var count = 0;
                                                     </div>
 
                                                     <div class="panel-body">
-                                                       <div class="row">
-                                                           <div class="col-sm-12 fullWidth ">
-                                                                 
+                                                     <div class="row">
+                                                         <div class="col-sm-12 fullWidth ">
 
-                                                                 <?php if(!empty($feature_image)){
-                                                                  
-                                                                  ?>
-                                                                 
-                                                                    <img  width ="100%" class="img-responsive" src="<?php echo base_url('resources/images/home_page_gallery/'.$feature_image->IMAGE_PATH); ?>"  />
-                                                                  
-                                                                  <?php } else {?>
+
+                                                           <?php if(!empty($feature_image)){
+
+                                                              ?>
+
+                                                              <img id="myImg"  width ="100%" class="img-responsive imgBody" alt="<?php echo $feature_image->GALLERY_TITLE?>" src="<?php echo base_url('resources/images/home_page_gallery/'.$feature_image->IMAGE_PATH); ?>"  />
+
+                                                              <?php } else {?>
                                                               <img width ="100%" class="img-responsive" src="<?php echo base_url(); ?>asset/forest_demo.jpg" alt="User Photo"/>
                                                               <?php } ?>
-                                                         
-                                                         </div>
+                                                              <!-- The Modal -->
 
 
-                                                         <div class="col-sm-3 sideDiv" style="display:none">
-                                                             <div id="gallery_slider_thumbail">
-                                                                <?php foreach($gallery as $galleries){?>
 
-                                                              <a  class="fake-link" imgId="<?php echo $galleries->ID?>">  <img  width ="40px" class="thumbImg" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"  /></a>
+                                                          </div>
 
-                                                                <?php } ?>
-                                                            </div>
+
+
+
+                                                          <div class="col-sm-3 sideDiv" style="display:none">
+                                                           <div id="gallery_slider_thumbail">
+                                                            <?php foreach($gallery as $galleries){?>
+
+                                                            <a  class="fake-link" imgId="<?php echo $galleries->ID?>">  <img id="myImg" width ="40px" alt="<?php echo $galleries->GALLERY_TITLE?>"  class="thumbImg" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"  /></a>
+
+                                                            <?php } ?>
                                                         </div>
-
-
                                                     </div>
 
-                                             
+
+
                                                 </div>
+
+
                                             </div>
-
-
-
                                         </div>
-                                        <!--   <button onclick="myFunction()">Try it</button> -->
-                                        <div class="video" style="margin-bottom: 10px;">
-                                         <div class="panel panel-success" style="margin-top: 20px;">
-                                            <div class="panel-heading  panel-heading-custom">
-                                                <h4 class="panel-title" align="center" style="font-family:Century;font-weight:bold;"><b>Video</b></h4>
-                                                <!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span> -->
-                                            </div>
-                                            <div class="panel-body videoDiv">
 
-                                                <div class="embed-responsive embed-responsive-4by3 ">
-                                                    <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=arfancu"
-                                                        width="320" height="318"></iframe>
+
+
+                                    </div>
+                                    <!--   <button onclick="myFunction()">Try it</button> -->
+                                    <div class="video" style="margin-bottom: 10px;">
+                                       <div class="panel panel-success" style="margin-top: 20px;">
+                                        <div class="panel-heading  panel-heading-custom">
+                                            <h4 class="panel-title" align="center" style="font-family:Century;font-weight:bold;"><b>Video</b></h4>
+                                            <!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span> -->
+                                        </div>
+                                        <div class="panel-body videoDiv">
+
+                                            <div class="embed-responsive embed-responsive-4by3 ">
+                                                <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=arfancu"
+                                                width="320" height="318"></iframe>
                                             </div></div>
                                         </div>
 
@@ -259,3 +299,64 @@ var count = 0;
                 </section>
 
             </div>
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+<script type="text/javascript">
+    var count = 0;
+    $(document).on('click', '.panel-heading span.clickable_gallery', function(e){
+    //var $this = $(this);
+    count+= 1;
+    if(count%2==0)
+    {
+      $("div.sideDiv").hide();
+      $("div.fullWidth").removeClass("col-md-9");
+      $("div.fullWidth").addClass("col-md-12");
+      $(this).find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+
+  }
+  else
+  {
+      $("div.sideDiv").show();
+      $("div.fullWidth").removeClass("col-md-12");
+      $("div.fullWidth").addClass("col-md-9");
+      $(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+  }
+})
+     $(document).on('click', 'a.fake-link', function(e){
+       var imageId=$(this).attr("imgId");
+       var destination='<?php echo site_url("portal/getImageForSlider") ?>'+'/'+imageId;
+  //alert(destination);
+  $.ajax({
+      type: "GET",
+      url: destination,
+      success: function (data) {
+        $("div.fullWidth").html(data);
+        //$("div.myImg").html(data);
+        //  $("div.ajaxLoad").fadeIn(1500);
+        //  $('div.ajaxLoader').hide();
+    }
+});
+});
+    var modal = document.getElementById('myModal');
+    $(document).on('click', 'img.imgBody', function(e){
+        var imgId=$(this).attr('id');
+        var alterText=$(this).attr("alt");
+        var img = document.getElementById(imgId);
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        //console.log(img);
+        // alert(img);
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = alterText;
+    });
+        var span = document.getElementsByClassName("close")[0];
+
+       // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+        modal.style.display = "none";
+        }
+</script>

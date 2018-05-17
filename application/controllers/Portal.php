@@ -6441,8 +6441,8 @@ private function searchAttributeString($searchFields)
       }
       public function getImageForSlider($id)
       {
-          $img=$this->db->query("SELECT IMAGE_PATH FROM home_page_gallery WHERE ID=$id")->row();
+        $img=$this->db->query("SELECT IMAGE_PATH,GALLERY_TITLE FROM home_page_gallery WHERE ID=$id")->row();
         $path=base_url("resources/images/home_page_gallery/".$img->IMAGE_PATH);
-          echo "<img src='$path' class='img-responsive'>";
+          echo "<img src='$path' id='myIm$id' alt='$img->GALLERY_TITLE' style='cursor: pointer;' class='img-responsive imgBody'>";
       }
 }
