@@ -108,6 +108,7 @@ class ForestData extends CI_Controller
     function uploadForestData()
     {
         if ($_POST) {
+            ini_set('max_execution_time', 400);
             $dbName= $this->db->database;
             $sourcePath     = $_FILES['userfile']['tmp_name'];
             $tableName      = $this->input->post("table_name");
@@ -119,6 +120,7 @@ class ForestData extends CI_Controller
             $tableCoulmn    = $this->db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE
              TABLE_NAME = '$tableName' AND  TABLE_SCHEMA='$dbName'")->result();
             $temporary      = explode(".", $_FILES["userfile"]["name"]);
+            //set_time_limit(500);
             $file_extension = end($temporary);
             $targetPath     = "resources/uploads/" . $_FILES['userfile']['name'];
             $fileRename     = $this->fileRename();

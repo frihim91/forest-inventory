@@ -1,0 +1,960 @@
+ID_EF,EmissionFactor,ID_LandCover,Species,Age_yr,Height_m,Volume_m3_ha,Basal_m2_ha,Value,Unit,ID_EF_IPCC,Reference,Lower Confidence Limit,Upper Confidence Limit,Type of Parameter,group_location,Contributor
+6,Annual Average Volume Increment,6,7,NA,NA,NA,NA,0.3,m3/ha/year,2,10,NA,NA,Modeled (2),33,2
+8,Annual Average Volume Increment,6,7,1,2.5,3,0,3,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+15,Annual Average Volume Increment,6,7,1,3,27.4,0,27.4,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+16,Annual Average Volume Increment,6,7,2,3.1,1.4,0,0.7,m3/ha/year,2,10,NA,NA,Modeled (2),33,2
+19,Soil Carbon Stock,6,3,6,3.6,NA,NA,6.77,tonnes C/ha,4,3,NA,NA,Measured (1),28,2
+26,Annual Average Volume Increment,6,7,3,4.4,10,0.4,3.33,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+27,Annual Average Volume Increment,6,7,2,4.7,4.3,0,2.15,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+32,Annual Average Volume Increment,6,7,4,5.2,26.5,1.6,6.63,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+37,Annual Average Volume Increment,6,7,5,5.7,47.5,3.8,9.5,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+44,Annual Average Volume Increment,6,7,6,6,70.2,6.9,11.7,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+47,Annual Average Volume Increment,6,7,7,6.2,92.7,10.5,13.24,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+48,Annual Average Volume Increment,6,7,2,6.3,12.9,0.1,6.45,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+49,Annual Average Volume Increment,6,7,8,6.4,114.2,14.4,14.28,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+54,Aboveground Biomass Stock,6,80,NA,6.54,5.8,0.89,254,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+55,Belowground Biomass Stock,6,80,NA,6.54,5.8,0.89,42,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+56,Aboveground Biomass Carbon Stock,6,80,NA,6.54,5.8,0.89,97,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+57,Belowground Biomass Carbon Stock,6,80,NA,6.54,5.8,0.89,38,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+58,Annual Average Volume Increment,6,7,9,6.6,134.3,18.5,14.92,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+59,Annual Average Volume Increment,6,7,3,6.6,20.8,0.7,6.93,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+60,Annual Average Volume Increment,6,7,10,6.7,153,22.5,15.3,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+61,Annual Average Volume Increment,6,7,11,6.8,170.2,26.4,15.47,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+64,Annual Average Volume Increment,6,7,12,6.9,185.9,30.2,15.49,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+73,Annual Average Volume Increment,6,7,4,7.8,45.9,2.5,11.48,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+74,Annual Average Volume Increment,6,7,2,7.8,38.7,0.3,19.35,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+75,Annual Average Volume Increment,6,7,5,8.5,73.8,5.5,14.76,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+78,Annual Average Volume Increment,6,7,3,8.8,43.4,1.2,14.47,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+83,Aboveground Biomass Stock,6,759,NA,8.83,25.3,1.16,129,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+84,Belowground Biomass Stock,6,759,NA,8.83,25.3,1.16,25,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+85,Aboveground Biomass Carbon Stock,6,759,NA,8.83,25.3,1.16,82,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+86,Belowground Biomass Carbon Stock,6,759,NA,8.83,25.3,1.16,11,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+87,Aboveground Biomass Carbon Stock,3,1079,NA,8.93,NA,NA,0.59,tonnes C/ha,3,6,NA,NA,Measured (1),99,2
+88,Aboveground Biomass Stock,6,38,NA,8.98,0.2,0.41,187,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+89,Belowground Biomass Stock,6,38,NA,8.98,0.2,0.41,28,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+90,Aboveground Biomass Carbon Stock,6,38,NA,8.98,0.2,0.41,99,tonnes C/ha,3,1,NA,NA,Measured (1),38,2
+91,Belowground Biomass Carbon Stock,6,38,NA,8.98,0.2,0.41,25,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+92,Annual Average Volume Increment,6,7,6,9,101.3,9.4,16.88,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+95,Annual Average Volume Increment,6,7,7,9.4,126.9,13.6,18.13,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+96,Annual Average Volume Increment,6,7,2,9.4,116.3,0.7,58.15,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+99,Aboveground Biomass Stock,6,1302,NA,9.5,5.5,0.58,89,tonnes C/ha,3,1,NA,NA,Measured (1),38,2
+100,Belowground Biomass Stock,6,1302,NA,9.5,5.5,0.58,41,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+101,Aboveground Biomass Carbon Stock,6,1302,NA,9.5,5.5,0.58,54,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+102,Belowground Biomass Carbon Stock,6,1302,NA,9.5,5.5,0.58,1,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+103,Annual Average Volume Increment,6,7,8,9.6,150.4,18.1,18.8,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+104,Aboveground Biomass Carbon Stock,3,376,NA,9.75,NA,NA,12.48,tonnes C/ha,3,6,NA,NA,Measured (1),29,2
+105,Annual Average Volume Increment,6,7,9,9.9,171.6,22.6,19.07,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+108,Annual Average Volume Increment,6,7,10,10,190.7,26.9,19.07,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+111,Aboveground Biomass Stock,6,433,NA,10,1.1,0.12,70,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+112,Belowground Biomass Stock,6,433,NA,10,1.1,0.12,50,tonnes C/ha,2,1,NA,NA,Measured (1),99,2
+113,Aboveground Biomass Carbon Stock,6,433,NA,10,1.1,0.12,34,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+114,Belowground Biomass Carbon Stock,6,433,NA,10,1.1,0.12,18,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+115,Aboveground Biomass Carbon Stock,3,4,NA,10.12,NA,NA,4.2,tonnes C/ha,3,6,NA,NA,Measured (1),29,2
+116,Annual Average Volume Increment,6,7,11,10.2,207.9,31.1,18.9,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+117,Belowground Biomass Stock,6,810,NA,11.55,66.9,3.81,50,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+118,Aboveground Biomass Carbon Stock,6,810,NA,11.55,66.9,3.81,111,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+119,Belowground Biomass Carbon Stock,6,810,NA,11.55,66.9,3.81,18,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+120,Annual Average Volume Increment,6,140,35,11.84,NA,NA,2.4,m3/ha/year,2,9,NA,NA,Measured (1),24,2
+123,Annual Average Volume Increment,6,7,6,12,146.2,12.7,24.37,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+124,Aboveground Biomass Stock,6,50,NA,12.02,6.5,0.26,320,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+125,Belowground Biomass Stock,6,50,NA,12.02,6.5,0.26,45,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+126,Aboveground Biomass Carbon Stock,6,50,NA,12.02,6.5,0.26,170,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+127,Belowground Biomass Carbon Stock,6,50,NA,12.02,6.5,0.26,24,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+128,Aboveground Biomass Stock,6,284,NA,12.3,19.4,1.58,81,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+129,Aboveground Biomass Stock,6,287,NA,10.2,10.4,1.02,179,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+130,Belowground Biomass Stock,6,287,NA,10.2,10.4,1.02,27,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+131,Aboveground Biomass Carbon Stock,6,287,NA,10.2,10.4,1.02,101,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+132,Belowground Biomass Carbon Stock,6,287,NA,10.2,10.4,1.02,14,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+133,Annual Average Volume Increment,6,7,12,10.3,223.4,35.1,18.62,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+134,Annual Average Volume Increment,6,7,4,10.3,79.6,3.9,19.9,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+135,Aboveground Biomass Carbon Stock,3,197,NA,10.3,NA,NA,3.02,tonnes C/ha,3,6,NA,NA,Measured (1),29,2
+136,Aboveground Biomass Stock,6,130,NA,10.48,17.3,1.65,124,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+137,Belowground Biomass Stock,6,130,NA,10.48,17.3,1.65,19,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+138,Aboveground Biomass Carbon Stock,6,130,NA,10.48,17.3,1.65,61,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+139,Belowground Biomass Carbon Stock,6,130,NA,10.48,17.3,1.65,8,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+142,Annual Average Volume Increment,6,7,3,11,90.3,2.2,30.1,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+145,Belowground Biomass Stock,6,284,NA,12.3,19.4,1.58,22,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+146,Aboveground Biomass Carbon Stock,6,284,NA,12.3,19.4,1.58,55,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+147,Belowground Biomass Carbon Stock,6,284,NA,12.3,19.4,1.58,7,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+148,Aboveground Biomass Stock,6,1282,NA,11.25,27.2,1.06,102,tonnes C/ha,3,1,NA,NA,Measured (1),38,2
+149,Aboveground Biomass Stock,6,69,NA,12.37,20.3,2.04,171,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+150,Belowground Biomass Stock,6,1282,NA,12.37,24.8,2.41,55,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+151,Belowground Biomass Stock,6,69,NA,12.37,20.3,2.04,41,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+152,Aboveground Biomass Carbon Stock,6,1282,NA,12.37,24.8,2.41,89,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+153,Aboveground Biomass Carbon Stock,6,69,NA,12.37,20.3,2.04,73,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+154,Belowground Biomass Carbon Stock,6,1282,NA,12.37,24.8,2.41,8,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+155,Belowground Biomass Carbon Stock,6,69,NA,12.37,20.3,2.04,21,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+156,Annual Average Volume Increment,6,7,7,12.5,173.9,17.7,24.84,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+157,Aboveground Biomass Stock,6,161,NA,12.59,20.1,1.96,268,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+158,Belowground Biomass Stock,6,161,NA,12.59,20.1,1.96,52,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+163,Aboveground Biomass Stock,6,102,NA,11.25,27.2,1.06,282,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+164,Belowground Biomass Stock,6,102,NA,11.25,27.2,1.06,42,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+165,Aboveground Biomass Carbon Stock,6,102,NA,12.37,24.8,2.41,102,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+166,Belowground Biomass Carbon Stock,6,102,NA,11.25,27.2,1.06,16,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+167,Annual Average Volume Increment,6,7,5,11.3,114.6,7.9,22.92,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+170,Aboveground Biomass Stock,6,71,NA,11.31,18,2.08,285,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+171,Belowground Biomass Stock,6,71,NA,11.31,18,2.08,35,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+172,Aboveground Biomass Carbon Stock,6,71,NA,11.31,18,2.08,140,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+173,Belowground Biomass Carbon Stock,6,71,NA,11.31,18,2.08,19,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+174,Aboveground Biomass Stock,6,810,NA,11.55,66.9,3.81,254,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+175,Aboveground Biomass Carbon Stock,6,161,NA,12.59,20.1,1.96,158,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+176,Belowground Biomass Carbon Stock,6,161,NA,12.59,20.1,1.96,20,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+179,Aboveground Biomass Stock,6,7,NA,12.77,17.1,0.33,201,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+180,Belowground Biomass Stock,6,7,NA,12.77,17.1,0.33,50,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+181,Aboveground Biomass Carbon Stock,6,7,NA,12.77,17.1,0.33,140,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+182,Belowground Biomass Carbon Stock,6,7,NA,12.77,17.1,0.33,20,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+187,Aboveground Biomass Stock,6,243,NA,12.88,7.8,0.32,157,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+188,Belowground Biomass Stock,6,243,NA,12.88,7.8,0.32,18,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+189,Aboveground Biomass Carbon Stock,6,243,NA,12.88,7.8,0.32,49,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+190,Belowground Biomass Carbon Stock,6,243,NA,12.88,7.8,0.32,5,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+191,Annual Average Volume Increment,6,140,19,12.89,NA,NA,6.44,m3/ha/year,2,9,NA,NA,Measured (1),30,2
+192,Annual Average Volume Increment,6,7,8,12.9,198,22.7,24.75,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+193,Annual Average Volume Increment,6,7,4,12.9,138,6.2,34.5,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+194,Annual Average Volume Increment,6,140,36,12.98,NA,NA,2.16,m3/ha/year,2,9,NA,NA,Measured (1),24,2
+195,Annual Average Volume Increment,6,140,19,13.02,NA,NA,6.5,m3/ha/year,2,9,NA,NA,Measured (1),30,2
+196,Annual Average Volume Increment,6,7,9,13.1,219.2,27.6,24.36,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+197,Annual Average Volume Increment,6,140,37,13.13,NA,NA,1.55,m3/ha/year,2,9,NA,NA,Measured (1),24,2
+198,Annual Average Volume Increment,6,140,21,13.15,NA,NA,5.73,m3/ha/year,2,9,NA,NA,Measured (1),25,2
+199,Annual Average Volume Increment,6,7,3,13.2,188.2,4.1,62.73,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+200,Annual Average Volume Increment,6,140,19,13.24,NA,NA,6.02,m3/ha/year,2,9,NA,NA,Measured (1),30,2
+201,Aboveground Biomass Stock,6,950,NA,13.25,20.7,1.56,129,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+202,Belowground Biomass Stock,6,950,NA,13.25,20.7,1.56,39,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+203,Aboveground Biomass Carbon Stock,6,950,NA,13.25,20.7,1.56,79,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+204,Belowground Biomass Carbon Stock,6,950,NA,13.25,20.7,1.56,11,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+205,Annual Average Volume Increment,6,140,19,13.3,NA,NA,7.84,m3/ha/year,2,9,NA,NA,Measured (1),30,2
+206,Aboveground Biomass Stock,6,149,NA,13.32,19,0.49,191,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+207,Belowground Biomass Stock,6,149,NA,13.32,19,0.49,39,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+208,Aboveground Biomass Carbon Stock,6,149,NA,13.32,19,0.49,83,tonnes C/ha,3,1,NA,NA,Measured (1),38,2
+209,Belowground Biomass Carbon Stock,6,149,NA,13.32,19,0.49,5,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+210,Annual Average Volume Increment,6,7,10,13.4,237.7,32.3,23.77,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+213,Annual Average Volume Increment,6,140,19,13.52,NA,NA,10.04,m3/ha/year,2,9,NA,NA,Measured (1),30,2
+214,Aboveground Biomass Stock,6,4,NA,13.58,4.1,0.16,102,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+215,Belowground Biomass Stock,6,4,NA,13.58,4.1,0.16,26,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+216,Aboveground Biomass Carbon Stock,6,4,NA,13.58,4.1,0.16,41,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+217,Belowground Biomass Carbon Stock,6,4,NA,13.58,4.1,0.16,7,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+218,Annual Average Volume Increment,6,7,11,13.6,253.9,36.7,23.08,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+221,Annual Average Volume Increment,6,7,12,13.7,268.4,40.8,22.37,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+224,Annual Average Volume Increment,6,7,5,14.2,178,11.4,35.6,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+227,Aboveground Biomass Stock,6,35,NA,14.35,38.9,2.19,278,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+228,Belowground Biomass Stock,6,35,NA,14.35,38.9,2.19,52,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+229,Aboveground Biomass Carbon Stock,6,35,NA,14.35,38.9,2.19,150,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+230,Belowground Biomass Carbon Stock,6,35,NA,14.35,38.9,2.19,28,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+231,Aboveground Biomass Stock,6,483,NA,14.38,115.6,4.76,283,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+232,Belowground Biomass Stock,6,483,NA,14.38,115.6,4.76,32,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+233,Aboveground Biomass Carbon Stock,6,483,NA,14.38,115.6,4.76,160,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+234,Belowground Biomass Carbon Stock,6,483,NA,14.38,115.6,4.76,24,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+235,Aboveground Biomass Stock,6,3,NA,14.42,48.1,0.5,98,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+236,Belowground Biomass Stock,6,3,NA,14.42,48.1,0.5,48,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+237,Aboveground Biomass Carbon Stock,6,3,NA,14.42,48.1,0.5,56,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+238,Belowground Biomass Carbon Stock,6,3,NA,14.42,48.1,0.5,9,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+239,Annual Average Volume Increment,6,7,6,15,211,17.1,35.17,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+246,Aboveground Biomass Stock,6,153,NA,15.48,54.3,3.45,189,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+247,Belowground Biomass Stock,6,153,NA,15.48,54.3,3.45,58,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+248,Aboveground Biomass Carbon Stock,6,153,NA,15.48,54.3,3.45,98,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+249,Belowground Biomass Carbon Stock,6,153,NA,15.48,54.3,3.45,24,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+250,Annual Average Volume Increment,6,7,4,15.5,239.4,9.7,59.85,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+251,Aboveground Biomass Stock,6,52,NA,15.5,10.5,0.82,99,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+252,Aboveground Biomass Stock,6,826,NA,15.5,16.3,1.05,121,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+253,Belowground Biomass Stock,6,52,NA,15.5,10.5,0.82,24,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+254,Belowground Biomass Stock,6,826,NA,15.5,16.3,1.05,23,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+255,Aboveground Biomass Carbon Stock,6,52,NA,15.5,10.5,0.82,62,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+256,Aboveground Biomass Carbon Stock,6,826,NA,15.5,16.3,1.05,71,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+257,Belowground Biomass Carbon Stock,6,52,NA,15.5,10.5,0.82,14,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+258,Belowground Biomass Carbon Stock,6,826,NA,15.5,16.3,1.05,2,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+259,Annual Average Volume Increment,6,7,7,15.6,238.1,22.9,34.01,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+260,Aboveground Biomass Stock,6,54,NA,15.6,40,3.93,189,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+261,Belowground Biomass Stock,6,54,NA,15.6,40,3.93,40,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+262,Aboveground Biomass Carbon Stock,6,54,NA,15.6,40,3.93,39,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+263,Belowground Biomass Carbon Stock,6,54,NA,15.6,40,3.93,6,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+264,Aboveground Biomass Stock,6,54,NA,16,19.5,1.32,245,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+265,Belowground Biomass Stock,6,54,NA,16,19.5,1.32,75,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+266,Aboveground Biomass Carbon Stock,6,54,NA,16,19.5,1.32,1.4,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+267,Belowground Biomass Carbon Stock,6,54,NA,16,19.5,1.32,25,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+268,Annual Average Volume Increment,6,7,8,16.1,260.8,28.5,32.6,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+271,Annual Average Volume Increment,6,7,9,16.4,279.9,33.8,31.1,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+272,Aboveground Biomass Stock,6,1231,NA,16.69,41.3,1.48,388,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+273,Belowground Biomass Stock,6,1231,NA,16.69,41.3,1.48,30,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+274,Aboveground Biomass Carbon Stock,6,1231,NA,16.69,41.3,1.48,127,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+275,Belowground Biomass Carbon Stock,6,1231,NA,16.69,41.3,1.48,17,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+276,Annual Average Volume Increment,6,7,10,16.7,296.2,38.7,29.62,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+279,Annual Average Volume Increment,6,7,11,17,310.2,43.3,28.2,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+280,Annual Average Volume Increment,6,7,5,17,276.6,16.4,55.32,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+281,Aboveground Biomass Stock,6,552,NA,17.02,10.6,1.18,104,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+282,Belowground Biomass Stock,6,552,NA,17.02,10.6,1.18,25,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+283,Aboveground Biomass Carbon Stock,6,552,NA,17.02,10.6,1.18,48,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+284,Belowground Biomass Carbon Stock,6,552,NA,17.02,10.6,1.18,17,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+285,Aboveground Biomass Stock,6,84,NA,17.09,29.3,0.54,45,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+286,Belowground Biomass Stock,6,84,NA,17.09,29.3,0.54,28,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+287,Aboveground Biomass Carbon Stock,6,84,NA,17.09,29.3,0.54,38,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+288,Belowground Biomass Carbon Stock,6,84,NA,17.09,29.3,0.54,16,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+289,Annual Average Volume Increment,6,7,12,17.2,322.4,47.5,26.87,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+292,Aboveground Biomass Stock,6,53,NA,17.37,42.2,3.2,265,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+293,Belowground Biomass Stock,6,53,NA,17.37,42.2,3.2,46,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+294,Aboveground Biomass Carbon Stock,6,53,NA,17.37,42.2,3.2,149,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+295,Belowground Biomass Carbon Stock,6,53,NA,17.37,42.2,3.2,20,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+296,Aboveground Biomass Stock,6,38,NA,17.5,37.7,2.15,189,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+297,Belowground Biomass Stock,6,38,NA,17.5,37.7,2.15,42,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+298,Aboveground Biomass Carbon Stock,6,38,NA,17.5,37.7,2.15,81,tonnes C/ha,3,1,NA,NA,Measured (1),37,2
+299,Belowground Biomass Carbon Stock,6,38,NA,17.5,37.7,2.15,12,tonnes C/ha,2,1,NA,NA,Measured (1),37,2
+300,Annual Average Volume Increment,6,7,6,18,304.5,23.2,50.75,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+305,Annual Average Volume Increment,6,7,7,18.7,326.2,29.7,46.6,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+308,Annual Average Volume Increment,6,7,8,19.3,343.4,35.7,42.93,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+309,Annual Average Volume Increment,6,7,9,19.7,357.5,41.3,39.72,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+312,Annual Average Volume Increment,6,7,10,20.1,369.1,46.4,36.91,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+313,Annual Average Volume Increment,6,7,11,20.3,379,51,34.45,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+314,Annual Average Volume Increment,6,7,12,20.6,387.4,55.2,32.28,m3/ha/year,2,10,NA,NA,Modeled (2),27,2
+321,Annual Average Volume Increment,6,140,21,NA,NA,NA,2.96,m3/ha/year,2,9,NA,NA,Measured (1),24,2
+322,Annual Average Volume Increment,6,140,19,NA,NA,NA,7.36,m3/ha/year,2,9,NA,NA,Measured (1),30,2
+323,Aboveground Biomass Stock,2,38,NA,NA,NA,NA,0.78,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+324,Aboveground Biomass Carbon Stock,2,38,NA,NA,NA,NA,0.41,tonnes C/ha,3,14,NA,NA,Measured (1),99,2
+325,Aboveground Biomass Stock,2,56,NA,NA,NA,NA,0.08,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+326,Aboveground Biomass Carbon Stock,2,56,NA,NA,NA,NA,0.05,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+327,Aboveground Biomass Stock,2,50,NA,NA,NA,NA,0.42,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+328,Aboveground Biomass Carbon Stock,2,50,NA,NA,NA,NA,0.21,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+329,Aboveground Biomass Stock,2,53,NA,NA,NA,NA,1.7,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+330,Aboveground Biomass Carbon Stock,2,53,NA,NA,NA,NA,0.83,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+331,Aboveground Biomass Stock,2,73,NA,NA,NA,NA,0.19,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+332,Aboveground Biomass Carbon Stock,2,73,NA,NA,NA,NA,0.08,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+333,Aboveground Biomass Stock,2,38,NA,NA,NA,NA,1.88,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+334,Aboveground Biomass Carbon Stock,2,38,NA,NA,NA,NA,1.03,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+335,Aboveground Biomass Stock,2,93,NA,NA,NA,NA,0.04,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+336,Aboveground Biomass Carbon Stock,2,93,NA,NA,NA,NA,0.03,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+337,Aboveground Biomass Stock,2,170,NA,NA,NA,NA,0.56,tonnes C/ha,3,14,NA,NA,Measured (1),99,2
+338,Aboveground Biomass Carbon Stock,2,170,NA,NA,NA,NA,0.24,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+339,Aboveground Biomass Stock,2,35,NA,NA,NA,NA,0.8,tonnes C/ha,3,14,NA,NA,Measured (1),99,2
+340,Aboveground Biomass Carbon Stock,2,35,NA,NA,NA,NA,0.45,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+341,Aboveground Biomass Stock,2,194,NA,NA,NA,NA,0.15,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+342,Aboveground Biomass Carbon Stock,2,194,NA,NA,NA,NA,0.08,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+343,Aboveground Biomass Stock,2,163,NA,NA,NA,NA,0.26,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+344,Aboveground Biomass Carbon Stock,2,163,NA,NA,NA,NA,0.13,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+345,Aboveground Biomass Stock,2,284,NA,NA,NA,NA,1.25,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+346,Aboveground Biomass Carbon Stock,2,284,NA,NA,NA,NA,0.56,tonnes C/ha,3,14,NA,NA,Measured (1),99,2
+347,Aboveground Biomass Stock,2,295,NA,NA,NA,NA,0.07,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+348,Aboveground Biomass Carbon Stock,2,295,NA,NA,NA,NA,0.04,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+349,Aboveground Biomass Stock,2,31,NA,NA,NA,NA,0.11,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+350,Aboveground Biomass Carbon Stock,2,31,NA,NA,NA,NA,0.05,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+351,Aboveground Biomass Stock,2,106,NA,NA,NA,NA,0.06,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+352,Aboveground Biomass Carbon Stock,2,106,NA,NA,NA,NA,0.04,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+353,Aboveground Biomass Stock,2,117,NA,NA,NA,NA,5.22,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+354,Aboveground Biomass Carbon Stock,2,117,NA,NA,NA,NA,2.83,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+355,Aboveground Biomass Stock,2,478,NA,NA,NA,NA,10.74,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+356,Aboveground Biomass Carbon Stock,2,478,NA,NA,NA,NA,5.89,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+357,Aboveground Biomass Stock,2,479,NA,NA,NA,NA,15.53,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+358,Aboveground Biomass Carbon Stock,2,479,NA,NA,NA,NA,8.25,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+359,Aboveground Biomass Stock,2,483,NA,NA,NA,NA,70.8,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+360,Aboveground Biomass Carbon Stock,2,483,NA,NA,NA,NA,39.48,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+361,Aboveground Biomass Stock,2,500,NA,NA,NA,NA,0.13,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+362,Aboveground Biomass Carbon Stock,2,500,NA,NA,NA,NA,0.06,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+363,Aboveground Biomass Stock,2,516,NA,NA,NA,NA,2.37,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+364,Aboveground Biomass Carbon Stock,2,516,NA,NA,NA,NA,1.09,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+365,Aboveground Biomass Stock,2,140,NA,NA,NA,NA,0.46,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+366,Aboveground Biomass Carbon Stock,2,140,NA,NA,NA,NA,0.23,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+367,Aboveground Biomass Stock,2,574,NA,NA,NA,NA,0.12,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+368,Aboveground Biomass Carbon Stock,2,574,NA,NA,NA,NA,0.05,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+369,Aboveground Biomass Stock,2,588,NA,NA,NA,NA,1.92,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+370,Aboveground Biomass Carbon Stock,2,588,NA,NA,NA,NA,0.78,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+371,Aboveground Biomass Stock,2,641,NA,NA,NA,NA,0.27,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+372,Aboveground Biomass Carbon Stock,2,641,NA,NA,NA,NA,0.15,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+373,Aboveground Biomass Stock,2,651,NA,NA,NA,NA,0.46,tonnes C/ha,3,14,NA,NA,Measured (1),99,2
+374,Aboveground Biomass Carbon Stock,2,651,NA,NA,NA,NA,0.2,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+375,Aboveground Biomass Stock,2,673,NA,NA,NA,NA,0.06,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+376,Aboveground Biomass Carbon Stock,2,673,NA,NA,NA,NA,0.04,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+377,Aboveground Biomass Stock,2,243,NA,NA,NA,NA,1.07,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+378,Aboveground Biomass Carbon Stock,2,243,NA,NA,NA,NA,0.55,tonnes C/ha,3,14,NA,NA,Measured (1),99,2
+379,Aboveground Biomass Stock,2,10,NA,NA,NA,NA,0.12,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+380,Aboveground Biomass Carbon Stock,2,10,NA,NA,NA,NA,0.06,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+381,Aboveground Biomass Stock,2,126,NA,NA,NA,NA,0.18,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+382,Aboveground Biomass Carbon Stock,2,126,NA,NA,NA,NA,0.09,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+383,Aboveground Biomass Stock,2,810,NA,NA,NA,NA,1.42,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+384,Aboveground Biomass Carbon Stock,2,810,NA,NA,NA,NA,0.67,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+385,Aboveground Biomass Stock,2,813,NA,NA,NA,NA,1.72,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+386,Aboveground Biomass Carbon Stock,2,813,NA,NA,NA,NA,0.93,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+387,Aboveground Biomass Stock,2,909,NA,NA,NA,NA,1.73,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+388,Aboveground Biomass Carbon Stock,2,909,NA,NA,NA,NA,0.89,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+389,Aboveground Biomass Stock,2,927,NA,NA,NA,NA,0.07,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+390,Aboveground Biomass Carbon Stock,2,927,NA,NA,NA,NA,0.04,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+391,Aboveground Biomass Stock,2,950,NA,NA,NA,NA,0.18,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+392,Aboveground Biomass Carbon Stock,2,950,NA,NA,NA,NA,0.09,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+393,Aboveground Biomass Stock,2,114,NA,NA,NA,NA,1.13,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+394,Aboveground Biomass Carbon Stock,2,114,NA,NA,NA,NA,0.62,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+395,Aboveground Biomass Stock,2,977,NA,NA,NA,NA,0.52,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+396,Aboveground Biomass Carbon Stock,2,977,NA,NA,NA,NA,0.25,tonnes C/ha,3,14,NA,NA,Measured (1),99,2
+397,Aboveground Biomass Stock,2,1127,NA,NA,NA,NA,1.86,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+398,Aboveground Biomass Carbon Stock,2,1127,NA,NA,NA,NA,0.69,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+399,Aboveground Biomass Stock,2,1140,NA,NA,NA,NA,2.65,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+400,Aboveground Biomass Carbon Stock,2,1140,NA,NA,NA,NA,1.3,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+401,Aboveground Biomass Stock,2,154,NA,NA,NA,NA,3.94,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+402,Aboveground Biomass Carbon Stock,2,154,NA,NA,NA,NA,2.14,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+403,Aboveground Biomass Stock,2,52,NA,NA,NA,NA,0.29,tonnes C/ha,3,14,NA,NA,Measured (1),99,2
+404,Aboveground Biomass Carbon Stock,2,52,NA,NA,NA,NA,0.13,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+405,Aboveground Biomass Stock,2,170,NA,NA,NA,NA,0.39,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+406,Aboveground Biomass Carbon Stock,2,170,NA,NA,NA,NA,0.21,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+407,Aboveground Biomass Stock,2,1265,NA,NA,NA,NA,0.09,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+408,Aboveground Biomass Carbon Stock,2,1265,NA,NA,NA,NA,0.05,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+409,Aboveground Biomass Stock,2,1280,NA,NA,NA,NA,0.45,tonnes C/ha,3,14,NA,NA,Measured (1),99,2
+410,Aboveground Biomass Carbon Stock,2,1280,NA,NA,NA,NA,0.18,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+411,Aboveground Biomass Stock,2,1285,NA,NA,NA,NA,8.21,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+412,Aboveground Biomass Carbon Stock,2,1285,NA,NA,NA,NA,4.46,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+413,Aboveground Biomass Stock,2,1300,NA,NA,NA,NA,0.63,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+414,Aboveground Biomass Carbon Stock,2,1300,NA,NA,NA,NA,0.33,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+415,Aboveground Biomass Stock,2,1302,NA,NA,NA,NA,7.43,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+416,Aboveground Biomass Carbon Stock,2,1302,NA,NA,NA,NA,3.73,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+417,Aboveground Biomass Stock,2,1307,NA,NA,NA,NA,16.48,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+418,Aboveground Biomass Carbon Stock,2,1307,NA,NA,NA,NA,8.13,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+419,Aboveground Biomass Stock,2,69,NA,NA,NA,NA,8.08,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+420,Aboveground Biomass Carbon Stock,2,69,NA,NA,NA,NA,4.13,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+421,Aboveground Biomass Stock,2,1349,NA,NA,NA,NA,0.67,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+422,Aboveground Biomass Carbon Stock,2,1349,NA,NA,NA,NA,0.34,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+423,Aboveground Biomass Stock,2,1352,NA,NA,NA,NA,0.52,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+424,Aboveground Biomass Carbon Stock,2,1352,NA,NA,NA,NA,0.24,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+425,Aboveground Biomass Stock,2,1360,NA,NA,NA,NA,0.22,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+426,Aboveground Biomass Carbon Stock,2,1360,NA,NA,NA,NA,0.12,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+427,Aboveground Biomass Stock,2,1397,NA,NA,NA,NA,0.28,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+428,Aboveground Biomass Carbon Stock,2,1397,NA,NA,NA,NA,0.14,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+429,Aboveground Biomass Stock,2,1400,NA,NA,NA,NA,3.59,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+430,Aboveground Biomass Carbon Stock,2,1400,NA,NA,NA,NA,1.71,tonnes C/ha,3,14,NA,NA,Measured (1),33,2
+431,Belowground Biomass Stock,2,38,NA,NA,NA,NA,0.12,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+432,Belowground Biomass Carbon Stock,2,38,NA,NA,NA,NA,0.06,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+433,Belowground Biomass Stock,2,56,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+434,Belowground Biomass Carbon Stock,2,56,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+435,Belowground Biomass Stock,2,50,NA,NA,NA,NA,0.06,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+436,Belowground Biomass Carbon Stock,2,50,NA,NA,NA,NA,0.03,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+437,Belowground Biomass Stock,2,53,NA,NA,NA,NA,0.25,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+438,Belowground Biomass Carbon Stock,2,53,NA,NA,NA,NA,0.12,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+439,Belowground Biomass Stock,2,73,NA,NA,NA,NA,0.03,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+440,Belowground Biomass Carbon Stock,2,73,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+441,Belowground Biomass Stock,2,38,NA,NA,NA,NA,0.28,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+442,Belowground Biomass Carbon Stock,2,38,NA,NA,NA,NA,0.16,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+443,Belowground Biomass Stock,2,93,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+444,Belowground Biomass Carbon Stock,2,93,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+445,Belowground Biomass Stock,2,170,NA,NA,NA,NA,0.08,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+446,Belowground Biomass Carbon Stock,2,170,NA,NA,NA,NA,0.04,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+447,Belowground Biomass Stock,2,35,NA,NA,NA,NA,0.12,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+448,Belowground Biomass Carbon Stock,2,35,NA,NA,NA,NA,0.07,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+449,Belowground Biomass Stock,2,194,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+450,Belowground Biomass Carbon Stock,2,194,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+451,Belowground Biomass Stock,2,163,NA,NA,NA,NA,0.04,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+452,Belowground Biomass Carbon Stock,2,163,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+453,Belowground Biomass Stock,2,284,NA,NA,NA,NA,0.19,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+454,Belowground Biomass Carbon Stock,2,284,NA,NA,NA,NA,0.08,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+455,Belowground Biomass Stock,2,295,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+456,Belowground Biomass Carbon Stock,2,295,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+457,Belowground Biomass Stock,2,31,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+458,Belowground Biomass Carbon Stock,2,31,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+459,Belowground Biomass Stock,2,106,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+460,Belowground Biomass Carbon Stock,2,106,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+461,Belowground Biomass Stock,2,117,NA,NA,NA,NA,0.78,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+462,Belowground Biomass Carbon Stock,2,117,NA,NA,NA,NA,0.42,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+463,Belowground Biomass Stock,2,478,NA,NA,NA,NA,1.61,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+464,Belowground Biomass Carbon Stock,2,478,NA,NA,NA,NA,0.88,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+465,Belowground Biomass Stock,2,479,NA,NA,NA,NA,2.33,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+466,Belowground Biomass Carbon Stock,2,479,NA,NA,NA,NA,1.24,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+467,Belowground Biomass Stock,2,483,NA,NA,NA,NA,10.62,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+468,Belowground Biomass Carbon Stock,2,483,NA,NA,NA,NA,5.92,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+469,Belowground Biomass Stock,2,500,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+470,Belowground Biomass Carbon Stock,2,500,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+471,Belowground Biomass Stock,2,516,NA,NA,NA,NA,0.36,tonnes C/ha,2,14,NA,NA,Measured (1),99,2
+472,Belowground Biomass Carbon Stock,2,516,NA,NA,NA,NA,0.16,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+473,Belowground Biomass Stock,2,140,NA,NA,NA,NA,0.07,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+474,Belowground Biomass Carbon Stock,2,140,NA,NA,NA,NA,0.03,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+475,Belowground Biomass Stock,2,574,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+476,Belowground Biomass Carbon Stock,2,574,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+477,Belowground Biomass Stock,2,588,NA,NA,NA,NA,0.29,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+478,Belowground Biomass Carbon Stock,2,588,NA,NA,NA,NA,0.11,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+479,Belowground Biomass Stock,2,641,NA,NA,NA,NA,0.04,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+480,Belowground Biomass Carbon Stock,2,641,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+481,Belowground Biomass Stock,2,651,NA,NA,NA,NA,0.07,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+482,Belowground Biomass Carbon Stock,2,651,NA,NA,NA,NA,0.03,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+483,Belowground Biomass Stock,2,673,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+484,Belowground Biomass Carbon Stock,2,673,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+485,Belowground Biomass Stock,2,243,NA,NA,NA,NA,0.16,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+486,Belowground Biomass Carbon Stock,2,243,NA,NA,NA,NA,0.08,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+487,Belowground Biomass Stock,2,10,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+488,Belowground Biomass Carbon Stock,2,10,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+489,Belowground Biomass Stock,2,126,NA,NA,NA,NA,0.03,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+490,Belowground Biomass Carbon Stock,2,126,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+491,Belowground Biomass Stock,2,810,NA,NA,NA,NA,0.21,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+492,Belowground Biomass Carbon Stock,2,810,NA,NA,NA,NA,0.1,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+493,Belowground Biomass Stock,2,813,NA,NA,NA,NA,0.26,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+494,Belowground Biomass Carbon Stock,2,813,NA,NA,NA,NA,0.14,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+495,Belowground Biomass Stock,2,909,NA,NA,NA,NA,0.26,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+496,Belowground Biomass Carbon Stock,2,909,NA,NA,NA,NA,0.13,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+497,Belowground Biomass Stock,2,927,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+498,Belowground Biomass Carbon Stock,2,927,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+499,Belowground Biomass Stock,2,950,NA,NA,NA,NA,0.03,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+500,Belowground Biomass Carbon Stock,2,950,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+501,Belowground Biomass Stock,2,114,NA,NA,NA,NA,0.17,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+502,Belowground Biomass Carbon Stock,2,114,NA,NA,NA,NA,0.09,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+503,Belowground Biomass Stock,2,977,NA,NA,NA,NA,0.08,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+504,Belowground Biomass Carbon Stock,2,977,NA,NA,NA,NA,0.04,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+505,Belowground Biomass Stock,2,1127,NA,NA,NA,NA,0.28,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+506,Belowground Biomass Carbon Stock,2,1127,NA,NA,NA,NA,0.1,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+507,Belowground Biomass Stock,2,1140,NA,NA,NA,NA,0.4,tonnes C/ha,2,14,NA,NA,Measured (1),99,2
+508,Belowground Biomass Carbon Stock,2,1140,NA,NA,NA,NA,0.2,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+509,Belowground Biomass Stock,2,154,NA,NA,NA,NA,0.59,tonnes C/ha,2,14,NA,NA,Measured (1),29,2
+510,Belowground Biomass Carbon Stock,2,154,NA,NA,NA,NA,0.32,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+511,Belowground Biomass Stock,2,52,NA,NA,NA,NA,0.04,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+512,Belowground Biomass Carbon Stock,2,52,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+513,Belowground Biomass Stock,2,170,NA,NA,NA,NA,0.06,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+514,Belowground Biomass Carbon Stock,2,170,NA,NA,NA,NA,0.03,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+515,Belowground Biomass Stock,2,1265,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+516,Belowground Biomass Carbon Stock,2,1265,NA,NA,NA,NA,0.01,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+517,Belowground Biomass Stock,2,1280,NA,NA,NA,NA,0.07,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+518,Belowground Biomass Carbon Stock,2,1280,NA,NA,NA,NA,0.03,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+519,Belowground Biomass Stock,2,1285,NA,NA,NA,NA,1.23,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+520,Belowground Biomass Carbon Stock,2,1285,NA,NA,NA,NA,0.67,tonnes C/ha,2,14,NA,NA,Measured (1),99,2
+521,Belowground Biomass Stock,2,1300,NA,NA,NA,NA,0.09,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+522,Belowground Biomass Carbon Stock,2,1300,NA,NA,NA,NA,0.05,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+523,Belowground Biomass Stock,2,1302,NA,NA,NA,NA,1.11,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+524,Belowground Biomass Carbon Stock,2,1302,NA,NA,NA,NA,0.56,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+525,Belowground Biomass Stock,2,1307,NA,NA,NA,NA,2.47,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+526,Belowground Biomass Carbon Stock,2,1307,NA,NA,NA,NA,1.22,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+527,Belowground Biomass Stock,2,69,NA,NA,NA,NA,1.21,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+528,Belowground Biomass Carbon Stock,2,69,NA,NA,NA,NA,0.62,tonnes C/ha,2,14,NA,NA,Measured (1),99,2
+529,Belowground Biomass Stock,2,1349,NA,NA,NA,NA,0.1,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+530,Belowground Biomass Carbon Stock,2,1349,NA,NA,NA,NA,0.05,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+531,Belowground Biomass Stock,2,1352,NA,NA,NA,NA,0.08,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+532,Belowground Biomass Carbon Stock,2,1352,NA,NA,NA,NA,0.04,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+533,Belowground Biomass Stock,2,1360,NA,NA,NA,NA,0.03,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+534,Belowground Biomass Carbon Stock,2,1360,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+535,Belowground Biomass Stock,2,1397,NA,NA,NA,NA,0.04,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+536,Belowground Biomass Carbon Stock,2,1397,NA,NA,NA,NA,0.02,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+537,Belowground Biomass Stock,2,1400,NA,NA,NA,NA,0.54,tonnes C/ha,2,14,NA,NA,Measured (1),99,2
+538,Belowground Biomass Carbon Stock,2,1400,NA,NA,NA,NA,0.26,tonnes C/ha,2,14,NA,NA,Measured (1),33,2
+539,Aboveground Biomass Carbon Stock,6,163,5,NA,NA,NA,50.44,tonnes C/ha,3,13,NA,NA,Measured (1),34,2
+540,Belowground Biomass Carbon Stock,6,163,5,NA,NA,NA,2.52,tonnes C/ha,2,13,NA,NA,Measured (1),34,2
+541,Soil Carbon Stock,6,163,5,NA,NA,NA,24.71,tonnes C/ha,4,13,NA,NA,Measured (1),34,2
+542,Aboveground Biomass Carbon Stock,6,3,18,NA,NA,NA,110.25,tonnes C/ha,3,15,NA,NA,Measured (1),23,2
+543,Belowground Biomass Carbon Stock,6,3,18,NA,NA,NA,100.84,tonnes C/ha,2,15,NA,NA,Measured (1),23,2
+544,Soil Carbon Stock,6,3,18,NA,NA,NA,99.32,tonnes C/ha,4,15,NA,NA,Measured (1),23,2
+545,Aboveground Biomass Carbon Stock,6,71,18,NA,NA,NA,91.28,tonnes C/ha,3,15,NA,NA,Measured (1),23,2
+546,Belowground Biomass Carbon Stock,6,71,18,NA,NA,NA,80.33,tonnes C/ha,2,15,NA,NA,Measured (1),23,2
+547,Soil Carbon Stock,6,71,18,NA,NA,NA,77.87,tonnes C/ha,4,15,NA,NA,Measured (1),23,2
+548,Aboveground Biomass Carbon Stock,6,38,18,NA,NA,NA,63.7,tonnes C/ha,3,15,NA,NA,Measured (1),23,2
+549,Belowground Biomass Carbon Stock,6,38,18,NA,NA,NA,85.26,tonnes C/ha,2,15,NA,NA,Measured (1),23,2
+550,Soil Carbon Stock,6,38,18,NA,NA,NA,83.37,tonnes C/ha,4,15,NA,NA,Measured (1),23,2
+551,Annual Average Aboveground Biomass Increment,6,3,6,NA,NA,NA,12.96,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+552,Annual Average Aboveground Biomass Increment,6,3,8,NA,NA,NA,26.4,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+553,Annual Average Aboveground Biomass Increment,6,3,11,NA,NA,NA,17.48,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+554,Annual Average Aboveground Biomass Increment,6,3,15,NA,NA,NA,18.83,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+555,Annual Average Aboveground Biomass Increment,6,3,16,NA,NA,NA,20.04,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+556,Annual Average Aboveground Biomass Increment,6,3,17,NA,NA,NA,17.87,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+557,Annual Average Aboveground Biomass Increment,6,3,18,NA,NA,NA,16.51,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+558,Annual Average Aboveground Biomass Increment,6,7,11,NA,NA,NA,20.16,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+559,Annual Average Aboveground Biomass Increment,6,53,20,NA,NA,NA,14.12,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+560,Annual Average Aboveground Biomass Increment,6,102,12,NA,NA,NA,31.28,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+561,Annual Average Aboveground Biomass Increment,6,102,13,NA,NA,NA,21.54,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+562,Annual Average Aboveground Biomass Increment,6,161,8,NA,NA,NA,16.34,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+563,Annual Average Aboveground Biomass Increment,6,161,17,NA,NA,NA,12.19,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+564,Annual Average Aboveground Biomass Increment,6,483,6,NA,NA,NA,12.02,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+565,Annual Average Aboveground Biomass Increment,6,483,8,NA,NA,NA,12.86,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+566,Annual Average Aboveground Biomass Increment,6,483,13,NA,NA,NA,17.8,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+567,Annual Average Aboveground Biomass Increment,6,483,23,NA,NA,NA,12.8,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+568,Annual Average Aboveground Biomass Increment,6,552,8,NA,NA,NA,21.21,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+569,Annual Average Aboveground Biomass Increment,6,552,18,NA,NA,NA,20.25,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+570,Annual Average Aboveground Biomass Increment,6,243,13,NA,NA,NA,13.33,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+571,Annual Average Aboveground Biomass Increment,6,810,18,NA,NA,NA,21.14,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+572,Annual Average Aboveground Biomass Increment,6,810,20,NA,NA,NA,16.05,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+573,Annual Average Aboveground Biomass Increment,6,1090,18,NA,NA,NA,14.13,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+574,Annual Average Aboveground Biomass Increment,6,1283,11,NA,NA,NA,9.62,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+575,Annual Average Aboveground Biomass Increment,6,1283,12,NA,NA,NA,8.01,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+576,Annual Average Aboveground Biomass Increment,6,1283,15,NA,NA,NA,12.5,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+577,Annual Average Aboveground Biomass Increment,6,69,13,NA,NA,NA,11.44,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+578,Annual Average Aboveground Biomass Increment,6,71,20,NA,NA,NA,18.94,tonnes C/ha/yr,2,16,NA,NA,Measured (1),38,2
+579,Aboveground Biomass Stock,6,3,6,NA,NA,NA,38.76,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+580,Aboveground Biomass Stock,6,3,8,NA,NA,NA,301.15,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+581,Aboveground Biomass Stock,6,3,11,NA,NA,NA,113.61,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+582,Aboveground Biomass Stock,6,3,15,NA,NA,NA,177.14,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+583,Aboveground Biomass Stock,6,3,16,NA,NA,NA,190.31,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+584,Aboveground Biomass Stock,6,3,17,NA,NA,NA,147.24,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+585,Aboveground Biomass Stock,6,3,18,NA,NA,NA,123.8,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+586,Aboveground Biomass Stock,6,7,11,NA,NA,NA,166,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+587,Aboveground Biomass Stock,6,53,20,NA,NA,NA,176,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+588,Aboveground Biomass Stock,6,102,12,NA,NA,NA,288.18,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+589,Aboveground Biomass Stock,6,102,13,NA,NA,NA,215.81,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+590,Aboveground Biomass Stock,6,161,8,NA,NA,NA,97.23,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+591,Aboveground Biomass Stock,6,161,17,NA,NA,NA,162.76,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+592,Aboveground Biomass Stock,6,483,6,NA,NA,NA,17.97,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+593,Aboveground Biomass Stock,6,483,8,NA,NA,NA,78.03,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+594,Aboveground Biomass Stock,6,483,13,NA,NA,NA,228.09,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+595,Aboveground Biomass Stock,6,483,23,NA,NA,NA,187.91,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+596,Aboveground Biomass Stock,6,552,8,NA,NA,NA,150.35,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+597,Aboveground Biomass Stock,6,552,18,NA,NA,NA,227.85,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+598,Aboveground Biomass Stock,6,243,13,NA,NA,NA,102.96,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+599,Aboveground Biomass Stock,6,810,18,NA,NA,NA,266.84,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+600,Aboveground Biomass Stock,6,810,20,NA,NA,NA,189.16,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+601,Aboveground Biomass Stock,6,1090,18,NA,NA,NA,176,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+602,Aboveground Biomass Stock,6,1283,11,NA,NA,NA,57.62,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+603,Aboveground Biomass Stock,6,1283,12,NA,NA,NA,60.63,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+604,Aboveground Biomass Stock,6,1283,15,NA,NA,NA,108.29,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+605,Aboveground Biomass Stock,6,69,13,NA,NA,NA,94.15,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+606,Aboveground Biomass Stock,6,71,20,NA,NA,NA,210,tonnes C/ha,3,16,NA,NA,Measured (1),38,2
+607,Belowground Biomass Stock,6,3,6,NA,NA,NA,5.81,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+608,Belowground Biomass Stock,6,3,8,NA,NA,NA,45.17,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+609,Belowground Biomass Stock,6,3,11,NA,NA,NA,17.04,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+610,Belowground Biomass Stock,6,3,15,NA,NA,NA,26.57,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+611,Belowground Biomass Stock,6,3,16,NA,NA,NA,28.55,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+612,Belowground Biomass Stock,6,3,17,NA,NA,NA,22.08,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+613,Belowground Biomass Stock,6,3,18,NA,NA,NA,18.57,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+614,Belowground Biomass Stock,6,7,11,NA,NA,NA,24.9,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+615,Belowground Biomass Stock,6,53,20,NA,NA,NA,26.4,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+616,Belowground Biomass Stock,6,102,12,NA,NA,NA,43.23,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+617,Belowground Biomass Stock,6,102,13,NA,NA,NA,32.37,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+618,Belowground Biomass Stock,6,161,8,NA,NA,NA,14.59,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+619,Belowground Biomass Stock,6,161,17,NA,NA,NA,24.41,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+620,Belowground Biomass Stock,6,483,6,NA,NA,NA,2.7,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+621,Belowground Biomass Stock,6,483,8,NA,NA,NA,11.71,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+622,Belowground Biomass Stock,6,483,13,NA,NA,NA,34.21,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+623,Belowground Biomass Stock,6,483,23,NA,NA,NA,28.19,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+624,Belowground Biomass Stock,6,552,8,NA,NA,NA,22.55,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+625,Belowground Biomass Stock,6,552,18,NA,NA,NA,34.18,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+626,Belowground Biomass Stock,6,243,13,NA,NA,NA,15.45,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+627,Belowground Biomass Stock,6,810,18,NA,NA,NA,40.03,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+628,Belowground Biomass Stock,6,810,20,NA,NA,NA,28.37,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+629,Belowground Biomass Stock,6,1090,18,NA,NA,NA,26.4,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+630,Belowground Biomass Stock,6,1283,11,NA,NA,NA,8.64,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+631,Belowground Biomass Stock,6,1283,12,NA,NA,NA,9.09,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+632,Belowground Biomass Stock,6,1283,15,NA,NA,NA,16.24,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+633,Belowground Biomass Stock,6,69,13,NA,NA,NA,14.12,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+634,Belowground Biomass Stock,6,71,20,NA,NA,NA,31.5,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+635,Total Biomass Carbon Stock,6,3,6,NA,NA,NA,22.29,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+636,Total Biomass Carbon Stock,6,3,8,NA,NA,NA,173.16,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+637,Total Biomass Carbon Stock,6,3,11,NA,NA,NA,65.32,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+638,Total Biomass Carbon Stock,6,3,15,NA,NA,NA,101.86,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+639,Total Biomass Carbon Stock,6,3,16,NA,NA,NA,109.43,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+640,Total Biomass Carbon Stock,6,3,17,NA,NA,NA,84.66,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+641,Total Biomass Carbon Stock,6,3,18,NA,NA,NA,71.19,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+642,Total Biomass Carbon Stock,6,7,11,NA,NA,NA,95.45,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+643,Total Biomass Carbon Stock,6,53,20,NA,NA,NA,101.2,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+644,Total Biomass Carbon Stock,6,102,12,NA,NA,NA,165.7,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+645,Total Biomass Carbon Stock,6,102,13,NA,NA,NA,124.09,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+646,Total Biomass Carbon Stock,6,161,8,NA,NA,NA,55.91,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+647,Total Biomass Carbon Stock,6,161,17,NA,NA,NA,93.59,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+648,Total Biomass Carbon Stock,6,483,6,NA,NA,NA,10.33,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+649,Total Biomass Carbon Stock,6,483,8,NA,NA,NA,44.87,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+650,Total Biomass Carbon Stock,6,483,13,NA,NA,NA,131.15,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+651,Total Biomass Carbon Stock,6,483,23,NA,NA,NA,108.05,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+652,Total Biomass Carbon Stock,6,552,8,NA,NA,NA,86.45,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+653,Total Biomass Carbon Stock,6,552,18,NA,NA,NA,131.02,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+654,Total Biomass Carbon Stock,6,243,13,NA,NA,NA,59.2,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+655,Total Biomass Carbon Stock,6,810,18,NA,NA,NA,153.43,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+656,Total Biomass Carbon Stock,6,810,20,NA,NA,NA,108.77,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+657,Total Biomass Carbon Stock,6,1090,18,NA,NA,NA,101.2,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+658,Total Biomass Carbon Stock,6,1283,11,NA,NA,NA,33.13,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+659,Total Biomass Carbon Stock,6,1283,12,NA,NA,NA,34.86,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+660,Total Biomass Carbon Stock,6,1283,15,NA,NA,NA,62.27,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+661,Total Biomass Carbon Stock,6,69,13,NA,NA,NA,54.14,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+662,Total Biomass Carbon Stock,6,71,20,NA,NA,NA,120.75,tonnes C/ha,2,16,NA,NA,Measured (1),38,2
+663,Soil Carbon Stock,6,3,6,NA,NA,NA,83,tonnes C/ha,4,16,NA,NA,Measured (1),37,2
+664,Soil Carbon Stock,6,3,8,NA,NA,NA,91.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+665,Soil Carbon Stock,6,3,11,NA,NA,NA,95.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+666,Soil Carbon Stock,6,3,15,NA,NA,NA,95.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+667,Soil Carbon Stock,6,3,16,NA,NA,NA,100.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+668,Soil Carbon Stock,6,3,17,NA,NA,NA,105.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+669,Soil Carbon Stock,6,3,18,NA,NA,NA,107,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+670,Soil Carbon Stock,6,7,11,NA,NA,NA,95.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+671,Soil Carbon Stock,6,53,20,NA,NA,NA,107,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+672,Soil Carbon Stock,6,102,12,NA,NA,NA,100.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+673,Soil Carbon Stock,6,102,13,NA,NA,NA,114,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+674,Soil Carbon Stock,6,161,8,NA,NA,NA,83.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+675,Soil Carbon Stock,6,161,17,NA,NA,NA,102,tonnes C/ha,4,16,NA,NA,Measured (1),37,2
+676,Soil Carbon Stock,6,483,6,NA,NA,NA,86,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+677,Soil Carbon Stock,6,483,8,NA,NA,NA,86.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+678,Soil Carbon Stock,6,483,13,NA,NA,NA,99,tonnes C/ha,4,16,NA,NA,Measured (1),37,2
+679,Soil Carbon Stock,6,483,23,NA,NA,NA,133,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+680,Soil Carbon Stock,6,552,8,NA,NA,NA,81.67,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+681,Soil Carbon Stock,6,552,18,NA,NA,NA,100.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+682,Soil Carbon Stock,6,243,13,NA,NA,NA,89,tonnes C/ha,4,16,NA,NA,Measured (1),37,2
+683,Soil Carbon Stock,6,810,18,NA,NA,NA,105.67,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+684,Soil Carbon Stock,6,810,20,NA,NA,NA,120.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+685,Soil Carbon Stock,6,1090,18,NA,NA,NA,83,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+686,Soil Carbon Stock,6,1283,11,NA,NA,NA,90.67,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+687,Soil Carbon Stock,6,1283,12,NA,NA,NA,94,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+688,Soil Carbon Stock,6,1283,15,NA,NA,NA,102,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+689,Soil Carbon Stock,6,69,13,NA,NA,NA,84,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+690,Soil Carbon Stock,6,71,20,NA,NA,NA,100.33,tonnes C/ha,4,16,NA,NA,Measured (1),38,2
+691,Aboveground Biomass Stock,4,48,NA,NA,NA,NA,33.49,tonnes C/ha,3,7,NA,NA,Measured (1),36,2
+692,Aboveground Biomass Stock,4,48,NA,NA,NA,NA,14.36,tonnes C/ha,3,7,NA,NA,Measured (1),36,2
+693,Aboveground Biomass Carbon Stock,4,64,NA,NA,NA,NA,152.57,tonnes C/ha,3,11,NA,NA,Measured (1),36,2
+694,Aboveground Biomass Carbon Stock,4,48,NA,NA,NA,NA,45.24,tonnes C/ha,3,11,NA,NA,Measured (1),36,2
+695,Belowground Biomass Carbon Stock,4,64,NA,NA,NA,NA,196.54,tonnes C/ha,2,11,NA,NA,Measured (1),36,2
+696,Belowground Biomass Carbon Stock,4,48,NA,NA,NA,NA,90.83,tonnes C/ha,2,11,NA,NA,Measured (1),36,2
+697,Aboveground Biomass Carbon Stock,1,50,NA,NA,NA,NA,1.93,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+698,Aboveground Biomass Carbon Stock,1,56,NA,NA,NA,NA,0.46,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+699,Aboveground Biomass Carbon Stock,1,41,NA,NA,NA,NA,0.14,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+700,Aboveground Biomass Carbon Stock,1,92,NA,NA,NA,NA,0.19,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+701,Aboveground Biomass Carbon Stock,1,38,NA,NA,NA,NA,0.44,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+702,Aboveground Biomass Carbon Stock,1,53,NA,NA,NA,NA,1.7,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+703,Aboveground Biomass Carbon Stock,1,140,NA,NA,NA,NA,0.66,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+704,Aboveground Biomass Carbon Stock,1,73,NA,NA,NA,NA,0.52,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+705,Aboveground Biomass Carbon Stock,1,107,NA,NA,NA,NA,0.19,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+706,Aboveground Biomass Carbon Stock,1,84,NA,NA,NA,NA,0.34,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+707,Aboveground Biomass Carbon Stock,1,574,NA,NA,NA,NA,0.17,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+708,Aboveground Biomass Carbon Stock,1,38,NA,NA,NA,NA,0.12,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+709,Aboveground Biomass Carbon Stock,1,95,NA,NA,NA,NA,0.19,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+710,Aboveground Biomass Carbon Stock,1,102,NA,NA,NA,NA,0.84,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+711,Aboveground Biomass Carbon Stock,1,51,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+712,Aboveground Biomass Carbon Stock,1,4,NA,NA,NA,NA,0.08,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+713,Aboveground Biomass Carbon Stock,1,35,NA,NA,NA,NA,2.32,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+714,Aboveground Biomass Carbon Stock,1,130,NA,NA,NA,NA,1.7,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+715,Aboveground Biomass Carbon Stock,1,131,NA,NA,NA,NA,1.97,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+716,Aboveground Biomass Carbon Stock,1,23,NA,NA,NA,NA,0.26,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+717,Aboveground Biomass Carbon Stock,1,136,NA,NA,NA,NA,0.06,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+718,Aboveground Biomass Carbon Stock,1,295,NA,NA,NA,NA,0.42,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+719,Aboveground Biomass Carbon Stock,1,474,NA,NA,NA,NA,0.56,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+720,Aboveground Biomass Carbon Stock,1,47,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+721,Aboveground Biomass Carbon Stock,1,78,NA,NA,NA,NA,0.52,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+722,Aboveground Biomass Carbon Stock,1,194,NA,NA,NA,NA,1.67,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+723,Aboveground Biomass Carbon Stock,1,197,NA,NA,NA,NA,0.06,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+724,Aboveground Biomass Carbon Stock,1,147,NA,NA,NA,NA,0.41,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+725,Aboveground Biomass Carbon Stock,1,230,NA,NA,NA,NA,0.84,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+726,Aboveground Biomass Carbon Stock,1,243,NA,NA,NA,NA,0.21,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+727,Aboveground Biomass Carbon Stock,1,163,NA,NA,NA,NA,0.05,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+728,Aboveground Biomass Carbon Stock,1,88,NA,NA,NA,NA,0.01,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+729,Aboveground Biomass Carbon Stock,1,284,NA,NA,NA,NA,0.19,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+730,Aboveground Biomass Carbon Stock,1,287,NA,NA,NA,NA,0.19,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+731,Aboveground Biomass Carbon Stock,1,149,NA,NA,NA,NA,0.1,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+732,Aboveground Biomass Carbon Stock,1,295,NA,NA,NA,NA,0.1,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+733,Aboveground Biomass Carbon Stock,1,161,NA,NA,NA,NA,0.84,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+734,Aboveground Biomass Carbon Stock,1,155,NA,NA,NA,NA,0.12,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+735,Aboveground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0.05,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+736,Aboveground Biomass Carbon Stock,1,376,NA,NA,NA,NA,0.05,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+737,Aboveground Biomass Carbon Stock,1,386,NA,NA,NA,NA,0.02,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+738,Aboveground Biomass Carbon Stock,1,433,NA,NA,NA,NA,0.17,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+739,Aboveground Biomass Carbon Stock,1,441,NA,NA,NA,NA,0.31,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+740,Aboveground Biomass Carbon Stock,1,117,NA,NA,NA,NA,0.07,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+741,Aboveground Biomass Carbon Stock,1,295,NA,NA,NA,NA,0.11,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+742,Aboveground Biomass Carbon Stock,1,118,NA,NA,NA,NA,0.08,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+743,Aboveground Biomass Carbon Stock,1,474,NA,NA,NA,NA,0.03,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+744,Aboveground Biomass Carbon Stock,1,478,NA,NA,NA,NA,0.02,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+745,Aboveground Biomass Carbon Stock,1,479,NA,NA,NA,NA,0.22,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+746,Aboveground Biomass Carbon Stock,1,483,NA,NA,NA,NA,7.9,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+747,Aboveground Biomass Carbon Stock,1,500,NA,NA,NA,NA,0.97,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+748,Aboveground Biomass Carbon Stock,1,135,NA,NA,NA,NA,0.12,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+749,Aboveground Biomass Carbon Stock,1,140,NA,NA,NA,NA,0.16,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+750,Aboveground Biomass Carbon Stock,1,535,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+751,Aboveground Biomass Carbon Stock,1,166,NA,NA,NA,NA,0.65,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+752,Aboveground Biomass Carbon Stock,1,85,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+753,Aboveground Biomass Carbon Stock,1,588,NA,NA,NA,NA,1.14,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+754,Aboveground Biomass Carbon Stock,1,604,NA,NA,NA,NA,0.7,tonnes C/ha,3,2,NA,NA,Measured (1),27,2
+755,Aboveground Biomass Carbon Stock,1,614,NA,NA,NA,NA,0.22,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+756,Aboveground Biomass Carbon Stock,1,641,NA,NA,NA,NA,0.06,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+757,Aboveground Biomass Carbon Stock,1,651,NA,NA,NA,NA,0.06,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+758,Aboveground Biomass Carbon Stock,1,1112,NA,NA,NA,NA,0.03,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+759,Aboveground Biomass Carbon Stock,1,99,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+760,Aboveground Biomass Carbon Stock,1,672,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+761,Aboveground Biomass Carbon Stock,1,99,NA,NA,NA,NA,0.03,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+762,Aboveground Biomass Carbon Stock,1,678,NA,NA,NA,NA,0.08,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+763,Aboveground Biomass Carbon Stock,1,243,NA,NA,NA,NA,0.02,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+764,Aboveground Biomass Carbon Stock,1,243,NA,NA,NA,NA,0.67,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+765,Aboveground Biomass Carbon Stock,1,94,NA,NA,NA,NA,0.12,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+766,Aboveground Biomass Carbon Stock,1,162,NA,NA,NA,NA,0.23,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+767,Aboveground Biomass Carbon Stock,1,126,NA,NA,NA,NA,0.1,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+768,Aboveground Biomass Carbon Stock,1,1039,NA,NA,NA,NA,0.06,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+769,Aboveground Biomass Carbon Stock,1,759,NA,NA,NA,NA,0.92,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+770,Aboveground Biomass Carbon Stock,1,68,NA,NA,NA,NA,0.21,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+771,Aboveground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0.02,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+772,Aboveground Biomass Carbon Stock,1,977,NA,NA,NA,NA,0.23,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+773,Aboveground Biomass Carbon Stock,1,810,NA,NA,NA,NA,1.31,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+774,Aboveground Biomass Carbon Stock,1,813,NA,NA,NA,NA,0.58,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+775,Aboveground Biomass Carbon Stock,1,141,NA,NA,NA,NA,0.01,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+776,Aboveground Biomass Carbon Stock,1,826,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+777,Aboveground Biomass Carbon Stock,1,49,NA,NA,NA,NA,0.37,tonnes C/ha,3,2,NA,NA,Measured (1),99,2
+778,Aboveground Biomass Carbon Stock,1,38,NA,NA,NA,NA,0.32,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+779,Aboveground Biomass Carbon Stock,1,857,NA,NA,NA,NA,0.1,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+780,Aboveground Biomass Carbon Stock,1,122,NA,NA,NA,NA,0.07,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+781,Aboveground Biomass Carbon Stock,1,989,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+782,Aboveground Biomass Carbon Stock,1,894,NA,NA,NA,NA,0.08,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+783,Aboveground Biomass Carbon Stock,1,139,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+784,Aboveground Biomass Carbon Stock,1,295,NA,NA,NA,NA,0.92,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+785,Aboveground Biomass Carbon Stock,1,909,NA,NA,NA,NA,1.71,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+786,Aboveground Biomass Carbon Stock,1,146,NA,NA,NA,NA,0.09,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+787,Aboveground Biomass Carbon Stock,1,942,NA,NA,NA,NA,0.45,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+788,Aboveground Biomass Carbon Stock,1,950,NA,NA,NA,NA,0.29,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+789,Aboveground Biomass Carbon Stock,1,127,NA,NA,NA,NA,0.02,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+790,Aboveground Biomass Carbon Stock,1,138,NA,NA,NA,NA,0.08,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+791,Aboveground Biomass Carbon Stock,1,972,NA,NA,NA,NA,0.13,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+792,Aboveground Biomass Carbon Stock,1,977,NA,NA,NA,NA,0.09,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+793,Aboveground Biomass Carbon Stock,1,114,NA,NA,NA,NA,0.13,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+794,Aboveground Biomass Carbon Stock,1,114,NA,NA,NA,NA,0.02,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+795,Aboveground Biomass Carbon Stock,1,86,NA,NA,NA,NA,0.12,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+796,Aboveground Biomass Carbon Stock,1,51,NA,NA,NA,NA,0.01,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+797,Aboveground Biomass Carbon Stock,1,1079,NA,NA,NA,NA,0.06,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+798,Aboveground Biomass Carbon Stock,1,9,NA,NA,NA,NA,0.1,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+799,Aboveground Biomass Carbon Stock,1,1112,NA,NA,NA,NA,0.11,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+800,Aboveground Biomass Carbon Stock,1,1127,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+801,Aboveground Biomass Carbon Stock,1,72,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+802,Aboveground Biomass Carbon Stock,1,1136,NA,NA,NA,NA,0.01,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+803,Aboveground Biomass Carbon Stock,1,1140,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+804,Aboveground Biomass Carbon Stock,1,1142,NA,NA,NA,NA,0.01,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+805,Aboveground Biomass Carbon Stock,1,574,NA,NA,NA,NA,0.03,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+806,Aboveground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0.08,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+807,Aboveground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0.02,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+808,Aboveground Biomass Carbon Stock,1,1283,NA,NA,NA,NA,0.64,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+809,Aboveground Biomass Carbon Stock,1,1185,NA,NA,NA,NA,0.07,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+810,Aboveground Biomass Carbon Stock,1,1193,1,2,0.3,0,0.3,tonnes C/ha,3,2,NA,NA,Measured (1),27,2
+811,Aboveground Biomass Carbon Stock,1,170,NA,NA,NA,NA,0.09,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+812,Aboveground Biomass Carbon Stock,1,1210,NA,NA,NA,NA,0.06,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+813,Aboveground Biomass Carbon Stock,1,1231,NA,NA,NA,NA,0.46,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+814,Aboveground Biomass Carbon Stock,1,1112,NA,NA,NA,NA,0.09,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+815,Aboveground Biomass Carbon Stock,1,1265,NA,NA,NA,NA,0.2,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+816,Aboveground Biomass Carbon Stock,1,37,NA,NA,NA,NA,0.01,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+817,Aboveground Biomass Carbon Stock,1,37,NA,NA,NA,NA,0.39,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+818,Aboveground Biomass Carbon Stock,1,1271,NA,NA,NA,NA,0.05,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+819,Aboveground Biomass Carbon Stock,1,1280,NA,NA,NA,NA,0.01,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+820,Aboveground Biomass Carbon Stock,1,1285,NA,NA,NA,NA,0.57,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+821,Aboveground Biomass Carbon Stock,1,1301,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+822,Aboveground Biomass Carbon Stock,1,1302,NA,NA,NA,NA,0.01,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+823,Aboveground Biomass Carbon Stock,1,1307,NA,NA,NA,NA,0.06,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+824,Aboveground Biomass Carbon Stock,1,69,NA,NA,NA,NA,1.17,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+825,Aboveground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0.03,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+826,Aboveground Biomass Carbon Stock,1,160,NA,NA,NA,NA,0.04,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+827,Aboveground Biomass Carbon Stock,1,295,NA,NA,NA,NA,0.42,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+828,Aboveground Biomass Carbon Stock,1,71,NA,NA,NA,NA,5.66,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+829,Aboveground Biomass Carbon Stock,1,1348,NA,NA,NA,NA,0.13,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+830,Aboveground Biomass Carbon Stock,1,1349,NA,NA,NA,NA,1.5,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+831,Aboveground Biomass Carbon Stock,1,1351,NA,NA,NA,NA,0.36,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+832,Aboveground Biomass Carbon Stock,1,1352,NA,NA,NA,NA,1.32,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+833,Aboveground Biomass Carbon Stock,1,1360,NA,NA,NA,NA,0.17,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+834,Aboveground Biomass Carbon Stock,1,33,NA,NA,NA,NA,0.85,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+835,Aboveground Biomass Carbon Stock,1,112,NA,NA,NA,NA,0.01,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+836,Aboveground Biomass Carbon Stock,1,1397,NA,NA,NA,NA,0.12,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+837,Aboveground Biomass Carbon Stock,1,1400,NA,NA,NA,NA,0.06,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+838,Aboveground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0.05,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+839,Aboveground Biomass Carbon Stock,1,132,NA,NA,NA,NA,0.01,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+840,Aboveground Biomass Carbon Stock,1,93,NA,NA,NA,NA,0.06,tonnes C/ha,3,2,NA,NA,Measured (1),33,2
+841,Belowground Biomass Carbon Stock,1,50,NA,NA,NA,NA,0.29,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+842,Belowground Biomass Carbon Stock,1,56,NA,NA,NA,NA,0.07,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+843,Belowground Biomass Carbon Stock,1,41,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+844,Belowground Biomass Carbon Stock,1,92,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+845,Belowground Biomass Carbon Stock,1,38,NA,NA,NA,NA,0.07,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+846,Belowground Biomass Carbon Stock,1,53,NA,NA,NA,NA,0.26,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+847,Belowground Biomass Carbon Stock,1,140,NA,NA,NA,NA,0.1,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+848,Belowground Biomass Carbon Stock,1,73,NA,NA,NA,NA,0.08,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+849,Belowground Biomass Carbon Stock,1,107,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+850,Belowground Biomass Carbon Stock,1,84,NA,NA,NA,NA,0.05,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+851,Belowground Biomass Carbon Stock,1,574,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+852,Belowground Biomass Carbon Stock,1,38,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+853,Belowground Biomass Carbon Stock,1,95,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+854,Belowground Biomass Carbon Stock,1,102,NA,NA,NA,NA,0.13,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+855,Belowground Biomass Carbon Stock,1,51,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+856,Belowground Biomass Carbon Stock,1,4,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+857,Belowground Biomass Carbon Stock,1,35,NA,NA,NA,NA,0.35,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+858,Belowground Biomass Carbon Stock,1,130,NA,NA,NA,NA,0.26,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+859,Belowground Biomass Carbon Stock,1,131,NA,NA,NA,NA,0.3,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+860,Belowground Biomass Carbon Stock,1,23,NA,NA,NA,NA,0.04,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+861,Belowground Biomass Carbon Stock,1,136,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+862,Belowground Biomass Carbon Stock,1,295,NA,NA,NA,NA,0.06,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+863,Belowground Biomass Carbon Stock,1,474,NA,NA,NA,NA,0.08,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+864,Belowground Biomass Carbon Stock,1,47,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+865,Belowground Biomass Carbon Stock,1,78,NA,NA,NA,NA,0.08,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+866,Belowground Biomass Carbon Stock,1,194,NA,NA,NA,NA,0.25,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+867,Belowground Biomass Carbon Stock,1,197,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+868,Belowground Biomass Carbon Stock,1,147,NA,NA,NA,NA,0.06,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+869,Belowground Biomass Carbon Stock,1,230,NA,NA,NA,NA,0.13,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+870,Belowground Biomass Carbon Stock,1,243,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+871,Belowground Biomass Carbon Stock,1,163,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+872,Belowground Biomass Carbon Stock,1,88,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+873,Belowground Biomass Carbon Stock,1,284,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+874,Belowground Biomass Carbon Stock,1,287,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+875,Belowground Biomass Carbon Stock,1,149,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+876,Belowground Biomass Carbon Stock,1,295,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+877,Belowground Biomass Carbon Stock,1,161,NA,NA,NA,NA,0.13,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+878,Belowground Biomass Carbon Stock,1,155,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+879,Belowground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+880,Belowground Biomass Carbon Stock,1,376,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+881,Belowground Biomass Carbon Stock,1,386,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+882,Belowground Biomass Carbon Stock,1,433,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+883,Belowground Biomass Carbon Stock,1,441,NA,NA,NA,NA,0.05,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+884,Belowground Biomass Carbon Stock,1,117,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+885,Belowground Biomass Carbon Stock,1,295,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+886,Belowground Biomass Carbon Stock,1,118,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+887,Belowground Biomass Carbon Stock,1,474,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+888,Belowground Biomass Carbon Stock,1,478,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+889,Belowground Biomass Carbon Stock,1,479,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+890,Belowground Biomass Carbon Stock,1,483,NA,NA,NA,NA,1.19,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+891,Belowground Biomass Carbon Stock,1,500,NA,NA,NA,NA,0.15,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+892,Belowground Biomass Carbon Stock,1,135,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+893,Belowground Biomass Carbon Stock,1,140,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+894,Belowground Biomass Carbon Stock,1,535,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+895,Belowground Biomass Carbon Stock,1,166,NA,NA,NA,NA,0.1,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+896,Belowground Biomass Carbon Stock,1,85,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+897,Belowground Biomass Carbon Stock,1,588,NA,NA,NA,NA,0.17,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+898,Belowground Biomass Carbon Stock,1,604,NA,NA,NA,NA,0.11,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+899,Belowground Biomass Carbon Stock,1,614,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+900,Belowground Biomass Carbon Stock,1,641,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+901,Belowground Biomass Carbon Stock,1,651,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+902,Belowground Biomass Carbon Stock,1,1112,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+903,Belowground Biomass Carbon Stock,1,99,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+904,Belowground Biomass Carbon Stock,1,672,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+905,Belowground Biomass Carbon Stock,1,99,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+906,Belowground Biomass Carbon Stock,1,678,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+907,Belowground Biomass Carbon Stock,1,243,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+908,Belowground Biomass Carbon Stock,1,243,NA,NA,NA,NA,0.1,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+909,Belowground Biomass Carbon Stock,1,94,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+910,Belowground Biomass Carbon Stock,1,162,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+911,Belowground Biomass Carbon Stock,1,126,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+912,Belowground Biomass Carbon Stock,1,1039,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+913,Belowground Biomass Carbon Stock,1,759,NA,NA,NA,NA,0.14,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+914,Belowground Biomass Carbon Stock,1,68,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+915,Belowground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+916,Belowground Biomass Carbon Stock,1,977,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+917,Belowground Biomass Carbon Stock,1,810,NA,NA,NA,NA,0.2,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+918,Belowground Biomass Carbon Stock,1,813,NA,NA,NA,NA,0.09,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+919,Belowground Biomass Carbon Stock,1,141,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+920,Belowground Biomass Carbon Stock,1,826,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+921,Belowground Biomass Carbon Stock,1,49,NA,NA,NA,NA,0.06,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+922,Belowground Biomass Carbon Stock,1,38,NA,NA,NA,NA,0.05,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+923,Belowground Biomass Carbon Stock,1,857,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+924,Belowground Biomass Carbon Stock,1,122,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+925,Belowground Biomass Carbon Stock,1,989,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+926,Belowground Biomass Carbon Stock,1,894,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+927,Belowground Biomass Carbon Stock,1,139,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+928,Belowground Biomass Carbon Stock,1,295,NA,NA,NA,NA,0.14,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+929,Belowground Biomass Carbon Stock,1,909,NA,NA,NA,NA,0.26,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+930,Belowground Biomass Carbon Stock,1,146,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+931,Belowground Biomass Carbon Stock,1,942,NA,NA,NA,NA,0.07,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+932,Belowground Biomass Carbon Stock,1,950,NA,NA,NA,NA,0.04,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+933,Belowground Biomass Carbon Stock,1,127,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+934,Belowground Biomass Carbon Stock,1,138,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+935,Belowground Biomass Carbon Stock,1,972,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+936,Belowground Biomass Carbon Stock,1,977,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+937,Belowground Biomass Carbon Stock,1,114,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+938,Belowground Biomass Carbon Stock,1,114,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+939,Belowground Biomass Carbon Stock,1,86,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+940,Belowground Biomass Carbon Stock,1,51,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+941,Belowground Biomass Carbon Stock,1,1079,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+942,Belowground Biomass Carbon Stock,1,9,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+943,Belowground Biomass Carbon Stock,1,1112,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+944,Belowground Biomass Carbon Stock,1,1127,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+945,Belowground Biomass Carbon Stock,1,72,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+946,Belowground Biomass Carbon Stock,1,1136,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+947,Belowground Biomass Carbon Stock,1,1140,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+948,Belowground Biomass Carbon Stock,1,1142,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+949,Belowground Biomass Carbon Stock,1,574,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+950,Belowground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+951,Belowground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+952,Belowground Biomass Carbon Stock,1,1283,NA,NA,NA,NA,0.1,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+953,Belowground Biomass Carbon Stock,1,1185,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+954,Belowground Biomass Carbon Stock,1,1193,NA,NA,NA,NA,0.05,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+955,Belowground Biomass Carbon Stock,1,170,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+956,Belowground Biomass Carbon Stock,1,1210,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+957,Belowground Biomass Carbon Stock,1,1231,NA,NA,NA,NA,0.07,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+958,Belowground Biomass Carbon Stock,1,1112,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+959,Belowground Biomass Carbon Stock,1,1265,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+960,Belowground Biomass Carbon Stock,1,37,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+961,Belowground Biomass Carbon Stock,1,37,NA,NA,NA,NA,0.06,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+962,Belowground Biomass Carbon Stock,1,1271,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+963,Belowground Biomass Carbon Stock,1,1280,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+964,Belowground Biomass Carbon Stock,1,1285,NA,NA,NA,NA,0.09,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+965,Belowground Biomass Carbon Stock,1,1301,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+966,Belowground Biomass Carbon Stock,1,1302,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+967,Belowground Biomass Carbon Stock,1,1307,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+968,Belowground Biomass Carbon Stock,1,69,NA,NA,NA,NA,0.18,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+969,Belowground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+970,Belowground Biomass Carbon Stock,1,160,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+971,Belowground Biomass Carbon Stock,1,295,NA,NA,NA,NA,0.06,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+972,Belowground Biomass Carbon Stock,1,71,NA,NA,NA,NA,0.85,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+973,Belowground Biomass Carbon Stock,1,1348,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+974,Belowground Biomass Carbon Stock,1,1349,NA,NA,NA,NA,0.22,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+975,Belowground Biomass Carbon Stock,1,1351,NA,NA,NA,NA,0.05,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+976,Belowground Biomass Carbon Stock,1,1352,NA,NA,NA,NA,0.2,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+977,Belowground Biomass Carbon Stock,1,1360,NA,NA,NA,NA,0.03,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+978,Belowground Biomass Carbon Stock,1,33,NA,NA,NA,NA,0.13,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+979,Belowground Biomass Carbon Stock,1,112,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+980,Belowground Biomass Carbon Stock,1,1397,NA,NA,NA,NA,0.02,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+981,Belowground Biomass Carbon Stock,1,1400,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+982,Belowground Biomass Carbon Stock,1,153,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+983,Belowground Biomass Carbon Stock,1,132,NA,NA,NA,NA,0,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+984,Belowground Biomass Carbon Stock,1,93,NA,NA,NA,NA,0.01,tonnes C/ha,2,2,NA,NA,Measured (1),33,2
+985,Annual Average Volume Increment,2,0,NA,NA,NA,NA,10.36,m3/ha/year,2,12,NA,NA,Modeled (2),33,2
+986,Annual Average Volume Increment,7,1231,NA,NA,NA,NA,9.15,m3/ha/year,2,12,NA,NA,Modeled (2),26,2
+987,Annual Average Volume Increment,7,1231,NA,NA,NA,NA,8.91,m3/ha/year,2,12,NA,NA,Modeled (2),31,2
+988,Annual Average Volume Increment,4,0,NA,NA,NA,NA,8.95,m3/ha/year,2,12,NA,NA,Modeled (2),32,2
+989,Annual Average Volume Increment,5,0,NA,NA,NA,NA,10.15,m3/ha/year,2,12,NA,NA,Modeled (2),35,2
+990,Wood density,1,1360,NA,NA,NA,NA,0.4,g/cm3,1,4,NA,NA,Other (3),33,2
+991,Wood density,1,749,NA,NA,NA,NA,0.37,g/cm3,1,4,NA,NA,Other (3),33,2
+992,Wood density,1,813,NA,NA,NA,NA,0.62,g/cm3,1,4,NA,NA,Other (3),33,2
+993,Wood density,1,71,NA,NA,NA,NA,0.5,g/cm3,1,4,NA,NA,Other (3),99,2
+994,Wood density,1,295,NA,NA,NA,NA,0.52,g/cm3,1,4,NA,NA,Other (3),33,2
+995,Wood density,1,909,NA,NA,NA,NA,0.49,g/cm3,1,4,NA,NA,Other (3),99,2
+996,Wood density,1,1285,NA,NA,NA,NA,0.53,g/cm3,1,4,NA,NA,Other (3),99,2
+997,Wood density,1,1039,NA,NA,NA,NA,0.39,g/cm3,1,4,NA,NA,Other (3),99,2
+998,Wood density,1,37,NA,NA,NA,NA,0.62,g/cm3,1,4,NA,NA,Other (3),99,2
+999,Wood density,1,195,NA,NA,NA,NA,0.33,g/cm3,1,4,NA,NA,Other (3),99,2
+1000,Wood density,1,1127,NA,NA,NA,NA,0.75,g/cm3,1,4,NA,NA,Other (3),99,2
+1001,Wood density,1,295,NA,NA,NA,NA,0.69,g/cm3,1,4,NA,NA,Other (3),99,2
+1002,Wood density,1,149,NA,NA,NA,NA,0.67,g/cm3,1,4,NA,NA,Other (3),33,2
+1003,Wood density,1,5,NA,NA,NA,NA,0.36,g/cm3,1,4,NA,NA,Other (3),99,2
+1004,Wood density,1,641,NA,NA,NA,NA,0.5,g/cm3,1,4,NA,NA,Other (3),99,2
+1005,Wood density,1,942,NA,NA,NA,NA,0.84,g/cm3,1,4,NA,NA,Other (3),33,2
+1006,Wood density,1,1349,NA,NA,NA,NA,0.67,g/cm3,1,4,NA,NA,Other (3),99,2
+1007,Wood density,1,1352,NA,NA,NA,NA,0.64,g/cm3,1,4,NA,NA,Other (3),99,2
+1008,Wood density,1,574,NA,NA,NA,NA,0.79,g/cm3,1,4,NA,NA,Other (3),99,2
+1009,Wood density,1,295,NA,NA,NA,NA,0.51,g/cm3,1,4,NA,NA,Other (3),99,2
+1010,Wood density,1,117,NA,NA,NA,NA,0.52,g/cm3,1,4,NA,NA,Other (3),33,2
+1011,Wood density,1,478,NA,NA,NA,NA,0.55,g/cm3,1,4,NA,NA,Other (3),33,2
+1012,Wood density,1,120,NA,NA,NA,NA,0.58,g/cm3,1,4,NA,NA,Other (3),99,2
+1013,Wood density,1,142,NA,NA,NA,NA,0.66,g/cm3,1,4,NA,NA,Other (3),33,2
+1014,Wood density,1,483,NA,NA,NA,NA,0.65,g/cm3,1,4,NA,NA,Other (3),99,2
+1015,Wood density,1,759,NA,NA,NA,NA,0.59,g/cm3,1,4,NA,NA,Other (3),33,2
+1016,Wood density,1,1231,NA,NA,NA,NA,0.73,g/cm3,1,4,NA,NA,Other (3),99,2
+1017,Wood density,1,118,NA,NA,NA,NA,0.56,g/cm3,1,4,NA,NA,Other (3),33,2
+1018,Wood density,1,736,NA,NA,NA,NA,0.51,g/cm3,1,4,NA,NA,Other (3),99,2
+1019,Wood density,1,8,NA,NA,NA,NA,0.63,g/cm3,1,4,NA,NA,Other (3),99,2
+1020,Wood density,1,140,NA,NA,NA,NA,0.54,g/cm3,1,4,NA,NA,Other (3),99,2
+1021,Wood density,1,433,NA,NA,NA,NA,0.65,g/cm3,1,4,NA,NA,Other (3),99,2
+1022,Wood density,1,112,NA,NA,NA,NA,0.22,g/cm3,1,4,NA,NA,Other (3),33,2
+1023,Wood density,1,113,NA,NA,NA,NA,0.25,g/cm3,1,4,NA,NA,Other (3),33,2
+1024,Wood density,1,1112,NA,NA,NA,NA,0.54,g/cm3,1,4,NA,NA,Other (3),33,2
+1025,Wood density,1,58,NA,NA,NA,NA,0.38,g/cm3,1,4,NA,NA,Other (3),99,2
+1026,Wood density,1,153,NA,NA,NA,NA,0.74,g/cm3,1,4,NA,NA,Other (3),99,2
+1027,Wood density,1,753,NA,NA,NA,NA,0.8,g/cm3,1,4,NA,NA,Other (3),33,2
+1028,Wood density,1,123,NA,NA,NA,NA,0.56,g/cm3,1,4,NA,NA,Other (3),33,2
+1029,Wood density,1,259,NA,NA,NA,NA,0.51,g/cm3,1,4,NA,NA,Other (3),99,2
+1030,Wood density,1,535,NA,NA,NA,NA,0.48,g/cm3,1,4,NA,NA,Other (3),99,2
+1031,Wood density,1,31,NA,NA,NA,NA,0.52,g/cm3,1,4,NA,NA,Other (3),99,2
+1032,Wood density,1,500,NA,NA,NA,NA,0.41,g/cm3,1,4,NA,NA,Other (3),99,2
+1033,Wood density,1,810,NA,NA,NA,NA,0.51,g/cm3,1,4,NA,NA,Other (3),99,2
+1034,Wood density,1,1244,NA,NA,NA,NA,0.51,g/cm3,1,4,NA,NA,Other (3),99,2
+1035,Wood density,1,950,NA,NA,NA,NA,0.56,g/cm3,1,4,NA,NA,Other (3),99,2
+1036,Wood density,1,102,NA,NA,NA,NA,0.55,g/cm3,1,4,NA,NA,Other (3),99,2
+1037,Wood density,1,295,NA,NA,NA,NA,0.69,g/cm3,1,4,NA,NA,Other (3),99,2
+1038,Wood density,1,164,NA,NA,NA,NA,0.4,g/cm3,1,4,NA,NA,Other (3),99,2
+1039,Wood density,1,161,NA,NA,NA,NA,0.55,g/cm3,1,4,NA,NA,Other (3),99,2
+1040,Wood density,1,17,NA,NA,NA,NA,0.4,g/cm3,1,4,NA,NA,Other (3),99,2
+1041,Wood density,1,95,NA,NA,NA,NA,0.64,g/cm3,1,4,NA,NA,Other (3),99,2
+1042,Wood density,1,136,NA,NA,NA,NA,0.51,g/cm3,1,4,NA,NA,Other (3),99,2
+1043,Wood density,1,3,NA,NA,NA,NA,0.57,g/cm3,1,4,NA,NA,Other (3),99,2
+1044,Wood density,1,7,NA,NA,NA,NA,0.56,g/cm3,1,4,NA,NA,Other (3),99,2
+1045,Wood density,1,38,NA,NA,NA,NA,0.39,g/cm3,1,4,NA,NA,Other (3),99,2
+1046,Wood density,1,53,NA,NA,NA,NA,0.67,g/cm3,1,4,NA,NA,Other (3),33,2
+1047,Wood density,1,35,NA,NA,NA,NA,0.44,g/cm3,1,4,NA,NA,Other (3),33,2
+1048,Wood density,1,130,NA,NA,NA,NA,0.46,g/cm3,1,4,NA,NA,Other (3),33,2
+1049,Wood density,1,80,NA,NA,NA,NA,0.45,g/cm3,1,4,NA,NA,Other (3),33,2
+1050,Wood density,1,153,NA,NA,NA,NA,0.29,g/cm3,1,4,NA,NA,Other (3),33,2
+1051,Wood density,1,86,NA,NA,NA,NA,0.36,g/cm3,1,4,NA,NA,Other (3),33,2
+1052,Wood density,1,153,NA,NA,NA,NA,0.6,g/cm3,1,4,NA,NA,Other (3),99,2
+1053,Wood density,1,69,NA,NA,NA,NA,0.68,g/cm3,1,4,NA,NA,Other (3),99,2
+1054,Wood density,1,101,NA,NA,NA,NA,0.43,g/cm3,1,4,NA,NA,Other (3),99,2
+1055,Wood density,1,61,NA,NA,NA,NA,0.5,g/cm3,1,4,NA,NA,Other (3),99,2
+1056,Wood density,1,40,NA,NA,NA,NA,0.71,g/cm3,1,4,NA,NA,Other (3),99,2
+1057,Wood density,1,38,NA,NA,NA,NA,0.43,g/cm3,1,4,NA,NA,Other (3),99,2
+1058,Wood density,1,55,NA,NA,NA,NA,0.4,g/cm3,1,4,NA,NA,Other (3),99,2
+1059,Wood density,1,978,NA,NA,NA,NA,0.58,g/cm3,1,4,NA,NA,Other (3),33,2
+1060,Wood density,1,123,NA,NA,NA,NA,0.6,g/cm3,1,4,NA,NA,Other (3),99,2
+1061,Wood density,1,152,NA,NA,NA,NA,0.41,g/cm3,1,4,NA,NA,Other (3),33,2
+1062,Wood density,1,1140,NA,NA,NA,NA,0.56,g/cm3,1,4,NA,NA,Other (3),99,2
+1063,Wood density,1,8,NA,NA,NA,NA,0.57,g/cm3,1,4,NA,NA,Other (3),99,2
+1064,Wood density,1,1265,NA,NA,NA,NA,0.29,g/cm3,1,4,NA,NA,Other (3),99,2
+1065,Wood density,1,1360,NA,NA,NA,NA,0.31,g/cm3,1,4,NA,NA,Other (3),33,2
+1066,Wood density,1,170,NA,NA,NA,NA,0.61,g/cm3,1,4,NA,NA,Other (3),99,2
+1067,Wood density,1,243,NA,NA,NA,NA,0.41,g/cm3,1,4,NA,NA,Other (3),33,2
+1068,Wood density,1,71,NA,NA,NA,NA,0.58,g/cm3,1,4,NA,NA,Other (3),99,2
+1069,Wood density,1,1400,NA,NA,NA,NA,0.84,g/cm3,1,4,NA,NA,Other (3),99,2
+1070,Aboveground Biomass Stock,6,0,NA,NA,NA,NA,43.58,tonnes C/ha,3,5,NA,NA,Measured (1),99,2
+1071,Aboveground Biomass Stock,6,0,NA,NA,NA,NA,15.32,tonnes C/ha,3,5,NA,NA,Measured (1),99,2
+1072,Aboveground Biomass Stock,7,1231,NA,NA,NA,NA,57.41,tonnes C/ha,3,5,NA,NA,Measured (1),99,2
+1073,Aboveground Biomass Stock,7,1231,NA,NA,NA,NA,63.82,tonnes C/ha,3,5,NA,NA,Measured (1),99,2
+1074,Aboveground Biomass Stock,4,0,NA,NA,NA,NA,50.45,tonnes C/ha,3,5,NA,NA,Measured (1),99,2
+1075,Aboveground Biomass Stock,2,0,NA,NA,NA,NA,50,tonnes C/ha,3,5,NA,NA,Measured (1),37,2

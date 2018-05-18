@@ -778,7 +778,7 @@ $lang_ses = $this->session->userdata("site_lang");
 
 
 </script>
-<script>
+          <script>
                // Setting default configuration here or you can set through configuration object as seen below
                $.fn.select2.defaults = $.extend($.fn.select2.defaults, {
                  allowClear: true, // Adds X image to clear select

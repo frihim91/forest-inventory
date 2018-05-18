@@ -55,7 +55,7 @@
 
                                         <div class="col-md-6">
                                          <label for="firstname">Table Name</label>
-                                            <select name="table_name" id="table_name" class="form-control">
+                                            <select name="table_name" id="table_name" class="singleSelectExample" style="width:400px">
                                             <option value="">--Select--</option>
                                             <option value="ae">ae</option>
                                             <option value="bd_aez1988">bd_aez1988</option>
@@ -163,3 +163,24 @@
 
             });
         </script>
+          <script>
+               // Setting default configuration here or you can set through configuration object as seen below
+               $.fn.select2.defaults = $.extend($.fn.select2.defaults, {
+                 allowClear: true, // Adds X image to clear select
+                 closeOnSelect: true, // Only applies to multiple selects. Closes the select upon selection.
+                 placeholder: 'Select...',
+                 minimumResultsForSearch: 15 // Removes search when there are 15 or fewer options
+               });
+
+               $(document).ready(
+
+                 function () {
+
+                   // Single select example if using params obj or configuration seen above
+                   var configParamsObj = {
+                     placeholder: 'Select an option...', // Place holder text to place in the select
+                     minimumResultsForSearch: 3 // Overrides default of 15 set above
+                   };
+                   $(".singleSelectExample").select2(configParamsObj);
+                 });
+             </script>
