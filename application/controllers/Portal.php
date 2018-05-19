@@ -254,8 +254,8 @@ private function searchAttributeString($searchFields)
         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
         WHERE a.ID_AE IS NOT NULL and $string
         GROUP BY LatDD,LongDD";
-       // echo $jsonQuery;
-        //exit;
+       echo $jsonQuery;
+       exit;
         $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page']      = 'portal/allometricEquationPage';
