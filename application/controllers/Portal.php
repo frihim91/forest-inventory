@@ -239,8 +239,7 @@ private function searchAttributeString($searchFields)
         {
             redirect('data/allometricEquationView');
         }
-        $jsonQuery="SELECT l.latDD y,l.longDD x,GROUP_CONCAT(DISTINCT(a.output)) OUTPUT,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
-        fnc_ae_species_data(l.LatDD,l.LongDD) species_desc FROM location l
+        $jsonQuery="SELECT l.latDD y,l.longDD x,GROUP_CONCAT(DISTINCT(a.output)) OUTPUT,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome,COUNT(FAOBiomes)total_species,fnc_ae_species_data(l.LatDD,l.LongDD) species_desc FROM location l
         LEFT JOIN group_location lg ON l.ID_Location=lg.location_id
         LEFT JOIN ae a ON lg.group_id=a.location_group
         LEFT JOIN species s ON a.Species=s.ID_Species
@@ -254,8 +253,8 @@ private function searchAttributeString($searchFields)
         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
         WHERE a.ID_AE IS NOT NULL and $string
         GROUP BY LatDD,LongDD";
-       echo $jsonQuery;
-       exit;
+        //echo $jsonQuery;
+        //exit;
         $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page']      = 'portal/allometricEquationPage';
@@ -458,7 +457,14 @@ private function searchAttributeString($searchFields)
         LEFT JOIN rd r ON b.group_id=r.location_group
         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+        LEFT JOIN family f ON s.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+        LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
         LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        LEFT JOIN division d ON a.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON a.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON a.ID_Zones =zon.ID_Zones
+        LEFT JOIN bd_aez1988 eco ON a.ID_1988EcoZones =eco.MAJOR_AEZ
         WHERE r.ID IS NOT NULL
         and $string
         GROUP BY LatDD,LongDD";
@@ -716,7 +722,7 @@ private function searchAttributeString($searchFields)
         WHERE e.ID_EF IS NOT NULL and $string
         GROUP BY LatDD,LongDD
         ";
-       // echo $jsonQuery;
+        //echo $jsonQuery;
         //exit;
         $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
@@ -929,13 +935,20 @@ private function searchAttributeString($searchFields)
         fnc_wd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
         LEFT JOIN group_location b ON a.ID_Location=b.location_id
         LEFT JOIN wd w ON b.group_id=w.location_group
-        LEFT JOIN species d ON w.ID_species=d.ID_Species
+        LEFT JOIN species s ON w.ID_species=s.ID_Species
+        LEFT JOIN family f ON s.ID_Family=f.ID_Family
+        LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+        LEFT JOIN reference ref ON w.ID_reference=ref.ID_Reference
         LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
-        WHERE w.ID_WD IS NOT NULL
+        LEFT JOIN division d ON a.ID_Division=d.ID_Division
+        LEFT JOIN district dis ON a.ID_District =dis.ID_District
+        LEFT JOIN zones zon ON a.ID_Zones =zon.ID_Zones
+        LEFT JOIN bd_aez1988 eco ON a.ID_1988EcoZones =eco.MAJOR_AEZ
+        WHERE w.ID_WD IS NOT NULL and $string
         GROUP BY LatDD,LongDD
         ";
-       // echo $jsonQuery;
-        //exit;
+        //echo $jsonQuery;
+       // exit;
         $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page']      = 'portal/woodDensitiesView';
