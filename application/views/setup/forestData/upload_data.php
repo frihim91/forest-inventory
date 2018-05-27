@@ -188,6 +188,7 @@
              </script>
 <script type="text/javascript">
     $(document).on("change", "#table_name", function() {
+        window.onbeforeunload = null;
         var tableName=$(this).val();
         //downloadDatasetUrl
         if(tableName!='')
