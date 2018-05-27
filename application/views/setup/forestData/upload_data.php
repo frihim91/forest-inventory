@@ -194,7 +194,7 @@
         {
             var url="<?php echo site_url() ?>"+'/'+'data'+'/'+'downloadDataFormat'+'/'+tableName;
             $("a.downloadDatasetUrl").attr("href",url);
-             var str='<i class="glyphicon glyphicon-cloud-download"></i> Download <b>'+tableName+'</b> CSV Dataset Format';
+             var str='<i class="glyphicon glyphicon-download-alt"></i> Download <b>'+tableName+'</b> CSV Dataset Format';
              //alert(str);
              $("a.downloadDatasetUrl").html(str);   
             $("a.downloadDatasetUrl").show('fade');
