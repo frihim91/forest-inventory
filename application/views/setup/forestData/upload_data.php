@@ -61,7 +61,7 @@
                                             <option value="bd_aez1988">bd_aez1988</option>
                                             <option value="botanical_description">botanical_description</option>
                                             <option value="contributor_info">contributor_info</option>
-                                            <option value="botanical_descriptions">botanical_descriptions</option>
+                                            <option value="botanical_description">botanical_description</option>
                                             <option value="district">district</option>
                                             <option value="division">division</option>
                                             <option value="ef">ef</option>
@@ -117,7 +117,9 @@
                         </div>
                     </div>
 
-                <div class="separator"></div>
+                <div class="separator"> 
+                    <a style="display:none" class="downloadDatasetUrl" href="#">Download Dataset format</a>
+                </div>
                 <center>
                     <div class="form-actions">
                         <button class="btn btn-success" type="submit"><i class="fa fa-check-circle"></i> Save</button>
@@ -184,3 +186,24 @@
                    $(".singleSelectExample").select2(configParamsObj);
                  });
              </script>
+<script type="text/javascript">
+    $(document).on("change", "#table_name", function() {
+        var tableName=$(this).val();
+        //downloadDatasetUrl
+        if(tableName!='')
+        {
+            var url="<?php echo site_url() ?>"+'/'+'data'+'/'+'downloadDataFormat'+'/'+tableName;
+            $("a.downloadDatasetUrl").attr("href",url);
+             var str='<i class="glyphicon glyphicon-cloud-download"></i> Download <b>'+tableName+'</b> CSV Dataset Format';
+             //alert(str);
+             $("a.downloadDatasetUrl").html(str);   
+            $("a.downloadDatasetUrl").show('fade');
+            $
+        }
+        else 
+        {
+            $("a.downloadDatasetUrl").hide('fade');
+        }
+       
+    })
+</script>

@@ -765,5 +765,28 @@ public function search_allometricequation_key()
         $conn = NULL;
         //return $returnJson;
       }
+      public function downloadDataFormat($tableName)
+      {
+          $dbName= $this->db->database;
+           $tableCoulmn    = $this->db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE
+             TABLE_NAME = '$tableName' AND  TABLE_SCHEMA='$dbName'")->result();
+           //$this->pr($tableCoulmn);
+          $fp = fopen('file.csv', 'w');
+          $file = fopen('php://output', 'w');
+            $filename = $tableName.'.csv'; 
+             header("Content-Description: File Transfer"); 
+             header("Content-Disposition: attachment; filename=$filename"); 
+             header("Content-Type: application/csv; ");
+           $headArray=array();
+           foreach($tableCoulmn as $row)
+           {
+              $headArray[]=$row->COLUMN_NAME;
+           }
+        $header =$headArray;//array("Username","Name","Gender","Email"); 
+          fputcsv($file, $header);
+          fclose($file); 
+          exit; 
+
+      }
 
     }
