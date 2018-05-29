@@ -132,7 +132,7 @@ $lang_ses = $this->session->userdata("site_lang");
     <p> Search allometric equations by keyword.
       This searches accross several text fields.
       <br>
-      Example searches:Y = -1.5851 + 2.4855 * Log (X)
+      Example searches: Log Green Biomass = -1.5851 + 2.4855 * Log (DBH)
     </p>
     <p>
     </p>
@@ -152,6 +152,7 @@ $lang_ses = $this->session->userdata("site_lang");
           <label>Keyword </label>
           <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>"  maxlength="64" placeholder="Keyword" /><br>
           <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
+          <input type="hidden" name="Equation_VarNames" value="">
         </div>
       </div>
 

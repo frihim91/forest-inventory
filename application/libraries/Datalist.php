@@ -23,11 +23,11 @@ class Datalist {
                       </div>
                       <div class='panel-body'>
                         <dl class='dl-horizontal'>
-                          <dt style='font-size:15px'><small>Equation</small></dt> <dd style='font-size:15px'><code> $item->Equation</code></dd>
+                          <dt style='font-size:15px'><small>Equation</small></dt> <dd style='font-size:15px'><code> $item->Equation_VarNames</code></dd>
                           <dt style='font-size:15px'><small>Output</small></dt> <dd style='font-size:15px'><small> $item->Output</small></dd>
                           <dt style='font-size:15px'><small>Reference</small></dt> <dd style='font-size:15px'><small> $item->Author. $item->Reference</small></dd>
                           <dt style='font-size:15px'><small>Reference Year</small></dt> <dd style='font-size:15px'><small> $item->Year</small></dd>
-                          <dt style='font-size:15px'><small>Biomass</small></dt> <dd style='font-size:15px'><small> $item->FAOBiomes</small></dd>
+                          <!--<dt style='font-size:15px'><small>Biomass</small></dt> <dd style='font-size:15px'><small> $item->FAOBiomes</small></dd>-->
                           <dt style='font-size:15px'><small>Family</small></dt> <dd style='font-size:15px'><small> $item->Family</small></dd>
                           <dt style='font-size:15px'><small>Species</small></dt> <dd style='font-size:15px'><small> $item->Species</small></dd>
                           <dt style='font-size:15px'><small>Locations</small></dt> <dd style='font-size:15px'><small> $item->location_name </small></dd>

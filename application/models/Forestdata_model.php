@@ -265,7 +265,7 @@ Class Forestdata_model extends CI_Model {
 
   public function get_allometric_equation_details_loc($ID_AE)
   {
-    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,g.UNINAME FROM ae a
+    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,c.location_name,g.UNINAME FROM ae a
                       LEFT JOIN group_location b on a.location_group=b.group_id
                       LEFT JOIN location c ON b.location_id=c.ID_Location
                       LEFT JOIN district d ON c.ID_District=d.ID_District
@@ -280,7 +280,7 @@ Class Forestdata_model extends CI_Model {
 
     public function get_emission_factor_details_loc($ID)
   {
-    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,g.UNINAME FROM ef emf
+    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,c.location_name,g.UNINAME FROM ef emf
                       LEFT JOIN group_location b on emf.group_location=b.group_id
                       LEFT JOIN location c ON b.location_id=c.ID_Location
                       LEFT JOIN district d ON c.ID_District=d.ID_District
@@ -295,7 +295,7 @@ Class Forestdata_model extends CI_Model {
 
      public function get_woodDensities_details_loc($ID)
   {
-    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,g.UNINAME FROM wd w
+    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,c.location_name,g.UNINAME FROM wd w
                       LEFT JOIN group_location b on w.location_group=b.group_id
                       LEFT JOIN location c ON b.location_id=c.ID_Location
                       LEFT JOIN district d ON c.ID_District=d.ID_District
@@ -309,7 +309,7 @@ Class Forestdata_model extends CI_Model {
 
     public function get_raw_data_equation_details_loc($ID)
   {
-    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,g.UNINAME FROM rd r
+    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,c.location_name,g.UNINAME FROM rd r
                       LEFT JOIN group_location b on r.location_group=b.group_id
                       LEFT JOIN location c ON b.location_id=c.ID_Location
                       LEFT JOIN district d ON c.ID_District=d.ID_District
@@ -569,7 +569,7 @@ Class Forestdata_model extends CI_Model {
 
 	 public function get_allometric_equation_grid()
 	{
-		$data=$this->db->query("SELECT a.Equation,a.Output,ref.Author,ref.Reference,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
+		$data=$this->db->query("SELECT a.Equation,a.Equation_VarNames,a.Output,ref.Author,ref.Reference,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus

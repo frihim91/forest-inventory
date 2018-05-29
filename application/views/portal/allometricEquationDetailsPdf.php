@@ -61,7 +61,7 @@ foreach($allometricEquationDetails as $row)
        <table class="table">
         
         <tr><th style="width:210px">Equation: </th><td> <b><code style="color:#c7254e;font-size: 14px;">
-          <?php echo $row->Equation;?>
+          <?php echo $row->Equation_VarNames;?>
         </code></b></td></tr>
         <tr><th> Sample size: </th><td><?php echo $row->Sample_size;?></td></tr>
         <tr><th> R<sup>2</sup>: </th><td><?php echo $row->R2;?></td></tr>
@@ -209,12 +209,13 @@ foreach($allometricEquationDetails as $row)
        }?>
        <br>
        <tr class="bg-success">
+        <th>Location Name</th>
         <th>Division</th>
         <th>District</th>
         <th>Upazila</th>
         <th>Union</th>
-        <th>Latitute</th>
-        <th>Longitute</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
       </tr>
     </thead>
     <tbody>
@@ -224,7 +225,7 @@ foreach($allometricEquationDetails as $row)
      foreach ($location as $row) {
        ?>
        <tr>
-        <td align="center"><?php echo $row->Division;?></td>
+        <td align="center"><?php echo $row->location_name;?></td>
         <td align="center"><?php echo $row->District;?></td>
         <td align="center"><?php echo $row->THANAME;?></td>
         <td align="center"><?php echo $row->UNINAME;?></td>

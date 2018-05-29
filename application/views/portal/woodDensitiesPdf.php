@@ -298,12 +298,13 @@
        }?>
        <br>
        <tr class="bg-success">
+        <th>Location Name</th>
         <th>Division</th>
         <th>District</th>
         <th>Upazila</th>
         <th>Union</th>
-        <th>Latitute</th>
-        <th>Longitute</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
       </tr>
     </thead>
     <tbody>
@@ -313,6 +314,7 @@
      foreach ($location as $row) {
        ?>
        <tr>
+        <td align="center"><?php echo $row->location_name;?></td>
         <td align="center"><?php echo $row->Division;?></td>
         <td align="center"><?php echo $row->District;?></td>
         <td align="center"><?php echo $row->THANAME;?></td>

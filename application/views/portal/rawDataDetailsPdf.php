@@ -92,6 +92,14 @@ $lang_ses = $this->session->userdata("site_lang");
                   <th style="width:210px"> Fresh Buttress Weight (kg): </th>
                   <td><?php echo $row->F_Buttress_kg;?></td>
                </tr>
+                 <tr>
+                  <th style="width:210px"> Fresh Fruit Weight (kg): </th>
+                  <td><?php echo $row->F_Fruit_kg;?></td>
+               </tr>
+                <tr>
+                  <th style="width:210px"> Fresh Bark Weight (kg): </th>
+                  <td><?php echo $row->F_Bark_kg;?></td>
+               </tr>
                <tr>
                   <th style="width:210px"> Fresh Roots Weight (kg): </th>
                   <td><?php echo $row->F_Roots_kg;?></td>
@@ -128,6 +136,23 @@ $lang_ses = $this->session->userdata("site_lang");
                <tr>
                   <th style="width:210px"> Dry Buttress Weight (kg): </th>
                   <td><?php echo $row->D_Buttress_kg;?></td>
+               </tr>
+                <tr>
+                  <th style="width:210px"> Dry Bark Weight (kg): </th>
+                  <td><?php echo $row->D_Bark_kg;?></td>
+               </tr>
+
+                <tr>
+                  <th style="width:210px"> Dry Stem with Bark Weight (g): </th>
+                  <td><?php echo $row->D_Stem_with_Bark_g;?></td>
+               </tr>
+                <tr>
+                  <th style="width:210px"> Dry Stem without Bark Weight (g): </th>
+                  <td><?php echo $row->D_Stem_without_Bark_g;?></td>
+               </tr>
+                 <tr>
+                  <th style="width:210px"> Dry Stem without Bark Weight (kg): </th>
+                  <td><?php echo $row->D_Stem_without_Bark_kg;?></td>
                </tr>
                <tr>
                   <th style="width:210px"> Dry Roots Weight (kg): </th>
@@ -266,12 +291,13 @@ $lang_ses = $this->session->userdata("site_lang");
        }?>
        <br>
        <tr class="bg-success">
+        <th>Location Name</th>
         <th>Division</th>
         <th>District</th>
         <th>Upazila</th>
         <th>Union</th>
-        <th>Latitute</th>
-        <th>Longitute</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
       </tr>
     </thead>
     <tbody>
@@ -281,6 +307,7 @@ $lang_ses = $this->session->userdata("site_lang");
      foreach ($location as $row) {
        ?>
        <tr>
+        <td align="center"><?php echo $row->location_name;?></td>
         <td align="center"><?php echo $row->Division;?></td>
         <td align="center"><?php echo $row->District;?></td>
         <td align="center"><?php echo $row->THANAME;?></td>

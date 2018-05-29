@@ -292,6 +292,11 @@ cursor: pointer;
                                         <h4><span><a href="<?php echo site_url('data/dataSpecies'); ?>" style="color: inherit;text-decoration: none;">Species List</a></span></h4>
                                         <p>The database is presenting a species list of Bangladesh. The list is organized by family and under each family all available genus and species information available in Bangladesh of that family is incorporated. Information related with number of allometric equations, raw data, wood density and emission factor for that species are available for the species. </p>
                                     </div>
+
+                                      <div class="dta dta0 dtaz">
+                                        <h4><span><a href="<?php echo site_url('data/dataSpecies'); ?>" style="color: inherit;text-decoration: none;"><button type="button" style="width: 550px;"class="btn btn-primary btn-block">Download</button></a></span></h4>
+                                     
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -65,6 +65,8 @@ private function searchAttributeString($searchFields)
 }
     private function getDtByAttrAe($attr)
     {
+      //$this->pr($attr);
+
       $returnArray=array();
       switch ($attr) {
         case "Family":
@@ -79,8 +81,8 @@ private function searchAttributeString($searchFields)
         $returnArray[]='Species';
         $returnArray[]='s.';
         break;
-        case "Equation":
-        $returnArray[]='Allometric Equation';
+        case "Equation_VarNames":
+        $returnArray[]='Equation_VarNames';
         $returnArray[]='a.';
         break;
         case "Division":
@@ -119,6 +121,7 @@ private function searchAttributeString($searchFields)
         $returnArray[]='';
         $returnArray[]='';
       }
+     // $this->pr($returnArray);
       return $returnArray;
     }
 
@@ -134,11 +137,13 @@ private function searchAttributeString($searchFields)
         }
         if($searchFieldArray['keyword']!='')
         {
+         // $this->pr($searchFieldArray);
             foreach($searchFieldArray as $key=>$value)
             {
               if($key!='keyword')
               {
                 $r=$this->getDtByAttrAe($key);
+               // $this->pr($r);
                 $validSearchKey[$r[1].$key]=$searchFieldArray['keyword'];
                 $fieldName[]=$r[0];
                 $filedNameValue[$r[0].'/'.$key]=$searchFieldArray['keyword'];
@@ -170,7 +175,7 @@ private function searchAttributeString($searchFields)
 
         $string=$this->searchAttributeString($validSearchKey);
 
-        $k=$data['allometricEquationView'] = $this->db->query("SELECT a.Equation,a.Output,ref.Author,ref.Reference,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
+        $k=$data['allometricEquationView'] = $this->db->query("SELECT a.Equation_VarNames,a.Output,ref.Author,ref.Reference,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
          LEFT JOIN species s ON a.Species=s.ID_Species
          LEFT JOIN family f ON s.ID_Family=f.ID_Family
          LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
