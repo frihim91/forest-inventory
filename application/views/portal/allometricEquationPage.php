@@ -132,7 +132,8 @@ $lang_ses = $this->session->userdata("site_lang");
     <p> Search allometric equations by keyword.
       This searches accross several text fields.
       <br>
-      Example searches: Log Green Biomass = -1.5851 + 2.4855 * Log (DBH)
+      Example searches: Log Green Biomass = -1.5851 + 2.4855 * Log (DBH),Volume,1985,Sterculiaceae,Heritiera fomes,Coastal Area
+
     </p>
     <p>
     </p>

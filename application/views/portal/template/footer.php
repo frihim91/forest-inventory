@@ -10,7 +10,7 @@
            </div>
        </div>
        <div class="col-sm-7">
-       <p class="copy">&copy; Copyright <?php echo date('Y') ?>. National Emission Factor, Designed &amp; Developed by <a target="_blank" href="http://atilimited.net"><span style="color:#B50D0D">ATI</span><span style="color:#0D4524"> Limited.</a></p>
+       <p class="copy">&copy; Copyright <?php echo date('Y') ?>.Emission Factor, Designed &amp; Developed by <a target="_blank" href="http://atilimited.net"><span style="color:#B50D0D">ATI</span><span style="color:#0D4524"> Limited.</a></p>
     </div>
 </div>
 </div>

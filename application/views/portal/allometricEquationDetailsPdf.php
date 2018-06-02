@@ -129,45 +129,49 @@ foreach($allometricEquationDetails as $row)
       </h3>
       
       
+    
+
       <table class="table">
-        <tr>
-          <th>Family:</th>
+      <thead>
+        
+       <tr class="bg-success">
+           <th>Family:</th>
           <th>Genus:</th>
           <th>Species:</th>
           <th>Subspecies:</th>
-          <th>Author:</th>
+          <!-- <th>Author:</th> -->
           <th>Local Names:</th>
-        </tr>
-        <tr>
-          <td align="center">
-           
-           <?php echo $row->Family;?>
-         </td>
-         <td align="center">
-           
-           <?php echo $row->Genus;?>
-           
-         </td>
-         <td align="center">
-           
-           <?php echo $row->Species;?>
-           
-           
-         </td>
-         <td align="center">NA</td>
-         <td >None</td>
-         <td ><?php if($row->local_name!='') { ?>
+      </tr>
+    </thead>
+    <tbody>
+
+     <?php
+     $i = 1;
+     foreach ($allometricEquationDetails_tax as $row) {
+       ?>
+       <tr>
+        <td align="center"><?php echo $row->family;?></td>
+        <td align="center"><?php echo $row->genus;?></td>
+        <td align="center"><?php echo $row->species;?></td>
+        <td align="center">NA</td>
+        <td align="center"><?php if($row->localname!='') { ?>
                                    
-              <?php echo $row->local_name;?>
+              <?php echo $row->localname;?>
                                    
                 <?php } else { ?>
                 <p>NA</p>
                                         
-          <?php  } ?>
-         </td>
-       </tr>
-       
-     </table>
+          <?php  } ?></td>
+
+      </tr>
+      <?php
+      $i++;
+    }
+    ?>
+  </tbody>
+
+</table>
+      
      
      
    </div>

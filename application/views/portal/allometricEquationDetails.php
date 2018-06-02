@@ -154,47 +154,52 @@ $lang_ses = $this->session->userdata("site_lang");
         </span>
         
       </h3>
-      
-      
+
+
+
       <table class="table">
-        <tr>
-          <th>Family:</th>
+      <thead>
+        
+       <tr class="bg-success">
+           <th>Family:</th>
           <th>Genus:</th>
           <th>Species:</th>
           <th>Subspecies:</th>
-          <th>Author:</th>
+          <!-- <th>Author:</th> -->
           <th>Local Names:</th>
-        </tr>
-        
-        <td >
+      </tr>
+    </thead>
+    <tbody>
 
-         <?php echo $row->Family;?>
-       </td>
-       <td>
-
-         <?php echo $row->Genus;?>
-         
-       </td>
-       <td>
-
-         <?php echo $row->Species;?>
-         
-         
-       </td>
-       <td > NA</td>
-       <td >None</td>
-       <td><?php if($row->local_name!='') { ?>
+     <?php
+     $i = 1;
+     foreach ($allometricEquationDetails_tax as $row) {
+       ?>
+       <tr>
+        <td ><?php echo $row->family;?></td>
+        <td ><?php echo $row->genus;?></td>
+        <td><?php echo $row->species;?></td>
+        <td>NA</td>
+        <td ><?php if($row->localname!='') { ?>
                                    
-              <?php echo $row->local_name;?>
+              <?php echo $row->localname;?>
                                    
                 <?php } else { ?>
                 <p>NA</p>
                                         
-          <?php  } ?>
-       </td>
-     </tr>
-     
-   </table>
+          <?php  } ?></td>
+
+      </tr>
+      <?php
+      $i++;
+    }
+    ?>
+  </tbody>
+
+</table>
+      
+      
+ 
    
    
  </div>

@@ -123,6 +123,15 @@ cursor: pointer;
 
 
 </style>
+<style type="text/css">
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background: #CCE5B9;
+    border-color: #CCE5B9;
+}</style>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
@@ -294,7 +303,7 @@ cursor: pointer;
                                     </div>
 
                                       <div class="dta dta0 dtaz">
-                                        <h4><span><a href="<?php echo site_url('data/dataSpecies'); ?>" style="color: inherit;text-decoration: none;"><button type="button" style="width: 550px;"class="btn btn-primary btn-block">Download</button></a></span></h4>
+                                        <h4><span><a href="<?php echo base_url('resources/resource_potal/document/acronyms.pdf')?>" target="_blank" style="color: inherit;text-decoration: none;"><button type="button" style="width: 550px;text-align: left;color: black"  class="btn btn-primary">Documentation on definitions of acronyms</button></a></span></h4>
                                      
                                     </div>
                                 </div>

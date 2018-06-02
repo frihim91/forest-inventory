@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>.: National Emission Factor || National Emission Factor:.</title>
+    <title>.: <?php echo $post_cat->TITLE_NAME;?> || <?php echo $post_cat->TITLE_NAME;?>:.</title>
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/favIcon.png">
     <meta name="description" content=" Food and Agriculture Organization of the United Nations"/>
     <meta name="author" content="ATI Limited"/>
@@ -222,7 +222,7 @@ $(window).bind("orientationchange", ScaleSlider);
                                 <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/gov-logo.png')?>" class="img-responsive"/>
                             </div>
                             <div class="col-sm-8">
-                                 <h1 style="font-family:Century;font-weight:bold;font-size:36px;">National Emission Factor</h1>
+                                 <h1 style="font-family:Century;font-weight:bold;font-size:36px;"><?php echo $post_cat->TITLE_NAME;?></h1>
                             </div>
                             <div class="col-sm-2 lg2">
                                 <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/forest-logo.png')?>" class="img-responsive"/></div>

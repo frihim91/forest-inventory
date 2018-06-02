@@ -166,10 +166,13 @@ function noDataReturnParam($param)
                                     <dt style='font-size:15px'><small>Species:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->Species);?></small></dd> 
                                     <dt style='font-size:15px'><small>Author Name:</small></dt> <dd style='font-size:15px'><small> <?php echo noDataReturnParam($availableData->author);?></small></dd> 
                                     <dt style='font-size:15px'><small>synonyms:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->synonyms);  ?></small></dd> 
-                                    <dt style='font-size:15px'><small>Fruits & Flowering :<br> Period</small></dt> <dd style='font-size:15px'><small> <?php echo noDataReturnParam($availableData->flowering_period);  ?></small></dd>
+                                    <dt style='font-size:15px'><small>Local Name:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->local_name);  ?></small></dd>
+                                    <dt style='font-size:15px'><small>English Name:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->english_name);  ?></small></dd>
+                                    <dt style='font-size:15px'><small>Fruits & Flowering Period:</small></dt> <dd style='font-size:15px'><small> <?php echo noDataReturnParam($availableData->flowering_period);  ?></small></dd>
                                     <dt style='font-size:15px'><small>Habitat:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->habit);  ?></small></dd> 
                                     <dt style='font-size:15px'><small>Distribution:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->distribution);  ?></small></dd> 
                                     <dt style='font-size:15px'><small>Uses:</small></dt> <dd style='font-size:15px'><small><?php echo noDataReturnParam($availableData->uses);  ?></small></dd>
+
                                     <dt style='font-size:15px'><small>Description:</small></dt> <dd style='font-size:15px'><small> <p style="text-align: justify;"><?php echo noDataReturnParam($availableData->description);  ?></p></small></dd>
                                     <div class="row">
 

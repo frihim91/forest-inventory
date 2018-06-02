@@ -436,112 +436,6 @@ public function search_allometricequation_key()
 
 
 
-
-
-
-
-
-      public function allometricEquationViewddd()
-      {
-        //pagination settings
-        $config['base_url'] = site_url('data/allometricEquationView');
-        $config['total_rows'] = $this->db->count_all('ae');
-        $config['per_page'] = "20";
-        $config["uri_segment"] = 3;
-        $choice = $config["total_rows"]/$config["per_page"];
-        $config["num_links"] = floor($choice);
-
-        // integrate bootstrap pagination
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-        $config['first_link'] = false;
-        $config['last_link'] = false;
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = '«';
-        $config['prev_tag_open'] = '<li class="prev">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = '»';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
-        $this->pagination->initialize($config);
-
-        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-        // get books list
-        $data['allometricEquationView'] = $this->Forestdata_model->get_books($config["per_page"], $data['page'], NULL);
-
-        $data['pagination'] = $this->pagination->create_links();
-
-        $data['content_view_page']      = 'portal/allometricEquationPage';
-        $this->template->display_portal($data);
-      }
-
-
-
-
-
-
-      function search_allometricequation_key_backup()
-      {
-        // get search string
-        $this->load->library('pagination');
-        $keyword = ($this->input->post("keyword"))? $this->input->post("keyword") : "NIL";
-
-
-        $keyword = ($this->uri->segment(3)) ? $this->uri->segment(3) : $keyword;
-
-        // pagination settings
-        $config = array();
-        $config['base_url'] = site_url("data/search_allometricequation_key/$keyword");
-        $config['total_rows'] = $this->Forestdata_model->get_books_count($keyword);
-        $config['per_page'] = "20";
-        $config["uri_segment"] = 4;
-        $choice = $config["total_rows"]/$config["per_page"];
-        $config["num_links"] = floor($choice);
-
-        // integrate bootstrap pagination
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-        $config['first_link'] = false;
-        $config['last_link'] = false;
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = 'Prev';
-        $config['prev_tag_open'] = '<li class="prev">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = 'Next';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
-        $this->pagination->initialize($config);
-
-        $data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-        // get books list
-        $data['allometricEquationView'] = $this->Forestdata_model->get_books($config['per_page'], $data['page'], $keyword);
-
-        $data['pagination'] = $this->pagination->create_links();
-
-        //load view
-        $data['content_view_page']      = 'portal/allometricEquationPage';
-        $this->template->display_portal($data);
-      }
-
-
-
-
-
       function search_allometricequation_key55()
       {
         // get search string
@@ -614,7 +508,9 @@ public function search_allometricequation_key()
         fnc_ef_species_data(a.LatDD,a.LongDD) species_desc FROM location a
         LEFT JOIN group_location b ON a.ID_Location=b.location_id
         LEFT JOIN ef c ON b.group_id=c.group_location
-        LEFT JOIN species d ON c.Species=d.ID_Species
+        -- LEFT JOIN species d ON c.Species=d.ID_Species
+        LEFT JOIN species_group sr ON c.Species=sr.Speciesgroup_ID
+        LEFT JOIN species d ON sr.ID_Species=d.ID_Species
         LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
         WHERE c.ID_EF IS NOT NULL
         GROUP BY LatDD,LongDD";
@@ -706,7 +602,10 @@ public function search_allometricequation_key()
         fnc_ae_species_data(a.LatDD,a.LongDD) species_desc FROM location a
         LEFT JOIN group_location b ON a.ID_Location=b.location_id
         LEFT JOIN ae c ON b.group_id=c.location_group
-        LEFT JOIN species d ON c.Species=d.ID_Species
+        -- LEFT JOIN species d ON c.Species=d.ID_Species
+         LEFT JOIN species_group sr ON c.Species=sr.Speciesgroup_ID
+        LEFT JOIN species d ON sr.ID_Species=d.ID_Species
+        
         LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
         WHERE c.ID_AE IS NOT NULL
         GROUP BY LatDD,LongDD";

@@ -227,7 +227,7 @@
           <th>Genus:</th>
           <th>Species:</th>
           <th>Subspecies:</th>
-          <th>Author:</th>
+       <!--    <th>Author:</th> -->
           <th>Local Names:</th>
         </tr>
         <tr>
@@ -247,7 +247,7 @@
          
        </td>
        <td align="center"> NA</td>
-       <td align="center">None</td>
+      <!--  <td align="center">None</td> -->
        <td align="center"><?php if($row->local_name!='') { ?>
                                    
               <?php echo $row->local_name;?>

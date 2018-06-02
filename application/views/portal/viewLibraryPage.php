@@ -132,7 +132,7 @@
                <div class="col-md-2">
                   <div class="form-group">
                      <label>Keyword  <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="Keywords"  class ="keyword" maxlength="64" placeholder="Keywords" />
+                     <input type="text" class="form-control input-sm" name ="keyword"  class ="keyword" maxlength="64" placeholder="Keywords" />
                   </div>
                </div>
 
@@ -181,36 +181,54 @@
             <div class="col-lg-6">
                <h4> Search criteria</h4>
                <p> <?php
-        // echo "<pre>";
-        // print_r($fieldNameValue);
-                           if(!empty($fieldNameValue)){
-                              $n=count($fieldNameValue);
-                             $i=0;
-                             foreach($fieldNameValue as $key=>$value)
-                             {
-                                $pieces = explode("/", $key);
-                                $fieldName= $pieces[0]; // piece1
-                                $keyWord= $pieces[1]; // piece2
-                                if($i<$n-1)
-                                {
-                                  $substitute="$keyWord=$value&";
-                                }
-                                else {
-                                  $substitute="$keyWord=$value";
-                                }
-                                $sub=str_replace(' ','+',$substitute);
-                                //echo $actualUrl;
-                                $newUrl=str_replace($sub,'',$actualUrl);
-                            // $url=str_replace('','',$actualUrl);
-                                $i++;
-                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
-                             }
+          $keyWord='';
+          if(isset($_GET['keyword']))
+          {
+             $keyWord=$_GET['keyword'];
+          }
+         
+          if($keyWord=='')
+          {
+             if(!empty($fieldNameValue)){
+              $n=count($fieldNameValue);
+              $i=0;
+              foreach($fieldNameValue as $key=>$value)
+              {
+          $pieces = explode("/", $key);
+          $fieldName= $pieces[0]; // piece1
+          $keyWord= $pieces[1]; 
+          //echo $fieldName;exit;// piece2
+          if($i<$n-1)
+          {
+            $substitute="$keyWord=$value&";
+          }
+          else {
+            $substitute="$keyWord=$value";
+          }
+          $sub=str_replace(' ','+',$substitute);
+          //echo $actualUrl;
+          $newUrl=str_replace($sub,'',$actualUrl);
+          // $url=str_replace('','',$actualUrl);
+          $i++;
+          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+        }
+          }
+          else{
+        echo "No criteria - All results are shown";
+      }
+    //   echo "<pre>";
+    // print_r($fieldNameValue);exit();
+           
 
-                            }
-                            else{
-                              echo "No criteria - All results are shown";
-                            }
-                           ?></p>
+      }
+      else 
+      {
+
+        $url=site_url('portal/viewLibraryPage');
+        echo "Keyword: $keyWord <a href='$url'>Remove Filter</a>";
+      }
+      
+      ?></p>
             </div>
          </div>
          <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -229,13 +247,13 @@
                    <td>
             <h4><?php echo $row->Title;?></h4>
             <?php
-                           if (empty($row->Journal)) {
+                           if (empty($row->URL)) {
                              ?>
-                              <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/> Download <?php echo $row->Title;?></a>
+                              <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/> Click here to get the document </a>
                                <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?></p>
                                <?php
                            }else{ ?>
-                             <p><?php echo $row->Title;?></p>
+                            <!--  <p><?php echo $row->Title;?></p> -->
                               <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?></p>
                                   <?php 
                             }

@@ -5,7 +5,7 @@
 <!--[if gt IE 8]> <html class="ie gt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
 <!--[if !IE]><!--><html class="fluid top-full sticky-top"><!-- <![endif]-->
 <head>
-   <title>.: National Emission Factor ||National Emission Factor:. Login Panel</title>
+   <title>.: Emission Factor ||Emission Factor:. Login Panel</title>
  
    <?php $this->load->view('template/header'); ?>
 
