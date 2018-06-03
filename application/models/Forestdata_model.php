@@ -344,13 +344,16 @@ Class Forestdata_model extends CI_Model {
 
   public function get_allometric_equation_details_loc($ID_AE)
   {
-    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,c.location_name,g.UNINAME FROM ae a
+    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,bio.FAOBiomes,zon.Zones,eco.AEZ_NAME,c.location_name,g.UNINAME FROM ae a
                       LEFT JOIN group_location b on a.location_group=b.group_id
                       LEFT JOIN location c ON b.location_id=c.ID_Location
+                      LEFT JOIN faobiomes bio ON c.ID_FAOBiomes=bio.ID_FAOBiomes
                       LEFT JOIN district d ON c.ID_District=d.ID_District
                       LEFT JOIN division e ON c.ID_Division=e.ID_Division
                       LEFT JOIN upazilla f ON c.Upzila =f.UPZ_CODE_1
                       LEFT JOIN `union` g ON c.Union =g.UNI_CODE_1
+                      LEFT JOIN zones zon ON c.ID_Zones =zon.ID_Zones
+                      LEFT JOIN bd_aez1988 eco ON c.ID_1988EcoZones =eco.MAJOR_AEZ
                       where ID_AE=$ID_AE
                       order by a.ID_AE desc")->result();
      return $data;
@@ -359,13 +362,16 @@ Class Forestdata_model extends CI_Model {
 
     public function get_emission_factor_details_loc($ID)
   {
-    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,c.location_name,g.UNINAME FROM ef emf
+    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,bio.FAOBiomes,zon.Zones,eco.AEZ_NAME,c.location_name,g.UNINAME FROM ef emf
                       LEFT JOIN group_location b on emf.group_location=b.group_id
                       LEFT JOIN location c ON b.location_id=c.ID_Location
+                      LEFT JOIN faobiomes bio ON c.ID_FAOBiomes=bio.ID_FAOBiomes
                       LEFT JOIN district d ON c.ID_District=d.ID_District
                       LEFT JOIN division e ON c.ID_Division=e.ID_Division
                       LEFT JOIN upazilla f ON c.Upzila =f.UPZ_CODE_1
                       LEFT JOIN `union` g ON c.Union =g.UNI_CODE_1
+                      LEFT JOIN zones zon ON c.ID_Zones =zon.ID_Zones
+                      LEFT JOIN bd_aez1988 eco ON c.ID_1988EcoZones =eco.MAJOR_AEZ
                       where emf.ID_EF=$ID
                       order by emf.ID_EF desc")->result();
      return $data;
@@ -389,13 +395,16 @@ Class Forestdata_model extends CI_Model {
 
      public function get_woodDensities_details_loc($ID)
   {
-    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,c.location_name,g.UNINAME FROM wd w
+    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,bio.FAOBiomes,zon.Zones,eco.AEZ_NAME,c.location_name,g.UNINAME FROM wd w
                       LEFT JOIN group_location b on w.location_group=b.group_id
                       LEFT JOIN location c ON b.location_id=c.ID_Location
+                      LEFT JOIN faobiomes bio ON c.ID_FAOBiomes=bio.ID_FAOBiomes
                       LEFT JOIN district d ON c.ID_District=d.ID_District
                       LEFT JOIN division e ON c.ID_Division=e.ID_Division
                       LEFT JOIN upazilla f ON c.Upzila =f.UPZ_CODE_1
                       LEFT JOIN `union` g ON c.Union =g.UNI_CODE_1
+                      LEFT JOIN zones zon ON c.ID_Zones =zon.ID_Zones
+                      LEFT JOIN bd_aez1988 eco ON c.ID_1988EcoZones =eco.MAJOR_AEZ
                       where w.ID_WD=$ID
                       order by w.ID_WD desc")->result();
      return $data;
@@ -403,13 +412,16 @@ Class Forestdata_model extends CI_Model {
 
     public function get_raw_data_equation_details_loc($ID)
   {
-    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,c.location_name,g.UNINAME FROM rd r
+    $data=$this->db->query("SELECT e.Division,d.District,f.THANAME,c.LatDD,c.LongDD,bio.FAOBiomes,zon.Zones,eco.AEZ_NAME,c.location_name,g.UNINAME FROM rd r
                       LEFT JOIN group_location b on r.location_group=b.group_id
                       LEFT JOIN location c ON b.location_id=c.ID_Location
+                      LEFT JOIN faobiomes bio ON c.ID_FAOBiomes=bio.ID_FAOBiomes
                       LEFT JOIN district d ON c.ID_District=d.ID_District
                       LEFT JOIN division e ON c.ID_Division=e.ID_Division
                       LEFT JOIN upazilla f ON c.Upzila =f.UPZ_CODE_1
                       LEFT JOIN `union` g ON c.Union =g.UNI_CODE_1
+                      LEFT JOIN zones zon ON c.ID_Zones =zon.ID_Zones
+                      LEFT JOIN bd_aez1988 eco ON c.ID_1988EcoZones =eco.MAJOR_AEZ
                       where r.ID=$ID
                       order by r.ID desc")->result();
      return $data;

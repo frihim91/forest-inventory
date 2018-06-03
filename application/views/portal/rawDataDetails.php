@@ -206,22 +206,22 @@
             </table>
          </div>
       </div>
-      <div class="row">
-         <div class="col-md-12">
-            <br>
-            <h3 class="section-header">Components</h3>
-            <table class="table" >
-               <tr>
-                  <th style="width:210px"> Components: </th>
-                  <td >
-                     <strong><em>
-                     </em></strong>
-                  </td>
-               </tr>
-            </table>
-            <br><br>
-         </div>
-      </div>
+   <div class="row">    
+    <div class="col-md-12">
+        <br>
+        <h3 class="section-header">Components</h3>
+        <table class="table">
+            <tbody><tr>
+             
+                <td>
+                
+                </td>
+            </tr>
+        </tbody></table> 
+        <img src="<?php echo base_url('resources/images/component.png')?>" class="img-responsive" width="300">
+        <br><br>
+    </div>
+</div>
       <div class="row">
          <div class="col-md-12">
             <br>
@@ -290,70 +290,58 @@
       
          </div>
       </div>
-      <div class="row">
-         <div class="col-md-12">
-            <br>
-            <h3 class="section-header">
-               Locations
-               <span style="color:#999;font-size:11px;font-weight:normal;">
-               &nbsp;&nbsp;&nbsp;&nbsp;
-               </span>
-            </h3>
+   <div class="row">     
+  <div class="col-md-12">    
+    <br>
+    <h3 class="section-header">
+      Locations
+
+      
+      <span style="color:#999;font-size:11px;font-weight:normal;">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      </span>
+      
+
+    </h3>
+
     <table class="table">
-      <thead>
-        <tr>
-         <?php 
-         foreach($rawDataDetails as $row)
-         {
-           ?>
-           <th>FAO Biome:</th>
-           <td><?php echo $row->FAOBiomes;?></td>
-           <th>BFI Zone:</th>
-           <td><?php echo $row->Zones;?></td>
-           <th>Bangladesh Agroecological Zone:</th>
-           <td><?php echo $row->AEZ_NAME;?></td>
+                <tbody><tr>
+                     <?php 
+                     foreach($location as $row)
+                     {
+                     ?>
+                    <td style="width:40%">
+                        <table>
+                            <tbody><tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Location Name: </th><td class="pdf-record-td"> <?php echo $row->location_name;?> </td></tr>
+                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th">Division: </th><td class="pdf-record-td"> <?php echo $row->Division;?> </td></tr>
+                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> District: </th><td class="pdf-record-td"> <?php echo $row->District;?> </td></tr>
+                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Upazila: </th><td class="pdf-record-td"> <?php echo $row->THANAME;?> </td></tr>
+                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Union: </th><td class="pdf-record-td"> <?php echo $row->UNINAME;?> </td></tr>
+                             <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Latitude: </th><td class="pdf-record-td"> <?php echo $row->LatDD;?> </td></tr>
+                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Longitude: </th><td class="pdf-record-td"> <?php echo $row->LongDD;?> </td></tr>
+                        </tbody></table>
+                    </td>
+                    <td style="width:60%">
+                        <table>
+                            <tbody><tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th">FAO Biome: </th><td class="pdf-record-td"> <?php echo $row->FAOBiomes;?> </td></tr>
+                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> BFI Zone: </th><td class="pdf-record-td"> <?php echo $row->Zones;?> </td></tr>
+                            <tr><th style="padding:2px 10px 2px 2px" class="pdf-record-th"> Bangladesh Agroecological Zone: </th><td class="pdf-record-td"> <?php echo $row->AEZ_NAME;?> </td></tr>
+                        
+
+                        </tbody></table>
+                    </td>
+                </tr>
+              <?php 
+          }?>
+            </tbody></table>
+
+<br>
+
+<div id="point_map_canvas"></div>
 
 
-         </tr>
-         <?php 
-       }?>
-       <br>
-       <tr class="bg-success">
-        <th>Location Name</th>
-        <th>Division</th>
-        <th>District</th>
-        <th>Upazila</th>
-        <th>Union</th>
-        <th>Latitute</th>
-        <th>Longitute</th>
-      </tr>
-    </thead>
-    <tbody>
-
-     <?php
-     $i = 1;
-     foreach ($location as $row) {
-       ?>
-       <tr>
-        <td ><?php echo $row->location_name;?></td>
-        <td ><?php echo $row->Division;?></td>
-        <td><?php echo $row->District;?></td>
-        <td><?php echo $row->THANAME;?></td>
-        <td ><?php echo $row->UNINAME;?></td>
-        <td><?php echo $row->LatDD;?></td>
-        <td><?php echo $row->LongDD;?></td>
-      </tr>
-      <?php
-      $i++;
-    }
-    ?>
-  </tbody>
-
-</table>
-            <br>
-            <div id="point_map_canvas"></div>
-         </div>
-      </div>
+</div>
+</div>
 <?php 
 foreach($rawDataDetails as $row)
 {

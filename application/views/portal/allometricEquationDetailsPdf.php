@@ -72,6 +72,22 @@ foreach($allometricEquationDetails as $row)
 
     </div>
   </div>
+  <div class="row">    
+    <div class="col-md-12">
+        <br>
+        <h3 class="section-header">Components</h3>
+        <table class="table">
+            <tbody><tr>
+             
+                <td>
+                
+                </td>
+            </tr>
+        </tbody></table> 
+        <img src="<?php echo base_url('resources/images/component.png')?>" class="img-responsive" width="300">
+        <br><br>
+    </div>
+</div>
 
 
 

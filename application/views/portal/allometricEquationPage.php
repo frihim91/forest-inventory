@@ -577,7 +577,7 @@ $lang_ses = $this->session->userdata("site_lang");
         L.geoJson(data,{
           pointToLayer: function(feature,latlng){
             var marker = L.marker(latlng,{icon: ratIcon});
-            marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.fao_biome+'<h5>Output </h5>'+feature.properties.OUTPUT);
+            marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.fao_biome+'<h5>Output </h5>'+feature.properties.OUTPUT+'<h5>Latitude :'+feature.properties.LatDD+' </h5><h5>Longitude :'+feature.properties.LongDD+' </h5><h5>Location name </h5>'+feature.properties.location_name);
             return marker;
           }
         }).addTo(map);

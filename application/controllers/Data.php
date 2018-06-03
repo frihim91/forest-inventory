@@ -598,7 +598,7 @@ public function search_allometricequation_key()
         $data['Zones'] = $this->Forestdata_model->get_all_zones();
         //print_r($data['Zones']);exit;
         $data['Division'] = $this->Forestdata_model->get_all_division();
-        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(c.output)) OUTPUT,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(c.output)) OUTPUT,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
         fnc_ae_species_data(a.LatDD,a.LongDD) species_desc FROM location a
         LEFT JOIN group_location b ON a.ID_Location=b.location_id
         LEFT JOIN ae c ON b.group_id=c.location_group
