@@ -241,7 +241,7 @@
                  <tr>
                    <td>
              <h3> <a href="<?php echo site_url('Portal/viewDetailCommunityPage/'.$row->id); ?>"><?php echo $row->title;?></a></h3>
-             <span><?php echo date('l,F j,Y', strtotime($row->post_date)); ?> <?php echo $row->LAST_NAME;?></span>
+             <span>Written by <b><?php echo $row->LAST_NAME;?></b> | <?php echo date('F j,Y', strtotime($row->post_date)); ?> </span>
             </td>
                     </tr>
             <?php
