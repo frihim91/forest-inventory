@@ -221,23 +221,27 @@ private function searchAttributeString($searchFields)
         {
             redirect('data/allometricEquationView');
         }
-        $jsonQuery="SELECT l.latDD y,l.longDD x,GROUP_CONCAT(DISTINCT(a.output)) OUTPUT,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome,COUNT(FAOBiomes)total_species,fnc_ae_species_data(l.LatDD,l.LongDD) species_desc FROM location l
-        LEFT JOIN group_location lg ON l.ID_Location=lg.location_id
-        LEFT JOIN ae a ON lg.group_id=a.location_group
-        LEFT JOIN species_group sr ON a.Species=sr.Speciesgroup_ID
-        LEFT JOIN species s ON sr.ID_Species=s.ID_Species
-        LEFT JOIN family f ON s.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-        LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-        LEFT JOIN division d ON l.ID_Division=d.ID_Division
-        LEFT JOIN district dis ON l.ID_District =dis.ID_District
-        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-        WHERE $string and a.ID_AE IS NOT NULL  
-        GROUP BY LatDD,LongDD";
-        //echo $jsonQuery;
-        //exit;
+        // $jsonQuery="SELECT l.latDD y,l.longDD x,GROUP_CONCAT(DISTINCT(a.output)) OUTPUT,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome,COUNT(FAOBiomes)total_species,fnc_ae_species_data(l.LatDD,l.LongDD) species_desc,f.Family FROM location l
+        // LEFT JOIN group_location lg ON l.ID_Location=lg.location_id
+        // LEFT JOIN ae a ON lg.group_id=a.location_group
+        // LEFT JOIN species_group sr ON a.Species=sr.Speciesgroup_ID
+        // LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+        // LEFT JOIN family f ON s.ID_Family=f.ID_Family
+        // LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+        // LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+        // LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        // LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        // LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        // LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        // LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+        // WHERE $string and a.ID_AE IS NOT NULL  
+        // GROUP BY LatDD,LongDD";
+        // echo $jsonQuery;
+        // exit;
+
+        $jsonQuery="SELECT * from __view_allometric_equ_search_map a where $string";
+       // echo $jsonQuery;
+       // exit;
         $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page']      = 'portal/allometricEquationPage';

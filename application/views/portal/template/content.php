@@ -301,11 +301,15 @@ cursor: pointer;
                                         <h4><span><a href="<?php echo site_url('data/dataSpecies'); ?>" style="color: inherit;text-decoration: none;">Species List</a></span></h4>
                                         <p>The database is presenting a species list of Bangladesh. The list is organized by family and under each family all available genus and species information available in Bangladesh of that family is incorporated. Information related with number of allometric equations, raw data, wood density and emission factor for that species are available for the species. </p>
                                     </div>
+                                        <div class="dta dta0 dtaz">
+                                        <h4><span><a href="<?php echo base_url('resources/resource_potal/document/acronyms.pdf')?>" target="_blank" style="color: inherit;text-decoration: none;">Documentation on definitions of acronyms</a></span></h4>
+                                    
+                                    </div>
 
-                                      <div class="dta dta0 dtaz">
+                                    <!--   <div class="dta dta0 dtaz">
                                         <h4><span><a href="<?php echo base_url('resources/resource_potal/document/acronyms.pdf')?>" target="_blank" style="color: inherit;text-decoration: none;"><button type="button" style="width: 550px;text-align: left;color: black"  class="btn btn-primary">Documentation on definitions of acronyms</button></a></span></h4>
                                      
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

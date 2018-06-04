@@ -249,10 +249,11 @@
             <?php
                            if (empty($row->URL)) {
                              ?>
-                              <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>" target="_blank"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/> Click here to get the document </a>
+                              <p><a href="<?php echo base_url('resources/pdf/'.$row->PDF_label.$pdf_values);?>" target="_blank"><img src="<?php echo base_url('resources/images/pdf.gif')?>" alt="logo"/> Click here to download this documents or view </a>
                                <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?></p>
                                <?php
                            }else{ ?>
+                             <p><a href="<?php echo $row->URL;?>" target="_blank">   <i class="glyphicon glyphicon-link"></i>  Click here to get the document </a>
                             <!--  <p><?php echo $row->Title;?></p> -->
                               <p>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row->Author;?></p>
                                   <?php 
