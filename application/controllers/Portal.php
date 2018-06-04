@@ -221,7 +221,7 @@ private function searchAttributeString($searchFields)
         {
             redirect('data/allometricEquationView');
         }
-        // $jsonQuery="SELECT l.latDD y,l.longDD x,GROUP_CONCAT(DISTINCT(a.output)) OUTPUT,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome,COUNT(FAOBiomes)total_species,fnc_ae_species_data(l.LatDD,l.LongDD) species_desc,f.Family FROM location l
+        // $jsonQuery="SELECT l.latDD y,l.longDD x,GROUP_CONCAT(DISTINCT(a.output)) OUTPUT,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome,COUNT(FAOBiomes)total_species,a.location_name,a.LatDD,a.LongDD,fnc_ae_species_data(l.LatDD,l.LongDD) species_desc FROM location l
         // LEFT JOIN group_location lg ON l.ID_Location=lg.location_id
         // LEFT JOIN ae a ON lg.group_id=a.location_group
         // LEFT JOIN species_group sr ON a.Species=sr.Speciesgroup_ID
@@ -410,7 +410,7 @@ private function searchAttributeString($searchFields)
         {
             redirect('data/rawDataView');
         }
-        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
         fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
         LEFT JOIN group_location b ON a.ID_Location=b.location_id
         LEFT JOIN rd r ON b.group_id=r.location_group

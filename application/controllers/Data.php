@@ -504,7 +504,7 @@ public function search_allometricequation_key()
 
 
         $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor();
-        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
         fnc_ef_species_data(a.LatDD,a.LongDD) species_desc FROM location a
         LEFT JOIN group_location b ON a.ID_Location=b.location_id
         LEFT JOIN ef c ON b.group_id=c.group_location
@@ -531,7 +531,7 @@ public function search_allometricequation_key()
       {
 
         $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid();
-        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
         fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
         LEFT JOIN group_location b ON a.ID_Location=b.location_id
         LEFT JOIN rd r ON b.group_id=r.location_group
@@ -565,7 +565,7 @@ public function search_allometricequation_key()
 
 
         $data['woodDensitiesView'] = $this->Forestdata_model->get_wood_densities_grid();
-        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
         fnc_wd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
         LEFT JOIN group_location b ON a.ID_Location=b.location_id
         LEFT JOIN wd w ON b.group_id=w.location_group
