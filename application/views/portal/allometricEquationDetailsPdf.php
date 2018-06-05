@@ -305,7 +305,7 @@ foreach($allometricEquationDetails as $row)
 
 
           <table class="table">
-            <tr><th style="width:210px">Dataset:</th><td>AE </td></tr>
+            <tr><th style="width:210px">Dataset:</th><td>Allometric Equation</td></tr>
           </table>
           <?php 
         }?>

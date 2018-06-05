@@ -410,7 +410,7 @@ foreach($woodDensitiesDetails as $row)
 
 
     <table class="table">
-      <tr><th style="width:210px">Dataset:</th><td>WD </td></tr>
+      <tr><th style="width:210px">Dataset:</th><td>Wood Density </td></tr>
     </table>
     <?php 
   }?>

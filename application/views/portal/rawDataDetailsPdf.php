@@ -377,7 +377,7 @@ foreach($rawDataDetails as $row)
             <table class="table">
                <tr>
                   <th style="width:210px">Dataset:</th>
-                  <td>RD </td>
+                  <td>Raw Data </td>
                </tr>
                  <?php 
              }?>

@@ -290,7 +290,7 @@ foreach($biomassExpansionFacDetails as $row)
             <table class="table">
                <tr>
                   <th style="width:210px">Dataset:</th>
-                  <td>EF </td>
+                  <td>Emission Factors </td>
                </tr>
                  <?php 
              }?>
