@@ -282,27 +282,27 @@ cursor: pointer;
                                 <div class="data-source">
                                     <h3><img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/icon-rec.png')?>" src="img/icon-rec.png">Data Sources</h3>
                                     <div class="dta dta0 dtaz">
-                                        <h4><span><a href="<?php echo site_url('data/allometricEquationView'); ?>" style="color: inherit;text-decoration: none;">Allometric Equation</a></span></h4>
+                                        <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/allometricEquationView'); ?>" style="color: inherit;text-decoration: none;">Allometric Equation</a></span></h4>
                                         <p>The database will provide the allometric equations available for the tree species of Bangladesh for biomass and volume calculation. It is compiled from the Forest management plans of Bangladesh Forest Department, Reports prepared by Bangladesh Forest Research Institute and scientific articles of different academics.</p>
                                     </div>
                                     <div class="dta dta0 dtaz">
-                                        <h4><span><a href="<?php echo site_url('data/rawDataView'); ?>" style="color: inherit;text-decoration: none;">Raw Data</a></span></h4>
+                                             <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/rawDataView'); ?>" style="color: inherit;text-decoration: none;">Raw Data</a></span></h4>
                                         <p>Raw data is unprocessed primary data that are collected from field by Bangladesh Forest Department, Bangladesh Forest Research Institute and Universities and laboratory sources (e.g. tree diameter at breast height, total height, merchantable height, volume, biomass etc.). Raw data provide the basis of developing allometric equations, moreover this data can be reused by other researchers also.</p>
                                     </div>
                                     <div class="dta dta0 dtaz">
-                                        <h4><span><a href="<?php echo site_url('data/woodDensitiesView'); ?>" style="color: inherit;text-decoration: none;">Wood densities</a></span></h4>
+                                           <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/woodDensitiesView'); ?>" style="color: inherit;text-decoration: none;">Wood densities</a></span></h4>
                                         <p>The Wood density database will contain the necessary information related to wood density based on the laboratory analysis conducted by Bangladesh Forest Research Institute and Universities. Collected wood density information of all available species are viewed in list. </p>
                                     </div>
                                     <div class="dta dta0 dtaz">
-                                        <h4><span><a href="<?php echo site_url('data/biomassExpansionFacView'); ?>" style="color: inherit;text-decoration: none;">Emission factors</a></span></h4>
+                                          <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/biomassExpansionFacView'); ?>" style="color: inherit;text-decoration: none;">Emission factors</a></span></h4>
                                         <p>The emission factor database provides Bangladesh-specific emission factors obtained from the review of literature to estimate greenhouse gas emissions accurately and removals for the forestry sector of Bangladesh based on Tier 2 approach. </p>
                                     </div>
                                     <div class="dta dta0 dtaz">
-                                        <h4><span><a href="<?php echo site_url('data/dataSpecies'); ?>" style="color: inherit;text-decoration: none;">Species List</a></span></h4>
+                                          <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/dataSpecies'); ?>" style="color: inherit;text-decoration: none;">Species List</a></span></h4>
                                         <p>The database is presenting a species list of Bangladesh. The list is organized by family and under each family all available genus and species information available in Bangladesh of that family is incorporated. Information related with number of allometric equations, raw data, wood density and emission factor for that species are available for the species. </p>
                                     </div>
                                         <div class="dta dta0 dtaz">
-                                        <h4><span><a href="<?php echo base_url('resources/resource_potal/document/acronyms.pdf')?>" target="_blank" style="color: inherit;text-decoration: none;">Documentation on definitions of acronyms</a></span></h4>
+                                           <h4 style="font-weight: bold;"><span><a href="<?php echo base_url('resources/resource_potal/document/acronyms.pdf')?>" target="_blank" style="color: inherit;text-decoration: none;">Documentation on definitions of acronyms</a></span></h4>
                                     
                                     </div>
 
