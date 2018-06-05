@@ -216,10 +216,18 @@ footer{
 }
 
 
-.copy{
+/*.copy{
     color: rgba(255,255,255, 0.7);
     margin-top: 25px;
     text-align: right;
+    font-family:Century;
+}
+*/
+
+.copy{
+    color: rgba(255,255,255, 0.7);
+    margin-top:5px;
+    text-align: center;
     font-family:Century;
 }
 

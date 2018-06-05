@@ -531,15 +531,17 @@ public function search_allometricequation_key()
       {
 
         $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid();
-        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
-        fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
-        LEFT JOIN group_location b ON a.ID_Location=b.location_id
-        LEFT JOIN rd r ON b.group_id=r.location_group
-        LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
-        LEFT JOIN species s ON sr.ID_Species=s.ID_Species
-        LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
-        WHERE r.ID IS NOT NULL
-        GROUP BY LatDD,LongDD";
+        // $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
+        // fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        // LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        // LEFT JOIN rd r ON b.group_id=r.location_group
+        // LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+        // LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+        // LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        // WHERE r.ID IS NOT NULL
+        // GROUP BY LatDD,LongDD";
+
+        $jsonQuery="SELECT * from __view_raw_data_search_map r";
         $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
         // echo json_encode($data['jsonData']);

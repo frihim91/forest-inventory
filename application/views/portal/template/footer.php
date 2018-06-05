@@ -1,6 +1,6 @@
  <div class="container">
     <div class="row">
-        <div class="col-sm-5">
+        <div class="col-sm-6">
             <div class="fot-menu">
                 <ul>
                    <li><a href="<?php echo site_url('portal/index'); ?>">Home</a></li>
@@ -9,8 +9,8 @@
                </ul>
            </div>
        </div>
-       <div class="col-sm-7">
-       <p class="copy">&copy; Copyright <?php echo date('Y') ?>.Emission Factor, Designed &amp; Developed by <a target="_blank" href="http://atilimited.net"><span style="color:#B50D0D">ATI</span><span style="color:#0D4524"> Limited.</a></p>
+       <div class="col-sm-6">
+       <p class="copy">&copy; Copyright <?php echo date('Y') ?>.Emission Factor</p>
     </div>
 </div>
 </div>

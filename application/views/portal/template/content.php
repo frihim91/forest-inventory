@@ -170,30 +170,32 @@ cursor: pointer;
                             <img data-u="image" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" class="img-responsive"/>
                             <div class="caption" align="center" style="background-color: rgba(0, 0, 0, 0.6);width:750px; height:50px;position:absolute;bottom:0px;right:0px">
                               <p  style="color:white;font-size:20px;" align="center"><b><?php echo $slider->IMAGE_TITLE;?></b></p>
+                              <!-- <p  style="color:white;font-size:20px;" align="right"><b>Photo Courtesy:Falgoonee Kumar Mondal
+                              </b></p> -->
                           </div>
-                          <!--  <div class="caption" style="position: absolute; top: 0; left:0px; width:400px; height:100px;" u="caption" ><p>Caption text</p></div> -->
+                       <!--     <div class="caption" style="position: absolute; top: 0; left:0px; width:400px; height:100px;" u="caption" ><p>Caption text</p></div> -->
                       </div>
                       <?php } ?>
 
                   </div>
                   <!-- Bullet Navigator -->
-                <!--   <div data-u="navigator" class="jssorb051" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+                  <div data-u="navigator" class="jssorb051" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
                     <div data-u="prototype" class="i" style="width:16px;height:16px;">
                         <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
                             <circle class="b" cx="8000" cy="8000" r="5800"></circle>
                         </svg>
                     </div>
-                </div> -->
+                </div>
                 <!-- Arrow Navigator -->
                 <div data-u="arrowleft" class="jssora051" style="width:65px;height:65px;top:0px;left:35px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
-                                               <!--  <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                                                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
                                                     <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
-                                                </svg> -->
+                                                </svg>
                                             </div>
                                             <div data-u="arrowright" class="jssora051" style="width:65px;height:65px;top:0px;right:35px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
-                                               <!--  <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                                                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
                                                     <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
-                                                </svg> -->
+                                                </svg>
                                             </div>
                                         </div>
                                     </div>
@@ -269,8 +271,9 @@ cursor: pointer;
                                         <div class="panel-body videoDiv">
 
                                             <div class="embed-responsive embed-responsive-4by3 ">
-                                                <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=arfancu"
-                                                width="320" height="318"></iframe>
+                                               <!--  <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=arfancu"
+                                                width="320" height="318"></iframe> -->
+                                                <iframe width="320" height="318" src="https://www.youtube.com/embed/xJgyemJ8kQU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                             </div></div>
                                         </div>
 
