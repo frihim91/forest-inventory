@@ -170,7 +170,7 @@ cursor: pointer;
                             <img data-u="image" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" class="img-responsive"/>
                             <div class="caption" align="center" style="background-color: rgba(0, 0, 0, 0.6);width:750px; height:55px;position:absolute;bottom:0px;right:0px">
                               <p  style="color:white;font-size:20px;" align="center"><b><?php echo $slider->IMAGE_TITLE;?></b></p>
-                             <p  style="color:#C8C8C8;font-size:8px;padding-left: 32px" align="left">Photo Courtesy:Falgoonee Kumar Mondal
+                             <p  style="color:#85867B;font-size:8px;padding-left: 32px" align="left">Photo Courtesy:Falgoonee Kumar Mondal
                               </p>
                           </div>
                        <!--     <div class="caption" style="position: absolute; top: 0; left:0px; width:400px; height:100px;" u="caption" ><p>Caption text</p></div> -->
