@@ -5,6 +5,14 @@
 <html lang="en">
 
 <head>
+     <?php 
+          $post_cat= $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+            FROM post_title t
+            left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+            left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+            left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+            where t.CAT_ID=1")->row();
+    ?>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +22,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/favIcon.png">
 
     
-     <title>.:Emission Factor ||Emission Factor:. Login Panel</title>
+     <title>.:<?php echo $post_cat->TITLE_NAME;?></p> ||<?php echo $post_cat->TITLE_NAME;?></p>:. Login Panel</title>
 
         <!--[if lt IE 9]><link rel="stylesheet" href="<?php echo base_url(); ?>resources/shared/components/library/bootstrap/css/bootstrap.min.css" /><![endif]-->
         <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/less/pages/serveStyles_62.css" />

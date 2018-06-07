@@ -640,24 +640,25 @@ private function searchAttributeString($searchFields)
             redirect('data/biomassExpansionFacView');
         }
 
-        $jsonQuery="SELECT l.latDD y,l.longDD x,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
-        fnc_ef_species_data(l.LatDD,l.LongDD) species_desc FROM location l
-        LEFT JOIN group_location lg ON l.ID_Location=lg.location_id
-        LEFT JOIN ef e ON lg.group_id=e.group_location
-        LEFT JOIN species s ON e.Species=s.ID_Species
-        LEFT JOIN family f ON s.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-        LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
-        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-        LEFT JOIN division d ON l.ID_Division=d.ID_Division
-        LEFT JOIN district dis ON l.ID_District =dis.ID_District
-        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-        WHERE e.ID_EF IS NOT NULL and $string
-        GROUP BY LatDD,LongDD
-        ";
+        // $jsonQuery="SELECT l.latDD y,l.longDD x,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        // fnc_ef_species_data(l.LatDD,l.LongDD) species_desc FROM location l
+        // LEFT JOIN group_location lg ON l.ID_Location=lg.location_id
+        // LEFT JOIN ef e ON lg.group_id=e.group_location
+        // LEFT JOIN species s ON e.Species=s.ID_Species
+        // LEFT JOIN family f ON s.ID_Family=f.ID_Family
+        // LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+        // LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+        // LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        // LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        // LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        // LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        // LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+        // WHERE e.ID_EF IS NOT NULL and $string
+        // GROUP BY LatDD,LongDD
+        // ";
         //echo $jsonQuery;
         //exit;
+        $jsonQuery="SELECT * from __view_emission_fac_search_map  e where $string";
         $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';

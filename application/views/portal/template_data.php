@@ -1,7 +1,15 @@
     <!DOCTYPE html>
     <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
-        <title>.: Emission Factor || Emission Factor:.</title>
+         <?php 
+          $post_cat= $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+            FROM post_title t
+            left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+            left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+            left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+            where t.CAT_ID=1")->row();
+         ?>
+        <title>.: <?php echo $post_cat->TITLE_NAME;?> || <?php echo $post_cat->TITLE_NAME;?>:.</title>
         <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal/images/favIcon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="description" content=" Food and Agriculture Organization of the United Nations"/>
@@ -57,6 +65,7 @@
 
  
     <body>
+
         <header class="header">
             <div class="lgo-area">
                 <div class="container">
@@ -65,7 +74,7 @@
                             <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/gov-logo.png')?>" class="img-responsive"/>
                         </div>
                         <div class="col-sm-8">
-                            <h1>Emission Factor</h1>
+                           <h1 style="font-family:Century;font-weight:bold;font-size:36px;"><?php echo $post_cat->TITLE_NAME;?></h1>
                         </div>
                         <div class="col-sm-2 lg2">
                             <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/forest-logo.png')?>" class="img-responsive"/></div>

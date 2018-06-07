@@ -504,16 +504,17 @@ public function search_allometricequation_key()
 
 
         $data['biomassExpansionFacView'] = $this->Forestdata_model->get_biomas_expension_factor();
-        $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
-        fnc_ef_species_data(a.LatDD,a.LongDD) species_desc FROM location a
-        LEFT JOIN group_location b ON a.ID_Location=b.location_id
-        LEFT JOIN ef c ON b.group_id=c.group_location
-        -- LEFT JOIN species d ON c.Species=d.ID_Species
-        LEFT JOIN species_group sr ON c.Species=sr.Speciesgroup_ID
-        LEFT JOIN species d ON sr.ID_Species=d.ID_Species
-        LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
-        WHERE c.ID_EF IS NOT NULL
-        GROUP BY LatDD,LongDD";
+        // $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
+        // fnc_ef_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        // LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        // LEFT JOIN ef c ON b.group_id=c.group_location
+        // -- LEFT JOIN species d ON c.Species=d.ID_Species
+        // LEFT JOIN species_group sr ON c.Species=sr.Speciesgroup_ID
+        // LEFT JOIN species d ON sr.ID_Species=d.ID_Species
+        // LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        // WHERE c.ID_EF IS NOT NULL
+        // GROUP BY LatDD,LongDD";
+        $jsonQuery="SELECT * from __view_emission_fac_search_map e";
         $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
         $data['content_view_page']      = 'portal/biomassExpansionFacView';

@@ -1,3 +1,11 @@
+ <?php 
+          $post_cat= $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+            FROM post_title t
+            left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+            left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+            left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+            where t.CAT_ID=1")->row();
+    ?>
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -6,7 +14,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><b>Emission Factor</b></a>
+        <a class="navbar-brand" href="#"><b><?php echo $post_cat->TITLE_NAME;?></b></a>
 
     </div>
     <?php

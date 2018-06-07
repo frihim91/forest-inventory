@@ -168,10 +168,10 @@ cursor: pointer;
                          <?php foreach($sliders as $slider){?>
                          <div data-p="137.50">
                             <img data-u="image" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" class="img-responsive"/>
-                            <div class="caption" align="center" style="background-color: rgba(0, 0, 0, 0.6);width:750px; height:50px;position:absolute;bottom:0px;right:0px">
+                            <div class="caption" align="center" style="background-color: rgba(0, 0, 0, 0.6);width:750px; height:55px;position:absolute;bottom:0px;right:0px">
                               <p  style="color:white;font-size:20px;" align="center"><b><?php echo $slider->IMAGE_TITLE;?></b></p>
-                              <!-- <p  style="color:white;font-size:20px;" align="right"><b>Photo Courtesy:Falgoonee Kumar Mondal
-                              </b></p> -->
+                             <p  style="color:#C8C8C8;font-size:8px;padding-left: 32px" align="left">Photo Courtesy:Falgoonee Kumar Mondal
+                              </p>
                           </div>
                        <!--     <div class="caption" style="position: absolute; top: 0; left:0px; width:400px; height:100px;" u="caption" ><p>Caption text</p></div> -->
                       </div>
@@ -188,14 +188,14 @@ cursor: pointer;
                 </div>
                 <!-- Arrow Navigator -->
                 <div data-u="arrowleft" class="jssora051" style="width:65px;height:65px;top:0px;left:35px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
-                                                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                                               <!--  <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
                                                     <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
-                                                </svg>
+                                                </svg> -->
                                             </div>
                                             <div data-u="arrowright" class="jssora051" style="width:65px;height:65px;top:0px;right:35px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
-                                                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                                               <!--  <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
                                                     <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
-                                                </svg>
+                                                </svg> -->
                                             </div>
                                         </div>
                                     </div>
@@ -286,23 +286,23 @@ cursor: pointer;
                                     <h3><img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/icon-rec.png')?>" src="img/icon-rec.png">Data Sources</h3>
                                     <div class="dta dta0 dtaz">
                                         <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/allometricEquationView'); ?>" style="color: inherit;text-decoration: none;">Allometric Equation</a></span></h4>
-                                        <p>The database will provide the allometric equations available for the tree species of Bangladesh for biomass and volume calculation. It is compiled from the Forest management plans of Bangladesh Forest Department, Reports prepared by Bangladesh Forest Research Institute and scientific articles of different academics.</p>
+                                        <p>This database provides allometric equations for tree species and forest types of Bangladesh for volume, biomass and carbon stock calculation. It results from the compilation of reports from the Bangladesh Forest Department, the Bangladesh Forest Research Institute and scientific articles from different academic institutes. </p>
                                     </div>
                                     <div class="dta dta0 dtaz">
                                              <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/rawDataView'); ?>" style="color: inherit;text-decoration: none;">Raw Data</a></span></h4>
-                                        <p>Raw data is unprocessed primary data that are collected from field by Bangladesh Forest Department, Bangladesh Forest Research Institute and Universities and laboratory sources (e.g. tree diameter at breast height, total height, merchantable height, volume, biomass etc.). Raw data provide the basis of developing allometric equations, moreover this data can be reused by other researchers also.</p>
+                                        <p>This database contains primary data collected through destructive and semi-destructive field measurements by Bangladesh Forest Department, Bangladesh Forest Research Institute and Universities. It contains data such as tree diameter at breast height, total height, merchantable height, volume, biomass. Raw data provides the basis for developing allometric equations, moreover this data can be reused by other researchers also.</p>
                                     </div>
                                     <div class="dta dta0 dtaz">
                                            <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/woodDensitiesView'); ?>" style="color: inherit;text-decoration: none;">Wood densities</a></span></h4>
-                                        <p>The Wood density database will contain the necessary information related to wood density based on the laboratory analysis conducted by Bangladesh Forest Research Institute and Universities. Collected wood density information of all available species are viewed in list. </p>
+                                        <p>This database contains wood density information obtained from destructive measurements and laboratory analysis conducted by Bangladesh Forest Research Institute and Universities. Collected wood density information of all available species are viewed in list.</p>
                                     </div>
                                     <div class="dta dta0 dtaz">
                                           <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/biomassExpansionFacView'); ?>" style="color: inherit;text-decoration: none;">Emission factors</a></span></h4>
-                                        <p>The emission factor database provides Bangladesh-specific emission factors obtained from the review of literature to estimate greenhouse gas emissions accurately and removals for the forestry sector of Bangladesh based on Tier 2 approach. </p>
+                                        <p>The emission factor database provides emission factors which are specific to Bangladesh. An emission factor is a coefficient that quantifies the emissions or removals of a gas per unit activity. Emission factors are often based on a sample of measurement data, averaged to develop a representative rate of emission for a given activity level under a given set of operating conditions.  Emission factors in this database were collected from available scientific literature on related greenhouse gas inventory in Bangladesh.</p>
                                     </div>
                                     <div class="dta dta0 dtaz">
                                           <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/dataSpecies'); ?>" style="color: inherit;text-decoration: none;">Species List</a></span></h4>
-                                        <p>The database is presenting a species list of Bangladesh. The list is organized by family and under each family all available genus and species information available in Bangladesh of that family is incorporated. Information related with number of allometric equations, raw data, wood density and emission factor for that species are available for the species. </p>
+                                        <p>This database provides the available plant species list of Bangladesh. The list is organized by family and under each family all available genus and species information available in Bangladesh of that family is incorporated. Information related with number of allometric equations, raw data, wood density and emission factor for that species are available for each species.</p>
                                     </div>
                                         <div class="dta dta0 dtaz">
                                            <h4 style="font-weight: bold;"><span><a href="<?php echo base_url('resources/resource_potal/document/acronyms.pdf')?>" target="_blank" style="color: inherit;text-decoration: none;">Documentation on definitions of acronyms</a></span></h4>
