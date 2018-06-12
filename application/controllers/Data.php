@@ -59,13 +59,37 @@ private function searchAttributeString($searchFields)
       }
       else
       {
-        $string=$string.' OR '.$key." like '%$value%'";
+        $string=$string.' AND '.$key." like '%$value%'";
       }
       $i++;
     }
 
   }
   return $string;
+}
+
+
+private function searchAttributeKeywordString($searchFields)
+{
+$n=count($searchFields);
+$string='';
+$i=0;
+foreach ($searchFields as $key => $value) {
+  if(!empty($value))
+  {
+    if($i==0)
+    {
+      $string=$string.$key." like '%$value%'";
+    }
+    else
+    {
+      $string=$string.' OR '.$key." like '%$value%'";
+    }
+    $i++;
+  }
+
+}
+return $string;
 }
 
 

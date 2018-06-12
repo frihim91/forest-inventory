@@ -104,7 +104,7 @@
             <?php if(!isset($searchType)){ echo 'in active'; } ?>
             ">
             <p> Search Emission factors equations by keyword. 
-               This searches accross several text fields. 
+               This searches accross several text fields as like as Taxonomy,Location,Reference. 
                <br>
                Example searches: Acacia,Mimosaceae,Acacia,Acacia auriculiformis,Tropical dry forest
             </p>

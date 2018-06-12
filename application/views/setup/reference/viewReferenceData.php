@@ -7,7 +7,7 @@
 
 <script type="text/javascript">
    $(document).on("click", "a.deleteUrl", function (e) {
-        var result = confirm("Are you sure want to delete Gallery?");
+        var result = confirm("Are you sure want to delete Reference Data?");
         if(result == true){
          var url = $(this).attr('href');
           var removeRow = $(this).parent().parent();
@@ -17,7 +17,7 @@
                          type: 'POST',
                         // dataType: 'JSON',
                          success: function (data) {
-                         window.location.href = "<?php echo site_url('dashboard/Website/viewGalleryData');?>";
+                         window.location.href = "<?php echo site_url('dashboard/Website/viewReferenceData');?>";
                             
                          }
                      });
@@ -27,8 +27,8 @@
 </script>
 <div class="widget">  
     <div class="widget-head"> 
-        <a href="<?php echo site_url('dashboard/Website/addImageinGallery')?>" class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Add New Gallery</a>
-        <small style="margin-left: 10px;">All the Gallery Create, Edit, Inactivate and Delete from here</small> 
+        <a href="<?php echo site_url('dashboard/Website/addReferenceData')?>" class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Add New Reference</a>
+        <small style="margin-left: 10px;">All the Reference Create, Edit, Inactivate and Delete from here</small> 
     </div> 
     <div class="widget-body">    
         <div class="table-responsive">
@@ -37,32 +37,35 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Gallery Image Title</th>
-                            <th>Gallery Image Description</th>
-                            <th>Gallery Image</th>
-                            <th>Action</th>
+                            <th>Reference</th>
+                            <th>Author</th>
+                            <th>Year</th>
+                            <th>Title</th>
+                            <th>Journal</th>
+                            <th>PDF Label</th>
+                            <th width="60px">Action</th>
                         </tr>
                     </thead>
                    <tbody>
                         <?php
                         $i = 1;
-                        foreach ($gallery as $galleries) {
+                        foreach ($reference as $references) {
                             ?>
                             <tr> 
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $galleries->GALLERY_TITLE?></a></td>
-                                <td><?php echo $galleries->GALLERY_DESC?></td>
-                                <td align="center" width="10%"><img class="img-responsive" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"/></td>
-                             
-                                <td>
-                                <a class="label btn-danger btn-xs " href="<?php echo site_url("dashboard/Website/updateGalleryData/" . $galleries->ID); ?>">
+                                <td><?php echo $references->Reference?></a></td>
+                                <td><?php echo $references->Author?></td>
+                                <td><?php echo $references->Year?></td>
+                                <td><?php echo $references->Title?></td>
+                                <td><?php echo $references->Journal?></td>
+                                <td><?php echo $references->PDF_label?></td>
+                                <td width="60px">
+                      <a class="label btn-danger btn-xs " href="<?php echo site_url("dashboard/Website/updateReferenceData/" . $references->ID_Reference); ?>">
                               <i class="glyphicon glyphicon-edit"></i>
-                              </a>&nbsp;
-                                  
-
-                                   <a class="label btn-danger btn-xs deleteUrl" href="<?php echo site_url('dashboard/Website/deleteImageGallery/'.$galleries->ID)?>">
+                              </a>&nbsp; 
+                               <a class="label btn-danger btn-xs deleteUrl" href="<?php echo site_url('dashboard/Website/deleteReference/'.$references->ID_Reference)?>">
                               <i class="glyphicon glyphicon-remove"></i>
-                              </a>  
+                              </a> 
                                 </td>
                             </tr>
                             <?php

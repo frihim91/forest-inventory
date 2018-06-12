@@ -271,9 +271,12 @@ cursor: pointer;
                                         <div class="panel-body videoDiv">
 
                                             <div class="embed-responsive embed-responsive-4by3 ">
+                                               <?php foreach($video as $videos){?>
+                                                <?php echo $videos->url?>
+                                               <?php } ?>
                                                <!--  <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=arfancu"
                                                 width="320" height="318"></iframe> -->
-                                                <iframe width="320" height="318" src="https://www.youtube.com/embed/xJgyemJ8kQU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                              <!--   <iframe width="320" height="318" src="https://www.youtube.com/embed/xJgyemJ8kQU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
                                             </div></div>
                                         </div>
 

@@ -108,7 +108,7 @@
             <?php if(!isset($searchType)){ echo 'in active'; } ?>
             ">
             <p> Search Raw Data by keyword. 
-               This searches accross several text fields. 
+               This searches accross several text fields as like as Taxonomy,Location,Reference. 
                <br>
                Example searches:Euphorbiaceae,Euphorbiaceae,Excoecaria,Excoecaria agallocha,Tropical moist forest
             </p>
@@ -125,20 +125,52 @@
             
          </div>
          <div id="menu4" class="tab-pane fade">
-            <p>Search by tree height:9.01, and volume:0.0104.</p>
-         
+            <p>Search by tree height:9.01 and 9.02, and volume:0.0104 and 0.0102.</p>
+          <div class="col-md-12">
+            <h4>Tree Height (m)<span style="color:red;"></span></h4>
                <div class="col-md-6">
                   <div class="form-group">
-                     <label>Tree Height (m)<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="H_m" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="Tree Height (m)" />
+                     <label>From<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="from" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
+
                   </div>
+                </div>
+
+                 <div class="col-md-6">
+                  <div class="form-group">
+                     <label>To<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="to" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
+
+                  </div>
+                </div>
+              </div>
+
+               <div class="col-md-12">
+            <h4>Volume (m3)<span style="color:red;"></span></h4>
+               <div class="col-md-6">
+                  <div class="form-group">
+                     <label>From<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="from2" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
+
+                  </div>
+                </div>
+
+                 <div class="col-md-6">
+                  <div class="form-group">
+                     <label>To<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="to2" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
+
+                  </div>
+                </div>
+              </div>
+                <!-- <div class="col-md-12">
                   <div class="form-group">
                      <label>Volume (m3)<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="Volume_m3" value = "<?php echo (isset($Volume_m3))?$Volume_m3:'';?>"  class ="volume_m3" maxlength="64" placeholder="Volume (m3)" />
                      <br>
-                    <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
+                    <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
-               </div>
+               </div> -->
             
          </div>
          <div id="menu1" class="tab-pane fade">
@@ -767,7 +799,7 @@ function () {
         L.geoJson(data,{
           pointToLayer: function(feature,latlng){
             var marker = L.marker(latlng,{icon: ratIcon});
-            marker.bindPopup('<h4><b>Raw Data : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.fao_biome+'<h5>Latitude :'+feature.properties.LatDD+' </h5><h5>Longitude :'+feature.properties.LongDD+' </h5><h5>Location name </h5>'+feature.properties.location_name);
+            marker.bindPopup('<h4><b>Raw Data : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Latitude :'+feature.properties.LatDD+' </h5><h5>Longitude :'+feature.properties.LongDD+' </h5><h5>Location name </h5>'+feature.properties.location_name);
             return marker;
           }
         }).addTo(map);

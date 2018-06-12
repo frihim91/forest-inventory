@@ -131,7 +131,7 @@
             <?php if(!isset($searchType)){ echo 'in active'; } ?>
             ">
             <p> Search Wood Density by keyword. 
-               This searches accross several text fields. 
+               This searches accross several text fields as like as Taxonomy,Location,Reference. 
                <br>
                Example searches: Leguminosae,Leguminosae,Pongamia,Pongamia pinnata,
                Bangladesh
@@ -150,9 +150,25 @@
           
          </div>
          <div id="menu4" class="tab-pane fade">
-            <p>Search by tree height:9.11, diameter:9.017, and volume:0.0119.</p>
+            <p>Search by tree Density Ovendry:9.11 and 9.12.</p>
+         <div class="row">
+               <h4>Wood Density</h4>
+               <div class="col-md-3">
+                  <div class="form-group">
+                     <label>From<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="from"   class ="h_tree_avg" maxlength="64" placeholder="" />
+                  </div>
+                  </div>
+                  <div class="col-md-3">
+                  <div class="form-group">
+                     <label>To<span style="color:red;"></span></label>
+                     <input type="text" class="form-control input-sm" name ="to"   class ="h_tree_min" maxlength="64" placeholder="" />
+                     
+                  </div>
+               </div>
+        </div>
            
-            <div class="row">
+ <!--            <div class="row">
                <h4>Height</h4>
                <div class="col-md-3">
                   <div class="form-group">
@@ -177,9 +193,9 @@
                </div>
 
 
-               </div>
+               </div> -->
 
-                        <div class="row">
+         <!--    <div class="row">
                <h4>DBH</h4>
                <div class="col-md-3">
                   <div class="form-group">
@@ -202,10 +218,8 @@
                   </div>
                </div>
                 <br>
-                   <!--   <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
-
- -->
-               </div>
+  
+               </div> -->
 
 
             

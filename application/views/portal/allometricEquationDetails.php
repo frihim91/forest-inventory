@@ -49,7 +49,7 @@ $lang_ses = $this->session->userdata("site_lang");
 </div>
 
 <div class="col-md-12 page_content">
-  <a href="<?php echo site_url('data/allometricEquationView'); ?>" class="btn btn-info" role="button"><< Back</a>
+  <a href="<?php echo site_url('data/allometricEquationView'); ?>" class="btn btn-info" style="background-color:#396C15;border-color:#396C15;" role="button"><< Back</a>
   <div class="col-md-12">
     <h2 style="font-family:Tahoma, Verdana, Segoe, sans-serif;">Allometric Equation</h2>
     

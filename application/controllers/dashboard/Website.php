@@ -294,6 +294,9 @@ class Website extends CI_Controller
             return 0;
         }
     }
+
+
+ 
     
     
     
@@ -887,12 +890,291 @@ class Website extends CI_Controller
         $data['content_view_page'] = 'setup/gallery/viewGalleryData';
         $this->template->display($data);
     }
+
+
+      public function viewVideo()
+    {
+        $data['video']           = $this->db->query("SELECT * FROM video")->result();
+        $data['content_view_page'] = 'setup/video/viewVideo';
+        $this->template->display($data);
+    }
+
+    public function addVideo()
+    {
+       if (isset($_POST['Title'])) {
+            $titleName = $this->input->post('Title');
+            $urlVideo  = $this->input->post('url');
+            $vDescript = $this->input->post('video_description');
+           $data = array(
+                'Title' => $titleName,
+                'url' => $urlVideo,
+                'video_description' => $vDescript
+              
+            );
+
+            //$data['IMAGE_PATH'] = 'asdasdsad';
+
+            $this->utilities->insertData($data, 'video');
+            $this->session->set_flashdata('Success', 'Video Added Successfully.');
+            redirect('dashboard/Website/viewVideo');
+        }
+
+        else {
+            $data['content_view_page'] = 'setup/video/addVideo';
+            $this->template->display($data);
+        }
+    }
+
+
+      public function editVideo()
+      {
+            $ID = $this->uri->segment(4);
+            $titleName = $this->input->post('Title');
+            $urlVideo  = $this->input->post('url');
+            $vDescript = $this->input->post('video_description');
+                $data = array(
+                'Title' => $titleName,
+                'url' => $urlVideo,
+                'video_description' => $vDescript
+              
+            );
+
+              //$data['IMAGE_PATH'] = 'asdasdsad';
+
+              //$this->utilities->insertData($data, 'home_page_slider');
+               if($this->db->update('video', $data, array('ID' => $ID)))
+               {
+              $this->session->set_flashdata('Success', 'New Video Updated Successfully.');
+              redirect('dashboard/website/viewVideo');
+            }
+
+
+          else {
+              $data['content_view_page'] = 'setup/video/editVideo';
+              $this->template->display($data);
+          }
+      }
+
+
+    public function deleteVideo($ID)
+    {
+
+        $attr = array(
+            "ID" => $ID
+        );
+
+        if ($this->utilities->deleteRowByAttribute("video", $attr)) {
+            $this->session->set_flashdata('Error', ' Video Deleted Successfully.');
+        } else {
+            $this->session->set_flashdata('Error', 'Video Not Deleted Successfull.');
+        }
+
+    }
+
+
+    public function updateVideo($ID)
+    {
+        $data['ID']          = $ID;
+        //$data['images'] = $this->db->query("SELECT * FROM home_page_gallery WHERE ID=$ID")->result();
+        $data['edit_video']           = $this->db->query("SELECT * FROM video WHERE video.ID=$ID")->row();
+        $data['content_view_page'] = 'setup/video/editVideo';
+        $this->template->display($data);
+    }
+
     private function pr($data)
     {
         echo "<pre>";
         print_r($data);
         exit;
     }
+
+     public function addReferenceData()
+    {
+       if (isset($_POST['Reference'])) {
+
+            //$titles = count($this->input->post('title'));
+            $refName    = $this->input->post('Reference');
+            $author = $this->input->post('Author');
+            $year = $this->input->post('Year');
+            $refTitle = $this->input->post('Title');
+            $journal = $this->input->post('Journal');
+            $volume = $this->input->post('Volume');
+            $issue = $this->input->post('Issue');
+            $page = $this->input->post('Page');
+            $url = $this->input->post('URL');
+            $pdf_label = $this->input->post('PDF_label');
+
+            //echo "test";
+            //exit;
+            $config['upload_path']   = 'resources/pdf';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+            //$config['max_width'] = '1600';
+            //$config['max_height'] = '900';
+            $config['file_name']     = $_FILES['main_image']['name'];
+
+            //Load upload library and initialize configuration
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('main_image')) {
+                $uploadData = $this->upload->data();
+                $picture    = $uploadData['file_name'];
+            } else {
+                $picture = '';
+            }
+
+            $data = array(
+                'Reference' => $refName,
+                'Author' => $author,
+                'Year' => $year,
+                'Title' => $refTitle,
+                'Journal' => $journal,
+                'Volume' => $volume,
+                'Issue' => $issue,
+                'Page' => $page,
+                'URL' => $url,
+                'PDF_label' => $pdf_label
+                //'IMAGE_PATH' => $picture
+            );
+
+            //$data['IMAGE_PATH'] = 'asdasdsad';
+
+            $this->utilities->insertData($data, 'reference');
+            $this->session->set_flashdata('Success', 'Reference Data Added Successfully.');
+            redirect('dashboard/Website/viewReferenceData');
+        }
+
+        else {
+            $data['content_view_page'] = 'setup/reference/addReferenceData';
+            $this->template->display($data);
+        }
+    }
+
+
+
+     public function editReferenceData()
+      {
+            $ID_Reference = $this->uri->segment(4);
+            $refName    = $this->input->post('Reference');
+            $author = $this->input->post('Author');
+            $year = $this->input->post('Year');
+            $refTitle = $this->input->post('Title');
+            $journal = $this->input->post('Journal');
+            $volume = $this->input->post('Volume');
+            $issue = $this->input->post('Issue');
+            $page = $this->input->post('Page');
+            $url = $this->input->post('URL');
+            $pdf_label = $this->input->post('PDF_label');
+
+              $config['upload_path']   = 'resources/pdf/';
+              $config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+              //$config['max_width'] = '1600';
+              //$config['max_height'] = '900';
+              $config['file_name']     = $_FILES['main_image']['name'];
+
+              //Load upload library and initialize configuration
+              $this->load->library('upload', $config);
+              $this->upload->initialize($config);
+
+              if ($this->upload->do_upload('main_image')) {
+                  $uploadData = $this->upload->data();
+                  $picture    = $uploadData['file_name'];
+                     $data = array(
+                        'Reference' => $refName,
+                        'Author' => $author,
+                        'Year' => $year,
+                        'Title' => $refTitle,
+                        'Journal' => $journal,
+                        'Volume' => $volume,
+                        'Issue' => $issue,
+                        'Page' => $page,
+                        'URL' => $url,
+                        'PDF_label' => $pdf_label
+              );
+
+              } else {
+                     $data = array(
+                        'Reference' => $refName,
+                        'Author' => $author,
+                        'Year' => $year,
+                        'Title' => $refTitle,
+                        'Journal' => $journal,
+                        'Volume' => $volume,
+                        'Issue' => $issue,
+                        'Page' => $page,
+                        'URL' => $url,
+                        'PDF_label' => $pdf_label
+
+              );
+
+              }
+
+
+              //$data['IMAGE_PATH'] = 'asdasdsad';
+
+              //$this->utilities->insertData($data, 'home_page_slider');
+               if($this->db->update('reference', $data, array('ID_Reference' => $ID_Reference)))
+               {
+              $this->session->set_flashdata('Success', 'New Reference Data Updated Successfully.');
+              redirect('dashboard/Website/viewReferenceData');
+            }
+
+
+          else {
+              $data['content_view_page'] = 'dashboard/Website/editReferenceData';
+              $this->template->display($data);
+          }
+      }
+
+
+      function delete_pdf()
+    {
+        $ID_Reference    = $this->input->post("ID_Reference");
+        //echo $ID;exit();
+        $query = $this->db->query("UPDATE reference SET PDF_label = NULL WHERE ID_Reference=$ID_Reference");
+
+        if ($query) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+
+         public function deleteReference($ID_Reference)
+    {
+
+        $attr = array(
+            "ID_Reference" => $ID_Reference
+        );
+
+        if ($this->utilities->deleteRowByAttribute("reference", $attr)) {
+            $this->session->set_flashdata('Error', ' Reference Deleted Successfully.');
+        } else {
+            $this->session->set_flashdata('Error', 'Reference Not Deleted Successfull.');
+        }
+
+    }
+
+
+
+         public function updateReferenceData($ID_Reference)
+    {
+        $data['ID_Reference']          = $ID_Reference;
+        //$data['images'] = $this->db->query("SELECT * FROM home_page_gallery WHERE ID=$ID")->result();
+        $data['edit_reference']           = $this->db->query("SELECT * FROM reference WHERE reference.ID_Reference=$ID_Reference")->row();
+        $data['content_view_page'] = 'setup/reference/editReferenceData';
+        $this->template->display($data);
+    }
+
+
+     public function viewReferenceData()
+    {
+        $data['reference']           = $this->db->query("SELECT * FROM reference ORDER BY  ID_Reference DESC")->result();
+        $data['content_view_page'] = 'setup/reference/viewReferenceData';
+        $this->template->display($data);
+    }
+    
     
     
     public function addImageinGallery()
