@@ -2547,7 +2547,8 @@ else
 
     header('Content-disposition: attachment; filename=Allometric_Equation.json');
        header('Content-type: application/json');
-   echo json_encode($allometricEquationViewJson->result()),'<br />';
+  // echo json_encode($allometricEquationViewJson->result()),'<br />';
+   echo json_encode($allometricEquationViewJson->result(), JSON_PRETTY_PRINT);
 }
 
 
@@ -2849,7 +2850,8 @@ else
 //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
 header('Content-disposition: attachment; filename=EmissionFactor.json');
        header('Content-type: application/json');
-   echo json_encode($biomassExpansionFacView->result()),'<br />';
+   //echo json_encode($biomassExpansionFacView->result()),'<br />';
+   echo json_encode($biomassExpansionFacView->result(), JSON_PRETTY_PRINT);
 }
 
 
@@ -3861,7 +3863,8 @@ else
 
 header('Content-disposition: attachment; filename=Raw_Data.json');
        header('Content-type: application/json');
-   echo json_encode($rawDataViewjson->result()),'<br />';
+   //echo json_encode($rawDataViewjson->result()),'<br />';
+   echo json_encode($rawDataViewjson->result(), JSON_PRETTY_PRINT);
 }
 
 
@@ -4024,7 +4027,8 @@ else
 }
   header('Content-disposition: attachment; filename=Wood_Density.json');
        header('Content-type: application/json');
-   echo json_encode($woodDensityViewjson->result()),'<br />';
+   //echo json_encode($woodDensityViewjson->result()),'<br />';
+   echo json_encode($woodDensityViewjson->result(), JSON_PRETTY_PRINT);
 }
 
 
@@ -4043,7 +4047,7 @@ public function woodDensityViewcsv($string)
 {
 if($string==1)
 {
-  $woodDensityViewcsv=$this->db->query("SELECT w.*,ref.Author,ref.Reference,ref.Year,sl.local_name,u.THANAME,un.UNINAME,d.Division,dis.District,l.*,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones,ci.Contributor_name from wd w
+  $woodDensityViewcsv=$this->db->query("SELECT w.*,ref.Author,ref.Reference,ref.Year,sl.local_name,u.THANAME,un.UNINAME,d.Division,dis.District,l.*,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones,ci.Contributor_name,ref.* from wd w
        LEFT JOIN species s ON w.ID_species=s.ID_Species
        LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
        LEFT JOIN family f ON s.ID_Family=f.ID_Family
@@ -4068,7 +4072,7 @@ else
   $string= str_replace("abyz","=",$string);
   $string=base64_decode($string);
 
-  $woodDensityViewcsv=$this->db->query("SELECT w.*,ref.Author,ref.Reference,ref.Year,sl.local_name,u.THANAME,un.UNINAME,d.Division,dis.District,l.*,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones,ci.Contributor_name from wd w
+  $woodDensityViewcsv=$this->db->query("SELECT w.*,ref.Author,ref.Reference,ref.Year,sl.local_name,u.THANAME,un.UNINAME,d.Division,dis.District,l.*,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones,ci.Contributor_name.ref.* from wd w
        LEFT JOIN species s ON w.ID_species=s.ID_Species
        LEFT JOIN species_localname sl ON s.ID_Species=sl.Species_ID
        LEFT JOIN family f ON s.ID_Family=f.ID_Family
@@ -4095,18 +4099,18 @@ header("Pragma: no-cache");
 header("Expires: 0");
 $handle = fopen('php://output', 'w');
 fputcsv($handle, array('ID_WD',' Tree_type', 'Vegetation_type', 'Region','location_group','Ecoregion_Udvardy','Ecoregion_WWF','Division_Bailey',
-'Zone_Holdridge','ID_species','Family','Genus','Species','FAOBiomes','LatDD','LongDD','THANAME','UNINAME','Zones','Reference','Author','Year'
-,'ID_reference','ID_RD','H_tree_avg','H_tree_min','H_tree_max','DBH_tree_avg','DBH_tree_min','DBH_tree_max','m_WD'
+'Zone_Holdridge','ID_species','Family','Genus','Species','FAOBiomes','LatDD','LongDD','THANAME','UNINAME','Zones','Reference','Author','Year','Title','Journal','Volume','Issue','Page','URL','PDF_label',
+'ID_reference','ID_RD','H_tree_avg','H_tree_min','H_tree_max','DBH_tree_avg','DBH_tree_min','DBH_tree_max','m_WD'
 ,'MC_m','V_WD','MC_V','CR','FSP','Methodology_Green','Methodology_Airdry','Bark',' Methodology_Ovendry','Density_green',' Density_airdry','Density_ovendry','MC_Density','Data_origin','Data_type','Samples_per_tree','Number_of_trees'
-,'SD','Min','Max','H_measure','Bark_distance','CV','Convert_BD','Contributor','Remark'));
+,'SD','Min','Max','H_measure','Bark_distance','CV','Convert_BD','Contributor','Contributor_name','Remark'));
  $i = 1;
 foreach ($woodDensityViewcsv as $data) {
  fputcsv($handle, array($data["ID_WD"], $data["Tree_type"], $data["Vegetation_type"], $data["Region"], $data["location_group"], $data["Ecoregion_Udvardy"], $data["Ecoregion_WWF"]
 , $data["Division_Bailey"], $data["Zone_Holdridge"], $data["ID_species"], $data["Family"], $data["Genus"], $data["Species"], $data["FAOBiomes"], $data["LatDD"], $data["LongDD"], $data["THANAME"], $data["UNINAME"], $data["Zones"]
-, $data["Reference"], $data["Author"], $data["Year"], $data["ID_reference"], $data["ID_RD"], $data["H_tree_avg"],$data["ID_RD"], $data["H_tree_avg"],
+, $data["Reference"], $data["Author"], $data["Year"],$data["Title"],$data["Journal"],$data["Volume"],$data["Issue"],$data["Page"],$data["URL"],$data["PDF_label"],$data["ID_reference"], $data["ID_RD"], $data["H_tree_avg"],
  $data["H_tree_min"],$data["H_tree_max"],$data["DBH_tree_avg"], $data["DBH_tree_min"],$data["DBH_tree_max"],$data["m_WD"],$data["MC_m"],$data["V_WD"],$data["MC_V"],$data["CR"],$data["FSP"]
 ,$data["Methodology_Green"],$data["Methodology_Airdry"],$data["Bark"],$data["Methodology_Ovendry"],$data["Density_green"],$data["Density_airdry"],$data["Density_ovendry"],$data["MC_Density"],$data["Data_origin"],$data["Data_type"],$data["Samples_per_tree"],$data["Number_of_trees"]
-,$data["SD"],$data["Min"],$data["Max"],$data["H_measure"],$data["Bark_distance"],$data["CV"],$data["Convert_BD"],$data["Contributor"],$data["Remark"]
+,$data["SD"],$data["Min"],$data["Max"],$data["H_measure"],$data["Bark_distance"],$data["CV"],$data["Convert_BD"],$data["Contributor"],$data["Contributor_name"],$data["Remark"]
      ));
                       $i++;
                   }
