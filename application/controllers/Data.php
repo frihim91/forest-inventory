@@ -71,10 +71,12 @@ private function searchAttributeString($searchFields)
 
 private function searchAttributeKeywordString($searchFields)
 {
+
 $n=count($searchFields);
 $string='';
 $i=0;
 foreach ($searchFields as $key => $value) {
+  
   if(!empty($value))
   {
     if($i==0)
@@ -148,7 +150,7 @@ public function dataSpecies()
     LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
   as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae  LEFT JOIN species s ON ae.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
   as AECOUNT,(SELECT count(ID_WD) FROM wd as wd LEFT JOIN species s ON wd.ID_species=s.ID_Species  WHERE s.ID_family=f.ID_Family)
-  as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
+  as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT1
   from family as f ORDER BY f.Family
   ")->num_rows();
         // print_r($this->db->last_query());exit;
@@ -191,9 +193,10 @@ public function dataSpecies()
   $data['family_details'] = $this->db->query("SELECT f.ID_Family,f.Family,(SELECT COUNT(ID_Genus) from genus WHERE ID_Family=f.ID_Family) as GENUSCOUNT,(SELECT COUNT(ID_Species)
     FROM species as s WHERE s.ID_Family=f.ID_Family) as SPECIESCOUNT,(SELECT count(rd.ID) FROM rd as rd LEFT JOIN species_group sr ON rd.Speciesgroup_ID=sr.Speciesgroup_ID
     LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
-  as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae  LEFT JOIN species s ON ae.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
+  as RDCOUNT,(SELECT count(ID_AE) FROM ae as ae LEFT JOIN species_group sr ON ae.Species=sr.Speciesgroup_ID LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
   as AECOUNT,(SELECT count(ID_WD) FROM wd as wd LEFT JOIN species s ON wd.ID_species=s.ID_Species  WHERE s.ID_family=f.ID_Family)
-  as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT
+  as WDCOUNT,(SELECT COUNT(e.ID_EF) FROM ef e left join species s ON e.Species=s.ID_Species WHERE s.ID_Family=f.ID_Family) EFCOUNT1,(SELECT count(ID_EF) FROM ef as ef LEFT JOIN species_group sr ON ef.Species=sr.Speciesgroup_ID LEFT JOIN species s ON sr.ID_Species=s.ID_Species WHERE s.ID_Family=f.ID_Family)
+          as EFCOUNT
   from family as f ORDER BY f.Family LIMIT $limit OFFSET $page
   ")->result();
 

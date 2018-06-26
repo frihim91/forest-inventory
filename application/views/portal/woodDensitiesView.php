@@ -156,13 +156,13 @@
                <div class="col-md-3">
                   <div class="form-group">
                      <label>From<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="from"   class ="h_tree_avg" maxlength="64" placeholder="" />
+                     <input type="text" class="form-control input-sm" name ="w_from"   class ="h_tree_avg" maxlength="64" placeholder="" />
                   </div>
                   </div>
                   <div class="col-md-3">
                   <div class="form-group">
                      <label>To<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="to"   class ="h_tree_min" maxlength="64" placeholder="" />
+                     <input type="text" class="form-control input-sm" name ="w_to"   class ="h_tree_min" maxlength="64" placeholder="" />
                      
                   </div>
                </div>
@@ -411,7 +411,13 @@
           $newUrl=str_replace($sub,'',$actualUrl);
           // $url=str_replace('','',$actualUrl);
           $i++;
-          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+          if ($fieldName=='Density_ovendry') {
+            
+          }else{
+            echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+
+          }
+          
         }
           }
           else{

@@ -106,10 +106,10 @@ function noDataReturnParam($param)
                           $availableData=$ci->datamodel->getAvailableData($species_list->ID_Species);
                           $availableDataSpeciesCharacter=$ci->datamodel->getAvailableDataSpeciesCharacter($species_list->ID_Species);
                           $availableDataImage=$ci->datamodel->getAvailableDataImage($species_list->ID_Species);
-                          $alometricUrl=site_url('Portal/allometricEquationViewSpeciesData/'.$species_list->ID_Species);
-                          $efUrl=site_url('Portal/biomassExpansionFacSpeciesView/'.$species_list->ID_Species);
+                          $alometricUrl=site_url('Portal/allometricEquationViewSpeciesData/'.base64_encode ($species_list->Species));
+                          $efUrl=site_url('Portal/biomassExpansionFacSpeciesView/'.base64_encode ($species_list->Species));
                           $wdUrl=site_url('Portal/woodDensitiesSpeciesView/'.$species_list->ID_Species);
-                          $rdUrl=site_url('Portal/rawDataSpeciesView/'.$species_list->ID_Species);
+                          $rdUrl=site_url('Portal/rawDataSpeciesView/'.base64_encode ($species_list->Species));
 
                           $aeData=noDataReturn($species_list->ID_Species,$availableData->TOTAL_AE,'Allometric Equation (AE)',$alometricUrl);
                           $efData=noDataReturn($species_list->ID_Species,$availableData->TOTAL_EF,'Emission Factors (EF)',$efUrl);

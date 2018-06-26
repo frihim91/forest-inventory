@@ -695,22 +695,10 @@ Class Forestdata_model extends CI_Model {
 
 
 
-     public function get_allometric_equation_grid_Speciesdata($specis_id,$limit,$page)
+     public function get_allometric_equation_grid_Speciesdata($speciesNameDecode,$limit,$page)
   {
-    $data=$this->db->query("SELECT a.Equation,a.Output,ref.Author,ref.Reference,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
-         LEFT JOIN species s ON a.Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-         LEFT JOIN group_location lg ON a.location_group=lg.group_id
-         LEFT JOIN location l ON lg.location_id=l.ID_Location
-         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON l.ID_Division=d.ID_Division
-         LEFT JOIN district dis ON l.ID_District =dis.ID_District
-         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-         where a.Species=$specis_id GROUP BY a.ID_AE
-         order by a.ID_AE desc LIMIT  $limit OFFSET $page")->result();
+    $data=$this->db->query("SELECT * FROM __view_allometric_eqn_search_tbl where Species like '%$speciesNameDecode%'
+      LIMIT $limit OFFSET $page")->result();
 
     //print($this->db->last_query());exit;
      return $data;
@@ -760,22 +748,43 @@ Class Forestdata_model extends CI_Model {
 
 
 
-     public function get_biomas_expension_factor_species($specis_id,$limit,$page)
+     public function get_biomas_expension_factor_species1($specis_id,$limit,$page)
   {
-    $data=$this->db->query("SELECT e.ID_EF, e.EmissionFactor,e.Unit,e.Value,ref.Author,ref.Reference,ref.Year,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
-         LEFT JOIN species s ON e.Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
-         LEFT JOIN group_location lg ON e.group_location=lg.group_id
-         LEFT JOIN location l ON lg.location_id=l.ID_Location
-         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON l.ID_Division=d.ID_Division
-         LEFT JOIN district dis ON l.ID_District =dis.ID_District
-         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-         where e.Species=$specis_id
-         GROUP BY e.ID_EF order by e.ID_EF desc LIMIT $limit OFFSET $page
+    $data=$this->db->query("SELECT e.ID_EF, e.EmissionFactor,e.Unit,e.Value,ref.Author,ref.Reference,ref.Year,d.ID_Division,d.Division,dis.ID_District,dis.District,GROUP_CONCAT(l.location_name) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
+ LEFT JOIN species s ON sg.ID_Species=s.ID_Species
+ WHERE e.Species=sg.Speciesgroup_ID) Species,
+ (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
+ LEFT JOIN species s ON sg.ID_Species=s.ID_Species
+ LEFT JOIN family f ON s.ID_Family=f.ID_Family
+ WHERE e.Species=sg.Speciesgroup_ID) Family,
+ (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
+ LEFT JOIN species s ON sg.ID_Species=s.ID_Species
+ LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+ WHERE e.Species=sg.Speciesgroup_ID) Genus,
+ b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
+ LEFT JOIN species_group sr ON e.Species=sr.Speciesgroup_ID
+ LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+ LEFT JOIN family f ON s.ID_Family=f.ID_Family
+ LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+ LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
+ LEFT JOIN group_location lg ON e.group_location=lg.group_id
+ LEFT JOIN location l ON lg.location_id=l.ID_Location
+ LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+ LEFT JOIN division d ON l.ID_Division=d.ID_Division
+ LEFT JOIN district dis ON l.ID_District =dis.ID_District
+ LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+ LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+ where sr.ID_Species=$specis_id
+ GROUP BY e.ID_EF order by e.ID_EF desc LIMIT $limit OFFSET $page
+    ")->result();
+     return $data;
+  }
+
+
+      public function get_biomas_expension_factor_species($speciesNameDecode,$limit,$page)
+  {
+    $data=$this->db->query("SELECT * FROM __view_emission_fac_search_tbl where Species like '%$speciesNameDecode%'
+      LIMIT $limit OFFSET $page
     ")->result();
      return $data;
   }
@@ -881,23 +890,10 @@ Class Forestdata_model extends CI_Model {
 
 
 
-   public function get_raw_data_grid_species($specis_id,$limit,$page)
+   public function get_raw_data_grid_species($speciesNameDecode,$limit,$page)
   {
-    $data=$this->db->query("SELECT r.ID,r.H_m,r.DBH_cm,r.Volume_m3,l.location_name,GROUP_CONCAT(lg.location_id),b.FAOBiomes,d.Division,dis.District,s.Species,ref.Reference,ref.Year,ref.Author,f.Family,g.Genus from rd r
-         LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
-         LEFT JOIN species s ON sr.ID_Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-         LEFT JOIN group_location lg ON r.location_group=lg.group_id
-         LEFT JOIN location l ON lg.location_id=l.ID_Location
-         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON l.ID_Division=d.ID_Division
-         LEFT JOIN district dis ON l.ID_District =dis.ID_District
-         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-         where s.ID_Species=$specis_id GROUP BY r.ID
-         order by r.ID desc LIMIT $limit OFFSET $page
+    $data=$this->db->query("SELECT * FROM __view_raw_data_search_tbl where Species like '%$speciesNameDecode%'
+      LIMIT $limit OFFSET $page
     ")->result();
      return $data;
   }
@@ -1243,7 +1239,7 @@ Class Forestdata_model extends CI_Model {
 
         $limit=$input['length'];
         $start=$input['start'];
-        $data=$this->db->query("SELECT * from __view_emission_fac_search_tbl e  $string
+        $data=$this->db->query("SELECT * from __view_emission_fac_search_tbl e $string
         limit $limit offset  $start
              ")->result();
         $totalArray=$this->db->query("SELECT * from __view_emission_fac_search_tbl e $string")->result();

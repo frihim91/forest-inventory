@@ -131,7 +131,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>From<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="from" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
+                     <input type="text" class="form-control input-sm" name ="th_from" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
 
                   </div>
                 </div>
@@ -139,7 +139,7 @@
                  <div class="col-md-6">
                   <div class="form-group">
                      <label>To<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="to" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
+                     <input type="text" class="form-control input-sm" name ="th_to" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
 
                   </div>
                 </div>
@@ -150,7 +150,7 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <label>From<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="from2" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
+                     <input type="text" class="form-control input-sm" name ="th_from2" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
 
                   </div>
                 </div>
@@ -158,7 +158,7 @@
                  <div class="col-md-6">
                   <div class="form-group">
                      <label>To<span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="to2" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
+                     <input type="text" class="form-control input-sm" name ="th_to2" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="h_m" maxlength="64" placeholder="" />
 
                   </div>
                 </div>
@@ -347,15 +347,19 @@
       
       <h4> Search criteria</h4>
       
-        <p>  <?php
+        <p><?php
           $keyWord='';
+          $prefix='';
           if(isset($_GET['keyword']))
           {
              $keyWord=$_GET['keyword'];
           }
-         
+
+
+
           if($keyWord=='')
-          {
+          {  
+         
              if(!empty($fieldNameValue)){
               $n=count($fieldNameValue);
               $i=0;
@@ -377,7 +381,15 @@
           $newUrl=str_replace($sub,'',$actualUrl);
           // $url=str_replace('','',$actualUrl);
           $i++;
-          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+          if ($fieldName=='H_m') {
+            
+          }elseif($fieldName=='Volume_m3') {
+          
+          }else{
+            echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+
+          }
+          
         }
           }
           else{
