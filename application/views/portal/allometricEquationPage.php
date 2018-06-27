@@ -566,7 +566,7 @@ $lang_ses = $this->session->userdata("site_lang");
   $(document).ready(function(){
     $("a.results-map").click(function(){
       $("div.mapBlock").show();
-      var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7});
+      var map = new L.Map('map', {center: new L.LatLng(23.8101, 90.4312), zoom: 7,closebutton: 'true'});
       var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
       map.addLayer(osm);
       $.getJSON("<?php echo site_url(); ?>/data/getMapJsonData/<?php echo $jsonQuery; ?>",function(data){

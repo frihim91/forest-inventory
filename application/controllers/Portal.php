@@ -119,7 +119,7 @@ class Portal extends CI_Controller
 
 // }
 
-private function searchAttributeString($searchFields)
+private function searchAttributeStringR($searchFields)
 {
   $n=count($searchFields);
   $string='';
@@ -201,6 +201,30 @@ private function searchAttributeString($searchFields)
         $addStringVol= " (Volume_m3 Between $volFrom AND  $volTo)";
       }
   return $string.$addStringHm.$addStringVol;
+}
+
+
+private function searchAttributeString($searchFields)
+{
+  $n=count($searchFields);
+  $string='';
+  $i=0;
+  foreach ($searchFields as $key => $value) {
+    if(!empty($value))
+    {
+      if($i==0)
+      {
+        $string=$string.$key." like '%$value%'";
+      }
+      else
+      {
+        $string=$string.' AND '.$key." like '%$value%'";
+      }
+      $i++;
+    }
+
+  }
+  return $string;
 }
 
 
@@ -652,7 +676,7 @@ public function searchRawEquationAll()
     }
     else
     {
-      $string=$this->searchAttributeString($validSearchKey);
+      $string=$this->searchAttributeStringR($validSearchKey);
     }
   
 

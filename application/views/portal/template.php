@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/css/custom.css">
     <script src="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/js/jssor.slider-27.1.0.min.js" type="text/javascript"></script>
+
+  >
 </head>
 <script type="text/javascript">
     jssor_2_slider_init = function() {
