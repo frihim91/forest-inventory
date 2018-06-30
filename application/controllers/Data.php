@@ -653,7 +653,7 @@ public function search_allometricequation_key()
       {
         $query1=base64_decode($query);
         
-        $conn = new PDO('mysql:host=192.168.0.201;dbname=faobd_db_v2','maruf','maruf');
+        $conn = new PDO('mysql:host=192.168.0.106;dbname=faobd_db_v2','maruf','maruf');
         $sql =$query1;
         if (isset($_GET['bbox']) || isset($_POST['bbox'])) {
           $bbox = explode(',', $_GET['bbox']);
