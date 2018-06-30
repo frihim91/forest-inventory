@@ -65,7 +65,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
     'dsn' => '',
-    'hostname' => '192.168.0.201',
+    'hostname' => '192.168.0.106',
     'username' => 'maruf',
     'password' => 'maruf',
     'database' => 'faobd_db_v2',

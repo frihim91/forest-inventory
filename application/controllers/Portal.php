@@ -2645,69 +2645,15 @@ function up_union_by_dis_id() {
   {
     if($string==1)
     {
-      $allometricEquationViewJson=$this->db->query("SELECT a.*,ref.*,d.Division,dis.District,ci.*,un.UNINAME,u.THANAME,l.*,
-       GROUP_CONCAT(l.location_name) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-       LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-       WHERE a.species=sg.Speciesgroup_ID) Species,
-       (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-       LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-       LEFT JOIN family f ON s.ID_Family=f.ID_Family
-       WHERE a.species=sg.Speciesgroup_ID) Family,
-       (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-       LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-       LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-       WHERE a.species=sg.Speciesgroup_ID) Genus,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
-       LEFT JOIN species s ON a.Species=s.ID_Species
-       LEFT JOIN family f ON s.ID_Family=f.ID_Family
-       LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-       LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-       LEFT JOIN group_location lg ON a.location_group=lg.group_id
-       LEFT JOIN location l ON lg.location_id=l.ID_Location
-       LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-       LEFT JOIN division d ON l.ID_Division=d.ID_Division
-       LEFT JOIN district dis ON l.ID_District =dis.ID_District
-       LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-       LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-       LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-       LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-       LEFT JOIN contributor_info ci ON a.Contributor =ci.Contributor_ID
-       GROUP BY a.ID_AE
-       order by a.ID_AE ASC");
+      $allometricEquationViewJson=$this->db->query("SELECT * from __view_allometric_equ_csv_data a where $string");
     }
     else
     {
       $string= str_replace("abyz","=",$string);
       $string=base64_decode($string);
 
-      $allometricEquationViewJson=$this->db->query("SELECT a.*,ref.*,d.Division,dis.District,ci.*,un.UNINAME,u.THANAME,l.*,
-       GROUP_CONCAT(l.location_name) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-       LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-       WHERE a.species=sg.Speciesgroup_ID) Species,
-       (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-       LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-       LEFT JOIN family f ON s.ID_Family=f.ID_Family
-       WHERE a.species=sg.Speciesgroup_ID) Family,
-       (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-       LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-       LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-       WHERE a.species=sg.Speciesgroup_ID) Genus,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
-       LEFT JOIN species s ON a.Species=s.ID_Species
-       LEFT JOIN family f ON s.ID_Family=f.ID_Family
-       LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-       LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-       LEFT JOIN group_location lg ON a.location_group=lg.group_id
-       LEFT JOIN location l ON lg.location_id=l.ID_Location
-       LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-       LEFT JOIN division d ON l.ID_Division=d.ID_Division
-       LEFT JOIN district dis ON l.ID_District =dis.ID_District
-       LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-       LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-       LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-       LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-       LEFT JOIN contributor_info ci ON a.Contributor =ci.Contributor_ID
-       where $string
-       GROUP BY a.ID_AE
-       order by a.ID_AE ASC");
+      $allometricEquationViewJson=$this->db->query("SELECT * from __view_allometric_equ_csv_data a
+       where $string");
     }
 
 
@@ -2731,69 +2677,14 @@ function up_union_by_dis_id() {
         {
           if($string==1)
           {
-            $allometricEquationViewcsv=$this->db->query("SELECT a.*,ref.*,d.Division,dis.District,ci.*,un.UNINAME,u.THANAME,l.*,
-             GROUP_CONCAT(l.location_name) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-             LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-             WHERE a.species=sg.Speciesgroup_ID) Species,
-             (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-             LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-             LEFT JOIN family f ON s.ID_Family=f.ID_Family
-             WHERE a.species=sg.Speciesgroup_ID) Family,
-             (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-             LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-             LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-             WHERE a.species=sg.Speciesgroup_ID) Genus,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
-             LEFT JOIN species s ON a.Species=s.ID_Species
-             LEFT JOIN family f ON s.ID_Family=f.ID_Family
-             LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-             LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-             LEFT JOIN group_location lg ON a.location_group=lg.group_id
-             LEFT JOIN location l ON lg.location_id=l.ID_Location
-             LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-             LEFT JOIN division d ON l.ID_Division=d.ID_Division
-             LEFT JOIN district dis ON l.ID_District =dis.ID_District
-             LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-             LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-             LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-             LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-             LEFT JOIN contributor_info ci ON a.Contributor =ci.Contributor_ID
-             GROUP BY a.ID_AE
-             order by a.ID_AE ASC")->result_array();
+            $allometricEquationViewcsv=$this->db->query("SELECT * from __view_allometric_equ_csv_data a where $string")->result_array();
           }
           else
           {
             $string= str_replace("abyz","=",$string);
             $string=base64_decode($string);
-
-            $allometricEquationViewcsv=$this->db->query("SELECT a.*,ref.*,d.Division,dis.District,ci.*,un.UNINAME,u.THANAME,l.*
-             GROUP_CONCAT(l.location_name) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-             LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-             WHERE a.species=sg.Speciesgroup_ID) Species,
-             (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-             LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-             LEFT JOIN family f ON s.ID_Family=f.ID_Family
-             WHERE a.species=sg.Speciesgroup_ID) Family,
-             (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-             LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-             LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-             WHERE a.species=sg.Speciesgroup_ID) Genus,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ae a
-             LEFT JOIN species s ON a.Species=s.ID_Species
-             LEFT JOIN family f ON s.ID_Family=f.ID_Family
-             LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-             LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-             LEFT JOIN group_location lg ON a.location_group=lg.group_id
-             LEFT JOIN location l ON lg.location_id=l.ID_Location
-             LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-             LEFT JOIN division d ON l.ID_Division=d.ID_Division
-             LEFT JOIN district dis ON l.ID_District =dis.ID_District
-             LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-             LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-             LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-             LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-             LEFT JOIN contributor_info ci ON a.Contributor =ci.Contributor_ID
-             where $string
-             GROUP BY a.ID_AE
-             order by a.ID_AE ASC")->result_array();
+            $allometricEquationViewcsv=$this->db->query("SELECT * from __view_allometric_equ_csv_data a
+             where $string")->result_array();
           }
 
 
@@ -2803,17 +2694,17 @@ function up_union_by_dis_id() {
           header("Pragma: no-cache");
           header("Expires: 0");
           $handle = fopen('php://output', 'w');
-          fputcsv($handle, array('ID_AE','ID_RD', 'Population', 'Tree_type','Vegetation_type','location_group','X','Unit_X','Z'
+          fputcsv($handle, array('ID_AE','ID_RD', 'Population', 'Tree_type','Vegetation_type','X','Unit_X','Z'
             ,'Unit_Z','W','Unit_W','U ','Unit_U',' V','Unit_V',' Mean_X',' Min_X',' Max_X',' Mean_Z','Min_Z','Max_Z','Mean_W','Min_W','Max_W','Output'
-            ,'Output_TR','Unit_Y','Min_age','Max_age',' Av_age','B','Bd','Bg','Bt',' L','Rb','Rf','Rm','S','T','F','Species','Equation','Equation_VarNames','Sample_size','Top_dob','Top_girth_over_bark',' Stump_height','Reference','Author','Year','Title','Journal','Volume','Issue','Page','URL','PDF_label','Species','Family','Genus','location_name','LatDD','LongDD','Division','District','THANAME','UNINAME','FAOBiomes','AEZ_NAME',  'Zones','R2','R2_Adjusted','Corrected_for_bias',' MSE','RMSE'
-            ,'SEY','SEE','AIC','FI','Bias_correction',' Ratio_equation','Segmented_equation','Contributor','Contributor_name','Operator_name','email_contact','Remark','Verified'));
+            ,'Output_TR','Unit_Y','Min_age','Max_age',' Av_age','B','Bd','Bg','Bt',' L','Rb','Rf','Rm','S','T','F','Equation','Equation_VarNames','Sample_size','Top_dob','Top_girth_over_bark',' Stump_height','Reference','Author','Year','Title','Journal','Volume','Issue','Page','URL','PDF_label','Species','Family','Genus','location_name','LatDD','LongDD','Division','District','THANAME','UNINAME','FAOBiomes','AEZ_NAME',  'Zones','R2','R2_Adjusted','Corrected_for_bias',' MSE','RMSE'
+            ,'SEY','SEE','AIC','FI','Bias_correction',' Ratio_equation','Segmented_equation','Contributor_name','Operator_name','email_contact','Remark','Verified'));
           $i = 1;
           foreach ($allometricEquationViewcsv as $data) {
-            fputcsv($handle, array($data["ID_AE"], $data["ID_RD"], $data["Population"], $data["Tree_type"], $data["Vegetation_type"], $data["location_group"],$data["X"],$data["Unit_X"], $data["Z"], $data["Unit_Z"], $data["W"], $data["Unit_W"], $data["U"],
+            fputcsv($handle, array($data["ID_AE"], $data["ID_RD"], $data["Population"], $data["Tree_type"], $data["Vegetation_type"],$data["X"],$data["Unit_X"], $data["Z"], $data["Unit_Z"], $data["W"], $data["Unit_W"], $data["U"],
              $data["Unit_U"], $data["V"], $data["Unit_V"], $data["Mean_X"],$data["Min_X"],$data["Max_X"],$data["Mean_Z"],$data["Min_Z"],$data["Max_Z"],$data["Mean_W"],$data["Min_W"]
              ,$data["Max_W"],$data["Output"],$data["Output_TR"],$data["Unit_Y"],$data["Min_age"],$data["Max_age"],$data["Av_age"],$data["B"],$data["Bd"],$data["Bg"],$data["Bt"],$data["L"],$data["Rb"]
-             ,$data["Rf"],$data["Rm"],$data["S"],$data["T"],$data["F"],$data["Species"],$data["Equation"],$data["Equation_VarNames"],$data["Sample_size"],$data["Top_dob"],$data["Top_girth_over_bark"],$data["Stump_height"]
-             ,$data["Reference"],$data["Author"],$data["Year"],$data["Title"],$data["Journal"],$data["Volume"],$data["Issue"],$data["Page"],$data["URL"],$data["PDF_label"],$data["Species"],$data["Family"],$data["Genus"],$data["location_name"],$data["LatDD"],$data["LongDD"],$data["Division"],$data["District"],$data["THANAME"],$data["UNINAME"],$data["FAOBiomes"],$data["AEZ_NAME"],$data["Zones"],$data["R2"],$data["R2_Adjusted"],$data["Corrected_for_bias"],$data["MSE"],$data["RMSE"],$data["SEY"],$data["SEE"],$data["AIC"] ,$data["FI"],$data["Bias_correction"],$data["Ratio_equation"],$data["Segmented_equation"],$data["Contributor"],$data["Contributor_name"],$data["Operator_name"],$data["email_contact"],$data["Remark"],$data["Verified"]));
+             ,$data["Rf"],$data["Rm"],$data["S"],$data["T"],$data["F"],$data["Equation"],$data["Equation_VarNames"],$data["Sample_size"],$data["Top_dob"],$data["Top_girth_over_bark"],$data["Stump_height"]
+             ,$data["Reference"],$data["Author"],$data["Year"],$data["Title"],$data["Journal"],$data["Volume"],$data["Issue"],$data["Page"],$data["URL"],$data["PDF_label"],$data["Species"],$data["Family"],$data["Genus"],$data["location_name"],$data["LatDD"],$data["LongDD"],$data["Division"],$data["District"],$data["THANAME"],$data["UNINAME"],$data["FAOBiomes"],$data["AEZ_NAME"],$data["Zones"],$data["R2"],$data["R2_Adjusted"],$data["Corrected_for_bias"],$data["MSE"],$data["RMSE"],$data["SEY"],$data["SEE"],$data["AIC"] ,$data["FI"],$data["Bias_correction"],$data["Ratio_equation"],$data["Segmented_equation"],$data["Contributor_name"],$data["Operator_name"],$data["email_contact"],$data["Remark"],$data["Verified"]));
             $i++;
           }
           fclose($handle);
@@ -2907,68 +2798,14 @@ function up_union_by_dis_id() {
 
       if($string==1)
       {
-        $biomassExpansionFacView=$this->db->query("SELECT e.*,d.Division,dis.District,GROUP_CONCAT(l.location_name) location_name,l.*,u.THANAME,un.UNINAME,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         WHERE e.Species=sg.Speciesgroup_ID) Species,
-         (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         WHERE e.Species=sg.Speciesgroup_ID) Family,
-         (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         WHERE e.Species=sg.Speciesgroup_ID) Genus,ci.*,ref.*,
-         b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
-         LEFT JOIN species s ON e.Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
-         LEFT JOIN group_location lg ON e.group_location=lg.group_id
-         LEFT JOIN location l ON lg.location_id=l.ID_Location
-         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON l.ID_Division=d.ID_Division
-         LEFT JOIN district dis ON l.ID_District =dis.ID_District
-         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-         LEFT JOIN contributor_info ci ON e.Contributor =ci.Contributor_ID
-         where $string GROUP BY e.ID_EF
-         order by e.ID_EF ASC")->result_array();
+        $biomassExpansionFacView=$this->db->query("SELECT * from __view_ef_data_csv_data w where $string")->result_array();
       }
       else
       {
         $string= str_replace("abyz","=",$string);
         $string=base64_decode($string);
 
-        $biomassExpansionFacView=$this->db->query("SELECT e.*,d.Division,dis.District,GROUP_CONCAT(l.location_name) location_name,l.*,u.THANAME,un.UNINAME,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         WHERE e.Species=sg.Speciesgroup_ID) Species,
-         (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         WHERE e.Species=sg.Speciesgroup_ID) Family,
-         (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         WHERE e.Species=sg.Speciesgroup_ID) Genus,ci.*,ref.*,
-         b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
-         LEFT JOIN species s ON e.Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
-         LEFT JOIN group_location lg ON e.group_location=lg.group_id
-         LEFT JOIN location l ON lg.location_id=l.ID_Location
-         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON l.ID_Division=d.ID_Division
-         LEFT JOIN district dis ON l.ID_District =dis.ID_District
-         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-         LEFT JOIN contributor_info ci ON e.Contributor =ci.Contributor_ID
-         where $string GROUP BY e.ID_EF
-         order by e.ID_EF ASC")->result_array();
+        $biomassExpansionFacView=$this->db->query("SELECT * from __view_ef_data_csv_data w where $string")->result_array();
       }
 
 //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
@@ -3005,68 +2842,14 @@ function up_union_by_dis_id() {
 
       if($string==1)
       {
-        $biomassExpansionFacView=$this->db->query("SELECT e.*,d.Division,dis.District,GROUP_CONCAT(l.location_name) location_name,l.*,u.THANAME,un.UNINAME,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         WHERE e.Species=sg.Speciesgroup_ID) Species,
-         (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         WHERE e.Species=sg.Speciesgroup_ID) Family,
-         (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         WHERE e.Species=sg.Speciesgroup_ID) Genus,ci.*,ref.*,
-         b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
-         LEFT JOIN species s ON e.Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
-         LEFT JOIN group_location lg ON e.group_location=lg.group_id
-         LEFT JOIN location l ON lg.location_id=l.ID_Location
-         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON l.ID_Division=d.ID_Division
-         LEFT JOIN district dis ON l.ID_District =dis.ID_District
-         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-         LEFT JOIN contributor_info ci ON e.Contributor =ci.Contributor_ID
-         where $string GROUP BY e.ID_EF
-         order by e.ID_EF ASC");
+        $biomassExpansionFacView=$this->db->query("SELECT * from __view_ef_data_csv_data w where $string");
       }
       else
       {
         $string= str_replace("abyz","=",$string);
         $string=base64_decode($string);
 
-        $biomassExpansionFacView=$this->db->query("SELECT e.*,d.Division,dis.District,GROUP_CONCAT(l.location_name) location_name,l.*,u.THANAME,un.UNINAME,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         WHERE e.Species=sg.Speciesgroup_ID) Species,
-         (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         WHERE e.Species=sg.Speciesgroup_ID) Family,
-         (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-         LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         WHERE e.Species=sg.Speciesgroup_ID) Genus,ci.*,ref.*,
-         b.FAOBiomes,eco.AEZ_NAME,zon.Zones from ef e
-         LEFT JOIN species s ON e.Species=s.ID_Species
-         LEFT JOIN family f ON s.ID_Family=f.ID_Family
-         LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-         LEFT JOIN reference ref ON e.Reference=ref.ID_Reference
-         LEFT JOIN group_location lg ON e.group_location=lg.group_id
-         LEFT JOIN location l ON lg.location_id=l.ID_Location
-         LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-         LEFT JOIN division d ON l.ID_Division=d.ID_Division
-         LEFT JOIN district dis ON l.ID_District =dis.ID_District
-         LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-         LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-         LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-         LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-         LEFT JOIN contributor_info ci ON e.Contributor =ci.Contributor_ID
-         where $string GROUP BY e.ID_EF
-         order by e.ID_EF ASC");
+        $biomassExpansionFacView=$this->db->query("SELECT * from __view_ef_data_csv_data w where $string");
       }
 
 //$biomassExpansionFacView= $this->Forestdata_model->get_biomass_expansion_factor_json();
@@ -3975,64 +3758,16 @@ function up_union_by_dis_id() {
 
     if($string==1)
     {
-      $rawDataViewjson=$this->db->query("SELECT r.*,b.FAOBiomes,d.Division,dis.District,ci.*,un.UNINAME,u.THANAME,l.*,ref.*,GROUP_CONCAT(l.location_name) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-        LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-        WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Species,
-        (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-        LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-        LEFT JOIN family f ON s.ID_Family=f.ID_Family
-        WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Family,
-        (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-        LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-        LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-        WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Genus,ref.Reference,ref.Year,ref.Author from rd r
-        LEFT JOIN species s ON r.Speciesgroup_ID=s.ID_Species
-        LEFT JOIN family f ON s.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-        LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-        LEFT JOIN group_location lg ON r.location_group=lg.group_id
-        LEFT JOIN location l ON lg.location_id=l.ID_Location
-        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-        LEFT JOIN division d ON l.ID_Division=d.ID_Division
-        LEFT JOIN district dis ON l.ID_District =dis.ID_District
-        LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-        LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-        LEFT JOIN contributor_info ci ON r.Contributor =ci.Contributor_ID
-        where $string  GROUP BY r.ID order by r.ID asc");
+      $rawDataViewjson=$this->db->query("SELECT * from __view_raw_data_csv_data r
+        where $string ");
     }
     else
     {
       $string= str_replace("abyz","=",$string);
       $string=base64_decode($string);
 
-      $rawDataViewjson=$this->db->query("SELECT r.*,b.FAOBiomes,d.Division,dis.District,ci.*,un.UNINAME,u.THANAME,l.*,ref.*,GROUP_CONCAT(l.location_name) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-        LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-        WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Species,
-        (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-        LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-        LEFT JOIN family f ON s.ID_Family=f.ID_Family
-        WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Family,
-        (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-        LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-        LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-        WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Genus,ref.Reference,ref.Year,ref.Author from rd r
-        LEFT JOIN species s ON r.Speciesgroup_ID=s.ID_Species
-        LEFT JOIN family f ON s.ID_Family=f.ID_Family
-        LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-        LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-        LEFT JOIN group_location lg ON r.location_group=lg.group_id
-        LEFT JOIN location l ON lg.location_id=l.ID_Location
-        LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-        LEFT JOIN division d ON l.ID_Division=d.ID_Division
-        LEFT JOIN district dis ON l.ID_District =dis.ID_District
-        LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-        LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-        LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-        LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-        LEFT JOIN contributor_info ci ON r.Contributor =ci.Contributor_ID
-        where $string  GROUP BY r.ID order by r.ID asc");
+      $rawDataViewjson=$this->db->query("SELECT * from __view_raw_data_csv_data r
+        where $string");
     }
 
     header('Content-disposition: attachment; filename=Raw_Data.json');
@@ -4056,64 +3791,16 @@ function up_union_by_dis_id() {
 
           if($string==1)
           {
-            $rawDataViewcsv=$this->db->query("SELECT r.*,b.FAOBiomes,d.Division,dis.District,ci.*,un.UNINAME,u.THANAME,l.*,ref.*,GROUP_CONCAT(l.location_name) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-              LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-              WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Species,
-              (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-              LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-              LEFT JOIN family f ON s.ID_Family=f.ID_Family
-              WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Family,
-              (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-              LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-              LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-              WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Genus,ref.Reference,ref.Year,ref.Author from rd r
-              LEFT JOIN species s ON r.Speciesgroup_ID=s.ID_Species
-              LEFT JOIN family f ON s.ID_Family=f.ID_Family
-              LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-              LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-              LEFT JOIN group_location lg ON r.location_group=lg.group_id
-              LEFT JOIN location l ON lg.location_id=l.ID_Location
-              LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-              LEFT JOIN division d ON l.ID_Division=d.ID_Division
-              LEFT JOIN district dis ON l.ID_District =dis.ID_District
-              LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-              LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-              LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-              LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-              LEFT JOIN contributor_info ci ON r.Contributor =ci.Contributor_ID
-              where $string  GROUP BY r.ID order by r.ID asc")->result_array();
+            $rawDataViewcsv=$this->db->query("SELECT * from __view_raw_data_csv_data r
+        where $string")->result_array();
           }
           else
           {
             $string= str_replace("abyz","=",$string);
             $string=base64_decode($string);
 
-            $rawDataViewcsv=$this->db->query("SELECT r.*,b.FAOBiomes,d.Division,dis.District,ci.*,un.UNINAME,u.THANAME,l.*,ref.*,GROUP_CONCAT(l.location_name) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
-              LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-              WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Species,
-              (SELECT group_concat(DISTINCT(f.Family)) from species_group sg
-              LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-              LEFT JOIN family f ON s.ID_Family=f.ID_Family
-              WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Family,
-              (SELECT group_concat(DISTINCT(g.genus)) from species_group sg
-              LEFT JOIN species s ON sg.ID_Species=s.ID_Species
-              LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-              WHERE r.Speciesgroup_ID=sg.Speciesgroup_ID) Genus,ref.Reference,ref.Year,ref.Author from rd r
-              LEFT JOIN species s ON r.Speciesgroup_ID=s.ID_Species
-              LEFT JOIN family f ON s.ID_Family=f.ID_Family
-              LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-              LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-              LEFT JOIN group_location lg ON r.location_group=lg.group_id
-              LEFT JOIN location l ON lg.location_id=l.ID_Location
-              LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-              LEFT JOIN division d ON l.ID_Division=d.ID_Division
-              LEFT JOIN district dis ON l.ID_District =dis.ID_District
-              LEFT JOIN upazilla u ON l.Upzila =u.UPZ_CODE_1
-              LEFT JOIN `union` un ON l.Union =un.UNI_CODE_1
-              LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-              LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-              LEFT JOIN contributor_info ci ON r.Contributor =ci.Contributor_ID
-              where $string GROUP BY r.ID order by r.ID asc")->result_array();
+            $rawDataViewcsv=$this->db->query("SELECT * from __view_raw_data_csv_data r
+            where $string")->result_array();
           }
 
 
