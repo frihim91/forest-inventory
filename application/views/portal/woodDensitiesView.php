@@ -247,7 +247,7 @@
                </div>
                   <div class="form-group">
                      <label>Genus<span style="color:red;"></span></label>
-                     <!-- <input type="text" class="form-control input-sm" name ="Genus"  class ="Genus" maxlength="64" placeholder="Genus" /> -->
+             
                      <p><?php
                      $Genus = $this->Forestdata_model->get_all_genus();
                      $options = array('' => '--Select Genus--');
@@ -260,7 +260,7 @@
                   </div>
                   <div class="form-group">
                      <label>Species<span style="color:red;"></span></label>
-                   <!--   <input type="text" class="form-control input-sm" name ="Species"  class ="Species" maxlength="64" placeholder="Species" /> -->
+           
                     <p><?php
                      $Species = $this->Forestdata_model->get_all_species();
                      $options = array('' => '--Select Species--');
@@ -272,46 +272,98 @@
                      ?></p>
 
                      <br>
-                    <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
+    
                   </div>
                </div>
         
          </div>
-         <div id="menu2" class="tab-pane fade">
-            <p> Search Wood Density by tree location and biome.Example searches
-               <br>
-               Example searches:Biome (FAO):Tropical moist forest
+              <div id="menu2" class="tab-pane fade">
+            <p> Search allometric equations by tree location and biome.Example searches
+              <br>
+              Example searches:Biome (FAO):Tropical moist forest
             </p>
-           
-               <div class="col-md-6">
-
-               <div class="form-group">
-                     
-                     <label>Division<span style="color:red;"></span></label>
-                     <!-- <input type="text" class="form-control input-sm" name ="Division"  class ="division" maxlength="64" placeholder="Division" /> -->
-                      <p><?php
-                     $ID_Divisions = $this->Forestdata_model->get_all_division();
-                     $options = array('' => '--Select Division--');
-                     foreach ($ID_Divisions as $ID_Division) {
-                     $options["$ID_Division->Division"] = $ID_Division->Division;
-                     }
-                     $ID_Division = set_value('Division');
-                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
-                     ?></p>
-
+            <div class="col-md-12">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Division<span style="color:red;"></span></label>
+                  <!--   <input type="text" class="form-control input-sm" name ="Division"  id="division" value = "<?php echo (isset($Division))?$Division:'';?>" class ="division" maxlength="64" placeholder="Division" /> -->
+                  <p><?php
+                    $ID_Divisions = $this->Forestdata_model->get_all_division();
+                    $options = array('' => '--Select Division--');
+                    foreach ($ID_Divisions as $ID_Division) {
+                      $options["$ID_Division->Division"] = $ID_Division->Division;
+                    }
+                    $ID_Division = set_value('Division');
+                    echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                    ?></p>
                   </div>
+                </div>
+                <div class="col-md-6">
                   <div class="form-group">
-                     
-                     <label>District<span style="color:red;"></span></label>
-                    <!--  <input type="text" class="form-control input-sm" name ="District"  class ="District" maxlength="64" placeholder="District" /> -->
-                   <p> <select class="form-control singleSelectExample" id="ID_District" style="width:460px;"  name="District">
-                     <option value="">Select District</option></p>
-                  </select>
+                    <label>District<span style="color:red;"></span></label>
+
+                    <p><select class="form-control singleSelectExample" id="ID_District" style="width:460px;"  name="District">
+                      <option value="">Select District</option></p>
+                    </select>
                   </div>
-                  
-               </div>
-       
-         </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+               <div class="col-md-6">
+                <div class="form-group">
+
+                  <label>Bangladesh Agroecological Zone  <span style="color:red;"></span></label><br>
+
+                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
+
+                  <p><?php
+                    $AEZ_NAMES = $this->Forestdata_model->get_all_agroecological_zones();
+                    $options = array('' => '--Select Agroecological Zone--');
+                    foreach ($AEZ_NAMES as $AEZ_NAME) {
+                      $options["$AEZ_NAME->AEZ_NAME"] = $AEZ_NAME->AEZ_NAME;
+                    }
+                    $AEZ_NAME = set_value('AEZ_NAME');
+                    echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
+                    ?></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label>FAO Biomes   <span style="color:red;"></span></label><br>
+
+                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
+
+                  <p><?php
+                    $FAOBiomess = $this->Forestdata_model->get_all_faobiomes();
+                    $options = array('' => '--Select FAO Biomes --');
+                    foreach ($FAOBiomess as $FAOBiomes) {
+                      $options["$FAOBiomes->FAOBiomes"] = $FAOBiomes->FAOBiomes;
+                    }
+                    $FAOBiomes = set_value('FAOBiomes');
+                    echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes..." ');
+                    ?></p>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                 <div class="col-md-6">
+                  <label>BFI Zone <span style="color:red;"></span></label><br>
+
+                  <!--     <input type="text" class="form-control" name ="EcoZones" id="ecoZones" value = "<?php echo (isset($EcoZones))?$EcoZones:'';?>" maxlength="64" class ="ecoZones" placeholder="FAO Global Ecological Zone" /> -->
+
+                  <p><?php
+                    $Zoness = $this->Forestdata_model->get_all_zones();
+                    $options = array('' => '--Select BFI Zone--');
+                    foreach ($Zoness as $Zones) {
+                      $options["$Zones->Zones"] = $Zones->Zones;
+                    }
+                    $Zones = set_value('Zones');
+                    echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
+                    ?></p>
+                    <br><br>
+                    <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
+                  </div>
+                </div>
+              </div>
          <div id="menu3" class="tab-pane fade">
             <p> Search Wood Density by author, year, and reference.
                Example searches

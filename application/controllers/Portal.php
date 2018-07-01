@@ -352,15 +352,15 @@ private function getDtByAttrAe($attr)
     $returnArray[]='a.';
     break;
     case "FAOBiomes":
-    $returnArray[]='FAOBiomes';
+    $returnArray[]='FAO Biomes';
     $returnArray[]='a.';
     break;
     case "AEZ_NAME":
-    $returnArray[]='AEZ_NAME';
+    $returnArray[]='Bangladesh Agroecological Zone';
     $returnArray[]='a.';
     break;
     case "Zones":
-    $returnArray[]='Zones';
+    $returnArray[]='BFI Zone';
     $returnArray[]='a.';
     break;
     case "Reference":
@@ -573,7 +573,15 @@ private function getDtByAttrRaw($attr)
     $returnArray[]='r.';
     break;
     case "FAOBiomes":
-    $returnArray[]='FAOBiomes';
+    $returnArray[]='FAO Biomes';
+    $returnArray[]='r.';
+    break;
+    case "AEZ_NAME":
+    $returnArray[]='Bangladesh Agroecological Zone';
+    $returnArray[]='r.';
+    break;
+    case "Zones":
+    $returnArray[]='BFI Zone';
     $returnArray[]='r.';
     break;
     case "Reference":
@@ -834,7 +842,7 @@ private function getDtByAttrEmission($attr)
     $returnArray[]='e.';
     break;
     case "FAOBiomes":
-    $returnArray[]='FAO Global Ecological Zone';
+    $returnArray[]='FAO Biomes';
     $returnArray[]='e.';
     break;
     case "AEZ_NAME":
@@ -1022,6 +1030,14 @@ private function getDtByAttrWd($attr)
     $returnArray[]='District';
     $returnArray[]='dis.';
     break;
+    case "FAOBiomes":
+    $returnArray[]='FAO Biomes';
+    $returnArray[]='b.';
+    break;
+    case "AEZ_NAME":
+    $returnArray[]='Bangladesh Agroecological Zone';
+    $returnArray[]='eco.';
+    break;
     case "Zones":
     $returnArray[]='BFI Zone';
     $returnArray[]='zon.';
@@ -1051,7 +1067,7 @@ private function getDtByAttrWd($attr)
     $returnArray[]='w.';
     break;
     case "FAOBiomes":
-    $returnArray[]='Biomass';
+    $returnArray[]='FAO Biomes';
     $returnArray[]='b.';
     break;
     case "Reference":
