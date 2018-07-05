@@ -27,7 +27,11 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/css/custom.css">
     <script src="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/js/jssor.slider-27.1.0.min.js" type="text/javascript"></script>
+
+ 
+
 </head>
+
 <script type="text/javascript">
     jssor_2_slider_init = function() {
 
@@ -230,7 +234,7 @@ $(window).bind("orientationchange", ScaleSlider);
                                 <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/gov-logo.png')?>" class="img-responsive"/>
                             </div>
                             <div class="col-sm-8">
-                                 <h1 style="font-family:Century;font-weight:bold;font-size:36px;"><?php echo $post_cat->TITLE_NAME;?></h1>
+                                 <h1 style="font-family: Cambria;font-weight:bold;font-size:26px;"><?php echo $post_cat->TITLE_NAME;?></h1>
                             </div>
                             <div class="col-sm-2 lg2">
                                 <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/forest-logo.png')?>" class="img-responsive"/></div>
@@ -260,6 +264,47 @@ $(window).bind("orientationchange", ScaleSlider);
 
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/js/plugins.js"></script>
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/js/main.js"></script>
+                <!--slider test-->
+
+    <script src="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/slider/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/slider/js/jquery.roundabout.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/slider/js/jquery.carouselslider.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/slider/css/animation.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>resources/resource_potal/assets/portal_home/slider/css/style.css">
+
+
+                 <!--slider test jquery-->
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+            $('#carouel1').carouselSlider({
+                carouselOptions: {
+                    autoplay: true,
+                    autoplayInitialDelay: 1000, 
+                    autoplayDuration: 3000,
+                    autoplayPauseOnHover: true,
+                    clickToFocus: true,
+                    btnPrev: '.prevArrow',
+                    btnNext: '.nextArrow',                  
+                    duration: 400,
+                    minScale: 0.4
+                },
+                arrowAutoHide: true, /* auto hide the arrow button or not */
+                animateStyle: 'twirl',
+                triggerBy: 'click',  /* hover | click */            
+                clickIcons: true
+            });
+
+            $('#carouel2').carouselSlider({
+                carouselOptions: {
+                    duration: 400
+                },              
+                animateStyle: 'flipX',
+                triggerBy: 'hover',  /* hover | click */            
+            });
+            
+
+        })              
+    </script>
 
              <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
              <script>

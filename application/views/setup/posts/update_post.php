@@ -190,15 +190,29 @@
 
               <div class="col-md-12">
                   <div class="col-md-10">  
-                     <label for="images" >Image</label>
+                     <label for="images" >Image/PDF File</label>
                      <input type="file" name="userfile[]" size="20"  /> 
                      <?php 
                      foreach($images as $image) {
                          ?>
                          <span id="images_<?php echo $image->IMG_ID?>">
-                         <img src="<?php echo base_url();?>resources/images/page_pic/<?php echo $image->IMG_URL; ?>" class="img-thumbnail" id="img-thumbnail_id" style="width:130px;height:auto;margin-left:1px;"/>
+                          <?php
+                           $image_check=substr($image->IMG_URL,-4);
+                           //echo $image_check;exit();
+                           if($image_check== '.pdf'){
+                            ?> <a href="<?php echo base_url();?>resources/images/post_pic/<?php echo $image->IMG_URL; ?>" style="width:130px;height:auto;margin-left:1px;font-size:16px;color:#396C15"/><?php echo $image->IMG_URL; ?></a>
                          
                          <a href="javascript:;" imgid="<?php echo $image->IMG_ID?>" class="remove_doc_record fa fa-times removeImage"></a>
+                                <?php 
+                            }else{ ?>
+                               <img src="<?php echo base_url();?>resources/images/post_pic/<?php echo $image->IMG_URL; ?>" class="img-thumbnail" id="img-thumbnail_id" style="width:130px;height:auto;margin-left:1px;"/>
+                         
+                         <a href="javascript:;" imgid="<?php echo $image->IMG_ID?>" class="remove_doc_record fa fa-times removeImage"></a>
+                                  <?php 
+                            }
+                            
+                           ?>
+                      
                          </span>
                      <?php }?> 
                  </div><br>

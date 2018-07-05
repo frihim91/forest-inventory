@@ -27,10 +27,13 @@ background-size: 200px 40px;
 }*/
 
 .dtaz>h4>span {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	text-decoration:underline solid #316C22;
     position: absolute;
-    left: 47px;
-    top: 10px;
-    font-size: 18px;
+    left: 46px;
+    top: 3px;
+    font-size: 14px;
+    font-weight: bold;
     background-size: 200px 40px;
 }
 	

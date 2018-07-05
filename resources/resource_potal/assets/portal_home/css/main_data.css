@@ -194,7 +194,9 @@ footer{
 .fot-menu>ul>li{
     display: inline-block;
     margin-right: 20px;
-    font-family: Century;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
 }
 .fot-menu>ul>li:after{
     display: inline-block;
@@ -228,7 +230,9 @@ footer{
     color: rgba(255,255,255, 0.7);
     margin-top:5px;
     text-align: center;
-    font-family:Century;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 12px;
 }
 
 

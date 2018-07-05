@@ -173,7 +173,7 @@
                                       <div class="col-md-6"> 
 
                          
-                                    <label>Image</label>
+                                    <label>Image/PDF File</label>
                                      <input type="file" name="userfile[]" size="20" /> 
                                      </div><br>
 

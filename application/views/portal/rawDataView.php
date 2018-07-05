@@ -108,7 +108,7 @@
             <?php if(!isset($searchType)){ echo 'in active'; } ?>
             ">
             <p> Search Raw Data by keyword. 
-               This searches accross several text fields as like as Taxonomy,Location,Reference. 
+               This searches accross several text fields as like as Raw Data,Taxonomy,Location,Reference. 
                <br>
                Example searches:Euphorbiaceae,Euphorbiaceae,Excoecaria,Excoecaria agallocha,Tropical moist forest
             </p>

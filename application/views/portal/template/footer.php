@@ -19,7 +19,7 @@
            </div>
        </div>
        <div class="col-sm-6">
-       <p class="copy">&copy; Copyright <?php echo date('Y') ?>.<?php echo $post_cat->TITLE_NAME;?></p>
+       <p class="copy">&copy; Copyright <?php echo date('Y') ?> Bangladesh Forest Department</p>
     </div>
 </div>
 </div>

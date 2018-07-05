@@ -1300,6 +1300,43 @@ public function searchWdAll()
       left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
       left JOIN post_images i ON b.BODY_ID = i.BODY_ID
       where t.CAT_ID=4")->result();
+     $data['post_cat_alometric']         = $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+      FROM post_title t
+      left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+      left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+      left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+      where t.CAT_ID=5")->row();
+      $data['post_cat_raw_data']         = $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+      FROM post_title t
+      left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+      left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+      left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+      where t.CAT_ID=6")->row();
+      $data['post_cat_wd_data']         = $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+      FROM post_title t
+      left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+      left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+      left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+      where t.CAT_ID=7")->row();
+      $data['post_cat_ef_data']         = $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+      FROM post_title t
+      left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+      left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+      left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+      where t.CAT_ID=8")->row();
+       $data['post_cat_species_data']         = $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+      FROM post_title t
+      left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+      left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+      left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+      where t.CAT_ID=9")->row();
+
+      $data['post_cat_acronyms_data']         = $this->db->query("SELECT t.*, c.CAT_ID,c.CAT_NAME,b.BODY_ID,b.BODY_DESC,b.TITLE_ID,i.IMG_ID,i.IMG_URL,i.BODY_ID
+      FROM post_title t
+      left JOIN post_category c ON t.CAT_ID = c.CAT_ID
+      left JOIN post_body b ON t.TITLE_ID = b.TITLE_ID
+      left JOIN post_images i ON b.BODY_ID = i.BODY_ID
+      where t.CAT_ID=10 ORDER BY i.IMG_ID DESC LIMIT 1 ")->row();
     $data['sliders']        = $this->db->query("SELECT * FROM home_page_slider")->result();
     $data['video']        = $this->db->query("SELECT * FROM video limit 1")->result();
     $data['gallery']           = $this->db->query("SELECT * FROM home_page_gallery")->result();

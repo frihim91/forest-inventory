@@ -74,7 +74,7 @@
                             <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/gov-logo.png')?>" class="img-responsive"/>
                         </div>
                         <div class="col-sm-8">
-                           <h1 style="font-family:Century;font-weight:bold;font-size:36px;"><?php echo $post_cat->TITLE_NAME;?></h1>
+                           <h1 style="font-family: Cambria;font-weight:bold;font-size:26px;"><?php echo $post_cat->TITLE_NAME;?></h1>
                         </div>
                         <div class="col-sm-2 lg2">
                             <img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/forest-logo.png')?>" class="img-responsive"/></div>

@@ -141,8 +141,8 @@ cursor: pointer;
             <div class="row">
                 <div class="col-sm-12">
                     <div class="content" style="height: 300px; overflow-y: scroll;">
-                        <h3 style="text-align: center;font-family:Century;font-weight:bold;"><?php echo $post_cat->TITLE_NAME;?></h3>
-                        <p style="text-align:justify;font-family:Century;font-weight:580;"><?php echo $post_description->BODY_DESC;?></p>
+                        <h3><?php echo $post_cat->TITLE_NAME;?></h3>
+                        <p><?php echo $post_description->BODY_DESC;?></p>
 
                     </div>
                 </div>
@@ -154,173 +154,120 @@ cursor: pointer;
 
     <section class="slider">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="wrap">
+              
+             <ul id="carouel1">
+               
+              <?php foreach($sliders as $slider){?>
+              <li>
+                <div class="front">
+                 <img src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" />
+               </div>
+               <div class="back">
+                 <img src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" />
+               </div>
+             </li>
+             <?php } ?>
 
-                    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:380px;overflow:hidden;visibility:hidden;margin-top: -10px !important;">
-                        <!-- Loading Screen -->
-                        <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                            <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg" />
-                        </div>
-                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
+             <div class="arrowButton">
+              <div class="prevArrow"></div><div class="nextArrow"></div>      
+            </div>
+          </ul> 
+        </div>
 
-                         <?php foreach($sliders as $slider){?>
-                         <div data-p="137.50">
-                            <img data-u="image" src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" class="img-responsive"/>
-                            <div class="caption" align="center" style="background-color: rgba(0, 0, 0, 0.6);width:750px; height:55px;position:absolute;bottom:0px;right:0px">
-                              <p  style="color:white;font-size:20px;" align="center"><b><?php echo $slider->IMAGE_TITLE;?></b></p>
-                             <p  style="color:#85867B;font-size:8px;padding-left: 32px" align="left">Photo Courtesy:Falgoonee Kumar Mondal
-                              </p>
-                          </div>
-                       <!--     <div class="caption" style="position: absolute; top: 0; left:0px; width:400px; height:100px;" u="caption" ><p>Caption text</p></div> -->
-                      </div>
-                      <?php } ?>
 
-                  </div>
-                  <!-- Bullet Navigator -->
-                  <div data-u="navigator" class="jssorb051" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
-                    <div data-u="prototype" class="i" style="width:16px;height:16px;">
-                        <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                            <circle class="b" cx="8000" cy="8000" r="5800"></circle>
-                        </svg>
-                    </div>
-                </div>
-                <!-- Arrow Navigator -->
-                <div data-u="arrowleft" class="jssora051" style="width:65px;height:65px;top:0px;left:35px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
-                                               <!--  <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                                                    <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
-                                                </svg> -->
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+                    <section class="data-source">
+                              <div class="container">
+                                  <div class="row">
+                                     <h3 align="center" style="font-family: ahronbd;font-size: 22px">Data Sources</h3>
+                                     <div class="col-sm-6">
+                                          <div class="panel panel-default" style="background-color:#ACC697; border-color:#8FB07A">
+                                            <!-- <div class="panel-body" style="max-height:600px;overflow-y: scroll;"> -->
+                                              <div class="panel-body" style="height:220px;border: 5">
+                                                <div class="dta dta0 dtaz">
+                                                 <h4><span><a href="<?php echo site_url('data/allometricEquationView'); ?>" style="color: inherit;text-decoration: none;"><?php echo $post_cat_alometric->TITLE_NAME;?></a></span></h4>
+                                                 <p><?php echo $post_cat_alometric->BODY_DESC;?> </p>
+                                              </div>
                                             </div>
-                                            <div data-u="arrowright" class="jssora051" style="width:65px;height:65px;top:0px;right:35px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
-                                               <!--  <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                                                    <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
-                                                </svg> -->
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="data-source">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="media">
-                                            <h3 style="font-family:Century;font-weight:bold;"><img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/icon-rec.png')?>" src="img/icon-rec.png">Media</h3>
-                                            <div class="photo">
-                                                <div class="panel panel-success">
-                                                    <div class="panel-heading  panel-heading-custom-gallery">
-                                                        <h4 class="panel-title" align="center" style="font-family:Century;font-weight:bold;"><b>Photo</b></h4>
-                                                        <span class="pull-right clickable_gallery"><i class="glyphicon glyphicon-chevron-up"></i></span>
-                                                    </div>
-
-                                                    <div class="panel-body">
-                                                     <div class="row">
-                                                         <div class="col-sm-12 fullWidth ">
-
-
-                                                           <?php if(!empty($feature_image)){
-
-                                                              ?>
-
-                                                              <img id="myImg"  width ="100%" class="img-responsive imgBody" alt="<?php echo $feature_image->GALLERY_TITLE?>" src="<?php echo base_url('resources/images/home_page_gallery/'.$feature_image->IMAGE_PATH); ?>"  />
-
-                                                              <?php } else {?>
-                                                              <img width ="100%" class="img-responsive" src="<?php echo base_url(); ?>asset/forest_demo.jpg" alt="User Photo"/>
-                                                              <?php } ?>
-                                                              <!-- The Modal -->
-
-
-
-                                                          </div>
-
-
-
-
-                                                          <div class="col-sm-3 sideDiv" style="display:none">
-                                                           <div id="gallery_slider_thumbail">
-                                                            <?php foreach($gallery as $galleries){?>
-
-                                                            <a  class="fake-link" imgId="<?php echo $galleries->ID?>">  <img id="myImg" width ="40px" alt="<?php echo $galleries->GALLERY_TITLE?>"  class="thumbImg" src="<?php echo base_url('resources/images/home_page_gallery/'.$galleries->IMAGE_PATH); ?>"  /></a>
-
-                                                            <?php } ?>
-                                                        </div>
-                                                    </div>
-
-
-
+                                          </div>
+                                     </div>
+                                     <div class="col-sm-6">
+                                       <div class="panel panel-default" style="background-color:#ACC697; border-color:#8FB07A">
+                                            <div class="panel-body" style="height:220px;border: 5">
+                                                   <div class="dta dta0 dtaz">
+                                                      <h4><span><a href="<?php echo site_url('data/rawDataView'); ?>" style="color: inherit;text-decoration: none;"><?php echo $post_cat_raw_data->TITLE_NAME;?></a></span></h4>
+                                                  <p><?php echo $post_cat_raw_data->BODY_DESC;?></p>
                                                 </div>
-
-
                                             </div>
-                                        </div>
+                                          </div>
+                                     </div>
 
+                                  </div>
 
-
-                                    </div>
-                                    <!--   <button onclick="myFunction()">Try it</button> -->
-                                    <div class="video" style="margin-bottom: 10px;">
-                                       <div class="panel panel-success" style="margin-top: 20px;">
-                                        <div class="panel-heading  panel-heading-custom">
-                                            <h4 class="panel-title" align="center" style="font-family:Century;font-weight:bold;"><b>Video</b></h4>
-                                            <!-- <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span> -->
-                                        </div>
-                                        <div class="panel-body videoDiv">
-
-                                            <div class="embed-responsive embed-responsive-4by3 ">
-                                               <?php foreach($video as $videos){?>
-                                                <?php echo $videos->url?>
-                                               <?php } ?>
-                                               <!--  <iframe src="http://www.youtube.com/embed/?listType=user_uploads&list=arfancu"
-                                                width="320" height="318"></iframe> -->
-                                              <!--   <iframe width="320" height="318" src="https://www.youtube.com/embed/xJgyemJ8kQU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-                                            </div></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="data-source">
-                                    <h3><img src="<?php echo base_url('resources/resource_potal/assets/portal_home/img/icon-rec.png')?>" src="img/icon-rec.png">Data Sources</h3>
-                                    <div class="dta dta0 dtaz">
-                                        <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/allometricEquationView'); ?>" style="color: inherit;text-decoration: none;">Allometric Equation</a></span></h4>
-                                        <p>This database provides allometric equations for tree species and forest types of Bangladesh for volume, biomass and carbon stock calculation. It results from the compilation of reports from the Bangladesh Forest Department, the Bangladesh Forest Research Institute and scientific articles from different academic institutes. </p>
-                                    </div>
-                                    <div class="dta dta0 dtaz">
-                                             <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/rawDataView'); ?>" style="color: inherit;text-decoration: none;">Raw Data</a></span></h4>
-                                        <p>This database contains primary data collected through destructive and semi-destructive field measurements by Bangladesh Forest Department, Bangladesh Forest Research Institute and Universities. It contains data such as tree diameter at breast height, total height, merchantable height, volume, biomass. Raw data provides the basis for developing allometric equations, moreover this data can be reused by other researchers also.</p>
-                                    </div>
-                                    <div class="dta dta0 dtaz">
-                                           <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/woodDensitiesView'); ?>" style="color: inherit;text-decoration: none;">Wood densities</a></span></h4>
-                                        <p>This database contains wood density information obtained from destructive measurements and laboratory analysis conducted by Bangladesh Forest Research Institute and Universities. Collected wood density information of all available species are viewed in list.</p>
-                                    </div>
-                                    <div class="dta dta0 dtaz">
-                                          <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/biomassExpansionFacView'); ?>" style="color: inherit;text-decoration: none;">Emission factors</a></span></h4>
-                                        <p>The emission factor database provides emission factors which are specific to Bangladesh. An emission factor is a coefficient that quantifies the emissions or removals of a gas per unit activity. Emission factors are often based on a sample of measurement data, averaged to develop a representative rate of emission for a given activity level under a given set of operating conditions.  Emission factors in this database were collected from available scientific literature on related greenhouse gas inventory in Bangladesh.</p>
-                                    </div>
-                                    <div class="dta dta0 dtaz">
-                                          <h4 style="font-weight: bold;"><span><a href="<?php echo site_url('data/dataSpecies'); ?>" style="color: inherit;text-decoration: none;">Species List</a></span></h4>
-                                        <p>This database provides the available plant species list of Bangladesh. The list is organized by family and under each family all available genus and species information available in Bangladesh of that family is incorporated. Information related with number of allometric equations, raw data, wood density and emission factor for that species are available for each species.</p>
-                                    </div>
-                                        <div class="dta dta0 dtaz">
-                                           <h4 style="font-weight: bold;"><span><a href="<?php echo base_url('resources/resource_potal/document/acronyms.pdf')?>" target="_blank" style="color: inherit;text-decoration: none;">Documentation on definitions of acronyms</a></span></h4>
+                                    <div class="row">
                                     
-                                    </div>
+                                     <div class="col-sm-6">
+                                          <div class="panel panel-default" style="background-color:#ACC697; border-color:#8FB07A;">
+                                            <div class="panel-body" style="height:240px;border: 5">
+                                                <div class="dta dta0 dtaz">
+                                                   <h4><span><a href="<?php echo site_url('data/woodDensitiesView'); ?>" style="color: inherit;text-decoration: none;"><?php echo $post_cat_wd_data->TITLE_NAME;?></a></span></h4>
+                                                     <p><?php echo $post_cat_wd_data->BODY_DESC;?></p>
+                                               </div>
+                                            </div>
+                                          </div>
+                                     </div>
+                                     <div class="col-sm-6">
+                                       <div class="panel panel-default" style="background-color:#ACC697;border-color:#8FB07A;">
+                                            <div class="panel-body" style="height:240px;border: 5">
+                                                  <div class="dta dta0 dtaz">
+                                                    <h4><span><a href="<?php echo site_url('data/biomassExpansionFacView'); ?>" style="color: inherit;text-decoration: none;"><?php echo $post_cat_ef_data->TITLE_NAME;?></a></span></h4>
+                                                   <p><?php echo $post_cat_ef_data->BODY_DESC;?></p>
+                                                 </div>
+                                            </div>
+                                          </div>
+                                     </div>
 
-                                    <!--   <div class="dta dta0 dtaz">
-                                        <h4><span><a href="<?php echo base_url('resources/resource_potal/document/acronyms.pdf')?>" target="_blank" style="color: inherit;text-decoration: none;"><button type="button" style="width: 550px;text-align: left;color: black"  class="btn btn-primary">Documentation on definitions of acronyms</button></a></span></h4>
-                                     
-                                    </div> -->
-                                </div>
+                                  </div>
+
+                                   <div class="row">
+                                       <div class="col-sm-12">
+                                          <div class="panel panel-default" style="background-color:#ACC697;border-color:#8FB07A;">
+                                            <div class="panel-body" style="border: 5">
+                                                     <div class="dta dta0 dtaz">
+                                                        <h4><span><a href="<?php echo site_url('data/dataSpecies'); ?>" style="color: inherit;text-decoration: none;"><?php echo $post_cat_species_data->TITLE_NAME;?></a></span></h4>
+                                                       <p><?php echo $post_cat_species_data->BODY_DESC;?></p>
+                                                   </div>
+                                            </div>
+                                          </div>
+                                     </div>
+                                   </div>
+
+                                   <div class="row">
+                                       <div class="col-sm-12">
+                                          <div class="panel panel-default" style="background-color:#ACC697;border-color:#8FB07A;">
+                                            <div class="panel-body" style="border: 5">
+                                                      <div class="dta dta0 dtaz">
+                                                         <h4><span><a href="<?php echo base_url('resources/images/post_pic/'.$post_cat_acronyms_data->IMG_URL)?>" target="_blank" style="color: inherit;text-decoration: none;"><?php echo $post_cat_acronyms_data->TITLE_NAME;?></a></span></h4>
+
+                                    
+                                                </div>
+                                            </div>
+                                          </div>
+                                     </div>
+                                   </div>
                             </div>
-                        </div>
-                    </div>
-                </section>
+                  </section>
 
             </div>
             <div id="myModal" class="modal">
