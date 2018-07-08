@@ -150,7 +150,7 @@
                </div>
             </form>
          </div>
-      </div>
+      </div><br>
       <div class="col-sm-12 bdy_des">
          <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
             <div class="col-lg-6">

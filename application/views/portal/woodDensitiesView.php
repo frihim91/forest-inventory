@@ -133,8 +133,8 @@
             <p> Search Wood Density by keyword. 
                This searches accross several text fields as like as Wood Density, Taxonomy,Location,Reference. 
                <br>
-               Example searches: Leguminosae,Leguminosae,Pongamia,Pongamia pinnata,
-               Bangladesh
+               Example searches: Leguminosae,Leguminosae,Pongamia,
+               Pongamia pinnata,Bangladesh
             </p>
             <p>
             </p>

@@ -164,23 +164,56 @@ cursor: pointer;
         </div>
     </section>
 
-   
+<!--     <section class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                        <ul id="carouel1">
+               
+              <?php foreach($sliders as $slider){?>
+              <li>
+                   
+                <div class="front">
+                  <p class="slider"><?php echo $slider->IMAGE_TITLE; ?></p>
+                 <img src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" />
+
+               </div>
+               <div class="back">
+                 <img src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" />
+
+               </div>
+
+
+             </li>
+
+             <?php } ?>
+           
+
+             <div class="arrowButton">
+              <div class="prevArrow"></div><div class="nextArrow"></div>      
+            </div>
+
+          </ul> 
+                </div>
+            </div>
+        </div>
+    </section> -->
 
 
 
 
     <section class="slider">
-
+  
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
-           
-              
+          <div id="wrap">
+            
              <ul id="carouel1">
                
               <?php foreach($sliders as $slider){?>
               <li>
-                   <!--  <h3 class="exampleTitle1"><?php echo $slider->IMAGE_TITLE; ?></h3> -->
+                
                 <div class="front">
                   <p class="slider"><?php echo $slider->IMAGE_TITLE; ?></p>
                  <img src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" />
@@ -202,6 +235,7 @@ cursor: pointer;
             </div>
 
           </ul> 
+        </div>
        
 
 

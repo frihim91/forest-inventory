@@ -247,6 +247,7 @@
                &nbsp;&nbsp;&nbsp;&nbsp;
                </span>
             </h3>
+   <div class="table-responsive"> 
     <table class="table">
       <thead>
         
@@ -287,6 +288,7 @@
   </tbody>
 
 </table>
+</div>
       
          </div>
       </div>
@@ -303,6 +305,7 @@
       
 
     </h3>
+  <div class="table-responsive"> 
 
     <table class="table">
                 <tbody><tr>
@@ -334,6 +337,7 @@
               <?php 
           }?>
             </tbody></table>
+          </div>
 
 <br>
 

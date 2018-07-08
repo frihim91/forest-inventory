@@ -265,7 +265,7 @@
         
       </h3>
       
-      
+    <div class="table-responsive"> 
       <table class="table">
         <tr>
           <th>Family:</th>
@@ -305,6 +305,7 @@
      </tr>
      
    </table>
+ </div>
    
    
  </div>
@@ -323,7 +324,7 @@
       
 
     </h3>
-
+<div class="table-responsive"> 
     <table class="table">
                 <tbody><tr>
                      <?php 
@@ -354,6 +355,7 @@
               <?php 
           }?>
             </tbody></table>
+          </div>
 
 <br>
 
