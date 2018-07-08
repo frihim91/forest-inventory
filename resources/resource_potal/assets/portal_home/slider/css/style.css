@@ -148,7 +148,7 @@ li.roundabout-in-focus, #carouel2 li.roundabout-in-focus {
 
 .infoButton{           
 	cursor: pointer;        
-	background: url(../images/assets/info.png) no-repeat;
+	/*background: url(../images/assets/info.png) no-repeat;*/
 	width: 26px;
 	height: 26px;
 	position: absolute;

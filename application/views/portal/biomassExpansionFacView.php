@@ -139,7 +139,7 @@
                      $options["$Family->Family"] = $Family->Family;
                      }
                      $Family = set_value('Family');
-                     echo form_dropdown('Family', $options, $Family, 'id="Family" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Family" ');
+                     echo form_dropdown('Family', $options, $Family, 'id="Family" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Select Family" ');
                      ?></p>
                </div>
                   <div class="form-group">
@@ -152,7 +152,7 @@
                      $options["$Genus->Genus"] = $Genus->Genus;
                      }
                      $Genus = set_value('Genus');
-                     echo form_dropdown('Genus', $options, $Genus, 'id="Genus" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Genus" ');
+                     echo form_dropdown('Genus', $options, $Genus, 'id="Genus" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Select Genus" ');
                      ?></p>
 
                   </div>
@@ -166,7 +166,7 @@
                      $options["$Species->Species"] = $Species->Species;
                      }
                      $Species = set_value('Species');
-                     echo form_dropdown('Species', $options, $Species, 'id="Species" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Species" ');
+                     echo form_dropdown('Species', $options, $Species, 'id="Species" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Select Species" ');
                      ?></p>
                      <br>
                 <!--      <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
@@ -193,7 +193,7 @@
                      $options["$ID_Division->Division"] = $ID_Division->Division;
                      }
                      $ID_Division = set_value('Division');
-                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                     echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                      ?></p>   
                      </div>
                   </div>
@@ -202,7 +202,7 @@
                    
                      <label>District<span style="color:red;"></span></label>
                    <!--   <input type="text" class="form-control input-sm" name ="District" value = "<?php echo (isset($District))?$District:'';?>"  class ="District" maxlength="64" placeholder="District" /> -->
-                    <p><select class="form-control singleSelectExample" id="ID_District" style="width:460px;"  name="District">
+                    <p><select class="form-control singleSelectExample" id="ID_District" style="width:100%;"  name="District">
                      <option value="">Select District</option></p>
                   </select>
                   </div>
@@ -223,7 +223,7 @@
                           $options["$AEZ_NAME->AEZ_NAME"] = $AEZ_NAME->AEZ_NAME;
                         }
                         $AEZ_NAME = set_value('AEZ_NAME');
-                        echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
+                        echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
                         ?></p>
                            </div>
                          </div>
@@ -240,7 +240,7 @@
                      $options["$FAOBiomes->FAOBiomes"] = $FAOBiomes->FAOBiomes;
                      }
                      $FAOBiomes = set_value('FAOBiomes');
-                     echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes ..." ');
+                     echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes ..." ');
                      ?></p>
                       </div>
                    </div>
@@ -254,7 +254,7 @@
                      $options["$Zones->Zones"] = $Zones->Zones;
                      }
                      $Zones = set_value('Zones');
-                     echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
+                     echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
                      ?></p>
                      <!-- <input type="text" class="form-control input-sm" name ="Zones" class ="Zones" value = "<?php echo (isset($Zones))?$Zones:'';?>" maxlength="64" placeholder="Bangladesh Zone" /> -->
 
@@ -297,7 +297,7 @@
         <div class="col-lg-6">
          <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
          </div>
-          </form>
+          </form><br>
    <div class="col-sm-12 bdy_des">
    <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
  

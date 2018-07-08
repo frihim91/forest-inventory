@@ -7,6 +7,7 @@
     background-color: white;
     margin-top: 15px;
   }
+  
   .page_des_big_image{
     width: 100%;
     height: 300px;
@@ -63,6 +64,11 @@
   size: 4
 });
 
+</script>
+<script type="text/javascript">
+  $('.responsive-tabs').responsiveTabs({
+  accordionOn: ['xs', 'sm'] // xs, sm, md, lg
+});
 </script>
 
 <?php
@@ -177,7 +183,7 @@ $lang_ses = $this->session->userdata("site_lang");
               $options["$Family->Family"] = $Family->Family;
             }
             $Family = set_value('Family');
-            echo form_dropdown('Family', $options, $Family, 'id="Family" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Family" ');
+            echo form_dropdown('Family', $options, $Family, 'id="Family" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Select Family" ');
             ?></p>
 
 
@@ -193,7 +199,7 @@ $lang_ses = $this->session->userdata("site_lang");
                 $options["$Genus->Genus"] = $Genus->Genus;
               }
               $Genus = set_value('Genus');
-              echo form_dropdown('Genus', $options, $Genus, 'id="Genus" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Genus" ');
+              echo form_dropdown('Genus', $options, $Genus, 'id="Genus" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Select Genus" ');
               ?></p>
             </div>
             <div class="form-group">
@@ -206,7 +212,7 @@ $lang_ses = $this->session->userdata("site_lang");
                   $options["$Species->Species"] = $Species->Species;
                 }
                 $Species = set_value('Species');
-                echo form_dropdown('Species', $options, $Species, 'id="Species" style="width:560px;" class="form-control singleSelectExample" data-placeholder="Select Species" ');
+                echo form_dropdown('Species', $options, $Species, 'id="Species" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Select Species" ');
                 ?></p>
                 <br>
                 <!--     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
@@ -231,7 +237,7 @@ $lang_ses = $this->session->userdata("site_lang");
                       $options["$ID_Division->Division"] = $ID_Division->Division;
                     }
                     $ID_Division = set_value('Division');
-                    echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
+                    echo form_dropdown('Division', $options, $ID_Division, 'id="ID_Division" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Choose a Division..." ');
                     ?></p>
                   </div>
                 </div>
@@ -239,7 +245,7 @@ $lang_ses = $this->session->userdata("site_lang");
                   <div class="form-group">
                     <label>District<span style="color:red;"></span></label>
 
-                    <p><select class="form-control singleSelectExample" id="ID_District" style="width:460px;"  name="District">
+                    <p><select class="form-control singleSelectExample" id="ID_District" style="width:100%;"  name="District">
                       <option value="">Select District</option></p>
                     </select>
                   </div>
@@ -260,7 +266,7 @@ $lang_ses = $this->session->userdata("site_lang");
                       $options["$AEZ_NAME->AEZ_NAME"] = $AEZ_NAME->AEZ_NAME;
                     }
                     $AEZ_NAME = set_value('AEZ_NAME');
-                    echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
+                    echo form_dropdown('AEZ_NAME', $options, $AEZ_NAME, 'id="AEZ_NAME" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Choose a  Agroecological Zone..." ');
                     ?></p>
                   </div>
                 </div>
@@ -276,7 +282,7 @@ $lang_ses = $this->session->userdata("site_lang");
                       $options["$FAOBiomes->FAOBiomes"] = $FAOBiomes->FAOBiomes;
                     }
                     $FAOBiomes = set_value('FAOBiomes');
-                    echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes..." ');
+                    echo form_dropdown('FAOBiomes', $options, $FAOBiomes, 'id="FAOBiomes" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Choose a  FAO Biomes..." ');
                     ?></p>
                   </div>
                 </div>
@@ -294,7 +300,7 @@ $lang_ses = $this->session->userdata("site_lang");
                       $options["$Zones->Zones"] = $Zones->Zones;
                     }
                     $Zones = set_value('Zones');
-                    echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:460px;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
+                    echo form_dropdown('Zones', $options, $Zones, 'id="Zones" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Choose a  BFI Zone..." ');
                     ?></p>
                     <br><br>
                     <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
@@ -334,7 +340,7 @@ $lang_ses = $this->session->userdata("site_lang");
           <div class="col-lg-6">
             <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
           </div>
-        </form>
+        </form><br>
 
         <div class="col-sm-12 bdy_des">
           <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
@@ -859,5 +865,6 @@ $lang_ses = $this->session->userdata("site_lang");
              </script>
              <!--<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>-->
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
+             <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/responsive-tabs.js"></script>
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
 

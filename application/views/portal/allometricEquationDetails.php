@@ -173,7 +173,7 @@ $lang_ses = $this->session->userdata("site_lang");
       </h3>
 
 
-
+<div class="table-responsive"> 
       <table class="table">
       <thead>
         
@@ -214,6 +214,7 @@ $lang_ses = $this->session->userdata("site_lang");
   </tbody>
 
 </table>
+</div>
       
       
  
@@ -235,7 +236,7 @@ $lang_ses = $this->session->userdata("site_lang");
       
 
     </h3>
-
+  <div class="table-responsive"> 
     <table class="table">
                 <tbody><tr>
                      <?php 
@@ -266,6 +267,7 @@ $lang_ses = $this->session->userdata("site_lang");
               <?php 
           }?>
             </tbody></table>
+          </div>
 
 <br>
 

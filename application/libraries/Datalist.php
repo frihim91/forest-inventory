@@ -30,7 +30,7 @@ class Datalist {
                           <!--<dt style='font-size:15px'><small>Biomass</small></dt> <dd style='font-size:15px'><small> $item->FAOBiomes</small></dd>-->
                           <dt style='font-size:15px'><small>Family</small></dt> <dd style='font-size:15px'><small> $item->Family</small></dd>
                           <dt style='font-size:15px'><small>Species</small></dt> <dd style='font-size:15px'><small> $item->Species</small></dd>
-                          <dt style='font-size:15px'><small>Locations</small></dt> <dd style='font-size:15px'><small> $item->location_name </small></dd>
+                          <dt style='font-size:15px'><small>Locations</small></dt> <dd style='font-size:15px'><small>$item->location_name</small></dd>
                           
                           <dl>
                           </div>

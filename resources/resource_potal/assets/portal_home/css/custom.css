@@ -28,7 +28,8 @@ background-size: 200px 40px;
 
 .dtaz>h4>span {
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-	text-decoration:underline solid #316C22;
+	/*text-decoration:underline solid #316C22;*/
+    border-bottom: 1px solid #316C22;
     position: absolute;
     left: 46px;
     top: 3px;

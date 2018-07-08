@@ -78,6 +78,20 @@ padding: 10px 0;
 height: 150px;
 }
 
+p.slider {
+    position: absolute;
+    bottom: 0;
+    top: 5;
+    margin: 0 auto;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    color: #f1f1f1;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px;
+}
+
 /* Add Animation */
 .modal-content, #caption {
 -webkit-animation-name: zoom;
@@ -150,6 +164,9 @@ cursor: pointer;
         </div>
     </section>
 
+   
+
+
 
 
     <section class="slider">
@@ -157,26 +174,35 @@ cursor: pointer;
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
-            <div id="wrap">
+           
               
              <ul id="carouel1">
                
               <?php foreach($sliders as $slider){?>
               <li>
+                   <!--  <h3 class="exampleTitle1"><?php echo $slider->IMAGE_TITLE; ?></h3> -->
                 <div class="front">
+                  <p class="slider"><?php echo $slider->IMAGE_TITLE; ?></p>
                  <img src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" />
+
                </div>
                <div class="back">
                  <img src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" />
+
                </div>
+
+
              </li>
+
              <?php } ?>
+           <!--   <h3 class="exampleTitle1"><?php echo $slider->IMAGE_TITLE; ?></h3> -->
 
              <div class="arrowButton">
               <div class="prevArrow"></div><div class="nextArrow"></div>      
             </div>
+
           </ul> 
-        </div>
+       
 
 
         
