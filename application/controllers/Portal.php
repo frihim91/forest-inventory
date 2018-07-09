@@ -1874,8 +1874,16 @@ public function deleteImage($id)
         {
           $data['fieldNameValue']=$filedNameValue;
         }
+        if($searchFieldArray['keyword']!='')
+        {
+          $string=$this->searchAttributeKeywordString($validSearchKey);
+        }
+        else
+        {
+          $string=$this->searchAttributeString($validSearchKey);
+        }
 
-        $string=$this->searchAttributeString($validSearchKey);
+        //$string=$this->searchAttributeString($validSearchKey);
 
         $data['reference_author']           = $this->db->query("SELECT * FROM reference order by ID_Reference asc")->result();
         $data['reference'] = $this->db->query("SELECT r.* from reference r
