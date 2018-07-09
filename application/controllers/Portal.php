@@ -918,7 +918,16 @@ public function searchEmissionFactorAll()
       $data['fieldNameValue']=$filedNameValue;
     }
 
-    $string=$this->searchAttributeString($validSearchKey);
+    //$string=$this->searchAttributeString($validSearchKey);
+
+    if($searchFieldArray['keyword']!='')
+    {
+      $string=$this->searchAttributeKeywordString($validSearchKey);
+    }
+    else
+    {
+      $string=$this->searchAttributeString($validSearchKey);
+    }
 
     $k=$data['biomassExpansionFacView'] = $this->db->query("SELECT * from __view_emission_fac_search_tbl e where $string
       ")->result();
@@ -1154,8 +1163,16 @@ public function searchWdAll()
     {
       $data['fieldNameValue']=$filedNameValue;
     }
+     if($searchFieldArray['keyword']!='')
+    {
+      $string=$this->searchAttributeKeywordString($validSearchKey);
+    }
+    else
+    {
+      $string=$this->searchAttributeStringW($validSearchKey);
+    }
 
-    $string=$this->searchAttributeStringW($validSearchKey);
+    //$string=$this->searchAttributeStringW($validSearchKey);
 
     $k=$data['woodDensitiesView']= $this->db->query("SELECT w.H_tree_max,w.DBH_tree_avg,w.H_tree_min,w.DBH_tree_min,w.DBH_tree_max, w.ID_WD,w.Density_green,w.Density_airdry,w.Density_ovendry,w.H_tree_avg,ref.Author,ref.Reference,ref.Year,d.Division,dis.District,l.location_name,GROUP_CONCAT(lg.location_id),s.Species,g.Genus,f.Family,b.FAOBiomes,eco.AEZ_NAME,zon.Zones from wd w
      LEFT JOIN species s ON w.ID_species=s.ID_Species
