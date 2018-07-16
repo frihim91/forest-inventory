@@ -164,45 +164,7 @@ cursor: pointer;
         </div>
     </section>
 
-<!--     <section class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                        <ul id="carouel1">
-               
-              <?php foreach($sliders as $slider){?>
-              <li>
-                   
-                <div class="front">
-                  <p class="slider"><?php echo $slider->IMAGE_TITLE; ?></p>
-                 <img src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" />
-
-               </div>
-               <div class="back">
-                 <img src="<?php echo base_url('resources/images/home_page_slider/'.$slider->IMAGE_PATH); ?>" />
-
-               </div>
-
-
-             </li>
-
-             <?php } ?>
-           
-
-             <div class="arrowButton">
-              <div class="prevArrow"></div><div class="nextArrow"></div>      
-            </div>
-
-          </ul> 
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-
-
-
-    <section class="slider">
+ <section class="slider">
   
       <div class="container">
         <div class="row">
@@ -246,11 +208,13 @@ cursor: pointer;
   </div>
 </section>
 
-
-                    <section class="data-source">
-                              <div class="container">
-                                  <div class="row">
-                                     <h3 align="center" style="font-family: ahronbd;font-size: 22px">Data Sources</h3>
+  <section class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="content-datasource">
+                            <div class="row">
+                                     <h3 align="center" style="font-family: 'Aharoni';font-size: 22px;font-weight: 700;padding-bottom:15px;">Data Sources</h3>
                                      <div class="col-sm-6">
                                           <div class="panel panel-default" style="background-color:#ACC697; border-color:#8FB07A">
                                             <!-- <div class="panel-body" style="max-height:600px;overflow-y: scroll;"> -->
@@ -326,8 +290,95 @@ cursor: pointer;
                                           </div>
                                      </div>
                                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+                   <!--  <section class="data-source">
+                              <div class="container">
+                                  <div class="row">
+                                     <h3 align="center" style="font-family: 'Aharoni';font-size: 22px;font-weight: 700;">Data Sources</h3>
+                                     <div class="col-sm-6">
+                                          <div class="panel panel-default" style="background-color:#ACC697; border-color:#8FB07A">
+                                      
+                                              <div class="panel-body" style="height:220px;border: 5">
+                                                <div class="dta dta0 dtaz">
+                                                 <h4><span><a href="<?php echo site_url('data/allometricEquationView'); ?>" style="color: inherit;text-decoration: none;"><?php echo $post_cat_alometric->TITLE_NAME;?></a></span></h4>
+                                                 <p><?php echo $post_cat_alometric->BODY_DESC;?> </p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                     </div>
+                                     <div class="col-sm-6">
+                                       <div class="panel panel-default" style="background-color:#ACC697; border-color:#8FB07A">
+                                            <div class="panel-body" style="height:220px;border: 5">
+                                                   <div class="dta dta0 dtaz">
+                                                      <h4><span><a href="<?php echo site_url('data/rawDataView'); ?>" style="color: inherit;text-decoration: none;"><?php echo $post_cat_raw_data->TITLE_NAME;?></a></span></h4>
+                                                  <p><?php echo $post_cat_raw_data->BODY_DESC;?></p>
+                                                </div>
+                                            </div>
+                                          </div>
+                                     </div>
+
+                                  </div>
+
+                                    <div class="row">
+                                    
+                                     <div class="col-sm-6">
+                                          <div class="panel panel-default" style="background-color:#ACC697; border-color:#8FB07A;">
+                                            <div class="panel-body" style="height:240px;border: 5">
+                                                <div class="dta dta0 dtaz">
+                                                   <h4><span><a href="<?php echo site_url('data/woodDensitiesView'); ?>" style="color: inherit;text-decoration: none;"><?php echo $post_cat_wd_data->TITLE_NAME;?></a></span></h4>
+                                                     <p><?php echo $post_cat_wd_data->BODY_DESC;?></p>
+                                               </div>
+                                            </div>
+                                          </div>
+                                     </div>
+                                     <div class="col-sm-6">
+                                       <div class="panel panel-default" style="background-color:#ACC697;border-color:#8FB07A;">
+                                            <div class="panel-body" style="height:240px;border: 5">
+                                                  <div class="dta dta0 dtaz">
+                                                    <h4><span><a href="<?php echo site_url('data/biomassExpansionFacView'); ?>" style="color: inherit;text-decoration: none;"><?php echo $post_cat_ef_data->TITLE_NAME;?></a></span></h4>
+                                                   <p><?php echo $post_cat_ef_data->BODY_DESC;?></p>
+                                                 </div>
+                                            </div>
+                                          </div>
+                                     </div>
+
+                                  </div>
+
+                                   <div class="row">
+                                       <div class="col-sm-12">
+                                          <div class="panel panel-default" style="background-color:#ACC697;border-color:#8FB07A;">
+                                            <div class="panel-body" style="border: 5">
+                                                     <div class="dta dta0 dtaz">
+                                                        <h4><span><a href="<?php echo site_url('data/dataSpecies'); ?>" style="color: inherit;text-decoration: none;"><?php echo $post_cat_species_data->TITLE_NAME;?></a></span></h4>
+                                                       <p><?php echo $post_cat_species_data->BODY_DESC;?></p>
+                                                   </div>
+                                            </div>
+                                          </div>
+                                     </div>
+                                   </div>
+
+                                   <div class="row">
+                                       <div class="col-sm-12">
+                                          <div class="panel panel-default" style="background-color:#ACC697;border-color:#8FB07A;">
+                                            <div class="panel-body" style="border: 5">
+                                                      <div class="dta dta0 dtaz">
+                                                         <h4><span><a href="<?php echo base_url('resources/images/post_pic/'.$post_cat_acronyms_data->IMG_URL)?>" target="_blank" style="color: inherit;text-decoration: none;"><?php echo $post_cat_acronyms_data->TITLE_NAME;?></a></span></h4>
+
+                                    
+                                                </div>
+                                            </div>
+                                          </div>
+                                     </div>
+                                   </div>
                             </div>
-                  </section>
+                  </section> -->
 
             </div>
             <div id="myModal" class="modal">

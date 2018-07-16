@@ -294,6 +294,18 @@
          </div>
       </div>
    </div>
+
+            <input type="hidden" class="form-control input-sm" name ="EmissionFactor" value = "<?php echo (isset($EmissionFactor))?$EmissionFactor:'';?>"   class ="EmissionFactor" maxlength="64" placeholder="" />
+
+            <input type="hidden" class="form-control input-sm" name ="Unit" value = "<?php echo (isset($Unit))?$Unit:'';?>"   class ="Unit" maxlength="64" placeholder="" />
+            
+            <input type="hidden" class="form-control input-sm" name ="Value" value = "<?php echo (isset($Value))?$Value:'';?>"   class ="Value" maxlength="64" placeholder="" />
+
+             <input type="hidden" class="form-control input-sm" name ="location_name" value = "<?php echo (isset($location_name))?$location_name:'';?>"   class ="location_name" maxlength="64" placeholder="" />
+
+            <input type="hidden" class="form-control input-sm" name ="LatDD" value = "<?php echo (isset($LatDD))?$LatDD:'';?>"   class ="LatDD" maxlength="64" placeholder="" />
+
+            <input type="hidden" class="form-control input-sm" name ="LongDD" value = "<?php echo (isset($LongDD))?$LongDD:'';?>"   class ="LongDD" maxlength="64" placeholder="" />
         <div class="col-lg-6">
          <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
          </div>
@@ -315,6 +327,11 @@
                             {
                               echo count($biomassExpansionFacView);
                             }
+                            else if(isset($biomassExpFacgridMap))
+                            {
+                              echo count($biomassExpFacgridMap);
+                            }
+                            
                             else 
                             { 
                              echo $this->db->count_all_results('ef');
@@ -775,7 +792,7 @@ $(document).ready(function(){
         pointToLayer: function(feature,latlng){
           var marker = L.marker(latlng,{icon: ratIcon});
 
-          marker.bindPopup('<h4><b>Emission Factors : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.fao_biome+'<h5>Latitude :'+feature.properties.LatDD+' </h5><h5>Longitude :'+feature.properties.LongDD+' </h5><h5>Location name </h5>'+feature.properties.location_name);
+          marker.bindPopup('<h4><b>Emission Factors : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.Species+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Latitude :'+feature.properties.LatDD+' </h5><h5>Longitude :'+feature.properties.LongDD+' </h5><h5>Location name </h5>'+feature.properties.location_name+' </h5><h5><a href="<?php echo base_url(); ?>index.php/portal/biomassExpFacViewMapData/'+feature.properties.LatDD+'/'+feature.properties.LongDD+'">Refine search to view just these records &gt;&gt;</a></h5>');
 
           return marker;
         }

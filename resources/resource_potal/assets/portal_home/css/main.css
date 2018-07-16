@@ -110,13 +110,21 @@ main{
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+.content-datasource{
+    background-color: rgba(255,255,255, 0.4);
+    padding: 15px 8px 40px 8px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 .content>h2{
     margin-bottom: 30px;
     text-align: center;
 }
 .content>h3{
     text-align: center;
-    font-family: ahronbd;
+    font-family: 'Aharoni';
+    font-weight: 700;
     font-size: 22px;
 }
 .content>p{
@@ -265,7 +273,7 @@ footer{
 
 .fot-menu>ul>li{
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 10px;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-style: normal;
     font-size: 12px;
@@ -276,7 +284,7 @@ footer{
     height: 15px;
     background-color: #fff;
     content: "";
-    margin-left: 15px;
+    margin-left: 10px;
     margin-bottom: -2px;
 }
 .fot-menu>ul>li:last-child:after{

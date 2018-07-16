@@ -706,6 +706,18 @@ Class Forestdata_model extends CI_Model {
 
 
 
+    public function get_allometric_equation_grid_Mapdata($lat,$long,$limit,$page)
+  {
+    $data=$this->db->query("SELECT * FROM __view_allometric_eqn_search_tbl a where a.LatDD=$lat and a.LongDD=$long
+      LIMIT $limit OFFSET $page")->result();
+
+    //print($this->db->last_query());exit;
+     return $data;
+  }
+
+
+
+
 	 public function get_allometric_equation_grid_backup_for_Biomass_expansion_factors_menu()
 	{
 		$data=$this->db->query("SELECT ip.*, e.*,eco.*,b.*,d.*,dis.*,zon.*,s.*,r.*,f.*,g.* from ef_ipcc ip

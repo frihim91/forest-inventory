@@ -3,6 +3,7 @@
    .help-head{color:#A82400;}
    .form-group:hover .help{ background: #e3e3e3;}
 </style>
+
 <div class="col-md-12">
    <div class="col-md-6">
       <div class="panel panel-default">
@@ -39,9 +40,9 @@
                               <a class="label btn-danger btn-xs modalLink" href="<?php echo site_url('dashboard/ForestData/deleteFamily/'.$all_familys->ID_Family);?>">
                               <i class="glyphicon glyphicon-remove"></i>
                               </a>
-                              <span title="Edit  Module Name"
+                             <!--  <span title="Edit  Module Name"
                               href="http://localhost/forest-inventory/index.php/dashboard/securityAccess/edit_module/1"
-                              class="label label-info modalLink" style="cursor: pointer">Edit</span>
+                              class="label label-info modalLink" style="cursor: pointer">Edit</span> -->
                            </td>
                         </tr>
                         <?php
@@ -207,6 +208,121 @@
                            <td><?php echo $all_faobiomess->FAOBiomes; ?></td>
                            <td>
                               <a class="label btn-danger btn-xs deleteUrFao" href="<?php echo site_url('dashboard/ForestData/deleteFAOBiomes/'.$all_faobiomess->ID_FAOBiomes);?>">
+                              <i class="glyphicon glyphicon-remove"></i>
+                              </a>
+                           </td>
+                        </tr>
+                        <?php
+                           $i++;
+                           }
+                           ?>
+                     </tbody>
+                  </table>
+                  <?php
+                     } else {
+                         echo "<p class='text-danh text-danger'><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Data Found</p>";
+                     }
+                     ?>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+<div class="col-md-12">
+   <div class="col-md-6">
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <div class="widget-head">
+               <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Create New Page</a> -->
+
+               <a class="btn btn-sm btn-danger pull-right col-md-2 ModalBfiZone" ><i class="glyphicon glyphicon-plus"></i></a></a>
+               <small style="margin-left: 10px;">All BFI Zone</small>
+            </div>
+         </div>
+         <div class="panel-body">
+            <div class="row">
+               <div class="col-xs-12">
+                  <?php
+                     if (!empty($all_bfizone)) {
+                         ?>
+                  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example-bfi">
+                     <thead>
+                        <tr>
+                           <th>#</th>
+                           <th>BFI Zone</th>
+                            <th>Action</th>
+                         
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <?php
+                           $i = 1;
+                           foreach ($all_bfizone as $all_bfizones) {
+                               ?>
+                        <tr>
+                           <td><?php echo $i; ?></td>
+                           <td><?php echo $all_bfizones->Zones; ?></td>
+                          
+                           <td>
+                             <a class="label btn-danger btn-xs deleteUrlBfiZones" href="<?php echo site_url('dashboard/ForestData/deletebfiZones/'.$all_bfizones->ID_Zones);?>">
+                              <i class="glyphicon glyphicon-remove"></i>
+                              </a>
+                           </td>
+                        </tr>
+                        <?php
+                           $i++;
+                           }
+                           ?>
+                     </tbody>
+                  </table>
+                  <?php
+                     } else {
+                         echo "<p class='text-danh text-danger'><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Data Found</p>";
+                     }
+                     ?>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+<div class="col-md-6">
+      <div class="panel panel-default">
+         <div class="panel-heading">
+            <div class="widget-head">
+       
+
+               <a class="btn btn-sm btn-danger pull-right col-md-2 ModalBAgroZone" ><i class="glyphicon glyphicon-plus"></i></a></a>
+               <small style="margin-left: 10px;">All Bangladesh Agroecological Zone</small>
+            </div>
+         </div>
+         <div class="panel-body">
+            <div class="row">
+               <div class="col-xs-12">
+                  <?php
+                     if (!empty($all_bagrozone)) {
+                         ?>
+                  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example-baz">
+                     <thead>
+                        <tr>
+                           <th>#</th>
+                           <th>Bangladesh Agroecological Zone</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <?php
+                           $i = 1;
+                           foreach ($all_bagrozone as $all_bagrozones) {
+                               ?>
+                        <tr>
+                           <td><?php echo $i; ?></td>
+                           <td><?php echo $all_bagrozones->AEZ_NAME; ?></td>
+                           <td>
+                              <a class="label btn-danger btn-xs deleteUrlBAgroZone" href="<?php echo site_url('dashboard/ForestData/deleteBAgroZone/'.$all_bagrozones->MAJOR_AEZ);?>">
                               <i class="glyphicon glyphicon-remove"></i>
                               </a>
                            </td>
@@ -437,6 +553,77 @@
             </div>
         </div>
     </div>
+
+
+  <div class="modal fade" id="modalDefaultBfiZones" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <?php echo form_open('dashboard/ForestData/createBfiZones'); ?>
+                <div class="modal-header">
+                    <h4 class="modal-title">Add BFI Zone Name</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <label for="bfiZones" class="col-md-4 control-label">BFI Zone Name</label>
+                                <div class="col-md-8">
+                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'BFI Zone Name', 'id' => 'bfiZones', 'name' => 'bfiZones', 'value' => set_value('Zones'), 'required' => 'required')); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-4 help">
+                                <strong><span  class="help-head">Help: </span>BFI Zone Name</strong>
+                                <hr>
+                                <p class="muted">Please enter BFI Zone Name in english here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <span class="modal_msg pull-left"></span>
+                    <button type="submit" class="btn btn-sm btn-success" id="createBfiZones">Save</button>
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                </div>
+                <?php echo form_close(); ?>
+            </div>
+        </div>
+    </div>
+
+
+
+      <div class="modal fade" id="modalDefaultBAgroZone" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <?php echo form_open('dashboard/ForestData/createBAgroZone'); ?>
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Bangladesh Agroecological Zone</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <label for="bAgroZone" class="col-md-4 control-label">Bangladesh Agroecological Zone</label>
+                                <div class="col-md-8">
+                                    <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'Bangladesh Agroecological Zone', 'id' => 'bAgroZone', 'name' => 'bAgroZone', 'value' => set_value('bAgroZone'), 'required' => 'required')); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-4 help">
+                                <strong><span  class="help-head">Help: </span>Bangladesh Agroecological Zone</strong>
+                                <hr>
+                                <p class="muted">Please enter Bangladesh Agroecological Zone in english here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <span class="modal_msg pull-left"></span>
+                    <button type="submit" class="btn btn-sm btn-success" id="createBAgroZone">Save</button>
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                </div>
+                <?php echo form_close(); ?>
+            </div>
+        </div>
+    </div>
 <script type="text/javascript">
    $(document).on("click", "a.deleteUrl", function (e) {
         var result = confirm("Are you sure want to delete Family?");
@@ -495,6 +682,45 @@
    e.preventDefault();
    });
 
+      $(document).on("click", "a.deleteUrlBfiZones", function (e) {
+        var result = confirm("Are you sure want to delete BFI Zones?");
+        if(result == true){
+         var url = $(this).attr('href');
+          var removeRow = $(this).parent().parent();
+
+                     $.ajax({
+                         url: url,
+                         type: 'POST',
+                        // dataType: 'JSON',
+                         success: function (data) {
+                         window.location.href = "<?php echo site_url('dashboard/ForestData/speciesSetup');?>";
+
+                         }
+                     });
+        }
+   e.preventDefault();
+   });
+
+
+       $(document).on("click", "a.deleteUrlBAgroZone", function (e) {
+        var result = confirm("Are you sure want to delete Bangladesh Agroecological Zone?");
+        if(result == true){
+         var url = $(this).attr('href');
+          var removeRow = $(this).parent().parent();
+
+                     $.ajax({
+                         url: url,
+                         type: 'POST',
+                        // dataType: 'JSON',
+                         success: function (data) {
+                         window.location.href = "<?php echo site_url('dashboard/ForestData/speciesSetup');?>";
+
+                         }
+                     });
+        }
+   e.preventDefault();
+   });
+
      $(document).on("click", "a.deleteUrFao", function (e) {
         var result = confirm("Are you sure want to delete FAO Biomes?");
         if(result == true){
@@ -532,6 +758,17 @@
 
         $(document).on('click', '.ModalFAOBiomes', function (e) {
         $("#modalDefaultFAOBiomes").modal('show');
+        e.preventDefault();
+    });
+
+        $(document).on('click', '.ModalBfiZone', function (e) {
+        $("#modalDefaultBfiZones").modal('show');
+        e.preventDefault();
+    });
+
+
+        $(document).on('click', '.ModalBAgroZone', function (e) {
+        $("#modalDefaultBAgroZone").modal('show');
         e.preventDefault();
     });
 

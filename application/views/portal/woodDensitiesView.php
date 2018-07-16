@@ -167,6 +167,13 @@
                   </div>
                </div>
         </div>
+           <input type="hidden" class="form-control input-sm" name ="Density_ovendry" value = "<?php echo (isset($Density_ovendry))?$Density_ovendry:'';?>"   class ="Density_ovendry" maxlength="64" placeholder="" />
+
+            <input type="hidden" class="form-control input-sm" name ="Density_green" value = "<?php echo (isset($Density_green))?$Density_green:'';?>"   class ="Density_green" maxlength="64" placeholder="" />
+
+            <input type="hidden" class="form-control input-sm" name ="Density_airdry" value = "<?php echo (isset($Density_airdry))?$Density_airdry:'';?>"   class ="Density_airdry" maxlength="64" placeholder="" />
+
+             <input type="hidden" class="form-control input-sm" name ="location_name" value = "<?php echo (isset($location_name))?$location_name:'';?>" maxlength="64"  class ="location_name" placeholder="Year" />
            
  <!--            <div class="row">
                <h4>Height</h4>

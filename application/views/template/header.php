@@ -97,6 +97,14 @@ instead of the minified CSS loaded by default.
         });
     });
     </script>
+
+       <script>
+    $(document).ready(function() {
+        $('#dataTables-example4').DataTable({
+            responsive: true
+        });
+    });
+    </script>
     <script>
     $(document).ready(function() {
         $('#dataTables-example2').DataTable({
@@ -105,6 +113,26 @@ instead of the minified CSS loaded by default.
     });
      $(document).ready(function() {
         $('#dataTables-example3').DataTable({
+            responsive: true
+        });
+    });
+        $(document).ready(function() {
+        $('#dataTables-example-baz').DataTable({
+            responsive: true
+        });
+    });
+        $(document).ready(function() {
+        $('#dataTables-example-bfi').DataTable({
+            responsive: true
+        });
+    });
+        $(document).ready(function() {
+        $('#dataTables-example-loc-group').DataTable({
+            responsive: true
+        });
+    });
+         $(document).ready(function() {
+        $('#dataTables-example-group-species').DataTable({
             responsive: true
         });
     });

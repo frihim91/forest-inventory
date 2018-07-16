@@ -7,14 +7,102 @@
             where t.CAT_ID=1")->row();
   ?>
 
+<?php 
+$menus = $this->Menu_model->get_all_menu();
+
+?>
+
  <div class="container">
     <div class="row">
         <div class="col-sm-6">
             <div class="fot-menu">
                 <ul>
-                   <li><a href="<?php echo site_url('portal/index'); ?>">Home</a></li>
-                   <!--  <li><a href="<?php echo site_url('dashboard/auth/index')?>">Admin Login</a></li> -->
-                   <li><a href="<?php echo site_url('accounts/userRegistration')?>">Registration</a></li>
+
+                  <?php 
+
+                foreach($menus as $pm) {
+                     $lang_ses = $this->session->userdata("site_lang");
+
+                    $link=$this->Menu_model->get_chile_menu($pm->TITLE_ID);
+                    $count=count($link);
+                    if($count>0)
+                    {
+                        $className="dropdown";
+                    }
+                    else 
+                    {
+                        $className='';
+                    }
+
+                    ?>
+                    
+                    <li class="<?php echo $className; ?>">
+                        <a href="<?php echo site_url('portal/details/'.$pm->TITLE_ID.'/'.$pm->PG_URI); ?>" class="dropdown-toggle" data-toggle="<?php echo $className; ?>" role="button" aria-haspopup="true" aria-expanded="false"> 
+                           <?php 
+                           if(!empty($pm->TITLE_NAME_BN))
+                                {
+                                    if ($lang_ses == "bangla") 
+                                    {
+                                        echo $pm->TITLE_NAME_BN;
+                                    } 
+                                    else
+                                    {
+                                        echo $pm->TITLE_NAME;
+                                    }
+                                }
+                                else 
+                                {
+                                    echo $pm->TITLE_NAME;
+                                }
+                           ?> 
+                            <?php if($count>0)
+                            {
+                                echo '<span class="caret"></span>';
+                            }
+                            ?>
+
+                        </a>
+                        <ul class="dropdown-menu">
+                            <?php foreach($link as $links){
+                                ?>
+                                <li ><a href="<?php echo site_url('portal/details/'.$links->TITLE_ID.'/'.$links->PG_URI); ?>"> <?php
+                                $lang_ses = $this->session->userdata("site_lang");
+                                
+                                if(!empty($links->TITLE_NAME_BN))
+                                {
+                                    if ($lang_ses == "bangla") 
+                                    {
+                                        echo $links->TITLE_NAME_BN;
+                                    } 
+                                    else
+                                    {
+                                        echo $links->TITLE_NAME;
+                                    }
+                                }
+                                else 
+                                {
+                                     echo $links->TITLE_NAME;
+                                }
+
+                                ?> 
+                                </a></li>
+                                  <!--<li role="presentation" class="divider"></li>-->
+                                <?php 
+                            } ?>
+
+
+                        </ul>
+                    </li>
+
+                    <?php 
+                }
+                ?>
+
+
+
+
+                   <!-- <li><a href="<?php echo site_url('portal/index'); ?>">Home</a></li>
+                   <li><a href="<?php echo site_url('accounts/userRegistration')?>">Registration</a></li> -->
                </ul>
            </div>
        </div>

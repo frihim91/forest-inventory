@@ -628,18 +628,28 @@ public function search_allometricequation_key()
         $data['Zones'] = $this->Forestdata_model->get_all_zones();
         //print_r($data['Zones']);exit;
         $data['Division'] = $this->Forestdata_model->get_all_division();
-        // $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(c.output)) OUTPUT,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
-        // fnc_ae_species_data(a.LatDD,a.LongDD) species_desc FROM location a
-        // LEFT JOIN group_location b ON a.ID_Location=b.location_id
-        // LEFT JOIN ae c ON b.group_id=c.location_group
-        // -- LEFT JOIN species d ON c.Species=d.ID_Species
-        //  LEFT JOIN species_group sr ON c.Species=sr.Speciesgroup_ID
-        // LEFT JOIN species d ON sr.ID_Species=d.ID_Species
-        
-        // LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
-        // WHERE c.ID_AE IS NOT NULL
-        // GROUP BY LatDD,LongDD";
+    
         $jsonQuery="SELECT * from __view_allometric_equ_search_map a";
+        // $jsonQuery="SELECT l.latDD y,l.longDD x,GROUP_CONCAT(DISTINCT(a.output)) OUTPUT,GROUP_CONCAT(DISTINCT(FAOBiomes)) FAOBiomes,COUNT(FAOBiomes)total_species,
+        //    GROUP_CONCAT(DISTINCT(l.location_name)) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
+        //    LEFT JOIN species s ON sg.ID_Species=s.ID_Species
+        //    WHERE a.species=sg.Speciesgroup_ID) species_desc,l.LatDD,l.LongDD,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
+        //    LEFT JOIN species s ON sg.ID_Species=s.ID_Species
+        //    WHERE a.Species=sg.Speciesgroup_ID) Species FROM location l
+        //    LEFT JOIN group_location lg ON l.ID_Location=lg.location_id
+        //    LEFT JOIN ae a ON lg.group_id=a.location_group
+        //    LEFT JOIN species_group sr ON a.Species=sr.Speciesgroup_ID
+        //    LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+        //    LEFT JOIN family f ON s.ID_Family=f.ID_Family
+        //    LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
+        //    LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
+        //    LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
+        //    LEFT JOIN division d ON l.ID_Division=d.ID_Division
+        //    LEFT JOIN district dis ON l.ID_District =dis.ID_District
+        //    LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
+        //    LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
+        //    WHERE a.ID_AE IS NOT NULL
+        //    GROUP BY LatDD,LongDD";
         $jsonQueryEncode=base64_encode($jsonQuery);
         $data['jsonQuery']=$jsonQueryEncode;
         // echo json_encode($data['jsonData']);
@@ -657,7 +667,7 @@ public function search_allometricequation_key()
         $sql =$query1;
         if (isset($_GET['bbox']) || isset($_POST['bbox'])) {
           $bbox = explode(',', $_GET['bbox']);
-          $sql = $sql . ' WHERE x <= ' . $bbox[2] . ' AND x >= ' . $bbox[0] . ' AND y <= ' . $bbox[3] . ' AND y >= ' . $bbox[1];
+          $sql = $sql . ' WHERE x1 <= ' . $bbox[2] . ' AND x1 >= ' . $bbox[0] . ' AND y1<= ' . $bbox[3] . ' AND y1 >= ' . $bbox[1];
         }
         $rs = $conn->query($sql);
         if (!$rs) {
@@ -673,15 +683,15 @@ public function search_allometricequation_key()
         while ($row = $rs->fetch(PDO::FETCH_ASSOC)) {
           $properties = $row;
           # Remove x and y fields from properties (optional)
-          unset($properties['x']);
-          unset($properties['y']);
+          unset($properties['x1']);
+          unset($properties['y1']);
           $feature = array(
             'type' => 'Feature',
             'geometry' => array(
               'type' => 'Point',
               'coordinates' => array(
-                $row['x'],
-                $row['y']
+                $row['x1'],
+                $row['y1']
               )
             ),
             'properties' => $properties

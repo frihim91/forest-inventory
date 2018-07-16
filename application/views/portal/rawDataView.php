@@ -58,6 +58,17 @@
    <div class="col-sm-12">
       <ul class="nav nav-tabs">
          <li class="<?php if(!isset($searchType)){ echo 'active'; } ?>" ><a data-toggle="tab" href="#home">Keyword</a></li>
+          <li class="<?php if(isset($searchType)){
+            if($searchType==5)
+            {
+              echo 'active';
+            }
+            else {
+              echo '';
+            }
+          }  ?>
+          "
+          ><a data-toggle="tab" href="#menu5">Component</a></li>
          <li class="
             <?php if(isset($searchType)){
                if($searchType==2)
@@ -164,6 +175,18 @@
                   </div>
                 </div>
               </div>
+
+                <input type="hidden" class="form-control input-sm" name ="H_m" value = "<?php echo (isset($H_m))?$H_m:'';?>"   class ="H_m" maxlength="64" placeholder="" />
+
+                <input type="hidden" class="form-control input-sm" name ="Volume_m3" value = "<?php echo (isset($Volume_m3))?$Volume_m3:'';?>"   class ="Volume_m3" maxlength="64" placeholder="" />
+
+                <input type="hidden" class="form-control input-sm" name ="DBH_cm" value = "<?php echo (isset($DBH_cm))?$DBH_cm:'';?>"   class ="DBH_cm" maxlength="64" placeholder="" />
+
+                <input type="hidden" class="form-control input-sm" name ="location_name" value = "<?php echo (isset($location_name))?$location_name:'';?>" maxlength="64"  class ="location_name" placeholder="Year" />
+
+                <input type="hidden" class="form-control input-sm" name ="LatDD" value = "<?php echo (isset($LatDD))?$LatDD:'';?>" maxlength="64"  class ="LatDD" placeholder="Year" />
+
+                <input type="hidden" class="form-control input-sm" name ="LongDD" value = "<?php echo (isset($LongDD))?$LongDD:'';?>" maxlength="64"  class ="LongDD" placeholder="Year" />
                 <!-- <div class="col-md-12">
                   <div class="form-group">
                      <label>Volume (m3)<span style="color:red;"></span></label>
@@ -174,6 +197,148 @@
                </div> -->
             
          </div>
+
+         <div id="menu5" class="tab-pane fade">
+                <p>Search by tree components such as branch diameter, leaves, stump and fruit
+                  <br>
+                  EB Bark: Yes + Rf Fine Roots: Yes,F Fruit: No +  S Stump: Yes
+                </p>
+                <!--  <form action="<?php echo site_url('portal/search_allometricequation_ref');?>" method = "post"> -->
+                <div class="col-md-4">
+                  <div class="form-group">
+                  <label class="control-label" style="float: left;clear: left;width: 130px;">B - Bark <span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="B" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="control-label" style="float: left;clear: left;width: 130px;">Bd - Dead branches<span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="Bd" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="control-label" style="float: left;clear: left;width: 130px;">Bg - Big branches<span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="Bg" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="control-label" style="float: left;clear: left;width: 130px;">Bt - Thin branches<span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="Bt" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="control-label" style="float: left;clear: left;width: 130px;">L - Leaves<span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="L" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="control-label" style="float: left;clear: left;width: 130px;">Rb - Large roots<span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="Rb" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="control-label" style="float: left;clear: left;width: 130px;">Rf - Fine roots<span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="Rf" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="control-label" style="float: left;clear: left;width: 130px;">Rm - Medium roots<span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="Rm" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="control-label" style="float: left;clear: left;width: 130px;">S - Stump<span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="S" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="control-label" class="control-label" style="float: left;clear: left;width: 130px;">T - Trunks<span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="T" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="control-label" style="float: left;clear: left;width: 130px;">F - Fruit<span style="color:red;"></span></label>
+                  <div class="controls ">
+                  <select class="select form-control" name="F" style="width:70px">
+                  <option value="" selected="selected"></option>
+                  <option value="NA">No</option>
+                  <option value="1">Yes</option>
+                  </select>
+                </div>
+                  </div>
+              
+              
+              
+                </div>
+
+           <div class="col-lg-8">
+              <img src="<?php echo base_url('resources/images/component.png')?>" class="img-responsive" width="500">
+           </div>
+                <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
+                  
+
+
+              </div>
+               <input type="hidden" class="form-control input-sm" name ="location_name" value = "<?php echo (isset($location_name))?$location_name:'';?>" maxlength="64"  class ="location_name" placeholder="Year" />
          <div id="menu1" class="tab-pane fade">
             <p> Search Raw Data by family, genus or species.
                Example searches
@@ -341,6 +506,7 @@
          </div>
       </div>
    </div>
+      <input type="hidden" class="form-control input-sm" name ="location_name" value = "<?php echo (isset($location_name))?$location_name:'';?>"   class ="location_name" maxlength="64" placeholder="" />
     <div class="col-lg-6">
          <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
          </div>
@@ -362,6 +528,10 @@
                             else if(isset($rawDataView))
                             {
                               echo count($rawDataView);
+                            }
+                             else if(isset($rawDatagridMap))
+                            {
+                              echo count($rawDatagridMap);
                             }
                             else 
                             { 
@@ -846,7 +1016,7 @@ function () {
         L.geoJson(data,{
           pointToLayer: function(feature,latlng){
             var marker = L.marker(latlng,{icon: ratIcon});
-            marker.bindPopup('<h4><b>Raw Data : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.species_desc+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Latitude :'+feature.properties.LatDD+' </h5><h5>Longitude :'+feature.properties.LongDD+' </h5><h5>Location name </h5>'+feature.properties.location_name);
+            marker.bindPopup('<h4><b>Raw Data : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.Species+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Latitude :'+feature.properties.LatDD+' </h5><h5>Longitude :'+feature.properties.LongDD+' </h5><h5>Location name </h5>'+feature.properties.location_name+' </h5><h5><a href="<?php echo base_url(); ?>index.php/portal/rawDataViewMapData/'+feature.properties.LatDD+'/'+feature.properties.LongDD+'">Refine search to view just these records &gt;&gt;</a></h5>');
             return marker;
           }
         }).addTo(map);

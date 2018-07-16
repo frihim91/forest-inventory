@@ -56,7 +56,7 @@
           </a>
 
         </li>
-        <?php 
+ <!--        <?php 
 
         foreach($menus as $pm) {
          $lang_ses = $this->session->userdata("site_lang");
@@ -124,7 +124,7 @@
 
              ?> 
            </a></li>
-           <!--<li role="presentation" class="divider"></li>-->
+          
            <?php 
          } ?>
 
@@ -135,7 +135,7 @@
      <?php 
    }
    ?>
-
+ -->
 
 
 

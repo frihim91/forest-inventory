@@ -210,9 +210,32 @@ class ForestData extends CI_Controller
             order by s.ID_Species desc")->result();
         $data['all_faobiomes']     = $this->db->query("SELECT * from faobiomes bio
             order by bio.ID_FAOBiomes desc")->result();
+         $data['all_bfizone']     = $this->db->query("SELECT * from zones zon
+            order by zon.ID_Zones desc")->result();
+           $data['all_bagrozone']     = $this->db->query("SELECT * from bd_aez1988 bag
+            order by bag.MAJOR_AEZ desc")->result();
         $data['content_view_page'] = 'setup/species/all_species';
         $this->template->display($data);
     }
+
+
+
+        public function groupData()
+        {
+            $data["breadcrumbs"]        = array(
+                "Group Data" => "dashboard/ForestData/groupData"
+            );
+            $data['pageTitle']          = "All Group Data List";
+            $data['all_group_location'] = $this->db->query("SELECT GROUP_CONCAT(l.location_name  SEPARATOR ', ') location_name,lg.group_id from group_location lg LEFT JOIN location l ON lg.location_id=l.ID_Location
+                GROUP BY lg.group_id
+                order by lg.group_id ASC")->result();
+            $data['all_species_group']   = $this->db->query("SELECT group_concat(DISTINCT(s.Species))as Species,sg.Speciesgroup_ID from species_group sg
+                LEFT JOIN species s ON sg.ID_Species=s.ID_Species 
+                GROUP BY sg.Speciesgroup_ID 
+                order by sg.Speciesgroup_ID ASC")->result();
+            $data['content_view_page']   = 'setup/groupData/all_groupdata';
+            $this->template->display($data);
+        }
 
 
 
@@ -425,6 +448,22 @@ class ForestData extends CI_Controller
     }
 
 
+    public function deletebfiZones($id)
+    {
+
+        $attr = array(
+            "ID_Zones" => $id
+        );
+        //return $this->utilities->deleteRowByAttribute("species", $attr);
+        if ($this->utilities->deleteRowByAttribute("zones", $attr)) {
+            $this->session->set_flashdata('Error', ' Zone Deleted Successfully.');
+        } else {
+            $this->session->set_flashdata('Error', 'Zone Not Deleted Successfull.');
+        }
+
+    }
+
+
     /*
      * @methodName createFAOBiomes()
      * @access public
@@ -441,6 +480,45 @@ class ForestData extends CI_Controller
             redirect('dashboard/ForestData/speciesSetup');
         }
     }
+
+
+
+      /*
+     * @methodName createBfiZones()
+     * @access public
+     * @param  none
+     * @return add BFI Zone page
+     */
+    public function createBfiZones()
+    {
+        $bfiZones = array(
+            'Zones' => $this->input->post('bfiZones')
+        );
+        if ($this->utilities->insertData($bfiZones, 'zones')) {
+            $this->session->set_flashdata('Success', 'New BFI Zone Added Successfully.');
+            redirect('dashboard/ForestData/speciesSetup');
+        }
+    }
+
+
+
+    /*
+     * @methodName createBAgroZone()
+     * @access public
+     * @param  none
+     * @return add Bangladesh Agroecological Zone page
+     */
+    public function createBAgroZone()
+    {
+        $bAgroZone = array(
+            'AEZ_NAME' => $this->input->post('bAgroZone')
+        );
+        if ($this->utilities->insertData($bAgroZone, 'bd_aez1988')) {
+            $this->session->set_flashdata('Success', 'New Bangladesh Agroecological Zone Added Successfully.');
+            redirect('dashboard/ForestData/speciesSetup');
+        }
+    }
+
 
 
 
@@ -463,6 +541,30 @@ class ForestData extends CI_Controller
             $this->session->set_flashdata('Error', ' FAOBiomes Deleted Successfully.');
         } else {
             $this->session->set_flashdata('Error', 'FAOBiomes Deleted Successfull.');
+        }
+
+    }
+
+
+        /*
+     * @methodName deleteBAgroZone()
+     * @access public
+     * @param  $id
+     * @return delete deleteBAgroZone
+     */
+
+
+    public function deleteBAgroZone($id)
+    {
+
+        $attr = array(
+            "MAJOR_AEZ" => $id
+        );
+        //return $this->utilities->deleteRowByAttribute("ef", $attr);
+        if ($this->utilities->deleteRowByAttribute("bd_aez1988", $attr)) {
+            $this->session->set_flashdata('Error', 'Bangladesh Agroecological Zone Deleted Successfully.');
+        } else {
+            $this->session->set_flashdata('Error', 'Bangladesh Agroecological Zone Deleted Successfull.');
         }
 
     }

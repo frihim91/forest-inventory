@@ -339,6 +339,62 @@ private function getDtByAttrAe($attr)
     $returnArray[]='Species';
     $returnArray[]='a.';
     break;
+    case "location_name":
+    $returnArray[]='location_name';
+    $returnArray[]='a.';
+    break;
+    case "LatDD":
+    $returnArray[]='LatDD';
+    $returnArray[]='a.';
+    break;
+    case "LongDD":
+    $returnArray[]='LongDD';
+    $returnArray[]='a.';
+    break;
+     case "B":
+    $returnArray[]='B';
+    $returnArray[]='a.';
+    break;
+    case "Bd":
+    $returnArray[]='Bd';
+    $returnArray[]='a.';
+    break;
+    case "Bg":
+    $returnArray[]='Bg';
+    $returnArray[]='a.';
+    break;
+    case "Bt":
+    $returnArray[]='Bt';
+    $returnArray[]='a.';
+    break;
+      case "L":
+    $returnArray[]='L';
+    $returnArray[]='a.';
+    break;
+    case "Rb":
+    $returnArray[]='Rb';
+    $returnArray[]='a.';
+    break;
+    case "Rf":
+    $returnArray[]='Rf';
+    $returnArray[]='a.';
+    break;
+    case "Rm":
+    $returnArray[]='Rm';
+    $returnArray[]='a.';
+    break;
+    case "S":
+    $returnArray[]='S';
+    $returnArray[]='a.';
+    break;
+    case "T":
+    $returnArray[]='T';
+    $returnArray[]='a.';
+    break;
+    case "F":
+    $returnArray[]='F';
+    $returnArray[]='a.';
+    break;
     case "Equation_VarNames":
     $returnArray[]='Equation_VarNames';
     $returnArray[]='a.';
@@ -548,8 +604,72 @@ private function getDtByAttrRaw($attr)
     $returnArray[]='Volume_m3';
     $returnArray[]='r.';
     break;
+    case "H_m":
+    $returnArray[]='H_m';
+    $returnArray[]='r.';
+    break;
+    case "Volume_m3":
+    $returnArray[]='Volume_m3';
+    $returnArray[]='r.';
+    break;
     case "DBH_cm":
-    $returnArray[]='Tree Diameter (DBH_cm)';
+    $returnArray[]='Tree Diameter (cm)';
+    $returnArray[]='r.';
+    break;
+    case "location_name":
+    $returnArray[]='location_name';
+    $returnArray[]='r.';
+    break;
+    case "LatDD":
+    $returnArray[]='LatDD';
+    $returnArray[]='r.';
+    break;
+    case "LongDD":
+    $returnArray[]='LongDD';
+    $returnArray[]='r.';
+    break;
+     case "B":
+    $returnArray[]='B';
+    $returnArray[]='r.';
+    break;
+    case "Bd":
+    $returnArray[]='Bd';
+    $returnArray[]='r.';
+    break;
+    case "Bg":
+    $returnArray[]='Bg';
+    $returnArray[]='r.';
+    break;
+    case "Bt":
+    $returnArray[]='Bt';
+    $returnArray[]='r.';
+    break;
+      case "L":
+    $returnArray[]='L';
+    $returnArray[]='r.';
+    break;
+    case "Rb":
+    $returnArray[]='Rb';
+    $returnArray[]='r.';
+    break;
+    case "Rf":
+    $returnArray[]='Rf';
+    $returnArray[]='r.';
+    break;
+    case "Rm":
+    $returnArray[]='Rm';
+    $returnArray[]='r.';
+    break;
+    case "S":
+    $returnArray[]='S';
+    $returnArray[]='r.';
+    break;
+    case "T":
+    $returnArray[]='T';
+    $returnArray[]='r.';
+    break;
+    case "F":
+    $returnArray[]='F';
     $returnArray[]='r.';
     break;
     case "Family":
@@ -775,7 +895,7 @@ public function getMapJsonData($query)
   $sql =$query1;
   if (isset($_GET['bbox']) || isset($_POST['bbox'])) {
     $bbox = explode(',', $_GET['bbox']);
-    $sql = $sql . ' WHERE x <= ' . $bbox[2] . ' AND x >= ' . $bbox[0] . ' AND y <= ' . $bbox[3] . ' AND y >= ' . $bbox[1];
+    $sql = $sql . ' WHERE x1 <= ' . $bbox[2] . ' AND x1 >= ' . $bbox[0] . ' AND y1 <= ' . $bbox[3] . ' AND y1 >= ' . $bbox[1];
   }
   $rs = $conn->query($sql);
   if (!$rs) {
@@ -791,15 +911,15 @@ public function getMapJsonData($query)
   while ($row = $rs->fetch(PDO::FETCH_ASSOC)) {
     $properties = $row;
         # Remove x and y fields from properties (optional)
-    unset($properties['x']);
-    unset($properties['y']);
+    unset($properties['x1']);
+    unset($properties['y1']);
     $feature = array(
       'type' => 'Feature',
       'geometry' => array(
         'type' => 'Point',
         'coordinates' => array(
-          $row['x'],
-          $row['y']
+          $row['x1'],
+          $row['y1']
         )
       ),
       'properties' => $properties
@@ -831,6 +951,30 @@ private function getDtByAttrEmission($attr)
     break;
     case "Species":
     $returnArray[]='Species';
+    $returnArray[]='e.';
+    break;
+      case "EmissionFactor":
+    $returnArray[]='EmissionFactor';
+    $returnArray[]='e.';
+    break;
+    case "Unit":
+    $returnArray[]='Unit';
+    $returnArray[]='e.';
+    break;
+    case "location_name":
+    $returnArray[]='location_name';
+    $returnArray[]='e.';
+    break;
+    case "LatDD":
+    $returnArray[]='LatDD';
+    $returnArray[]='e.';
+    break;
+    case "LongDD":
+    $returnArray[]='LongDD';
+    $returnArray[]='e.';
+    break;
+      case "Value":
+    $returnArray[]='Value';
     $returnArray[]='e.';
     break;
     case "Division":
@@ -1018,6 +1162,14 @@ private function getDtByAttrWd($attr)
     $returnArray[]='Density_ovendry';
     $returnArray[]='w.';
     break;
+     case "Density_green":
+    $returnArray[]='Density_green';
+    $returnArray[]='w.';
+    break;
+     case "Density_airdry":
+    $returnArray[]='Density_airdry';
+    $returnArray[]='w.';
+    break;
     case "Family":
     $returnArray[]='Family';
     $returnArray[]='f.';
@@ -1058,6 +1210,10 @@ private function getDtByAttrWd($attr)
     case "H_tree_max":
     $returnArray[]='Maximum Height';
     $returnArray[]='w.';
+    break;
+    case "location_name":
+    $returnArray[]='location_name';
+    $returnArray[]='l.';
     break;
     case "H_tree_min":
     $returnArray[]='Minimum Height';
@@ -2997,7 +3153,7 @@ function up_union_by_dis_id() {
 
 
 
-      /*
+  /*
    * @methodName allometricEquationViewSpeciesData()
    * @access public
    * @param  none
@@ -3025,14 +3181,15 @@ function up_union_by_dis_id() {
       $config["uri_segment"] = 4;
 
       $this->pagination->initialize($config);
-      $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(c.output)) OUTPUT,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
-      fnc_ae_species_data(a.LatDD,a.LongDD) species_desc FROM location a
-      LEFT JOIN group_location b ON a.ID_Location=b.location_id
-      LEFT JOIN ae c ON b.group_id=c.location_group
-      LEFT JOIN species d ON c.Species=d.ID_Species
-      LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
-      WHERE c.ID_AE IS NOT NULL
-      GROUP BY LatDD,LongDD";
+      // $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(c.output)) OUTPUT,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+      // fnc_ae_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+      // LEFT JOIN group_location b ON a.ID_Location=b.location_id
+      // LEFT JOIN ae c ON b.group_id=c.location_group
+      // LEFT JOIN species d ON c.Species=d.ID_Species
+      // LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+      // WHERE c.ID_AE IS NOT NULL
+      // GROUP BY LatDD,LongDD";
+      $jsonQuery="SELECT * from __view_allometric_equ_search_map a where Species like '%$speciesNameDecode%'";
       $jsonQueryEncode=base64_encode($jsonQuery);
       $data['jsonQuery']=$jsonQueryEncode;
       $data['allometricEquationDatagrid'] = $this->Forestdata_model->get_allometric_equation_grid_Speciesdata($speciesNameDecode,$limit,$page);
@@ -3048,6 +3205,165 @@ function up_union_by_dis_id() {
         ")->result();
       $this->template->display_portal($data);
     }
+
+
+
+
+
+
+
+
+  /*
+   * @methodName allometricEquationViewMapData()
+   * @access public
+   * @param  none
+   * @return Allometric Equation Map View Data
+   */
+
+
+      public function allometricEquationViewMapData($lat,$long)
+      {  
+        $this->load->library('pagination');
+        $config             = array();
+        $config["base_url"] = base_url() . "index.php/portal/allometricEquationViewMapData/".$lat.'/'.$long;
+        $total_ae      = $this->db->count_all("ae");
+
+        $config["total_rows"] = $total_ae;
+
+        $total_ae=$this->db->query("SELECT * from __view_allometric_equ_search_map a where a.LatDD=$lat and a.LongDD=$long 
+       
+         ")->num_rows();
+      // print_r($this->db->last_query());exit;
+      // echo $total_ae;exit;
+        $config["total_rows"] =$total_ae;
+      // $config["total_rows"] = 800;
+
+        $config["per_page"]        = 20;
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $limit                     = $config["per_page"];
+        $config["uri_segment"] = 4;
+      //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+      //pagination style end
+        $this->pagination->initialize($config);
+        // $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        // fnc_wd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        // LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        // LEFT JOIN wd w ON b.group_id=w.location_group
+        // LEFT JOIN species d ON w.ID_species=d.ID_Species
+        // LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        // WHERE w.ID_WD IS NOT NULL
+        // GROUP BY LatDD,LongDD";
+        $jsonQuery="SELECT * from __view_allometric_equ_search_map a where a.LatDD like '%$lat%' and a.LongDD like '%$long%'";
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
+        $data['allometricEquationDatagridMap'] = $this->db->query("SELECT * from __view_allometric_eqn_search_tbl a where a.LatDD like '%$lat%' and a.LongDD like '%$long%'
+       ")->result();
+        $data["links"]             = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/allometricEquationPage';
+        $string="a.LatDD like '%$lat%' and a.LongDD like '%$long%'";
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+        $data['strs']=$string;
+        $this->template->display_portal($data);
+    }
+
+
+
+
+
+  /*
+   * @methodName rawDataViewMapData()
+   * @access public
+   * @param  none
+   * @return Raw Data Map View Data
+   */
+
+
+      public function rawDataViewMapData($lat,$long)
+      {  
+        $this->load->library('pagination');
+        $config             = array();
+        $config["base_url"] = base_url() . "index.php/portal/rawDataViewMapData/".$lat.'/'.$long;
+        $total_rawData      = $this->db->count_all("rd");
+
+        $config["total_rows"] = $total_rawData;
+
+        $total_rawData=$this->db->query("SELECT * from __view_raw_data_search_map r where r.LatDD=$lat and r.LongDD=$long 
+       
+         ")->num_rows();
+      // print_r($this->db->last_query());exit;
+      // echo $total_ae;exit;
+        $config["total_rows"] =$total_rawData;
+      // $config["total_rows"] = 800;
+
+        $config["per_page"]        = 20;
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $limit                     = $config["per_page"];
+        $config["uri_segment"] = 4;
+      //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+      //pagination style end
+        $this->pagination->initialize($config);
+        // $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        // fnc_wd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        // LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        // LEFT JOIN wd w ON b.group_id=w.location_group
+        // LEFT JOIN species d ON w.ID_species=d.ID_Species
+        // LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        // WHERE w.ID_WD IS NOT NULL
+        // GROUP BY LatDD,LongDD";
+        $jsonQuery="SELECT * from __view_raw_data_search_map r where r.LatDD like '%$lat%' and r.LongDD like '%$long%'";
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
+        $data['rawDatagridMap'] = $this->db->query("SELECT * from __view_raw_data_search_tbl r where r.LatDD like '%$lat%' and r.LongDD like '%$long%'
+       ")->result();
+        $data["links"]             = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/rawDataView';
+        $string="r.LatDD like '%$lat%' and r.LongDD like '%$long%'";
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+        $data['strs']=$string;
+        $this->template->display_portal($data);
+    }
+
+
 
 
 
@@ -3138,14 +3454,15 @@ function up_union_by_dis_id() {
     $config["uri_segment"] = 4;
     $this->pagination->initialize($config);
     $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-    $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
-    fnc_ef_species_data(a.LatDD,a.LongDD) species_desc FROM location a
-    LEFT JOIN group_location b ON a.ID_Location=b.location_id
-    LEFT JOIN ef c ON b.group_id=c.group_location
-    LEFT JOIN species d ON c.Species=d.ID_Species
-    LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
-    WHERE c.ID_EF IS NOT NULL
-    GROUP BY LatDD,LongDD";
+    // $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+    // fnc_ef_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+    // LEFT JOIN group_location b ON a.ID_Location=b.location_id
+    // LEFT JOIN ef c ON b.group_id=c.group_location
+    // LEFT JOIN species d ON c.Species=d.ID_Species
+    // LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+    // WHERE c.ID_EF IS NOT NULL
+    // GROUP BY LatDD,LongDD";
+     $jsonQuery="SELECT * from __view_emission_fac_search_map e where Species like '%$speciesNameDecode%'";
     $jsonQueryEncode=base64_encode($jsonQuery);
     $data['jsonQuery']=$jsonQueryEncode;
 
@@ -3164,6 +3481,85 @@ function up_union_by_dis_id() {
       ")->result();
     $this->template->display_portal($data);
   }
+
+
+
+
+    /*
+   * @methodName rawDataViewMapData()
+   * @access public
+   * @param  none
+   * @return Raw Data Map View Data
+   */
+
+
+      public function biomassExpFacViewMapData($lat,$long)
+      {  
+        $this->load->library('pagination');
+        $config             = array();
+        $config["base_url"] = base_url() . "index.php/portal/biomassExpFacViewMapData/".$lat.'/'.$long;
+        $total_ef      = $this->db->count_all("ef");
+
+        $config["total_rows"] = $total_ef;
+
+        $total_ef=$this->db->query("SELECT * from __view_emission_fac_search_map e where e.LatDD=$lat and e.LongDD=$long 
+       
+         ")->num_rows();
+      // print_r($this->db->last_query());exit;
+      // echo $total_ae;exit;
+        $config["total_rows"] =$total_ef;
+      // $config["total_rows"] = 800;
+
+        $config["per_page"]        = 20;
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $limit                     = $config["per_page"];
+        $config["uri_segment"] = 4;
+      //pagination style start
+        $config['full_tag_open']   = '<ul class="pagination">';
+        $config['full_tag_close']  = '</ul>';
+        $config['prev_link']       = '&lt;';
+        $config['prev_tag_open']   = '<li>';
+        $config['prev_tag_close']  = '</li>';
+        $config['next_link']       = '&gt;';
+        $config['next_tag_open']   = '<li>';
+        $config['next_tag_close']  = '</li>';
+        $config['cur_tag_open']    = '<li class="current"><a href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+        $config['num_tag_open']    = '<li>';
+        $config['num_tag_close']   = '</li>';
+        $config['first_tag_open']  = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open']   = '<li>';
+        $config['last_tag_close']  = '</li>';
+        $config['first_link']      = 'First';
+        $config['last_link']       = 'Last';
+      //pagination style end
+        $this->pagination->initialize($config);
+        // $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+        // fnc_wd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+        // LEFT JOIN group_location b ON a.ID_Location=b.location_id
+        // LEFT JOIN wd w ON b.group_id=w.location_group
+        // LEFT JOIN species d ON w.ID_species=d.ID_Species
+        // LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+        // WHERE w.ID_WD IS NOT NULL
+        // GROUP BY LatDD,LongDD";
+        $jsonQuery="SELECT * from __view_emission_fac_search_map e where e.LatDD like '%$lat%' and e.LongDD like '%$long%'";
+        $jsonQueryEncode=base64_encode($jsonQuery);
+        $data['jsonQuery']=$jsonQueryEncode;
+        $data['biomassExpFacgridMap'] = $this->db->query("SELECT * from __view_emission_fac_search_tbl e where e.LatDD like '%$lat%' and e.LongDD like '%$long%'
+       ")->result();
+        $data["links"]             = $this->pagination->create_links();
+        $data['content_view_page'] = 'portal/biomassExpansionFacView';
+        $string="e.LatDD like '%$lat%' and e.LongDD like '%$long%'";
+        $string=base64_encode($string);
+        $string= str_replace("=","abyz",$string);
+        $data['string']=$string;
+        $data['strs']=$string;
+        $this->template->display_portal($data);
+    }
+
+
+
 
 
 
@@ -4158,15 +4554,16 @@ function up_union_by_dis_id() {
       //pagination style end
     $this->pagination->initialize($config);
     $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-    $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
-    fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
-    LEFT JOIN group_location b ON a.ID_Location=b.location_id
-    LEFT JOIN rd r ON b.group_id=r.location_group
-    LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
-    LEFT JOIN species s ON sr.ID_Species=s.ID_Species
-    LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
-    WHERE r.ID IS NOT NULL
-    GROUP BY LatDD,LongDD";
+    // $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,
+    // fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
+    // LEFT JOIN group_location b ON a.ID_Location=b.location_id
+    // LEFT JOIN rd r ON b.group_id=r.location_group
+    // LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
+    // LEFT JOIN species s ON sr.ID_Species=s.ID_Species
+    // LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
+    // WHERE r.ID IS NOT NULL
+    // GROUP BY LatDD,LongDD";
+  $jsonQuery="SELECT * from __view_raw_data_search_map r where Species like '%$speciesNameDecode%'";
     $jsonQueryEncode=base64_encode($jsonQuery);
     $data['jsonQuery']=$jsonQueryEncode;
     $data['rawDataView'] = $this->Forestdata_model->get_raw_data_grid_species($speciesNameDecode,$limit,$page);
@@ -4319,6 +4716,12 @@ function up_union_by_dis_id() {
         $data['strs']=$string;
         $this->template->display_portal($data);
       }
+
+
+
+
+
+
 
 
 
