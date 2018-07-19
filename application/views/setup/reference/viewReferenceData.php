@@ -59,7 +59,7 @@
                                 <td><?php echo $references->Title?></td>
                                 <td><?php echo $references->Journal?></td>
                                 <td><?php echo $references->PDF_label?></td>
-                                <td width="60px">
+                                <td width="70px">
                       <a class="label btn-danger btn-xs " href="<?php echo site_url("dashboard/Website/updateReferenceData/" . $references->ID_Reference); ?>">
                               <i class="glyphicon glyphicon-edit"></i>
                               </a>&nbsp; 

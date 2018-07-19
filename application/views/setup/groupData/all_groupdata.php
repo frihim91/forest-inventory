@@ -58,7 +58,7 @@
          <div class="panel-heading">
             <div class="widget-head">
             
-                <a class="btn btn-sm btn-danger pull-right col-md-2 ModalGenus" ><i class="glyphicon glyphicon-plus"></i></a></a>
+               <!--  <a class="btn btn-sm btn-danger pull-right col-md-2 ModalGenus" ><i class="glyphicon glyphicon-plus"></i></a></a> -->
                <small style="margin-left: 10px;">All Species Group</small>
             </div>
          </div>

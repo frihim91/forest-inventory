@@ -611,7 +611,7 @@ class Website extends CI_Controller
         $config                  = array();
         $config['upload_path']   = "./resources/images/post_pic";
         $config['allowed_types'] = "gif|jpg|png|jpeg|pdf";
-        $config['overwrite']     = TRUE;
+        $config['overwrite']     = False;
         $config['max_size']      = "2048000";
         $config['max_height']    = "3000";
         $config['max_width']     = "3000";

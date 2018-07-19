@@ -731,9 +731,9 @@ public function searchRawEquationAll()
 
   if(!empty($_GET)){
     $searchFieldArray=$_GET;
-      // echo "<pre>";
-      // print_r($searchFieldArray);
-      // exit;
+      //echo "<pre>";
+       //print_r($searchFieldArray);
+      //exit;
     if(!isset($searchFieldArray['keyword']))
     {
       $searchFieldArray['keyword']='';
@@ -785,6 +785,8 @@ public function searchRawEquationAll()
         $filedNameValue[$r[0].'/'.$key]=$value;
       }
     }
+
+    
       //$data['prefix']=$prefix;
 
 
@@ -876,6 +878,7 @@ public function searchRawEquationAll()
   $jsonQuery="SELECT * from __view_raw_data_search_map  r where $string";
   $jsonQueryEncode=base64_encode($jsonQuery);
   $data['jsonQuery']=$jsonQueryEncode;
+  //print_r($data['jsonQuery']);exit();
   $data['content_view_page']      = 'portal/rawDataView';
   $str=$string;
   $string=base64_encode($string);
