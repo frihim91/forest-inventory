@@ -24,49 +24,77 @@
    e.preventDefault();
    });
 </script>
-<div class="widget">  
-    <div class="widget-head"> 
-       <!--  <a href="<?php echo site_url('dashboard/Visitors/addPurpose')?>" class="btn btn-sm btn-danger pull-right col-md-2 Modal" >Add New Purpose</a> -->
-        <small style="margin-left: 10px;">All the system Comment Show Here</small> 
-    </div> 
-    <div class="widget-body">    
-        <div class="table-responsive">
-           
-               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                             <th>Title</th>
-                            <th>Author Name</th>
-                            <th>Comment</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                   <tbody>
-                        <?php
-                        $i = 1;
-                        foreach ($comment as $comments) {
-                            ?>
-                            <tr> 
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $comments->title;?></a></td>
-                                 <td><?php echo $comments->FIRST_NAME . " " .$comments->LAST_NAME;?></a></td>
-                                <td><?php echo $comments->comment;?></a></td>
-                              
-                                 <td>
-                            <!--     <a  title="Edit Page Name"  href="<?php echo site_url('dashboard/Visitors/deleteComment/'.$comments->id);?>" class="label label-info" style="cursor: pointer"><i class="glyphicon glyphicon-eye"></i></a>  -->
-                              <a class="label btn-danger btn-xs deleteUrl" href="<?php echo site_url('dashboard/Visitors/deleteComment/'.$comments->id);?>">
-                              <i class="glyphicon glyphicon-remove"></i>
-                              </a>  
-                           </td>
-                            </tr>
-                            <?php
-                            $i++;
-                        }
-                        ?>
-                    </tbody>
-                </table>
-              
+ <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+
+
+    <div class="col-sm-12">
+      <h4><small>Comment List</small></h4>
+      <hr>
+      <h2><?php echo $comment->title;?></h2>
+      <h5><span class="glyphicon glyphicon-time"></span> Written by <span class="label label-danger"><?php echo $comment->LAST_NAME;?></span> , <?php echo date('F j,Y', strtotime($comment->post_date)); ?></h5>
+   
+      <p><?php echo $comment->description;?></p>
+      <br><br>
+   
+ <?php echo form_open_multipart('dashboard/Visitors/addReplyByAdmin', "class='form-vertical'"); ?>
+      <h4>Leave a Comment:</h4>
+      <?php echo $this->session->flashdata('msg'); ?>
+        <?php echo $this->session->flashdata('Error'); ?>
+         <input type="hidden" value="<?php echo $coummunity_id;?>" name="COMMINITY_ID">
+      <form role="form">
+        <div class="form-group">
+          <textarea class="form-control" rows="3" required name="comment"></textarea>
         </div>
-    </div>
-    </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+      <br><br>
+        <?php echo form_close(); ?>
+      <div class="row">
+       
+     <?php
+     $i = 1;
+     foreach ($comment_details as $row) {
+       ?>
+        <div class="col-sm-12">
+          <h4><?php if($row->LAST_NAME!= ''){
+                     
+                      ?>
+                     <?php echo $row->LAST_NAME;?>
+                      <?php } else {?>
+                      Admin
+                   
+                      <?php } ?> <small><?php echo date('F j,Y h:i:sa', strtotime($row->date)); ?></small></h4>
+          <p><?php echo $row->comment;?></p>
+          <br>
+        </div>
+         <?php
+      $i++;
+    }
+    ?>
+       
+      </div>

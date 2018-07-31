@@ -280,7 +280,15 @@ $lang_ses = $this->session->userdata("site_lang");
             <div class="col-sm-10">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <strong><?php echo $row->LAST_NAME;?></strong> <span class="text-muted"><?php echo date('l,F j,Y- H:i:s', strtotime($row->date)); ?></span>
+                  <strong>  <?php if($row->LAST_NAME!= ''){
+                     
+                      ?>
+                     <?php echo $row->LAST_NAME;?>
+                      <?php } else {?>
+                      Admin
+                   
+                      <?php } ?>
+                    </strong> <span class="text-muted"><?php echo date('l,F j,Y- H:i:s', strtotime($row->date)); ?></span>
                 </div>
                 <div class="panel-body">
                   <?php echo $row->comment;?>

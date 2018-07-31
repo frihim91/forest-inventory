@@ -324,6 +324,16 @@ Class Forestdata_model extends CI_Model {
   }
 
 
+    public function get_comment_details($id)
+  {
+        $data=$this->db->query("SELECT c.*,cm.title,v.FIRST_NAME,v.LAST_NAME,v.USER_ID FROM community_comment c 
+            left join visitor_info v on v.USER_ID=c.user_id 
+            left join community cm on cm.id=c.community_id
+            where c.community_id=$id order by c.id DESC")->result();
+     return $data;
+  }
+
+
 
       public function get_raw_data_details_tax($ID)
   {
