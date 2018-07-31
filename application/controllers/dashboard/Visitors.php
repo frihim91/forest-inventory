@@ -36,6 +36,7 @@
         }
         $this->load->library("form_validation");
         $this->load->model('utilities');
+        $this->load->model('Forestdata_model');
         $this->load->model('Menu_model');
         $this->load->library('upload');
         $this->load->library('Csvimport');
@@ -87,13 +88,47 @@
 
        public function commentDetails($id)
     {
-        $data['comment']           = $this->db->query("SELECT c.*,cm.title,v.FIRST_NAME,v.LAST_NAME,v.USER_ID FROM community_comment c 
+        $data['comment']           = $this->db->query("SELECT c.*,cm.title,cm.post_date,cm.description,v.FIRST_NAME,v.LAST_NAME,v.USER_ID FROM community_comment c 
             left join visitor_info v on v.USER_ID=c.user_id 
             left join community cm on cm.id=c.community_id
-            where c.community_id=$id order by c.id DESC")->result();
+            where c.community_id=$id order by c.id DESC")->row();
+         $data['coummunity_id'] = $id;
+        $data['comment_details'] = $this->Forestdata_model->get_comment_details($id);
         $data['content_view_page'] = 'setup/commentList/all_comment_details';
         $this->template->display($data);
     }
+
+
+      public function addReplyByAdmin()
+  {
+
+
+    if (isset($_POST['comment'])) {
+      $comment    = $this->input->post('comment');
+          //$id = $this->input->post('user_id');
+      $session = $this->user_session = $this->session->userdata('user_logged_in');
+      $userid =  $session["USER_ID"];
+      $data = array(
+        'comment' => $comment,
+        'community_id' => $this->input->post('COMMINITY_ID'),
+        'date' => date('Y-m-d H:i:s', time()),
+        'user_id' =>$userid
+
+
+      );
+
+          //$data['IMAGE_PATH'] = 'asdasdsad';
+
+      $this->utilities->insertData($data, 'community_comment');
+      $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Comment Posted successfully.<button data-dismiss="alert" class="close" type="button">×</button></div>');
+      redirect('dashboard/visitors/commentDetails/'.$this->input->post('COMMINITY_ID'));
+    }
+
+    else {
+      $data['content_view_page'] = 'setup/commentList/all_comment_details';
+      $this->template->display_portal($data);
+    }
+  }
 
         public function deleteComment($id)
     {

@@ -904,7 +904,7 @@ public function searchRawEquationAll()
      $string=$this->searchAttributeStringRn($validSearchKey,0);
       
     }
-  
+   
 
     
 
@@ -6538,8 +6538,9 @@ function up_union_by_dis_id() {
   public function viewDetailCommunityPage($id)
   {
     $data['viewDetailCommunityPage'] = $this->Forestdata_model->get_community_details($id);
-    $m=$data['community_comment']       = $this->db->query("select cc.*,vi.LAST_NAME ,vi.PROFILE_IMG from community_comment cc
+    $m=$data['community_comment']       = $this->db->query("SELECT cc.*,vi.LAST_NAME ,vi.PROFILE_IMG from community_comment cc
       left join visitor_info vi on cc.user_id=vi.USER_ID
+      -- left join sa_users sa on vi.USER_ID=sa.USER_ID
       where community_id=$id")->result();
 
     $data['coummunity_id'] = $id;
