@@ -115,12 +115,12 @@
           );
         $this->utilities->insertData($data, 'sa_forget_pass_request');
         $msgBody = "<html><head></html><body>Dear<br> $userFname $userLname,<br><br>
-        You're one step away from regaining access to your FAO account. 
+        You're one step away from regaining access to your BFD account. 
         Just click below to reset your password:<br/>
         <a style='margin-top:10px; color:white;' href='" . site_url() . "/accounts/generatePassword/$random_id'><button class='btn btn-primary' style='margin-left:24%; background-color:#556a2f; padding:5px;'>Reset Password</button></a> <br/>
 
         <br/>Thanks<br>
-        FAO<br/><br/>        
+        BFD<br/><br/>        
       </body></html>";
 
       if ($useremail == $username_email or $username == $username_email) {
@@ -134,11 +134,11 @@
         $mail->Password = "@ti321$#";
         $mail->SMTPSecure = 'ssl';
         $mail->From = "support@harnest.com";
-        $mail->FromName = "FAO";
+        $mail->FromName = "BFD";
         $mail->AddAddress($useremail);
                //$mail->AddReplyTo($emp_info->EMPLOYEE);
         $mail->IsHTML(TRUE);
-        $mail->Subject = "Forest Inventory : Password Reset Request";
+        $mail->Subject = "Bangladesh Forest Department : Password Reset Request";
         $mail->Body = $msgBody;
         if ($mail->Send()) {
                       //echo '<p style="color:red; margin-left: 38%;">Mail send  successfully please check your mail. </p>';

@@ -35,10 +35,11 @@
                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr>
-                             <th>#</th>
+                            <th>#</th>
                              <th>Title</th>
-                             <th>Total Comment</th>
-                             <th>Action</th>
+                            <th>Author Name</th>
+                            <th>Comment</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                    <tbody>
@@ -49,12 +50,11 @@
                             <tr> 
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $comments->title;?></a></td>
-                                <td><?php echo $comments->TOTAL_COMMENT;?></a></td>
-                                
-                               <!--  <td><?php echo $comments->comment;?></a></td> -->
+                                 <td><?php echo $comments->FIRST_NAME . " " .$comments->LAST_NAME;?></a></td>
+                                <td><?php echo $comments->comment;?></a></td>
                               
                                  <td>
-                                <a  title="Edit Page Name"  href="<?php echo site_url('dashboard/Visitors/commentDetails/'.$comments->id);?>" class="label label-info" style="cursor: pointer"><i class="   glyphicon glyphicon-eye-open"></i></a> 
+                            <!--     <a  title="Edit Page Name"  href="<?php echo site_url('dashboard/Visitors/deleteComment/'.$comments->id);?>" class="label label-info" style="cursor: pointer"><i class="glyphicon glyphicon-eye"></i></a>  -->
                               <a class="label btn-danger btn-xs deleteUrl" href="<?php echo site_url('dashboard/Visitors/deleteComment/'.$comments->id);?>">
                               <i class="glyphicon glyphicon-remove"></i>
                               </a>  

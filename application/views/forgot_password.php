@@ -5,7 +5,7 @@
 <script src="<?php echo base_url(); ?>resources/shared/components/library/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/library/jquery/jquery-migrate.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/shared/components/library/modernizr/modernizr.js"></script>
-<title>.: FAO || Food and Agriculture Organization of the United Nations:. Forgot Password Panel</title>
+<title>.: BFD || Bangladesh Forest Department :. Forgot Password Panel</title>
 <body class="login ">
     <div id="login" >
         <div class="container" style=" font-size: ">
@@ -20,7 +20,7 @@
                                 </div>
                             </div>
                         <?php endif; ?>
-                        <div style=" color:#3333ff; font-size: 16px;"><a href="<?php echo site_url(); ?>"><img style="height: 65px; margin-left: 0%;" src="<?php echo base_url('resources/images/logo.jpg'); ?>" alt="HEQEP" /></a><hr></div>
+                        <div style=" color:#3333ff; font-size: 16px;"><a href="<?php echo site_url(); ?>"><img style="height: 65px; margin-left: 0%;" src="<?php echo base_url('resources/images/logo.png'); ?>" alt="BFD" /></a><hr></div>
                         <div><b> <span class="important">*&nbsp;&nbsp;</span>If you forget your user name or password   select  &nbsp;&nbsp;&nbsp;&nbsp;any option below and inter valid  user name or &nbsp;&nbsp;&nbsp;&nbsp;password then send.<br/>
                                 <span class="important">*&nbsp;&nbsp;</span>After successfully send check your email.</b></div><br>
                         <label><input id="forgotPassword" type="radio" name="toggler" value="1" /><b>&nbsp;&nbsp;I don't know my password</b></label>

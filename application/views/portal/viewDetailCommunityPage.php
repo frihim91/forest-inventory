@@ -89,6 +89,37 @@
   line-height: 1.5;
   color: #797979;
 }
+
+
+     blockquote h4 {
+    font-style: italic !important;
+    font-size: 16px !important;
+    color: #080808 !important;
+    line-height: 20px !important;
+    background-color: #f6f6f6 !important;
+    padding: 18px 20px !important;
+    border-left: 6px solid #e67272 !important;
+}
+
+.body-text {
+
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+    color: #080808;
+    line-height: 20px;
+   /* letter-spacing: .5px;*/
+  }
+  blockquote h4 span {
+
+    font-size: 16px;
+    font-style: normal;
+    display: block;
+    margin-top: 10px;
+    color: #000000;
+
+}
+
+
 </style>
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor2.css" />
 <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.js"></script>
@@ -178,18 +209,45 @@ $lang_ses = $this->session->userdata("site_lang");
 </div>
 
 <div class="col-md-12 page_content">
+   
 
  <div class="col-sm-12">
-   <h3>Post Detail</h3>
+  <div class="col-md-6">
+    <?php
+    $session_info = $this->session->userdata("user_logged");
+                          //echo '<pre>';print_r($session_info);exit;
+    ?>
+        <?php
+
+    if($this->session->userdata('user_logged')){
+      ?>
+
+         <h5> <a href="<?php echo site_url('portal/viewCommunityPage'); ?>" class="btn btn-info" style="background-color:#396C15;border-color:#396C15;" role="button">View Post List</a></h5>
+                    <?php 
+         }else{ ?>
+
+         <?php 
+        }
+
+        ?>
+  </div>
+  <div class="col-md-6">
+    
+  </div>
+
+  
    
    <div class="col-sm-12 bdy_des">
+     <h3>Post Detail</h3>
 
      <div class="">
-       <h3><?php echo $viewDetailCommunityPage->title;?></h3>
+
+       <h4 style=" font-style: italic !important;font-size: 22px !important;"><?php echo $viewDetailCommunityPage->title;?></h4>
        <!--  <input type="hidden" name="user_id" value="<?php echo $id; ?>"/> -->
-       <p><?php echo $viewDetailCommunityPage->description;?></p>
-       <div class="container">
-        <h4>User Comment</h4>
+      <blockquote><h4 class="body-text"><?php echo $viewDetailCommunityPage->description;?>
+       <span>Written by <b><?php echo $viewDetailCommunityPage->LAST_NAME;?></b> | <?php echo date('F j,Y', strtotime($viewDetailCommunityPage->post_date)); ?> </span></h4>
+       </blockquote>
+        
         <?php
         foreach($community_comment as $row)
         {
@@ -252,6 +310,7 @@ $lang_ses = $this->session->userdata("site_lang");
       <?php echo form_open_multipart('Portal/addComment', "class='form-vertical'"); ?>
 
       <div class="row">
+
       <div class="col-md-11">
 
         <?php echo $this->session->flashdata('msg'); ?>
@@ -259,12 +318,13 @@ $lang_ses = $this->session->userdata("site_lang");
         <input type="hidden" value="<?php echo $coummunity_id;?>" name="COMMINITY_ID">
 
         <div class="form-group">
+            <h4><b>Reply</b></h4>
 
          <label>Comment<span style="color:red;">*</span></label>
          <?php echo form_textarea(array('name' => 'comment', "class" => "redactor form-control", 'placeholder' => 'Add details', 'rows' => '50', 'required' => 'required')); ?>  
        </div><br>
        <div class="submit_block" align="right">
-         <input type="submit" value="Post Comment" class="btn-success btn"/>
+         <input type="submit" value="Reply" class="btn-success btn"/>
        </div>
        <?php echo form_close(); ?>
      </div>

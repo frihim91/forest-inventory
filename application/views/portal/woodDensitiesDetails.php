@@ -218,7 +218,7 @@
          </div>
       </div>
 
-      <div class="row">    
+<!--   <div class="row">    
     <div class="col-md-12">
         <br>
         <h3 class="section-header">Components</h3>
@@ -233,7 +233,7 @@
         <img src="<?php echo base_url('resources/images/component.png')?>" class="img-responsive" width="300">
         <br><br>
     </div>
-</div>
+</div> -->
       <div class="row">
          <div class="col-md-12">
             <br>

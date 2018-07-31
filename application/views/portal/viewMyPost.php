@@ -34,6 +34,34 @@
    .breadcump_row a{
    color: white;
    }
+
+     blockquote h4 {
+    font-style: italic !important;
+    font-size: 15px !important;
+    color: #080808 !important;
+    line-height: 20px !important;
+    background-color: #f6f6f6 !important;
+    padding: 18px 20px !important;
+    border-left: 6px solid #e67272 !important;
+}
+
+.body-text {
+
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+    color: #080808;
+    line-height: 20px;
+   /* letter-spacing: .5px;*/
+  }
+  blockquote h4 span {
+
+    font-size: 15px;
+    font-style: normal;
+    display: block;
+    margin-top: 10px;
+    color: #000000;
+
+}
 </style>
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor2.css" />
 <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.js"></script>
@@ -126,33 +154,51 @@
 
    
       <div class="col-sm-12 bdy_des">
+      <div class="col-md-6">
+    <?php
+    $session_info = $this->session->userdata("user_logged");
+                          //echo '<pre>';print_r($session_info);exit;
+    ?>
+        <?php
+
+    if($this->session->userdata('user_logged')){
+      ?>
+
+         <h5> <a href="<?php echo site_url('portal/viewCommunityPage'); ?>" class="btn btn-info" style="background-color:#396C15;border-color:#396C15;" role="button">View Post List</a></h5>
+                    <?php 
+         }else{ ?>
+
+         <?php 
+        }
+
+        ?>
+  </div>
      
-           <div class="col-sm-12">
- <h4><a href="<?php echo site_url('portal/viewCommunityPage'); ?>" class="btn btn-info" style="background-color:#396C15;border-color:#396C15;" role="button">View Post List</a></h4>
-   <?php echo form_open_multipart('Portal/addPost', "class='form-vertical'"); ?>
+      <div class="col-sm-12">
+       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                  <td><center>My Post List</center></td>
+                </tr>
+              </thead>
+       
             
-            <div class="row">
-               <div class="col-md-6">
-                  <legend>Community Post</legend>
-                  <?php echo $this->session->flashdata('msg'); ?>
-                  <?php echo $this->session->flashdata('Error'); ?>
-                  
-                  <div class="form-group">
-                     <label>Title<span style="color:red;">*</span></label>
-                     <?php echo form_input(array('class' => 'form-control', 'placeholder' => 'TITLE', 'id' => 'title', 'name' => 'title', 'value' => set_value('title'), 'required' => 'required')); ?> 
-                     <label>Add Details<span style="color:red;">*</span></label>
-                  <?php echo form_textarea(array('name' => 'description', "class" => "redactor form-control", 'placeholder' => 'Add details', 'rows' => '50')); ?>  
-                  </div><br>
-                  <div class="submit_block" align="right">
-                           <input type="submit" value="Submit" class="btn-success btn"/>
-                        </div>
-                        <?php echo form_close(); ?>
-               </div>
-               <div class="col-md-6">
-              <!--   <h4> <a href="<?php echo site_url('portal/viewCommunityPage'); ?>" class="btn btn-info" style="background-color:#396C15;border-color:#396C15;" role="button">View Post List</a></h4> -->
-               </div>
-   
-            </div>
+            <?php
+              
+               foreach($my_post as $row)
+                 
+               {
+                 ?>
+                 <tr>
+                   <td>
+           <h4 style=" font-style: italic !important;font-size: 22px !important;"><a href="<?php echo site_url('Portal/viewDetailCommunityPage/'.$row->id); ?>"><?php echo $row->title;?></a></h4>
+              <blockquote><h4 class="body-text"><?php echo substr($row->description,0,135);?><a href="<?php echo site_url('Portal/viewDetailCommunityPage/'.$row->id); ?>">..Read More</a><br>
+             Written by <b><?php echo $row->LAST_NAME;?></b> | <?php echo date('F j,Y', strtotime($row->post_date)); ?></h4></blockquote>
+            </td>
+                    </tr>
+            <?php
+               }?>
+                </table>
 
    </div>
           

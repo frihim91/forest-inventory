@@ -72,7 +72,7 @@ $lang_ses = $this->session->userdata("site_lang");
 		<div class="row">
 			<div class="col-md-7">
 				<h2>Register</h2>
-				<h4>Register to access Forest Inventory:</h4>
+				<h4>Register to post any comment:</h4>
 				<ol>
 					<li>Fill in the form below. Fields marked with an asterisk (*) are obligatory.</li>	
 					<li>Your registration will be reviewed by the foreast Inventory team.</li>

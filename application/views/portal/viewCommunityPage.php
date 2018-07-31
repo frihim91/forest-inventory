@@ -35,6 +35,34 @@
    .breadcump_row a{
    color: white;
    }
+
+   blockquote h4 {
+    font-style: italic !important;
+    font-size: 15px !important;
+    color: #080808 !important;
+    line-height: 20px !important;
+    background-color: #f6f6f6 !important;
+    padding: 18px 20px !important;
+    border-left: 6px solid #e67272 !important;
+}
+
+.body-text {
+
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+    color: #080808;
+    line-height: 20px;
+   /* letter-spacing: .5px;*/
+  }
+  blockquote h4 span {
+
+    font-size: 15px;
+    font-style: normal;
+    display: block;
+    margin-top: 10px;
+    color: #000000;
+
+}
 </style>
 <link rel="stylesheet" href="<?php echo base_url(); ?>resources/assets/redactor/redactor2.css" />
 <script src="<?php echo base_url(); ?>resources/assets/redactor/redactor.js"></script>
@@ -130,18 +158,18 @@
     <!--  <ul class="nav nav-tabs">
          <li class="active"><a data-toggle="tab" href="#home">Search</a></li>
       </ul> -->
-<!--       <div class="tab-content">
+ <div class="tab-content">
          <div id="home" class="tab-pane fade in active">
-            <p> Search Documents by Title
+            <p style="padding-left: 18px"> Search Documents by Title
                <br>
-               Example searches: <a href="#"> Title: Chittagong university campus</a>,
+               Example searches: <a href="#"> Title: Chittagong university campus</a>
               
             </p>
             <form action="<?php echo site_url('portal/search_community');?>" method = "get">
                <div class="col-md-3">
                   <div class="form-group">
                      <label>Title <span style="color:red;"></span></label>
-                     <input type="text" class="form-control input-sm" name ="title"  class ="title" maxlength="200" placeholder="Title" />
+                     <input type="text" class="form-control input-sm" name ="title"  class ="title" placeholder="Title" />
                   </div>
                </div>
            
@@ -154,10 +182,10 @@
                </div>
             </form>
          </div>
-      </div> -->
+      </div> 
    
       <div class="col-sm-12 bdy_des">
-     <!--     <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
+    <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
             <div class="col-lg-6">
                <h4>Total Post: <span id="summary-results-total">
                   <?php
@@ -187,42 +215,103 @@
             <div class="col-lg-6">
 
 
-               <h4> <a href="<?php echo site_url('portal/viewAddCommunityPage'); ?>" class="btn btn-info" role="button">Add New Post</a></h4>
+              <!--  <h4> <a href="<?php echo site_url('portal/viewAddCommunityPage'); ?>" class="btn btn-info" role="button">Add New Post</a></h4> -->
                <h4> Search criteria</h4>
                <p> <?php
-        // echo "<pre>";
-        // print_r($fieldNameValue);
-                           if(!empty($fieldNameValue)){
-                              $n=count($fieldNameValue);
-                             $i=0;
-                             foreach($fieldNameValue as $key=>$value)
-                             {
-                                $pieces = explode("/", $key);
-                                $fieldName= $pieces[0]; // piece1
-                                $keyWord= $pieces[1]; // piece2
-                                if($i<$n-1)
-                                {
-                                  $substitute="$keyWord=$value&";
-                                }
-                                else {
-                                  $substitute="$keyWord=$value";
-                                }
-                                $sub=str_replace(' ','+',$substitute);
-                                //echo $actualUrl;
-                                $newUrl=str_replace($sub,'',$actualUrl);
-                            // $url=str_replace('','',$actualUrl);
-                                $i++;
-                                echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
-                             }
+          $keyWord='';
+          if(isset($_GET['keyword']))
+          {
+             $keyWord=$_GET['keyword'];
+          }
+         
+          if($keyWord=='')
+          {
+             if(!empty($fieldNameValue)){
+              $n=count($fieldNameValue);
+              $i=0;
+              foreach($fieldNameValue as $key=>$value)
+              {
+          $pieces = explode("/", $key);
+          $fieldName= $pieces[0]; // piece1
+          $keyWord= $pieces[1]; 
+          //echo $fieldName;exit;// piece2
+          if($i<$n-1)
+          {
+            $substitute="$keyWord=$value&";
+          }
+          else {
+            $substitute="$keyWord=$value";
+          }
+          $sub=str_replace(' ','+',$substitute);
+          //echo $actualUrl;
+          $newUrl=str_replace($sub,'',$actualUrl);
+          // $url=str_replace('','',$actualUrl);
+          $i++;
+          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+        }
+          }
+          else{
+        echo "No criteria - All results are shown";
+      }
+    //   echo "<pre>";
+    // print_r($fieldNameValue);exit();
+           
 
-                            }
-                            else{
-                              echo "No criteria - All results are shown";
-                            }
-                           ?></p>
+      }
+      else 
+      {
+
+        $url=site_url('portal/viewCommunityPage');
+        echo "Keyword: $keyWord <a href='$url'>Remove Filter</a>";
+      }
+      
+      ?></p>
               
             </div>
-         </div> -->
+         </div>
+<div class="row">      
+  <div class="col-md-6">
+    <div class="col-md-3">
+    <?php
+    $session_info = $this->session->userdata("user_logged");
+                          //echo '<pre>';print_r($session_info);exit;
+    ?>
+        <?php
+
+    if($this->session->userdata('user_logged')){
+      ?>
+
+         <h4> <a href="<?php echo site_url('portal/viewAddCommunityPage'); ?>" class="btn btn-info" style="background-color:#396C15;border-color:#396C15;" role="button">Add New Post</a></h4>
+                    <?php 
+         }else{ ?>
+
+         <?php 
+        }
+
+        ?>
+      </div>
+
+<div class="col-md-3">
+    <?php
+    $session_info = $this->session->userdata("user_logged");
+                          //echo '<pre>';print_r($session_info);exit;
+    ?>
+        <?php
+
+    if($this->session->userdata('user_logged')){
+      ?>
+
+         <h4> <a href="<?php echo site_url('portal/viewMyPost'); ?>" class="btn btn-info" style="background-color:#396C15;border-color:#396C15;" role="button">My Post List</a></h4>
+                    <?php 
+         }else{ ?>
+
+         <?php 
+        }
+
+        ?>
+      </div>
+      </div>
+    </div>
           
           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
@@ -240,8 +329,9 @@
                  ?>
                  <tr>
                    <td>
-             <h3> <a href="<?php echo site_url('Portal/viewDetailCommunityPage/'.$row->id); ?>"><?php echo $row->title;?></a></h3>
-             <span>Written by <b><?php echo $row->LAST_NAME;?></b> | <?php echo date('F j,Y', strtotime($row->post_date)); ?> </span>
+            <h4 style=" font-style: italic !important;font-size: 22px !important;"><a href="<?php echo site_url('Portal/viewDetailCommunityPage/'.$row->id); ?>"><?php echo $row->title;?></a></h4>
+              <blockquote><h4 class="body-text"><?php echo substr($row->description,0,140);?><a href="<?php echo site_url('Portal/viewDetailCommunityPage/'.$row->id); ?>">..Read More</a><br>
+             Written by <b><?php echo $row->LAST_NAME;?></b> | <?php echo date('F j,Y', strtotime($row->post_date)); ?></h4></blockquote>
             </td>
                     </tr>
             <?php

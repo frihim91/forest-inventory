@@ -470,13 +470,7 @@
           $newUrl=str_replace($sub,'',$actualUrl);
           // $url=str_replace('','',$actualUrl);
           $i++;
-          if ($fieldName=='Density_ovendry') {
-            
-          }else{
-            echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
-
-          }
-          
+          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
         }
           }
           else{

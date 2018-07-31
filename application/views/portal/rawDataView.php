@@ -585,16 +585,8 @@
           //echo $actualUrl;
           $newUrl=str_replace($sub,'',$actualUrl);
           // $url=str_replace('','',$actualUrl);
-          $i++;
-          if ($fieldName=='H_m') {
-            
-          }elseif($fieldName=='Volume_m3') {
-          
-          }else{
-            echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
-
-          }
-          
+           $i++;
+          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
         }
           }
           else{

@@ -176,7 +176,7 @@ $lang_ses = $this->session->userdata("site_lang");
         </div> -->
         <div class="form-group">
           <label>Keyword </label>
-          <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>"  maxlength="64" placeholder="Keyword" /><br>
+          <input type="text" class="form-control input-sm" name = "keyword" value = "<?php echo (isset($keyword))?$keyword:'';?>"  placeholder="Keyword" /><br>
           <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
           <input type="hidden" name="Equation_VarNames" value="">
         </div>
@@ -478,24 +478,26 @@ $lang_ses = $this->session->userdata("site_lang");
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Reference <span style="color:red;"></span></label>
-                    <input type="text" class="form-control input-sm" name ="Reference" value = "<?php echo (isset($Reference))?$Reference:'';?>" class ="reference" maxlength="200" placeholder="Reference" />
+                    <input type="text" class="form-control input-sm" name ="Reference" value = "<?php echo (isset($Reference))?$Reference:'';?>" class ="reference"  placeholder="Reference" />
                   </div>
                   <div class="form-group">
                     <label>Author  <span style="color:red;"></span></label>
-                    <input type="text" class="form-control input-sm" name ="Author" value = "<?php echo (isset($Author))?$Author:'';?>" class ="author" maxlength="64" placeholder="Author" />
+                    <input type="text" class="form-control input-sm" name ="Author" value = "<?php echo (isset($Author))?$Author:'';?>" class ="author" placeholder="Author" />
                   </div>
                   <div class="form-group">
                     <label>Year  <span style="color:red;"></span></label>
-                    <input type="text" class="form-control input-sm" name ="Year" value = "<?php echo (isset($Year))?$Year:'';?>" maxlength="64"  class ="year" placeholder="Year" />
+                    <input type="text" class="form-control input-sm" name ="Year" value = "<?php echo (isset($Year))?$Year:'';?>" class ="year" placeholder="Year" />
                     <br>
                     <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                 </div>
                 <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
-                   <input type="hidden" class="form-control input-sm" name ="location_name" value = "<?php echo (isset($location_name))?$location_name:'';?>" maxlength="64"  class ="location_name" placeholder="Year" />
+                   <input type="hidden" class="form-control input-sm" name ="location_name" value = "<?php echo (isset($location_name))?$location_name:'';?>"   class ="location_name" placeholder="Year" />
 
-                     <input type="hidden" class="form-control input-sm" name ="LatDD" value = "<?php echo (isset($LatDD))?$LatDD:'';?>" maxlength="64"  class ="LatDD" placeholder="Year" />
-                     <input type="hidden" class="form-control input-sm" name ="LongDD" value = "<?php echo (isset($LongDD))?$LongDD:'';?>" maxlength="64"  class ="LongDD" placeholder="Year" />
+                     <input type="hidden" class="form-control input-sm" name ="LatDD" value = "<?php echo (isset($LatDD))?$LatDD:'';?>"   class ="LatDD" placeholder="Year" />
+                     <input type="hidden" class="form-control input-sm" name ="LongDD" value = "<?php echo (isset($LongDD))?$LongDD:'';?>"   class ="LongDD" placeholder="Year" />
+                  <!--     <input type="hidden" class="form-control input-sm" name ="District" value = "<?php echo (isset($LongDD))?$District:'';?>" maxlength="64"  class ="District" placeholder="Year" />
+                       <input type="hidden" class="form-control input-sm" name ="Division" value = "<?php echo (isset($LongDD))?$Division:'';?>" maxlength="64"  class ="Division" placeholder="Year" /> -->
 
 
               </div>
@@ -756,7 +758,7 @@ $lang_ses = $this->session->userdata("site_lang");
         L.geoJson(data,{
           pointToLayer: function(feature,latlng){
             var marker = L.marker(latlng,{icon: ratIcon});
-            marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.Species+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.OUTPUT+'<h5>Latitude :'+feature.properties.LatDD+' </h5><h5>Longitude :'+feature.properties.LongDD+' </h5><h5>Location name </h5>'+feature.properties.location_name+' </h5><h5><a href="<?php echo base_url(); ?>index.php/portal/allometricEquationViewMapData/'+feature.properties.LatDD+'/'+feature.properties.LongDD+'">Refine search to view just these records &gt;&gt;</a></h5>');
+            marker.bindPopup('<h4><b>Allometric Equations : </b>'+feature.properties.total_species+'</h4><h5>Species Represented</h5>'+feature.properties.Species+'<h5>FAO Biomes </h5>'+feature.properties.FAOBiomes+'<h5>Output </h5>'+feature.properties.Output+'<h5>Latitude :'+feature.properties.LatDD+' </h5><h5>Longitude :'+feature.properties.LongDD+' </h5><h5>Location name </h5>'+feature.properties.location_name+' </h5><h5><a href="<?php echo base_url(); ?>index.php/portal/allometricEquationViewMapData/'+feature.properties.LatDD+'/'+feature.properties.LongDD+'">Refine search to view just these records &gt;&gt;</a></h5>');
             return marker;
           }
         }).addTo(map);

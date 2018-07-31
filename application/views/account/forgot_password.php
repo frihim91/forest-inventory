@@ -117,7 +117,7 @@ $lang_ses = $this->session->userdata("site_lang");
 							<div id="loading">Please wait......</div>
 							<div id ="not_registered"></div> 
 							<div class="submit_block" align="left">
-								<a class="btn btn-primary" id="get_password">Submit</a>
+								<a class="btn btn-success" id="get_password">Submit</a>
 							</div>
 						</div>
 					</form>

@@ -119,6 +119,7 @@ class Portal extends CI_Controller
 
 // }
 
+
 private function searchAttributeStringR($searchFields)
 {
   $n=count($searchFields);
@@ -200,6 +201,115 @@ private function searchAttributeStringR($searchFields)
         $i++;
         $addStringVol= " (Volume_m3 Between $volFrom AND  $volTo)";
       }
+  return $string.$addStringHm.$addStringVol;
+}
+
+
+private function searchAttributeStringRn($searchFields,$param)
+{
+  $n=count($searchFields);
+  $string='';
+  $i=0;
+  $betweenStr='';
+  $addStringVol='';
+  $addStringHm='';
+  //$this->pr($searchFields);
+  foreach ($searchFields as $key => $value) {
+    //echo $key."<br>";
+     $pieces = explode("_",$key);
+     $prefix=$pieces[0];
+    if(!empty($value))
+    {
+     
+
+
+      if($prefix!='r.th')
+      {
+        if($i==0)
+        {
+          $string=$string.$key." like '%$value%'";
+        }
+        else
+        {
+          $string=$string.' AND '.$key." like '%$value%'";
+        }
+        $i++;
+      }
+
+
+      
+    }
+    if($prefix=='r.th') 
+      {
+        if($value=='')
+        {
+          $value=0;
+        }
+        $betweenStr.=$value.'_';
+      }
+   
+       
+
+  }
+
+
+   $betweenString= explode("_",$betweenStr);
+      $dbhfrom=$betweenString[0];
+      $dbhTo=$betweenString[1];
+      $volFrom=$betweenString[2];
+      $volTo=$betweenString[3];
+      if($dbhTo==0)
+      {
+        $dbhTo=100000000; 
+      }
+      if($volTo==0)
+      {
+        $volTo=100000000;
+      }
+      if($i>0)
+      {
+        if($param==0)
+        {
+          $addStringHm= " AND (H_m Between $dbhfrom AND  $dbhTo)";  
+        }
+        else 
+        {
+         $addStringHm=' AND LatDD IS NOT NULL'; 
+        }
+        
+      }
+      else 
+      {
+        $i++;
+        if($param==0)
+        {
+          $addStringHm= " (H_m Between $dbhfrom AND  $dbhTo)";
+        }
+        else 
+        {
+          $addStringHm=''; 
+        }
+        
+      }
+      if($i>0)
+      {
+
+        $addStringVol= " AND (Volume_m3 Between $volFrom AND  $volTo)";
+      }
+      else 
+      {
+        $i++;
+        $addStringVol= " (Volume_m3 Between $volFrom AND  $volTo)";
+      }
+      // $addStringVol='';
+      // $addStringHm='';
+      if($param==1)
+      {
+       // $addStringHm=' AND LatDD IS NOT NULL';
+        $addStringVol='';
+
+      }
+
   return $string.$addStringHm.$addStringVol;
 }
 
@@ -435,7 +545,7 @@ private function getDtByAttrAe($attr)
     $returnArray[]='';
     $returnArray[]='';
   }
-   // $this->pr($returnArray);
+   //$this->pr($returnArray);
   return $returnArray;
 }
 
@@ -545,27 +655,11 @@ public function searchAllometricEquationAll()
   {
     redirect('data/allometricEquationView');
   }
-     //  $jsonQuery="SELECT l.latDD y,l.longDD x,GROUP_CONCAT(DISTINCT(a.output)) OUTPUT,d.Division,dis.District,f.Family,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome,COUNT(FAOBiomes)total_species,a.location_name,a.LatDD,a.LongDD,fnc_ae_species_data(l.LatDD,l.LongDD) species_desc FROM location l
-     //  LEFT JOIN group_location lg ON l.ID_Location=lg.location_id
-     //  LEFT JOIN ae a ON lg.group_id=a.location_group
-     //  LEFT JOIN species_group sr ON a.Species=sr.Speciesgroup_ID
-     //  LEFT JOIN species s ON sr.ID_Species=s.ID_Species
-     //  LEFT JOIN family f ON s.ID_Family=f.ID_Family
-     //  LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-     //  LEFT JOIN reference ref ON a.Reference=ref.ID_Reference
-     //  LEFT JOIN faobiomes b ON l.ID_FAOBiomes=b.ID_FAOBiomes
-     //  LEFT JOIN division d ON l.ID_Division=d.ID_Division
-     //  LEFT JOIN district dis ON l.ID_District =dis.ID_District
-     //  LEFT JOIN zones zon ON l.ID_Zones =zon.ID_Zones
-     //  LEFT JOIN bd_aez1988 eco ON l.ID_1988EcoZones =eco.MAJOR_AEZ
-     //  WHERE $string and a.ID_AE IS NOT NULL  
-     //  GROUP BY LatDD,LongDD";
-     // echo $jsonQuery;
-     // exit;
+     
 
   $jsonQuery="SELECT * from __view_allometric_equ_search_map a where $string";
-     //echo $jsonQuery;
-     //exit;
+  //echo $jsonQuery;
+  //exit;
   $jsonQueryEncode=base64_encode($jsonQuery);
   $data['jsonQuery']=$jsonQueryEncode;
   $data['content_view_page']      = 'portal/allometricEquationPage';
@@ -589,27 +683,27 @@ private function getDtByAttrRaw($attr)
   $returnArray=array();
   switch ($attr) {
     case "th_from":
-    $returnArray[]='H_m';
+    $returnArray[]='Tree Height (m) From';
     $returnArray[]='r.';
     break;
     case "th_to":
-    $returnArray[]='H_m';
+    $returnArray[]='Tree Height (m) To';
     $returnArray[]='r.';
     break;
     case "th_from2":
-    $returnArray[]='Volume_m3';
+    $returnArray[]='Volume From';
     $returnArray[]='r.';
     break;
     case "th_to2":
-    $returnArray[]='Volume_m3';
+    $returnArray[]='Volume To';
     $returnArray[]='r.';
     break;
     case "H_m":
-    $returnArray[]='H_m';
+    $returnArray[]='Tree Height (m)';
     $returnArray[]='r.';
     break;
     case "Volume_m3":
-    $returnArray[]='Volume_m3';
+    $returnArray[]='Volume';
     $returnArray[]='r.';
     break;
     case "DBH_cm":
@@ -617,7 +711,7 @@ private function getDtByAttrRaw($attr)
     $returnArray[]='r.';
     break;
     case "location_name":
-    $returnArray[]='location_name';
+    $returnArray[]='Location Name';
     $returnArray[]='r.';
     break;
     case "LatDD":
@@ -725,7 +819,8 @@ private function getDtByAttrRaw($attr)
 }
 
 public function searchRawEquationAll()
-{
+{ 
+
     //  $r=$this->getDtByAttrAe('Author');
     //$this->pr($_GET);
 
@@ -806,7 +901,8 @@ public function searchRawEquationAll()
     }
     else
     {
-      $string=$this->searchAttributeStringR($validSearchKey);
+     $string=$this->searchAttributeStringRn($validSearchKey,0);
+      
     }
   
 
@@ -875,7 +971,11 @@ public function searchRawEquationAll()
       // GROUP BY LatDD,LongDD";
       // //echo $jsonQuery;
       // //exit;
+ // $string=$this->searchAttributeStringRn($validSearchKey,1);
+
   $jsonQuery="SELECT * from __view_raw_data_search_map  r where $string";
+  //echo $jsonQuery;
+  //exit;
   $jsonQueryEncode=base64_encode($jsonQuery);
   $data['jsonQuery']=$jsonQueryEncode;
   //print_r($data['jsonQuery']);exit();
@@ -1139,6 +1239,8 @@ public function searchEmissionFactorAll()
       //echo $jsonQuery;
       //exit;
   $jsonQuery="SELECT * from __view_emission_fac_search_map  e where $string";
+  //echo $jsonQuery;
+  //exit;
   $jsonQueryEncode=base64_encode($jsonQuery);
   $data['jsonQuery']=$jsonQueryEncode;
   $data['content_view_page']      = 'portal/biomassExpansionFacView';
@@ -1158,14 +1260,14 @@ private function getDtByAttrWd($attr)
   $returnArray=array();
   switch ($attr) {
     case "w_from":
-    $returnArray[]='Density_ovendry';
+    $returnArray[]='Density Ovendry From';
     $returnArray[]='w.';
     break;
     case "w_to":
-    $returnArray[]='Density_ovendry';
+    $returnArray[]='Density Ovendry To';
     $returnArray[]='w.';
     break;
-     case "Density_green":
+    case "Density_green":
     $returnArray[]='Density_green';
     $returnArray[]='w.';
     break;
@@ -2099,6 +2201,121 @@ public function deleteImage($id)
        //$data["searchType"]=4;
       $this->template->display_portal($data);
     }
+
+
+     public function search_community()
+  {
+    //  $r=$this->getDtByAttrAe('Author');
+    //$this->pr($_GET);
+    if(!empty($_GET)){
+      $searchFieldArray=$_GET;
+      if(!isset($searchFieldArray['keyword']))
+      {
+        $searchFieldArray['keyword']='';
+      }
+      if($searchFieldArray['keyword']!='')
+      {
+        foreach($searchFieldArray as $key=>$value)
+        {
+          if($key!='keyword')
+          {
+            $r=$this->getDtByAttrCommunity($key);
+            $validSearchKey[$r[1].$key]=$searchFieldArray['keyword'];
+            $fieldName[]=$r[0];
+            $filedNameValue[$r[0].'/'.$key]=$searchFieldArray['keyword'];
+          }
+        }
+      }
+      else
+      {
+        foreach($searchFieldArray as $key=>$value)
+        {
+          if($value!='')
+          {
+            $r=$this->getDtByAttrCommunity($key);
+            $validSearchKey[$r[1].$key]=$value;
+            $fieldName[]=$r[0];
+            $filedNameValue[$r[0].'/'.$key]=$value;
+          }
+        }
+      }
+    //  $this->pr($filedNameValue);
+      if(!isset($filedNameValue))
+      {
+        redirect('portal/viewCommunityPage');
+      }
+      else
+      {
+        $data['fieldNameValue']=$filedNameValue;
+      }
+
+       if($searchFieldArray['keyword']!='')
+        {
+          $string=$this->searchAttributeKeywordString($validSearchKey);
+        }
+        else
+        {
+          $string=$this->searchAttributeString($validSearchKey);
+        }
+
+     // $string=$this->searchAttributeString($validSearchKey);
+
+      $data['community'] = $this->db->query("SELECT c.title,c.description,c.post_date,c.id,c.user_id,v.USER_ID,v.LAST_NAME from community c
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.title desc
+
+        ")->result();
+      $data['community_count'] = $this->db->query("SELECT c.title,c.description,c.post_date,c.id,c.user_id,v.USER_ID,v.LAST_NAME from community c
+        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.title desc
+        ")->result();
+       // $data["links"]                  = $this->pagination->create_links();
+
+      if($searchFieldArray['keyword']!='')
+      {
+        $subUrl='';
+        $i=0;
+        $n=count($searchFieldArray);
+        foreach($searchFieldArray as $row=> $val)
+        {
+          if($i<$n-1)
+          {
+            $subUrl.=$row.'='.$searchFieldArray['keyword'].'&';
+          }
+          else
+          {
+            $subUrl.=$row.'='.$searchFieldArray['keyword'];
+          }
+          $i++;
+
+        }
+        $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $pieces = explode("?", $url);
+        $urlTail=$pieces[1];
+        $url=str_ireplace($urlTail,$subUrl,$url);
+        $keyWord=$searchFieldArray['keyword'];
+        $removeString="keyword=$keyWord&";
+        $data['actualUrl']=str_replace($removeString,'',$url);
+      }
+      else
+      {
+        $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $data['actualUrl']=$url;
+      }
+    }
+    else
+    {
+      redirect('portal/viewCommunityPage');
+    }
+    $data['content_view_page']      = 'portal/viewCommunityPage';
+    $string=base64_encode($string);
+    $string= str_replace("=","abyz",$string);
+    $data['string']=$string;
+       //$data["searchType"]=2;
+       //$data["searchType"]=3;
+       //$data["searchType"]=4;
+    $this->template->display_portal($data);
+  }
+
+
 
 
 
@@ -6285,7 +6502,7 @@ function up_union_by_dis_id() {
   {
     $returnArray=array();
     switch ($attr) {
-      case "Title":
+      case "title":
       $returnArray[]='title';
       $returnArray[]='c.';
       break;
@@ -6296,116 +6513,24 @@ function up_union_by_dis_id() {
     return $returnArray;
   }
 
-  public function search_community()
-  {
-    //  $r=$this->getDtByAttrAe('Author');
-    //$this->pr($_GET);
-    if(!empty($_GET)){
-      $searchFieldArray=$_GET;
-      if(!isset($searchFieldArray['keyword']))
-      {
-        $searchFieldArray['keyword']='';
-      }
-      if($searchFieldArray['keyword']!='')
-      {
-        foreach($searchFieldArray as $key=>$value)
-        {
-          if($key!='keyword')
-          {
-            $r=$this->getDtByAttrCommunity($key);
-            $validSearchKey[$r[1].$key]=$searchFieldArray['keyword'];
-            $fieldName[]=$r[0];
-            $filedNameValue[$r[0].'/'.$key]=$searchFieldArray['keyword'];
-          }
-        }
-      }
-      else
-      {
-        foreach($searchFieldArray as $key=>$value)
-        {
-          if($value!='')
-          {
-            $r=$this->getDtByAttrCommunity($key);
-            $validSearchKey[$r[1].$key]=$value;
-            $fieldName[]=$r[0];
-            $filedNameValue[$r[0].'/'.$key]=$value;
-          }
-        }
-      }
-    //  $this->pr($filedNameValue);
-      if(!isset($filedNameValue))
-      {
-        redirect('portal/viewCommunityPage');
-      }
-      else
-      {
-        $data['fieldNameValue']=$filedNameValue;
-      }
-
-      $string=$this->searchAttributeString($validSearchKey);
-
-      $data['community'] = $this->db->query("SELECT c.title,c.id,c.user_id,v.USER_ID,v.LAST_NAME from community c
-        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.title desc
-
-        ")->result();
-      $data['community_count'] = $this->db->query("SELECT c.title,c.id,c.user_id,v.USER_ID,v.LAST_NAME from community c
-        LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where $string order by c.title desc
-        ")->result();
-       // $data["links"]                  = $this->pagination->create_links();
-
-      if($searchFieldArray['keyword']!='')
-      {
-        $subUrl='';
-        $i=0;
-        $n=count($searchFieldArray);
-        foreach($searchFieldArray as $row=> $val)
-        {
-          if($i<$n-1)
-          {
-            $subUrl.=$row.'='.$searchFieldArray['keyword'].'&';
-          }
-          else
-          {
-            $subUrl.=$row.'='.$searchFieldArray['keyword'];
-          }
-          $i++;
-
-        }
-        $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $pieces = explode("?", $url);
-        $urlTail=$pieces[1];
-        $url=str_ireplace($urlTail,$subUrl,$url);
-        $keyWord=$searchFieldArray['keyword'];
-        $removeString="keyword=$keyWord&";
-        $data['actualUrl']=str_replace($removeString,'',$url);
-      }
-      else
-      {
-        $url=$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $data['actualUrl']=$url;
-      }
-    }
-    else
-    {
-      redirect('portal/viewCommunityPage');
-    }
-    $data['content_view_page']      = 'portal/viewCommunityPage';
-    $string=base64_encode($string);
-    $string= str_replace("=","abyz",$string);
-    $data['string']=$string;
-       //$data["searchType"]=2;
-       //$data["searchType"]=3;
-       //$data["searchType"]=4;
-    $this->template->display_portal($data);
-  }
-
-
+ 
 
 
   public function viewAddCommunityPage()
   {
 
     $data['content_view_page'] = 'portal/viewAddCommunityPage';
+    $this->template->display_portal($data);
+  }
+
+
+   public function viewMyPost()
+  {
+    $userSession=$this->session->userdata("user_logged");
+    $id=$userSession['USER_ID'];
+    $data['my_post']           = $this->db->query("SELECT c.*,v.USER_ID,v.LAST_NAME from community c
+      LEFT JOIN visitor_info v ON c.user_id=v.USER_ID where c.user_id=$id order by c.id desc ")->result();
+    $data['content_view_page'] = 'portal/viewMyPost';
     $this->template->display_portal($data);
   }
 

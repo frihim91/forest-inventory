@@ -201,19 +201,19 @@ class ForestData extends CI_Controller
         );
         $data['pageTitle']         = "All Species List";
         $data['all_family']        = $this->db->query("SELECT * from family f
-            order by f.ID_Family desc")->result();
+            order by f.ID_Family")->result();
         $data['all_genus']         = $this->db->query("SELECT * from genus g
-            order by g.ID_Genus desc")->result();
+            order by g.ID_Genus")->result();
         $data['all_species']       = $this->db->query("SELECT s.*,g.*,f.* from species s
             LEFT JOIN genus g ON s.ID_Genus =g.ID_Genus
             LEFT JOIN family f ON s.ID_Family =f.ID_Family
-            order by s.ID_Species desc")->result();
+            order by s.ID_Species")->result();
         $data['all_faobiomes']     = $this->db->query("SELECT * from faobiomes bio
-            order by bio.ID_FAOBiomes desc")->result();
+            order by bio.ID_FAOBiomes")->result();
          $data['all_bfizone']     = $this->db->query("SELECT * from zones zon
-            order by zon.ID_Zones desc")->result();
+            order by zon.ID_Zones")->result();
            $data['all_bagrozone']     = $this->db->query("SELECT * from bd_aez1988 bag
-            order by bag.MAJOR_AEZ desc")->result();
+            order by bag.MAJOR_AEZ")->result();
         $data['content_view_page'] = 'setup/species/all_species';
         $this->template->display($data);
     }

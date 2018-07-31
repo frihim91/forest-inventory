@@ -151,7 +151,7 @@
                 $msgBody = "<html><head></html><body>Dear $fullName,<br> <br><br>
             Hi!<br/>
             I have some good news!<br/>
-            You're one step away from regaining access to your FAO account, <br/>
+            You're one step away from regaining access to your BFD account, <br/>
             $showemail. Just click below to reset your password:<br/>
             <a  href='" . site_url() . "/dashboard/auth/generate_password/$random_id'><button class='btn btn-success' style='background: #10b7e8; height:6%; margin-left:24%;'>Reset Password</button></a> <br/>
             If you the link don't use, simply <a  href='" . site_url() . "/dashboard/auth/forgot_password'>request a new link.</a> If you didn't initiate this request,<br/>
@@ -159,7 +159,7 @@
             We're glad to have you back!<br/>
                     <br/><br/.<br/>
                         Thanks and regards,<br>
-                        FAO<br/><br/>        
+                        BFD<br/><br/>        
             </body></html>";
                 //echo '<pre>';print_r($msgBody);exit;
                 $email = $this->utilities->get_field_value_by_attribute('sa_users', 'EMAIL', array('USERNAME' => $UserName));
@@ -175,11 +175,11 @@
                     $mail->Password = "@ti321$#";
                     $mail->SMTPSecure = 'ssl';
                     $mail->From = "support@harnest.com";
-                    $mail->FromName = "FAO";
+                    $mail->FromName = "BFD";
                     $mail->AddAddress($email);
                     //$mail->AddReplyTo($emp_info->EMPLOYEE);
                     $mail->IsHTML(TRUE);
-                    $mail->Subject = "FAO New Password Confirmation";
+                    $mail->Subject = "BFD New Password Confirmation";
                     $mail->Body = $msgBody;
                     if ($mail->Send()) {
                         //echo '<p style="color:red; margin-left: 38%;">Mail send  successfully please check your mail. </p>';

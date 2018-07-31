@@ -78,11 +78,20 @@
 
      public function commentList()
     {
+        $data['comment']           = $this->db->query("SELECT a.id,a.title,(SELECT COUNT(*) FROM community_comment where community_id=a.id ) TOTAL_COMMENT FROM community a
+            order by a.id DESC")->result();
+        $data['content_view_page'] = 'setup/commentList/all_comment';
+        $this->template->display($data);
+    }
+
+
+       public function commentDetails($id)
+    {
         $data['comment']           = $this->db->query("SELECT c.*,cm.title,v.FIRST_NAME,v.LAST_NAME,v.USER_ID FROM community_comment c 
             left join visitor_info v on v.USER_ID=c.user_id 
             left join community cm on cm.id=c.community_id
-            order by c.id DESC")->result();
-        $data['content_view_page'] = 'setup/commentList/all_comment';
+            where c.community_id=$id order by c.id DESC")->result();
+        $data['content_view_page'] = 'setup/commentList/all_comment_details';
         $this->template->display($data);
     }
 

@@ -354,7 +354,7 @@ Class Forestdata_model extends CI_Model {
                       LEFT JOIN `union` g ON c.Union =g.UNI_CODE_1
                       LEFT JOIN zones zon ON c.ID_Zones =zon.ID_Zones
                       LEFT JOIN bd_aez1988 eco ON c.ID_1988EcoZones =eco.MAJOR_AEZ
-                      where ID_AE=$ID_AE
+                      where ID_AE=$ID_AE 
                       order by a.ID_AE desc")->result();
      return $data;
   }
@@ -428,7 +428,7 @@ Class Forestdata_model extends CI_Model {
   }
   public function get_community_details($id)
   {
-    $data=$this->db->query("SELECT c.id,c.user_id,c.description,c.title,v.USER_ID,v.LAST_NAME,cc.* from community c
+    $data=$this->db->query("SELECT c.id,c.user_id,c.description,c.title,c.post_date,v.USER_ID,v.LAST_NAME,cc.* from community c
        LEFT JOIN community_comment cc ON c.id=cc.community_id
        LEFT JOIN visitor_info v ON cc.user_id=v.USER_ID
          where c.id=$id
@@ -491,13 +491,12 @@ Class Forestdata_model extends CI_Model {
 		 return $data;
 	}
 
-	  public function get_all_family()
-      {
-            $this->db->select('family.*');
-            $this->db->from('family');
-            $this->db->order_by('family.ID_Family', 'ASC');
-            return $this->db->get()->result();
-       }
+  	  public function get_all_family()
+     {
+       $data=$this->db->query("SELECT * from family f where f.Family!='NA' and f.Family!='Unknown' order by f.ID_family")->result();
+       return $data;
+            
+      }
 
 
         public function get_all_landcover()
@@ -517,11 +516,12 @@ Class Forestdata_model extends CI_Model {
        }
 
 
-       public function get_all_species()
+   public function get_all_species()
 	{
 		$data=$this->db->query("SELECT s.*,g.*,f.* from species s
             LEFT JOIN genus g ON s.ID_Genus =g.ID_Genus
             LEFT JOIN family f ON s.ID_Family =f.ID_Family
+            where s.Species!='NA'
             order by s.ID_Species ASC
 		")->result();
 		 return $data;
@@ -584,6 +584,8 @@ Class Forestdata_model extends CI_Model {
       {
             $this->db->select('genus.*');
             $this->db->from('genus');
+            $this->db->where('Genus !=','NA');
+            $this->db->where('Genus !=','Unknown');
             $this->db->order_by('genus.ID_Genus', 'ASC');
             return $this->db->get()->result();
       }
@@ -603,6 +605,7 @@ Class Forestdata_model extends CI_Model {
       {
             $this->db->select('division.*');
             $this->db->from('division');
+            $this->db->where('Division !=','Unknown');
             $this->db->order_by('division.ID_Division', 'ASC');
             return $this->db->get()->result();
       }
@@ -646,7 +649,7 @@ Class Forestdata_model extends CI_Model {
         public function get_all_agroecological_zones()
       {
         $data=$this->db->query("SELECT a.MAJOR_AEZ,(CASE WHEN AEZ_NAME = 'No Data' THEN ''
-                               ELSE AEZ_NAME END) as AEZ_NAME  from bd_aez1988 a
+                               ELSE AEZ_NAME END) as AEZ_NAME  from bd_aez1988 a where a.AEZ_NAME !='Unknown'
                                order by a.MAJOR_AEZ ASC")->result();
          return $data;
       }

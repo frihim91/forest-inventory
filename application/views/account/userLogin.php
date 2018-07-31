@@ -63,7 +63,7 @@ $lang_ses = $this->session->userdata("site_lang");
      <div class="col-md-6">
       <?php echo $this->session->flashdata('msg'); ?>
       <h2>Login</h2>
-      <h4>Please log in to access the Foreast Inventory site</h4>
+      <h4>Please log in to post new comment.</h4>
       <?php echo form_open('dashboard/auth/registerLogin', "class='form-vertical'"); ?>
       <?php if (validation_errors()): ?>
         <div class="row"><button data-dismiss="alert" class="close" type="button">×</button>
@@ -88,11 +88,11 @@ $lang_ses = $this->session->userdata("site_lang");
 
   </div>
   <div class="col-md-6">
-    <h2>Register for a new account</h2>
-    <p>Registration is simple and lets you:<br>
+    <h2>Register to post any comment</h2>
+    <p>Registration is simple and allows:<br>
       <ul>
-        <li>Submit your own allometric equations</li>
-        <li>Download datasets of tree allometric data</li>
+        <li>Create new post</li>
+        <li>Provide feedback on any post by others</li>
       </ul>
       <a href="<?php echo site_url('accounts/userRegistration')?>" class="btn btn-link" style="color: #147A00;text-decoration: none;">Register Now>></a></p>
 

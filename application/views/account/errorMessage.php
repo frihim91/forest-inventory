@@ -96,7 +96,7 @@ $lang_ses = $this->session->userdata("site_lang");
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-12">
-                    <h4 class="modal-title text-center">FAO || Food and Agriculture Organization of the United Nations.</h4>
+                    <h4 class="modal-title text-center">BFD || Bangladesh Forest Department.</h4>
                 </div>
                 <div class="col-sm-5">
                  <div class="row">
