@@ -127,11 +127,11 @@
             "><a data-toggle="tab" href="#menu3">Reference</a></li>
       </ul>
       <div class="tab-content">
-         <div id="home" class="tab-pane fade 
+         <div id="home" class="tab-pane fade
             <?php if(!isset($searchType)){ echo 'in active'; } ?>
             ">
-            <p> Search Wood Density by keyword. 
-               This searches accross several text fields as like as Wood Density, Taxonomy,Location,Reference. 
+            <p> Search Wood Density by keyword.
+               This searches accross several text fields as like as Wood Density, Taxonomy,Location,Reference.
                <br>
                Example searches: Leguminosae,Leguminosae,Pongamia,
                Pongamia pinnata,Bangladesh
@@ -147,7 +147,7 @@
                     <!--  <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-          
+
          </div>
          <div id="menu4" class="tab-pane fade">
             <p>Search by tree Density Ovendry:9.11 and 9.12.</p>
@@ -163,7 +163,7 @@
                   <div class="form-group">
                      <label>To<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="w_to"   class ="h_tree_min" maxlength="64" placeholder="" />
-                     
+
                   </div>
                </div>
         </div>
@@ -174,7 +174,7 @@
             <input type="hidden" class="form-control input-sm" name ="Density_airdry" value = "<?php echo (isset($Density_airdry))?$Density_airdry:'';?>"   class ="Density_airdry" maxlength="64" placeholder="" />
 
              <input type="hidden" class="form-control input-sm" name ="location_name" value = "<?php echo (isset($location_name))?$location_name:'';?>" maxlength="64"  class ="location_name" placeholder="Year" />
-           
+
  <!--            <div class="row">
                <h4>Height</h4>
                <div class="col-md-3">
@@ -187,7 +187,7 @@
                   <div class="form-group">
                      <label>Minimum Height<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="H_tree_min"   class ="h_tree_min" maxlength="64" placeholder="Minimum Height (m)" />
-                     
+
                   </div>
                </div>
 
@@ -195,7 +195,7 @@
                   <div class="form-group">
                      <label>Maximum Height<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="H_tree_max" maxlength="64"  class ="h_tree_max" placeholder="Maximum Height (m)" />
-                     
+
                   </div>
                </div>
 
@@ -214,22 +214,22 @@
                   <div class="form-group">
                      <label>Minimum DBH<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="DBH_tree_min" maxlength="64"  class ="dbh_tree_min" placeholder="Minimum DBH (cm)" />
-                     
+
                   </div>
                </div>
                  <div class="col-md-3">
                   <div class="form-group">
                      <label>Maximum DBH<span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="DBH_tree_max" maxlength="64"  class ="dbh_tree_max" placeholder="Maximum DBH (cm)" />
-                     
+
                   </div>
                </div>
                 <br>
-  
+
                </div> -->
 
 
-            
+
          </div>
          <div id="menu1" class="tab-pane fade">
             <p> Search Wood Density by family, genus or species.
@@ -237,7 +237,7 @@
                <br>
                Example searches: Leguminosae,Acacia,Acacia nilotica.
             </p>
-           
+
                <div class="col-md-6">
                 <div class="form-group">
               <label>Family<span style="color:red;"></span></label>
@@ -254,7 +254,7 @@
                </div>
                   <div class="form-group">
                      <label>Genus<span style="color:red;"></span></label>
-             
+
                      <p><?php
                      $Genus = $this->Forestdata_model->get_all_genus();
                      $options = array('' => '--Select Genus--');
@@ -267,7 +267,7 @@
                   </div>
                   <div class="form-group">
                      <label>Species<span style="color:red;"></span></label>
-           
+
                     <p><?php
                      $Species = $this->Forestdata_model->get_all_species();
                      $options = array('' => '--Select Species--');
@@ -279,10 +279,10 @@
                      ?></p>
 
                      <br>
-    
+
                   </div>
                </div>
-        
+
          </div>
               <div id="menu2" class="tab-pane fade">
             <p> Search allometric equations by tree location and biome.Example searches
@@ -377,7 +377,7 @@
                <br>
                Example searches: Author: Sattar, MA ,Reference:Carbon stock in the Sundarbans,Year: 1994
             </p>
-          
+
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reference <span style="color:red;"></span></label>
@@ -391,10 +391,10 @@
                      <label>Year  <span style="color:red;"></span></label>
                      <input type="text" class="form-control input-sm" name ="Year" class ="year" maxlength="64" placeholder="Year" />
                      <br>
-                     
+
                   </div>
                </div>
-            
+
          </div>
       </div>
    </div>
@@ -404,9 +404,9 @@
   </form><br>
    <div class="col-sm-12 bdy_des">
        <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
- 
+
     <div class="col-lg-6">
-     
+
      <h4>Result count: <span id="summary-results-total">
 
 
@@ -414,39 +414,39 @@
                            <?php
                            if(isset($woodDensitiesView_count))
                            {
-                         
-                            echo count($woodDensitiesView_count); 
+
+                            echo count($woodDensitiesView_count);
                             }
                             else if(isset($woodDensitiesView))
                             {
                               echo count($woodDensitiesView);
                             }
-                            else 
-                            { 
+                            else
+                            {
                              echo $this->db->count_all_results('wd');
 
 
-                    
+
                             }
-                            
+
                            ?>
-    
+
      </span> </h4>
      <br><br>
-    
+
     </div>
 
     <div class="col-lg-6">
-      
+
       <h4> Search criteria</h4>
-      
+
         <p><?php
           $keyWord='';
           if(isset($_GET['keyword']))
           {
              $keyWord=$_GET['keyword'];
           }
-         
+
           if($keyWord=='')
           {
              if(!empty($fieldNameValue)){
@@ -456,7 +456,7 @@
               {
           $pieces = explode("/", $key);
           $fieldName= $pieces[0]; // piece1
-          $keyWord= $pieces[1]; 
+          $keyWord= $pieces[1];
           //echo $fieldName;exit;// piece2
           if($i<$n-1)
           {
@@ -470,7 +470,11 @@
           $newUrl=str_replace($sub,'',$actualUrl);
           // $url=str_replace('','',$actualUrl);
           $i++;
-          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+          if(!empty($value))
+          {
+            echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+          }
+
         }
           }
           else{
@@ -478,18 +482,18 @@
       }
     //   echo "<pre>";
     // print_r($fieldNameValue);exit();
-           
+
 
       }
-      else 
+      else
       {
 
         $url=site_url('data/woodDensitiesView');
         echo "Keyword: $keyWord <a href='$url'>Remove Filter</a>";
       }
-      
+
       ?></p>
-      
+
     </div>
 
 </div>
@@ -506,7 +510,7 @@
                <span class="glyphicon glyphicon-download"></span> Export Results <span class="caret"></span>
                </button>
                <ul class="dropdown-menu" role="menu">
-                          <?php 
+                          <?php
                            if(!isset($string))
                            {
                            $string=1;
@@ -565,7 +569,7 @@
                #map{ height: 100% }
             </style>
             </div>
-      
+
       </div>
       <div class="row mapBlock" style="display:none">
       <div class="col-md-12" style="height:500px!important;width:100%">
@@ -627,7 +631,7 @@ else
 
             <script type="text/javascript">
      $(document).on('keypress', '#Genus', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -638,7 +642,7 @@ else
             });
         });
       $(document).on('keypress', '#Species', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -650,7 +654,7 @@ else
         });
 
       $(document).on('keypress', '#District', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -663,7 +667,7 @@ else
 
 
        $(document).on('keypress', '#division', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -676,7 +680,7 @@ else
 
 
             $(document).on('keypress', '#ecoZones', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -688,7 +692,7 @@ else
         });
 
              $(document).on('keypress', '#reference', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -701,7 +705,7 @@ else
 
 
                $(document).on('keypress', '#author', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -714,7 +718,7 @@ else
 
 
                        $(document).on('keypress', '#year', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -726,7 +730,7 @@ else
         });
 
             $(document).on('keypress', '#fao_biome', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -740,7 +744,7 @@ else
 
 
               $(document).on('keypress', '#h_tree_avg', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -753,7 +757,7 @@ else
 
 
             $(document).on('keypress', '#h_tree_min', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -766,7 +770,7 @@ else
 
 
                $(document).on('keypress', '#h_tree_max', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -780,7 +784,7 @@ else
 
 
           $(document).on('keypress', '#dbh_tree_avg', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -793,7 +797,7 @@ else
 
 
            $(document).on('keypress', '#dbh_tree_min', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -806,7 +810,7 @@ else
 
 
             $(document).on('keypress', '#dbh_tree_max', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -864,8 +868,8 @@ function () {
            });
        });
    });
-   
-   
+
+
     $(document).ready(function() {
        $('#ID_District').change(function() {
            var District = $(this).val();
@@ -882,8 +886,8 @@ function () {
            });
        });
    });
-   
-   
+
+
        $(document).ready(function() {
        $('#THANA_ID').change(function() {
            var THANAME = $(this).val();
@@ -939,4 +943,3 @@ $("a.resultList").click(function(){
             <!--<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>-->
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
              <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
-
