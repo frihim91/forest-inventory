@@ -115,11 +115,11 @@
             "><a data-toggle="tab" href="#menu3">Reference</a></li>
       </ul>
       <div class="tab-content">
-         <div id="home" class="tab-pane fade 
+         <div id="home" class="tab-pane fade
             <?php if(!isset($searchType)){ echo 'in active'; } ?>
             ">
-            <p> Search Raw Data by keyword. 
-               This searches accross several text fields as like as Raw Data,Taxonomy,Location,Reference. 
+            <p> Search Raw Data by keyword.
+               This searches accross several text fields as like as Raw Data,Taxonomy,Location,Reference.
                <br>
                Example searches:Euphorbiaceae,Euphorbiaceae,
                Excoecaria,Excoecaria agallocha,Tropical moist forest
@@ -134,7 +134,7 @@
                      <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
                   </div>
                </div>
-            
+
          </div>
          <div id="menu4" class="tab-pane fade">
             <p>Search by tree height:9.01 and 9.02, and volume:0.0104 and 0.0102.</p>
@@ -195,7 +195,7 @@
                     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">
                   </div>
                </div> -->
-            
+
          </div>
 
          <div id="menu5" class="tab-pane fade">
@@ -325,16 +325,16 @@
                   </select>
                 </div>
                   </div>
-              
-              
-              
+
+
+
                 </div>
 
            <div class="col-lg-8">
               <img src="<?php echo base_url('resources/images/component.png')?>" class="img-responsive" width="500">
            </div>
                 <!-- <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search"> -->
-                  
+
 
 
               </div>
@@ -345,7 +345,7 @@
                <br>
                Example searches:Fabaceae,Dalbergia,Dalbergia sissoo.
             </p>
-      
+
                <div class="col-md-6">
                <div class="form-group">
               <label>Family<span style="color:red;"></span></label>
@@ -386,10 +386,10 @@
                      echo form_dropdown('Species', $options, $Species, 'id="Species" style="width:100%;" class="form-control singleSelectExample" data-placeholder="Select Species" ');
                      ?>  </p>
                      <br>
-                  
+
                   </div>
                </div>
-         
+
          </div>
           <div id="menu2" class="tab-pane fade">
             <p> Search allometric equations by tree location and biome.Example searches
@@ -482,10 +482,10 @@
             <p> Search Raw Data by author, year, and reference.
                Example searches
                <br>
-               Example searches:  Author: Khan, M.N.I. ,Reference:Allometric relationships for predicting, 
+               Example searches:  Author: Khan, M.N.I. ,Reference:Allometric relationships for predicting,
               Year: 2010
             </p>
-           
+
                <div class="col-md-6">
                   <div class="form-group">
                      <label>Reference <span style="color:red;"></span></label>
@@ -502,7 +502,7 @@
                  <!--     <input id="searchButton" style="float:right" class="btn btn-success" type="submit" value="Search">  -->
                   </div>
                </div>
-           
+
          </div>
       </div>
    </div>
@@ -513,17 +513,17 @@
           </form><br>
    <div class="col-sm-12 bdy_des">
       <div class="row" style="background-color:#eee;border:1px solid #ddd;border-radius:4px;margin:0px 1px 20px 1px;">
- 
+
     <div class="col-lg-6">
-     
+
      <h4>Result count: <span id="summary-results-total">
-    
-   
+
+
                           <?php
                            if(isset($rawDataView_count))
                            {
-                         
-                            echo count($rawDataView_count); 
+
+                            echo count($rawDataView_count);
                             }
                             else if(isset($rawDataView))
                             {
@@ -533,26 +533,29 @@
                             {
                               echo count($rawDatagridMap);
                             }
-                            else 
-                            { 
+                            else
+                            {
                              echo $this->db->count_all_results('rd');
 
 
-                    
+
                             }
-                            
+
                            ?>
-    
+
      </span> </h4>
      <br><br>
-    
+
     </div>
 
     <div class="col-lg-6">
-      
+
       <h4> Search criteria</h4>
-      
+
         <p><?php
+        // echo "<pre>";
+        // print_r($fieldNameValue);
+        // exit;
           $keyWord='';
           $prefix='';
           if(isset($_GET['keyword']))
@@ -563,8 +566,8 @@
 
 
           if($keyWord=='')
-          {  
-         
+          {
+
              if(!empty($fieldNameValue)){
               $n=count($fieldNameValue);
               $i=0;
@@ -572,7 +575,7 @@
               {
           $pieces = explode("/", $key);
           $fieldName= $pieces[0]; // piece1
-          $keyWord= $pieces[1]; 
+          $keyWord= $pieces[1];
           //echo $fieldName;exit;// piece2
           if($i<$n-1)
           {
@@ -586,7 +589,12 @@
           $newUrl=str_replace($sub,'',$actualUrl);
           // $url=str_replace('','',$actualUrl);
            $i++;
-          echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+          // echo $substitute;
+           if(!empty($value))
+           {
+             echo "<b> $fieldName </b> : $value "."<a href='$newUrl'>Remove Filter</a> <br>";
+           }
+
         }
           }
           else{
@@ -594,25 +602,25 @@
       }
     //   echo "<pre>";
     // print_r($fieldNameValue);exit();
-           
+
 
       }
-      else 
+      else
       {
 
         $url=site_url('data/rawDataView');
         echo "Keyword: $keyWord <a href='$url'>Remove Filter</a>";
       }
-      
+
       ?></p>
-      
+
     </div>
 
 </div>
       <ul class="nav nav-tabs">
          <li class="active"><a data-toggle="tab" href="#results-list" class="resultList"><span class="glyphicon glyphicon-list"></span> Results List</a></li>
          <li><a data-toggle="tab" href="#results-map" class="results-map"><span class="glyphicon glyphicon-globe "></span> Map View</a></li>
-          <div style="float:right;"> 
+          <div style="float:right;">
                     <form action='export/' id="export-form" method="POST">
                         <input type='hidden' name='csrfmiddlewaretoken' value='EUSnAj1qQRRf6anXMDF1cWRSTLAwax2J' />
                         <input type="hidden" name="query" id="export-query" />
@@ -622,7 +630,7 @@
                             <span class="glyphicon glyphicon-download"></span> Export Results <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu" role="menu">
-                           <?php 
+                           <?php
                            if(!isset($string))
                            {
                            $string=1;
@@ -677,12 +685,12 @@
         <div id="results-map" class="tab-pane fade">
             <link rel="stylesheet" href="<?php echo base_url(); ?>resources/js/leaflet/leaflet.css" />
             <script src="<?php echo base_url(); ?>resources/js/leaflet/leaflet.js"></script>
-           
+
             <style type="text/css">
                #map{ height: 100% }
             </style>
             </div>
-            
+
       </div>
       <div class="row mapBlock" style="display:none">
       <div class="col-md-12" style="height:500px!important;width:100%">
@@ -742,7 +750,7 @@ else
 
         <script type="text/javascript">
      $(document).on('keypress', '#Genus', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -754,7 +762,7 @@ else
         });
 
         $(document).on('keypress', '#Family', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -765,7 +773,7 @@ else
             });
         });
       $(document).on('keypress', '#Species', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -777,7 +785,7 @@ else
         });
 
       $(document).on('keypress', '#District', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -790,7 +798,7 @@ else
 
 
        $(document).on('keypress', '#division', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -803,7 +811,7 @@ else
 
 
             $(document).on('keypress', '#ecoZones', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -815,7 +823,7 @@ else
         });
 
              $(document).on('keypress', '#reference', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -828,7 +836,7 @@ else
 
 
                $(document).on('keypress', '#author', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -841,7 +849,7 @@ else
 
 
             $(document).on('keypress', '#year', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -855,7 +863,7 @@ else
 
 
             $(document).on('keypress', '#h_m', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -867,7 +875,7 @@ else
         });
 
             $(document).on('keypress', '#volume_m3', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -880,7 +888,7 @@ else
 
 
             $(document).on('keypress', '#fao_biome', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -893,7 +901,7 @@ else
 
 
               $(document).on('keypress', '#keyword', function () {
-      
+
             var pattern = /[0-9]+/g;
             var id = $(this).attr('id').match(pattern);
             $(this).autocomplete({
@@ -947,8 +955,8 @@ function () {
            });
        });
    });
-   
-   
+
+
     $(document).ready(function() {
        $('#ID_District').change(function() {
            var District = $(this).val();
@@ -965,8 +973,8 @@ function () {
            });
        });
    });
-   
-   
+
+
        $(document).ready(function() {
        $('#THANA_ID').change(function() {
            var THANAME = $(this).val();
@@ -983,10 +991,10 @@ function () {
            });
        });
    });
-   
-   
-   
-   
+
+
+
+
 </script>
 
 
@@ -1023,4 +1031,3 @@ function () {
 <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.snippet.min.js"></script>
 <script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/jquery.easyPaginate.js"></script>
     <!--<script src="<?php echo base_url(); ?>resources/resource_potal/assets/js/scripts.js"></script>-->
-

@@ -76,7 +76,7 @@ $n=count($searchFields);
 $string='';
 $i=0;
 foreach ($searchFields as $key => $value) {
-  
+
   if(!empty($value))
   {
     if($i==0)
@@ -581,7 +581,7 @@ public function search_allometricequation_key()
 
 
 
-   
+
 
       /*
       * @methodName woodDensitiesView()
@@ -628,7 +628,7 @@ public function search_allometricequation_key()
         $data['Zones'] = $this->Forestdata_model->get_all_zones();
         //print_r($data['Zones']);exit;
         $data['Division'] = $this->Forestdata_model->get_all_division();
-    
+
         $jsonQuery="SELECT * from __view_allometric_equ_search_map a";
         // $jsonQuery="SELECT l.latDD y,l.longDD x,GROUP_CONCAT(DISTINCT(a.output)) OUTPUT,GROUP_CONCAT(DISTINCT(FAOBiomes)) FAOBiomes,COUNT(FAOBiomes)total_species,
         //    GROUP_CONCAT(DISTINCT(l.location_name)) location_name,(SELECT group_concat(DISTINCT(s.Species)) from species_group sg
@@ -661,8 +661,11 @@ public function search_allometricequation_key()
 
       public function getMapJsonData($query)
       {
-        $query1=base64_decode($query);
-        
+    $query1=base64_decode($query);
+
+
+
+
         $conn = new PDO('mysql:host=192.168.0.106;dbname=faobd_db_v2','maruf','maruf');
         $sql =$query1;
         if (isset($_GET['bbox']) || isset($_POST['bbox'])) {
@@ -713,19 +716,19 @@ public function search_allometricequation_key()
            //$this->pr($tableCoulmn);
           $fp = fopen('file.csv', 'w');
           $file = fopen('php://output', 'w');
-            $filename = $tableName.'.csv'; 
-             header("Content-Description: File Transfer"); 
-             header("Content-Disposition: attachment; filename=$filename"); 
+            $filename = $tableName.'.csv';
+             header("Content-Description: File Transfer");
+             header("Content-Disposition: attachment; filename=$filename");
              header("Content-Type: application/csv; ");
            $headArray=array();
            foreach($tableCoulmn as $row)
            {
               $headArray[]=$row->COLUMN_NAME;
            }
-        $header =$headArray;//array("Username","Name","Gender","Email"); 
+        $header =$headArray;//array("Username","Name","Gender","Email");
           fputcsv($file, $header);
-          fclose($file); 
-          exit; 
+          fclose($file);
+          exit;
 
       }
 

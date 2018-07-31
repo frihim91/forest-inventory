@@ -112,7 +112,7 @@ class Portal extends CI_Controller
 //           {
 //             return $string.' OR '. $betweenStr;
 //           }
-//           else 
+//           else
 //           {
 //             return $betweenStr;
 //           }
@@ -135,7 +135,7 @@ private function searchAttributeStringR($searchFields)
      $prefix=$pieces[0];
     if(!empty($value))
     {
-     
+
 
 
       if($prefix!='r.th')
@@ -152,9 +152,9 @@ private function searchAttributeStringR($searchFields)
       }
 
 
-      
+
     }
-    if($prefix=='r.th') 
+    if($prefix=='r.th')
       {
         if($value=='')
         {
@@ -162,8 +162,8 @@ private function searchAttributeStringR($searchFields)
         }
         $betweenStr.=$value.'_';
       }
-   
-       
+
+
 
   }
 
@@ -175,7 +175,7 @@ private function searchAttributeStringR($searchFields)
       $volTo=$betweenString[3];
       if($dbhTo==0)
       {
-        $dbhTo=100000000; 
+        $dbhTo=100000000;
       }
       if($volTo==0)
       {
@@ -183,10 +183,10 @@ private function searchAttributeStringR($searchFields)
       }
       if($i>0)
       {
-        
+
         $addStringHm= " AND (H_m Between $dbhfrom AND  $dbhTo)";
       }
-      else 
+      else
       {
         $i++;
         $addStringHm= " (H_m Between $dbhfrom AND  $dbhTo)";
@@ -196,7 +196,7 @@ private function searchAttributeStringR($searchFields)
 
         $addStringVol= " AND (Volume_m3 Between $volFrom AND  $volTo)";
       }
-      else 
+      else
       {
         $i++;
         $addStringVol= " (Volume_m3 Between $volFrom AND  $volTo)";
@@ -207,12 +207,21 @@ private function searchAttributeStringR($searchFields)
 
 private function searchAttributeStringRn($searchFields,$param)
 {
+
+
   $n=count($searchFields);
   $string='';
   $i=0;
   $betweenStr='';
   $addStringVol='';
   $addStringHm='';
+  $volFrom=0;
+
+
+  $dbhfrom=0;
+  $dbhTo=100000000;
+  $volFrom=0;
+  $volTo=100000000;
   //$this->pr($searchFields);
   foreach ($searchFields as $key => $value) {
     //echo $key."<br>";
@@ -220,7 +229,7 @@ private function searchAttributeStringRn($searchFields,$param)
      $prefix=$pieces[0];
     if(!empty($value))
     {
-     
+
 
 
       if($prefix!='r.th')
@@ -237,9 +246,9 @@ private function searchAttributeStringRn($searchFields,$param)
       }
 
 
-      
+
     }
-    if($prefix=='r.th') 
+    if($prefix=='r.th')
       {
         if($value=='')
         {
@@ -247,56 +256,73 @@ private function searchAttributeStringRn($searchFields,$param)
         }
         $betweenStr.=$value.'_';
       }
-   
-       
+
+
 
   }
 
 
    $betweenString= explode("_",$betweenStr);
-      $dbhfrom=$betweenString[0];
-      $dbhTo=$betweenString[1];
-      $volFrom=$betweenString[2];
-      $volTo=$betweenString[3];
+      if(isset($betweenString[0]))
+      {
+        $dbhfrom=$betweenString[0];
+      }
+      if(isset($betweenString[1]))
+      {
+        $dbhTo=$betweenString[1];
+      }
+      if(isset($betweenString[2]))
+      {
+        $volFrom=$betweenString[2];
+      }
+      if(isset($betweenString[3]))
+      {
+        $volTo=$betweenString[3];
+      }
+
       if($dbhTo==0)
       {
-        $dbhTo=100000000; 
+        $dbhTo=100000000;
       }
       if($volTo==0)
       {
-        $volTo=100000000;
+        $volTo=1000000001;
       }
       if($i>0)
       {
         if($param==0)
         {
-          $addStringHm= " AND (H_m Between $dbhfrom AND  $dbhTo)";  
+          $addStringHm= " AND (H_m Between $dbhfrom AND  $dbhTo)";
         }
-        else 
+        else
         {
-         $addStringHm=' AND LatDD IS NOT NULL'; 
+         $addStringHm=' AND LatDD IS NOT NULL';
         }
-        
+
       }
-      else 
+      else
       {
         $i++;
         if($param==0)
         {
           $addStringHm= " (H_m Between $dbhfrom AND  $dbhTo)";
         }
-        else 
+        else
         {
-          $addStringHm=''; 
+          $addStringHm='';
         }
-        
+
+      }
+      if($volFrom=='')
+      {
+          $volFrom=0;
       }
       if($i>0)
       {
 
         $addStringVol= " AND (Volume_m3 Between $volFrom AND  $volTo)";
       }
-      else 
+      else
       {
         $i++;
         $addStringVol= " (Volume_m3 Between $volFrom AND  $volTo)";
@@ -310,7 +336,21 @@ private function searchAttributeStringRn($searchFields,$param)
 
       }
 
-  return $string.$addStringHm.$addStringVol;
+      if($param==0)
+      {
+        return $string.$addStringHm.$addStringVol;
+      }
+      else {
+		if($string=='')
+		{
+			$string="y1 IS NOT NULL";
+		}
+		//$string="y1!=null";
+
+          return $string;
+      }
+
+
 }
 
 
@@ -353,7 +393,7 @@ private function searchAttributeStringW($searchFields)
      $prefix=$pieces[0];
     if(!empty($value))
     {
-     
+
 
 
       if($prefix!='w.w')
@@ -369,10 +409,10 @@ private function searchAttributeStringW($searchFields)
         $i++;
       }
 
-      
-      
+
+
     }
-    if($prefix=='w.w') 
+    if($prefix=='w.w')
       {
         if($value=='')
         {
@@ -380,8 +420,8 @@ private function searchAttributeStringW($searchFields)
         }
         $betweenStr.=$value.'_';
       }
-   
-       
+
+
 
   }
 
@@ -389,23 +429,23 @@ private function searchAttributeStringW($searchFields)
    $betweenString= explode("_",$betweenStr);
       $dbhfrom=$betweenString[0];
       $dbhTo=$betweenString[1];
-      
+
       if($dbhTo==0)
       {
-        $dbhTo=100000000; 
+        $dbhTo=100000000;
       }
-    
+
       if($i>0)
       {
-        
+
         $addStringW= " AND (Density_ovendry Between $dbhfrom AND  $dbhTo)";
       }
-      else 
+      else
       {
         $i++;
         $addStringW= " (Density_ovendry Between $dbhfrom AND  $dbhTo)";
       }
- 
+
   return $string.$addStringW;
 }
 
@@ -573,7 +613,7 @@ public function searchAllometricEquationAll()
           $filedNameValue[$r[0].'/'.$key]=$searchFieldArray['keyword'];
         }
       }
-    } 
+    }
     else
     {
       foreach($searchFieldArray as $key=>$value)
@@ -655,7 +695,7 @@ public function searchAllometricEquationAll()
   {
     redirect('data/allometricEquationView');
   }
-     
+
 
   $jsonQuery="SELECT * from __view_allometric_equ_search_map a where $string";
   //echo $jsonQuery;
@@ -819,7 +859,7 @@ private function getDtByAttrRaw($attr)
 }
 
 public function searchRawEquationAll()
-{ 
+{
 
     //  $r=$this->getDtByAttrAe('Author');
     //$this->pr($_GET);
@@ -881,7 +921,7 @@ public function searchRawEquationAll()
       }
     }
 
-    
+
       //$data['prefix']=$prefix;
 
 
@@ -898,19 +938,22 @@ public function searchRawEquationAll()
     if($searchFieldArray['keyword']!='')
     {
       $string=$this->searchAttributeKeywordString($validSearchKey);
+      $stringMap=$this->searchAttributeKeywordString($validSearchKey);
     }
     else
     {
      $string=$this->searchAttributeStringRn($validSearchKey,0);
-      
-    }
-  
+     $stringMap=$this->searchAttributeStringRn($validSearchKey,1);
+    //  $string="ID>0";
 
-    
+    }
+
+
+
 
     //  echo $string=$this->searchAttributeString($validSearchKey).' '.$betweenStr;
 
-    $k=$data['rawDataView'] = $this->db->query("SELECT * from __view_raw_data_search_tbl r where $string  
+    $k=$data['rawDataView'] = $this->db->query("SELECT * from __view_raw_data_search_tbl r where $string
       ")->result();
     $data['rawDataView_count'] = $this->db->query("SELECT * from __view_raw_data_search_tbl r where $string
       ")->result();
@@ -952,28 +995,12 @@ public function searchRawEquationAll()
   {
     redirect('data/rawDataView');
   }
-      // $jsonQuery="SELECT a.latDD y,a.longDD x,GROUP_CONCAT(DISTINCT(FAOBiomes)) fao_biome, COUNT(FAOBiomes) total_species,a.location_name,a.LatDD,a.LongDD,
-      // fnc_rd_species_data(a.LatDD,a.LongDD) species_desc FROM location a
-      // LEFT JOIN group_location b ON a.ID_Location=b.location_id
-      // LEFT JOIN rd r ON b.group_id=r.location_group
-      // LEFT JOIN species_group sr ON r.Speciesgroup_ID=sr.Speciesgroup_ID
-      // LEFT JOIN species s ON sr.ID_Species=s.ID_Species
-      // LEFT JOIN family f ON s.ID_Family=f.ID_Family
-      // LEFT JOIN genus g ON s.ID_Genus=g.ID_Genus
-      // LEFT JOIN reference ref ON r.ID_Reference=ref.ID_Reference
-      // LEFT JOIN faobiomes e ON a.ID_FAOBiomes=e.ID_FAOBiomes
-      // LEFT JOIN division d ON a.ID_Division=d.ID_Division
-      // LEFT JOIN district dis ON a.ID_District =dis.ID_District
-      // LEFT JOIN zones zon ON a.ID_Zones =zon.ID_Zones
-      // LEFT JOIN bd_aez1988 eco ON a.ID_1988EcoZones =eco.MAJOR_AEZ
-      // WHERE r.ID IS NOT NULL
-      // and $string
-      // GROUP BY LatDD,LongDD";
-      // //echo $jsonQuery;
-      // //exit;
- // $string=$this->searchAttributeStringRn($validSearchKey,1);
 
-  $jsonQuery="SELECT * from __view_raw_data_search_map  r where $string";
+  //$stringMap=$this->searchAttributeStringRn($validSearchKey,1);
+
+
+
+  $jsonQuery="SELECT * from __view_raw_data_search_map  r where $stringMap";
   //echo $jsonQuery;
   //exit;
   $jsonQueryEncode=base64_encode($jsonQuery);
@@ -993,6 +1020,7 @@ public function searchRawEquationAll()
 public function getMapJsonData($query)
 {
   $query1=base64_decode($query);
+
 
   $conn = new PDO('mysql:host=192.168.0.106;dbname=faobd_db_v2','maruf','maruf');
   $sql =$query1;
@@ -1696,7 +1724,7 @@ public function searchWdAll()
     }
   }
 
-  
+
 
 
   public function addImageinSlider()
@@ -3388,7 +3416,7 @@ function up_union_by_dis_id() {
       $config             = array();
       $config["base_url"] = base_url() .  "index.php/portal/allometricEquationViewSpeciesData/".$specis_id;
 
-      $total_ae=$this->db->query("SELECT * FROM __view_allometric_eqn_search_tbl 
+      $total_ae=$this->db->query("SELECT * FROM __view_allometric_eqn_search_tbl
         ")->num_rows();
       // print_r($this->db->last_query());exit;
       // echo $total_ae;exit;
@@ -3442,7 +3470,7 @@ function up_union_by_dis_id() {
 
 
       public function allometricEquationViewMapData($lat,$long)
-      {  
+      {
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/allometricEquationViewMapData/".$lat.'/'.$long;
@@ -3450,8 +3478,8 @@ function up_union_by_dis_id() {
 
         $config["total_rows"] = $total_ae;
 
-        $total_ae=$this->db->query("SELECT * from __view_allometric_equ_search_map a where a.LatDD=$lat and a.LongDD=$long 
-       
+        $total_ae=$this->db->query("SELECT * from __view_allometric_equ_search_map a where a.LatDD=$lat and a.LongDD=$long
+
          ")->num_rows();
       // print_r($this->db->last_query());exit;
       // echo $total_ae;exit;
@@ -3519,7 +3547,7 @@ function up_union_by_dis_id() {
 
 
       public function rawDataViewMapData($lat,$long)
-      {  
+      {
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/rawDataViewMapData/".$lat.'/'.$long;
@@ -3527,8 +3555,8 @@ function up_union_by_dis_id() {
 
         $config["total_rows"] = $total_rawData;
 
-        $total_rawData=$this->db->query("SELECT * from __view_raw_data_search_map r where r.LatDD=$lat and r.LongDD=$long 
-       
+        $total_rawData=$this->db->query("SELECT * from __view_raw_data_search_map r where r.LatDD=$lat and r.LongDD=$long
+
          ")->num_rows();
       // print_r($this->db->last_query());exit;
       // echo $total_ae;exit;
@@ -3660,7 +3688,7 @@ function up_union_by_dis_id() {
     $this->load->library('pagination');
     $config             = array();
     $config["base_url"] = base_url() .  "index.php/portal/biomassExpansionFacSpeciesView/".$specis_id;
-    $total_ef=$this->db->query("SELECT * FROM __view_emission_fac_search_tbl  
+    $total_ef=$this->db->query("SELECT * FROM __view_emission_fac_search_tbl
       ")->num_rows();
       // print_r($this->db->last_query());exit;
       //echo $total_ef;exit;
@@ -3714,7 +3742,7 @@ function up_union_by_dis_id() {
 
 
       public function biomassExpFacViewMapData($lat,$long)
-      {  
+      {
         $this->load->library('pagination');
         $config             = array();
         $config["base_url"] = base_url() . "index.php/portal/biomassExpFacViewMapData/".$lat.'/'.$long;
@@ -3722,8 +3750,8 @@ function up_union_by_dis_id() {
 
         $config["total_rows"] = $total_ef;
 
-        $total_ef=$this->db->query("SELECT * from __view_emission_fac_search_map e where e.LatDD=$lat and e.LongDD=$long 
-       
+        $total_ef=$this->db->query("SELECT * from __view_emission_fac_search_map e where e.LatDD=$lat and e.LongDD=$long
+
          ")->num_rows();
       // print_r($this->db->last_query());exit;
       // echo $total_ae;exit;
@@ -4759,18 +4787,18 @@ function up_union_by_dis_id() {
     $this->load->library('pagination');
     $config             = array();
     $config["base_url"] = base_url() . "index.php/portal/rawDataSpeciesView/".$specis_id;
-    $total_rawData=$this->db->query("SELECT * FROM __view_raw_data_search_tbl  
+    $total_rawData=$this->db->query("SELECT * FROM __view_raw_data_search_tbl
       ")->num_rows();
 
     $config["total_rows"] = $total_rawData;
-    
+
     $data['rawDataView_count'] = $this->db->query("SELECT * from __view_raw_data_search_tbl r where Species like '%$speciesNameDecode%'
       ")->result();
 
     $config["per_page"]        = 20;
     $config["uri_segment"]     = 4;
     $limit                     = $config["per_page"];
-    
+
       //pagination style end
     $this->pagination->initialize($config);
     $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
@@ -6513,7 +6541,7 @@ function up_union_by_dis_id() {
     return $returnArray;
   }
 
- 
+
 
 
   public function viewAddCommunityPage()
