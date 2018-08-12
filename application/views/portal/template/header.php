@@ -56,6 +56,13 @@
           </a>
 
         </li>
+
+
+        <li class="">
+          <a href="http://103.48.18.141/bfis/" class="dropdown-toggle" data-toggle="" role="button" aria-haspopup="true" aria-expanded="false">BFIS
+          </a>
+
+        </li>
  <!--        <?php 
 
         foreach($menus as $pm) {
