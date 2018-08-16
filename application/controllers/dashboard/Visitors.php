@@ -144,6 +144,25 @@
         }
         
     }
+
+
+
+         public function deleteCommentDetails($id)
+    {
+        
+        $attr = array(
+            "id" => $id
+        );
+        //return $this->utilities->deleteRowByAttribute("family", $attr);
+        if ($this->utilities->deleteRowByAttribute("community_comment", $attr)) {
+            $this->session->set_flashdata('Error', ' Comment Deleted Successfully.');
+        } else {
+            $this->session->set_flashdata('Error', 'Comment Not Deleted Successfully.');
+        }
+        
+        
+    }
+    
     
 
 
