@@ -78,13 +78,25 @@
 
 
     <div class="col-sm-12">
-      <h4><small>Comment List</small></h4>
+      <?php
+      if(isset($comment)){
+      ?><h4><small>Comment List</small></h4>
       <hr>
-      <h2><?php echo $comment->title;?></h2>
-      <h5><span class="glyphicon glyphicon-time"></span> Written by <span class="label label-danger"><?php echo $comment->LAST_NAME;?></span> , <?php echo date('F j,Y', strtotime($comment->post_date)); ?></h5>
+      <h2><?php  echo $comment->title;?></h2>
+      <h5><span class="glyphicon glyphicon-time"></span> <span class="label label-danger"><?php echo $comment->LAST_NAME;?></span> ,<?php echo date('F j,Y', strtotime($comment->post_date)); ?></h5>
    
-      <p><?php echo $comment->description;?></p>
+      <p><?php  echo $comment->description;?></p><?php echo $this->lang->line("allometric_equations"); ?></a>
+        <?php 
+         }else{ ?>
+                              
+          <?php 
+           }
+                            
+          ?>
+ 
+
       <br><br>
+      
    
  <?php echo form_open_multipart('dashboard/Visitors/addReplyByAdmin', "class='form-vertical'"); ?>
       <h4>Leave a Comment:</h4>
@@ -107,7 +119,7 @@
                         <tr>
                              <th>#</th>
                              <th>Title</th>
-                             <th>Total Comment</th>
+                             <th>Comment</th>
                              <th>Action</th>
                         </tr>
                     </thead>
@@ -130,7 +142,7 @@
                               
                                  <td>
                        
-                              <a class="label btn-danger btn-xs deleteUrlDetails" href="<?php echo site_url('dashboard/Visitors/deleteComment/'.$row->id);?>">
+                              <a class="label btn-danger btn-xs deleteUrlDetails" href="<?php echo site_url('dashboard/Visitors/deleteCommentDetails/'.$row->id);?>">
                               <i class="glyphicon glyphicon-remove"></i>
                               </a>  
                            </td>

@@ -79,7 +79,7 @@
 
      public function commentList()
     {
-        $data['comment']           = $this->db->query("SELECT a.id,a.title,(SELECT COUNT(*) FROM community_comment where community_id=a.id ) TOTAL_COMMENT FROM community a
+        $data['comment']           = $this->db->query("SELECT a.id,a.title,(SELECT COUNT(*) FROM community_comment c where c.community_id=a.id ) TOTAL_COMMENT FROM community a
             order by a.id DESC")->result();
         $data['content_view_page'] = 'setup/commentList/all_comment';
         $this->template->display($data);
@@ -137,7 +137,7 @@
             "id" => $id
         );
         //return $this->utilities->deleteRowByAttribute("family", $attr);
-        if ($this->utilities->deleteRowByAttribute("community_comment", $attr)) {
+        if ($this->utilities->deleteRowByAttribute("community", $attr)) {
             $this->session->set_flashdata('Error', ' Comment Deleted Successfully.');
         } else {
             $this->session->set_flashdata('Error', 'Comment Not Deleted Successfully.');
@@ -159,7 +159,7 @@
         } else {
             $this->session->set_flashdata('Error', 'Comment Not Deleted Successfully.');
         }
-        
+
         
     }
     
