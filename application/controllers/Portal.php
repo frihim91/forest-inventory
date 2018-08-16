@@ -1021,8 +1021,11 @@ public function getMapJsonData($query)
 {
   $query1=base64_decode($query);
 
-
-  $conn = new PDO('mysql:host=192.168.0.106;dbname=faobd_db_v2','maruf','maruf');
+  $dbName=$this->db->database;
+  $dbUser=$this->db->username;
+  $dbPass=$this->db->password;
+  $dbHost=$this->db->hostname;
+  $conn = new PDO("mysql:host=$dbHost;dbname=$dbName","$dbUser","$dbPass");
   $sql =$query1;
   if (isset($_GET['bbox']) || isset($_POST['bbox'])) {
     $bbox = explode(',', $_GET['bbox']);
